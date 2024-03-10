@@ -1,2 +1,3 @@
 # BachelorThesis
-# BachelorThesis
+
+Joshua Scheler
