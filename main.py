@@ -6,6 +6,7 @@ import galaxyxml.tool.parameters as gxtp
 from pprint import pprint
 from xml.etree.ElementTree import Element, SubElement, tostring, ElementTree
 
+
 def get_collections(base_url):
     """Define the path to the specific endpoint you want to access
     """
@@ -37,40 +38,6 @@ def json_to_galaxyxml(json_data):
     #pprint(json_data["inputs"])
     pprint(tool.export())
 
-"""
-def get_galaxyxml_inputs(inputs_json):
-    inputs = gxtp.Inputs()
-    #print(inputs_json)
-    for param_name, param_dict in inputs_json.items():
-        param_schema = param_dict.get("schema")
-        if param_schema.get("type") == "string":
-            if param_schema.get("enum") is None:
-                param = gxtp.TextParam(name=param_name,label=param_dict["title"], help=param_dict["description"],optional=False)
-                param.space_between_arg = " "
-                inputs.append(param)
-            else:
-                print()
-                data_types = param_schema.get("enum")
-                print(data_types)
-                data_types_dict = {data_type: data_type for data_type in data_types}
-                param = gxtp.SelectParam(name = param_name, default=param_schema["default"],label=param_dict["title"], help=param_dict["description"], options=data_types_dict)
-                param.space_between_arg = " "
-                inputs.append(param)
-        elif param_schema.get("type") == "integer":
-            if param_schema.get("default") is None and param_schema.get("nullable") is None:
-                param = gxtp.IntegerParam(name=param_name, label=param_dict["title"],help=param_dict["description"], value=0)
-                inputs.append(param)
-            elif param_schema.get("default") is None:
-                param = gxtp.IntegerParam(name=param_name, label=param_dict["title"],help=param_dict["description"])
-                inputs.append(param)
-            else:
-                param = gxtp.IntegerParam(name=param_name, label=param_dict["title"],help=param_dict["description"], value=param_schema["default"])
-                inputs.append(param)
-            
-    #pprint(inputs)
-    return inputs
-"""
-
 def create_text_param(param_name, param_dict):
     return gxtp.TextParam(
         name=param_name,
@@ -80,8 +47,11 @@ def create_text_param(param_name, param_dict):
     )
 
 def create_select_param(param_name, param_dict):
-    data_types = param_dict["schema"]["enum"]
-    data_types_dict = {data_type: data_type for data_type in data_types}
+    if param_dict["schema"].get("enum") is not None:
+        data_types = param_dict["schema"]["enum"]
+        data_types_dict = {data_type: data_type for data_type in data_types}
+    else:
+        print("To Do implement it")
     return gxtp.SelectParam(
         name=param_name,
         default=param_dict["schema"].get("default"),
@@ -99,21 +69,77 @@ def create_integer_param(param_name, param_dict):
         value=default_value
     )
 
+def create_float_param(param_name, param_dict):
+    default_value = param_dict["schema"].get("default", 0) if not param_dict["schema"].get("nullable") else None
+    return gxtp.FloatParam(
+        name=param_name,
+        label=param_dict["title"],
+        help=param_dict["description"],
+        value=default_value
+    )
+
+def create_boolean_param(param_name, param_dict):
+    default_value = param_dict["schema"].get("default", False)
+    return gxtp.BooleanParam(
+        name=param_name,
+        label=param_dict["title"],
+        help=param_dict["description"],
+        checked=default_value
+    )
+
+def create_data_param(param_name, param_dict, param_extended_schema, isArray: bool):
+    enum_values = []
+    if isArray:
+        extract_enum(param_extended_schema['items'], enum_values)
+    else:
+        extract_enum(param_extended_schema['oneOf'], enum_values)
+    unique_enum_values = ','.join({value.split('/')[-1] for value in enum_values})
+    return gxtp.DataParam(
+        name=param_name,
+        label=param_dict["title"],
+        help=param_dict["description"],
+        format=unique_enum_values
+    )
+
+def extract_enum(schema_item, enum_values):
+    if 'enum' in schema_item:
+        enum_values.extend(schema_item['enum'])
+    elif 'properties' in schema_item:
+        for prop in schema_item['properties'].values():
+            extract_enum(prop, enum_values)
+    elif 'oneOf' in schema_item:
+        for option in schema_item['oneOf']:
+            extract_enum(option, enum_values)
+    elif 'allOf' in schema_item:
+        for sub_item in schema_item['allOf']:
+            extract_enum(sub_item, enum_values)
+
 def create_params(inputs_json):
     inputs = gxtp.Inputs()
+    
     for param_name, param_dict in inputs_json.items():
         param_schema = param_dict.get("schema")
+        param_extended_schema = param_dict.get("extended-schema")
         param_type = param_schema.get("type")
-
+        
         if param_type == "string":
-            if param_schema.get("enum") is None:
-                param = create_text_param(param_name, param_dict)
-            else:
+            if param_schema.get("enum"):
                 param = create_select_param(param_name, param_dict)
+            else:
+                param = create_text_param(param_name, param_dict)
         elif param_type == "integer":
             param = create_integer_param(param_name, param_dict)
+        elif param_type == "number":
+            param = create_float_param(param_name, param_dict)
+        elif param_type == "boolean":
+            param = create_boolean_param(param_name, param_dict)
+        elif param_extended_schema is not None:
+            is_array = param_extended_schema.get("type") == "array"
+            param = create_data_param(param_name, param_dict, param_extended_schema, is_array)
         else:
-            continue  # Skip unsupported types
+            # Handle unsupported parameter types gracefully
+            print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
+            continue
         
         inputs.append(param)
 
