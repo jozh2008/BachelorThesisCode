@@ -50,6 +50,14 @@ def get_collections(base_url, endpoint):
         print("Failed to retrieve collections. Status code:", response.status_code)
         return None
 
+
+def get_url(base_url, endpoint):
+    """Define the path to the specific endpoint you want to access
+    """  
+    # Construct the full URL
+    url = base_url + endpoint + ".html"
+    return url
+
 def main():
     base_url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
     collections_data_list = []
@@ -59,13 +67,14 @@ def main():
         for line in file:
             # Process the ID by calling get_collections
             id = line.strip()  # .strip() removes any leading/trailing whitespace and newline characters
-            collections_data = get_collections(base_url, id)
+            collections_data = get_url(base_url, id)
             if collections_data:
                 collections_data_list.append(collections_data)
 
     # Write collections_data_list to a JSON file
-    with open('all_collections.json', 'w') as json_file:
-        json.dump(collections_data_list, json_file, indent=4)
+    with open('all_url.txt', 'w') as txt_file:
+        for item in collections_data_list:
+            txt_file.write(str(item)+"\n")
 
 
 

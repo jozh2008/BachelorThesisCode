@@ -34,7 +34,8 @@ def json_to_galaxyxml(json_data):
     name_id = rename_tool(tool_name=json_data["id"])
     tool = gxt.Tool(name=name_id, id=json_data["id"], version=json_data["version"], description=json_data["title"], executable="dfsfsdfsfd")
     tool.help = (json_data["description"])
-    tool.inputs = create_params(inputs_json=json_data["inputs"])
+    tool.inputs = create_params(inputs_json=json_data["inputs"], outputs_json = json_data["outputs"])
+    #tool.outputs = create_output_param(output_json=json_data["outputs"])
     #pprint(json_data["inputs"])
     pprint(tool.export())
 
@@ -114,7 +115,7 @@ def extract_enum(schema_item, enum_values):
         for sub_item in schema_item['allOf']:
             extract_enum(sub_item, enum_values)
 
-def create_params(inputs_json):
+def create_params(inputs_json, outputs_json):
     inputs = gxtp.Inputs()
     
     for param_name, param_dict in inputs_json.items():
@@ -142,8 +143,16 @@ def create_params(inputs_json):
             continue
         
         inputs.append(param)
+    
+    
 
     return inputs
+
+def create_output_param(output_json):
+    
+
+
+
 
 
 
