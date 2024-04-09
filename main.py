@@ -37,7 +37,9 @@ def json_to_galaxyxml(json_data):
     tool.inputs = create_params(inputs_json=json_data["inputs"], outputs_json = json_data["outputs"])
     #tool.outputs = create_output_param(output_json=json_data["outputs"])
     #pprint(json_data["inputs"])
-    pprint(tool.export())
+    #pprint(tool.export())
+    with open("output.xml", "w") as file:
+        file.write(tool.export())
 
 def create_text_param(param_name, param_dict):
     return gxtp.TextParam(
@@ -93,8 +95,9 @@ def create_data_param(param_name, param_dict, param_extended_schema, isArray: bo
     if isArray:
         extract_enum(param_extended_schema['items'], enum_values)
     else:
-        extract_enum(param_extended_schema['oneOf'], enum_values)
+        extract_enum(param_extended_schema, enum_values)
     unique_enum_values = ','.join({value.split('/')[-1] for value in enum_values})
+    #print(unique_enum_values)
     return gxtp.DataParam(
         name=param_name,
         label=param_dict["title"],
@@ -102,7 +105,22 @@ def create_data_param(param_name, param_dict, param_extended_schema, isArray: bo
         format=unique_enum_values
     )
 
+
+def create_select_param_output(param_name, param_dict, param_extended_schema):
+    enum_values = []
+    extract_enum(param_extended_schema, enum_values)
+    unique_enum_values = list({value.split('/')[-1] for value in enum_values})
+    #print(unique_enum_values)
+    data_types_dict = {data_type: data_type for data_type in unique_enum_values}
+    return gxtp.SelectParam(
+        name=param_name,
+        label=param_dict["title"],
+        help=param_dict["description"],
+        options=data_types_dict
+    )
+
 def extract_enum(schema_item, enum_values):
+    pprint(schema_item)
     if 'enum' in schema_item:
         enum_values.extend(schema_item['enum'])
     elif 'properties' in schema_item:
@@ -110,6 +128,8 @@ def extract_enum(schema_item, enum_values):
             extract_enum(prop, enum_values)
     elif 'oneOf' in schema_item:
         for option in schema_item['oneOf']:
+            #print(option)
+            #print("jsflfjslkfjl")
             extract_enum(option, enum_values)
     elif 'allOf' in schema_item:
         for sub_item in schema_item['allOf']:
@@ -126,6 +146,7 @@ def create_params(inputs_json, outputs_json):
         if param_type == "string":
             if param_schema.get("enum"):
                 param = create_select_param(param_name, param_dict)
+                param.space_between_arg = " "
             else:
                 param = create_text_param(param_name, param_dict)
         elif param_type == "integer":
@@ -144,11 +165,28 @@ def create_params(inputs_json, outputs_json):
         
         inputs.append(param)
     
-    
+    create_output_param(output_json=outputs_json, inputs=inputs)
 
     return inputs
 
-def create_output_param(output_json):
+def create_output_param(output_json, inputs):
+
+    for param_name, param_dict in output_json.items():
+        param_schema = param_dict.get("schema")
+        param_extended_schema = param_dict.get("extended-schema")
+        param_type = param_schema.get("type")
+        if param_type == "string":
+            if param_schema.get("enum"):
+                param = create_select_param(param_name, param_dict)
+            else:
+                param = create_text_param(param_name, param_dict)
+        elif param_extended_schema is not None:
+            param = create_select_param_output(param_name, param_dict, param_extended_schema)
+        else:
+            # Handle unsupported parameter types gracefully
+            print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
+            continue
+        inputs.append(param)
     
 
 

@@ -1,0 +1,32 @@
+<tool name="otb_bandmath" id="OTB.BandMath" version="1.0.0">
+  <description>Outputs a monoband image which is the result of a mathematical operation on several multi-band images.</description>
+  <expand macro="requirements"/>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[dfsfsdfsfd il $il
+out $out
+ram $ram
+exp '$exp'
+out $out]]></command>
+  <inputs>
+    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="tiff,jpeg,png"/>
+    <param name="out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="ram" type="integer" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="exp" type="text" optional="false" label="The muParser mathematical expression to apply on input images." help="The muParser mathematical expression to apply on input images."/>
+    <param name="out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
+      <option value="jpeg">jpeg</option>
+      <option value="png">png</option>
+      <option value="tiff">tiff</option>
+    </param>
+  </inputs>
+  <outputs/>
+  <expand macro="OTB.BandMath_tests"/>
+  <help><![CDATA[This application performs a mathematical operation on several multi-band images and outputs the result into a monoband image. The given expression is computed at each pixel position. Evaluation of the mathematical formula is done by the muParser libraries.The formula can be written using:  * numerical values ( 2.3, -5, 3.1e4, ...)  * variables containing pixel values (e.g. : 'im2b3' is the pixel value in 2nd image, 3rd band)  * binary operators:    * '+' addition, '-' subtraction, '*' multiplication, '/' division    * '^' raise x to the power of y    * ']]></help>
+  <expand macro="citations"/>
+</tool>
