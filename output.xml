@@ -2,13 +2,13 @@
   <description>Outputs a monoband image which is the result of a mathematical operation on several multi-band images.</description>
   <expand macro="requirements"/>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[dfsfsdfsfd il $il
+  <command><![CDATA[dsf il $il
 out $out
 ram $ram
 exp '$exp'
-out $out]]></command>
+output_type1 $output_type1]]></command>
   <inputs>
-    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="tiff,jpeg,png"/>
+    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="png,tiff,jpeg"/>
     <param name="out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -19,7 +19,7 @@ out $out]]></command>
     </param>
     <param name="ram" type="integer" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="exp" type="text" optional="false" label="The muParser mathematical expression to apply on input images." help="The muParser mathematical expression to apply on input images."/>
-    <param name="out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
+    <param name="output_type1" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="jpeg">jpeg</option>
       <option value="png">png</option>
       <option value="tiff">tiff</option>
