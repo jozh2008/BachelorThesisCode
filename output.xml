@@ -1,14 +1,16 @@
 <tool name="otb_bandmath" id="OTB.BandMath" version="1.0.0">
   <description>Outputs a monoband image which is the result of a mathematical operation on several multi-band images.</description>
-  <expand macro="requirements"/>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
   <command><![CDATA[dsf il $il
 out $out
 ram $ram
 exp '$exp'
-output_type1 $output_type1]]></command>
+output_type_1 $output_type_1]]></command>
   <inputs>
-    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="png,tiff,jpeg"/>
+    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="jpeg,tiff,png"/>
     <param name="out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -19,14 +21,28 @@ output_type1 $output_type1]]></command>
     </param>
     <param name="ram" type="integer" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="exp" type="text" optional="false" label="The muParser mathematical expression to apply on input images." help="The muParser mathematical expression to apply on input images."/>
-    <param name="output_type1" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
+    <param name="output_type_1" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="jpeg">jpeg</option>
       <option value="png">png</option>
       <option value="tiff">tiff</option>
     </param>
   </inputs>
-  <outputs/>
-  <expand macro="OTB.BandMath_tests"/>
+  <outputs>
+    <data name="output_data" format="png" hidden="false">
+      <change_format>
+        <when input="output_type_1" format="tiff" value="tiff"/>
+        <when input="output_type_1" format="jepg" value="jepg"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="png"/>
+      <param name="output_type_1" value="png"/>
+    </test>
+  </tests>
   <help><![CDATA[This application performs a mathematical operation on several multi-band images and outputs the result into a monoband image. The given expression is computed at each pixel position. Evaluation of the mathematical formula is done by the muParser libraries.The formula can be written using:  * numerical values ( 2.3, -5, 3.1e4, ...)  * variables containing pixel values (e.g. : 'im2b3' is the pixel value in 2nd image, 3rd band)  * binary operators:    * '+' addition, '-' subtraction, '*' multiplication, '/' division    * '^' raise x to the power of y    * ']]></help>
-  <expand macro="citations"/>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
 </tool>

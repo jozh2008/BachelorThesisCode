@@ -158,3 +158,40 @@ class Galaxyxmltool:
                 print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
                 continue
             inputs.append(param)
+    
+    def define_output_options(self):
+        outputs = self.gxtp.Outputs()
+        param = self.gxtp.OutputData(name="output_data", format="png")
+        
+        change = self.gxtp.ChangeFormat()
+        change_a = self.gxtp.ChangeFormatWhen(input="output_type_1", value="tiff", format="tiff")
+        change_b = self.gxtp.ChangeFormatWhen(input="output_type_1", value="jepg", format="jepg")
+        change.append(change_a)
+        change.append(change_b)
+        param.append(change)
+        outputs.append(param)
+        
+        return outputs
+
+
+    
+    def define_requirements(self):
+        requirements = self.gxtp.Requirements()
+        requirements.append(self.gxtp.Requirement(type="package", version="3.9", value="python"))
+        return requirements
+    
+    def define_tests(self):
+        tests = self.gxtp.Tests()
+        test_a = self.gxtp.Test()
+        param = self.gxtp.TestParam(name="output_type_1", value="png")
+        output = self.gxtp.TestOutput(name="output_data", value="png")
+        test_a.append(output)
+        test_a.append(param)
+
+        tests.append(test_a)
+        return tests
+    
+    def create_citations(self):
+        citations = self.gxtp.Citations()
+        citations.append(self.gxtp.Citation(type="bibtex", value = "Josh"))
+        return citations

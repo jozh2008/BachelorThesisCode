@@ -33,15 +33,18 @@ def json_to_galaxyxml(json_data):
 
     gxt = Galaxyxmltool(name=name_id, id=json_data["id"], version=json_data["version"], description=json_data["title"])
     tool = gxt.get_tool()
-    
+    tool.requirements = gxt.define_requirements()
     tool.help = (json_data["description"])
     #pprint(tool.export())
     tool.inputs = gxt.create_params(inputs_json=json_data["inputs"], outputs_json = json_data["outputs"])
-    #tool.outputs = create_output_param(output_json=json_data["outputs"])
+    tool.outputs = gxt.define_output_options()
     #pprint(json_data["inputs"])
+    tool.tests = gxt.define_tests()
+    tool.citations = gxt.create_citations()
     #pprint(tool.export())
     with open("output.xml", "w") as file:
         file.write(tool.export())
+    
 
 
 
