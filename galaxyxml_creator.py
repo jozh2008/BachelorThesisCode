@@ -69,6 +69,7 @@ class Galaxyxmltool:
             self.extract_enum(param_extended_schema['items'], enum_values)
         else:
             self.extract_enum(param_extended_schema, enum_values)
+        
         unique_enum_values = ','.join({value.split('/')[-1] for value in enum_values})
         return self.gxtp.DataParam(
             name=param_name,
