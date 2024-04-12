@@ -4,13 +4,13 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[dsf il $il
+  <command><![CDATA[$__tool_directory__/openapi.py il $il
 out $out
 ram $ram
 exp '$exp'
 output_type_1 $output_type_1]]></command>
   <inputs>
-    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="jpeg,tiff,png"/>
+    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="tiff,jpeg,png"/>
     <param name="out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -19,7 +19,7 @@ output_type_1 $output_type_1]]></command>
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="ram" type="integer" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="ram" type="integer" value="128" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="exp" type="text" optional="false" label="The muParser mathematical expression to apply on input images." help="The muParser mathematical expression to apply on input images."/>
     <param name="output_type_1" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="jpeg">jpeg</option>

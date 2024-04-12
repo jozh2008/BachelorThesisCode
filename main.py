@@ -33,6 +33,7 @@ def json_to_galaxyxml(json_data):
 
     gxt = Galaxyxmltool(name=name_id, id=json_data["id"], version=json_data["version"], description=json_data["title"])
     tool = gxt.get_tool()
+    #tool.executable = gxt.define_command()
     tool.requirements = gxt.define_requirements()
     tool.help = (json_data["description"])
     #pprint(tool.export())
