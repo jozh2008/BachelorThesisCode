@@ -7,7 +7,8 @@ from pprint import pprint
 def get_collections(base_url):
     """Define the path to the specific endpoint you want to access
     """
-    endpoint = "/processes/OTB.BandMath"   
+    #endpoint = "/processes/OTB.BandMath"
+    endpoint = "/processes/OTB.HooverCompareSegmentation"   
     # Construct the full URL
     url = base_url + endpoint
 

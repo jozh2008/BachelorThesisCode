@@ -2,7 +2,8 @@
 #print("This is a placeholder function.")
 
 import sys
-# from galaxytools_workflow import GalaxyWorkflow
+import re
+from pprint import pprint
 
 class Api:
     def __init__(self, server, api_key) -> None:
@@ -15,15 +16,14 @@ class Api:
         # Get command-line arguments
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
-        #gi = GalaxyWorkflow(server=self.server, api_key=self.api_key)
-        #gi.get_all_histories()
-        #gi.get_datasets_in_history()
+        print(attributes)
         # Access attributes
         il = attributes.get('il')
         out = attributes.get('out')
         ram = attributes.get('ram')
         exp = attributes.get('exp')
-        output_type_1 = attributes.get('output_type_1')
+        response = attributes.get("response")
+        output_type_1 = attributes.get('outputType1_out')
         self.open_and_read_file(il)
 
         # Use attributes as needed
@@ -32,11 +32,80 @@ class Api:
         print("RAM:", ram)
         print("Experiment:", exp)
         print("Output Type 1:", output_type_1)
+        print("reponse", response)
+    
+    def generate_output_list(self, attributes):
+        # Extract output values and transmissionMode values
+        outputs = self.extract_output_values(attributes)
+        transmissionMode = self.extract_transmissionMode_values(attributes)
+        
+        # Convert values to lists
+        keys_outputs = list(outputs.keys())
+        values_outputs = list(outputs.values())
+        values_transmisionMode = list(transmissionMode.values())
+        
+        # Determine the length of the outputs
+        length = len(keys_outputs)
+        
+        # Initialize an empty list
+        lst = []
+        
+        # Iterate through the outputs and create dictionaries
+        for i in range(length):
+            lst.append(self.output_json(keys_outputs[i], values_outputs[i], values_transmisionMode[i]))
+        
+        # Print the list for debugging
+        pprint(lst)
+        
+        # Return the list
+        return lst
+    
+    def extract_output_values(self, dictionary):
+        """
+        Extracts values from the input dictionary based on keys containing 'outputType'.
+
+        Args:
+            dictionary (dict): The dictionary containing key-value pairs.
+
+        Returns:
+            dict: A new dictionary containing extracted values with modified keys.
+        """
+        extracted_values = {}
+        for key, value in dictionary.items():
+            if "outputType" in key:
+                index = self.find_index_of_character(key, "_")
+                modified_key = key[index + 1:]
+                extracted_values[modified_key] = value
+        return extracted_values
+    
+
+    def extract_transmissionMode_values(self, dictionary):
+        extracted_values = {}
+        for key, value in dictionary.items():
+            if "transmissionMode" in key:
+                extracted_values[key] = value
+        return extracted_values
+
+    def find_index_of_character(self, string, character):
+        """
+        Finds the index of the first occurrence of the specified character in the given string.
+
+        Args:
+            string (str): The string to search.
+            character (str): The character to search for.
+
+        Returns:
+            int: The index of the first occurrence of the character in the string.
+        """
+        match = re.search(character, string)
+        return match.start()
+
     
     def open_and_read_file(self, file_path):
         try:
             with open(file_path, 'r') as file:
                 file_content = file.read().splitlines()
+                print(file_content)
         except FileNotFoundError:
             print(f"File {file_path} not found.")
         except Exception as e:
@@ -68,17 +137,22 @@ class Api:
         it = iter(args)
         res_dict = dict(zip(it, it))
         return res_dict
+    
 
-    def output_json(self, mediaType, transmissionMode):
+    def output_json(self,outputName, mediaType, transmissionMode):
         output_format = {
-            "outputs": {
-                "result": {
+                outputName: {
                     "format": {
                         "mediaType": mediaType
                     },
                     "transmissionMode": transmissionMode
                 }
-            }
+        }
+        return output_format
+    
+    def response_json(self, response):
+        output_format = {
+            "response": response
         }
         return output_format
 

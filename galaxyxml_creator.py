@@ -169,17 +169,24 @@ class Galaxyxmltool:
         inputs.append(param)
 
         return inputs
+    
+    def choose_transmissionMode(self, section, item_number):
+        label = "Choose the transmissionMode"
+        dictionary_options = {"reference": "reference", "value": "value"}
+        default_value = "reference"
+        name = "transmissionMode" + str(item_number)
+        param = self.gxtp.SelectParam(name=name,default=default_value, options=dictionary_options, label=label)
+        section.append(param)
+        return section
 
-
-        
 
     def create_output_param(self,output_json, inputs):
-
+        section = self.gxtp.Section(name="Test", title= "Choose the output format and/ or transmissionMode",expanded=True)
         for item_number,(param_name, param_dict) in enumerate(output_json.items(), start=1):
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
-            param_name = "output_type_" + str(item_number)
+            param_name = "outputType" + str(item_number) + "_" + param_name
             if param_type == "string":
                 if param_schema.get("enum"):
                     param = self.create_select_param(param_name, param_dict)
@@ -187,19 +194,25 @@ class Galaxyxmltool:
                     param = self.create_text_param(param_name, param_dict)
             elif param_extended_schema is not None:
                 param = self.create_select_param_output(param_name, param_dict, param_extended_schema)
+            elif param_type == "number":
+                param = self.create_float_param(param_name, param_dict)
             else:
                 # Handle unsupported parameter types gracefully
                 print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
                 continue
-            inputs.append(param)
+            #param.space_between_arg = " "
+            section.append(param)
+            self.choose_transmissionMode(section, item_number=item_number)
+            inputs.append(section)
+            
     
     def define_output_options(self):
         outputs = self.gxtp.Outputs()
         param = self.gxtp.OutputData(name="output_data", format="png")
         
         change = self.gxtp.ChangeFormat()
-        change_a = self.gxtp.ChangeFormatWhen(input="output_type_1", value="tiff", format="tiff")
-        change_b = self.gxtp.ChangeFormatWhen(input="output_type_1", value="jepg", format="jepg")
+        change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="tiff", format="tiff")
+        change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="jepg", format="jepg")
         change.append(change_a)
         change.append(change_b)
         param.append(change)
@@ -217,7 +230,7 @@ class Galaxyxmltool:
     def define_tests(self):
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
-        param = self.gxtp.TestParam(name="output_type_1", value="png")
+        param = self.gxtp.TestParam(name="outputType1_out", value="png")
         output = self.gxtp.TestOutput(name="output_data", value="png")
         test_a.append(output)
         test_a.append(param)
