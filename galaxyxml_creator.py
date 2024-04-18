@@ -75,7 +75,7 @@ class Galaxyxmltool:
             name=param_name,
             label=param_dict["title"],
             help=param_dict["description"],
-            format=unique_enum_values
+            format="txt"
         )
 
 
@@ -132,10 +132,46 @@ class Galaxyxmltool:
                 continue
             
             inputs.append(param)
-        
+        self.create_select_raw_param(inputs)
         self.create_output_param(output_json=outputs_json, inputs=inputs)
 
         return inputs
+    
+    def create_select_raw_param(self, inputs):
+        """
+        Create a select parameter for choosing between "raw" and "document" options.
+
+        This method creates a select parameter for choosing between "raw" and "document"
+        options, adds it to the provided list of inputs, and returns the modified list.
+
+        Parameters:
+        - inputs (list): A list of input parameters.
+
+        Returns:
+        - list: The list of input parameters with the new select parameter added.
+
+        Example:
+        >>> inputs = []
+        >>> create_select_raw_param(inputs)
+        """
+        # Define dictionary of options and set default value
+        dictionary_options = {"raw": "raw", "document": "document"}
+        default_value = "document"
+
+        # Set help description and label (if necessary)
+        help_description = "Choose 'raw' for raw data or 'document' for document data."
+        label = "Response Type"  # Label can be adjusted based on requirements
+
+        # Create select parameter
+        param = self.gxtp.SelectParam(name="response", default=default_value, options=dictionary_options, label=label, help=help_description)
+
+        # Add parameter to the list of inputs
+        inputs.append(param)
+
+        return inputs
+
+
+        
 
     def create_output_param(self,output_json, inputs):
 
