@@ -1,24 +1,36 @@
 #!/usr/bin/env python3
-#print("This is a placeholder function.")
-
 import sys
 import re
 from pprint import pprint
+import json
+from api_request import *
 
-class Api:
+
+class ApiJson:
     def __init__(self) -> None:
         pass
 
-
-    def print_inputs(self):
+    def get_json_inputs(self):
         print("This is a placeholder function.")
         # Get command-line arguments
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
-        self.process_input_values(attributes=attributes)
-        self.process_output_values(attributes=attributes)
-        self.process_response_values(attributes=attributes)
+        inputs = self.process_input_values(attributes=attributes)
+        outputs = self.process_output_values(attributes=attributes)
+        response = self.process_response_values(attributes=attributes)
+        input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
+        #pprint(input_json)
+        #fromated_input_json =self.convert_to_json(input_json)
+        pprint(self.get_url(attributes))
+
+        apirequest = APIRequest(url = self.get_url(attributes=attributes), payload=input_json)
+        apirequest.post_request()
     
+    def get_url(self, attributes):
+        base_url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
+        endpoint = attributes["name"]
+        return base_url + endpoint+"/execution"
+
     def process_output_values(self, attributes):
         dictionary_list = self.generate_output_list(attributes=attributes)
 
@@ -28,9 +40,18 @@ class Api:
     def process_response_values(self, attributes):
         response= self.extract_response_value(dictionary=attributes)
 
-        res = self.response_json_format(response=response)
-        pprint(res)
-        return res
+        return response
+    
+    def create_openapi_input_file(self, inputs, outputs, response):
+        result_dictionary = {}
+        result_dictionary["inputs"] = inputs
+        result_dictionary["outputs"]= outputs
+        result_dictionary["response"] = response
+        return result_dictionary
+
+   
+    def convert_to_json(self, input_dict):
+        return json.dumps(input_dict)
 
 
     
@@ -126,7 +147,7 @@ class Api:
             dict: A new dictionary containing only input values.
         """
 
-        excluded_prefixes = {"response", "outputType", "transmissionMode"}
+        excluded_prefixes = {"response", "outputType", "transmissionMode", "name"}
         extracted_values = {key: value for key, value in dictionary.items() if not any(key.startswith(prefix) for prefix in excluded_prefixes)}
         return extracted_values
 
@@ -269,9 +290,7 @@ class Api:
         }
         return output_format
 
-    
-
 
 if __name__ == "__main__":
-    api = Api()
-    api.print_inputs()
+    api = ApiJson()
+    api.get_json_inputs()

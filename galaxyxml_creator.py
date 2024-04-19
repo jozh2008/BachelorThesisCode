@@ -6,7 +6,8 @@ from pprint import pprint
 
 class Galaxyxmltool:
     def __init__(self, name, id, version, description) -> None:
-        self.gxt = tool.Tool(name=name, id = id, version=version, description=description, executable="$__tool_directory__/openapi.py")
+        self.executable = "$__tool_directory__/openapi.py"
+        self.gxt = tool.Tool(name=name, id = id, version=version, description=description, executable=self.define_command(title=name) )
         self.gxtp = gtpx
 
     def get_tool(self):
@@ -69,8 +70,6 @@ class Galaxyxmltool:
             self.extract_enum(param_extended_schema['items'], enum_values)
         else:
             self.extract_enum(param_extended_schema, enum_values)
-        
-        unique_enum_values = ','.join({value.split('/')[-1] for value in enum_values})
         return self.gxtp.DataParam(
             name=param_name,
             label=param_dict["title"],
@@ -82,8 +81,13 @@ class Galaxyxmltool:
     def create_select_param_output(self, param_name, param_dict, param_extended_schema):
         enum_values = []
         self.extract_enum(param_extended_schema, enum_values)
-        unique_enum_values = list({value.split('/')[-1] for value in enum_values})
-        data_types_dict = {data_type: data_type for data_type in unique_enum_values}
+        pprint(enum_values)
+        #unique_enum_values = list({value.split('/')[-1] for value in enum_values})
+        #pprint(unique_enum_values)
+        data_types_dict = {data_type: data_type.split('/')[-1] for data_type in enum_values}
+        #data_types_dict = {data_type: data_type for data_type in unique_enum_values}
+        #data_types_dict = dict(zip(enum_values, unique_enum_values))
+        pprint(data_types_dict)
         return self.gxtp.SelectParam(
             name=param_name,
             label=param_dict["title"],
@@ -237,15 +241,18 @@ class Galaxyxmltool:
 
             inputs.append(output_param_section)
 
+    def define_command(self, title):
+        return self.executable + " name " + title
+
             
     
     def define_output_options(self):
         outputs = self.gxtp.Outputs()
-        param = self.gxtp.OutputData(name="output_data", format="png")
+        param = self.gxtp.OutputData(name="output_data", format="image/png")
         
         change = self.gxtp.ChangeFormat()
-        change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="tiff", format="tiff")
-        change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="jepg", format="jepg")
+        change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="tiff", format="image/tiff")
+        change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="jepg", format="image/jepg")
         #change_a = self.gxtp.ChangeFormatWhen(input="OutputSection_1", value="tiff", format="tiff")
         #change_b = self.gxtp.ChangeFormatWhen(input="OutputSection_1", value="jepg", format="jepg")
         change.append(change_a)

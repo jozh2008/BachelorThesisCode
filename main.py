@@ -4,11 +4,12 @@ from galaxyxml_creator import *
 from pprint import pprint
 
 
+
 def get_collections(base_url):
     """Define the path to the specific endpoint you want to access
     """
-    #endpoint = "/processes/OTB.BandMath"
-    endpoint = "/processes/OTB.HooverCompareSegmentation"   
+    endpoint = "/processes/OTB.BandMath"
+    #endpoint = "/processes/OTB.HooverCompareSegmentation"   
     # Construct the full URL
     url = base_url + endpoint
 
@@ -28,10 +29,9 @@ def get_collections(base_url):
     
 def json_to_galaxyxml(json_data):
     name_id = rename_tool(tool_name=json_data["id"])
-
     gxt = Galaxyxmltool(name=json_data["id"], id=name_id, version=json_data["version"], description=json_data["title"])
     tool = gxt.get_tool()
-    #tool.executable = gxt.define_command()
+    #tool.executable = gxt.define_command(json_data["id"])
     tool.requirements = gxt.define_requirements()
     tool.help = (json_data["description"])
     #pprint(tool.export())
