@@ -149,10 +149,6 @@ class Galaxyxmltool:
 
         Returns:
         - list: The list of input parameters with the new select parameter added.
-
-        Example:
-        >>> inputs = []
-        >>> create_select_raw_param(inputs)
         """
         # Define dictionary of options and set default value
         dictionary_options = {"raw": "raw", "document": "document"}
