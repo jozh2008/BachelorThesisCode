@@ -1,4 +1,4 @@
-<tool name="OTB.HooverCompareSegmentation" id="otb_hoovercomparesegmentation" version="1.0.0">
+<tool name="otb_hoovercomparesegmentation" id="OTB.HooverCompareSegmentation" version="1.0.0">
   <description>Compare two segmentations with Hoover metrics</description>
   <requirements>
     <requirement version="3.9" type="package">python</requirement>
@@ -11,18 +11,78 @@ th $th
 outgt $outgt
 outms $outms
 response $response
-outputType1_outgt $OutputSection_1.outputType1_outgt
-transmissionMode_1 $OutputSection_1.transmissionMode_1
-outputType2_outms $OutputSection_2.outputType2_outms
-transmissionMode_2 $OutputSection_2.transmissionMode_2
-outputType3_rc $OutputSection_3.outputType3_rc
-transmissionMode_3 $OutputSection_3.transmissionMode_3
-outputType4_rf $OutputSection_4.outputType4_rf
-transmissionMode_4 $OutputSection_4.transmissionMode_4
-outputType5_ra $OutputSection_5.outputType5_ra
-transmissionMode_5 $OutputSection_5.transmissionMode_5
-outputType6_rm $OutputSection_6.outputType6_rm
-transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
+outputType1_outgt $Test.outputType1_outgt
+transmissionMode1 $Test.transmissionMode1
+outputType2_outms $Test.outputType2_outms
+transmissionMode2 $Test.transmissionMode2
+outputType3_rc $Test.outputType3_rc
+transmissionMode3 $Test.transmissionMode3
+outputType4_rf $Test.outputType4_rf
+transmissionMode4 $Test.transmissionMode4
+outputType5_ra $Test.outputType5_ra
+transmissionMode5 $Test.transmissionMode5
+outputType6_rm $Test.outputType6_rm
+transmissionMode6 $Test.transmissionMode6
+outputType1_outgt $Test.outputType1_outgt
+transmissionMode1 $Test.transmissionMode1
+outputType2_outms $Test.outputType2_outms
+transmissionMode2 $Test.transmissionMode2
+outputType3_rc $Test.outputType3_rc
+transmissionMode3 $Test.transmissionMode3
+outputType4_rf $Test.outputType4_rf
+transmissionMode4 $Test.transmissionMode4
+outputType5_ra $Test.outputType5_ra
+transmissionMode5 $Test.transmissionMode5
+outputType6_rm $Test.outputType6_rm
+transmissionMode6 $Test.transmissionMode6
+outputType1_outgt $Test.outputType1_outgt
+transmissionMode1 $Test.transmissionMode1
+outputType2_outms $Test.outputType2_outms
+transmissionMode2 $Test.transmissionMode2
+outputType3_rc $Test.outputType3_rc
+transmissionMode3 $Test.transmissionMode3
+outputType4_rf $Test.outputType4_rf
+transmissionMode4 $Test.transmissionMode4
+outputType5_ra $Test.outputType5_ra
+transmissionMode5 $Test.transmissionMode5
+outputType6_rm $Test.outputType6_rm
+transmissionMode6 $Test.transmissionMode6
+outputType1_outgt $Test.outputType1_outgt
+transmissionMode1 $Test.transmissionMode1
+outputType2_outms $Test.outputType2_outms
+transmissionMode2 $Test.transmissionMode2
+outputType3_rc $Test.outputType3_rc
+transmissionMode3 $Test.transmissionMode3
+outputType4_rf $Test.outputType4_rf
+transmissionMode4 $Test.transmissionMode4
+outputType5_ra $Test.outputType5_ra
+transmissionMode5 $Test.transmissionMode5
+outputType6_rm $Test.outputType6_rm
+transmissionMode6 $Test.transmissionMode6
+outputType1_outgt $Test.outputType1_outgt
+transmissionMode1 $Test.transmissionMode1
+outputType2_outms $Test.outputType2_outms
+transmissionMode2 $Test.transmissionMode2
+outputType3_rc $Test.outputType3_rc
+transmissionMode3 $Test.transmissionMode3
+outputType4_rf $Test.outputType4_rf
+transmissionMode4 $Test.transmissionMode4
+outputType5_ra $Test.outputType5_ra
+transmissionMode5 $Test.transmissionMode5
+outputType6_rm $Test.outputType6_rm
+transmissionMode6 $Test.transmissionMode6
+outputType1_outgt $Test.outputType1_outgt
+transmissionMode1 $Test.transmissionMode1
+outputType2_outms $Test.outputType2_outms
+transmissionMode2 $Test.transmissionMode2
+outputType3_rc $Test.outputType3_rc
+transmissionMode3 $Test.transmissionMode3
+outputType4_rf $Test.outputType4_rf
+transmissionMode4 $Test.transmissionMode4
+outputType5_ra $Test.outputType5_ra
+transmissionMode5 $Test.transmissionMode5
+outputType6_rm $Test.outputType6_rm
+transmissionMode6 $Test.transmissionMode6]]></command>
   <inputs>
     <param name="ingt" type="data" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image." format="txt"/>
     <param name="inms" type="data" label="A machine segmentation image." help="A machine segmentation image." format="txt"/>
@@ -48,52 +108,42 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format" expanded="true">
+    <section name="Test" title="Choose the output format and/ or transmissionMode" expanded="true">
       <param name="outputType1_outgt" type="select" label="The colored ground truth output image." help="The colored ground truth output image.">
         <option value="jpeg">jpeg</option>
         <option value="png">png</option>
         <option value="tiff">tiff</option>
       </param>
-      <param name="transmissionMode_1" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode1" type="select" label="Choose the transmissionMode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
-    </section>
-    <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType2_outms" type="select" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
         <option value="jpeg">jpeg</option>
         <option value="png">png</option>
         <option value="tiff">tiff</option>
       </param>
-      <param name="transmissionMode_2" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode2" type="select" label="Choose the transmissionMode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
-    </section>
-    <section name="OutputSection_3" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType3_rc" type="float" value="0" label="Overall score for correct detection (RC)" help="Overall score for correct detection (RC)"/>
-      <param name="transmissionMode_3" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode3" type="select" label="Choose the transmissionMode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
-    </section>
-    <section name="OutputSection_4" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType4_rf" type="float" value="0" label="Overall score for over segmentation (RF)" help="Overall score for over segmentation (RF)"/>
-      <param name="transmissionMode_4" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode4" type="select" label="Choose the transmissionMode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
-    </section>
-    <section name="OutputSection_5" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType5_ra" type="float" value="0" label="Overall score for under segmentation (RA)" help="Overall score for under segmentation (RA)"/>
-      <param name="transmissionMode_5" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode5" type="select" label="Choose the transmissionMode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
-    </section>
-    <section name="OutputSection_6" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType6_rm" type="float" value="0" label="Overall score for missed detection (RM)" help="Overall score for missed detection (RM)"/>
-      <param name="transmissionMode_6" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode6" type="select" label="Choose the transmissionMode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>

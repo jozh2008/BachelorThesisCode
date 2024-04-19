@@ -104,7 +104,7 @@ class Galaxyxmltool:
             for sub_item in schema_item['allOf']:
                 self.extract_enum(sub_item, enum_values)
 
-    def create_params(self, inputs_json, outputs_json):
+    def create_params(self, inputs_json, outputs_json, output_transmission_json):
         inputs = self.gxtp.Inputs()
         pprint(inputs_json)
         for param_name, param_dict in inputs_json.items():
@@ -133,7 +133,7 @@ class Galaxyxmltool:
             
             inputs.append(param)
         self.create_select_raw_param(inputs)
-        self.create_output_param(output_json=outputs_json, inputs=inputs)
+        self.create_output_param(output_json=outputs_json, inputs=inputs,output_transmission_json=output_transmission_json)
 
         return inputs
     
@@ -170,40 +170,77 @@ class Galaxyxmltool:
 
         return inputs
     
-    def choose_transmissionMode(self, section, item_number):
-        label = "Choose the transmissionMode"
-        dictionary_options = {"reference": "reference", "value": "value"}
-        default_value = "reference"
-        name = "transmissionMode" + str(item_number)
-        param = self.gxtp.SelectParam(name=name,default=default_value, options=dictionary_options, label=label)
+    def choose_transmission_mode(self, section, item_number, available_transmissions):
+        """
+        Adds a parameter to select transmission mode to a given section.
+
+        Args:
+            section (list): The section to which the parameter will be appended.
+            item_number (int): The number of the item.
+            available_transmissions (list): List of available transmission modes.
+
+        Returns:
+            list: The updated section with the added parameter.
+        """
+        label = "Choose the transmission mode"
+        #pprint(available_transmissions)
+        
+        # Create a dictionary of transmission options
+        transmission_options = {transmission: transmission for transmission in available_transmissions}
+        
+        default_transmission = "reference"
+        param_name = "transmissionMode_" + str(item_number)
+        
+        # Create the parameter object
+        param = self.gxtp.SelectParam(name=param_name, default=default_transmission, options=transmission_options, label=label)
+        
+        # Append the parameter to the section
         section.append(param)
+        
         return section
 
+    def create_output_param(self, output_json, inputs, output_transmission_json):
+        """
+        Create output parameters based on provided JSON.
 
-    def create_output_param(self,output_json, inputs):
-        section = self.gxtp.Section(name="Test", title= "Choose the output format and/ or transmissionMode",expanded=True)
-        for item_number,(param_name, param_dict) in enumerate(output_json.items(), start=1):
+        Args:
+            output_json (dict): JSON containing output parameters.
+            inputs (list): List to which parameters will be appended.
+            output_transmission_json (dict): JSON containing output transmission information.
+
+        Returns:
+            None
+        """
+        #output_section = self.gxtp.Section(name="Output", title="Choose the output format and/or transmission mode", expanded=True)
+
+        for item_number, (param_name, param_dict) in enumerate(output_json.items(), start=1):
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
-            param_name = "outputType" + str(item_number) + "_" + param_name
+            output_param_name = f"outputType{item_number}_{param_name}"
+
             if param_type == "string":
                 if param_schema.get("enum"):
-                    param = self.create_select_param(param_name, param_dict)
+                    param = self.create_select_param(output_param_name, param_dict)
                 else:
-                    param = self.create_text_param(param_name, param_dict)
+                    param = self.create_text_param(output_param_name, param_dict)
             elif param_extended_schema is not None:
-                param = self.create_select_param_output(param_name, param_dict, param_extended_schema)
+                param = self.create_select_param_output(output_param_name, param_dict, param_extended_schema)
             elif param_type == "number":
-                param = self.create_float_param(param_name, param_dict)
+                param = self.create_float_param(output_param_name, param_dict)
             else:
                 # Handle unsupported parameter types gracefully
-                print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
+                print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
                 continue
-            #param.space_between_arg = " "
-            section.append(param)
-            self.choose_transmissionMode(section, item_number=item_number)
-            inputs.append(section)
+
+            output_param_section_name = f"OutputSection_{item_number}"
+            output_param_section = self.gxtp.Section(name=output_param_section_name, title="Select the appropriate transmission mode for the output format", expanded=True)
+            output_param_section.append(param)
+            self.choose_transmission_mode(output_param_section, item_number=item_number, available_transmissions=output_transmission_json)
+            #output_section.append(output_param_section)
+
+            inputs.append(output_param_section)
+
             
     
     def define_output_options(self):
@@ -213,6 +250,8 @@ class Galaxyxmltool:
         change = self.gxtp.ChangeFormat()
         change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="tiff", format="tiff")
         change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="jepg", format="jepg")
+        #change_a = self.gxtp.ChangeFormatWhen(input="OutputSection_1", value="tiff", format="tiff")
+        #change_b = self.gxtp.ChangeFormatWhen(input="OutputSection_1", value="jepg", format="jepg")
         change.append(change_a)
         change.append(change_b)
         param.append(change)

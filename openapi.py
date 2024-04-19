@@ -6,9 +6,8 @@ import re
 from pprint import pprint
 
 class Api:
-    def __init__(self, server, api_key) -> None:
-        self.server = server
-        self.api_key = api_key
+    def __init__(self) -> None:
+        pass
 
 
     def print_inputs(self):
@@ -16,23 +15,22 @@ class Api:
         # Get command-line arguments
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
-        print(attributes)
-        # Access attributes
-        il = attributes.get('il')
-        out = attributes.get('out')
-        ram = attributes.get('ram')
-        exp = attributes.get('exp')
-        response = attributes.get("response")
-        output_type_1 = attributes.get('outputType1_out')
-        self.open_and_read_file(il)
+        input_values_all =(self.extract_input_value(attributes))
+        input_values_with_input_files = self.get_data_files(dictionary=input_values_all)
+        input_values_with_non_input_files = self.get_input_non_data(attributes_data_input=input_values_with_input_files, input_values=input_values_all)
+        pprint(input_values_with_non_input_files)
 
-        # Use attributes as needed
-        print("Input IL:", il)
-        print("Output:", out)
-        print("RAM:", ram)
-        print("Experiment:", exp)
-        print("Output Type 1:", output_type_1)
-        print("reponse", response)
+        for key, value in input_values_with_input_files.items():
+            input_list = self.open_and_read_file(value)
+            pprint(self.input_list_json_file(inputName=key, input_list=input_list))
+    
+    def get_input_non_data(self, attributes_data_input, input_values):
+        excluded_prefixes = set(attributes_data_input.keys())
+        extracted_values = {key: value for key, value in input_values.items() if not any(key.startswith(prefix) for prefix in excluded_prefixes)}
+        return extracted_values
+    
+
+
     
     def generate_output_list(self, attributes):
         # Extract output values and transmissionMode values
@@ -59,6 +57,31 @@ class Api:
         
         # Return the list
         return lst
+    
+    def get_data_files(self, dictionary):
+        extracted_values = {}
+        for key,values in dictionary.items():
+            if ".dat" in values:
+                extracted_values[key] = values
+        
+        return extracted_values
+    
+    def extract_input_value(self, dictionary):
+        """
+        Extracts input values from a dictionary, excluding certain keys.
+
+        Args:
+            dictionary (dict): The dictionary from which to extract values.
+
+        Returns:
+            dict: A new dictionary containing only input values.
+        """
+
+        excluded_prefixes = {"response", "outputType", "transmissionMode"}
+        extracted_values = {key: value for key, value in dictionary.items() if not any(key.startswith(prefix) for prefix in excluded_prefixes)}
+        return extracted_values
+
+
     
     def extract_output_values(self, dictionary):
         """
@@ -105,7 +128,7 @@ class Api:
         try:
             with open(file_path, 'r') as file:
                 file_content = file.read().splitlines()
-                print(file_content)
+                return file_content
         except FileNotFoundError:
             print(f"File {file_path} not found.")
         except Exception as e:
@@ -150,6 +173,10 @@ class Api:
         }
         return output_format
     
+    def input_list_json_file(self, inputName, input_list):
+        input_format = {inputName: [{"href": link} for link in input_list]}
+        return input_format
+    
     def response_json(self, response):
         output_format = {
             "response": response
@@ -160,5 +187,5 @@ class Api:
 
 
 if __name__ == "__main__":
-    api = Api(server="http://127.0.0.1:9090/", api_key="")
+    api = Api()
     api.print_inputs()

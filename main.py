@@ -27,18 +27,15 @@ def get_collections(base_url):
         return None
     
 def json_to_galaxyxml(json_data):
-    #pprint(json_data)
-    #print(json_data["id"])
     name_id = rename_tool(tool_name=json_data["id"])
-    #tool = gxt.Tool(name=name_id, id=json_data["id"], version=json_data["version"], description=json_data["title"], executable="dfsfsdfsfd")
 
-    gxt = Galaxyxmltool(name=name_id, id=json_data["id"], version=json_data["version"], description=json_data["title"])
+    gxt = Galaxyxmltool(name=json_data["id"], id=name_id, version=json_data["version"], description=json_data["title"])
     tool = gxt.get_tool()
     #tool.executable = gxt.define_command()
     tool.requirements = gxt.define_requirements()
     tool.help = (json_data["description"])
     #pprint(tool.export())
-    tool.inputs = gxt.create_params(inputs_json=json_data["inputs"], outputs_json = json_data["outputs"])
+    tool.inputs = gxt.create_params(inputs_json=json_data["inputs"], outputs_json = json_data["outputs"], output_transmission_json=json_data["outputTransmission"])
     tool.outputs = gxt.define_output_options()
     #pprint(json_data["inputs"])
     tool.tests = gxt.define_tests()
