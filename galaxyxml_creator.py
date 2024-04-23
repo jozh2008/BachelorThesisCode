@@ -238,7 +238,6 @@ class Galaxyxmltool:
             output_param_section.append(param)
             self.choose_transmission_mode(output_param_section, item_number=item_number, available_transmissions=output_transmission_json)
             #output_section.append(output_param_section)
-
             inputs.append(output_param_section)
 
     def define_command(self, title):
@@ -248,15 +247,15 @@ class Galaxyxmltool:
     
     def define_output_options(self):
         outputs = self.gxtp.Outputs()
-        param = self.gxtp.OutputData(name="output_data", format="image/png")
+        param = self.gxtp.OutputData(name="output_data", format="png", from_work_dir="output.png")
         
         change = self.gxtp.ChangeFormat()
-        change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="tiff", format="image/tiff")
-        change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="jepg", format="image/jepg")
-        #change_a = self.gxtp.ChangeFormatWhen(input="OutputSection_1", value="tiff", format="tiff")
-        #change_b = self.gxtp.ChangeFormatWhen(input="OutputSection_1", value="jepg", format="jepg")
+        change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="image/tiff", format="tiff")
+        change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="image/jpeg", format="jpeg")
+        change_c = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
         change.append(change_a)
         change.append(change_b)
+        change.append(change_c)
         param.append(change)
         outputs.append(param)
         
@@ -272,8 +271,8 @@ class Galaxyxmltool:
     def define_tests(self):
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
-        param = self.gxtp.TestParam(name="outputType1_out", value="png")
-        output = self.gxtp.TestOutput(name="output_data", value="png")
+        param = self.gxtp.TestParam(name="response", value="document")
+        output = self.gxtp.TestOutput(name="output_data", value="txt")
         test_a.append(output)
         test_a.append(param)
 

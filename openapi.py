@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+
+# Run with python3 openapi.py name OTB.BandMath il test_datasets.txt out float ram 128 exp 'im1b3,im1b2,im1b1' response raw outputType1_out image/png transmissionMode_1 reference
 import sys
 import re
 from pprint import pprint
@@ -18,12 +19,13 @@ class ApiJson:
         inputs = self.process_input_values(attributes=attributes)
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
+        #print(response)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
-        #pprint(input_json)
+        pprint(input_json)
         #fromated_input_json =self.convert_to_json(input_json)
-        pprint(self.get_url(attributes))
+        #pprint(self.get_url(attributes))
 
-        apirequest = APIRequest(url = self.get_url(attributes=attributes), payload=input_json)
+        apirequest = APIRequest(url = self.get_url(attributes=attributes), payload=input_json, response_input=response)
         apirequest.post_request()
     
     def get_url(self, attributes):
@@ -78,7 +80,7 @@ class ApiJson:
 
         
         input_json = self.create_input_json(input_dictionary=input_values_with_non_input_files, input_file_list=input_file_json)
-        pprint(input_json)
+        # pprint(input_json)
         return input_json
 
     
@@ -131,7 +133,7 @@ class ApiJson:
     def get_data_files(self, dictionary):
         extracted_values = {}
         for key,values in dictionary.items():
-            if ".dat" in values:
+            if ".dat" in values or ".txt" in values:
                 extracted_values[key] = values
         
         return extracted_values
