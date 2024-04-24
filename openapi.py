@@ -10,7 +10,8 @@ from api_request import *
 
 class ApiJson:
     def __init__(self) -> None:
-        pass
+        self.isArray = "isArray"
+        self.isArrayList = []
 
     def get_json_inputs(self):
         print("This is a placeholder function.")
@@ -22,7 +23,7 @@ class ApiJson:
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
-
+        pprint(input_json)
         apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response)
         apirequest.post_request()
 
@@ -70,15 +71,17 @@ class ApiJson:
 
         # Separate input values with data files
         input_values_with_input_files = self.get_data_files(dictionary=input_values_all)
+        pprint(input_values_with_input_files)
 
+        
+
+        # Process input files
+        input_file_json = self.process_input_files(input_values_with_input_files, input_values_all)
         # Separate input values without data files
         input_values_with_non_input_files = self.get_input_non_data(
             attributes_data_input=input_values_with_input_files,
             input_values=input_values_all
         )
-
-        # Process input files
-        input_file_json = self.process_input_files(input_values_with_input_files)
 
         # Create input JSON
         input_json = self.create_input_json(
@@ -87,8 +90,9 @@ class ApiJson:
         )
 
         return input_json
+    
 
-    def process_input_files(self, input_values_with_input_files):
+    def process_input_files(self, input_values_with_input_files, input_schema):
         """
         Process input files. Open data inputs and put it to a list
 
@@ -101,7 +105,12 @@ class ApiJson:
         input_file_json_list = []
         for key, value in input_values_with_input_files.items():
             input_list = self.open_and_read_file(value)
-            input_file_json_list.append(self.input_file_list_json_file(inputName=key, input_list=input_list))
+            name = self.isArray+key
+            self.isArrayList.append(name)
+            if input_schema.get(name) == "False":
+                input_file_json_list.append(self.input_file_json_file(inputName=key, input_list=input_list))
+            else:
+                input_file_json_list.append(self.input_file_list_json_file(inputName=key, input_list=input_list))
 
         return input_file_json_list
 
@@ -119,7 +128,8 @@ class ApiJson:
         Returns:
             dict: A dictionary containing non-data input values.
         """
-        excluded_prefixes = set(attributes_data_input.keys())
+        print(self.isArrayList)
+        excluded_prefixes = set(attributes_data_input.keys()).union(set(self.isArrayList))
         extracted_values = {
             key: value
             for key, value in input_values.items()
@@ -284,6 +294,10 @@ class ApiJson:
 
     def input_file_list_json_file(self, inputName, input_list):
         input_format = {inputName: [{"href": link} for link in input_list]}
+        return input_format
+    
+    def input_file_json_file(self, inputName, input_list):
+        input_format = {inputName: {"href": link} for link in input_list}
         return input_format
 
     def create_input_json(self, input_dictionary, input_file_list):
