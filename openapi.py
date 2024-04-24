@@ -1,5 +1,6 @@
 #!/home/josh/Documents/GitHub/BachelorThesisCode/.venv/bin/python3
-# Run with python3 openapi.py name OTB.BandMath il test_datasets.txt out float ram 128 exp 'im1b3,im1b2,im1b1' response raw outputType1_out image/png transmissionMode_1 reference
+# Run with python3 openapi.py name OTB.BandMath il test_datasets.txt out
+# float ram 128 exp 'im1b3,im1b2,im1b1' response raw outputType1_out image/png transmissionMode_1 reference
 import sys
 import re
 from pprint import pprint
@@ -20,19 +21,15 @@ class ApiJson:
         pprint(inputs)
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
-        #print(response)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
-        #pprint(input_json)
-        #fromated_input_json =self.convert_to_json(input_json)
-        #pprint(self.get_url(attributes))
 
-        apirequest = APIRequest(url = self.get_url(attributes=attributes), payload=input_json, response_input=response)
+        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response)
         apirequest.post_request()
-    
+
     def get_url(self, attributes):
         base_url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
         endpoint = attributes["name"]
-        return base_url + endpoint+"/execution"
+        return base_url + endpoint + "/execution"
 
     def process_output_values(self, attributes):
         dictionary_list = self.generate_output_list(attributes=attributes)
@@ -41,53 +38,59 @@ class ApiJson:
         return res
 
     def process_response_values(self, attributes):
-        response= self.extract_response_value(dictionary=attributes)
+        response = self.extract_response_value(dictionary=attributes)
 
         return response
-    
+
     def create_openapi_input_file(self, inputs, outputs, response):
         result_dictionary = {}
         result_dictionary["inputs"] = inputs
-        result_dictionary["outputs"]= outputs
+        result_dictionary["outputs"] = outputs
         result_dictionary["response"] = response
         return result_dictionary
 
-   
     def convert_to_json(self, input_dict):
         return json.dumps(input_dict)
 
-
-    
     def process_input_values(self, attributes):
         """
         Process input values and files.
 
+        Extracts all input values from the provided attributes dictionary and then splits them into two categories:
+        data inputs, such as text files, and non-data inputs.
+
         Args:
-            attributes: Dictionary containing attributes.
+            attributes: A dictionary containing attributes.
 
         Returns:
-            Dict: Dict of input file JSON representations.
+            Dict: A dictionary of input file JSON representations.
         """
+        # Extract all input values
         input_values_all = self.extract_input_value(attributes)
+
+        # Separate input values with data files
         input_values_with_input_files = self.get_data_files(dictionary=input_values_all)
-        input_values_with_non_input_files = self.get_input_non_data(attributes_data_input=input_values_with_input_files,
-                                                                  input_values=input_values_all)
 
-        #pprint(input_values_with_non_input_files)
+        # Separate input values without data files
+        input_values_with_non_input_files = self.get_input_non_data(
+            attributes_data_input=input_values_with_input_files,
+            input_values=input_values_all
+        )
 
-        
         # Process input files
         input_file_json = self.process_input_files(input_values_with_input_files)
 
-        
-        input_json = self.create_input_json(input_dictionary=input_values_with_non_input_files, input_file_list=input_file_json)
-        # pprint(input_json)
+        # Create input JSON
+        input_json = self.create_input_json(
+            input_dictionary=input_values_with_non_input_files,
+            input_file_list=input_file_json
+        )
+
         return input_json
 
-    
     def process_input_files(self, input_values_with_input_files):
         """
-        Process input files.
+        Process input files. Open data inputs and put it to a list
 
         Args:
             input_values_with_input_files: Dictionary containing input file attributes.
@@ -99,49 +102,82 @@ class ApiJson:
         for key, value in input_values_with_input_files.items():
             input_list = self.open_and_read_file(value)
             input_file_json_list.append(self.input_file_list_json_file(inputName=key, input_list=input_list))
-        
+
         return input_file_json_list
 
-
     def get_input_non_data(self, attributes_data_input, input_values):
+        """
+        Extract non-data input values from the provided input values.
+
+        This method takes a dictionary of input values and a set of prefixes that identify data input keys.
+        It returns a dictionary containing only the input values that do not have keys starting with any of the provided prefixes.
+
+        Args:
+            attributes_data_input (dict): A dictionary containing keys representing data input prefixes.
+            input_values (dict): A dictionary containing all input values.
+
+        Returns:
+            dict: A dictionary containing non-data input values.
+        """
         excluded_prefixes = set(attributes_data_input.keys())
-        extracted_values = {key: value for key, value in input_values.items() if not any(key.startswith(prefix) for prefix in excluded_prefixes)}
+        extracted_values = {
+            key: value
+            for key, value in input_values.items()
+            if not any(key.startswith(prefix) for prefix in excluded_prefixes)
+        }
         return extracted_values
 
     def generate_output_list(self, attributes):
+        """
+        Generate a list of output JSON representations.
+
+        This method extracts output values and transmissionMode values from the provided attributes dictionary,
+        converts them to lists, and then iterates through them to create dictionaries representing each output.
+
+        Args:
+            attributes (dict): A dictionary containing attributes.
+
+        Returns:
+            list: A list of output JSON representations.
+        """
         # Extract output values and transmissionMode values
         outputs = self.extract_output_values(attributes)
         transmissionMode = self.extract_transmissionMode_values(attributes)
-        
+
         # Convert values to lists
         keys_outputs = list(outputs.keys())
         values_outputs = list(outputs.values())
         values_transmisionMode = list(transmissionMode.values())
-        
+
         # Determine the length of the outputs
         length = len(keys_outputs)
-        
+
         # Initialize an empty list
         lst = []
-        
+
         # Iterate through the outputs and create dictionaries
         for i in range(length):
             lst.append(self.output_json(keys_outputs[i], values_outputs[i], values_transmisionMode[i]))
-        
+
         # Return the list
         return lst
-    
+
     def get_data_files(self, dictionary):
-        extracted_values = {}
-        for key,values in dictionary.items():
-            if ".dat" in values or ".txt" in values:
-                extracted_values[key] = values
-        
-        return extracted_values
-    
+        """
+        Extract data files from the provided dictionary.
+
+        Args:
+            dictionary (dict): A dictionary containing input values.
+
+        Returns:
+            dict: A dictionary containing only the key-value pairs representing data files.
+        """
+        included_prefixes = {".dat", ".txt"}
+        return {key: values for key, values in dictionary.items() if any(prefix in values for prefix in included_prefixes)}
+
     def extract_input_value(self, dictionary):
         """
-        Extracts input values from a dictionary, excluding certain keys.
+        Extract input values from a dictionary, excluding certain keys.
 
         Args:
             dictionary (dict): The dictionary from which to extract values.
@@ -151,8 +187,11 @@ class ApiJson:
         """
 
         excluded_prefixes = {"response", "outputType", "transmissionMode", "name"}
-        extracted_values = {key: value for key, value in dictionary.items() if not any(key.startswith(prefix) for prefix in excluded_prefixes)}
-        return extracted_values
+        return {
+            key: value
+            for key, value in dictionary.items()
+            if not any(key.startswith(prefix) for prefix in excluded_prefixes)
+        }
 
     def extract_output_values(self, dictionary):
         """
@@ -178,14 +217,13 @@ class ApiJson:
             if "transmissionMode" in key:
                 extracted_values[key] = value
         return extracted_values
-    
+
     def extract_response_value(self, dictionary):
         extracted_value = ""
         for key, value in dictionary.items():
             if "response" in key:
                 extracted_value = value
         return extracted_value
-
 
     def find_index_of_character(self, string, character):
         """
@@ -232,27 +270,26 @@ class ApiJson:
         it = iter(args)
         res_dict = dict(zip(it, it))
         return res_dict
-    
 
-    def output_json(self,outputName, mediaType, transmissionMode):
+    def output_json(self, outputName, mediaType, transmissionMode):
         output_format = {
-                outputName: {
-                    "format": {
-                        "mediaType": mediaType
-                    },
-                    "transmissionMode": transmissionMode
-                }
+            outputName: {
+                "format": {
+                    "mediaType": mediaType
+                },
+                "transmissionMode": transmissionMode
+            }
         }
         return output_format
-    
+
     def input_file_list_json_file(self, inputName, input_list):
         input_format = {inputName: [{"href": link} for link in input_list]}
         return input_format
-    
+
     def create_input_json(self, input_dictionary, input_file_list):
         # Combine dictionaries in input_file_list
         combined_dict = self.combine_dicts(input_file_list)
-        
+
         # Merge combined_dict with input_dictionary
         result = self.merge_dicts(input_dictionary, combined_dict)
         return result

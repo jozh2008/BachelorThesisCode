@@ -2,6 +2,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
+
 class APIRequest:
     def __init__(self, url, payload, response_input):
         self.url = url
@@ -12,13 +13,11 @@ class APIRequest:
         }
         self.payload = payload
         self.response_input = response_input
-    
+
     def post_request(self):
         response = requests.post(self.url, headers=self.headers, json=self.payload)
-            # Convert the response content to a BytesIO object
         if response.ok:
             if self.response_input == "raw":
-
                 image_data = BytesIO(response.content)
                 img = Image.open(image_data)
 
@@ -33,7 +32,7 @@ class APIRequest:
                 return response.json()
         else:
             print("Error:", response.status_code)
-    
+
     def get_request(self):
         response = requests.get(self.url)
         if response.ok:
