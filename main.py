@@ -8,8 +8,9 @@ from pprint import pprint
 def get_collections(base_url):
     """Define the path to the specific endpoint you want to access
     """
-    endpoint = "/processes/OTB.BandMath"
-    #endpoint = "/processes/OTB.HooverCompareSegmentation"   
+    #endpoint = "/processes/OTB.BandMath"
+    #endpoint = "/processes/OTB.HooverCompareSegmentation"
+    endpoint =   "/processes/SAGA.shapes_points.12"
     # Construct the full URL
     url = base_url + endpoint
 
@@ -35,7 +36,7 @@ def json_to_galaxyxml(json_data):
     tool.requirements = gxt.define_requirements()
     tool.help = (json_data["description"])
     #pprint(tool.export())
-    tool.inputs = gxt.create_params(inputs_json=json_data["inputs"], outputs_json = json_data["outputs"], output_transmission_json=json_data["outputTransmission"])
+    tool.inputs = gxt.create_params(input_schema=json_data["inputs"], output_schema = json_data["outputs"], transmission_schema=json_data["outputTransmission"])
     tool.outputs = gxt.define_output_options()
     #pprint(json_data["inputs"])
     tool.tests = gxt.define_tests()

@@ -1,39 +1,47 @@
-<tool name="OTB.BandMath" id="otb_bandmath" version="1.0.0">
-  <description>Outputs a monoband image which is the result of a mathematical operation on several multi-band images.</description>
+<tool name="SAGA.shapes_points.12" id="saga_shapes_points_12" version="1.0.0">
+  <description>Convex Hull</description>
   <requirements>
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py name OTB.BandMath il $il
-out $out
-ram $ram
-exp '$exp'
+  <command><![CDATA[$__tool_directory__/openapi.py name SAGA.shapes_points.12 SHAPES $SHAPES
+POLYPOINTS $POLYPOINTS
+$POLYGONCVX
 response $response
-outputType1_out $OutputSection_1.outputType1_out
-transmissionMode_1 $OutputSection_1.transmissionMode_1]]></command>
+outputType1_HULLS $OutputSection_1.outputType1_HULLS
+transmissionMode_1 $OutputSection_1.transmissionMode_1
+outputType2_BOXES $OutputSection_2.outputType2_BOXES
+transmissionMode_2 $OutputSection_2.transmissionMode_2]]></command>
   <inputs>
-    <param name="il" type="data" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression." format="txt"/>
-    <param name="out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
-      <option value="double">double</option>
-      <option selected="true" value="float">float</option>
-      <option value="int16">int16</option>
-      <option value="int32">int32</option>
-      <option value="uint16">uint16</option>
-      <option value="uint8">uint8</option>
+    <param name="SHAPES" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: xml, json, vnd.google-earth.kml+xml" format="txt" min="1" max="1024"/>
+    <param name="POLYPOINTS" type="select" optional="true" label="Hull Construction" help="This option does not apply to simple point layers.">
+      <option value="one hull for all shapes">one hull for all shapes</option>
+      <option selected="true" value="one hull per shape">one hull per shape</option>
+      <option value="one hull per shape part">one hull per shape part</option>
     </param>
-    <param name="ram" type="integer" value="128" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
-    <param name="exp" type="text" optional="false" label="The muParser mathematical expression to apply on input images." help="The muParser mathematical expression to apply on input images."/>
+    <param name="POLYGONCVX" type="boolean" optional="true" label="Polygon Convexity" help="Describes a polygon's compactness as ratio of its area to its hull's area." checked="false" truevalue="true" falsevalue="false"/>
     <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType1_out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
-        <option value="image/jpeg">jpeg</option>
-        <option value="image/png">png</option>
-        <option value="image/tiff">tiff</option>
+      <param name="outputType1_HULLS" type="select" label="Convex Hull" help="Convex Hull">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
       </param>
       <param name="transmissionMode_1" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType2_BOXES" type="select" label="Minimum Bounding Box" help="Minimum Bounding Box">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_2" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
@@ -54,7 +62,7 @@ transmissionMode_1 $OutputSection_1.transmissionMode_1]]></command>
       <param name="response" value="document"/>
     </test>
   </tests>
-  <help><![CDATA[This application performs a mathematical operation on several multi-band images and outputs the result into a monoband image. The given expression is computed at each pixel position. Evaluation of the mathematical formula is done by the muParser libraries.The formula can be written using:  * numerical values ( 2.3, -5, 3.1e4, ...)  * variables containing pixel values (e.g. : 'im2b3' is the pixel value in 2nd image, 3rd band)  * binary operators:    * '+' addition, '-' subtraction, '*' multiplication, '/' division    * '^' raise x to the power of y    * ']]></help>
+  <help><![CDATA[Implementation of 'Andrew's Monotone Chain Algorithm' for convex hull construction. ]]></help>
   <citations>
     <citation type="bibtex">Josh</citation>
   </citations>

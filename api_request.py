@@ -1,6 +1,5 @@
 import requests
 from PIL import Image
-import matplotlib.pyplot as plt
 from io import BytesIO
 
 class APIRequest:
