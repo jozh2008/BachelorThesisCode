@@ -8,13 +8,12 @@ from typing import Dict, List
 class Galaxyxmltool:
     def __init__(self, name, id, version, description) -> None:
         self.executable = "$__tool_directory__/openapi.py"
-        self.gxt = tool.Tool(name=name, id = id, version=version, description=description, executable="" )
+        self.gxt = tool.Tool(name=name, id=id, version=version, description=description, executable="")
         self.gxtp = gtpx
         self.executable_dict = {}
 
     def get_tool(self):
         return self.gxt
-        
 
     def create_text_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
         """
@@ -56,7 +55,7 @@ class Galaxyxmltool:
             # If enum values are not provided, handle this case gracefully
             print("Warning: Enum values are not provided for select parameter. Implementation needed.")
             options = {}  # Placeholder for options
-        
+
         return self.gxtp.SelectParam(
             name=param_name,
             default=param_dict["schema"].get("default"),
@@ -87,7 +86,7 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    def create_float_param(self,param_name: str, param_dict: Dict, is_nullable: bool):
+    def create_float_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
         """
         Create a float parameter.
 
@@ -129,7 +128,7 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    def create_data_param(self, param_name: str, param_dict: Dict, param_extended_schema : Dict, is_nullable, isArray: bool):
+    def create_data_param(self, param_name: str, param_dict: Dict, param_extended_schema: Dict, is_nullable, isArray: bool):
         # change for return for not array
         enum_values = []
         isArrayName = "isArray" + param_name
@@ -139,7 +138,7 @@ class Galaxyxmltool:
         else:
             self.extract_enum(param_extended_schema, enum_values)
             self.executable_dict[isArrayName] = False
-        
+
         data_types = ', '.join({value.split('/')[-1] for value in enum_values})
         return self.gxtp.DataParam(
             name=param_name,
@@ -148,8 +147,7 @@ class Galaxyxmltool:
             format="txt",
             optional=is_nullable,
             argument=isArray
-        ) 
-
+        )
 
     def create_select_param_output(self, param_name: str, param_dict: Dict, param_extended_schema: Dict):
         enum_values = []
@@ -210,7 +208,7 @@ class Galaxyxmltool:
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
-            
+
             is_nullable = param_schema.get("nullable", False)
             if param_type == "string":
                 if param_schema.get("enum"):
@@ -225,17 +223,24 @@ class Galaxyxmltool:
                 param = self.create_boolean_param(param_name, param_dict, is_nullable)
             elif param_extended_schema is not None:
                 is_array = param_extended_schema.get("type") == "array"
-                param = self.create_data_param(param_name=param_name, param_dict=param_dict, param_extended_schema=param_extended_schema,is_nullable= is_nullable,isArray= is_array)
+                param = self.create_data_param(
+                    param_name=param_name,
+                    param_dict=param_dict,
+                    param_extended_schema=param_extended_schema,
+                    is_nullable=is_nullable,
+                    isArray=is_array
+                )
+
             else:
                 # Handle unsupported parameter types gracefully
                 print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
                 continue
             inputs.append(param)
         self.create_select_raw_param(inputs)
-        self.create_output_param(output_schema=output_schema, inputs=inputs,transmission_schema=transmission_schema)
+        self.create_output_param(output_schema=output_schema, inputs=inputs, transmission_schema=transmission_schema)
 
         return inputs
-    
+
     def create_select_raw_param(self, inputs):
         """
         Create a select parameter for choosing between "raw" and "document" options.
@@ -258,13 +263,19 @@ class Galaxyxmltool:
         label = "Response Type"  # Label can be adjusted based on requirements
 
         # Create select parameter
-        param = self.gxtp.SelectParam(name="response", default=default_value, options=dictionary_options, label=label, help=help_description)
+        param = self.gxtp.SelectParam(
+            name="response",
+            default=default_value,
+            options=dictionary_options,
+            label=label,
+            help=help_description
+        )
 
         # Add parameter to the list of inputs
         inputs.append(param)
 
         return inputs
-    
+
     def choose_transmission_mode(self, section: List, item_number: int, available_transmissions: Dict):
         """
         Adds a parameter to select transmission mode to a given section.
@@ -278,20 +289,18 @@ class Galaxyxmltool:
             list: The updated section with the added parameter.
         """
         label = "Choose the transmission mode"
-        #pprint(available_transmissions)
-        
         # Create a dictionary of transmission options
         transmission_options = {transmission: transmission for transmission in available_transmissions}
-        
+
         default_transmission = "reference"
         param_name = "transmissionMode_" + str(item_number)
-        
+
         # Create the parameter object
         param = self.gxtp.SelectParam(name=param_name, default=default_transmission, options=transmission_options, label=label)
-        
+
         # Append the parameter to the section
         section.append(param)
-        
+
         return section
 
     def create_output_param(self, output_schema: Dict, inputs: List, transmission_schema: Dict):
@@ -300,13 +309,15 @@ class Galaxyxmltool:
 
         Args:
             output_schema (Dict): JSON schema containing output parameters.
-            inputs (List): List of input parameters to which output parameters will be appended. All inputs parameters will be in Inputs of the galaxy xml
+            inputs (List): List of input parameters to which output parameters will be appended.
+            All inputs parameters will be in Inputs of the galaxy xml
             transmission_schema (Dict): JSON schema containing output transmission information.
 
         Returns:
             None
         """
-        #output_section = self.gxtp.Section(name="Output", title="Choose the output format and/or transmission mode", expanded=True)
+        # output_section = self.gxtp.Section(name="Output",
+        # title="Choose the output format and/or transmission mode", expanded=True)
 
         for item_number, (param_name, param_dict) in enumerate(output_schema.items(), start=1):
             param_schema = param_dict.get("schema")
@@ -331,10 +342,18 @@ class Galaxyxmltool:
                 continue
 
             output_param_section_name = f"OutputSection_{item_number}"
-            output_param_section = self.gxtp.Section(name=output_param_section_name, title="Select the appropriate transmission mode for the output format", expanded=True)
+            output_param_section = self.gxtp.Section(
+                name=output_param_section_name,
+                title="Select the appropriate transmission mode for the output format",
+                expanded=True
+            )
             output_param_section.append(param)
-            self.choose_transmission_mode(output_param_section, item_number=item_number, available_transmissions=transmission_schema)
-            #output_section.append(output_param_section)
+            self.choose_transmission_mode(
+                output_param_section,
+                item_number=item_number,
+                available_transmissions=transmission_schema
+            )
+            # output_section.append(output_param_section)
             inputs.append(output_param_section)
 
     def define_command(self, title):
@@ -362,14 +381,11 @@ class Galaxyxmltool:
             str: The string representation of the dictionary.
         """
         return ' '.join([f" {key} {value}" for key, value in dictionary.items()])
-    
 
-            
-    
     def define_output_options(self):
         outputs = self.gxtp.Outputs()
         param = self.gxtp.OutputData(name="output_data", format="png", from_work_dir="output.png")
-        
+
         change = self.gxtp.ChangeFormat()
         change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="image/tiff", format="tiff")
         change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="image/jpeg", format="jpeg")
@@ -379,16 +395,14 @@ class Galaxyxmltool:
         change.append(change_c)
         param.append(change)
         outputs.append(param)
-        
+
         return outputs
 
-
-    
     def define_requirements(self):
         requirements = self.gxtp.Requirements()
         requirements.append(self.gxtp.Requirement(type="package", version="3.9", value="python"))
         return requirements
-    
+
     def define_tests(self):
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
@@ -399,8 +413,8 @@ class Galaxyxmltool:
 
         tests.append(test_a)
         return tests
-    
+
     def create_citations(self):
         citations = self.gxtp.Citations()
-        citations.append(self.gxtp.Citation(type="bibtex", value = "Josh"))
+        citations.append(self.gxtp.Citation(type="bibtex", value="Josh"))
         return citations
