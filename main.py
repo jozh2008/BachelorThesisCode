@@ -32,11 +32,12 @@ def json_to_galaxyxml(json_data):
     name_id = rename_tool(tool_name=json_data["id"])
     gxt = Galaxyxmltool(name=json_data["id"], id=name_id, version=json_data["version"], description=json_data["title"])
     tool = gxt.get_tool()
-    #tool.executable = gxt.define_command(json_data["id"])
+    
     tool.requirements = gxt.define_requirements()
     tool.help = (json_data["description"])
     #pprint(tool.export())
     tool.inputs = gxt.create_params(input_schema=json_data["inputs"], output_schema = json_data["outputs"], transmission_schema=json_data["outputTransmission"])
+    tool.executable =  gxt.define_command(json_data["id"])
     tool.outputs = gxt.define_output_options()
     #pprint(json_data["inputs"])
     tool.tests = gxt.define_tests()

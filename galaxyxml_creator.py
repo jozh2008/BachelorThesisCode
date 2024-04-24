@@ -8,8 +8,9 @@ from typing import Dict, List
 class Galaxyxmltool:
     def __init__(self, name, id, version, description) -> None:
         self.executable = "$__tool_directory__/openapi.py"
-        self.gxt = tool.Tool(name=name, id = id, version=version, description=description, executable=self.define_command(title=name) )
+        self.gxt = tool.Tool(name=name, id = id, version=version, description=description, executable="" )
         self.gxtp = gtpx
+        self.executable_dict = {}
 
     def get_tool(self):
         return self.gxt
@@ -125,18 +126,19 @@ class Galaxyxmltool:
             label=param_dict["title"],
             help=param_dict["description"],
             checked=default_value,
-            truevalue=True,
-            falsevalue=False,
             optional=is_nullable
         )
 
     def create_data_param(self, param_name: str, param_dict: Dict, param_extended_schema : Dict, is_nullable, isArray: bool):
         # change for return for not array
         enum_values = []
+        isArrayName = "isArray" + param_name
         if isArray:
             self.extract_enum(param_extended_schema['items'], enum_values)
+            self.executable_dict[isArrayName] = True
         else:
             self.extract_enum(param_extended_schema, enum_values)
+            self.executable_dict[isArrayName] = False
         
         data_types = ', '.join({value.split('/')[-1] for value in enum_values})
         return self.gxtp.DataParam(
@@ -145,8 +147,7 @@ class Galaxyxmltool:
             help=param_dict["description"] + "The following data types are allowed in the txt file: " + data_types,
             format="txt",
             optional=is_nullable,
-            min = 1,
-            max = 1024
+            argument=isArray
         ) 
 
 
@@ -243,7 +244,7 @@ class Galaxyxmltool:
         options, adds it to the provided list of inputs, and returns the modified list.
 
         Parameters:
-        - inputs (list): A list of input parameters.
+        - inputs (list):False A list of input parameters.
 
         Returns:
         - list: The list of input parameters with the new select parameter added.
@@ -337,7 +338,31 @@ class Galaxyxmltool:
             inputs.append(output_param_section)
 
     def define_command(self, title):
-        return self.executable + " name " + title
+        """
+        Define a command line of Galaxy Xml
+        Always add name and title to command line. Additional commands are add with the exectutable dict, command line is a string
+
+        Args:
+            title (str): The title of the command.
+
+        Returns:
+            str: The formatted command.
+        """
+        self.executable_dict["name"] = title
+        return self.executable + self.dict_to_string(self.executable_dict)
+
+    def dict_to_string(self, dictionary: Dict):
+        """
+        Convert a dictionary to a string.
+
+        Args:
+            dictionary (dict): The dictionary to be converted.
+
+        Returns:
+            str: The string representation of the dictionary.
+        """
+        return ' '.join([f" {key} {value}" for key, value in dictionary.items()])
+    
 
             
     

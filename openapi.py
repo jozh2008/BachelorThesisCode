@@ -17,11 +17,12 @@ class ApiJson:
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
         inputs = self.process_input_values(attributes=attributes)
+        pprint(inputs)
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
         #print(response)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
-        pprint(input_json)
+        #pprint(input_json)
         #fromated_input_json =self.convert_to_json(input_json)
         #pprint(self.get_url(attributes))
 

@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py name SAGA.shapes_points.12 SHAPES $SHAPES
+  <command><![CDATA[$__tool_directory__/openapi.py isArraySHAPES False  name SAGA.shapes_points.12 SHAPES $SHAPES
 POLYPOINTS $POLYPOINTS
 $POLYGONCVX
 response $response
@@ -13,13 +13,13 @@ transmissionMode_1 $OutputSection_1.transmissionMode_1
 outputType2_BOXES $OutputSection_2.outputType2_BOXES
 transmissionMode_2 $OutputSection_2.transmissionMode_2]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: xml, json, vnd.google-earth.kml+xml" format="txt" min="1" max="1024"/>
+    <param name="SHAPES" argument="false" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="POLYPOINTS" type="select" optional="true" label="Hull Construction" help="This option does not apply to simple point layers.">
       <option value="one hull for all shapes">one hull for all shapes</option>
       <option selected="true" value="one hull per shape">one hull per shape</option>
       <option value="one hull per shape part">one hull per shape part</option>
     </param>
-    <param name="POLYGONCVX" type="boolean" optional="true" label="Polygon Convexity" help="Describes a polygon's compactness as ratio of its area to its hull's area." checked="false" truevalue="true" falsevalue="false"/>
+    <param name="POLYGONCVX" type="boolean" optional="true" label="Polygon Convexity" help="Describes a polygon's compactness as ratio of its area to its hull's area." checked="false" truevalue="POLYGONCVX" falsevalue=""/>
     <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
