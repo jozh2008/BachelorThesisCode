@@ -26,6 +26,21 @@ class ApiJson:
         pprint(input_json)
         apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response)
         apirequest.post_request()
+    
+    def modify_attributes(self, attributes):
+        """
+        Modify attributes by normalizing tool names.
+
+        Args:
+            attributes (dict): A dictionary containing attributes to be modified.
+
+        Returns:
+            dict: A modified dictionary with normalized tool names.
+        """
+        return {
+            key: self.normalize_tool_name(value) if key != "name" else value
+            for key, value in attributes.items()
+        }
 
     def get_url(self, attributes):
         base_url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
@@ -42,6 +57,12 @@ class ApiJson:
         response = self.extract_response_value(dictionary=attributes)
 
         return response
+    
+    def normalize_tool_name(self, tool_name: str):
+        # Replace non-alphanumeric characters with underscores
+        cleaned_name = tool_name.replace("_", " ")
+        # Convert to lowercase
+        return cleaned_name
 
     def create_openapi_input_file(self, inputs, outputs, response):
         result_dictionary = {}
@@ -82,6 +103,7 @@ class ApiJson:
             attributes_data_input=input_values_with_input_files,
             input_values=input_values_all
         )
+        input_values_with_non_input_files=self.modify_attributes(input_values_with_non_input_files)
 
         # Create input JSON
         input_json = self.create_input_json(

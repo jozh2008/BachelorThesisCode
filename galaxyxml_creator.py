@@ -2,7 +2,8 @@ from galaxyxml import tool
 import galaxyxml.tool.parameters as gtpx
 
 from pprint import pprint
-from typing import Dict, List
+from typing import Dict, List, Union
+import re
 
 
 class Galaxyxmltool:
@@ -36,7 +37,7 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    def create_select_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
+    def create_select_param(self, param_name: str, param_dict: Dict, is_nullable: bool, param_type_bool :bool):
         """
         Create a select parameter.
 
@@ -50,20 +51,42 @@ class Galaxyxmltool:
         """
         enum_values = param_dict["schema"].get("enum")
         if enum_values is not None:
-            options = {value: value for value in enum_values}
+            options = {self.normalize_tool_name(value): value for value in enum_values}
         else:
             # If enum values are not provided, handle this case gracefully
             print("Warning: Enum values are not provided for select parameter. Implementation needed.")
             options = {}  # Placeholder for options
+        
+        default_value = (param_dict["schema"].get("default"))
 
+        if default_value is not None and param_type_bool:
+            default_value = self.create_default_value(default_value=default_value)
+        
+        default_value = self.normalize_tool_name(tool_name=default_value)
         return self.gxtp.SelectParam(
             name=param_name,
-            default=param_dict["schema"].get("default"),
+            default=default_value,
             label=param_dict["title"],
             help=param_dict["description"],
             options=options,
             optional=is_nullable
         )
+    
+    # check for better solution
+    def normalize_tool_name(self, tool_name: Union[str, None]):
+        if tool_name is None:
+            return None
+        # Replace non-alphanumeric characters with underscores
+        cleaned_name = tool_name.replace(" ", "_")
+        # Convert to lowercase
+        return cleaned_name
+    
+    def create_default_value(self, default_value):
+        if default_value:
+            default ="true"
+        else:
+            default = "false"
+        return default
 
     def create_integer_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
         """
@@ -104,27 +127,6 @@ class Galaxyxmltool:
             label=param_dict["title"],
             help=param_dict["description"],
             value=default_value,
-            optional=is_nullable
-        )
-
-    def create_boolean_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
-        """
-        Create a boolean parameter.
-
-        Args:
-            param_name (str): The name of the parameter.
-            param_dict (Dict): The dictionary containing parameter details.
-            is_nullable (bool): Indicates whether the parameter can be null.
-
-        Returns:
-            BooleanParam: The created boolean parameter.
-        """
-        default_value = param_dict["schema"].get("default")
-        return self.gxtp.BooleanParam(
-            name=param_name,
-            label=param_dict["title"],
-            help=param_dict["description"],
-            checked=default_value,
             optional=is_nullable
         )
 
@@ -212,7 +214,7 @@ class Galaxyxmltool:
             is_nullable = param_schema.get("nullable", False)
             if param_type == "string":
                 if param_schema.get("enum"):
-                    param = self.create_select_param(param_name, param_dict, is_nullable)
+                    param = self.create_select_param(param_name, param_dict, is_nullable, param_type_bool=False)
                 else:
                     param = self.create_text_param(param_name, param_dict, is_nullable)
             elif param_type == "integer":
@@ -220,7 +222,7 @@ class Galaxyxmltool:
             elif param_type == "number":
                 param = self.create_float_param(param_name, param_dict, is_nullable)
             elif param_type == "boolean":
-                param = self.create_boolean_param(param_name, param_dict, is_nullable)
+                param = self.create_select_param(param_name, param_dict, is_nullable, param_type_bool=True)
             elif param_extended_schema is not None:
                 is_array = param_extended_schema.get("type") == "array"
                 param = self.create_data_param(

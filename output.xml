@@ -6,20 +6,23 @@
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
   <command><![CDATA[$__tool_directory__/openapi.py isArraySHAPES False  name SAGA.shapes_points.12 SHAPES $SHAPES
 POLYPOINTS $POLYPOINTS
-$POLYGONCVX
+POLYGONCVX $POLYGONCVX
 response $response
 outputType1_HULLS $OutputSection_1.outputType1_HULLS
 transmissionMode_1 $OutputSection_1.transmissionMode_1
 outputType2_BOXES $OutputSection_2.outputType2_BOXES
 transmissionMode_2 $OutputSection_2.transmissionMode_2]]></command>
   <inputs>
-    <param name="SHAPES" argument="false" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" argument="false" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="POLYPOINTS" type="select" optional="true" label="Hull Construction" help="This option does not apply to simple point layers.">
-      <option value="one hull for all shapes">one hull for all shapes</option>
-      <option selected="true" value="one hull per shape">one hull per shape</option>
-      <option value="one hull per shape part">one hull per shape part</option>
+      <option value="one_hull_for_all_shapes">one hull for all shapes</option>
+      <option selected="true" value="one_hull_per_shape">one hull per shape</option>
+      <option value="one_hull_per_shape_part">one hull per shape part</option>
     </param>
-    <param name="POLYGONCVX" type="boolean" optional="true" label="Polygon Convexity" help="Describes a polygon's compactness as ratio of its area to its hull's area." checked="false" truevalue="POLYGONCVX" falsevalue=""/>
+    <param name="POLYGONCVX" type="select" optional="true" label="Polygon Convexity" help="Describes a polygon's compactness as ratio of its area to its hull's area.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
     <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
