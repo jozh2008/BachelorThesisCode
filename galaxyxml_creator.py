@@ -12,6 +12,7 @@ class Galaxyxmltool:
         self.gxt = tool.Tool(name=name, id=id, version=version, description=description, executable="")
         self.gxtp = gtpx
         self.executable_dict = {}
+        self.output_type_list = {}
 
     def get_tool(self):
         return self.gxt
@@ -52,6 +53,8 @@ class Galaxyxmltool:
         enum_values = param_dict["schema"].get("enum")
         if enum_values is not None:
             options = {self.normalize_tool_name(value): value for value in enum_values}
+        elif param_type_bool:
+            options = {"true": "true", "false": "false"}
         else:
             # If enum values are not provided, handle this case gracefully
             print("Warning: Enum values are not provided for select parameter. Implementation needed.")
@@ -147,23 +150,21 @@ class Galaxyxmltool:
             label=param_dict["title"],
             help=param_dict["description"] + "The following data types are allowed in the txt file: " + data_types,
             format="txt",
-            optional=is_nullable,
-            argument=isArray
+            optional=is_nullable
         )
 
     def create_select_param_output(self, param_name: str, param_dict: Dict, param_extended_schema: Dict):
         enum_values = []
         self.extract_enum(param_extended_schema, enum_values)
-        pprint(enum_values)
         data_types_dict = {data_type: data_type.split('/')[-1] for data_type in enum_values}
-        pprint(data_types_dict)
+        #pprint(data_types_dict)
         return self.gxtp.SelectParam(
             name=param_name,
             label=param_dict["title"],
             help=param_dict["description"],
             options=data_types_dict
         )
-
+    
     def extract_enum(self, schema_item: Dict, enum_values: List):
         """
         Recursively extracts enum values from a JSON schema item.
@@ -175,8 +176,10 @@ class Galaxyxmltool:
         Returns:
             None
         """
+        lst = []
         if 'enum' in schema_item:
             enum_values.extend(schema_item['enum'])
+            lst.extend(schema_item['enum'])
         elif 'properties' in schema_item:
             for prop in schema_item['properties'].values():
                 self.extract_enum(prop, enum_values)
@@ -186,6 +189,8 @@ class Galaxyxmltool:
         elif 'allOf' in schema_item:
             for sub_item in schema_item['allOf']:
                 self.extract_enum(sub_item, enum_values)
+        
+        #pprint(lst)
 
     def create_params(self, input_schema: Dict, output_schema: Dict, transmission_schema: Dict):
         """
@@ -326,22 +331,26 @@ class Galaxyxmltool:
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
             output_param_name = f"outputType{item_number}_{param_name}"
-
+            enum_values = []
             if param_type == "string":
                 if param_schema.get("enum"):
-                    param = self.create_select_param(output_param_name, param_dict)
+                    param = self.create_select_param(output_param_name, param_dict, is_nullable=False)
+                    enum_values = param_schema.get("enum")
                 else:
                     # check for correct value for is_nullable
-                    param = self.create_text_param(output_param_name, param_dict, is_nullable=True)
+                    param = self.create_text_param(output_param_name, param_dict, is_nullable=False)
             elif param_extended_schema is not None:
                 param = self.create_select_param_output(output_param_name, param_dict, param_extended_schema)
+                self.extract_enum(param_extended_schema, enum_values=enum_values)
             elif param_type == "number":
                 # check for correct value for is_nullable
-                param = self.create_float_param(output_param_name, param_dict, is_nullable=True)
+                param = self.create_float_param(output_param_name, param_dict, is_nullable=False)
             else:
                 # Handle unsupported parameter types gracefully
                 print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
                 continue
+            
+            self.output_type_list[output_param_name] = enum_values
 
             output_param_section_name = f"OutputSection_{item_number}"
             output_param_section = self.gxtp.Section(
@@ -357,6 +366,7 @@ class Galaxyxmltool:
             )
             # output_section.append(output_param_section)
             inputs.append(output_param_section)
+        pprint(self.output_type_list)
 
     def define_command(self, title):
         """
@@ -384,19 +394,23 @@ class Galaxyxmltool:
         """
         return ' '.join([f" {key} {value}" for key, value in dictionary.items()])
 
+
+    # do to check with None
     def define_output_options(self):
         outputs = self.gxtp.Outputs()
-        param = self.gxtp.OutputData(name="output_data", format="png", from_work_dir="output.png")
-
-        change = self.gxtp.ChangeFormat()
-        change_a = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="image/tiff", format="tiff")
-        change_b = self.gxtp.ChangeFormatWhen(input="outputType1_out", value="image/jpeg", format="jpeg")
-        change_c = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
-        change.append(change_a)
-        change.append(change_b)
-        change.append(change_c)
-        param.append(change)
-        outputs.append(param)
+        for key, values in self.output_type_list.items():
+            print(values)
+            form = values[0].split('/')[-1]
+            param = self.gxtp.OutputData(name="output_data", format=form, from_work_dir="output.png")
+            change = self.gxtp.ChangeFormat()
+            change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
+            change.append(change_response)
+            for i in range(1,len(values)):
+                form = values[i].split('/')[-1]
+                change_i = self.gxtp.ChangeFormatWhen(input=key, value=values[i], format=form,from_work_dir="output."+form)
+                change.append(change_i)
+                param.append(change)
+            outputs.append(param)
 
         return outputs
 
