@@ -401,13 +401,13 @@ class Galaxyxmltool:
         for key, values in self.output_type_list.items():
             print(values)
             form = values[0].split('/')[-1]
-            param = self.gxtp.OutputData(name="output_data", format=form, from_work_dir="output.png")
+            param = self.gxtp.OutputData(name="output_data", format=form, from_work_dir="output."+form)
             change = self.gxtp.ChangeFormat()
             change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
             change.append(change_response)
             for i in range(1,len(values)):
                 form = values[i].split('/')[-1]
-                change_i = self.gxtp.ChangeFormatWhen(input=key, value=values[i], format=form,from_work_dir="output."+form)
+                change_i = self.gxtp.ChangeFormatWhen(input=key, value=values[i], format=form)
                 change.append(change_i)
                 param.append(change)
             outputs.append(param)
