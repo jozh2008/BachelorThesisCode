@@ -11,21 +11,17 @@ th $th
 outgt $outgt
 outms $outms
 response $response
-outputType1_outgt $OutputSection_1.outputType1_outgt
-transmissionMode_1 $OutputSection_1.transmissionMode_1
-outputType2_outms $OutputSection_6.outputType2_outms
-transmissionMode_2 $OutputSection_2.transmissionMode_2
-outputType2_outms $OutputSection_6.outputType2_outms
-transmissionMode_3 $OutputSection_3.transmissionMode_3
-outputType2_outms $OutputSection_6.outputType2_outms
-transmissionMode_4 $OutputSection_4.transmissionMode_4
-outputType2_outms $OutputSection_6.outputType2_outms
-transmissionMode_5 $OutputSection_5.transmissionMode_5
-outputType2_outms $OutputSection_6.outputType2_outms
-transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
+outputType1_outgt $OutputSection_outgt.outputType1_outgt
+transmissionMode_outgt $OutputSection_outgt.transmissionMode_outgt
+outputType2_outms $OutputSection_outms.outputType2_outms
+transmissionMode_outms $OutputSection_outms.transmissionMode_outms
+transmissionMode_rc $OutputSection_rc.transmissionMode_rc
+transmissionMode_rf $OutputSection_rf.transmissionMode_rf
+transmissionMode_ra $OutputSection_ra.transmissionMode_ra
+transmissionMode_rm $OutputSection_rm.transmissionMode_rm]]></command>
   <inputs>
-    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
-    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
+    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image.The following data types are allowed in the txt file: tiff, jpeg, png" format="txt"/>
+    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image.The following data types are allowed in the txt file: tiff, jpeg, png" format="txt"/>
     <param name="bg" type="integer" value="0" optional="false" label="Label value of the background in the input segmentations" help="Label value of the background in the input segmentations"/>
     <param name="th" type="float" value="0.75" optional="false" label="Overlapping threshold used to find Hoover instances." help="Overlapping threshold used to find Hoover instances."/>
     <param name="outgt" type="select" optional="true" label="The colored ground truth output image." help="The colored ground truth output image.">
@@ -48,48 +44,48 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outgt" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
       <param name="outputType1_outgt" type="select" label="The colored ground truth output image." help="The colored ground truth output image.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
       </param>
-      <param name="transmissionMode_1" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode_outgt" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="transmissionMode_2" type="select" label="Choose the transmission mode">
-        <option selected="true" value="reference">reference</option>
-        <option value="value">value</option>
-      </param>
-    </section>
-    <section name="OutputSection_3" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="transmissionMode_3" type="select" label="Choose the transmission mode">
-        <option selected="true" value="reference">reference</option>
-        <option value="value">value</option>
-      </param>
-    </section>
-    <section name="OutputSection_4" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="transmissionMode_4" type="select" label="Choose the transmission mode">
-        <option selected="true" value="reference">reference</option>
-        <option value="value">value</option>
-      </param>
-    </section>
-    <section name="OutputSection_5" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="transmissionMode_5" type="select" label="Choose the transmission mode">
-        <option selected="true" value="reference">reference</option>
-        <option value="value">value</option>
-      </param>
-    </section>
-    <section name="OutputSection_6" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outms" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
       <param name="outputType2_outms" type="select" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
       </param>
-      <param name="transmissionMode_6" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode_outms" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_rc" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_rc" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_rf" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_rf" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ra" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_ra" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_rm" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_rm" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>

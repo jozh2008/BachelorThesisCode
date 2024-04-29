@@ -20,7 +20,7 @@ class ApiJson:
         # Get command-line arguments
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
-        #pprint(attributes)
+        pprint(attributes)
         inputs = self.process_input_values(attributes=attributes)
         #pprint(inputs)
         outputs = self.process_output_values(attributes=attributes)
@@ -198,23 +198,22 @@ class ApiJson:
         transmissionMode = self.extract_transmissionMode_values(attributes)
 
         # Convert values to lists
-        keys_outputs = list(outputs.keys())
-        values_outputs = list(outputs.values())
-        self.output_type= values_outputs
-        values_transmisionMode = list(transmissionMode.values())
-
-        # Determine the length of the outputs
-        length = len(keys_outputs)
+        keys_transmissionMode = list(transmissionMode.keys())
+        values_transmissionMode = list(transmissionMode.values())
 
         # Initialize an empty list
-        lst = []https://github.com/jozh2008/BachelorThesisCode
+        lst = []
 
         # Iterate through the outputs and create dictionaries
-        for i in range(length):
-            lst.append(self.output_json(keys_outputs[i], values_outputs[i], values_transmisionMode[i]))
+        for key, value in zip(keys_transmissionMode, values_transmissionMode):
+            output_value = outputs.get(key)
+            if output_value is not None:
+                self.output_type.append(output_value)
+            lst.append(self.output_json(key, output_value, value))
 
         # Return the list
         return lst
+
 
     def extract_data_files(self, dictionary):
         """
@@ -269,7 +268,9 @@ class ApiJson:
         extracted_values = {}
         for key, value in dictionary.items():
             if "transmissionMode" in key:
-                extracted_values[key] = value
+                index = self.find_index_of_character(key, "_")
+                modified_key = key[index + 1:]
+                extracted_values[modified_key] = value
         return extracted_values
 
     def extract_response_value(self, dictionary):
@@ -326,14 +327,20 @@ class ApiJson:
         return res_dict
 
     def output_json(self, outputName, mediaType, transmissionMode):
+        """
+        Create the actual output format for outputs
+        """
         output_format = {
             outputName: {
-                "format": {
-                    "mediaType": mediaType
-                },
                 "transmissionMode": transmissionMode
             }
         }
+
+        if mediaType is not None:
+            output_format[outputName]["format"] = {
+                "mediaType": mediaType
+            }
+
         return output_format
 
     def generate_input_file_list_json(self, input_name, input_list):

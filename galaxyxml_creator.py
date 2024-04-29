@@ -283,7 +283,7 @@ class Galaxyxmltool:
 
         return inputs
 
-    def choose_transmission_mode(self, section: List, item_number: int, available_transmissions: Dict):
+    def choose_transmission_mode(self, section: List, name: str, available_transmissions: Dict):
         """
         Adds a parameter to select transmission mode to a given section.
 
@@ -300,7 +300,7 @@ class Galaxyxmltool:
         transmission_options = {transmission: transmission for transmission in available_transmissions}
 
         default_transmission = "reference"
-        param_name = "transmissionMode_" + str(item_number)
+        param_name = "transmissionMode_" + str(name)
 
         # Create the parameter object
         param = self.gxtp.SelectParam(name=param_name, default=default_transmission, options=transmission_options, label=label)
@@ -343,9 +343,8 @@ class Galaxyxmltool:
                 param = self.create_select_param_output(output_param_name, param_dict, param_extended_schema)
                 self.extract_enum(param_extended_schema, enum_values=enum_values)
             elif param_type == "number":
-                # check for correct value for is_nullable
-                pass
                 # param = self.create_float_param(output_param_name, param_dict, is_nullable=False)
+                param = None
             else:
                 # Handle unsupported parameter types gracefully
                 print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
@@ -353,16 +352,17 @@ class Galaxyxmltool:
             
             self.output_type_list[output_param_name] = enum_values
 
-            output_param_section_name = f"OutputSection_{item_number}"
+            output_param_section_name = f"OutputSection_{param_name}"
             output_param_section = self.gxtp.Section(
                 name=output_param_section_name,
                 title="Select the appropriate transmission mode for the output format and the output value",
                 expanded=True
             )
-            output_param_section.append(param)
+            if param is not None:
+                output_param_section.append(param)
             self.choose_transmission_mode(
                 output_param_section,
-                item_number=item_number,
+                name=param_name,
                 available_transmissions=transmission_schema
             )
             # output_section.append(output_param_section)

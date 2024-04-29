@@ -9,10 +9,10 @@ out $out
 ram $ram
 exp '$exp'
 response $response
-outputType1_out $OutputSection_1.outputType1_out
-transmissionMode_1 $OutputSection_1.transmissionMode_1]]></command>
+outputType1_out $OutputSection_out.outputType1_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
+    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression.The following data types are allowed in the txt file: png, tiff, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -27,13 +27,13 @@ transmissionMode_1 $OutputSection_1.transmissionMode_1]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
       <param name="outputType1_out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
       </param>
-      <param name="transmissionMode_1" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
