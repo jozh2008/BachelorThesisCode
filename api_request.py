@@ -11,6 +11,7 @@ class APIRequest:
             'Prefer': 'return=representation',
             'Content-Type': 'application/json'
         }
+        
         self.payload = payload
         self.response_input = response_input
         self.output_type = output_type
@@ -20,31 +21,22 @@ class APIRequest:
     def post_request(self):
         response = requests.post(self.url, headers=self.headers, json=self.payload)
         output_data_type = self.normalize_output_type()
-        print(output_data_type)
+        #print(output_data_type)
         if response.ok:
             if self.response_input == "raw":
-
-                if output_data_type[0] =="png":
+                included = {"jpeg", "png"}
+                if output_data_type[0] in included:
+                    # Process image data
                     image_data = BytesIO(response.content)
-        
-                    # Open the image
                     img = Image.open(image_data)
-                    
-                    # Convert the image to 'RGB' mode
                     img = img.convert('RGB')
-                    
-                    # Specify the output file path
                     output_file_path = self.working_directory["output_data"]
-                    
-                    # Save the image as PNG format
-                    img.save(output_file_path, format='PNG')
+                    img.save(output_file_path, format=output_data_type[0].upper())
                 else:
-                    image_data = BytesIO(response.content)
+                    # Save raw data to file
                     output_file_path = self.working_directory["output_data"]
                     with open(output_file_path, 'wb') as f:
-                        # Write the image data to the file
-                        f.write(image_data.getvalue())
-
+                        f.write(response.content)
 
             else:
                 print(response.json())
@@ -54,12 +46,3 @@ class APIRequest:
     
     def normalize_output_type(self):
         return list(data_type.split('/')[-1] for data_type in self.output_type)
-
-    def get_request(self):
-        response = requests.get(self.url)
-        if response.ok:
-            print(response)
-            print(response.json())
-            return response.json()
-        else:
-            print("Error:", response.status_code)

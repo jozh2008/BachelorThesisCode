@@ -13,7 +13,7 @@ transmissionMode_1 $OutputSection_1.transmissionMode_1
 outputType2_BOXES $OutputSection_2.outputType2_BOXES
 transmissionMode_2 $OutputSection_2.transmissionMode_2]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="POLYPOINTS" type="select" optional="true" label="Hull Construction" help="This option does not apply to simple point layers.">
       <option value="one_hull_for_all_shapes">one hull for all shapes</option>
       <option selected="true" value="one_hull_per_shape">one hull per shape</option>
@@ -27,7 +27,7 @@ transmissionMode_2 $OutputSection_2.transmissionMode_2]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format" expanded="true">
+    <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
       <param name="outputType1_HULLS" type="select" label="Convex Hull" help="Convex Hull">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -38,7 +38,7 @@ transmissionMode_2 $OutputSection_2.transmissionMode_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format" expanded="true">
+    <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
       <param name="outputType2_BOXES" type="select" label="Minimum Bounding Box" help="Minimum Bounding Box">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

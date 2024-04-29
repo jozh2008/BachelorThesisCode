@@ -355,7 +355,7 @@ class Galaxyxmltool:
             output_param_section_name = f"OutputSection_{item_number}"
             output_param_section = self.gxtp.Section(
                 name=output_param_section_name,
-                title="Select the appropriate transmission mode for the output format",
+                title="Select the appropriate transmission mode for the output format and the output value",
                 expanded=True
             )
             output_param_section.append(param)

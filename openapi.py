@@ -13,6 +13,7 @@ class ApiJson:
         self.isexcluededList = []
         self.output_type = []
         self.working_directory = {}
+        self.url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
 
     def get_json_inputs(self):
         print("This is a placeholder function.")
@@ -20,13 +21,11 @@ class ApiJson:
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
         inputs = self.process_input_values(attributes=attributes)
-        pprint(inputs)
+        # pprint(inputs)
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
         pprint(input_json)
-        pprint(self.output_type)
-        pprint(self.working_directory)
         apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_type =self.output_type, working_directory = self.working_directory)
         apirequest.post_request()
     
@@ -46,7 +45,7 @@ class ApiJson:
         }
 
     def get_url(self, attributes):
-        base_url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
+        base_url = self.url
         endpoint = attributes["name"]
         return base_url + endpoint + "/execution"
 
@@ -139,7 +138,6 @@ class ApiJson:
         input_file_json_list = []
         
         for key, value in input_files.items():
-            
             if "output_data" not in key:
                 file_contents = self.open_and_read_file(value)
                 exclueded = self.isArray + key
