@@ -13,19 +13,19 @@ outms $outms
 response $response
 outputType1_outgt $OutputSection_1.outputType1_outgt
 transmissionMode_1 $OutputSection_1.transmissionMode_1
-outputType2_outms $OutputSection_2.outputType2_outms
+outputType2_outms $OutputSection_6.outputType2_outms
 transmissionMode_2 $OutputSection_2.transmissionMode_2
-outputType3_rc $OutputSection_3.outputType3_rc
+outputType2_outms $OutputSection_6.outputType2_outms
 transmissionMode_3 $OutputSection_3.transmissionMode_3
-outputType4_rf $OutputSection_4.outputType4_rf
+outputType2_outms $OutputSection_6.outputType2_outms
 transmissionMode_4 $OutputSection_4.transmissionMode_4
-outputType5_ra $OutputSection_5.outputType5_ra
+outputType2_outms $OutputSection_6.outputType2_outms
 transmissionMode_5 $OutputSection_5.transmissionMode_5
-outputType6_rm $OutputSection_6.outputType6_rm
+outputType2_outms $OutputSection_6.outputType2_outms
 transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
   <inputs>
-    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image.The following data types are allowed in the txt file: png, tiff, jpeg" format="txt"/>
-    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image.The following data types are allowed in the txt file: png, tiff, jpeg" format="txt"/>
+    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
+    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
     <param name="bg" type="integer" value="0" optional="false" label="Label value of the background in the input segmentations" help="Label value of the background in the input segmentations"/>
     <param name="th" type="float" value="0.75" optional="false" label="Overlapping threshold used to find Hoover instances." help="Overlapping threshold used to find Hoover instances."/>
     <param name="outgt" type="select" optional="true" label="The colored ground truth output image." help="The colored ground truth output image.">
@@ -60,39 +60,35 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
       </param>
     </section>
     <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType2_outms" type="select" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
-        <option value="image/jpeg">jpeg</option>
-        <option value="image/png">png</option>
-        <option value="image/tiff">tiff</option>
-      </param>
       <param name="transmissionMode_2" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
     <section name="OutputSection_3" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType3_rc" type="float" optional="false" label="Overall score for correct detection (RC)" help="Overall score for correct detection (RC)"/>
       <param name="transmissionMode_3" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
     <section name="OutputSection_4" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType4_rf" type="float" optional="false" label="Overall score for over segmentation (RF)" help="Overall score for over segmentation (RF)"/>
       <param name="transmissionMode_4" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
     <section name="OutputSection_5" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType5_ra" type="float" optional="false" label="Overall score for under segmentation (RA)" help="Overall score for under segmentation (RA)"/>
       <param name="transmissionMode_5" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
     <section name="OutputSection_6" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType6_rm" type="float" optional="false" label="Overall score for missed detection (RM)" help="Overall score for missed detection (RM)"/>
+      <param name="outputType2_outms" type="select" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
       <param name="transmissionMode_6" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

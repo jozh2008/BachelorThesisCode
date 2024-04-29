@@ -17,11 +17,12 @@ class APIRequest:
         self.output_type = output_type
         self.working_directory = working_directory
 
-    # Improve for non raw
+    # Improve for non raw, and more than one data type
     def post_request(self):
         response = requests.post(self.url, headers=self.headers, json=self.payload)
         output_data_type = self.normalize_output_type()
         #print(output_data_type)
+        print(self.working_directory)
         if response.ok:
             if self.response_input == "raw":
                 included = {"jpeg", "png"}

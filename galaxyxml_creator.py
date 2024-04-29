@@ -344,7 +344,8 @@ class Galaxyxmltool:
                 self.extract_enum(param_extended_schema, enum_values=enum_values)
             elif param_type == "number":
                 # check for correct value for is_nullable
-                param = self.create_float_param(output_param_name, param_dict, is_nullable=False)
+                pass
+                # param = self.create_float_param(output_param_name, param_dict, is_nullable=False)
             else:
                 # Handle unsupported parameter types gracefully
                 print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")

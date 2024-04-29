@@ -20,12 +20,14 @@ class ApiJson:
         # Get command-line arguments
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
+        #pprint(attributes)
         inputs = self.process_input_values(attributes=attributes)
-        # pprint(inputs)
+        #pprint(inputs)
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
         pprint(input_json)
+        #pprint(self.working_directory)
         apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_type =self.output_type, working_directory = self.working_directory)
         apirequest.post_request()
     
@@ -205,7 +207,7 @@ class ApiJson:
         length = len(keys_outputs)
 
         # Initialize an empty list
-        lst = []
+        lst = []https://github.com/jozh2008/BachelorThesisCode
 
         # Iterate through the outputs and create dictionaries
         for i in range(length):
