@@ -1,0 +1,79 @@
+<tool name="SAGA.shapes_points.12" id="saga_shapes_points_12" version="1.0.0">
+  <description>Convex Hull</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/openapi.py isArraySHAPES False  output_data $output_data  name SAGA.shapes_points.12 SHAPES $SHAPES
+POLYPOINTS $POLYPOINTS
+POLYGONCVX $POLYGONCVX
+response $response
+outputType1_HULLS $OutputSection_1.outputType1_HULLS
+transmissionMode_1 $OutputSection_1.transmissionMode_1
+outputType2_BOXES $OutputSection_2.outputType2_BOXES
+transmissionMode_2 $OutputSection_2.transmissionMode_2]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POLYPOINTS" type="select" optional="true" label="Hull Construction" help="This option does not apply to simple point layers.">
+      <option value="one_hull_for_all_shapes">one hull for all shapes</option>
+      <option selected="true" value="one_hull_per_shape">one hull per shape</option>
+      <option value="one_hull_per_shape_part">one hull per shape part</option>
+    </param>
+    <param name="POLYGONCVX" type="select" optional="true" label="Polygon Convexity" help="Describes a polygon's compactness as ratio of its area to its hull's area.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType1_HULLS" type="select" label="Convex Hull" help="Convex Hull">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_1" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType2_BOXES" type="select" label="Minimum Bounding Box" help="Minimum Bounding Box">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_2" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType1_HULLS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType1_HULLS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType2_BOXES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType2_BOXES" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Implementation of 'Andrew's Monotone Chain Algorithm' for convex hull construction. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

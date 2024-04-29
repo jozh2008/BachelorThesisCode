@@ -4,15 +4,15 @@
 import sys
 import re
 from pprint import pprint
-import json
 from api_request import *
 
 
 class ApiJson:
     def __init__(self) -> None:
         self.isArray = "isArray"
-        self.isArrayList = []
+        self.isexcluededList = []
         self.output_type = []
+        self.working_directory = {}
 
     def get_json_inputs(self):
         print("This is a placeholder function.")
@@ -26,7 +26,8 @@ class ApiJson:
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
         pprint(input_json)
         pprint(self.output_type)
-        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_type =self.output_type)
+        pprint(self.working_directory)
+        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_type =self.output_type, working_directory = self.working_directory)
         apirequest.post_request()
     
     def modify_attributes(self, attributes):
@@ -138,15 +139,20 @@ class ApiJson:
         input_file_json_list = []
         
         for key, value in input_files.items():
-            file_contents = self.open_and_read_file(value)
-            is_array = self.isArray + key
-            self.isArrayList.append(is_array)
             
-            # Determine if the input is an array based on the schema
-            if input_schema.get(is_array) == "False":
-                input_file_json_list.append(self.generate_input_file_json(input_name=key, input_list=file_contents))
+            if "output_data" not in key:
+                file_contents = self.open_and_read_file(value)
+                exclueded = self.isArray + key
+                self.isexcluededList.append(exclueded)
+            
+                # Determine if the input is an array based on the schema
+                if input_schema.get(exclueded) == "False":
+                    input_file_json_list.append(self.generate_input_file_json(input_name=key, input_list=file_contents))
+                else:
+                    input_file_json_list.append(self.generate_input_file_list_json(input_name=key, input_list=file_contents))
             else:
-                input_file_json_list.append(self.generate_input_file_list_json(input_name=key, input_list=file_contents))
+                self.isexcluededList.append(key)
+                self.working_directory[key] = value
 
         return input_file_json_list
 
@@ -165,8 +171,8 @@ class ApiJson:
         Returns:
             dict: A dictionary containing non-data input values.
         """
-        print(self.isArrayList)
-        excluded_prefixes = set(data_inputs.keys()).union(set(self.isArrayList))
+        print(self.isexcluededList)
+        excluded_prefixes = set(data_inputs.keys()).union(set(self.isexcluededList))
         extracted_values = {
             key: value
             for key, value in all_input_values.items()

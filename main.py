@@ -8,9 +8,9 @@ def get_collections(base_url):
     """
         Define the path to the specific endpoint you want to access
     """
-    endpoint = "/processes/OTB.BandMath"
-    # endpoint = "/processes/OTB.HooverCompareSegmentation"
-    # endpoint = "/processes/SAGA.shapes_points.12"
+    #endpoint = "/processes/OTB.BandMath"
+    #endpoint = "/processes/OTB.HooverCompareSegmentation"
+    endpoint = "/processes/SAGA.shapes_points.12"
     # Construct the full URL
     url = base_url + endpoint
 
@@ -31,7 +31,8 @@ def get_collections(base_url):
 
 def json_to_galaxyxml(json_data):
     name_id = rename_tool(tool_name=json_data["id"])
-    gxt = Galaxyxmltool(name=json_data["id"], id=name_id, version=json_data["version"], description=json_data["title"])
+    name = json_data["id"]
+    gxt = Galaxyxmltool(name=name, id=name_id, version=json_data["version"], description=json_data["title"])
     tool = gxt.get_tool()
     tool.requirements = gxt.define_requirements()
     tool.help = (json_data["description"])
@@ -42,13 +43,15 @@ def json_to_galaxyxml(json_data):
         transmission_schema=json_data["outputTransmission"]
     )
 
-    tool.executable = gxt.define_command(json_data["id"])
+    
     tool.outputs = gxt.define_output_options()
     # pprint(json_data["inputs"])
+    tool.executable = gxt.define_command(json_data["id"])
     tool.tests = gxt.define_tests()
     tool.citations = gxt.create_citations()
     # pprint(tool.export())
-    with open("output.xml", "w") as file:
+    output_name = name+".xml"
+    with open(output_name, "w") as file:
         file.write(tool.export())
 
 

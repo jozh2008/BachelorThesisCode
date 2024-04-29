@@ -366,7 +366,7 @@ class Galaxyxmltool:
             )
             # output_section.append(output_param_section)
             inputs.append(output_param_section)
-        pprint(self.output_type_list)
+        #pprint(self.output_type_list)
 
     def define_command(self, title):
         """
@@ -380,6 +380,7 @@ class Galaxyxmltool:
             str: The formatted command.
         """
         self.executable_dict["name"] = title
+        print(self.executable_dict)
         return self.executable + self.dict_to_string(self.executable_dict)
 
     def dict_to_string(self, dictionary: Dict):
@@ -398,19 +399,23 @@ class Galaxyxmltool:
     # do to check with None
     def define_output_options(self):
         outputs = self.gxtp.Outputs()
+        pprint(self.output_type_list)
         for key, values in self.output_type_list.items():
             print(values)
-            form = values[0].split('/')[-1]
-            param = self.gxtp.OutputData(name="output_data", format=form, from_work_dir="output."+form)
-            change = self.gxtp.ChangeFormat()
-            change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
-            change.append(change_response)
-            for i in range(1,len(values)):
-                form = values[i].split('/')[-1]
-                change_i = self.gxtp.ChangeFormatWhen(input=key, value=values[i], format=form)
-                change.append(change_i)
-                param.append(change)
-            outputs.append(param)
+            if len(values) > 0:
+                form = values[0].split('/')[-1]
+                name = "output_data"
+                param = self.gxtp.OutputData(name=name, format=form)
+                self.executable_dict[name] = "$"+name
+                change = self.gxtp.ChangeFormat()
+                change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
+                change.append(change_response)
+                for i in range(1,len(values)):
+                    form = values[i].split('/')[-1]
+                    change_i = self.gxtp.ChangeFormatWhen(input=key, value=values[i], format=form)
+                    change.append(change_i)
+                    param.append(change)
+                outputs.append(param)
 
         return outputs
 

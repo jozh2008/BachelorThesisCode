@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py name OTB.BandMath il $il
+  <command><![CDATA[$__tool_directory__/openapi.py isArrayil True  output_data1 $output_data1  name OTB.BandMath il $il
 out $out
 ram $ram
 exp '$exp'
@@ -40,17 +40,17 @@ transmissionMode_1 $OutputSection_1.transmissionMode_1]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data" format="png" from_work_dir="output.png" hidden="false">
+    <data name="output_data1" format="tiff" hidden="false">
       <change_format>
-        <when input="outputType1_out" format="tiff" value="image/tiff"/>
-        <when input="outputType1_out" format="jpeg" value="image/jpeg"/>
         <when input="response" format="txt" value="document"/>
+        <when input="outputType1_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType1_out" format="png" value="image/png"/>
       </change_format>
     </data>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data1" value="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

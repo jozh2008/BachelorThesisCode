@@ -4,7 +4,7 @@ from io import BytesIO
 
 
 class APIRequest:
-    def __init__(self, url, payload, response_input, output_type):
+    def __init__(self, url, payload, response_input, output_type, working_directory):
         self.url = url
         self.headers = {
             'accept': '*/*',
@@ -14,21 +14,37 @@ class APIRequest:
         self.payload = payload
         self.response_input = response_input
         self.output_type = output_type
+        self.working_directory = working_directory
 
     # Improve for non raw
     def post_request(self):
         response = requests.post(self.url, headers=self.headers, json=self.payload)
         output_data_type = self.normalize_output_type()
+        print(output_data_type)
         if response.ok:
             if self.response_input == "raw":
-                image_data = BytesIO(response.content)
-                img = Image.open(image_data)
 
-                # Convert the image to 'RGB' mode
-                img = img.convert('RGB')
+                if output_data_type[0] =="png":
+                    image_data = BytesIO(response.content)
+        
+                    # Open the image
+                    img = Image.open(image_data)
+                    
+                    # Convert the image to 'RGB' mode
+                    img = img.convert('RGB')
+                    
+                    # Specify the output file path
+                    output_file_path = self.working_directory["output_data"]
+                    
+                    # Save the image as PNG format
+                    img.save(output_file_path, format='PNG')
+                else:
+                    image_data = BytesIO(response.content)
+                    output_file_path = self.working_directory["output_data"]
+                    with open(output_file_path, 'wb') as f:
+                        # Write the image data to the file
+                        f.write(image_data.getvalue())
 
-                # Save the image as PNG
-                img.save("output."+output_data_type[0])
 
             else:
                 print(response.json())

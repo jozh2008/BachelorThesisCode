@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py ingt $ingt
+  <command><![CDATA[$__tool_directory__/openapi.py isArrayingt False  isArrayinms False  output_data1 $output_data1  output_data2 $output_data2  name OTB.HooverCompareSegmentation ingt $ingt
 inms $inms
 bg $bg
 th $th
@@ -24,11 +24,11 @@ transmissionMode_5 $OutputSection_5.transmissionMode_5
 outputType6_rm $OutputSection_6.outputType6_rm
 transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
   <inputs>
-    <param name="ingt" type="data" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image." format="txt"/>
-    <param name="inms" type="data" label="A machine segmentation image." help="A machine segmentation image." format="txt"/>
-    <param name="bg" type="integer" value="0" label="Label value of the background in the input segmentations" help="Label value of the background in the input segmentations"/>
-    <param name="th" type="float" value="0.75" label="Overlapping threshold used to find Hoover instances." help="Overlapping threshold used to find Hoover instances."/>
-    <param name="outgt" type="select" label="The colored ground truth output image." help="The colored ground truth output image.">
+    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image.The following data types are allowed in the txt file: tiff, png, jpeg" format="txt"/>
+    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image.The following data types are allowed in the txt file: tiff, png, jpeg" format="txt"/>
+    <param name="bg" type="integer" value="0" optional="false" label="Label value of the background in the input segmentations" help="Label value of the background in the input segmentations"/>
+    <param name="th" type="float" value="0.75" optional="false" label="Overlapping threshold used to find Hoover instances." help="Overlapping threshold used to find Hoover instances."/>
+    <param name="outgt" type="select" optional="true" label="The colored ground truth output image." help="The colored ground truth output image.">
       <option value="double">double</option>
       <option value="float">float</option>
       <option value="int16">int16</option>
@@ -36,7 +36,7 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
       <option value="uint16">uint16</option>
       <option selected="true" value="uint8">uint8</option>
     </param>
-    <param name="outms" type="select" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
+    <param name="outms" type="select" optional="true" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
       <option value="double">double</option>
       <option value="float">float</option>
       <option value="int16">int16</option>
@@ -50,9 +50,9 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
     </param>
     <section name="OutputSection_1" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType1_outgt" type="select" label="The colored ground truth output image." help="The colored ground truth output image.">
-        <option value="jpeg">jpeg</option>
-        <option value="png">png</option>
-        <option value="tiff">tiff</option>
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
       </param>
       <param name="transmissionMode_1" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
@@ -61,9 +61,9 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
     </section>
     <section name="OutputSection_2" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType2_outms" type="select" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
-        <option value="jpeg">jpeg</option>
-        <option value="png">png</option>
-        <option value="tiff">tiff</option>
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
       </param>
       <param name="transmissionMode_2" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
@@ -71,28 +71,28 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
       </param>
     </section>
     <section name="OutputSection_3" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType3_rc" type="float" value="0" label="Overall score for correct detection (RC)" help="Overall score for correct detection (RC)"/>
+      <param name="outputType3_rc" type="float" optional="false" label="Overall score for correct detection (RC)" help="Overall score for correct detection (RC)"/>
       <param name="transmissionMode_3" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
     <section name="OutputSection_4" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType4_rf" type="float" value="0" label="Overall score for over segmentation (RF)" help="Overall score for over segmentation (RF)"/>
+      <param name="outputType4_rf" type="float" optional="false" label="Overall score for over segmentation (RF)" help="Overall score for over segmentation (RF)"/>
       <param name="transmissionMode_4" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
     <section name="OutputSection_5" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType5_ra" type="float" value="0" label="Overall score for under segmentation (RA)" help="Overall score for under segmentation (RA)"/>
+      <param name="outputType5_ra" type="float" optional="false" label="Overall score for under segmentation (RA)" help="Overall score for under segmentation (RA)"/>
       <param name="transmissionMode_5" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
     <section name="OutputSection_6" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType6_rm" type="float" value="0" label="Overall score for missed detection (RM)" help="Overall score for missed detection (RM)"/>
+      <param name="outputType6_rm" type="float" optional="false" label="Overall score for missed detection (RM)" help="Overall score for missed detection (RM)"/>
       <param name="transmissionMode_6" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
@@ -100,17 +100,25 @@ transmissionMode_6 $OutputSection_6.transmissionMode_6]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data" format="png" hidden="false">
+    <data name="output_data1" format="tiff" hidden="false">
       <change_format>
-        <when input="outputType1_out" format="tiff" value="tiff"/>
-        <when input="outputType1_out" format="jepg" value="jepg"/>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType1_outgt" format="jpeg" value="image/jpeg"/>
+        <when input="outputType1_outgt" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data2" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType2_outms" format="jpeg" value="image/jpeg"/>
+        <when input="outputType2_outms" format="png" value="image/png"/>
       </change_format>
     </data>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="png"/>
-      <param name="outputType1_out" value="png"/>
+      <output name="output_data1" value="txt"/>
+      <param name="response" value="document"/>
     </test>
   </tests>
   <help><![CDATA[This application compares a machine segmentation (MS) with a partial ground truth segmentation (GT). The Hoover metrics are used to estimate scores for correct detection, over-segmentation, under-segmentation and missed detection. The application can output the overall Hoover scores along with coloredimages of the MS and GT segmentation showing the state of each region (correct detection, over-segmentation, under-segmentation, missed) The Hoover metrics are described in : Hoover et al., "An experimental comparison of range image segmentation algorithms", IEEE PAMI vol. 18, no. 7, July 1996.]]></help>
