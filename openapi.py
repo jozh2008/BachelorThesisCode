@@ -14,6 +14,7 @@ class ApiJson:
         self.output_type = []
         self.working_directory = {}
         self.url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
+        self.values_transmissionMode = []
 
     def get_json_inputs(self):
         print("This is a placeholder function.")
@@ -28,7 +29,7 @@ class ApiJson:
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
         pprint(input_json)
         #pprint(self.working_directory)
-        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_type =self.output_type, working_directory = self.working_directory)
+        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_type =self.output_type, working_directory = self.working_directory, transmissionMode = self.values_transmissionMode)
         apirequest.post_request()
     
     def modify_attributes(self, attributes):
@@ -201,6 +202,7 @@ class ApiJson:
         keys_transmissionMode = list(transmissionMode.keys())
         values_transmissionMode = list(transmissionMode.values())
 
+        self.values_transmissionMode=values_transmissionMode
         # Initialize an empty list
         lst = []
 

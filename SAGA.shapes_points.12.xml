@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py isArraySHAPES False  output_data $output_data  name SAGA.shapes_points.12 SHAPES $SHAPES
+  <command><![CDATA[$__tool_directory__/openapi.py isArraySHAPES False  output_data_1 $output_data_1  output_data_2 $output_data_2  name SAGA.shapes_points.12 SHAPES $SHAPES
 POLYPOINTS $POLYPOINTS
 POLYGONCVX $POLYGONCVX
 response $response
@@ -13,7 +13,7 @@ transmissionMode_HULLS $OutputSection_HULLS.transmissionMode_HULLS
 outputType2_BOXES $OutputSection_BOXES.outputType2_BOXES
 transmissionMode_BOXES $OutputSection_BOXES.transmissionMode_BOXES]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Points" help="PointsThe following data types are allowed in the txt file: vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="POLYPOINTS" type="select" optional="true" label="Hull Construction" help="This option does not apply to simple point layers.">
       <option value="one_hull_for_all_shapes">one hull for all shapes</option>
       <option selected="true" value="one_hull_per_shape">one hull per shape</option>
@@ -51,14 +51,14 @@ transmissionMode_BOXES $OutputSection_BOXES.transmissionMode_BOXES]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data" format="xml" hidden="false">
+    <data name="output_data_1" format="xml" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType1_HULLS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType1_HULLS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data" format="xml" hidden="false">
+    <data name="output_data_2" format="xml" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType2_BOXES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>

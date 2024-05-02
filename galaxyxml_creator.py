@@ -401,11 +401,11 @@ class Galaxyxmltool:
     def define_output_options(self):
         outputs = self.gxtp.Outputs()
         pprint(self.output_type_list)
-        for key, values in self.output_type_list.items():
+        for item_number,(key, values) in enumerate(self.output_type_list.items(), start=1):
             print(values)
             if len(values) > 0:
                 form = values[0].split('/')[-1]
-                name = "output_data"
+                name = f"output_data_{item_number}"
                 param = self.gxtp.OutputData(name=name, format=form)
                 self.executable_dict[name] = "$"+name
                 change = self.gxtp.ChangeFormat()

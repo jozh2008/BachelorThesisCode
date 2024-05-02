@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py isArrayingt False  isArrayinms False  output_data $output_data  name OTB.HooverCompareSegmentation ingt $ingt
+  <command><![CDATA[$__tool_directory__/openapi.py isArrayingt False  isArrayinms False  output_data_1 $output_data_1  output_data_2 $output_data_2  name OTB.HooverCompareSegmentation ingt $ingt
 inms $inms
 bg $bg
 th $th
@@ -20,8 +20,8 @@ transmissionMode_rf $OutputSection_rf.transmissionMode_rf
 transmissionMode_ra $OutputSection_ra.transmissionMode_ra
 transmissionMode_rm $OutputSection_rm.transmissionMode_rm]]></command>
   <inputs>
-    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image.The following data types are allowed in the txt file: tiff, jpeg, png" format="txt"/>
-    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image.The following data types are allowed in the txt file: tiff, jpeg, png" format="txt"/>
+    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image.The following data types are allowed in the txt file: png, tiff, jpeg" format="txt"/>
+    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image.The following data types are allowed in the txt file: png, tiff, jpeg" format="txt"/>
     <param name="bg" type="integer" value="0" optional="false" label="Label value of the background in the input segmentations" help="Label value of the background in the input segmentations"/>
     <param name="th" type="float" value="0.75" optional="false" label="Overlapping threshold used to find Hoover instances." help="Overlapping threshold used to find Hoover instances."/>
     <param name="outgt" type="select" optional="true" label="The colored ground truth output image." help="The colored ground truth output image.">
@@ -92,14 +92,14 @@ transmissionMode_rm $OutputSection_rm.transmissionMode_rm]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data" format="tiff" hidden="false">
+    <data name="output_data_1" format="tiff" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType1_outgt" format="jpeg" value="image/jpeg"/>
         <when input="outputType1_outgt" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data" format="tiff" hidden="false">
+    <data name="output_data_2" format="tiff" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType2_outms" format="jpeg" value="image/jpeg"/>
