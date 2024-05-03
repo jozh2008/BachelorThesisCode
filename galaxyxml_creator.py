@@ -282,6 +282,9 @@ class Galaxyxmltool:
         inputs.append(param)
 
         return inputs
+    
+    def choose_prefer(self, name:str):
+        label = "Choose the "
 
     def choose_transmission_mode(self, section: List, name: str, available_transmissions: Dict):
         """
@@ -398,25 +401,55 @@ class Galaxyxmltool:
 
 
     # do to check with None
+
+    def define_output_collections(self):
+        outputs = self.gxtp.Outputs()
+        name = f"output_data"
+        collection = self.gxtp.OutputCollection(name=name,type="list")
+        discover = self.gxtp.DiscoverDatasets(pattern="__name_and_ext__")
+        collection.append(discover)
+        outputs.append(collection)
+        return outputs
+
+
     def define_output_options(self):
+        """
+        Define output options for each item in self.output_type_list.
+
+        This method creates output schemas for Galaxy XML based on the output types stored in the self.output_type_list dictionary.
+        
+        If an output type has no corresponding value, it is skipped.
+        If an output type has more than one entry, the format is changed to the corresponding chosen format.
+
+        Returns:
+            gxtp.Outputs: An instance of gxtp.Outputs containing the defined output options.
+        """
         outputs = self.gxtp.Outputs()
         pprint(self.output_type_list)
         for item_number,(key, values) in enumerate(self.output_type_list.items(), start=1):
-            print(values)
-            if len(values) > 0:
-                form = values[0].split('/')[-1]
-                name = f"output_data_{item_number}"
-                param = self.gxtp.OutputData(name=name, format=form)
-                self.executable_dict[name] = "$"+name
-                change = self.gxtp.ChangeFormat()
-                change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
-                change.append(change_response)
-                for i in range(1,len(values)):
-                    form = values[i].split('/')[-1]
-                    change_i = self.gxtp.ChangeFormatWhen(input=key, value=values[i], format=form)
-                    change.append(change_i)
-                    param.append(change)
+            name = f"output_data_{item_number}"
+            self.executable_dict[name] = f"${name}"
+
+            if not values:
+                param = self.gxtp.OutputData(name=name, format="txt")
                 outputs.append(param)
+                continue
+            
+            
+
+            form = values[0].split('/')[-1]
+            param = self.gxtp.OutputData(name=name, format=form)
+            
+
+            change = self.gxtp.ChangeFormat()
+            change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
+            change.append(change_response)
+            for value in values[1:]:
+                form =value.split('/')[-1]
+                change_i = self.gxtp.ChangeFormatWhen(input=key, value=value, format=form)
+                change.append(change_i)
+                param.append(change)
+            outputs.append(param)
 
         return outputs
 

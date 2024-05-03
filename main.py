@@ -44,7 +44,8 @@ def json_to_galaxyxml(json_data):
     )
 
     
-    tool.outputs = gxt.define_output_options()
+    #tool.outputs = gxt.define_output_options()
+    tool.outputs = gxt.define_output_collections()
     # pprint(json_data["inputs"])
     tool.executable = gxt.define_command(json_data["id"])
     tool.tests = gxt.define_tests()
