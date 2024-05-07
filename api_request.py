@@ -3,14 +3,15 @@ from PIL import Image
 from PIL import UnidentifiedImageError
 from io import BytesIO
 from pprint import pprint
+import time
 
 
 class APIRequest:
-    def __init__(self, url, payload, response_input, output_format_dictionary, working_directory, transmission_mode):
-        self.url = url
+    def __init__(self, execute, payload, response_input, output_format_dictionary, working_directory, transmission_mode, prefer):
+        self.execute = execute
         self.headers = {
             'accept': '*/*',
-            'Prefer': 'return=representation',
+            'Prefer': prefer,
             'Content-Type': 'application/json'
         }
         
@@ -19,13 +20,31 @@ class APIRequest:
         self.output_format_dictionary = output_format_dictionary
         self.working_directory = working_directory
         self.transmission_mode = transmission_mode
+        self.accept_header = {"accept": "application/json"}
+        self.base_url = "https://ospd.geolabs.fr:8300/ogc-api/"
+        self.jobs = "jobs/"
+        self.job_id = ""
+        self.results = "/results"
 
     # Improve for non raw, and more than one data type
     def post_request(self):
         """
-         Makes a POST request and processes the response data according to specified conditions.
+        Makes a POST request and processes the response data according to specified conditions.
+
+        The method utilizes several dictionar resp2 <- request(paste0(base_url, get_status, response$jobID)) %>%
+        req_headers(
+          "accept" = "application/json"
+        ) %>%
+        req_perform()ies:
+        - `self.transmission_mode`: Contains output names as keys and either "reference" or "value" as values, representing the selection made in the Galaxy interface.
+        - `self.output_format_dictionary`: Maps output names to the format of the corresponding Galaxy dataset if the option was available in the Galaxy interface. Not all keys in `self.transmission_mode` may be present here.
+        - `self.working_directory`: Stores the path for the output Galaxy datasets, where each dataset path is stored as a combination of "output_data_" and the corresponding output name.
+
+        If "raw" is chosen in the Galaxy interface, the method writes `response.content` to the corresponding file. Otherwise, it determines whether the transmission mode is "reference" or "value" and writes the appropriate data accordingly.
         """
-        response = requests.post(self.url, headers=self.headers, json=self.payload)
+        url = self.get_url(keyword="execute")
+        response = requests.post(url, headers=self.headers, json=self.payload)
+        response = self.check_job_id(response=response)
         if response.ok:
             for key, value in self.transmission_mode.items():
                 output_format_path = self.output_format_dictionary.get(key)
@@ -73,6 +92,34 @@ class APIRequest:
         else:
             print("Error:", response.status_code)
     
+
+    def check_job_id(self, response):
+        if (response.status_code == 201):
+            response_data = response.json()
+            pprint(response_data)
+            pprint(response_data["status"])
+            status = response_data["status"]
+            self.job_id = response_data["jobID"]
+            url = self.get_url(keyword="jobs")
+            while(status =="running"):
+                time.sleep(20)
+                response = requests.get(url=url, headers=self.accept_header)
+                response_data = response.json()
+                status = response_data["status"]
+            url = self.get_url(keyword="results")
+            response = requests.get(url=url,headers=self.accept_header)
+            if status == "failed":
+                print(f"An error occurred. For further details, check OGC Job status through https://ospd.geolabs.fr:8300/ogc-api/jobs/{self.job_id}")
+        return response
+            
+    def get_url(self, keyword):
+        url_dictionary = {
+            "execute": f"{self.base_url}{self.execute}",
+            "jobs": f"{self.base_url}{self.jobs}{self.job_id}",
+            "results": f"{self.base_url}{self.jobs}{self.job_id}{self.results}"
+        }
+        return url_dictionary[keyword]
+
 
     # an option for the output
     def post_request2(self):

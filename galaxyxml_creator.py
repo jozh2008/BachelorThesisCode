@@ -12,7 +12,7 @@ class Galaxyxmltool:
         self.gxt = tool.Tool(name=name, id=id, version=version, description=description, executable="")
         self.gxtp = gtpx
         self.executable_dict = {}
-        self.output_type_list = {}
+        self.output_type_dictionary = {}
         self.output_type = "outputType"
 
     def get_tool(self):
@@ -244,6 +244,7 @@ class Galaxyxmltool:
                 print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
                 continue
             inputs.append(param)
+        self.choose_prefer(inputs=inputs)
         self.create_select_raw_param(inputs)
         self.create_output_param(output_schema=output_schema, inputs=inputs, transmission_schema=transmission_schema)
 
@@ -284,8 +285,25 @@ class Galaxyxmltool:
 
         return inputs
     
-    def choose_prefer(self, name:str):
-        label = "Choose the "
+    def choose_prefer(self, inputs):
+
+        label = "Choose the Prefer"
+        prefer_options = {"return=representation": "return=representation", "return=minimal": "return=minimal", "respond-async;return=representation": "respond-async;return=representation"}
+        default_value = "respond-async;return=representation"
+
+        param = self.gxtp.SelectParam(
+            name="prefer",
+            default=default_value,
+            options=prefer_options,
+            label=label,
+
+        )
+
+        # Add parameter to the list of inputs
+        inputs.append(param)
+
+        return inputs
+
 
     def choose_transmission_mode(self, section: List, name: str, available_transmissions: Dict):
         """
@@ -354,7 +372,7 @@ class Galaxyxmltool:
                 print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
                 continue
             
-            self.output_type_list[output_param_name] = enum_values
+            self.output_type_dictionary[output_param_name] = enum_values
 
             output_param_section_name = f"OutputSection_{param_name}"
             output_param_section = self.gxtp.Section(
@@ -415,9 +433,9 @@ class Galaxyxmltool:
     # possible output options need to be discussed, which is better
     def define_output_options(self):
         """
-        Define output options for each item in self.output_type_list.
+        Define output options for each item in self.output_type_dictionray.
 
-        This method creates output schemas for Galaxy XML based on the output types stored in the self.output_type_list dictionary.
+        This method creates output schemas for Galaxy XML based on the output types stored in the self.output_type_dictionary.
         
         If an output type has no corresponding value, it is skipped.
         If an output type has more than one entry, the format is changed to the corresponding chosen format.
@@ -426,8 +444,8 @@ class Galaxyxmltool:
             gxtp.Outputs: An instance of gxtp.Outputs containing the defined output options.
         """
         outputs = self.gxtp.Outputs()
-        pprint(self.output_type_list)
-        for key, values in self.output_type_list.items():
+        pprint(self.output_type_dictionary)
+        for key, values in self.output_type_dictionary.items():
             index = self.find_index(string=key, pattern=f"{self.output_type}_")
             name = f"output_data_{key[index:]}"
             self.executable_dict[name] = f"${name}"

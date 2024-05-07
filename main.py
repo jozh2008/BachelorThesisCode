@@ -8,10 +8,10 @@ def get_collections(base_url):
     """
         Define the path to the specific endpoint you want to access
     """
-    endpoint = "/processes/OTB.BandMath"
+    #endpoint = "/processes/OTB.BandMath"
     #endpoint = "/processes/OTB.HooverCompareSegmentation"
     #endpoint = "/processes/SAGA.shapes_points.12"
-    # endpoint = "/processes/OTB.MeanShiftSmoothing"
+    endpoint = "/processes/OTB.MeanShiftSmoothing"
     # Construct the full URL
     url = base_url + endpoint
 

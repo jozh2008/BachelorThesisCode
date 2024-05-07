@@ -13,8 +13,8 @@ class ApiJson:
         self.isexcluededList = []
         self.output_format_dictionary = {}
         self.working_directory = {}
-        self.url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
         self.transmission_mode = {}
+        self.prefer = ""
 
     def get_json_inputs(self):
         print("This is a placeholder function.")
@@ -28,7 +28,7 @@ class ApiJson:
         response = self.process_response_values(attributes=attributes)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
         pprint(input_json)
-        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_format_dictionary =self.output_format_dictionary, working_directory = self.working_directory, transmission_mode = self.transmission_mode)
+        apirequest = APIRequest(execute=self.get_process_execution(attributes=attributes), payload=input_json, response_input=response, output_format_dictionary =self.output_format_dictionary, working_directory = self.working_directory, transmission_mode = self.transmission_mode, prefer = self.prefer)
         apirequest.post_request()
     
     def modify_attributes(self, attributes):
@@ -46,10 +46,9 @@ class ApiJson:
             for key, value in attributes.items()
         }
 
-    def get_url(self, attributes):
-        base_url = self.url
+    def get_process_execution(self, attributes):
         endpoint = attributes["name"]
-        return base_url + endpoint + "/execution"
+        return f"processes/{endpoint}/execution"
 
     def process_output_values(self, attributes):
         dictionary_list = self.generate_output_list(attributes=attributes)
@@ -235,7 +234,7 @@ class ApiJson:
 
     def extract_input_values(self, dictionary):
         """
-        Extract input values from a dictionary, excluding certain keys.
+        Extract input values from a dictionary, excluding certain keys and specify prefer
 
         Args:
             dictionary (dict): The dictionary from which to extract values.
@@ -244,7 +243,8 @@ class ApiJson:
             dict: A new dictionary containing only input values.
         """
 
-        excluded_prefixes = {"response", "outputType", "transmissionMode", "name"}
+        excluded_prefixes = {"response", "outputType", "transmissionMode", "name", "prefer"}
+        self.prefer = dictionary["prefer"]
         return {
             key: value
             for key, value in dictionary.items()

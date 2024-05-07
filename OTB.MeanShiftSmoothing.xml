@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py isArrayin False  name OTB.MeanShiftSmoothing in $in
+  <command><![CDATA[$__tool_directory__/openapi.py isArrayin False  output_data_fout $output_data_fout  output_data_foutpos $output_data_foutpos  name OTB.MeanShiftSmoothing in $in
 fout $fout
 foutpos $foutpos
 ram $ram
@@ -14,13 +14,14 @@ thres $thres
 maxiter $maxiter
 rangeramp $rangeramp
 modesearch $modesearch
+prefer $prefer
 response $response
-outputType1_fout $OutputSection_fout.outputType1_fout
+outputType_fout $OutputSection_fout.outputType_fout
 transmissionMode_fout $OutputSection_fout.transmissionMode_fout
-outputType2_foutpos $OutputSection_foutpos.outputType2_foutpos
+outputType_foutpos $OutputSection_foutpos.outputType_foutpos
 transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance." help="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance.The following data types are allowed in the txt file: jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance." help="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
     <param name="fout" type="select" optional="false" label="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -47,12 +48,17 @@ transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></com
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
     <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_fout" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType1_fout" type="select" label="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
+      <param name="outputType_fout" type="select" label="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -63,7 +69,7 @@ transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></com
       </param>
     </section>
     <section name="OutputSection_foutpos" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType2_foutpos" type="select" label="This output image contains the 2D displacement between the input pixel spatial position and the final position after convergence. Floating point encoding is mandatory. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the 2D displacement between the input pixel spatial position and the final position after convergence. Floating point encoding is mandatory. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
+      <param name="outputType_foutpos" type="select" label="This output image contains the 2D displacement between the input pixel spatial position and the final position after convergence. Floating point encoding is mandatory. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the 2D displacement between the input pixel spatial position and the final position after convergence. Floating point encoding is mandatory. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -75,9 +81,20 @@ transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></com
     </section>
   </inputs>
   <outputs>
-    <collection name="output_data" type="list">
-      <discover_datasets pattern="__name_and_ext__"/>
-    </collection>
+    <data name="output_data_fout" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_fout" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_fout" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_foutpos" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_foutpos" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_foutpos" format="png" value="image/png"/>
+      </change_format>
+    </data>
   </outputs>
   <tests>
     <test>

@@ -8,11 +8,12 @@
 out $out
 ram $ram
 exp '$exp'
+prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression.The following data types are allowed in the txt file: jpeg, png, tiff" format="txt"/>
+    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -23,6 +24,11 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </param>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="exp" type="text" optional="false" label="The muParser mathematical expression to apply on input images." help="The muParser mathematical expression to apply on input images."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
     <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
