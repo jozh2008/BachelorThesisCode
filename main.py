@@ -8,9 +8,10 @@ def get_collections(base_url):
     """
         Define the path to the specific endpoint you want to access
     """
-    #endpoint = "/processes/OTB.BandMath"
-    endpoint = "/processes/OTB.HooverCompareSegmentation"
-    # endpoint = "/processes/SAGA.shapes_points.12"
+    endpoint = "/processes/OTB.BandMath"
+    #endpoint = "/processes/OTB.HooverCompareSegmentation"
+    #endpoint = "/processes/SAGA.shapes_points.12"
+    # endpoint = "/processes/OTB.MeanShiftSmoothing"
     # Construct the full URL
     url = base_url + endpoint
 
@@ -43,10 +44,9 @@ def json_to_galaxyxml(json_data):
         transmission_schema=json_data["outputTransmission"]
     )
 
-    
-    #tool.outputs = gxt.define_output_options()
-    tool.outputs = gxt.define_output_collections()
-    # pprint(json_data["inputs"])
+    # two options for tool.outpus need to be discussed
+    tool.outputs = gxt.define_output_options()
+    #tool.outputs = gxt.define_output_collections()
     tool.executable = gxt.define_command(json_data["id"])
     tool.tests = gxt.define_tests()
     tool.citations = gxt.create_citations()

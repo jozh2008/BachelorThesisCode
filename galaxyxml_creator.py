@@ -13,6 +13,7 @@ class Galaxyxmltool:
         self.gxtp = gtpx
         self.executable_dict = {}
         self.output_type_list = {}
+        self.output_type = "outputType"
 
     def get_tool(self):
         return self.gxt
@@ -329,11 +330,11 @@ class Galaxyxmltool:
         # output_section = self.gxtp.Section(name="Output",
         # title="Choose the output format and/or transmission mode", expanded=True)
 
-        for item_number, (param_name, param_dict) in enumerate(output_schema.items(), start=1):
+        for param_name, param_dict in output_schema.items():
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
-            output_param_name = f"outputType{item_number}_{param_name}"
+            output_param_name = f"{self.output_type}_{param_name}"
             enum_values = []
             if param_type == "string":
                 if param_schema.get("enum"):
@@ -400,8 +401,8 @@ class Galaxyxmltool:
         return ' '.join([f" {key} {value}" for key, value in dictionary.items()])
 
 
-    # do to check with None
 
+    # possible output options need to be discussed, which is better
     def define_output_collections(self):
         outputs = self.gxtp.Outputs()
         name = f"output_data"
@@ -411,7 +412,7 @@ class Galaxyxmltool:
         outputs.append(collection)
         return outputs
 
-
+    # possible output options need to be discussed, which is better
     def define_output_options(self):
         """
         Define output options for each item in self.output_type_list.
@@ -426,8 +427,9 @@ class Galaxyxmltool:
         """
         outputs = self.gxtp.Outputs()
         pprint(self.output_type_list)
-        for item_number,(key, values) in enumerate(self.output_type_list.items(), start=1):
-            name = f"output_data_{item_number}"
+        for key, values in self.output_type_list.items():
+            index = self.find_index(string=key, pattern=f"{self.output_type}_")
+            name = f"output_data_{key[index:]}"
             self.executable_dict[name] = f"${name}"
 
             if not values:
@@ -452,6 +454,10 @@ class Galaxyxmltool:
             outputs.append(param)
 
         return outputs
+    
+    def find_index(self, string, pattern):
+        match = re.search(pattern=pattern, string=string)
+        return (match.end())
 
     def define_requirements(self):
         requirements = self.gxtp.Requirements()

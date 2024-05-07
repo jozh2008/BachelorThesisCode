@@ -4,15 +4,15 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/openapi.py isArrayil True  output_data_1 $output_data_1  name OTB.BandMath il $il
+  <command><![CDATA[$__tool_directory__/openapi.py isArrayil True  output_data_out $output_data_out  name OTB.BandMath il $il
 out $out
 ram $ram
 exp '$exp'
 response $response
-outputType1_out $OutputSection_out.outputType1_out
+outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression.The following data types are allowed in the txt file: png, jpeg, tiff" format="txt"/>
+    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression.The following data types are allowed in the txt file: jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -28,7 +28,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType1_out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
+      <param name="outputType_out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -40,11 +40,11 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_1" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
-        <when input="outputType1_out" format="jpeg" value="image/jpeg"/>
-        <when input="outputType1_out" format="png" value="image/png"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
       </change_format>
     </data>
   </outputs>

@@ -11,10 +11,10 @@ class ApiJson:
     def __init__(self) -> None:
         self.isArray = "isArray"
         self.isexcluededList = []
-        self.output_type = []
+        self.output_format_dictionary = {}
         self.working_directory = {}
         self.url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
-        self.values_transmissionMode = []
+        self.transmission_mode = {}
 
     def get_json_inputs(self):
         print("This is a placeholder function.")
@@ -28,8 +28,7 @@ class ApiJson:
         response = self.process_response_values(attributes=attributes)
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
         pprint(input_json)
-        #pprint(self.working_directory)
-        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_type =self.output_type, working_directory = self.working_directory, transmissionMode = self.values_transmissionMode)
+        apirequest = APIRequest(url=self.get_url(attributes=attributes), payload=input_json, response_input=response, output_format_dictionary =self.output_format_dictionary, working_directory = self.working_directory, transmission_mode = self.transmission_mode)
         apirequest.post_request()
     
     def modify_attributes(self, attributes):
@@ -172,7 +171,7 @@ class ApiJson:
         Returns:
             dict: A dictionary containing non-data input values.
         """
-        print(self.isexcluededList)
+        # print(self.isexcluededList)
         excluded_prefixes = set(data_inputs.keys()).union(set(self.isexcluededList))
         extracted_values = {
             key: value
@@ -196,24 +195,28 @@ class ApiJson:
         """
         # Extract output values and transmissionMode values
         outputs = self.extract_output_values(attributes)
-        transmissionMode = self.extract_transmissionMode_values(attributes)
+        transmission_mode = self.extract_transmission_mode_values(attributes)
+        self.transmission_mode = transmission_mode
 
         # Convert values to lists
-        keys_transmissionMode = list(transmissionMode.keys())
-        values_transmissionMode = list(transmissionMode.values())
+        keys_transmission_mode = list(transmission_mode.keys())
+        values_transmission_mode = list(transmission_mode.values())
 
-        self.values_transmissionMode=values_transmissionMode
         # Initialize an empty list
         lst = []
 
+
+        # pprint(outputs)
         # Iterate through the outputs and create dictionaries
-        for key, value in zip(keys_transmissionMode, values_transmissionMode):
+        for key, value in zip(keys_transmission_mode, values_transmission_mode):
             output_value = outputs.get(key)
             if output_value is not None:
-                self.output_type.append(output_value)
+                self.output_format_dictionary[key] = output_value
+                
             lst.append(self.output_json(key, output_value, value))
 
         # Return the list
+        # print(self.output_type)
         return lst
 
 
@@ -247,6 +250,27 @@ class ApiJson:
             for key, value in dictionary.items()
             if not any(key.startswith(prefix) for prefix in excluded_prefixes)
         }
+    
+
+    def extract_values_by_keyword(self, dictionary, keyword):
+        """
+        Extracts values from the input dictionary based on keys containing the given keyword.
+
+        Args:
+            dictionary (dict): The dictionary containing key-value pairs.
+            keyword (str): The keyword to search for in the keys.
+
+        Returns:
+            dict: A new dictionary containing extracted values with modified keys.
+        """
+        extracted_values = {}
+        for key, value in dictionary.items():
+            if keyword in key:
+                index = self.find_index_of_character(key, "_")
+                modified_key = key[index + 1:]
+                extracted_values[modified_key] = value
+        return extracted_values
+
 
     def extract_output_values(self, dictionary):
         """
@@ -258,29 +282,27 @@ class ApiJson:
         Returns:
             dict: A new dictionary containing extracted values with modified keys.
         """
-        extracted_values = {}
-        for key, value in dictionary.items():
-            if "outputType" in key:
-                index = self.find_index_of_character(key, "_")
-                modified_key = key[index + 1:]
-                extracted_values[modified_key] = value
-        return extracted_values
+        return self.extract_values_by_keyword(dictionary, "outputType")
 
-    def extract_transmissionMode_values(self, dictionary):
-        extracted_values = {}
-        for key, value in dictionary.items():
-            if "transmissionMode" in key:
-                index = self.find_index_of_character(key, "_")
-                modified_key = key[index + 1:]
-                extracted_values[modified_key] = value
-        return extracted_values
+    def extract_transmission_mode_values(self, dictionary):
+        """
+        Extracts values from the input dictionary based on keys containing 'transmissionMode'.
+
+        Args:
+            dictionary (dict): The dictionary containing key-value pairs.
+
+        Returns:
+            dict: A new dictionary containing extracted values with modified keys.
+        """
+        return self.extract_values_by_keyword(dictionary, "transmissionMode")
 
     def extract_response_value(self, dictionary):
         extracted_value = ""
         for key, value in dictionary.items():
             if "response" in key:
                 extracted_value = value
-        return extracted_value
+        return  extracted_value
+
 
     def find_index_of_character(self, string, character):
         """
