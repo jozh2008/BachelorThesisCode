@@ -14,7 +14,7 @@ class APIRequest:
             'Prefer': prefer,
             'Content-Type': 'application/json'
         }
-        
+
         self.payload = payload
         self.response_input = response_input
         self.output_format_dictionary = output_format_dictionary
@@ -31,16 +31,18 @@ class APIRequest:
         """
         Makes a POST request and processes the response data according to specified conditions.
 
-        The method utilizes several dictionar resp2 <- request(paste0(base_url, get_status, response$jobID)) %>%
-        req_headers(
-          "accept" = "application/json"
-        ) %>%
-        req_perform()ies:
-        - `self.transmission_mode`: Contains output names as keys and either "reference" or "value" as values, representing the selection made in the Galaxy interface.
-        - `self.output_format_dictionary`: Maps output names to the format of the corresponding Galaxy dataset if the option was available in the Galaxy interface. Not all keys in `self.transmission_mode` may be present here.
-        - `self.working_directory`: Stores the path for the output Galaxy datasets, where each dataset path is stored as a combination of "output_data_" and the corresponding output name.
+        Parameters:
+            - `self.transmission_mode`: Contains output names as keys and either "reference" or "value" as values,
+            representing the selection made in the Galaxy interface.
+            - `self.output_format_dictionary`: Maps output names to the format of the corresponding Galaxy dataset
+            if the option was available in the Galaxy interface. Not all keys in `self.transmission_mode` may be present.
+            - `self.working_directory`: Stores the path for the output Galaxy datasets, where each dataset path
+            is stored as a combination of "output_data_" and the corresponding output name.
 
-        If "raw" is chosen in the Galaxy interface, the method writes `response.content` to the corresponding file. Otherwise, it determines whether the transmission mode is "reference" or "value" and writes the appropriate data accordingly.
+        Notes:
+            If "raw" is chosen in the Galaxy interface, the method writes `response.content` to the corresponding file.
+            Otherwise, it determines whether the transmission mode is "reference" or "value" and writes the appropriate
+            data accordingly.
         """
         url = self.get_url(keyword="execute")
         response = requests.post(url, headers=self.headers, json=self.payload)
@@ -51,14 +53,14 @@ class APIRequest:
                 if output_format_path is not None:
                     output_format = output_format_path.split('/')[-1]
                 else:
-                    output_format="txt"
+                    output_format = "txt"
                 location = f"output_data_{key}"
                 output_file_path = self.working_directory[location]
-                
+
                 if self.response_input == "raw":
                     included = {"jpeg", "png"}
                     if output_format in included:
-                        
+
                         # Process image data
                         try:
                             # Open the image file
@@ -66,8 +68,8 @@ class APIRequest:
                             img = Image.open(image_data)
                             img = img.convert('RGB')
                             img.save(output_file_path, format=output_format.upper())
-                            
-                        except UnidentifiedImageError as e:
+
+                        except UnidentifiedImageError:
                             # Handle the exception
                             error_message = "Error: Cannot identify image file"
 
@@ -91,35 +93,56 @@ class APIRequest:
                                 pprint(transmission_item, stream=f)
         else:
             print("Error:", response.status_code)
-    
 
     def check_job_id(self, response):
+        """
+        Checks if the response status code is 201. If so, it indicates that the job is still running.
+        Continuously checks the job status every 20 seconds. If the job fails, returns an error message;
+        otherwise, returns the result.
+
+        Parameters:
+            - response: The response object obtained from the POST request.
+
+        Returns:
+            - The response object containing the job result, if available.
+
+        Note:
+            The method waits for the job to complete or fail before returning the response.
+        """
         if (response.status_code == 201):
             response_data = response.json()
-            pprint(response_data)
-            pprint(response_data["status"])
             status = response_data["status"]
             self.job_id = response_data["jobID"]
             url = self.get_url(keyword="jobs")
-            while(status =="running"):
+            while (status == "running"):
                 time.sleep(20)
                 response = requests.get(url=url, headers=self.accept_header)
                 response_data = response.json()
                 status = response_data["status"]
             url = self.get_url(keyword="results")
-            response = requests.get(url=url,headers=self.accept_header)
+            response = requests.get(url=url, headers=self.accept_header)
             if status == "failed":
-                print(f"An error occurred. For further details, check OGC Job status through https://ospd.geolabs.fr:8300/ogc-api/jobs/{self.job_id}")
+                print(f"An error occurred. For further details, check OGC Job status through "
+                      f"https://ospd.geolabs.fr:8300/ogc-api/jobs/{self.job_id}")
+
         return response
-            
+
     def get_url(self, keyword):
+        """
+        Generates the URL based on the provided keyword.
+
+        Parameters:
+            - keyword: A string specifying the type of URL required. Accepted values are "execute", "jobs", and "results".
+
+        Returns:
+            - The URL corresponding to the provided keyword.
+        """
         url_dictionary = {
             "execute": f"{self.base_url}{self.execute}",
             "jobs": f"{self.base_url}{self.jobs}{self.job_id}",
             "results": f"{self.base_url}{self.jobs}{self.job_id}{self.results}"
         }
         return url_dictionary[keyword]
-
 
     # an option for the output
     def post_request2(self):
@@ -130,10 +153,9 @@ class APIRequest:
                 transmission_item = response_data.get(key)
                 output_file_path = key + ".txt"
                 if transmission_item is not None and value == "reference":
-                    
+
                     pprint(transmission_item["href"])
                     with open(output_file_path, "w") as f:
                         f.write((transmission_item["href"]) + "\n")
         else:
             print("Error:", response.status_code)
-

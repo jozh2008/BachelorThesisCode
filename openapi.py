@@ -22,15 +22,24 @@ class ApiJson:
         args = sys.argv[1:]  # Exclude the first argument which is the script name
         attributes = self.convert(args=args)
         pprint(attributes)
+
         inputs = self.process_input_values(attributes=attributes)
-        #pprint(inputs)
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
+
         input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
         pprint(input_json)
-        apirequest = APIRequest(execute=self.get_process_execution(attributes=attributes), payload=input_json, response_input=response, output_format_dictionary =self.output_format_dictionary, working_directory = self.working_directory, transmission_mode = self.transmission_mode, prefer = self.prefer)
+        apirequest = APIRequest(
+            execute=self.get_process_execution(attributes=attributes),
+            payload=input_json,
+            response_input=response,
+            output_format_dictionary=self.output_format_dictionary,
+            working_directory=self.working_directory,
+            transmission_mode=self.transmission_mode,
+            prefer=self.prefer
+        )
         apirequest.post_request()
-    
+
     def modify_attributes(self, attributes):
         """
         Modify attributes by normalizing tool names.
@@ -60,7 +69,7 @@ class ApiJson:
         response = self.extract_response_value(dictionary=attributes)
 
         return response
-    
+
     def normalize_tool_name(self, tool_name: str):
         # Replace non-alphanumeric characters with underscores
         cleaned_name = tool_name.replace("_", " ")
@@ -90,7 +99,7 @@ class ApiJson:
         """
         Process input attributes.
 
-        Extracts input values from the provided attributes dictionary and categorizes them into two types: 
+        Extracts input values from the provided attributes dictionary and categorizes them into two types:
         data inputs, such as text files, and non-data inputs.
 
         Args:
@@ -137,13 +146,13 @@ class ApiJson:
             list: List of input file JSON representations.
         """
         input_file_json_list = []
-        
+
         for key, value in input_files.items():
             if "output_data" not in key:
                 file_contents = self.open_and_read_file(value)
                 exclueded = self.isArray + key
                 self.isexcluededList.append(exclueded)
-            
+
                 # Determine if the input is an array based on the schema
                 if input_schema.get(exclueded) == "False":
                     input_file_json_list.append(self.generate_input_file_json(input_name=key, input_list=file_contents))
@@ -154,7 +163,6 @@ class ApiJson:
                 self.working_directory[key] = value
 
         return input_file_json_list
-
 
     def extract_non_data_inputs(self, data_inputs, all_input_values):
         """
@@ -204,20 +212,17 @@ class ApiJson:
         # Initialize an empty list
         lst = []
 
-
-        # pprint(outputs)
         # Iterate through the outputs and create dictionaries
         for key, value in zip(keys_transmission_mode, values_transmission_mode):
             output_value = outputs.get(key)
             if output_value is not None:
                 self.output_format_dictionary[key] = output_value
-                
+
             lst.append(self.output_json(key, output_value, value))
 
         # Return the list
         # print(self.output_type)
         return lst
-
 
     def extract_data_files(self, dictionary):
         """
@@ -250,7 +255,6 @@ class ApiJson:
             for key, value in dictionary.items()
             if not any(key.startswith(prefix) for prefix in excluded_prefixes)
         }
-    
 
     def extract_values_by_keyword(self, dictionary, keyword):
         """
@@ -270,7 +274,6 @@ class ApiJson:
                 modified_key = key[index + 1:]
                 extracted_values[modified_key] = value
         return extracted_values
-
 
     def extract_output_values(self, dictionary):
         """
@@ -301,8 +304,7 @@ class ApiJson:
         for key, value in dictionary.items():
             if "response" in key:
                 extracted_value = value
-        return  extracted_value
-
+        return extracted_value
 
     def find_index_of_character(self, string, character):
         """
@@ -381,7 +383,6 @@ class ApiJson:
         input_format = {input_name: [{"href": link} for link in input_list]}
         return input_format
 
-    
     def generate_input_file_json(self, input_name, input_list):
         """
         Generate JSON representation of a single input file.
@@ -395,7 +396,6 @@ class ApiJson:
         """
         input_format = {input_name: {"href": link} for link in input_list}
         return input_format
-
 
     def create_input_json(self, non_data_inputs, input_files):
         """
@@ -416,7 +416,6 @@ class ApiJson:
         # Merge combined_dict with non_data_inputs
         result = self.merge_dicts(non_data_inputs, combined_dict)
         return result
-
 
     def combine_dicts(self, dict_list):
         """

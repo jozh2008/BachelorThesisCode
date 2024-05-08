@@ -39,7 +39,7 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    def create_select_param(self, param_name: str, param_dict: Dict, is_nullable: bool, param_type_bool :bool):
+    def create_select_param(self, param_name: str, param_dict: Dict, is_nullable: bool, param_type_bool: bool):
         """
         Create a select parameter.
 
@@ -60,12 +60,12 @@ class Galaxyxmltool:
             # If enum values are not provided, handle this case gracefully
             print("Warning: Enum values are not provided for select parameter. Implementation needed.")
             options = {}  # Placeholder for options
-        
+
         default_value = (param_dict["schema"].get("default"))
 
         if default_value is not None and param_type_bool:
             default_value = self.create_default_value(default_value=default_value)
-        
+
         default_value = self.normalize_tool_name(tool_name=default_value)
         return self.gxtp.SelectParam(
             name=param_name,
@@ -75,7 +75,7 @@ class Galaxyxmltool:
             options=options,
             optional=is_nullable
         )
-    
+
     # check for better solution
     def normalize_tool_name(self, tool_name: Union[str, None]):
         if tool_name is None:
@@ -84,10 +84,10 @@ class Galaxyxmltool:
         cleaned_name = tool_name.replace(" ", "_")
         # Convert to lowercase
         return cleaned_name
-    
+
     def create_default_value(self, default_value):
         if default_value:
-            default ="true"
+            default = "true"
         else:
             default = "false"
         return default
@@ -158,14 +158,13 @@ class Galaxyxmltool:
         enum_values = []
         self.extract_enum(param_extended_schema, enum_values)
         data_types_dict = {data_type: data_type.split('/')[-1] for data_type in enum_values}
-        #pprint(data_types_dict)
         return self.gxtp.SelectParam(
             name=param_name,
             label=param_dict["title"],
             help=param_dict["description"],
             options=data_types_dict
         )
-    
+
     def extract_enum(self, schema_item: Dict, enum_values: List):
         """
         Recursively extracts enum values from a JSON schema item.
@@ -190,8 +189,6 @@ class Galaxyxmltool:
         elif 'allOf' in schema_item:
             for sub_item in schema_item['allOf']:
                 self.extract_enum(sub_item, enum_values)
-        
-        #pprint(lst)
 
     def create_params(self, input_schema: Dict, output_schema: Dict, transmission_schema: Dict):
         """
@@ -284,11 +281,16 @@ class Galaxyxmltool:
         inputs.append(param)
 
         return inputs
-    
+
     def choose_prefer(self, inputs):
 
         label = "Choose the Prefer"
-        prefer_options = {"return=representation": "return=representation", "return=minimal": "return=minimal", "respond-async;return=representation": "respond-async;return=representation"}
+        prefer_options = {
+            "return=representation": "return=representation",
+            "return=minimal": "return=minimal",
+            "respond-async;return=representation": "respond-async;return=representation"
+        }
+
         default_value = "respond-async;return=representation"
 
         param = self.gxtp.SelectParam(
@@ -303,7 +305,6 @@ class Galaxyxmltool:
         inputs.append(param)
 
         return inputs
-
 
     def choose_transmission_mode(self, section: List, name: str, available_transmissions: Dict):
         """
@@ -371,7 +372,7 @@ class Galaxyxmltool:
                 # Handle unsupported parameter types gracefully
                 print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
                 continue
-            
+
             self.output_type_dictionary[output_param_name] = enum_values
 
             output_param_section_name = f"OutputSection_{param_name}"
@@ -389,7 +390,6 @@ class Galaxyxmltool:
             )
             # output_section.append(output_param_section)
             inputs.append(output_param_section)
-        #pprint(self.output_type_list)
 
     def define_command(self, title):
         """
@@ -418,13 +418,11 @@ class Galaxyxmltool:
         """
         return ' '.join([f" {key} {value}" for key, value in dictionary.items()])
 
-
-
     # possible output options need to be discussed, which is better
     def define_output_collections(self):
         outputs = self.gxtp.Outputs()
-        name = f"output_data"
-        collection = self.gxtp.OutputCollection(name=name,type="list")
+        name = "output_data"
+        collection = self.gxtp.OutputCollection(name=name, type="list")
         discover = self.gxtp.DiscoverDatasets(pattern="__name_and_ext__")
         collection.append(discover)
         outputs.append(collection)
@@ -436,7 +434,7 @@ class Galaxyxmltool:
         Define output options for each item in self.output_type_dictionray.
 
         This method creates output schemas for Galaxy XML based on the output types stored in the self.output_type_dictionary.
-        
+
         If an output type has no corresponding value, it is skipped.
         If an output type has more than one entry, the format is changed to the corresponding chosen format.
 
@@ -454,25 +452,22 @@ class Galaxyxmltool:
                 param = self.gxtp.OutputData(name=name, format="txt")
                 outputs.append(param)
                 continue
-            
-            
 
             form = values[0].split('/')[-1]
             param = self.gxtp.OutputData(name=name, format=form)
-            
 
             change = self.gxtp.ChangeFormat()
             change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
             change.append(change_response)
             for value in values[1:]:
-                form =value.split('/')[-1]
+                form = value.split('/')[-1]
                 change_i = self.gxtp.ChangeFormatWhen(input=key, value=value, format=form)
                 change.append(change_i)
                 param.append(change)
             outputs.append(param)
 
         return outputs
-    
+
     def find_index(self, string, pattern):
         match = re.search(pattern=pattern, string=string)
         return (match.end())

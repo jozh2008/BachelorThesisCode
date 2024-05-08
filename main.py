@@ -9,30 +9,46 @@ class Initialize:
 
     def get_collections(self, url):
         """
-            Define the path to the specific endpoint you want to access
+        Retrieve information about available collections from a specified URL.
+
+        Args:
+            url (str): The URL to retrieve the JSON file containing collection information.
+
+        Returns:
+            dict or None: A dictionary containing collection information if the request is successful,
+                        otherwise None.
+
+        Raises:
+            requests.exceptions.RequestException: If an error occurs while making the request.
         """
 
-        # Make a GET request to retrieve information about available collections
-        response = requests.get(url)
+        try:
+            # Make a GET request to retrieve information about available collections
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
 
-        # Check if the request was successful (status code 200)
-        if response.status_code == 200:
             # Extract the JSON data from the response
             data = response.json()
-
             return data
-        else:
-            print("Failed to retrieve collections. Status code:", response.status_code)
-            return None
 
+        except requests.exceptions.RequestException as e:
+            print("Failed to retrieve collections:", e)
+            return None
 
     def json_to_galaxyxml(self, json_data):
         """
-        Generate based on the received json file, the corrensponding galaxy xml file and 
+        Generate a Galaxy XML file based on the received JSON data and store it as an XML file.
+
+        Args:
+            json_data (dict): The JSON data representing the tool information.
+
         """
         name_id = self.rename_tool(tool_name=json_data["id"])
         name = json_data["id"]
+        # Create a Galaxy XML tool object
         gxt = Galaxyxmltool(name=name, id=name_id, version=json_data["version"], description=json_data["title"])
+
+        # Generate XML content
         tool = gxt.get_tool()
         tool.requirements = gxt.define_requirements()
         tool.help = (json_data["description"])
@@ -44,18 +60,26 @@ class Initialize:
 
         # two options for tool.outpus need to be discussed
         tool.outputs = gxt.define_output_options()
-        #tool.outputs = gxt.define_output_collections()
+        # tool.outputs = gxt.define_output_collections()
 
         tool.executable = gxt.define_command(json_data["id"])
         tool.tests = gxt.define_tests()
         tool.citations = gxt.create_citations()
 
-        file_path = f"Tools/{name}.xml"
+        file_path = f"{name}.xml"
         with open(file_path, "w") as file:
             file.write(tool.export())
 
-
     def rename_tool(self, tool_name):
+        """
+        Rename a tool by replacing non-alphanumeric characters with underscores and converting to lowercase.
+
+        Args:
+            tool_name (str): The name of the tool to be cleaned.
+
+        Returns:
+            str: The cleaned tool name.
+        """
         # Replace non-alphanumeric characters with underscores
         cleaned_name = re.sub(r'[^a-zA-Z0-9_-]', '_', tool_name)
         # Convert to lowercase
@@ -65,15 +89,21 @@ class Initialize:
 
 def main(base_url, process):
     """
-    Define the base URL of the OGC API
-    """
+    Main function to process collections data from a base URL and convert it to GalaxyXML.
 
+    Args:
+        base_url (str): The base URL.
+        process (str): The process to be appended to the base URL.
+    """
     url = f"{base_url}{process}"
     pprint(url)
 
     # Get collections information
     workflow = Initialize()
+
+    # Get collections information
     collections_data = workflow.get_collections(url)
+
     # Convert JSON to GalaxyXML
     workflow.json_to_galaxyxml(collections_data)
 
