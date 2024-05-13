@@ -13,8 +13,8 @@ response $response
 outputType_VISIBILITY $OutputSection_VISIBILITY.outputType_VISIBILITY
 transmissionMode_VISIBILITY $OutputSection_VISIBILITY.transmissionMode_VISIBILITY]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Observer points. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Observer points. The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD_HEIGHT" type="data" optional="false" label="Height" help="Height of the light source above ground. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Unit" help="Unit">
       <option value="Distance">Distance</option>

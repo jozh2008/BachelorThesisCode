@@ -15,8 +15,8 @@ response $response
 outputType_FRAGMENTATION $OutputSection_FRAGMENTATION.outputType_FRAGMENTATION
 transmissionMode_FRAGMENTATION $OutputSection_FRAGMENTATION.transmissionMode_FRAGMENTATION]]></command>
   <inputs>
-    <param name="DENSITY" type="data" optional="false" label="Density [Percent]" help="Density Index (Pf). The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
-    <param name="CONNECTIVITY" type="data" optional="false" label="Connectivity [Percent]" help="Connectivity Index (Pff). The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DENSITY" type="data" optional="false" label="Density [Percent]" help="Density Index (Pf). The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="CONNECTIVITY" type="data" optional="false" label="Connectivity [Percent]" help="Connectivity Index (Pff). The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="BORDER" type="select" optional="true" label="Add Border" help="Add Border">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

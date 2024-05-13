@@ -24,7 +24,7 @@ transmissionMode_GRATICULE_RECT $OutputSection_GRATICULE_RECT.transmissionMode_G
       <option selected="true" value="Lines">Lines</option>
       <option value="Rectangles">Rectangles</option>
     </param>
-    <param name="EXTENT" type="data" optional="false" label="Extent" help="Extent The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="EXTENT" type="data" optional="false" label="Extent" help="Extent The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="EXTENT_X_MIN" type="float" optional="true" label="Width (min value)" help="Width"/>
     <param name="EXTENT_X_MAX" type="float" optional="true" label="Width (max value)" help="Width"/>
     <param name="EXTENT_Y_MIN" type="float" optional="true" label="Height (min value)" help="Height"/>

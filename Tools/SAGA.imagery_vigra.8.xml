@@ -15,7 +15,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="SCALE" type="float" value="2" optional="true" label="Size of smoothing filter" help="Size of smoothing filter"/>
     <param name="POWER" type="float" value="0.5" optional="true" label="Power" help="Power"/>
     <param name="RANGE_MIN" type="float" optional="true" label="Range (min value)" help="Range"/>

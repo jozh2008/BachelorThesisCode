@@ -12,8 +12,8 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="GRID1" type="data" optional="false" label="Grid 1" help="Grid 1 The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="GRID2" type="data" optional="false" label="Grid 2" help="Grid 2 The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID1" type="data" optional="false" label="Grid 1" help="Grid 1 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="GRID2" type="data" optional="false" label="Grid 2" help="Grid 2 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="LOOKUP" type="data" optional="false" label="LookUp Table" help="LookUp Table The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

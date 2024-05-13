@@ -14,7 +14,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Standard_kernel_3">Standard kernel 3</option>
       <option value="standard_kernel_1">standard kernel 1</option>

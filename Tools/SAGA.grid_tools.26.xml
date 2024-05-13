@@ -14,7 +14,7 @@ transmissionMode_DIRECTION $OutputSection_DIRECTION.transmissionMode_DIRECTION
 outputType_ALLOCATION $OutputSection_ALLOCATION.outputType_ALLOCATION
 transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATION]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

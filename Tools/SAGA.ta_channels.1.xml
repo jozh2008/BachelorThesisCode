@@ -13,9 +13,9 @@ response $response
 outputType_BASINS $OutputSection_BASINS.outputType_BASINS
 transmissionMode_BASINS $OutputSection_BASINS.transmissionMode_BASINS]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="CHANNELS" type="data" optional="false" label="Channel Network" help="Channel Network The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="SINKROUTE" type="data" optional="false" label="Sink Route" help="Sink Route The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="CHANNELS" type="data" optional="false" label="Channel Network" help="Channel Network The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Sink Route" help="Sink Route The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="MINSIZE" type="integer" value="0" optional="true" label="Min. Size" help="Minimum size of basin (cells)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

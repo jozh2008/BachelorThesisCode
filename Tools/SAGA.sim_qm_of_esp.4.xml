@@ -18,8 +18,8 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL
 outputType_DIFF $OutputSection_DIFF.outputType_DIFF
 transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="CHANNELS" type="data" optional="false" label="Channel Mask" help="use a zero value for hillslopes, any other value for channel cells. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="CHANNELS" type="data" optional="false" label="Channel Mask" help="use a zero value for hillslopes, any other value for channel cells. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="UPDATE" type="select" optional="true" label="Update" help="Update">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

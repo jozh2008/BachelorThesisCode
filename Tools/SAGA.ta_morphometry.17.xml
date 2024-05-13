@@ -16,7 +16,7 @@ response $response
 outputType_VRM $OutputSection_VRM.outputType_VRM
 transmissionMode_VRM $OutputSection_VRM.transmissionMode_VRM]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
       <option selected="true" value="Circle">Circle</option>
       <option value="Square">Square</option>

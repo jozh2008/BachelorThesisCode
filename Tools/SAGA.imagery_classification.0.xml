@@ -29,12 +29,12 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES
 outputType_QUALITY $OutputSection_QUALITY.outputType_QUALITY
 transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="NORMALISE" type="select" optional="true" label="Normalise" help="Normalise">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="TRAINING_CLASS" type="data" optional="false" label="Class Identifier" help="Class Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="FILE_LOAD" type="data" optional="false" label="Load Statistics from File..." help="Load Statistics from File... The following data types are allowed in the txt file:  plain" format="txt"/>
     <param name="FILE_SAVE" type="data" optional="false" label="Save Statistics to File..." help="Save Statistics to File... The following data types are allowed in the txt file:  plain" format="txt"/>

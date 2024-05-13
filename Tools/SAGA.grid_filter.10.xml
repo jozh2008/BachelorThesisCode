@@ -15,7 +15,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="SIGMA" type="float" value="0.9" optional="true" label="Threshold" help="Threshold"/>
     <param name="ITER" type="integer" value="5" optional="true" label="Number of Iterations for Normal Updating" help="Number of Iterations for Normal Updating"/>
     <param name="VITER" type="integer" value="50" optional="true" label="Number of Iterations for Vertex Updating" help="Number of Iterations for Vertex Updating"/>

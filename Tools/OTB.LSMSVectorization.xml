@@ -14,8 +14,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image, containing initial spectral signatures corresponding to the segmented image (inseg)." help="The input image, containing initial spectral signatures corresponding to the segmented image (inseg). The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="inseg" type="data" optional="false" label="Segmented image where each pixel value is the unique integer label of the segment it belongs to." help="Segmented image where each pixel value is the unique integer label of the segment it belongs to. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image, containing initial spectral signatures corresponding to the segmented image (inseg)." help="The input image, containing initial spectral signatures corresponding to the segmented image (inseg). The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="inseg" type="data" optional="false" label="Segmented image where each pixel value is the unique integer label of the segment it belongs to." help="Segmented image where each pixel value is the unique integer label of the segment it belongs to. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="tilesizex" type="integer" value="500" optional="false" label="Size of tiles along the X-axis for tile-wise processing." help="Size of tiles along the X-axis for tile-wise processing."/>
     <param name="tilesizey" type="integer" value="500" optional="false" label="Size of tiles along the Y-axis for tile-wise processing." help="Size of tiles along the Y-axis for tile-wise processing."/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>

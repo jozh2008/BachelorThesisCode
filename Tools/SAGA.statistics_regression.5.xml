@@ -39,7 +39,7 @@ transmissionMode_INTERCEPT $OutputSection_INTERCEPT.transmissionMode_INTERCEPT
 outputType_SLOPES $OutputSection_SLOPES.outputType_SLOPES
 transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
@@ -61,7 +61,7 @@ transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></comman
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
       <option value="exponential">exponential</option>
       <option selected="true" value="gaussian_weighting">gaussian weighting</option>

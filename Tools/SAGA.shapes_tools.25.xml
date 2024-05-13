@@ -14,7 +14,7 @@ response $response
 outputType_SCENARIO $OutputSection_SCENARIO.outputType_SCENARIO
 transmissionMode_SCENARIO $OutputSection_SCENARIO.transmissionMode_SCENARIO]]></command>
   <inputs>
-    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD_ID" type="data" optional="false" label="Field Identifier" help="Field Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output of..." help="Output of...">
       <option selected="true" value="Identifier">Identifier</option>

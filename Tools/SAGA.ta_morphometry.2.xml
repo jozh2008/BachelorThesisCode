@@ -13,7 +13,7 @@ response $response
 outputType_CONVERGENCE $OutputSection_CONVERGENCE.outputType_CONVERGENCE
 transmissionMode_CONVERGENCE $OutputSection_CONVERGENCE.transmissionMode_CONVERGENCE]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="RADIUS" type="float" value="10" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
     <param name="SLOPE" type="select" optional="true" label="Gradient" help="Gradient">
       <option selected="true" value="false">false</option>

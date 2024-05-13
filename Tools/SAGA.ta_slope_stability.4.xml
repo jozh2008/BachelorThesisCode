@@ -21,11 +21,11 @@ response $response
 outputType_F $OutputSection_F.outputType_F
 transmissionMode_F $OutputSection_F.transmissionMode_F]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="A DEM The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="C" type="data" optional="false" label="Dip/Plunge direction grid (degree) " help="A dip- or plunge direction grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="D" type="data" optional="false" label="Dip/Plunge grid (degree) " help="A dip- or plunge grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="Emin" type="data" optional="false" label="Min friction angle grid (degree) " help="A minimum discontinuity friction angle grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="Emax" type="data" optional="false" label="Max friction angle grid (degree) " help="A maximum discontinuity friction angle grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="A DEM The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="C" type="data" optional="false" label="Dip/Plunge direction grid (degree) " help="A dip- or plunge direction grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="D" type="data" optional="false" label="Dip/Plunge grid (degree) " help="A dip- or plunge grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Emin" type="data" optional="false" label="Min friction angle grid (degree) " help="A minimum discontinuity friction angle grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Emax" type="data" optional="false" label="Max friction angle grid (degree) " help="A maximum discontinuity friction angle grid (in degrees) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="fC" type="float" value="0" optional="true" label="Global dip/plunge direction (degree)" help="Constant value if no raster set"/>
     <param name="fD" type="float" value="35" optional="true" label="Global dip/plunge (degree)" help="Constant value if no raster set"/>
     <param name="fEmin" type="float" value="35" optional="true" label="Min global friction angle (degree)" help="Constant value if no raster set"/>

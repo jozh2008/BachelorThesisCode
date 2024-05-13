@@ -10,7 +10,7 @@ response $response
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="MULTIPOINTS" type="data" optional="false" label="Multipoints" help="Multipoints The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="MULTIPOINTS" type="data" optional="false" label="Multipoints" help="Multipoints The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

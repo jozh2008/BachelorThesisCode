@@ -24,8 +24,8 @@ transmissionMode_TIN_TRIANGLES $OutputSection_TIN_TRIANGLES.transmissionMode_TIN
 outputType_TIN_POLYGONS $OutputSection_TIN_POLYGONS.outputType_TIN_POLYGONS
 transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_POLYGONS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="The method used to identify surface specific points.">
       <option value="Flow_Direction">Flow Direction</option>
       <option value="Flow_Direction_(up_and_down)">Flow Direction (up and down)</option>

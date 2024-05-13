@@ -15,7 +15,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="No title found" help="None The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="No title found" help="None The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="SX" type="integer" value="0" optional="true" label="Abflusspfad-Quelle, x-Wert" help="X-Wert der Quellen-Rasterzelle"/>
     <param name="SY" type="integer" value="0" optional="true" label="Abflusspfad-Quelle, y-Wert" help="Y-Wert der Quellen-Rastertzelle"/>
     <param name="MX" type="integer" value="0" optional="true" label="No title found"/>

@@ -14,7 +14,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Operation" help="Operation">
       <option selected="true" value="Dilation">Dilation</option>
       <option value="Erosion">Erosion</option>

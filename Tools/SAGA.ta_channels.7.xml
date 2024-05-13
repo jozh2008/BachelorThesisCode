@@ -16,7 +16,7 @@ transmissionMode_VALLEY_DEPTH $OutputSection_VALLEY_DEPTH.transmissionMode_VALLE
 outputType_RIDGE_LEVEL $OutputSection_RIDGE_LEVEL.outputType_RIDGE_LEVEL
 transmissionMode_RIDGE_LEVEL $OutputSection_RIDGE_LEVEL.transmissionMode_RIDGE_LEVEL]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="THRESHOLD" type="float" value="1" optional="true" label="Tension Threshold" help="Maximum change in elevation units (e.g. meter), iteration is stopped once maximum change reaches this threshold."/>
     <param name="MAXITER" type="integer" value="0" optional="true" label="Maximum Iterations" help="Maximum number of iterations, ignored if set to zero"/>
     <param name="NOUNDERGROUND" type="select" optional="true" label="Keep Ridge Level above Surface" help="Keep Ridge Level above Surface">

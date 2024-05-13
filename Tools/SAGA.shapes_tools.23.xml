@@ -12,7 +12,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="The shapefile to convert. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="The shapefile to convert. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="FIELD_Z" type="data" optional="false" label="Z" help="Field with z-coordinate information. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="FIELD_M" type="data" optional="false" label="M" help="Field with measure information. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">

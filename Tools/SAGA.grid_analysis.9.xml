@@ -11,7 +11,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="CRITERIA" type="select" optional="true" label="Method" help="Method">
       <option selected="true" value="Maximum">Maximum</option>
       <option value="Minimum">Minimum</option>

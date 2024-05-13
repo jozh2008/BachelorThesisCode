@@ -17,10 +17,10 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="inhh" type="data" optional="false" label="Input image (HH)" help="Input image (HH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="inhv" type="data" optional="false" label="Input image (HV)" help="Input image (HV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="invh" type="data" optional="false" label="Input image (VH)" help="Input image (VH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="invv" type="data" optional="false" label="Input image (VV)" help="Input image (VV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="inhh" type="data" optional="false" label="Input image (HH)" help="Input image (HH) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="inhv" type="data" optional="false" label="Input image (HV)" help="Input image (HV) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="invh" type="data" optional="false" label="Input image (VH)" help="Input image (VH) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="invv" type="data" optional="false" label="Input image (VV)" help="Input image (VV) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image" help="Output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>

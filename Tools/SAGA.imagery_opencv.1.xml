@@ -12,7 +12,7 @@ transmissionMode_REAL $OutputSection_REAL.transmissionMode_REAL
 outputType_IMAG $OutputSection_IMAG.outputType_IMAG
 transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

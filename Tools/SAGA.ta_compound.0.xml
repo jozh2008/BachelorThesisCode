@@ -41,7 +41,7 @@ transmissionMode_VALL_DEPTH $OutputSection_VALL_DEPTH.transmissionMode_VALL_DEPT
 outputType_RSP $OutputSection_RSP.outputType_RSP
 transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="THRESHOLD" type="integer" value="5" optional="true" label="Channel Density" help="Strahler order to begin a channel."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

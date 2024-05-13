@@ -12,7 +12,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="SIZE" type="integer" value="2" optional="true" label="Aggregation Size" help="Aggregation Size"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Maximum">Maximum</option>

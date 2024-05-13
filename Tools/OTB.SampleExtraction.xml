@@ -17,8 +17,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Support image" help="Support image The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
-    <param name="vec" type="data" optional="false" label="Vector data file containing samplingpositions. (OGR format)" help="Vector data file containing samplingpositions. (OGR format) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="Support image" help="Support image The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="vec" type="data" optional="false" label="Vector data file containing samplingpositions. (OGR format)" help="Vector data file containing samplingpositions. (OGR format) The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="outfield" type="select" optional="false" label="Choice between naming method for output fields" help="Choice between naming method for output fields">
       <option value="list">list</option>
       <option selected="true" value="prefix">prefix</option>

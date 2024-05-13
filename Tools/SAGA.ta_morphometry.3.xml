@@ -12,7 +12,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Algorithm for the detection of Surface Specific Points">
       <option value="Flow_Direction">Flow Direction</option>
       <option value="Flow_Direction_(up_and_down)">Flow Direction (up and down)</option>

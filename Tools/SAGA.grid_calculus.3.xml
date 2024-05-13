@@ -11,8 +11,8 @@ response $response
 outputType_C $OutputSection_C.outputType_C
 transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="A" help="A The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="B" type="data" optional="false" label="B" help="B The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="A" type="data" optional="false" label="A" help="A The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="B" type="data" optional="false" label="B" help="B The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

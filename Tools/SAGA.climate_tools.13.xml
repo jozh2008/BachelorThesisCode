@@ -20,9 +20,9 @@ transmissionMode_B_GRID $OutputSection_B_GRID.transmissionMode_B_GRID
 outputType_WINDCORR $OutputSection_WINDCORR.outputType_WINDCORR
 transmissionMode_WINDCORR $OutputSection_WINDCORR.transmissionMode_WINDCORR]]></command>
   <inputs>
-    <param name="BOUNDARY" type="data" optional="false" label="Boundary Layer" help="The absolute vertical distance to the boundary layer. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="WIND" type="data" optional="false" label="Wind Effect" help="Wind Effect The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="OBSERVED" type="data" optional="false" label="Observations" help="Observations used for local scaling factor calibration (e.g. precipitation, cloudiness). The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="BOUNDARY" type="data" optional="false" label="Boundary Layer" help="The absolute vertical distance to the boundary layer. The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="WIND" type="data" optional="false" label="Wind Effect" help="Wind Effect The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="OBSERVED" type="data" optional="false" label="Observations" help="Observations used for local scaling factor calibration (e.g. precipitation, cloudiness). The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="B_SOURCE" type="select" optional="true" label="Scaling Factor" help="Scaling Factor">
       <option selected="true" value="calibrate">calibrate</option>
       <option value="constant">constant</option>

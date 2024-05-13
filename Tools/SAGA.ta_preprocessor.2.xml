@@ -14,8 +14,8 @@ response $response
 outputType_DEM_PREPROC $OutputSection_DEM_PREPROC.outputType_DEM_PREPROC
 transmissionMode_DEM_PREPROC $OutputSection_DEM_PREPROC.transmissionMode_DEM_PREPROC]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="Digital Elevation Model that has to be processed The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="SINKROUTE" type="data" optional="false" label="Sink Route" help="Sink Route The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital Elevation Model that has to be processed The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Sink Route" help="Sink Route The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Deepen_Drainage_Routes">Deepen Drainage Routes</option>
       <option selected="true" value="Fill_Sinks">Fill Sinks</option>

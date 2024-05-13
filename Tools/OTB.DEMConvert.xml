@@ -10,7 +10,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input geo-referenced DEM to convert to general raster format." help="Input geo-referenced DEM to convert to general raster format. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input geo-referenced DEM to convert to general raster format." help="Input geo-referenced DEM to convert to general raster format. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

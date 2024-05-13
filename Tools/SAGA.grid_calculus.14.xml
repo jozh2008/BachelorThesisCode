@@ -11,7 +11,7 @@ response $response
 outputType_CONV $OutputSection_CONV.outputType_CONV
 transmissionMode_CONV $OutputSection_CONV.transmissionMode_CONV]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="CONVERSION" type="select" optional="true" label="Conversion" help="Conversion">
       <option value="Celsius_to_Fahrenheit">Celsius to Fahrenheit</option>
       <option value="Fahrenheit_to_Celsius">Fahrenheit to Celsius</option>

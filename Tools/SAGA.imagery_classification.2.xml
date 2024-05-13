@@ -28,12 +28,12 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES
 outputType_SUMMARY $OutputSection_SUMMARY.outputType_SUMMARY
 transmissionMode_SUMMARY $OutputSection_SUMMARY.transmissionMode_SUMMARY]]></command>
   <inputs>
-    <param name="ONE" type="data" optional="false" label="Classification 1" help="Classification 1 The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="ONE" type="data" optional="false" label="Classification 1" help="Classification 1 The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="ONE_LUT" type="data" optional="false" label="Look-up Table" help="Look-up Table The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ONE_LUT_MIN" type="data" optional="false" label="Value" help="Value The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ONE_LUT_MAX" type="data" optional="false" label="Value (Maximum)" help="Value (Maximum) The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ONE_LUT_NAM" type="data" optional="false" label="Name" help="Name The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="TWO" type="data" optional="false" label="Classification 2" help="Classification 2 The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="TWO" type="data" optional="false" label="Classification 2" help="Classification 2 The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="TWO_LUT" type="data" optional="false" label="Look-up Table" help="Look-up Table The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TWO_LUT_MIN" type="data" optional="false" label="Value" help="Value The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TWO_LUT_MAX" type="data" optional="false" label="Value (Maximum)" help="Value (Maximum) The following data types are allowed in the txt file:  csv" format="txt"/>

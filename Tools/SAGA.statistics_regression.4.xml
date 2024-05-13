@@ -31,9 +31,9 @@ transmissionMode_INTERCEPT $OutputSection_INTERCEPT.transmissionMode_INTERCEPT
 outputType_SLOPE $OutputSection_SLOPE.outputType_SLOPE
 transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

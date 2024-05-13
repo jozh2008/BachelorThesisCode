@@ -25,7 +25,7 @@ response $response
 outputType_STATS $OutputSection_STATS.outputType_STATS
 transmissionMode_STATS $OutputSection_STATS.transmissionMode_STATS]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="DATA_CELLS" type="select" optional="true" label="Number of Data Cells" help="Number of Data Cells">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

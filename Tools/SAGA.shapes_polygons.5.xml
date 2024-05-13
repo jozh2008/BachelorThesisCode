@@ -24,7 +24,7 @@ response $response
 outputType_DISSOLVED $OutputSection_DISSOLVED.outputType_DISSOLVED
 transmissionMode_DISSOLVED $OutputSection_DISSOLVED.transmissionMode_DISSOLVED]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="FIELDS" type="data" optional="false" label="Dissolve Field(s)" help="Dissolve Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STATISTICS" type="data" optional="false" label="Statistics Field(s)" help="Statistics Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STAT_SUM" type="select" optional="true" label="Sum" help="Sum">

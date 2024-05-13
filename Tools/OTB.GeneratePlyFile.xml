@@ -16,7 +16,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="indem" type="data" optional="false" label="The image should be either a projected DEM or a 3D grid containing 3D point coordinates and a validity mask." help="The image should be either a projected DEM or a 3D grid containing 3D point coordinates and a validity mask. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="indem" type="data" optional="false" label="The image should be either a projected DEM or a 3D grid containing 3D point coordinates and a validity mask." help="The image should be either a projected DEM or a 3D grid containing 3D point coordinates and a validity mask. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="mode" type="select" optional="false" label="mode" help="mode">
       <option value="3dgrid">3dgrid</option>
       <option selected="true" value="dem">dem</option>
@@ -34,7 +34,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="true">true</option>
     </param>
     <param name="map.epsg.code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
-    <param name="incolor" type="data" optional="false" label="If the color image has 4 bands it will be interpreted as Red, Green, Blue, NIR. In other cases, only the first one is used (gray scale colors). The color values are expected in the range 0 - 255, and will be embedded with each 3D point of the PLY file." help="If the color image has 4 bands it will be interpreted as Red, Green, Blue, NIR. In other cases, only the first one is used (gray scale colors). The color values are expected in the range 0 - 255, and will be embedded with each 3D point of the PLY file. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="incolor" type="data" optional="false" label="If the color image has 4 bands it will be interpreted as Red, Green, Blue, NIR. In other cases, only the first one is used (gray scale colors). The color values are expected in the range 0 - 255, and will be embedded with each 3D point of the PLY file." help="If the color image has 4 bands it will be interpreted as Red, Green, Blue, NIR. In other cases, only the first one is used (gray scale colors). The color values are expected in the range 0 - 255, and will be embedded with each 3D point of the PLY file. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

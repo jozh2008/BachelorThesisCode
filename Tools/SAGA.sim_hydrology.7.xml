@@ -20,7 +20,7 @@ transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD
 outputType_CONC $OutputSection_CONC.outputType_CONC
 transmissionMode_CONC $OutputSection_CONC.transmissionMode_CONC]]></command>
   <inputs>
-    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="SURF_E" type="float" value="0.001" optional="true" label="Surface Approximation Threshold" help="Surface Approximation Threshold"/>
     <param name="CONC_IN" type="float" value="5" optional="true" label="Inlet Concentration" help="Inlet Concentration"/>
     <param name="CONC_OUT" type="float" value="3" optional="true" label="Outlet Concentration" help="Outlet Concentration"/>

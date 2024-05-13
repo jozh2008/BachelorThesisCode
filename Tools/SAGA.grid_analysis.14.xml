@@ -21,9 +21,9 @@ transmissionMode_SUM $OutputSection_SUM.transmissionMode_SUM
 outputType_POLYGONS $OutputSection_POLYGONS.outputType_POLYGONS
 transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></command>
   <inputs>
-    <param name="SAND" type="data" optional="false" label="Sand" help="sand content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="SILT" type="data" optional="false" label="Silt" help="silt content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="CLAY" type="data" optional="false" label="Clay" help="clay content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="SAND" type="data" optional="false" label="Sand" help="sand content given as percentage The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SILT" type="data" optional="false" label="Silt" help="silt content given as percentage The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="CLAY" type="data" optional="false" label="Clay" help="clay content given as percentage The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="SCHEME" type="select" optional="true" label="Classification" help="Classification">
       <option value="Belgium/France">Belgium/France</option>
       <option value="Germany_KA5">Germany KA5</option>

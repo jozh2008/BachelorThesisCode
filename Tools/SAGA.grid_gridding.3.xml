@@ -23,7 +23,7 @@ response $response
 outputType_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.outputType_TARGET_OUT_GRID
 transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode_TARGET_OUT_GRID]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
       <option value="grid_or_grid_system">grid or grid system</option>
@@ -40,7 +40,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Linear">Linear</option>
       <option value="Non-Sibsonian">Non-Sibsonian</option>

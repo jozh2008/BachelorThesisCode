@@ -20,7 +20,7 @@ transmissionMode_CLUSTER $OutputSection_CLUSTER.transmissionMode_CLUSTER
 outputType_STATISTICS $OutputSection_STATISTICS.outputType_STATISTICS
 transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTICS]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Combined_Minimum_Distance_/_Hillclimbing">Combined Minimum Distance / Hillclimbing</option>
       <option selected="true" value="Hill-Climbing_(Rubin_1967)">Hill-Climbing (Rubin 1967)</option>

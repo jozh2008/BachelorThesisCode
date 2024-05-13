@@ -43,8 +43,8 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
     <param name="YMIN" type="float" value="0" optional="true" label="Bottom" help="Bottom"/>
     <param name="YMAX" type="float" value="100" optional="true" label="Top" help="Top"/>
     <param name="NY" type="integer" value="10" optional="true" label="Rows" help="Rows"/>
-    <param name="SHAPESLIST" type="data" optional="false" label="Shapes Layers" help="Shapes Layers The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="GRIDLIST" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SHAPESLIST" type="data" optional="false" label="Shapes Layers" help="Shapes Layers The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="GRIDLIST" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="USEOFF" type="select" optional="true" label="Use Offset" help="Use Offset">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

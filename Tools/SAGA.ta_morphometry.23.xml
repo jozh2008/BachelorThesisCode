@@ -34,7 +34,7 @@ transmissionMode_MAXIC $OutputSection_MAXIC.transmissionMode_MAXIC
 outputType_MINIC $OutputSection_MINIC.outputType_MINIC
 transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="SIZE" type="integer" value="5" optional="true" label="Scale Radius (Cells)" help="Size of processing window (= 1 + 2 * radius) given as number of cells"/>
     <param name="TOL_SLOPE" type="float" value="1" optional="true" label="Slope Tolerance" help="Slope tolerance that defines a 'flat' surface (degrees)"/>
     <param name="TOL_CURVE" type="float" value="0.0001" optional="true" label="Curvature Tolerance" help="Curvature tolerance that defines 'planar' surface"/>

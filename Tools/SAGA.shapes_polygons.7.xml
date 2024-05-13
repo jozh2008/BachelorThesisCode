@@ -15,7 +15,7 @@ transmissionMode_INDEX $OutputSection_INDEX.transmissionMode_INDEX
 outputType_DMAX $OutputSection_DMAX.outputType_DMAX
 transmissionMode_DMAX $OutputSection_DMAX.transmissionMode_DMAX]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="GYROS" type="select" optional="true" label="Diameter of Gyration" help="Diameter of Gyration">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

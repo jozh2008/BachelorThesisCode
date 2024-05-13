@@ -16,7 +16,7 @@ transmissionMode_SUNSET $OutputSection_SUNSET.transmissionMode_SUNSET
 outputType_LENGTH $OutputSection_LENGTH.outputType_LENGTH
 transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></command>
   <inputs>
-    <param name="TARGET" type="data" optional="false" label="Target System" help="Target System The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="TARGET" type="data" optional="false" label="Target System" help="Target System The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="DAY_MIN" type="text" optional="true" label="Day of Month (min value)" help="Day of Month"/>
     <param name="TIME" type="select" optional="true" label="Time" help="Time">
       <option selected="true" value="local">local</option>

@@ -58,12 +58,12 @@ transmissionMode_FSPUR $OutputSection_FSPUR.transmissionMode_FSPUR
 outputType_SSPUR $OutputSection_SSPUR.outputType_SSPUR
 transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="MINCURV" type="data" optional="false" label="Minimum Curvature" help="Minimum Curvature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="MAXCURV" type="data" optional="false" label="Maximum Curvature" help="Maximum Curvature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="PCURV" type="data" optional="false" label="Profile Curvature" help="Profile Curvature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="TCURV" type="data" optional="false" label="Tangential Curvature" help="Tangential Curvature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="MINCURV" type="data" optional="false" label="Minimum Curvature" help="Minimum Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="MAXCURV" type="data" optional="false" label="Maximum Curvature" help="Maximum Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="PCURV" type="data" optional="false" label="Profile Curvature" help="Profile Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="TCURV" type="data" optional="false" label="Tangential Curvature" help="Tangential Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="INPUT" type="select" optional="true" label="Input" help="if elevation is selected, slopes and curvatures will be calculated internally">
       <option selected="true" value="elevation">elevation</option>
       <option value="slope_and_curvatures">slope and curvatures</option>

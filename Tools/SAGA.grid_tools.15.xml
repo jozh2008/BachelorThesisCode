@@ -30,7 +30,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid to reclassify The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid to reclassify The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Select the desired method: 1. a single value or a range defined by a single value is reclassified, 2. a range of values is reclassified, 3. the lookup table is used to reclassify the grid.">
       <option value="range">range</option>
       <option value="simple_table">simple table</option>

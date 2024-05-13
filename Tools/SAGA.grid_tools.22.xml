@@ -14,7 +14,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   <inputs>
     <param name="TABLE" type="data" optional="false" label="Table" help="The table with the (numeric) data values for each class. The tool creates a grid for each table column (besides the ID). The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ID_FIELD" type="data" optional="false" label="Attribute" help="The attribute with the class IDs, used to link the table and the grid. The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="CLASSES" type="data" optional="false" label="Classes" help="The grid coded with the class IDs. The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="CLASSES" type="data" optional="false" label="Classes" help="The grid coded with the class IDs. The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

@@ -16,8 +16,8 @@ response $response
 outputType_VECTORS $OutputSection_VECTORS.outputType_VECTORS
 transmissionMode_VECTORS $OutputSection_VECTORS.transmissionMode_VECTORS]]></command>
   <inputs>
-    <param name="X" type="data" optional="false" label="X Component" help="X Component The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="Y" type="data" optional="false" label="Y Component" help="Y Component The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="X" type="data" optional="false" label="X Component" help="X Component The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="Y" type="data" optional="false" label="Y Component" help="Y Component The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="STEP" type="integer" value="1" optional="true" label="Step" help="Step"/>
     <param name="SIZE_MIN" type="float" optional="true" label="Size Range (min value)" help="size range as percentage of step"/>
     <param name="SIZE_MAX" type="float" optional="true" label="Size Range (max value)" help="size range as percentage of step"/>

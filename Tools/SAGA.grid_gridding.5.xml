@@ -39,7 +39,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="FRAME" type="select" optional="true" label="Add Frame" help="Add Frame">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

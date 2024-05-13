@@ -14,7 +14,7 @@ response $response
 outputType_TPI $OutputSection_TPI.outputType_TPI
 transmissionMode_TPI $OutputSection_TPI.transmissionMode_TPI]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="SCALE_MIN" type="integer" value="1" optional="true" label="Minimum Scale" help="kernel radius in cells"/>
     <param name="SCALE_MAX" type="integer" value="8" optional="true" label="Maximum Scale" help="kernel radius in cells"/>
     <param name="SCALE_NUM" type="integer" value="3" optional="true" label="Number of Scales" help="Number of Scales"/>

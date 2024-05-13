@@ -12,7 +12,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Input Grids" help="Input Grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Input Grids" help="Input Grids The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="ORDERED" type="select" optional="true" label="Ordered" help="Ordered">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

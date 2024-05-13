@@ -20,7 +20,7 @@ response $response
 outputType_out.vd $OutputSection_out.vd.outputType_out.vd
 transmissionMode_out.vd $OutputSection_out.vd.transmissionMode_out.vd]]></command>
   <inputs>
-    <param name="in.vd" type="data" optional="false" label="The input vector data to reproject" help="The input vector data to reproject The following data types are allowed in the txt file:  json, zip, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="in.vd" type="data" optional="false" label="The input vector data to reproject" help="The input vector data to reproject The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, zip, json" format="txt"/>
     <param name="in.kwl" type="data" optional="false" label="Optional input image to fill vector data with image kwl." help="Optional input image to fill vector data with image kwl. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="out.proj" type="select" optional="false" label="out.proj" help="out.proj">
       <option selected="true" value="image">image</option>

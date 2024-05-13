@@ -27,7 +27,7 @@ transmissionMode_CATEGORY $OutputSection_CATEGORY.transmissionMode_CATEGORY
 outputType_COVERAGE $OutputSection_COVERAGE.outputType_COVERAGE
 transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Category" help="The attribute field that specifies the category a polygon belongs to. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose cell wise, if you have not many polygons. Polygon wise will show much better performance, if you have many (small) polygons.">
       <option value="cell_wise">cell wise</option>
@@ -52,7 +52,7 @@ transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

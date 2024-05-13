@@ -14,9 +14,9 @@ response $response
 outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
 transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features Grid" help="Features Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
-    <param name="VALUE" type="data" optional="false" label="Value Grid" help="Value Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
-    <param name="THRESHOLDGRID" type="data" optional="false" label="Threshold Grid" help="Threshold Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features Grid" help="Features Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="VALUE" type="data" optional="false" label="Value Grid" help="Value Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="THRESHOLDGRID" type="data" optional="false" label="Threshold Grid" help="Threshold Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="THRESHOLD" type="float" value="0" optional="true" label="Threshold" help="Threshold (Grid Units)"/>
     <param name="THRESHOLDTYPE" type="select" optional="true" label="Threshold Type" help="Threshold Type">
       <option selected="true" value="Absolute">Absolute</option>

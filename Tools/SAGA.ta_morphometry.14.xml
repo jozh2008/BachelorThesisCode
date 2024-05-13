@@ -21,7 +21,7 @@ transmissionMode_SH $OutputSection_SH.transmissionMode_SH
 outputType_MS $OutputSection_MS.outputType_MS
 transmissionMode_MS $OutputSection_MS.transmissionMode_MS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="W" type="float" value="0.5" optional="true" label="w" help="The parameter weights the influence of catchment size on relative elevation (inversely proportional)."/>
     <param name="T" type="float" value="10" optional="true" label="t" help="The parameter controls the amount by which a maximum in the neighbourhood of a cell is taken over into the cell (considering the local slope between the cells). The smaller 't' and/or the smaller the slope, the more of the maximum value is taken over into the cell. This results in a greater generalization/smoothing of the result. The greater 't' and/or the higher the slope, the less is taken over into the cell and the result will show a more irregular pattern caused by small changes in elevation between the cells."/>
     <param name="E" type="float" value="2" optional="true" label="e" help="The parameter controls the position of relative height maxima as a function of slope."/>

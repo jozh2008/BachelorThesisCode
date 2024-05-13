@@ -18,7 +18,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The image to segment." help="The image to segment. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The image to segment." help="The image to segment. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="mask" type="text" optional="true" label="Mask mathematical expression (only if support image is given)" help="Mask mathematical expression (only if support image is given)"/>
     <param name="expr" type="text" optional="false" label="Formula used for connected component segmentation" help="Formula used for connected component segmentation"/>
     <param name="minsize" type="integer" value="2" optional="true" label="Min object size (area in pixel)" help="Min object size (area in pixel)"/>

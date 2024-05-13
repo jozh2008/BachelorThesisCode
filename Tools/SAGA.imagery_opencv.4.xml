@@ -27,8 +27,8 @@ transmissionMode_DISPARITY $OutputSection_DISPARITY.transmissionMode_DISPARITY
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="LEFT" type="data" optional="false" label="Left Image" help="Left Image The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="RIGHT" type="data" optional="false" label="Right Image" help="Right Image The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="LEFT" type="data" optional="false" label="Left Image" help="Left Image The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="RIGHT" type="data" optional="false" label="Right Image" help="Right Image The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="ALGORITHM" type="select" optional="true" label="Algorithm" help="Algorithm">
       <option selected="true" value="Block_Matching">Block Matching</option>
       <option value="Modified_Hirschmuller">Modified Hirschmuller</option>

@@ -26,8 +26,8 @@ transmissionMode_INFO_MODEL $OutputSection_INFO_MODEL.transmissionMode_INFO_MODE
 outputType_INFO_STEPS $OutputSection_INFO_STEPS.outputType_INFO_STEPS
 transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEPS]]></command>
   <inputs>
-    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>

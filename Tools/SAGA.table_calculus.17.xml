@@ -58,7 +58,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option value="true">true</option>
     </param>
     <param name="PCTL_VAL" type="float" value="50" optional="true" label="Value" help="Value"/>
-    <param name="TABLE" type="data" optional="false" label="Table" help="Table The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="TABLE" type="data" optional="false" label="Table" help="Table The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELDS" type="data" optional="false" label="Attributes" help="If no field is selected statistics will be built from all numeric fields. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

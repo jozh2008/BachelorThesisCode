@@ -22,7 +22,7 @@ transmissionMode_NDC $OutputSection_NDC.transmissionMode_NDC
 outputType_CVN $OutputSection_CVN.outputType_CVN
 transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input Grid" help="Input Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input Grid" help="Input Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="WINSIZE" type="select" optional="true" label="Size of Analysis Window" help="Size of Analysis Window">
       <option selected="true" value="3_X_3">3 X 3</option>
       <option value="5_X_5">5 X 5</option>

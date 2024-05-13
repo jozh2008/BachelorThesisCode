@@ -12,7 +12,7 @@ response $response
 outputType_THINNED $OutputSection_THINNED.outputType_THINNED
 transmissionMode_THINNED $OutputSection_THINNED.transmissionMode_THINNED]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RESOLUTION" type="float" value="1" optional="true" label="Resolution" help="Resolution"/>
     <param name="prefer" type="select" label="Choose the Prefer">

@@ -17,8 +17,8 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR
 outputType_C $OutputSection_C.outputType_C
 transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="Initial State" help="Initial State The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="B" type="data" optional="false" label="Final State" help="Final State The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="A" type="data" optional="false" label="Initial State" help="Initial State The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="B" type="data" optional="false" label="Final State" help="Final State The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="ANGLE" type="select" optional="true" label="Angle Calculation" help="angle calculation is only available when exact two features are compared">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

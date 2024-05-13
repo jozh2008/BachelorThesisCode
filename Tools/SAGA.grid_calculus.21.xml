@@ -14,8 +14,8 @@ response $response
 outputType_MATCHED $OutputSection_MATCHED.outputType_MATCHED
 transmissionMode_MATCHED $OutputSection_MATCHED.transmissionMode_MATCHED]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="REFERENCE" type="data" optional="false" label="Reference Grid" help="Reference Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="REFERENCE" type="data" optional="false" label="Reference Grid" help="Reference Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option selected="true" value="histogram">histogram</option>
       <option value="standard_deviation">standard deviation</option>

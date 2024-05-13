@@ -24,7 +24,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image filename" help="Input image filename The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image filename" help="Input image filename The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image filename" help="Output image filename">
       <option value="double">double</option>
       <option value="float">float</option>
@@ -65,7 +65,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     <param name="method.continuous.min" type="float" value="0" optional="false" label="Set the lower input value of the mapping range." help="Set the lower input value of the mapping range."/>
     <param name="method.continuous.max" type="float" value="255" optional="false" label="Set the higher input value of the mapping range." help="Set the higher input value of the mapping range."/>
     <param name="method.optimal.background" type="integer" value="0" optional="false" label="Value of the background label" help="Value of the background label"/>
-    <param name="method.image.in" type="data" optional="false" label="Support image filename. For each label, the LUT is calculated from the mean pixel value in the support image, over the corresponding labeled areas. First of all, the support image is normalized with extrema rejection" help="Support image filename. For each label, the LUT is calculated from the mean pixel value in the support image, over the corresponding labeled areas. First of all, the support image is normalized with extrema rejection The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="method.image.in" type="data" optional="false" label="Support image filename. For each label, the LUT is calculated from the mean pixel value in the support image, over the corresponding labeled areas. First of all, the support image is normalized with extrema rejection" help="Support image filename. For each label, the LUT is calculated from the mean pixel value in the support image, over the corresponding labeled areas. First of all, the support image is normalized with extrema rejection The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="method.image.nodatavalue" type="float" value="0" optional="true" label="NoData value for each channel of the support image, which will not be handled in the LUT estimation. If NOT checked, ALL the pixel values of the support image will be handled in the LUT estimation." help="NoData value for each channel of the support image, which will not be handled in the LUT estimation. If NOT checked, ALL the pixel values of the support image will be handled in the LUT estimation."/>
     <param name="method.image.low" type="integer" value="2" optional="true" label="lower quantile for image normalization" help="lower quantile for image normalization"/>
     <param name="method.image.up" type="integer" value="2" optional="true" label="upper quantile for image normalization" help="upper quantile for image normalization"/>

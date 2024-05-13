@@ -16,8 +16,8 @@ transmissionMode_PROFILE $OutputSection_PROFILE.transmissionMode_PROFILE
 outputType_PROFILES $OutputSection_PROFILES.outputType_PROFILES
 transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Additional values that shall be saved to the output table. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Additional values that shall be saved to the output table. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="NAME" type="data" optional="false" label="Name" help="Naming for split lines The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="SPLIT" type="select" optional="true" label="Each Line as new Profile" help="Each Line as new Profile">

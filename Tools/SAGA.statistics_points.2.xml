@@ -17,7 +17,7 @@ transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE
 outputType_COVARIANCE $OutputSection_COVARIANCE.outputType_COVARIANCE
 transmissionMode_COVARIANCE $OutputSection_COVARIANCE.transmissionMode_COVARIANCE]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DISTCOUNT" type="integer" value="10" optional="true" label="Number of Distance Classes" help="Number of Distance Classes"/>
     <param name="NSKIP" type="integer" value="1" optional="true" label="Skip Number" help="Skip Number"/>

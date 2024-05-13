@@ -21,8 +21,8 @@ transmissionMode_TMIN_MEAN $OutputSection_TMIN_MEAN.transmissionMode_TMIN_MEAN
 outputType_TMIN_MIN $OutputSection_TMIN_MIN.outputType_TMIN_MIN
 transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></command>
   <inputs>
-    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

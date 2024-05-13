@@ -17,7 +17,7 @@ response $response
 outputType_TEXTURE $OutputSection_TEXTURE.outputType_TEXTURE
 transmissionMode_TEXTURE $OutputSection_TEXTURE.transmissionMode_TEXTURE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="EPSILON" type="float" value="1" optional="true" label="Flat Area Threshold" help="maximum difference between original and median filtered elevation (3x3 moving window) that still is recognized flat"/>
     <param name="SCALE" type="integer" value="10" optional="true" label="Scale (Cells)" help="Scale (Cells)"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">

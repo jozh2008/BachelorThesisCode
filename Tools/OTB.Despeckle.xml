@@ -21,7 +21,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image." help="Input image. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image." help="Input image. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image." help="Output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>

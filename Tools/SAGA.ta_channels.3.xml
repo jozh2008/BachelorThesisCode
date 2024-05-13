@@ -16,8 +16,8 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE
 outputType_BASELEVEL $OutputSection_BASELEVEL.outputType_BASELEVEL
 transmissionMode_BASELEVEL $OutputSection_BASELEVEL.transmissionMode_BASELEVEL]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="A grid that contains elevation data. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="CHANNELS" type="data" optional="false" label="Channel Network" help="A grid providing information about the channel network. It is assumed that no-data cells are not part of the channel network. Vice versa all others cells are recognised as channel network members. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="A grid that contains elevation data. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="CHANNELS" type="data" optional="false" label="Channel Network" help="A grid providing information about the channel network. It is assumed that no-data cells are not part of the channel network. Vice versa all others cells are recognised as channel network members. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="THRESHOLD" type="float" value="1" optional="true" label="Tension Threshold" help="Maximum change in elevation units (e.g. meter), iteration is stopped once maximum change reaches this threshold."/>
     <param name="MAXITER" type="integer" value="0" optional="true" label="Maximum Iterations" help="Maximum number of iterations, ignored if set to zero"/>
     <param name="NOUNDERGROUND" type="select" optional="true" label="Keep Base Level below Surface" help="Keep Base Level below Surface">

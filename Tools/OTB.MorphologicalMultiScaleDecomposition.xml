@@ -23,7 +23,7 @@ transmissionMode_outconcave $OutputSection_outconcave.transmissionMode_outconcav
 outputType_outleveling $OutputSection_outleveling.outputType_outleveling
 transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleveling]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to be classified." help="The input image to be classified. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to be classified." help="The input image to be classified. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="outconvex" type="select" optional="false" label="The output convex image with N bands" help="The output convex image with N bands">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>

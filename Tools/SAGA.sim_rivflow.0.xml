@@ -32,9 +32,9 @@ transmissionMode_OUTPUT8 $OutputSection_OUTPUT8.transmissionMode_OUTPUT8
 outputType_OUTPUT9 $OutputSection_OUTPUT9.outputType_OUTPUT9
 transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="DTM" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="INPUT2" type="data" optional="false" label="HGGrid" help="Eingaberaster der Hauptgerinnerasterzellen des Flussnetzwerkes The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="INPUT3" type="data" optional="false" label="statisches Entnahmeraster" help="Eingaberaster mit Angaben zur statischen Flaechenwasserentnahme. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="DTM" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT2" type="data" optional="false" label="HGGrid" help="Eingaberaster der Hauptgerinnerasterzellen des Flussnetzwerkes The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT3" type="data" optional="false" label="statisches Entnahmeraster" help="Eingaberaster mit Angaben zur statischen Flaechenwasserentnahme. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="WCons" type="select" optional="true" label="Anteilige Flaechenwasserentnahme" help="Wenn gesetzt, werden die Werte des statischen Entahmerasters anteilig entnommen und als Raster statWUse ausgegeben">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

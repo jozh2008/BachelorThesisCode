@@ -23,8 +23,8 @@ transmissionMode_TSAVI $OutputSection_TSAVI.transmissionMode_TSAVI
 outputType_ATSAVI $OutputSection_ATSAVI.outputType_ATSAVI
 transmissionMode_ATSAVI $OutputSection_ATSAVI.transmissionMode_ATSAVI]]></command>
   <inputs>
-    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="INTERCEPT" type="float" value="0" optional="true" label="Intercept of Soil Line" help="Intercept of Soil Line"/>
     <param name="SLOPE" type="float" value="0.5" optional="true" label="Slope of Soil Line" help="Slope of Soil Line"/>
     <param name="prefer" type="select" label="Choose the Prefer">

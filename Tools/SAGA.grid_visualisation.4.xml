@@ -23,9 +23,9 @@ transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB
 outputType_RGB_Z $OutputSection_RGB_Z.outputType_RGB_Z
 transmissionMode_RGB_Z $OutputSection_RGB_Z.transmissionMode_RGB_Z]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="IMAGE" type="data" optional="false" label="Overlay Image" help="Overlay Image The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="SHAPES" type="data" optional="false" label="Shapes to project" help="Shapes to project The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="IMAGE" type="data" optional="false" label="Overlay Image" help="Overlay Image The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes to project" help="Shapes to project The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="ZEXAGG" type="float" value="1" optional="true" label="Exaggeration" help="Exaggeration"/>
     <param name="ZEXAGG_MIN" type="float" value="10" optional="true" label="Minimum Exaggeration [%]" help="Minimum Exaggeration [%]"/>
     <param name="Z_ROTATE" type="float" value="0" optional="true" label="Image Rotation [Degree]" help="Image Rotation [Degree]"/>

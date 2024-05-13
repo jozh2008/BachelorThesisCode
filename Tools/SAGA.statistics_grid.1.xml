@@ -27,7 +27,7 @@ transmissionMode_DEVMEAN $OutputSection_DEVMEAN.transmissionMode_DEVMEAN
 outputType_PERCENT $OutputSection_PERCENT.outputType_PERCENT
 transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
       <option selected="true" value="Circle">Circle</option>
       <option value="Square">Square</option>

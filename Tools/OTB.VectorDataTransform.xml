@@ -17,7 +17,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="vd" type="data" optional="false" label="Input vector data file to transform" help="Input vector data file to transform The following data types are allowed in the txt file:  xml, zip, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="vd" type="data" optional="false" label="Input vector data file to transform" help="Input vector data file to transform The following data types are allowed in the txt file:  json, xml, zip, vnd.google-earth.kml+xml" format="txt"/>
     <param name="in" type="data" optional="false" label="Image defining the reference coordinate system in which the transform is applied. Both projected and sensor images are supported." help="Image defining the reference coordinate system in which the transform is applied. Both projected and sensor images are supported. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="transform.tx" type="float" value="0" optional="false" label="Translation in the X direction (in pixels)" help="Translation in the X direction (in pixels)"/>
     <param name="transform.ty" type="float" value="0" optional="false" label="Translation in the Y direction (in pixels)" help="Translation in the Y direction (in pixels)"/>

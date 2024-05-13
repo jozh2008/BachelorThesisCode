@@ -12,7 +12,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input Vector Data" help="Input Vector Data The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml, zip" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input Vector Data" help="Input Vector Data The following data types are allowed in the txt file:  xml, zip, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="fn" type="text" optional="false" label="Field name" help="Field name"/>
     <param name="fv" type="text" optional="false" label="Field value" help="Field value"/>
     <param name="prefer" type="select" label="Choose the Prefer">

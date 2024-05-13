@@ -23,7 +23,7 @@ transmissionMode_BASINS $OutputSection_BASINS.transmissionMode_BASINS
 outputType_NODES $OutputSection_NODES.outputType_NODES
 transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="THRESHOLD" type="integer" value="5" optional="true" label="Threshold" help="Strahler order to begin a channel."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

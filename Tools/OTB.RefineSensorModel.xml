@@ -22,8 +22,8 @@ transmissionMode_outstat $OutputSection_outstat.transmissionMode_outstat
 outputType_outvector $OutputSection_outvector.outputType_outvector
 transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]></command>
   <inputs>
-    <param name="ingeom" type="data" optional="false" label="Geom file containing the sensor model to refine" help="Geom file containing the sensor model to refine The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="inpoints" type="data" optional="false" label="Input file containing tie points. Points are stored in following format: row col lon lat. Line beginning with # are ignored." help="Input file containing tie points. Points are stored in following format: row col lon lat. Line beginning with # are ignored. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="ingeom" type="data" optional="false" label="Geom file containing the sensor model to refine" help="Geom file containing the sensor model to refine The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="inpoints" type="data" optional="false" label="Input file containing tie points. Points are stored in following format: row col lon lat. Line beginning with # are ignored." help="Input file containing tie points. Points are stored in following format: row col lon lat. Line beginning with # are ignored. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="map" type="select" optional="false" label="Defines the map projection to be used." help="Defines the map projection to be used.">
       <option value="epsg">epsg</option>
       <option value="lambert2">lambert2</option>

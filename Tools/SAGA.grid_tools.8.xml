@@ -12,7 +12,7 @@ response $response
 outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
 transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Type" help="Type">
       <option value="cell's_value">cell's value</option>
       <option selected="true" value="fixed">fixed</option>

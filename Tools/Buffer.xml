@@ -11,7 +11,7 @@ response $response
 outputType_Result $OutputSection_Result.outputType_Result
 transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
   <inputs>
-    <param name="InputPolygon" type="data" optional="false" label="Polygon to be buffered" help="URI to a set of GML that describes the polygon. The following data types are allowed in the txt file:  xml, json" format="txt"/>
+    <param name="InputPolygon" type="data" optional="false" label="Polygon to be buffered" help="URI to a set of GML that describes the polygon. The following data types are allowed in the txt file:  json, xml" format="txt"/>
     <param name="BufferDistance" type="float" value="10" optional="true" label="Buffer Distance" help="Distance to be used to calculate buffer."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

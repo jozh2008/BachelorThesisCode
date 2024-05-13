@@ -14,7 +14,7 @@ response $response
 outputType_CARTES $OutputSection_CARTES.outputType_CARTES
 transmissionMode_CARTES $OutputSection_CARTES.transmissionMode_CARTES]]></command>
   <inputs>
-    <param name="POLAR" type="data" optional="false" label="Polar Coordinates" help="Polar Coordinates The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POLAR" type="data" optional="false" label="Polar Coordinates" help="Polar Coordinates The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="F_EXAGG" type="data" optional="false" label="Exaggeration" help="Exaggeration The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="D_EXAGG" type="float" value="1" optional="true" label="Exaggeration Factor" help="Exaggeration Factor"/>
     <param name="RADIUS" type="float" value="6371000" optional="true" label="Radius" help="Radius"/>

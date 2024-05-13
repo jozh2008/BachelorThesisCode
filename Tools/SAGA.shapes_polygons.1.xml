@@ -11,7 +11,7 @@ response $response
 outputType_CENTROIDS $OutputSection_CENTROIDS.outputType_CENTROIDS
 transmissionMode_CENTROIDS $OutputSection_CENTROIDS.transmissionMode_CENTROIDS]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Centroids for each part" help="Centroids for each part">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

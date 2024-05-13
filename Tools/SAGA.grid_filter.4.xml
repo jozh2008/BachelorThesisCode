@@ -13,7 +13,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="FILTER" type="data" optional="false" label="Filter Matrix" help="Filter Matrix The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ABSOLUTE" type="select" optional="true" label="Absolute Weighting" help="Absolute Weighting">
       <option selected="true" value="false">false</option>

@@ -17,7 +17,7 @@ transmissionMode_MAJ_COUNT $OutputSection_MAJ_COUNT.transmissionMode_MAJ_COUNT
 outputType_MAJ_VALUE $OutputSection_MAJ_VALUE.outputType_MAJ_VALUE
 transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="RADIUS" type="integer" value="0" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

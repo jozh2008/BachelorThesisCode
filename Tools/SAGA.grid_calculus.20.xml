@@ -44,8 +44,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option value="unsigned_2_byte_integer">unsigned 2 byte integer</option>
       <option value="unsigned_4_byte_integer">unsigned 4 byte integer</option>
     </param>
-    <param name="GRIDS" type="data" optional="false" label="Grid Collections" help="in the formula these grid collections are addressed in order of the list as 'g1, g2, g3, ...' The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
-    <param name="XGRIDS" type="data" optional="false" label="Grid Collections from different Systems" help="in the formula these grid collections are addressed in order of the list as 'h1, h2, h3, ...' The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grid Collections" help="in the formula these grid collections are addressed in order of the list as 'g1, g2, g3, ...' The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="XGRIDS" type="data" optional="false" label="Grid Collections from different Systems" help="in the formula these grid collections are addressed in order of the list as 'h1, h2, h3, ...' The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

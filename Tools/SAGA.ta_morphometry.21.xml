@@ -19,7 +19,7 @@ response $response
 outputType_CONVEXITY $OutputSection_CONVEXITY.outputType_CONVEXITY
 transmissionMode_CONVEXITY $OutputSection_CONVEXITY.transmissionMode_CONVEXITY]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="KERNEL" type="select" optional="true" label="Laplacian Filter Kernel" help="Laplacian Filter Kernel">
       <option value="conventional_eight-neihbourhood">conventional eight-neihbourhood</option>
       <option selected="true" value="conventional_four-neighbourhood">conventional four-neighbourhood</option>

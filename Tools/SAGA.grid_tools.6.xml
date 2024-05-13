@@ -12,7 +12,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Neighbourhood" help="Neumann: the four horizontally and vertically neighboured cells; Moore: all eight adjacent cells">
       <option selected="true" value="Moore">Moore</option>
       <option value="Neumann">Neumann</option>

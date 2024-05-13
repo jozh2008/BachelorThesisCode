@@ -395,9 +395,8 @@ class Galaxyxmltool:
             elif param_extended_schema is not None:
                 param = self.create_select_param_output(output_param_name, param_dict, param_extended_schema)
                 self.extract_enum(param_extended_schema, enum_values=enum_values)
-            elif param_type == "number" or param_type =="integer":
-                # print(param_name)
-                # param = self.create_float_param(output_param_name, param_dict, is_nullable=False)
+            elif param_type == "number" or param_type =="integer" or param_type=="boolean":
+                # if not a string then param is None
                 param = None
             else:
                 # Handle unsupported parameter types gracefully
@@ -419,7 +418,6 @@ class Galaxyxmltool:
                 name=param_name,
                 available_transmissions=transmission_schema
             )
-            # output_section.append(output_param_section)
             inputs.append(output_param_section)
 
     def define_command(self, title):

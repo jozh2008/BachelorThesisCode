@@ -20,7 +20,7 @@ transmissionMode_FLOW_TRIANGLES $OutputSection_FLOW_TRIANGLES.transmissionMode_F
 outputType_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.outputType_FLOW_POLYGONS
 transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLOW_POLYGONS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ZFIELD" type="data" optional="false" label="Z Values" help="Z Values The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Multiple_Flow_Direction">Multiple Flow Direction</option>

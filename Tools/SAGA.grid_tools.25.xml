@@ -18,8 +18,8 @@ response $response
 outputType_CLOSED $OutputSection_CLOSED.outputType_CLOSED
 transmissionMode_CLOSED $OutputSection_CLOSED.transmissionMode_CLOSED]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="MAXGAPCELLS" type="integer" value="0" optional="true" label="Only Process Gaps with Less Cells" help="is ignored if set to zero"/>
     <param name="MAXPOINTS" type="integer" value="1000" optional="true" label="Maximum Points" help="Maximum Points"/>
     <param name="LOCALPOINTS" type="integer" value="20" optional="true" label="Number of Points for Local Interpolation" help="Number of Points for Local Interpolation"/>

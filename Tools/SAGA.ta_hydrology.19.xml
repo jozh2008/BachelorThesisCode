@@ -14,8 +14,8 @@ transmissionMode_WIDTH $OutputSection_WIDTH.transmissionMode_WIDTH
 outputType_SCA $OutputSection_SCA.outputType_SCA
 transmissionMode_SCA $OutputSection_SCA.transmissionMode_SCA]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="TCA" type="data" optional="false" label="Total Catchment Area (TCA)" help="Total Catchment Area (TCA) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="TCA" type="data" optional="false" label="Total Catchment Area (TCA)" help="Total Catchment Area (TCA) The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option selected="true" value="Aspect">Aspect</option>
       <option value="Deterministic_8">Deterministic 8</option>

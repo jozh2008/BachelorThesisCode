@@ -13,7 +13,7 @@ response $response
 outputType_LINES $OutputSection_LINES.outputType_LINES
 transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ORDER" type="data" optional="false" label="Order by..." help="Order by... The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="SEPARATE" type="data" optional="false" label="Separate by..." help="Separate by... The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  csv" format="txt"/>

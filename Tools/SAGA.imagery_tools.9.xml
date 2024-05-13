@@ -20,11 +20,11 @@ response $response
 outputType_CLOUD $OutputSection_CLOUD.outputType_CLOUD
 transmissionMode_CLOUD $OutputSection_CLOUD.transmissionMode_CLOUD]]></command>
   <inputs>
-    <param name="BAND2" type="data" optional="false" label="Landsat Band 2" help="Landsat Band 2 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="BAND3" type="data" optional="false" label="Landsat Band 3" help="Landsat Band 3 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="BAND4" type="data" optional="false" label="Landsat Band 4" help="Landsat Band 4 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="BAND5" type="data" optional="false" label="Landsat Band 5" help="Landsat Band 5 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="BAND6" type="data" optional="false" label="Landsat Band 6" help="Landsat Band 6 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="BAND2" type="data" optional="false" label="Landsat Band 2" help="Landsat Band 2 The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="BAND3" type="data" optional="false" label="Landsat Band 3" help="Landsat Band 3 The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="BAND4" type="data" optional="false" label="Landsat Band 4" help="Landsat Band 4 The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="BAND5" type="data" optional="false" label="Landsat Band 5" help="Landsat Band 5 The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="BAND6" type="data" optional="false" label="Landsat Band 6" help="Landsat Band 6 The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="FILTER" type="select" optional="true" label="Apply post-processing filter to remove small holes" help="Apply post-processing filter to remove small holes">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

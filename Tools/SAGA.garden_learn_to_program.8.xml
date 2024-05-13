@@ -10,7 +10,7 @@ response $response
 outputType_AREA $OutputSection_AREA.outputType_AREA
 transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

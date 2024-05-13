@@ -14,7 +14,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Classes" help="Classes The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Classes" help="Classes The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Neighbourhood" help="Neumann: the four horizontally and vertically neighboured cells; Moore: all eight adjacent cells">
       <option value="Moore">Moore</option>
       <option selected="true" value="Neumann">Neumann</option>

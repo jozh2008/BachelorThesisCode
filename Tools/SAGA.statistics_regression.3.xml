@@ -39,7 +39,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE
 outputType_QUALITY $OutputSection_QUALITY.outputType_QUALITY
 transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
@@ -61,7 +61,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
       <option value="exponential">exponential</option>
       <option selected="true" value="gaussian_weighting">gaussian weighting</option>

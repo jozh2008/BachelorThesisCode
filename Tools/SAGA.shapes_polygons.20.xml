@@ -13,8 +13,8 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Polygons" help="Input polygon shapefile The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Input point shapefile The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Polygons" help="Input polygon shapefile The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Input point shapefile The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELDS" type="data" optional="false" label="Attributes" help="Attributes to add. Select none to add all The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ADD_LOCATION_INFO" type="select" optional="true" label="Add Location Info" help="Add location information from points (x,y,(z,m))">
       <option selected="true" value="false">false</option>

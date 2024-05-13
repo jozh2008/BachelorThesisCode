@@ -14,10 +14,10 @@ response $response
 outputType_OUTTAB $OutputSection_OUTTAB.outputType_OUTTAB
 transmissionMode_OUTTAB $OutputSection_OUTTAB.transmissionMode_OUTTAB]]></command>
   <inputs>
-    <param name="ZONES" type="data" optional="false" label="Zone Grid" help="Grid defining the zones to analyse. This grid also acts as a mask. Coding: NoData / categorial values. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="CATLIST" type="data" optional="false" label="Categorical Grids" help="Grids used to delineate the UCUs. Coding: NoData / categorical values. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="STATLIST" type="data" optional="false" label="Grids to analyse" help="Grids with continuous data, statistics are calculated for each grid. Coding: NoData / continuous values. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="ASPECT" type="data" optional="false" label="Aspect" help="Aspect grid, in radians. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="ZONES" type="data" optional="false" label="Zone Grid" help="Grid defining the zones to analyse. This grid also acts as a mask. Coding: NoData / categorial values. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="CATLIST" type="data" optional="false" label="Categorical Grids" help="Grids used to delineate the UCUs. Coding: NoData / categorical values. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="STATLIST" type="data" optional="false" label="Grids to analyse" help="Grids with continuous data, statistics are calculated for each grid. Coding: NoData / continuous values. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="ASPECT" type="data" optional="false" label="Aspect" help="Aspect grid, in radians. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="SHORTNAMES" type="select" optional="true" label="Short Field Names" help="Short Field Names">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

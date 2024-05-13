@@ -14,8 +14,8 @@ response $response
 outputType_PROFILES $OutputSection_PROFILES.outputType_PROFILES
 transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="DIST_LINE" type="float" value="10" optional="true" label="Profile Distance" help="Profile Distance"/>
     <param name="DIST_PROFILE" type="float" value="10" optional="true" label="Profile Length" help="Profile Length"/>
     <param name="NUM_PROFILE" type="integer" value="10" optional="true" label="Profile Samples" help="Profile Samples"/>

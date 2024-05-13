@@ -22,7 +22,7 @@ transmissionMode_SEED_GRID $OutputSection_SEED_GRID.transmissionMode_SEED_GRID
 outputType_SEED_POINTS $OutputSection_SEED_POINTS.outputType_SEED_POINTS
 transmissionMode_SEED_POINTS $OutputSection_SEED_POINTS.transmissionMode_SEED_POINTS]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="SEED_TYPE" type="select" optional="true" label="Seed Type" help="Seed Type">
       <option value="maxima_of_variance">maxima of variance</option>
       <option selected="true" value="minima_of_variance">minima of variance</option>

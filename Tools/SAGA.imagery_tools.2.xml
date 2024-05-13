@@ -16,9 +16,9 @@ response $response
 outputType_EVI $OutputSection_EVI.outputType_EVI
 transmissionMode_EVI $OutputSection_EVI.transmissionMode_EVI]]></command>
   <inputs>
-    <param name="BLUE" type="data" optional="false" label="Blue Reflectance" help="Blue Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="BLUE" type="data" optional="false" label="Blue Reflectance" help="Blue Reflectance The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="GAIN" type="float" value="2.5" optional="true" label="Gain" help="Gain"/>
     <param name="L" type="float" value="1" optional="true" label="Canopy Background Adjustment" help="Canopy Background Adjustment"/>
     <param name="CBLUE" type="float" value="7.5" optional="true" label="Aerosol Resistance Coefficient (Blue)" help="Aerosol Resistance Coefficient (Blue)"/>

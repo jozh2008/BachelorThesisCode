@@ -21,15 +21,15 @@ response $response
 outputType_CLIPPED $OutputSection_CLIPPED.outputType_CLIPPED
 transmissionMode_CLIPPED $OutputSection_CLIPPED.transmissionMode_CLIPPED]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="EXTENT" type="select" optional="true" label="Extent" help="Extent">
       <option value="grid_system">grid system</option>
       <option value="polygon">polygon</option>
       <option value="shapes_extent">shapes extent</option>
       <option selected="true" value="user_defined">user defined</option>
     </param>
-    <param name="SHAPES" type="data" optional="false" label="Shapes Extent" help="Shapes Extent The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes Extent" help="Shapes Extent The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="INTERIOR" type="select" optional="true" label="Interior" help="Clip those cells that are covered by the polygons instead of those that are not.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

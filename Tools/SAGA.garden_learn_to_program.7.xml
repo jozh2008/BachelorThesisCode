@@ -11,7 +11,7 @@ response $response
 outputType_AREA $OutputSection_AREA.outputType_AREA
 transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose a method">
       <option selected="true" value="D8">D8</option>
       <option value="MFD">MFD</option>

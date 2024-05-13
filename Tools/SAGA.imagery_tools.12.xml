@@ -21,7 +21,7 @@ transmissionMode_ENTROPY $OutputSection_ENTROPY.transmissionMode_ENTROPY
 outputType_VARIANCE $OutputSection_VARIANCE.outputType_VARIANCE
 transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Kernel" help="kernel radius in cells">
       <option selected="true" value="circle">circle</option>
       <option value="square">square</option>

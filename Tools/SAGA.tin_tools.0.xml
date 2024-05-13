@@ -19,8 +19,8 @@ transmissionMode_TIN_TRIANGLES $OutputSection_TIN_TRIANGLES.transmissionMode_TIN
 outputType_TIN_POLYGONS $OutputSection_TIN_POLYGONS.outputType_TIN_POLYGONS
 transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_POLYGONS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

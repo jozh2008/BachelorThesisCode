@@ -15,7 +15,7 @@ transmissionMode_FDIR $OutputSection_FDIR.transmissionMode_FDIR
 outputType_WSHED $OutputSection_WSHED.outputType_WSHED
 transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
   <inputs>
-    <param name="ELEV" type="data" optional="false" label="DEM" help="Digital elevation model The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEV" type="data" optional="false" label="DEM" help="Digital elevation model The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="MINSLOPE" type="float" value="0.1" optional="true" label="Minimum Slope [Degree]" help="Minimum slope gradient to preserve from cell to cell; with a value of zero sinks are filled up to the spill elevation (which results in flat areas). Unit [Degree]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

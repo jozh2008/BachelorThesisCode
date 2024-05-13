@@ -22,7 +22,7 @@ transmissionMode_TERRAIN $OutputSection_TERRAIN.transmissionMode_TERRAIN
 outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
 transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="RADIUS" type="float" value="10000" optional="true" label="Maximum Search Radius" help="The maximum search radius [map units]. This value is ignored if set to zero."/>
     <param name="NDIRS" type="integer" value="8" optional="true" label="Number of Sectors" help="Number of Sectors"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">

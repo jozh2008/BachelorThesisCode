@@ -17,7 +17,7 @@ transmissionMode_B $OutputSection_B.transmissionMode_B
 outputType_A $OutputSection_A.outputType_A
 transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
   <inputs>
-    <param name="RGB" type="data" optional="false" label="RGB Composite" help="RGB Composite The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="RGB" type="data" optional="false" label="RGB Composite" help="RGB Composite The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="NODATA" type="select" optional="true" label="Ignore No Data" help="Ignore No Data">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

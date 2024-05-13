@@ -12,7 +12,7 @@ response $response
 outputType_SINKROUTE $OutputSection_SINKROUTE.outputType_SINKROUTE
 transmissionMode_SINKROUTE $OutputSection_SINKROUTE.transmissionMode_SINKROUTE]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="THRESHOLD" type="select" optional="true" label="Threshold" help="Threshold">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

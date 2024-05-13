@@ -22,7 +22,7 @@ transmissionMode_HILL_IDX $OutputSection_HILL_IDX.transmissionMode_HILL_IDX
 outputType_SLOPE_IDX $OutputSection_SLOPE_IDX.outputType_SLOPE_IDX
 transmissionMode_SLOPE_IDX $OutputSection_SLOPE_IDX.transmissionMode_SLOPE_IDX]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="RADIUS_VALLEY" type="float" value="1000" optional="true" label="Valley Radius" help="radius given in map units used to fill valleys"/>
     <param name="RADIUS_HILL" type="float" value="1000" optional="true" label="Hill Radius" help="radius given in map units used to cut hills"/>
     <param name="THRESHOLD" type="float" value="100" optional="true" label="Elevation Threshold" help="elevation threshold used to identify hills/valleys"/>

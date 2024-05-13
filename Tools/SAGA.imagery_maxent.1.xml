@@ -25,9 +25,9 @@ transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTIO
 outputType_PROBABILITY $OutputSection_PROBABILITY.outputType_PROBABILITY
 transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABILITY]]></command>
   <inputs>
-    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="BACKGROUND" type="float" value="1" optional="true" label="Background Sample Density [Percent]" help="Background Sample Density [Percent]"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Dekang_Lin">Dekang Lin</option>

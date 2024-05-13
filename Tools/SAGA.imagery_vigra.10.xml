@@ -27,8 +27,8 @@ transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTIO
 outputType_PROBABILITY $OutputSection_PROBABILITY.outputType_PROBABILITY
 transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABILITY]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="BACKGROUND" type="float" value="1" optional="true" label="Background Sample Density [Percent]" help="Background Sample Density [Percent]"/>
     <param name="DO_MRMR" type="select" optional="true" label="Minimum Redundancy Feature Selection" help="Use only features selected by the minimum Redundancy Maximum Relevance (mRMR) algorithm">
       <option selected="true" value="false">false</option>

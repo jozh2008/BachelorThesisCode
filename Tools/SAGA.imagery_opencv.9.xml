@@ -26,7 +26,7 @@ response $response
 outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
 transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="NORMALIZE" type="select" optional="true" label="Normalize" help="Normalize">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -36,7 +36,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
       <option value="true">true</option>
     </param>
     <param name="MODEL_LOAD" type="data" optional="false" label="Load Model" help="Use a model previously stored to file. The following data types are allowed in the txt file:  plain" format="txt"/>
-    <param name="TRAIN_AREAS" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="TRAIN_AREAS" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="TRAIN_CLASS" type="data" optional="false" label="Class Identifier" help="Class Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TRAIN_BUFFER" type="float" value="1" optional="true" label="Buffer Size" help="For non-polygon type training areas, creates a buffer with a diameter of specified size."/>
     <param name="MODEL_SAVE" type="data" optional="false" label="Save Model" help="Stores model to file to be used for subsequent classifications instead of training areas. The following data types are allowed in the txt file:  plain" format="txt"/>

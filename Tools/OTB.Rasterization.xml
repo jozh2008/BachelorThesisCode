@@ -24,7 +24,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input vector dataset to be rasterized" help="The input vector dataset to be rasterized The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json, zip" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input vector dataset to be rasterized" help="The input vector dataset to be rasterized The following data types are allowed in the txt file:  json, zip, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="out" type="select" optional="false" label="An output image containing the rasterized vector dataset" help="An output image containing the rasterized vector dataset">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -33,7 +33,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="im" type="data" optional="false" label="A reference image from which to import output grid and projection reference system information." help="A reference image from which to import output grid and projection reference system information. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="im" type="data" optional="false" label="A reference image from which to import output grid and projection reference system information." help="A reference image from which to import output grid and projection reference system information. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="szx" type="integer" optional="true" label="Output size along x axis (useless if support image is given)" help="Output size along x axis (useless if support image is given)"/>
     <param name="szy" type="integer" optional="true" label="Output size along y axis (useless if support image is given)" help="Output size along y axis (useless if support image is given)"/>
     <param name="epsg" type="integer" optional="true" label="EPSG code for the output projection reference system (EPSG 4326 for WGS84, 32631 for UTM31N...,useless if support image is given)" help="EPSG code for the output projection reference system (EPSG 4326 for WGS84, 32631 for UTM31N...,useless if support image is given)"/>

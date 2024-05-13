@@ -15,7 +15,7 @@ transmissionMode_MINIMA $OutputSection_MINIMA.transmissionMode_MINIMA
 outputType_MAXIMA $OutputSection_MAXIMA.outputType_MAXIMA
 transmissionMode_MAXIMA $OutputSection_MAXIMA.transmissionMode_MAXIMA]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="IDENTITY" type="select" optional="true" label="Identical Values" help="If set, neighbour cells with the same value as the center cell are interpreted to be lower for minima and higher for maxima identification.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

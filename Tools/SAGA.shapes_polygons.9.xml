@@ -12,7 +12,7 @@ transmissionMode_EDGES $OutputSection_EDGES.transmissionMode_EDGES
 outputType_NODES $OutputSection_NODES.outputType_NODES
 transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

@@ -13,7 +13,7 @@ response $response
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="NUMFIELD" type="data" optional="false" label="Number of Points" help="Desired number of points per polygon. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NUMPOINTS" type="integer" value="100" optional="true" label="Number of Points" help="Desired number of points per polygon."/>
     <param name="MAXITER" type="integer" value="30" optional="true" label="Maximum Iterations" help="Maximum Iterations"/>

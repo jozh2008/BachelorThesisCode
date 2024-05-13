@@ -24,7 +24,7 @@ transmissionMode_MAX $OutputSection_MAX.transmissionMode_MAX
 outputType_HISTOGRAM $OutputSection_HISTOGRAM.outputType_HISTOGRAM
 transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="HCLASSES" type="integer" value="20" optional="true" label="Number of Classes" help="Number of Classes"/>
     <param name="HMIN" type="float" value="0" optional="true" label="Minimum" help="Minimum"/>
     <param name="HMAX" type="float" value="0" optional="true" label="Minimum" help="Minimum"/>

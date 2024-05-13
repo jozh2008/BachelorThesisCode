@@ -13,8 +13,8 @@ response $response
 outputType_SHAPES $OutputSection_SHAPES.outputType_SHAPES
 transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="NODATA" type="select" optional="true" label="Exclude NoData Cells" help="Exclude NoData Cells">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

@@ -12,8 +12,8 @@ response $response
 outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
 transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="DIRECTION" type="select" optional="true" label="Direction of Measurement" help="Direction of Measurement">
       <option selected="true" value="downstream">downstream</option>
       <option value="upstream">upstream</option>

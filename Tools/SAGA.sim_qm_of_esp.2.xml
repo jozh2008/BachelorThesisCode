@@ -12,7 +12,7 @@ response $response
 outputType_FLOW $OutputSection_FLOW.outputType_FLOW
 transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="PREPROC" type="select" optional="true" label="Preprocessing" help="Preprocessing">
       <option value="fill_sinks_permanently">fill sinks permanently</option>
       <option selected="true" value="fill_sinks_temporarily">fill sinks temporarily</option>

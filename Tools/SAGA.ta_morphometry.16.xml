@@ -16,7 +16,7 @@ response $response
 outputType_TRI $OutputSection_TRI.outputType_TRI
 transmissionMode_TRI $OutputSection_TRI.transmissionMode_TRI]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
       <option selected="true" value="Circle">Circle</option>
       <option value="Square">Square</option>

@@ -11,7 +11,7 @@ response $response
 outputType_GENERALIZED $OutputSection_GENERALIZED.outputType_GENERALIZED
 transmissionMode_GENERALIZED $OutputSection_GENERALIZED.transmissionMode_GENERALIZED]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="THRESHOLD" type="float" value="100" optional="true" label="Threshold" help="Threshold"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>

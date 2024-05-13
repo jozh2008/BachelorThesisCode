@@ -11,7 +11,7 @@ response $response
 outputType_INDEX $OutputSection_INDEX.outputType_INDEX
 transmissionMode_INDEX $OutputSection_INDEX.transmissionMode_INDEX]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="ORDER" type="select" optional="true" label="Sorting Order" help="Sorting Order">
       <option selected="true" value="ascending">ascending</option>
       <option value="descending">descending</option>

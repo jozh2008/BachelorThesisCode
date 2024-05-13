@@ -20,7 +20,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE
 outputType_CONTOURS $OutputSection_CONTOURS.outputType_CONTOURS
 transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose the map type to generate.">
       <option value="Morphology">Morphology</option>
       <option selected="true" value="Topography">Topography</option>

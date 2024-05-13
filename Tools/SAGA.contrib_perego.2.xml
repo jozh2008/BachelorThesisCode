@@ -13,7 +13,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="RX" type="integer" value="1" optional="true" label="Radius X" help="Radius X"/>
     <param name="RY" type="integer" value="1" optional="true" label="Radius Y" help="Radius Y"/>
     <param name="THRESH" type="float" value="2" optional="true" label="Threshold" help="The values in the specified radius is used in the average calculation only if its difference with the central value is lesser or equal to this threshold."/>

@@ -18,8 +18,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="inp" type="data" optional="false" label="Input panchromatic image." help="Input panchromatic image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
-    <param name="inxs" type="data" optional="false" label="Input XS image." help="Input XS image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="inp" type="data" optional="false" label="Input panchromatic image." help="Input panchromatic image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="inxs" type="data" optional="false" label="Input XS image." help="Input XS image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image." help="Output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>

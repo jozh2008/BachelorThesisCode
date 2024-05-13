@@ -18,10 +18,10 @@ transmissionMode_CORRPOINTS $OutputSection_CORRPOINTS.transmissionMode_CORRPOINT
 outputType_CORRLINES $OutputSection_CORRLINES.outputType_CORRLINES
 transmissionMode_CORRLINES $OutputSection_CORRLINES.transmissionMode_CORRLINES]]></command>
   <inputs>
-    <param name="GRID_1" type="data" optional="false" label="Grid 1" help="The first grid to correlate The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="GRID_2" type="data" optional="false" label="Grid 2" help="The second grid to correlate The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="DTM_1" type="data" optional="false" label="DTM 1" help="The first DTM used to assign height information to grid 1 The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="DTM_2" type="data" optional="false" label="DTM 2" help="The second DTM used to assign height information to grid 2 The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRID_1" type="data" optional="false" label="Grid 1" help="The first grid to correlate The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="GRID_2" type="data" optional="false" label="Grid 2" help="The second grid to correlate The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="DTM_1" type="data" optional="false" label="DTM 1" help="The first DTM used to assign height information to grid 1 The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="DTM_2" type="data" optional="false" label="DTM 2" help="The second DTM used to assign height information to grid 2 The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="SEARCH_CHIPSIZE" type="select" optional="true" label="Search Chip Size (Cells)" help="Chip size of search chip, used to find correlating reference chip">
       <option value="128x128">128x128</option>
       <option value="16x16">16x16</option>

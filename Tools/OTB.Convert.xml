@@ -22,14 +22,14 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="type" type="select" optional="false" label="Transfer function for the rescaling" help="Transfer function for the rescaling">
       <option value="linear">linear</option>
       <option value="log2">log2</option>
       <option selected="true" value="none">none</option>
     </param>
     <param name="type.linear.gamma" type="float" value="1" optional="true" label="Gamma correction factor" help="Gamma correction factor"/>
-    <param name="mask" type="data" optional="false" label="Optional mask to indicate which pixels are valid for computing the histogram quantiles. Only pixels where the mask is less than 0.5 will contribute to the histogram. The mask must have the same dimensions as the input image." help="Optional mask to indicate which pixels are valid for computing the histogram quantiles. Only pixels where the mask is less than 0.5 will contribute to the histogram. The mask must have the same dimensions as the input image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="mask" type="data" optional="false" label="Optional mask to indicate which pixels are valid for computing the histogram quantiles. Only pixels where the mask is less than 0.5 will contribute to the histogram. The mask must have the same dimensions as the input image." help="Optional mask to indicate which pixels are valid for computing the histogram quantiles. Only pixels where the mask is less than 0.5 will contribute to the histogram. The mask must have the same dimensions as the input image. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="hcp.high" type="float" value="2" optional="true" label="Quantiles to cut from histogram high values before computing min/max rescaling (in percent, 2 by default)" help="Quantiles to cut from histogram high values before computing min/max rescaling (in percent, 2 by default)"/>
     <param name="hcp.low" type="float" value="2" optional="true" label="Quantiles to cut from histogram low values before computing min/max rescaling (in percent, 2 by default)" help="Quantiles to cut from histogram low values before computing min/max rescaling (in percent, 2 by default)"/>
     <param name="out" type="select" optional="false" label="Output image" help="Output image">
@@ -86,7 +86,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <param name="response" value="document"/>
     </test>
   </tests>
-  <help><![CDATA[This application performs an image pixel type conversion (short, ushort, uchar, int, uint, float and double types are handled). The output image is written in the specified format (ie. that corresponds to the given extension). The conversion can include a rescale of the data range, by default it's set from 22543232101721775 986354416300f the data values. The rescale can be linear or log2.  The choice of the output channels can be done with the extended filename, but less easy to handle. To do this, a 'channels' parameter allows you to select the desired bands at the output. There are 3 modes, the available choices are:  * grayscale :  to display mono image as standard color image  * rgb : select 3 bands in the input image (multi-bands)  * all : keep all bands.]]></help>
+  <help><![CDATA[This application performs an image pixel type conversion (short, ushort, uchar, int, uint, float and double types are handled). The output image is written in the specified format (ie. that corresponds to the given extension). The conversion can include a rescale of the data range, by default it's set from 22530200161721775 9814570736300f the data values. The rescale can be linear or log2.  The choice of the output channels can be done with the extended filename, but less easy to handle. To do this, a 'channels' parameter allows you to select the desired bands at the output. There are 3 modes, the available choices are:  * grayscale :  to display mono image as standard color image  * rgb : select 3 bands in the input image (multi-bands)  * all : keep all bands.]]></help>
   <citations>
     <citation type="bibtex">Josh</citation>
   </citations>

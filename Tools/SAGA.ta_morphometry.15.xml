@@ -21,13 +21,13 @@ transmissionMode_EFFECT $OutputSection_EFFECT.transmissionMode_EFFECT
 outputType_AFH $OutputSection_AFH.outputType_AFH
 transmissionMode_AFH $OutputSection_AFH.transmissionMode_AFH]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="DIR" type="data" optional="false" label="Wind Direction" help="Direction into which the wind blows, starting with 0 for North and increasing clockwise. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DIR" type="data" optional="false" label="Wind Direction" help="Direction into which the wind blows, starting with 0 for North and increasing clockwise. The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="DIR_UNITS" type="select" optional="true" label="Wind Direction Units" help="Wind Direction Units">
       <option value="degree">degree</option>
       <option selected="true" value="radians">radians</option>
     </param>
-    <param name="LEN" type="data" optional="false" label="Wind Speed" help="Wind Speed The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="LEN" type="data" optional="false" label="Wind Speed" help="Wind Speed The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="LEN_SCALE" type="float" value="1" optional="true" label="Scaling" help="Scaling"/>
     <param name="MAXDIST" type="float" value="300" optional="true" label="Search Distance [km]" help="Search Distance [km]"/>
     <param name="DIR_CONST" type="float" value="135" optional="true" label="Constant Wind Direction" help="constant direction into the wind blows, given as degree"/>

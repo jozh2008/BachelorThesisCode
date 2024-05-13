@@ -12,8 +12,8 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="REAL" type="data" optional="false" label="Real" help="Real The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="IMAG" type="data" optional="false" label="Imaginary" help="Imaginary The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="REAL" type="data" optional="false" label="Real" help="Real The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="IMAG" type="data" optional="false" label="Imaginary" help="Imaginary The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="CENTER" type="select" optional="true" label="Centered" help="Centered">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

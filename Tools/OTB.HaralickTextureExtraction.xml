@@ -22,7 +22,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to compute the features on." help="The input image to compute the features on. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to compute the features on." help="The input image to compute the features on. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="channel" type="integer" value="1" optional="false" label="The selected channel index" help="The selected channel index"/>
     <param name="step" type="integer" value="1" optional="true" label="Step (in pixels) to compute output texture values. The first computed pixel position is shifted by (step-1)/2 in both directions." help="Step (in pixels) to compute output texture values. The first computed pixel position is shifted by (step-1)/2 in both directions."/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>

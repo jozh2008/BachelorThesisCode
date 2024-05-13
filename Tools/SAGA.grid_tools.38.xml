@@ -27,7 +27,7 @@ response $response
 outputType_MOSAIC $OutputSection_MOSAIC.outputType_MOSAIC
 transmissionMode_MOSAIC $OutputSection_MOSAIC.transmissionMode_MOSAIC]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grid Collections" help="Grid Collections The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grid Collections" help="Grid Collections The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="NAME" type="text" value="Mosaic" optional="true" label="Name" help="Name"/>
     <param name="TYPE" type="select" optional="true" label="Data Storage Type" help="Data Storage Type">
       <option value="1_bit">1 bit</option>
@@ -84,7 +84,7 @@ transmissionMode_MOSAIC $OutputSection_MOSAIC.transmissionMode_MOSAIC]]></comman
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

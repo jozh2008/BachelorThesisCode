@@ -46,7 +46,7 @@ transmissionMode_CV_SUMMARY $OutputSection_CV_SUMMARY.transmissionMode_CV_SUMMAR
 outputType_CV_RESIDUALS $OutputSection_CV_RESIDUALS.outputType_CV_RESIDUALS
 transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RESIDUALS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
       <option value="grid_or_grid_system">grid or grid system</option>
@@ -63,7 +63,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="VAR_MAXDIST" type="float" value="0" optional="true" label="Maximum Distance" help="maximum distance for variogram estimation, ignored if set to zero"/>
     <param name="VAR_NCLASSES" type="integer" value="100" optional="true" label="Lag Distance Classes" help="initial number of lag distance classes"/>
     <param name="VAR_NSKIP" type="integer" value="1" optional="true" label="Skip" help="Skip"/>
@@ -103,7 +103,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
       <option selected="true" value="all_directions">all directions</option>
       <option value="quadrants">quadrants</option>
     </param>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>

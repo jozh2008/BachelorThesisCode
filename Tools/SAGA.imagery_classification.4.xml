@@ -26,7 +26,7 @@ response $response
 outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
 transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NORMALISE" type="select" optional="true" label="Normalise" help="Normalise">
       <option selected="true" value="false">false</option>

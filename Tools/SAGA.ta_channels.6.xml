@@ -10,7 +10,7 @@ response $response
 outputType_STRAHLER $OutputSection_STRAHLER.outputType_STRAHLER
 transmissionMode_STRAHLER $OutputSection_STRAHLER.transmissionMode_STRAHLER]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="The input elevation data set. The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="The input elevation data set. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>

@@ -50,10 +50,10 @@ transmissionMode_BIO_18 $OutputSection_BIO_18.transmissionMode_BIO_18
 outputType_BIO_19 $OutputSection_BIO_19.outputType_BIO_19
 transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></command>
   <inputs>
-    <param name="TMEAN" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="TMEAN" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="SEASONALITY" type="select" optional="true" label="Temperature Seasonality" help="Temperature Seasonality">
       <option value="Coefficient_of_Variation">Coefficient of Variation</option>
       <option selected="true" value="Standard_Deviation">Standard Deviation</option>

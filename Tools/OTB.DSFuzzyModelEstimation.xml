@@ -19,8 +19,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="psin" type="data" optional="false" label="Ground truth vector data for positive samples" help="Ground truth vector data for positive samples The following data types are allowed in the txt file:  json, zip, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="nsin" type="data" optional="false" label="Ground truth vector data for negative samples" help="Ground truth vector data for negative samples The following data types are allowed in the txt file:  json, zip, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="psin" type="data" optional="false" label="Ground truth vector data for positive samples" help="Ground truth vector data for positive samples The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, zip, xml" format="txt"/>
+    <param name="nsin" type="data" optional="false" label="Ground truth vector data for negative samples" help="Ground truth vector data for negative samples The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, zip, xml" format="txt"/>
     <param name="belsup" type="text" optional="false" label="Dempster Shafer study hypothesis to compute belief" help="Dempster Shafer study hypothesis to compute belief"/>
     <param name="plasup" type="text" optional="false" label="Dempster Shafer study hypothesis to compute plausibility" help="Dempster Shafer study hypothesis to compute plausibility"/>
     <param name="cri" type="text" value="((Belief + Plausibility)/2.)" optional="true" label="Dempster Shafer criterion (by default (belief+plausibility)/2)" help="Dempster Shafer criterion (by default (belief+plausibility)/2)"/>

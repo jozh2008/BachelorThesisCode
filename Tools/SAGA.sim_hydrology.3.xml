@@ -15,8 +15,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT
 outputType_RETENTION $OutputSection_RETENTION.outputType_RETENTION
 transmissionMode_RETENTION $OutputSection_RETENTION.transmissionMode_RETENTION]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Plot Holes" help="Plot Holes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Plot Holes" help="Plot Holes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="INTERPOL" type="select" optional="true" label="Interpolation" help="Interpolation">
       <option value="Inverse_Distance_Weighted">Inverse Distance Weighted</option>
       <option selected="true" value="Multilevel_B-Spline_Interpolation">Multilevel B-Spline Interpolation</option>

@@ -17,7 +17,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image to smooth." help="Input image to smooth. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image to smooth." help="Input image to smooth. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output smoothed image." help="Output smoothed image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>

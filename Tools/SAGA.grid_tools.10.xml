@@ -16,7 +16,7 @@ transmissionMode_ALLOC $OutputSection_ALLOC.transmissionMode_ALLOC
 outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
 transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
   <inputs>
-    <param name="SOURCE" type="data" optional="false" label="Source Grid" help="Grid with features to be buffered [Category/NoData] The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source Grid" help="Grid with features to be buffered [Category/NoData] The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="DIST" type="float" value="500" optional="true" label="Buffer distance" help="Buffer distance (grid units)."/>
     <param name="IVAL" type="integer" value="100" optional="true" label="Equidistance" help="Reclassify buffer distance to intervals of euqidistance ..."/>
     <param name="prefer" type="select" label="Choose the Prefer">

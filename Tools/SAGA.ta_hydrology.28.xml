@@ -14,8 +14,8 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW
 outputType_UPAREA $OutputSection_UPAREA.outputType_UPAREA
 transmissionMode_UPAREA $OutputSection_UPAREA.transmissionMode_UPAREA]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="FIELDS" type="data" optional="false" label="FIELDS" help="FIELDS The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="FIELDS" help="FIELDS The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="STOP" type="select" optional="true" label="Stop at edge" help="Stop flow at the edge of a field">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>

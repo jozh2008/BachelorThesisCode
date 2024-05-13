@@ -15,7 +15,7 @@ transmissionMode_modulus $OutputSection_modulus.transmissionMode_modulus
 outputType_phase $OutputSection_phase.outputType_phase
 transmissionMode_phase $OutputSection_phase.transmissionMode_phase]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image (complex single band)" help="Input image (complex single band) The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image (complex single band)" help="Input image (complex single band) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="modulus" type="select" optional="false" label="Modulus of the input image computes with thefollowing formula: :math:`\sqrt" help="Modulus of the input image computes with thefollowing formula: :math:`\sqrt">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>

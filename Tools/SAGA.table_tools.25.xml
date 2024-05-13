@@ -15,7 +15,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="TABLE" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="TABLE" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Field" help="Field The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NAME" type="text" value="New Field" optional="true" label="Field Name" help="Field Name"/>
     <param name="FORMAT" type="text" value="&quot;Index: &quot; + index(1)" optional="true" label="Format" help="Format"/>
