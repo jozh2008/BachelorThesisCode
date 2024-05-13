@@ -1,0 +1,105 @@
+<tool name="SAGA.ta_morphometry.15" id="saga_ta_morphometry_15" version="1.0.0">
+  <description>Wind Effect (Windward / Leeward Index)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayDIR False  isArrayLEN False  output_data_EFFECT $output_data_EFFECT  output_data_AFH $output_data_AFH  name SAGA.ta_morphometry.15 DEM $DEM
+DIR $DIR
+DIR_UNITS $DIR_UNITS
+LEN $LEN
+LEN_SCALE $LEN_SCALE
+MAXDIST $MAXDIST
+DIR_CONST $DIR_CONST
+OLDVER $OLDVER
+ACCEL $ACCEL
+PYRAMIDS $PYRAMIDS
+prefer $prefer
+response $response
+outputType_EFFECT $OutputSection_EFFECT.outputType_EFFECT
+transmissionMode_EFFECT $OutputSection_EFFECT.transmissionMode_EFFECT
+outputType_AFH $OutputSection_AFH.outputType_AFH
+transmissionMode_AFH $OutputSection_AFH.transmissionMode_AFH]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DIR" type="data" optional="false" label="Wind Direction" help="Direction into which the wind blows, starting with 0 for North and increasing clockwise. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DIR_UNITS" type="select" optional="true" label="Wind Direction Units" help="Wind Direction Units">
+      <option value="degree">degree</option>
+      <option selected="true" value="radians">radians</option>
+    </param>
+    <param name="LEN" type="data" optional="false" label="Wind Speed" help="Wind Speed The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="LEN_SCALE" type="float" value="1" optional="true" label="Scaling" help="Scaling"/>
+    <param name="MAXDIST" type="float" value="300" optional="true" label="Search Distance [km]" help="Search Distance [km]"/>
+    <param name="DIR_CONST" type="float" value="135" optional="true" label="Constant Wind Direction" help="constant direction into the wind blows, given as degree"/>
+    <param name="OLDVER" type="select" optional="true" label="Old Version" help="use old version for constant wind direction (no acceleration and averaging option)">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="ACCEL" type="float" value="1.5" optional="true" label="Acceleration" help="Acceleration"/>
+    <param name="PYRAMIDS" type="select" optional="true" label="Elevation Averaging" help="use more averaged elevations when looking at increasing distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_EFFECT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_EFFECT" type="select" label="Wind Effect" help="Wind Effect">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_EFFECT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_AFH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_AFH" type="select" label="Effective Air Flow Heights" help="Effective Air Flow Heights">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_AFH" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_EFFECT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_EFFECT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_EFFECT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_EFFECT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_AFH" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_AFH" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_AFH" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_AFH" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The 'Wind Effect' is a dimensionless index. Values below 1 indicate wind shadowed areas whereas values above 1 indicate areas exposed to wind, all with regard to the specified wind direction. Wind direction, i.e. the direction into which the wind blows, might be either constant or variying in space, if a wind direction grid is supplied.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

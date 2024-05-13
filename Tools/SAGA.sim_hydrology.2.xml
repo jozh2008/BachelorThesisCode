@@ -1,0 +1,107 @@
+<tool name="SAGA.sim_hydrology.2" id="saga_sim_hydrology_2" version="1.0.0">
+  <description>TOPMODEL</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayATANB False  isArrayWEATHER False  isArrayRECORD_P False  isArrayRECORD_ET False  isArrayRECORD_DATE False  output_data_MOIST $output_data_MOIST  output_data_TABLE $output_data_TABLE  name SAGA.sim_hydrology.2 ATANB $ATANB
+WEATHER $WEATHER
+RECORD_P $RECORD_P
+RECORD_ET $RECORD_ET
+RECORD_DATE $RECORD_DATE
+DTIME $DTIME
+NCLASSES $NCLASSES
+P_QS0 $P_QS0
+P_LNTE $P_LNTE
+P_MODEL $P_MODEL
+P_SR0 $P_SR0
+P_SRZMAX $P_SRZMAX
+P_SUZ_TD $P_SUZ_TD
+P_VCH $P_VCH
+P_VR $P_VR
+P_K0 $P_K0
+P_PSI $P_PSI
+P_DTHETA $P_DTHETA
+BINF $BINF
+prefer $prefer
+response $response
+outputType_MOIST $OutputSection_MOIST.outputType_MOIST
+transmissionMode_MOIST $OutputSection_MOIST.transmissionMode_MOIST
+outputType_TABLE $OutputSection_TABLE.outputType_TABLE
+transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
+  <inputs>
+    <param name="ATANB" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="WEATHER" type="data" optional="false" label="Weather Records" help="Weather Records The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="RECORD_P" type="data" optional="false" label="Precipitation [m / dt]" help="Precipitation [m / dt] The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="RECORD_ET" type="data" optional="false" label="Evapotranspiration [m / dt]" help="Evapotranspiration [m / dt] The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="RECORD_DATE" type="data" optional="false" label="Date/Time" help="Date/Time The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="DTIME" type="float" value="1" optional="true" label="Time Step [h]" help="Time Step [h]"/>
+    <param name="NCLASSES" type="integer" value="30" optional="true" label="Number of Classes" help="Number of Classes"/>
+    <param name="P_QS0" type="float" value="3.3e-05" optional="true" label="Initial subsurface flow per unit area [m/h]" help="Initial subsurface flow per unit area [m/h]"/>
+    <param name="P_LNTE" type="float" value="5" optional="true" label="Areal average of ln(T0) = ln(Te) [ln(m^2/h)]" help="Areal average of ln(T0) = ln(Te) [ln(m^2/h)]"/>
+    <param name="P_MODEL" type="float" value="0.032" optional="true" label="Model parameter [m]" help="Model parameter [m]"/>
+    <param name="P_SR0" type="float" value="0.002" optional="true" label="Initial root zone storage deficit [m]" help="Initial root zone storage deficit [m]"/>
+    <param name="P_SRZMAX" type="float" value="0.05" optional="true" label="Maximum root zone storage deficit [m]" help="Maximum root zone storage deficit [m]"/>
+    <param name="P_SUZ_TD" type="float" value="50" optional="true" label="Unsaturated zone time delay per unit storage deficit [h]" help="Unsaturated zone time delay per unit storage deficit [h]"/>
+    <param name="P_VCH" type="float" value="3600" optional="true" label="Main channel routing velocity [m/h]" help="Main channel routing velocity [m/h]"/>
+    <param name="P_VR" type="float" value="3600" optional="true" label="Internal subcatchment routing velocity [m/h]" help="Internal subcatchment routing velocity [m/h]"/>
+    <param name="P_K0" type="float" value="1" optional="true" label="Surface hydraulic conductivity [m/h]" help="Surface hydraulic conductivity [m/h]"/>
+    <param name="P_PSI" type="float" value="0.02" optional="true" label="Wetting front suction [m]" help="Wetting front suction [m]"/>
+    <param name="P_DTHETA" type="float" value="0.1" optional="true" label="Water content change across the wetting front" help="Water content change across the wetting front"/>
+    <param name="BINF" type="select" optional="true" label="Green-Ampt Infiltration" help="Green-Ampt Infiltration">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_MOIST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MOIST" type="select" label="Soil Moisture Deficit" help="Soil Moisture Deficit">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MOIST" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TABLE" type="select" label="Simulation Output" help="Simulation Output">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_TABLE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_MOIST" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MOIST" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MOIST" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MOIST" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_TABLE" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Simple Subcatchment Version of TOPMODEL&lt;br/&gt;&lt;br/&gt;Based on the 'TOPMODEL demonstration program v95.02' by Keith Beven (Centre for Research on Environmental Systems and Statistics, Institute of Environmental and Biological Sciences, Lancaster University, Lancaster LA1 4YQ, UK) and the C translation of the Fortran source codes implemented in GRASS.&lt;br/&gt;&lt;br/&gt;This program allows single or multiple subcatchment calculations but with single average rainfall and potential evapotranspiration inputs to the whole catchment.  Subcatchment discharges are routed to the catchment outlet using a linear routing algorithm with constant main channel velocity and internal subcatchment routing velocity.  The program requires ln(a/tanB) distributions for each subcatchment.  These may be calculated using the GRIDATB program which requires raster elevation data as input. It is recommended that those data should be 50 m resolution or better.&lt;br/&gt;&lt;br/&gt;NOTE that TOPMODEL is not intended to be a traditional model package but is more a collection of concepts that can be used **** where appropriate ****. It is up to the user to verify that the assumptions are appropriate (see discussion in Beven et al.(1994).   This version of the model  will be best suited to catchments with shallow soils and moderate topography which do not suffer from excessively long dry periods.  Ideally predicted contributing areas should be checked against what actually happens in the catchment.&lt;br/&gt;&lt;br/&gt;It includes infiltration excess calculations and parameters based on the exponential conductivity Green-Ampt model of Beven (HSJ, 1984) but if infiltration excess does occur it does so over whole area of a subcatchment.  Spatial variability in conductivities can however be handled by specifying Ko parameter values for different subcatchments, even if they have the same ln(a/tanB) and routing parameters, ie. to represent different parts of the area.&lt;br/&gt;&lt;br/&gt;Note that time step calculations are explicit ie. SBAR at start of time step is used to determine contributing area. Thus with long (daily) time steps contributing area depends on initial value together with any volume filling effect of daily inputs.  Also baseflow at start of time step is used to update SBAR at end of time step.&lt;br/&gt;&lt;br/&gt;References&lt;br/&gt;- Beven, K., Kirkby, M.J., Schofield, N., Tagg, A.F. (1984):   Testing a physically-based flood forecasting model (TOPMODEL) for threee U.K. catchments,   Journal of Hydrology, H.69, S.119-143.&lt;br/&gt;&lt;br/&gt;- Beven, K. (1997):   TOPMODEL - a critique,   Hydrological Processes, Vol.11, pp.1069-1085.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

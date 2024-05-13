@@ -1,0 +1,81 @@
+<tool name="SAGA.pj_georeference.6" id="saga_pj_georeference_6" version="1.0.0">
+  <description>World File from Flight and Camera Settings</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayFILE False  output_data_EXTENT $output_data_EXTENT  name SAGA.pj_georeference.6 FILE $FILE
+NX $NX
+NY $NY
+X $X
+Y $Y
+Z $Z
+ORIENTATION $ORIENTATION
+OMEGA $OMEGA
+PHI $PHI
+KAPPA $KAPPA
+KAPPA_OFF $KAPPA_OFF
+CFL $CFL
+PXSIZE $PXSIZE
+prefer $prefer
+response $response
+outputType_EXTENT $OutputSection_EXTENT.outputType_EXTENT
+transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></command>
+  <inputs>
+    <param name="FILE" type="data" optional="false" label="World File" help="World File The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="NX" type="integer" value="100" optional="true" label="Number of Columns" help="Number of Columns"/>
+    <param name="NY" type="integer" value="100" optional="true" label="Number of Columns" help="Number of Columns"/>
+    <param name="X" type="float" value="0" optional="true" label="X" help="X"/>
+    <param name="Y" type="float" value="0" optional="true" label="Y" help="Y"/>
+    <param name="Z" type="float" value="1000" optional="true" label="Flying Height" help="Flying Height"/>
+    <param name="ORIENTATION" type="select" optional="true" label="Orientation" help="Orientation">
+      <option selected="true" value="BLUH">BLUH</option>
+      <option value="PATB">PATB</option>
+    </param>
+    <param name="OMEGA" type="float" value="0" optional="true" label="Omega [degree]" help="rotation around the X axis (roll)"/>
+    <param name="PHI" type="float" value="0" optional="true" label="Phi [degree]" help="rotation around the Y axis (pitch)"/>
+    <param name="KAPPA" type="float" value="0" optional="true" label="Kappa [degree]" help="rotation around the Z axis (heading)"/>
+    <param name="KAPPA_OFF" type="float" value="90" optional="true" label="Kappa Offset [degree]" help="origin adjustment for Z axis (heading)"/>
+    <param name="CFL" type="float" value="80" optional="true" label="Focal Length [mm]" help="Focal Length [mm]"/>
+    <param name="PXSIZE" type="float" value="5.2" optional="true" label="CCD Physical Pixel Size [micron]" help="CCD Physical Pixel Size [micron]"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_EXTENT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_EXTENT" type="select" label="Extent" help="Extent">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_EXTENT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_EXTENT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_EXTENT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_EXTENT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Creates a world file (RST = rotation, scaling, translation) for georeferencing images by direct georeferencing. Direct georeferencing uses extrinsic (position, attitude) and intrinsic (focal length, physical pixel size) camera parameters.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;Baumker, M. / Heimes, F.J. (2001): New Calibration and Computing Method for Direct Georeferencing of Image and Scanner Data Using the Position and Angular Data of an Hybrid Inertial Navigation System. OEEPE Workshop, Integrated Sensor Orientation, Hannover 2001. &lt;a target="_blank" href="http://www.hochschule-bochum.de/fileadmin/media/fb_v/veroeffentlichungen/baeumker/baheimesoeepe.pdf"&gt;online&lt;/a&gt;.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

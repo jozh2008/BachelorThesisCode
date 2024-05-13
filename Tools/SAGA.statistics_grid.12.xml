@@ -1,0 +1,46 @@
+<tool name="SAGA.statistics_grid.12" id="saga_statistics_grid_12" version="1.0.0">
+  <description>Meridional Grid Statistics</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_STATS $output_data_STATS  name SAGA.statistics_grid.12 GRID $GRID
+prefer $prefer
+response $response
+outputType_STATS $OutputSection_STATS.outputType_STATS
+transmissionMode_STATS $OutputSection_STATS.transmissionMode_STATS]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_STATS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_STATS" type="select" label="Meridional Statistics" help="Meridional Statistics">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_STATS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_STATS" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Meridional Grid Statistics]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

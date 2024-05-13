@@ -1,0 +1,96 @@
+<tool name="OTB.DynamicConvert" id="otb_dynamicconvert" version="1.0.0">
+  <description>Change the pixel type and rescale the image's dynamic</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymask False  output_data_out $output_data_out  name OTB.DynamicConvert in $in
+out $out
+type $type
+type.linear.gamma $type.linear.gamma
+mask $mask
+quantile.high $quantile.high
+quantile.low $quantile.low
+channels $channels
+channels.grayscale.channel $channels.grayscale.channel
+channels.rgb.red $channels.rgb.red
+channels.rgb.green $channels.rgb.green
+channels.rgb.blue $channels.rgb.blue
+outmin $outmin
+outmax $outmax
+ram $ram
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="out" type="select" optional="false" label="Output image" help="Output image">
+      <option value="double">double</option>
+      <option value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option selected="true" value="uint8">uint8</option>
+    </param>
+    <param name="type" type="select" optional="false" label="Transfer function for the rescaling" help="Transfer function for the rescaling">
+      <option selected="true" value="linear">linear</option>
+      <option value="log2">log2</option>
+    </param>
+    <param name="type.linear.gamma" type="float" value="1" optional="true" label="Gamma correction factor" help="Gamma correction factor"/>
+    <param name="mask" type="data" optional="false" label="Optional mask to indicate which pixels are valid for computing the histogram quantiles. Pixels where the mask is zero will not contribute to the histogram. The mask must have the same dimensions as the input image." help="Optional mask to indicate which pixels are valid for computing the histogram quantiles. Pixels where the mask is zero will not contribute to the histogram. The mask must have the same dimensions as the input image. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="quantile.high" type="float" value="2" optional="true" label="Quantiles to cut from histogram high values before computing min/max rescaling (in percent, 2 by default)" help="Quantiles to cut from histogram high values before computing min/max rescaling (in percent, 2 by default)"/>
+    <param name="quantile.low" type="float" value="2" optional="true" label="Quantiles to cut from histogram low values before computing min/max rescaling (in percent, 2 by default)" help="Quantiles to cut from histogram low values before computing min/max rescaling (in percent, 2 by default)"/>
+    <param name="channels" type="select" optional="false" label="It's possible to select the channels of the output image. There are 3 modes, the available choices are:" help="It's possible to select the channels of the output image. There are 3 modes, the available choices are:">
+      <option selected="true" value="all">all</option>
+      <option value="grayscale">grayscale</option>
+      <option value="rgb">rgb</option>
+    </param>
+    <param name="channels.grayscale.channel" type="integer" value="1" optional="false" label="channels.grayscale.channel" help="channels.grayscale.channel"/>
+    <param name="channels.rgb.red" type="integer" optional="false" label="Red channel index." help="Red channel index."/>
+    <param name="channels.rgb.green" type="integer" optional="false" label="Green channel index." help="Green channel index."/>
+    <param name="channels.rgb.blue" type="integer" optional="false" label="Blue channel index." help="Blue channel index."/>
+    <param name="outmin" type="float" value="0" optional="true" label="Minimum value of the output image." help="Minimum value of the output image."/>
+    <param name="outmax" type="float" value="255" optional="true" label="Maximum value of the output image." help="Maximum value of the output image."/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output image" help="Output image">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application performs an image pixel type conversion (short, ushort, uchar, int, uint, float and double types are handled). The output image is written in the specified format (ie. that corresponds to the given extension). The conversion can include a rescale of the data range, by default it's set between the 2nd to the 98th percentile. The rescale can be linear or log2.  The choice of the output channels can be done with the extended filename, but less easy to handle. To do this, a 'channels' parameter allows you to select the desired bands at the output. There are 3 modes, the available choices are:  * grayscale :  to display mono image as standard color image  * rgb : select 3 bands in the input image (multi-bands)  * all : keep all bands.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

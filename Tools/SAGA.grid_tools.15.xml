@@ -1,0 +1,116 @@
+<tool name="SAGA.grid_tools.15" id="saga_grid_tools_15" version="1.0.0">
+  <description>Reclassify Grid Values</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArrayRETAB False  isArrayRETAB_2 False  isArrayF_MIN False  isArrayF_MAX False  isArrayF_CODE False  output_data_RESULT $output_data_RESULT  name SAGA.grid_tools.15 INPUT $INPUT
+METHOD $METHOD
+OLD $OLD
+NEW $NEW
+SOPERATOR $SOPERATOR
+MIN $MIN
+MAX $MAX
+RNEW $RNEW
+ROPERATOR $ROPERATOR
+RETAB $RETAB
+TOPERATOR $TOPERATOR
+RETAB_2 $RETAB_2
+F_MIN $F_MIN
+F_MAX $F_MAX
+F_CODE $F_CODE
+NODATAOPT $NODATAOPT
+NODATA $NODATA
+OTHEROPT $OTHEROPT
+OTHERS $OTHERS
+RESULT_NODATA_CHOICE $RESULT_NODATA_CHOICE
+RESULT_NODATA_VALUE $RESULT_NODATA_VALUE
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid to reclassify The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Select the desired method: 1. a single value or a range defined by a single value is reclassified, 2. a range of values is reclassified, 3. the lookup table is used to reclassify the grid.">
+      <option value="range">range</option>
+      <option value="simple_table">simple table</option>
+      <option selected="true" value="single">single</option>
+      <option value="user_supplied_table">user supplied table</option>
+    </param>
+    <param name="OLD" type="float" value="0" optional="true" label="old value" help="Value to reclassify."/>
+    <param name="NEW" type="float" value="1" optional="true" label="new value" help="New value."/>
+    <param name="SOPERATOR" type="select" optional="true" label="operator" help="Select the desired operator (&amp;lt;;.;=; &amp;gt;;.); it is possible to define a range above or below the old value.">
+      <option selected="true" value="=">=</option>
+    </param>
+    <param name="MIN" type="float" value="0" optional="true" label="minimum value" help="Minimum value of the range to be reclassified."/>
+    <param name="MAX" type="float" value="10" optional="true" label="maximum value" help="Maximum value of the range to be reclassified."/>
+    <param name="RNEW" type="float" value="5" optional="true" label="new value" help="new value"/>
+    <param name="ROPERATOR" type="select" optional="true" label="operator" help="Select operator: eg. min &amp;lt; value &amp;lt; max.">
+      <option selected="true" value="=">=</option>
+    </param>
+    <param name="RETAB" type="data" optional="false" label="Lookup Table" help="Lookup table used in method &quot;table&quot; The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="TOPERATOR" type="select" optional="true" label="operator" help="Select the desired operator (min &amp;lt; value &amp;lt; max; min . value &amp;lt; max; min .value . max; min &amp;lt; value . max).">
+      <option selected="true" value="min_">min </option>
+    </param>
+    <param name="RETAB_2" type="data" optional="false" label="Lookup Table" help="Lookup table used in method &quot;user supplied table&quot; The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="F_MIN" type="data" optional="false" label="minimum value" help="minimum value The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="F_MAX" type="data" optional="false" label="maximum value" help="maximum value The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="F_CODE" type="data" optional="false" label="new value" help="new value The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="NODATAOPT" type="select" optional="true" label="no data values" help="Use this option to reclassify No-Data values independently of the method settings.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="NODATA" type="float" value="0" optional="true" label="new value" help="new value"/>
+    <param name="OTHEROPT" type="select" optional="true" label="other values" help="Use this option to reclassify all other values that are not specified in the options above.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="OTHERS" type="float" value="0" optional="true" label="new value" help="new value"/>
+    <param name="RESULT_NODATA_CHOICE" type="select" optional="true" label="Assign ..." help="Choose how to handle the NoData value of the output grid.">
+      <option selected="true" value="NoData_value_of_input_grid">NoData value of input grid</option>
+      <option value="user_defined_NoData_value">user defined NoData value</option>
+    </param>
+    <param name="RESULT_NODATA_VALUE" type="float" value="-99999" optional="true" label="NoData Value" help="User defined NoData value for output grid."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Reclassified Grid" help="Reclassified grid.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The tool can be used to reclassify the values of a grid. It provides three different options:&lt;br/&gt;(a) reclassification of single values&lt;br/&gt;(b) reclassification of a range of values&lt;br/&gt;(c) reclassification of value ranges specified in a lookup table&lt;br/&gt;&lt;br/&gt;In addition to these methods, two special cases (NoData values and values not included in the reclassification setup) are supported.&lt;br/&gt;With reclassification mode (a) and (b), the 'NoData option' is evaluated before the 'Method' settings. In reclassification mode (c) the option is evaluated only if the NoData value is not included in the lookup table.&lt;br/&gt;The 'other values' option is always evaluated after checking the 'Method' settings.&lt;br/&gt;&lt;br/&gt;The tool allows one to define the NoData value of the output grid (header): by default, the output grid gets assigned the NoData value of the input grid. But it is also possible to assign a user defined NoData value.&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

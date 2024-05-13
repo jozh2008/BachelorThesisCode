@@ -1,0 +1,66 @@
+<tool name="SAGA.ta_morphometry.1" id="saga_ta_morphometry_1" version="1.0.0">
+  <description>Convergence Index</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayELEVATION False  output_data_RESULT $output_data_RESULT  name SAGA.ta_morphometry.1 ELEVATION $ELEVATION
+METHOD $METHOD
+NEIGHBOURS $NEIGHBOURS
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option selected="true" value="Aspect">Aspect</option>
+      <option value="Gradient">Gradient</option>
+    </param>
+    <param name="NEIGHBOURS" type="select" optional="true" label="Gradient Calculation" help="Gradient Calculation">
+      <option selected="true" value="2_x_2">2 x 2</option>
+      <option value="3_x_3">3 x 3</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Convergence Index" help="Convergence Index">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Reference:&lt;br/&gt;Koethe, R. & Lehmeier, F. (1996): SARA - System zur Automatischen Relief-Analyse. User Manual, 2. Edition [Dept. of Geography, University of Goettingen, unpublished]&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

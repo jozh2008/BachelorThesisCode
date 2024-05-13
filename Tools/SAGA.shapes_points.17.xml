@@ -1,0 +1,86 @@
+<tool name="SAGA.shapes_points.17" id="saga_shapes_points_17" version="1.0.0">
+  <description>Aggregate Point Observations</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayREFERENCE False  isArrayREFERENCE_ID False  isArrayOBSERVATIONS False  isArrayX False  isArrayY False  isArrayTRACK False  isArrayDATE False  isArrayTIME False  isArrayPARAMETER False  output_data_AGGREGATED $output_data_AGGREGATED  name SAGA.shapes_points.17 REFERENCE $REFERENCE
+REFERENCE_ID $REFERENCE_ID
+OBSERVATIONS $OBSERVATIONS
+X $X
+Y $Y
+TRACK $TRACK
+DATE $DATE
+TIME $TIME
+PARAMETER $PARAMETER
+TIME_SPAN $TIME_SPAN
+FIX_TIME $FIX_TIME
+OFF_TIME $OFF_TIME
+EPS_TIME $EPS_TIME
+EPS_SPACE $EPS_SPACE
+VERBOSE $VERBOSE
+POLAR $POLAR
+prefer $prefer
+response $response
+outputType_AGGREGATED $OutputSection_AGGREGATED.outputType_AGGREGATED
+transmissionMode_AGGREGATED $OutputSection_AGGREGATED.transmissionMode_AGGREGATED]]></command>
+  <inputs>
+    <param name="REFERENCE" type="data" optional="false" label="Reference Points" help="Reference Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="REFERENCE_ID" type="data" optional="false" label="ID" help="ID The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="OBSERVATIONS" type="data" optional="false" label="Observations" help="Observations The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="X" type="data" optional="false" label="X" help="X The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="Y" type="data" optional="false" label="Y" help="Y The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="TRACK" type="data" optional="false" label="Track" help="Track The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="DATE" type="data" optional="false" label="Date" help="Date The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="TIME" type="data" optional="false" label="Time" help="expected to be the second of day The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="PARAMETER" type="data" optional="false" label="Parameter" help="Parameter The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="TIME_SPAN" type="select" optional="true" label="Time Span Aggregation" help="Time Span Aggregation">
+      <option value="fixed">fixed</option>
+      <option selected="true" value="floating">floating</option>
+      <option value="ignore">ignore</option>
+    </param>
+    <param name="FIX_TIME" type="float" value="20" optional="true" label="Fixed Time Span (minutes)" help="ignored if set to zero"/>
+    <param name="OFF_TIME" type="float" value="-10" optional="true" label="Fixed Time Span Offset (minutes)" help="offset in minutes relative to 00:00 (midnight)"/>
+    <param name="EPS_TIME" type="float" value="60" optional="true" label="Maximum Time Span (Seconds)" help="ignored if set to zero"/>
+    <param name="EPS_SPACE" type="float" value="100" optional="true" label="Maximum Distance" help="given as map units or meters if polar coordinates switch is on; ignored if set to zero"/>
+    <param name="VERBOSE" type="select" optional="true" label="Verbose" help="Verbose">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="POLAR" type="select" optional="true" label="Polar Coordinates" help="Polar Coordinates">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_AGGREGATED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_AGGREGATED" type="select" label="Aggregated" help="Aggregated">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_AGGREGATED" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_AGGREGATED" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Aggregate Point Observations]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

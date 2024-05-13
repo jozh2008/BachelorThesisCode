@@ -1,0 +1,94 @@
+<tool name="SAGA.ta_lighting.0" id="saga_ta_lighting_0" version="1.0.0">
+  <description>Analytical Hillshading</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayELEVATION False  output_data_SHADE $output_data_SHADE  name SAGA.ta_lighting.0 ELEVATION $ELEVATION
+METHOD $METHOD
+POSITION $POSITION
+AZIMUTH $AZIMUTH
+DECLINATION $DECLINATION
+DATE_MIN '$DATE_MIN'
+TIME $TIME
+EXAGGERATION $EXAGGERATION
+UNIT $UNIT
+SHADOW $SHADOW
+NDIRS $NDIRS
+RADIUS $RADIUS
+prefer $prefer
+response $response
+outputType_SHADE $OutputSection_SHADE.outputType_SHADE
+transmissionMode_SHADE $OutputSection_SHADE.transmissionMode_SHADE]]></command>
+  <inputs>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Shading Method" help="Shading Method">
+      <option value="Ambient_Occlusion">Ambient Occlusion</option>
+      <option value="Combined_Shading">Combined Shading</option>
+      <option value="Limited_Maximum">Limited Maximum</option>
+      <option value="Shadows_Only">Shadows Only</option>
+      <option selected="true" value="Standard">Standard</option>
+      <option value="With_Shadows">With Shadows</option>
+    </param>
+    <param name="POSITION" type="select" optional="true" label="Sun's Position" help="Sun's Position">
+      <option selected="true" value="azimuth_and_height">azimuth and height</option>
+      <option value="date_and_time">date and time</option>
+    </param>
+    <param name="AZIMUTH" type="float" value="315" optional="true" label="Azimuth" help="Direction of the light source, measured in degree clockwise from the North direction."/>
+    <param name="DECLINATION" type="float" value="45" optional="true" label="Height" help="Height of the light source, measured in degree above the horizon."/>
+    <param name="DATE_MIN" type="text" optional="true" label="Day (min value)" help="Day"/>
+    <param name="TIME" type="float" value="12" optional="true" label="Hour" help="Hour"/>
+    <param name="EXAGGERATION" type="float" value="1" optional="true" label="Exaggeration" help="The terrain exaggeration factor allows one to increase the shading contrasts in flat areas."/>
+    <param name="UNIT" type="select" optional="true" label="Unit" help="Unit">
+      <option value="degree">degree</option>
+      <option selected="true" value="radians">radians</option>
+    </param>
+    <param name="SHADOW" type="select" optional="true" label="Shadow" help="Choose 'slim' to trace grid node's shadow, 'fat' to trace the whole cell's shadow. The first is slightly faster but might show some artifacts.">
+      <option value="fat">fat</option>
+      <option selected="true" value="slim">slim</option>
+    </param>
+    <param name="NDIRS" type="integer" value="8" optional="true" label="Number of Directions" help="Number of sample directions for ambient occlusion. Divides azimuth range (270 to 0 to 90 degree) into sectors. Declination (0 to 90 degree) is divided in (Number of Directions / 4) sectors."/>
+    <param name="RADIUS" type="float" value="10" optional="true" label="Search Radius" help="Radius used to trace for shadows (ambient occlusion) [map units]."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_SHADE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SHADE" type="select" label="Analytical Hillshading" help="The angle between the surface and the incoming light beams, measured in radians.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SHADE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_SHADE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SHADE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SHADE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SHADE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool performs an analytical hillshade computation for an elevation grid. The 'Standard' method simply calculates the angle at which light coming from the position of the light source would hit the surface. This method can produce angles greater than 90 degree. With the second method all values are kept within the range of 0-90 degree. It can be enhanced with shadowing effects, where shadowed cells will be marked with a value of exactly 90 degree. 'Shadows Only' creates a mask for the shadowed areas and sets all other cells to no-data. 'Combined Shading' takes the values of the standard method and multiplies these with the normalized slope. 'Ambient Occlusion' is based on the concepts of Tarini et al. (2006), but only the northern half-space is considered here. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

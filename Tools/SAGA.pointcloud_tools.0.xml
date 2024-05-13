@@ -1,0 +1,58 @@
+<tool name="SAGA.pointcloud_tools.0" id="saga_pointcloud_tools_0" version="1.0.0">
+  <description>Point Cloud Cutter</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS True  output_data_CUT $output_data_CUT  name SAGA.pointcloud_tools.0 POINTS $POINTS
+AREA $AREA
+INVERSE $INVERSE
+prefer $prefer
+response $response
+outputType_CUT $OutputSection_CUT.outputType_CUT
+transmissionMode_CUT $OutputSection_CUT.transmissionMode_CUT]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="One or several input point cloud datasets to cut. The following data types are allowed in the txt file:  x-ogc-lasf" format="txt"/>
+    <param name="AREA" type="select" optional="true" label="Choose Cut from ..." help="Choose Cut from ...">
+      <option value="Grid_System_Extent">Grid System Extent</option>
+      <option value="Polygons">Polygons</option>
+      <option value="Shapes_Extent">Shapes Extent</option>
+      <option selected="true" value="User_Defined_Extent">User Defined Extent</option>
+    </param>
+    <param name="INVERSE" type="select" optional="true" label="Inverse" help="Invert selection.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CUT" type="select" label="Cut" help="The cutted output point cloud dataset(s).">
+        <option value="application/x-ogc-lasf">x-ogc-lasf</option>
+      </param>
+      <param name="transmissionMode_CUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CUT" format="x-ogc-lasf" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool allows one to extract subsets from one or several point cloud datasets. The area-of-interest is defined either by bounding box coordinates, the extent of a grid system or a shapes layer, or by polygons of a shapes layer. Note that the latter does not support the inverse selection in case the shapes layer contains more than one polygon.&lt;br/&gt;In case a polygon shapes layer is used and one or more polygons are selected, only the selected polygons are processed.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

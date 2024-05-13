@@ -1,0 +1,113 @@
+<tool name="SAGA.imagery_opencv.11" id="saga_imagery_opencv_11" version="1.0.0">
+  <description>Artificial Neural Network Classification (OpenCV)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayFEATURES True  isArrayMODEL_LOAD False  isArrayTRAIN_AREAS False  isArrayTRAIN_CLASS False  isArrayMODEL_SAVE False  output_data_CLASSES $output_data_CLASSES  name SAGA.imagery_opencv.11 FEATURES $FEATURES
+NORMALIZE $NORMALIZE
+RGB_COLORS $RGB_COLORS
+MODEL_LOAD $MODEL_LOAD
+TRAIN_AREAS $TRAIN_AREAS
+TRAIN_CLASS $TRAIN_CLASS
+TRAIN_BUFFER $TRAIN_BUFFER
+MODEL_SAVE $MODEL_SAVE
+ANN_LAYERS $ANN_LAYERS
+ANN_NEURONS $ANN_NEURONS
+ANN_MAXITER $ANN_MAXITER
+ANN_EPSILON $ANN_EPSILON
+ANN_ACTIVATION $ANN_ACTIVATION
+ANN_ACT_ALPHA $ANN_ACT_ALPHA
+ANN_ACT_BETA $ANN_ACT_BETA
+ANN_PROPAGATION $ANN_PROPAGATION
+ANN_RP_DW0 $ANN_RP_DW0
+ANN_RP_DW_PLUS $ANN_RP_DW_PLUS
+ANN_RP_DW_MINUS $ANN_RP_DW_MINUS
+ANN_RP_DW_MIN $ANN_RP_DW_MIN
+ANN_RP_DW_MAX $ANN_RP_DW_MAX
+ANN_BP_DW $ANN_BP_DW
+ANN_BP_MOMENT $ANN_BP_MOMENT
+prefer $prefer
+response $response
+outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
+transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
+  <inputs>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="NORMALIZE" type="select" optional="true" label="Normalize" help="Normalize">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="RGB_COLORS" type="select" optional="true" label="Update Colors from Features" help="Use the first three features in list to obtain blue, green, red components for class colour in look-up table.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MODEL_LOAD" type="data" optional="false" label="Load Model" help="Use a model previously stored to file. The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="TRAIN_AREAS" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="TRAIN_CLASS" type="data" optional="false" label="Class Identifier" help="Class Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="TRAIN_BUFFER" type="float" value="1" optional="true" label="Buffer Size" help="For non-polygon type training areas, creates a buffer with a diameter of specified size."/>
+    <param name="MODEL_SAVE" type="data" optional="false" label="Save Model" help="Stores model to file to be used for subsequent classifications instead of training areas. The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="ANN_LAYERS" type="integer" value="3" optional="true" label="Number of Layers" help="You can specify the number of layers in the network (not including input and output layer)."/>
+    <param name="ANN_NEURONS" type="integer" value="3" optional="true" label="Number of Neurons" help="You can specify the number of neurons in each layer of the network."/>
+    <param name="ANN_MAXITER" type="integer" value="300" optional="true" label="Maximum Number of Iterations" help="Maximum Number of Iterations"/>
+    <param name="ANN_EPSILON" type="float" value="0" optional="true" label="Error Change (Epsilon)" help="Termination criteria of the training algorithm. You can specify how much the error could change between the iterations to make the algorithm continue (epsilon)."/>
+    <param name="ANN_ACTIVATION" type="select" optional="true" label="Activation Function" help="Activation Function">
+      <option value="Gaussian">Gaussian</option>
+      <option value="Identity">Identity</option>
+      <option selected="true" value="Sigmoid">Sigmoid</option>
+    </param>
+    <param name="ANN_ACT_ALPHA" type="float" value="1" optional="true" label="Function's Alpha" help="Function's Alpha"/>
+    <param name="ANN_ACT_BETA" type="float" value="1" optional="true" label="Function's Beta" help="Function's Beta"/>
+    <param name="ANN_PROPAGATION" type="select" optional="true" label="Training Method" help="Training Method">
+      <option selected="true" value="back_propagation">back propagation</option>
+      <option value="resilient_propagation">resilient propagation</option>
+    </param>
+    <param name="ANN_RP_DW0" type="float" value="0" optional="true" label="Initial Update Value" help="Initial Update Value"/>
+    <param name="ANN_RP_DW_PLUS" type="float" value="1.2" optional="true" label="Increase Factor" help="Increase Factor"/>
+    <param name="ANN_RP_DW_MINUS" type="float" value="0.5" optional="true" label="Decrease Factor" help="Decrease Factor"/>
+    <param name="ANN_RP_DW_MIN" type="float" value="0.1" optional="true" label="Lower Value Update Limit" help="Lower Value Update Limit"/>
+    <param name="ANN_RP_DW_MAX" type="float" value="1.1" optional="true" label="Upper Value Update Limit" help="Upper Value Update Limit"/>
+    <param name="ANN_BP_DW" type="float" value="0.1" optional="true" label="Weight Gradient Term" help="Weight Gradient Term"/>
+    <param name="ANN_BP_MOMENT" type="float" value="0.1" optional="true" label="Moment Term" help="Moment Term"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLASSES" type="select" label="Classification" help="Classification">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CLASSES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLASSES" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLASSES" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CLASSES" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CLASSES" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Integration of the OpenCV Machine Learning library for Artificial Neural Network classification of gridded features.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

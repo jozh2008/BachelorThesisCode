@@ -1,0 +1,102 @@
+<tool name="SAGA.statistics_grid.0" id="saga_statistics_grid_0" version="1.0.0">
+  <description>Fast Representativeness</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  output_data_RESULT $output_data_RESULT  output_data_RESULT_LOD $output_data_RESULT_LOD  output_data_SEEDS $output_data_SEEDS  name SAGA.statistics_grid.0 INPUT $INPUT
+LOD $LOD
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT
+outputType_RESULT_LOD $OutputSection_RESULT_LOD.outputType_RESULT_LOD
+transmissionMode_RESULT_LOD $OutputSection_RESULT_LOD.transmissionMode_RESULT_LOD
+outputType_SEEDS $OutputSection_SEEDS.outputType_SEEDS
+transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input for tool calculations. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="LOD" type="float" value="16" optional="true" label="Level of Generalisation" help="Level of Generalisation"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Output" help="Output of tool calculations.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_RESULT_LOD" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT_LOD" type="select" label="Output Lod" help="Output of tool calculations.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT_LOD" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SEEDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SEEDS" type="select" label="Output Seeds" help="Output of tool calculations.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SEEDS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_RESULT_LOD" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT_LOD" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT_LOD" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT_LOD" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SEEDS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SEEDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SEEDS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SEEDS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Fast Representativeness]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

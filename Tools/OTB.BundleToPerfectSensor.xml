@@ -1,0 +1,102 @@
+<tool name="OTB.BundleToPerfectSensor" id="otb_bundletoperfectsensor" version="1.0.0">
+  <description>Perform P+XS pansharpening</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayinp False  isArrayinxs False  isArrayelev.geoid False  output_data_out $output_data_out  name OTB.BundleToPerfectSensor inp $inp
+inxs $inxs
+out $out
+elev.dem '$elev.dem'
+elev.geoid $elev.geoid
+elev.default $elev.default
+mode $mode
+method $method
+method.lmvm.radiusx $method.lmvm.radiusx
+method.lmvm.radiusy $method.lmvm.radiusy
+method.bayes.lambda $method.bayes.lambda
+method.bayes.s $method.bayes.s
+lms $lms
+interpolator $interpolator
+interpolator.bco.radius $interpolator.bco.radius
+ram $ram
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="inp" type="data" optional="false" label="Input panchromatic image." help="Input panchromatic image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="inxs" type="data" optional="false" label="Input XS image." help="Input XS image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="out" type="select" optional="false" label="Output image." help="Output image.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
+    <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
+    <param name="elev.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
+    <param name="mode" type="select" optional="false" label="Superimposition mode" help="Superimposition mode">
+      <option selected="true" value="default">default</option>
+      <option value="phr">phr</option>
+    </param>
+    <param name="method" type="select" optional="false" label="Selection of the pan-sharpening method." help="Selection of the pan-sharpening method.">
+      <option value="bayes">bayes</option>
+      <option value="lmvm">lmvm</option>
+      <option selected="true" value="rcs">rcs</option>
+    </param>
+    <param name="method.lmvm.radiusx" type="integer" value="3" optional="false" label="Set the x radius of the sliding window." help="Set the x radius of the sliding window."/>
+    <param name="method.lmvm.radiusy" type="integer" value="3" optional="false" label="Set the y radius of the sliding window." help="Set the y radius of the sliding window."/>
+    <param name="method.bayes.lambda" type="float" value="0.9999" optional="false" label="Set the weighting value." help="Set the weighting value."/>
+    <param name="method.bayes.s" type="float" value="1" optional="false" label="Set the S coefficient." help="Set the S coefficient."/>
+    <param name="lms" type="float" value="4" optional="true" label="Spacing of the deformation field. Default is 10 times the PAN image spacing." help="Spacing of the deformation field. Default is 10 times the PAN image spacing."/>
+    <param name="interpolator" type="select" optional="false" label="This group of parameters allows defining how the input image will be interpolated during resampling." help="This group of parameters allows defining how the input image will be interpolated during resampling.">
+      <option selected="true" value="bco">bco</option>
+      <option value="linear">linear</option>
+      <option value="nn">nn</option>
+    </param>
+    <param name="interpolator.bco.radius" type="float" value="0" optional="true" label="Fill value for area outside the reprojected image" help="Fill value for area outside the reprojected image"/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output image." help="Output image.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application performs P+XS pansharpening. The default mode use Pan and XS sensor models to estimate the transformation to superimpose XS over Pan before the fusion ("default mode"). The application provides also a PHR mode for Pleiades images which does not use sensor models as Pan and XS products are already coregistered but only estimate an affine transformation to superimpose XS over the Pan.Note that this option is automatically activated in case Pleiades images are detected as input.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

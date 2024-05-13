@@ -1,0 +1,81 @@
+<tool name="SAGA.ta_lighting.4" id="saga_ta_lighting_4" version="1.0.0">
+  <description>Topographic Correction</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayORIGINAL False  output_data_CORRECTED $output_data_CORRECTED  name SAGA.ta_lighting.4 DEM $DEM
+ORIGINAL $ORIGINAL
+AZI $AZI
+HGT $HGT
+METHOD $METHOD
+MINNAERT $MINNAERT
+MAXCELLS $MAXCELLS
+MAXVALUE $MAXVALUE
+prefer $prefer
+response $response
+outputType_CORRECTED $OutputSection_CORRECTED.outputType_CORRECTED
+transmissionMode_CORRECTED $OutputSection_CORRECTED.transmissionMode_CORRECTED]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ORIGINAL" type="data" optional="false" label="Original Image" help="Original Image The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="AZI" type="float" value="180" optional="true" label="Azimuth" help="direction of sun (degree, clockwise from North)"/>
+    <param name="HGT" type="float" value="45" optional="true" label="Height" help="height of sun above horizon (degree)"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="C_Correction">C Correction</option>
+      <option value="Cosine_Correction_(Civco_1989)">Cosine Correction (Civco 1989)</option>
+      <option value="Cosine_Correction_(Teillet_et_al._1982)">Cosine Correction (Teillet et al. 1982)</option>
+      <option value="Minnaert_Correction">Minnaert Correction</option>
+      <option selected="true" value="Minnaert_Correction_with_Slope_(Law_&amp;_Nichol_2004)">Minnaert Correction with Slope (Law &amp; Nichol 2004)</option>
+      <option value="Minnaert_Correction_with_Slope_(Riano_et_al._2003)">Minnaert Correction with Slope (Riano et al. 2003)</option>
+      <option value="Normalization_(after_Civco,_modified_by_Law_&amp;_Nichol)">Normalization (after Civco, modified by Law &amp; Nichol)</option>
+    </param>
+    <param name="MINNAERT" type="float" value="0.5" optional="true" label="Minnaert Correction" help="Minnaert Correction"/>
+    <param name="MAXCELLS" type="integer" value="1000" optional="true" label="Maximum Cells (C Correction Analysis)" help="Maximum number of grid cells used for trend analysis as required by C correction."/>
+    <param name="MAXVALUE" type="select" optional="true" label="Value Range" help="Value Range">
+      <option selected="true" value="1_byte_(0-255)">1 byte (0-255)</option>
+      <option value="2_byte_(0-65535)">2 byte (0-65535)</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CORRECTED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CORRECTED" type="select" label="Corrected Image" help="Corrected Image">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CORRECTED" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CORRECTED" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CORRECTED" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CORRECTED" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CORRECTED" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[&lt;br/&gt;References:&lt;br/&gt;Civco, D. L. (1989): 'Topographic Normalization of Landsat Thematic Mapper Digital Imagery', Photogrammetric Engineering and Remote Sensing, 55(9), pp.1303-1309.&lt;br/&gt;&lt;br/&gt;Law, K.H., Nichol, J. (2004): 'Topographic Correction for Differential Illumination Effects on Ikonos Satellite Imagery', ISPRS 2004 International Society for Photogrammetry and Remote Sensing, &lt;a href="http://www.cartesia.org/geodoc/isprs2004/comm3/papers/347.pdf"&gt;pdf&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Phua, M.-H., Saito, H. (2003): 'Estimation of biomass of a mountainous tropical forest using Landsat TM data', Canadian Journal of Remote Sensing, 29(4), pp.429-440.&lt;br/&gt;&lt;br/&gt;Riano, D., Chuvieco, E. Salas, J., Aguado, I. (2003): 'Assessment of Different Topographic Corrections in Landsat-TM Data for Mapping Vegetation Types', IEEE Transactions on Geoscience and Remote Sensing, 41(5), pp.1056-1061, &lt;a href="http://www.geogra.uah.es/~emilio/pdf/Riano2003b.pdf"&gt;pdf&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Teillet, P.M., Guindon, B., Goodenough, D.G. (1982): 'On the slope-aspect correction of multispectral scanner data', Canadian Journal of Remote Sensing, 8(2), pp.1537-1540.&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

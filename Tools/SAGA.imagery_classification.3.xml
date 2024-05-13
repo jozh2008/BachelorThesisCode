@@ -1,0 +1,54 @@
+<tool name="SAGA.imagery_classification.3" id="saga_imagery_classification_3" version="1.0.0">
+  <description>Decision Tree</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_CLASSES $output_data_CLASSES  name SAGA.imagery_classification.3 prefer $prefer
+response $response
+outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
+transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
+  <inputs>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLASSES" type="select" label="Decision Tree" help="Decision Tree">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CLASSES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLASSES" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLASSES" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CLASSES" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CLASSES" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Decision Tree]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

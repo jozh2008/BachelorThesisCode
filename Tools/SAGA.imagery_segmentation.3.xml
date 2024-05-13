@@ -1,0 +1,120 @@
+<tool name="SAGA.imagery_segmentation.3" id="saga_imagery_segmentation_3" version="1.0.0">
+  <description>Seeded Region Growing</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySEEDS False  isArrayFEATURES True  output_data_SEGMENTS $output_data_SEGMENTS  output_data_SIMILARITY $output_data_SIMILARITY  output_data_TABLE $output_data_TABLE  name SAGA.imagery_segmentation.3 SEEDS $SEEDS
+FEATURES $FEATURES
+NORMALIZE $NORMALIZE
+NEIGHBOUR $NEIGHBOUR
+METHOD $METHOD
+SIG_1 $SIG_1
+SIG_2 $SIG_2
+THRESHOLD $THRESHOLD
+REFRESH $REFRESH
+LEAFSIZE $LEAFSIZE
+prefer $prefer
+response $response
+outputType_SEGMENTS $OutputSection_SEGMENTS.outputType_SEGMENTS
+transmissionMode_SEGMENTS $OutputSection_SEGMENTS.transmissionMode_SEGMENTS
+outputType_SIMILARITY $OutputSection_SIMILARITY.outputType_SIMILARITY
+transmissionMode_SIMILARITY $OutputSection_SIMILARITY.transmissionMode_SIMILARITY
+outputType_TABLE $OutputSection_TABLE.outputType_TABLE
+transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
+  <inputs>
+    <param name="SEEDS" type="data" optional="false" label="Seeds" help="Seeds The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="NORMALIZE" type="select" optional="true" label="Normalize Features" help="Standardize the input features, i.e. rescale the input data (features) such that the mean equals 0 and the standard deviation equals 1. This is helpful when the input features have different scales, units or outliers.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="NEIGHBOUR" type="select" optional="true" label="Neighbourhood" help="Neighbourhood">
+      <option selected="true" value="4_(von_Neumann)">4 (von Neumann)</option>
+      <option value="8_(Moore)">8 (Moore)</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="feature_space">feature space</option>
+      <option selected="true" value="feature_space_and_position">feature space and position</option>
+    </param>
+    <param name="SIG_1" type="float" value="1" optional="true" label="Variance in Feature Space" help="Variance in Feature Space"/>
+    <param name="SIG_2" type="float" value="1" optional="true" label="Variance in Position Space" help="Variance in Position Space"/>
+    <param name="THRESHOLD" type="float" value="0" optional="true" label="Similarity Threshold" help="Similarity Threshold"/>
+    <param name="REFRESH" type="select" optional="true" label="Refresh" help="Refresh">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="LEAFSIZE" type="integer" value="256" optional="true" label="Leaf Size (for Speed Optimisation)" help="Leaf Size (for Speed Optimisation)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_SEGMENTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SEGMENTS" type="select" label="Segments" help="Segments">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SEGMENTS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SIMILARITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SIMILARITY" type="select" label="Similarity" help="Similarity">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SIMILARITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TABLE" type="select" label="Seeds" help="Seeds">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_TABLE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_SEGMENTS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SEGMENTS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SEGMENTS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SEGMENTS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SIMILARITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SIMILARITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SIMILARITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SIMILARITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_TABLE" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The tool allows one to apply a seeded region growing algorithm to a stack of input features and thus to segmentize the data for object extraction. The required seed points can be created with the 'Seed Generation' tool, for example. The derived segments can be used, for example, for object based classification.&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

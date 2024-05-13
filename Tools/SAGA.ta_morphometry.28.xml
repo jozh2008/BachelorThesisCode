@@ -1,0 +1,67 @@
+<tool name="SAGA.ta_morphometry.28" id="saga_ta_morphometry_28" version="1.0.0">
+  <description>Multi-Scale Topographic Position Index (TPI)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_TPI $output_data_TPI  name SAGA.ta_morphometry.28 DEM $DEM
+SCALE_MIN $SCALE_MIN
+SCALE_MAX $SCALE_MAX
+SCALE_NUM $SCALE_NUM
+UPDATE $UPDATE
+prefer $prefer
+response $response
+outputType_TPI $OutputSection_TPI.outputType_TPI
+transmissionMode_TPI $OutputSection_TPI.transmissionMode_TPI]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SCALE_MIN" type="integer" value="1" optional="true" label="Minimum Scale" help="kernel radius in cells"/>
+    <param name="SCALE_MAX" type="integer" value="8" optional="true" label="Maximum Scale" help="kernel radius in cells"/>
+    <param name="SCALE_NUM" type="integer" value="3" optional="true" label="Number of Scales" help="Number of Scales"/>
+    <param name="UPDATE" type="select" optional="true" label="Update" help="update view for each integration step">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TPI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TPI" type="select" label="Topographic Position Index" help="Topographic Position Index">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TPI" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TPI" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TPI" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TPI" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TPI" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Topographic Position Index (TPI) calculation as proposed by Guisan et al. (1999).&lt;br/&gt;&lt;br/&gt;This implementation calculates the TPI for different scales and integrates these into one single grid. The hierarchical integration is achieved by starting with the standardized TPI values of the largest scale, then adding standardized values from smaller scales where the (absolute) values from the smaller scale exceed those from the larger scale. This integration scheme has been proposed by N. Zimmermann.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

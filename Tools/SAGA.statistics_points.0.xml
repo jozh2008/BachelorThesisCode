@@ -1,0 +1,54 @@
+<tool name="SAGA.statistics_points.0" id="saga_statistics_points_0" version="1.0.0">
+  <description>Variogram</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS False  isArrayFIELD False  output_data_RESULT $output_data_RESULT  name SAGA.statistics_points.0 POINTS $POINTS
+FIELD $FIELD
+DISTCOUNT $DISTCOUNT
+DISTMAX $DISTMAX
+NSKIP $NSKIP
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="DISTCOUNT" type="integer" value="100" optional="true" label="Initial Number of Distance Classes" help="Initial Number of Distance Classes"/>
+    <param name="DISTMAX" type="float" value="0" optional="true" label="Maximum Distance" help="Maximum Distance"/>
+    <param name="NSKIP" type="integer" value="1" optional="true" label="Skip Number" help="Skip Number"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Sample Variogram" help="Sample Variogram">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Variogram]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

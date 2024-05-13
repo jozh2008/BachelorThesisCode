@@ -1,0 +1,126 @@
+<tool name="SAGA.imagery_segmentation.0" id="saga_imagery_segmentation_0" version="1.0.0">
+  <description>Watershed Segmentation</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_SEGMENTS $output_data_SEGMENTS  output_data_SEEDS $output_data_SEEDS  output_data_BORDERS $output_data_BORDERS  name SAGA.imagery_segmentation.0 GRID $GRID
+OUTPUT $OUTPUT
+DOWN $DOWN
+JOIN $JOIN
+THRESHOLD $THRESHOLD
+EDGE $EDGE
+BBORDERS $BBORDERS
+prefer $prefer
+response $response
+outputType_SEGMENTS $OutputSection_SEGMENTS.outputType_SEGMENTS
+transmissionMode_SEGMENTS $OutputSection_SEGMENTS.transmissionMode_SEGMENTS
+outputType_SEEDS $OutputSection_SEEDS.outputType_SEEDS
+transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS
+outputType_BORDERS $OutputSection_BORDERS.outputType_BORDERS
+transmissionMode_BORDERS $OutputSection_BORDERS.transmissionMode_BORDERS]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="OUTPUT" type="select" optional="true" label="Output" help="The values of the resultant grid can be either the seed value (e.g. the local maximum) or the enumerated segment id.">
+      <option value="Seed_Value">Seed Value</option>
+      <option selected="true" value="Segment_ID">Segment ID</option>
+    </param>
+    <param name="DOWN" type="select" optional="true" label="Method" help="Choose if you want to segmentate either on minima or on maxima.">
+      <option selected="true" value="Maxima">Maxima</option>
+      <option value="Minima">Minima</option>
+    </param>
+    <param name="JOIN" type="select" optional="true" label="Join Segments based on Threshold Value" help="Join segments based on threshold value.">
+      <option selected="true" value="do_not_join">do not join</option>
+      <option value="seed_to_saddle_difference">seed to saddle difference</option>
+      <option value="seeds_difference">seeds difference</option>
+    </param>
+    <param name="THRESHOLD" type="float" value="0" optional="true" label="Threshold" help="Specify a threshold value as minimum difference between neighboured segments."/>
+    <param name="EDGE" type="select" optional="true" label="Allow Edge Pixels to be Seeds" help="Allow Edge Pixels to be Seeds">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BBORDERS" type="select" optional="true" label="Borders" help="Create borders between segments as new grid.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_SEGMENTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SEGMENTS" type="select" label="Segments" help="Segments">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SEGMENTS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SEEDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SEEDS" type="select" label="Seed Points" help="Seed Points">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_SEEDS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BORDERS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BORDERS" type="select" label="Borders" help="Borders">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BORDERS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_SEGMENTS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SEGMENTS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SEGMENTS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SEGMENTS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SEEDS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SEEDS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_SEEDS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_BORDERS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BORDERS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BORDERS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BORDERS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Watershed segmentation. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,85 @@
+<tool name="SAGA.grids_tools.0" id="saga_grids_tools_0" version="1.0.0">
+  <description>Create a Grid Collection</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayLIST True  isArrayTABLE False  isArrayTABLE_Z False  isArrayCOPY False  output_data_GRIDS $output_data_GRIDS  name SAGA.grids_tools.0 LIST $LIST
+NAME '$NAME'
+DELETE $DELETE
+ATTRIBUTES $ATTRIBUTES
+TABLE $TABLE
+TABLE_Z $TABLE_Z
+NFIELDS $NFIELDS
+ZFIELD $ZFIELD
+COPY $COPY
+COPY_SET $COPY_SET
+prefer $prefer
+response $response
+outputType_GRIDS $OutputSection_GRIDS.outputType_GRIDS
+transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
+  <inputs>
+    <param name="LIST" type="data" optional="false" label="Single Grids" help="Single Grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="NAME" type="text" optional="true" label="Name" help="Name"/>
+    <param name="DELETE" type="select" optional="true" label="Delete" help="Delete">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="ATTRIBUTES" type="select" optional="true" label="Attribute Definition" help="Attribute Definition">
+      <option value="copy_from_other_grid_collection">copy from other grid collection</option>
+      <option selected="true" value="index_and_name">index and name</option>
+      <option value="table_with_values">table with values</option>
+      <option value="user_defined_structure">user defined structure</option>
+    </param>
+    <param name="TABLE" type="data" optional="false" label="Attributes" help="Attributes The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="TABLE_Z" type="data" optional="false" label="Z Attribute" help="Z Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="NFIELDS" type="integer" value="2" optional="true" label="Number of Attributes" help="Number of Attributes"/>
+    <param name="ZFIELD" type="integer" value="1" optional="true" label="Z Attribute" help="Z Attribute"/>
+    <param name="COPY" type="data" optional="false" label="Copy from Grid Collection" help="Copy from Grid Collection The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="COPY_SET" type="select" optional="true" label="Copy Settings" help="Copy Settings">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GRIDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GRIDS" type="select" label="Grid Collection" help="Grid Collection">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GRIDS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GRIDS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GRIDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GRIDS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GRIDS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Create a new grid collection from existing grids.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

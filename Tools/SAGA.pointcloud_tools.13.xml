@@ -1,0 +1,54 @@
+<tool name="SAGA.pointcloud_tools.13" id="saga_pointcloud_tools_13" version="1.0.0">
+  <description>Point Cloud from Table</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTAB_IN False  isArrayFIELD_X False  isArrayFIELD_Y False  isArrayFIELD_Z False  isArrayFIELDS False  output_data_PC_OUT $output_data_PC_OUT  name SAGA.pointcloud_tools.13 TAB_IN $TAB_IN
+FIELD_X $FIELD_X
+FIELD_Y $FIELD_Y
+FIELD_Z $FIELD_Z
+FIELDS $FIELDS
+prefer $prefer
+response $response
+outputType_PC_OUT $OutputSection_PC_OUT.outputType_PC_OUT
+transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></command>
+  <inputs>
+    <param name="TAB_IN" type="data" optional="false" label="Table" help="The input table. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_X" type="data" optional="false" label="X" help="The attribute field with the x-coordinate. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_Y" type="data" optional="false" label="Y" help="The attribute field with the y-coordinate. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_Z" type="data" optional="false" label="Z" help="The attribute field with the z-coordinate. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Attributes" help="The attribute fields to convert, optional. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PC_OUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PC_OUT" type="select" label="Point Cloud" help="The output point cloud.">
+        <option value="application/x-ogc-lasf">x-ogc-lasf</option>
+      </param>
+      <param name="transmissionMode_PC_OUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PC_OUT" format="x-ogc-lasf" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool allows one to create a point cloud from a table.&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

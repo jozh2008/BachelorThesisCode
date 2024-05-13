@@ -1,0 +1,463 @@
+<tool name="SAGA.climate_tools.10" id="saga_climate_tools_10" version="1.0.0">
+  <description>Bioclimatic Variables</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTMEAN True  isArrayTMIN True  isArrayTMAX True  isArrayP True  output_data_BIO_01 $output_data_BIO_01  output_data_BIO_02 $output_data_BIO_02  output_data_BIO_03 $output_data_BIO_03  output_data_BIO_04 $output_data_BIO_04  output_data_BIO_05 $output_data_BIO_05  output_data_BIO_06 $output_data_BIO_06  output_data_BIO_07 $output_data_BIO_07  output_data_BIO_08 $output_data_BIO_08  output_data_BIO_09 $output_data_BIO_09  output_data_BIO_10 $output_data_BIO_10  output_data_BIO_11 $output_data_BIO_11  output_data_BIO_12 $output_data_BIO_12  output_data_BIO_13 $output_data_BIO_13  output_data_BIO_14 $output_data_BIO_14  output_data_BIO_15 $output_data_BIO_15  output_data_BIO_16 $output_data_BIO_16  output_data_BIO_17 $output_data_BIO_17  output_data_BIO_18 $output_data_BIO_18  output_data_BIO_19 $output_data_BIO_19  name SAGA.climate_tools.10 TMEAN $TMEAN
+TMIN $TMIN
+TMAX $TMAX
+P $P
+SEASONALITY $SEASONALITY
+prefer $prefer
+response $response
+outputType_BIO_01 $OutputSection_BIO_01.outputType_BIO_01
+transmissionMode_BIO_01 $OutputSection_BIO_01.transmissionMode_BIO_01
+outputType_BIO_02 $OutputSection_BIO_02.outputType_BIO_02
+transmissionMode_BIO_02 $OutputSection_BIO_02.transmissionMode_BIO_02
+outputType_BIO_03 $OutputSection_BIO_03.outputType_BIO_03
+transmissionMode_BIO_03 $OutputSection_BIO_03.transmissionMode_BIO_03
+outputType_BIO_04 $OutputSection_BIO_04.outputType_BIO_04
+transmissionMode_BIO_04 $OutputSection_BIO_04.transmissionMode_BIO_04
+outputType_BIO_05 $OutputSection_BIO_05.outputType_BIO_05
+transmissionMode_BIO_05 $OutputSection_BIO_05.transmissionMode_BIO_05
+outputType_BIO_06 $OutputSection_BIO_06.outputType_BIO_06
+transmissionMode_BIO_06 $OutputSection_BIO_06.transmissionMode_BIO_06
+outputType_BIO_07 $OutputSection_BIO_07.outputType_BIO_07
+transmissionMode_BIO_07 $OutputSection_BIO_07.transmissionMode_BIO_07
+outputType_BIO_08 $OutputSection_BIO_08.outputType_BIO_08
+transmissionMode_BIO_08 $OutputSection_BIO_08.transmissionMode_BIO_08
+outputType_BIO_09 $OutputSection_BIO_09.outputType_BIO_09
+transmissionMode_BIO_09 $OutputSection_BIO_09.transmissionMode_BIO_09
+outputType_BIO_10 $OutputSection_BIO_10.outputType_BIO_10
+transmissionMode_BIO_10 $OutputSection_BIO_10.transmissionMode_BIO_10
+outputType_BIO_11 $OutputSection_BIO_11.outputType_BIO_11
+transmissionMode_BIO_11 $OutputSection_BIO_11.transmissionMode_BIO_11
+outputType_BIO_12 $OutputSection_BIO_12.outputType_BIO_12
+transmissionMode_BIO_12 $OutputSection_BIO_12.transmissionMode_BIO_12
+outputType_BIO_13 $OutputSection_BIO_13.outputType_BIO_13
+transmissionMode_BIO_13 $OutputSection_BIO_13.transmissionMode_BIO_13
+outputType_BIO_14 $OutputSection_BIO_14.outputType_BIO_14
+transmissionMode_BIO_14 $OutputSection_BIO_14.transmissionMode_BIO_14
+outputType_BIO_15 $OutputSection_BIO_15.outputType_BIO_15
+transmissionMode_BIO_15 $OutputSection_BIO_15.transmissionMode_BIO_15
+outputType_BIO_16 $OutputSection_BIO_16.outputType_BIO_16
+transmissionMode_BIO_16 $OutputSection_BIO_16.transmissionMode_BIO_16
+outputType_BIO_17 $OutputSection_BIO_17.outputType_BIO_17
+transmissionMode_BIO_17 $OutputSection_BIO_17.transmissionMode_BIO_17
+outputType_BIO_18 $OutputSection_BIO_18.outputType_BIO_18
+transmissionMode_BIO_18 $OutputSection_BIO_18.transmissionMode_BIO_18
+outputType_BIO_19 $OutputSection_BIO_19.outputType_BIO_19
+transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></command>
+  <inputs>
+    <param name="TMEAN" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SEASONALITY" type="select" optional="true" label="Temperature Seasonality" help="Temperature Seasonality">
+      <option value="Coefficient_of_Variation">Coefficient of Variation</option>
+      <option selected="true" value="Standard_Deviation">Standard Deviation</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_BIO_01" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_01" type="select" label="Annual Mean Temperature" help="Annual Mean Temperature">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_01" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_02" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_02" type="select" label="Mean Diurnal Range" help="Mean Diurnal Range">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_02" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_03" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_03" type="select" label="Isothermality" help="Isothermality">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_03" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_04" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_04" type="select" label="Temperature Seasonality" help="Temperature Seasonality">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_04" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_05" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_05" type="select" label="Maximum Temperature of Warmest Month" help="Maximum Temperature of Warmest Month">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_05" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_06" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_06" type="select" label="Minimum Temperature of Coldest Month" help="Minimum Temperature of Coldest Month">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_06" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_07" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_07" type="select" label="Temperature Annual Range" help="Temperature Annual Range">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_07" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_08" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_08" type="select" label="Mean Temperature of Wettest Quarter" help="Mean Temperature of Wettest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_08" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_09" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_09" type="select" label="Mean Temperature of Driest Quarter" help="Mean Temperature of Driest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_09" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_10" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_10" type="select" label="Mean Temperature of Warmest Quarter" help="Mean Temperature of Warmest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_10" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_11" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_11" type="select" label="Mean Temperature of Coldest Quarter" help="Mean Temperature of Coldest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_11" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_12" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_12" type="select" label="Annual Precipitation" help="Annual Precipitation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_12" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_13" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_13" type="select" label="Precipitation of Wettest Month" help="Precipitation of Wettest Month">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_13" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_14" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_14" type="select" label="Precipitation of Driest Month" help="Precipitation of Driest Month">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_14" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_15" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_15" type="select" label="Precipitation Seasonality" help="Precipitation Seasonality">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_15" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_16" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_16" type="select" label="Precipitation of Wettest Quarter" help="Precipitation of Wettest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_16" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_17" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_17" type="select" label="Precipitation of Driest Quarter" help="Precipitation of Driest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_17" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_18" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_18" type="select" label="Precipitation of Warmest Quarter" help="Precipitation of Warmest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_18" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BIO_19" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BIO_19" type="select" label="Precipitation of Coldest Quarter" help="Precipitation of Coldest Quarter">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BIO_19" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_BIO_01" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_01" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_01" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_01" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_02" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_02" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_02" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_02" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_03" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_03" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_03" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_03" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_04" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_04" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_04" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_04" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_05" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_05" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_05" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_05" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_06" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_06" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_06" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_06" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_07" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_07" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_07" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_07" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_08" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_08" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_08" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_08" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_09" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_09" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_09" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_09" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_10" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_10" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_10" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_10" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_11" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_11" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_11" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_11" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_12" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_12" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_12" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_12" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_13" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_13" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_13" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_13" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_14" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_14" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_14" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_14" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_15" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_15" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_15" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_15" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_16" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_16" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_16" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_16" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_17" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_17" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_17" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_17" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_18" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_18" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_18" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_18" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BIO_19" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BIO_19" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BIO_19" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BIO_19" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool calculates biogically meaningful variables from monthly climate data (mean, minimum and maximum temperature and precipitation), as provided e.g. by the &lt;a href="http://worldclim.org"&gt;WorldClim - Global Climate Data&lt;/a&gt; project.&lt;br/&gt;&lt;p&gt;The implementation follows the definitions given by Jeremy van der Wal at &lt;a href="https://rforge.net/doc/packages/climates/bioclim.html"&gt;BioClim - Bioclimatic Variables&lt;/a&gt;:&lt;ol&gt;&lt;li&gt;&lt;b&gt;Annual Mean Temperature:&lt;/b&gt; The mean of all the monthly mean temperatures. Each monthly mean temperature is the mean of that month's maximum and minimum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Diurnal Range:&lt;/b&gt; The annual mean of all the monthly diurnal temperature ranges. Each monthly diurnal range is the difference between that month's maximum and minimum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Isothermality:&lt;/b&gt; The mean diurnal range (parameter 2) divided by the annual temperature range (parameter 7).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Temperature Seasonality:&lt;/b&gt; returns either&lt;ul&gt;&lt;li&gt; the temperature coefficient of variation as the standard deviation of the monthly mean temperatures expressed as a percentage of the mean of those temperatures (i.e. the annual mean). For this calculation, the mean in degrees Kelvin is used. This avoids the possibility of having to divide by zero, but does mean that the values are usually quite small.&lt;/li&gt;&lt;li&gt; the standard deviation of the monthly mean temperatures.&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;&lt;b&gt;Maximum Temperature of Warmest Period:&lt;/b&gt; The highest temperature of any monthly maximum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Minimum Temperature of Coldest Period:&lt;/b&gt; The lowest temperature of any monthly minimum temperature.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Temperature Annual Range:&lt;/b&gt; The difference between the Maximum Temperature of Warmest Period and the Minimum Temperature of Coldest Period.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Wettest Quarter:&lt;/b&gt; The wettest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Driest Quarter:&lt;/b&gt; The driest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Warmest Quarter:&lt;/b&gt; The warmest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Mean Temperature of Coldest Quarter:&lt;/b&gt; The coldest quarter of the year is determined (to the nearest month), and the mean temperature of this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Annual Precipitation:&lt;/b&gt; The sum of all the monthly precipitation estimates.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Wettest Period:&lt;/b&gt; The precipitation of the wettest month.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Driest Period:&lt;/b&gt; The precipitation of the driest month.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation Seasonality:&lt;/b&gt; The Coefficient of Variation is the standard deviation of the monthly precipitation estimates expressed as a percentage of the mean of those estimates (i.e. the annual mean).&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Wettest Quarter:&lt;/b&gt; The wettest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Driest Quarter:&lt;/b&gt; The driest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Warmest Quarter:&lt;/b&gt; The warmest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;li&gt;&lt;b&gt;Precipitation of Coldest Quarter:&lt;/b&gt; The coldest quarter of the year is determined (to the nearest month), and the total precipitation over this period is calculated.&lt;/li&gt;&lt;/ol&gt;&lt;/p&gt;&lt;p&gt;The quarterly parameters are not aligned to any calendar quarters. BioClim's definition of a quarter is any consecutive 3 months. For example, the driest quarter will be the 3 consecutive months that are drier than any other set of 3 consecutive months.&lt;/p&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

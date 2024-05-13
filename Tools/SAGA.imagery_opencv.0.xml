@@ -1,0 +1,76 @@
+<tool name="SAGA.imagery_opencv.0" id="saga_imagery_opencv_0" version="1.0.0">
+  <description>Morphological Filter (OpenCV)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  output_data_OUTPUT $output_data_OUTPUT  name SAGA.imagery_opencv.0 INPUT $INPUT
+TYPE $TYPE
+SHAPE $SHAPE
+RADIUS $RADIUS
+ITERATIONS $ITERATIONS
+prefer $prefer
+response $response
+outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
+transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="TYPE" type="select" optional="true" label="Operation" help="Operation">
+      <option value="black_hat">black hat</option>
+      <option value="closing">closing</option>
+      <option selected="true" value="dilation">dilation</option>
+      <option value="erosion">erosion</option>
+      <option value="morpological_gradient">morpological gradient</option>
+      <option value="opening">opening</option>
+      <option value="top_hat">top hat</option>
+    </param>
+    <param name="SHAPE" type="select" optional="true" label="Element Shape" help="Element Shape">
+      <option value="cross">cross</option>
+      <option selected="true" value="ellipse">ellipse</option>
+      <option value="rectangle">rectangle</option>
+    </param>
+    <param name="RADIUS" type="integer" value="1" optional="true" label="Radius (cells)" help="Radius (cells)"/>
+    <param name="ITERATIONS" type="integer" value="1" optional="true" label="Iterations" help="Iterations"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT" type="select" label="Output" help="Output">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_OUTPUT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[References:&lt;br/&gt;OpenCV - Open Source Computer Vision&lt;br/&gt;&lt;a target="_blank" href="http://opencv.willowgarage.com"&gt;http://opencv.willowgarage.com&lt;/a&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

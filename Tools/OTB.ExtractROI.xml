@@ -1,0 +1,123 @@
+<tool name="OTB.ExtractROI" id="otb_extractroi" version="1.0.0">
+  <description>Extract a ROI defined by the user.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymode.fit.im False  isArraymode.fit.vect False  isArrayelev.geoid False  output_data_out $output_data_out  name OTB.ExtractROI in $in
+out $out
+mode $mode
+mode.fit.im $mode.fit.im
+mode.fit.vect $mode.fit.vect
+mode.extent.ulx $mode.extent.ulx
+mode.extent.uly $mode.extent.uly
+mode.extent.lrx $mode.extent.lrx
+mode.extent.lry $mode.extent.lry
+mode.extent.unit $mode.extent.unit
+mode.radius.r $mode.radius.r
+mode.radius.unitr $mode.radius.unitr
+mode.radius.cx $mode.radius.cx
+mode.radius.cy $mode.radius.cy
+mode.radius.unitc $mode.radius.unitc
+startx $startx
+starty $starty
+sizex $sizex
+sizey $sizey
+cl '$cl'
+elev.dem '$elev.dem'
+elev.geoid $elev.geoid
+elev.default $elev.default
+ram $ram
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Image to be processed." help="Image to be processed. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="out" type="select" optional="false" label="Region of interest from the input image" help="Region of interest from the input image">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="mode" type="select" optional="false" label="mode" help="mode">
+      <option value="extent">extent</option>
+      <option value="fit">fit</option>
+      <option value="radius">radius</option>
+      <option selected="true" value="standard">standard</option>
+    </param>
+    <param name="mode.fit.im" type="data" optional="false" label="Reference image to define the ROI" help="Reference image to define the ROI The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="mode.fit.vect" type="data" optional="false" label="The extent of the input vector file is computed and then gives a region of interest that will be extracted." help="The extent of the input vector file is computed and then gives a region of interest that will be extracted. The following data types are allowed in the txt file:  xml, zip, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="mode.extent.ulx" type="float" value="0" optional="false" label="X coordinate of upper left corner point." help="X coordinate of upper left corner point."/>
+    <param name="mode.extent.uly" type="float" value="0" optional="false" label="Y coordinate of upper left corner point." help="Y coordinate of upper left corner point."/>
+    <param name="mode.extent.lrx" type="float" value="0" optional="false" label="X coordinate of lower right corner point." help="X coordinate of lower right corner point."/>
+    <param name="mode.extent.lry" type="float" value="0" optional="false" label="Y coordinate of lower right corner point." help="Y coordinate of lower right corner point."/>
+    <param name="mode.extent.unit" type="select" optional="false" label="mode.extent.unit" help="mode.extent.unit">
+      <option value="lonlat">lonlat</option>
+      <option value="phy">phy</option>
+      <option selected="true" value="pxl">pxl</option>
+    </param>
+    <param name="mode.radius.r" type="float" value="0" optional="false" label="This is the radius parameter of the radius mode." help="This is the radius parameter of the radius mode."/>
+    <param name="mode.radius.unitr" type="select" optional="false" label="mode.radius.unitr" help="mode.radius.unitr">
+      <option value="phy">phy</option>
+      <option selected="true" value="pxl">pxl</option>
+    </param>
+    <param name="mode.radius.cx" type="float" value="0" optional="false" label="This is the center coordinate of the radius mode, it will be either an ordinate or a latitude." help="This is the center coordinate of the radius mode, it will be either an ordinate or a latitude."/>
+    <param name="mode.radius.cy" type="float" value="0" optional="false" label="mode.radius.cy" help="mode.radius.cy"/>
+    <param name="mode.radius.unitc" type="select" optional="false" label="mode.radius.unitc" help="mode.radius.unitc">
+      <option value="lonlat">lonlat</option>
+      <option value="phy">phy</option>
+      <option selected="true" value="pxl">pxl</option>
+    </param>
+    <param name="startx" type="integer" value="0" optional="false" label="ROI start x position." help="ROI start x position."/>
+    <param name="starty" type="integer" value="0" optional="false" label="ROI start y position." help="ROI start y position."/>
+    <param name="sizex" type="integer" value="0" optional="false" label="size along x in pixels." help="size along x in pixels."/>
+    <param name="sizey" type="integer" value="0" optional="false" label="size along y in pixels." help="size along y in pixels."/>
+    <param name="cl" type="text" optional="false" label="Channels to write in the output image." help="Channels to write in the output image."/>
+    <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
+    <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
+    <param name="elev.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Region of interest from the input image" help="Region of interest from the input image">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application extracts a Region Of Interest with user parameters. There are four mode of extraction. The standard mode allows the user to enter one point (upper left corner of the region to extract) and a size. The extent mode needs two points (upper left corner and lower right) and the radius mode need the center of the region and the radius : it will extract the rectangle containing the circle defined and limited by the image dimension. The fit mode needs a reference image or vector and the dimension of the extracted region will be the same as the extent of the reference. Different units are available such as pixel, image physical space or longitude and latitude.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

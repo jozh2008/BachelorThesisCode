@@ -1,0 +1,151 @@
+<tool name="SAGA.statistics_regression.8" id="saga_statistics_regression_8" version="1.0.0">
+  <description>Multiple Regression Analysis (Grid and Predictor Grids)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEPENDENT False  isArrayPREDICTORS True  output_data_REGRESSION $output_data_REGRESSION  output_data_RESIDUALS $output_data_RESIDUALS  output_data_INFO_COEFF $output_data_INFO_COEFF  output_data_INFO_MODEL $output_data_INFO_MODEL  output_data_INFO_STEPS $output_data_INFO_STEPS  name SAGA.statistics_regression.8 DEPENDENT $DEPENDENT
+PREDICTORS $PREDICTORS
+RESAMPLING $RESAMPLING
+COORD_X $COORD_X
+COORD_Y $COORD_Y
+METHOD $METHOD
+P_VALUE $P_VALUE
+CROSSVAL $CROSSVAL
+CROSSVAL_K $CROSSVAL_K
+prefer $prefer
+response $response
+outputType_REGRESSION $OutputSection_REGRESSION.outputType_REGRESSION
+transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSION
+outputType_RESIDUALS $OutputSection_RESIDUALS.outputType_RESIDUALS
+transmissionMode_RESIDUALS $OutputSection_RESIDUALS.transmissionMode_RESIDUALS
+outputType_INFO_COEFF $OutputSection_INFO_COEFF.outputType_INFO_COEFF
+transmissionMode_INFO_COEFF $OutputSection_INFO_COEFF.transmissionMode_INFO_COEFF
+outputType_INFO_MODEL $OutputSection_INFO_MODEL.outputType_INFO_MODEL
+transmissionMode_INFO_MODEL $OutputSection_INFO_MODEL.transmissionMode_INFO_MODEL
+outputType_INFO_STEPS $OutputSection_INFO_STEPS.outputType_INFO_STEPS
+transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEPS]]></command>
+  <inputs>
+    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="COORD_X" type="select" optional="true" label="Include X Coordinate" help="Include X Coordinate">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="COORD_Y" type="select" optional="true" label="Include Y Coordinate" help="Include Y Coordinate">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="backward">backward</option>
+      <option value="forward">forward</option>
+      <option value="include_all">include all</option>
+      <option selected="true" value="stepwise">stepwise</option>
+    </param>
+    <param name="P_VALUE" type="float" value="5" optional="true" label="Significance Level" help="Significance level (aka p-value) as threshold for automated predictor selection, given as percentage"/>
+    <param name="CROSSVAL" type="select" optional="true" label="Cross Validation" help="Cross Validation">
+      <option value="2-fold">2-fold</option>
+      <option value="k-fold">k-fold</option>
+      <option value="leave_one_out">leave one out</option>
+      <option selected="true" value="none">none</option>
+    </param>
+    <param name="CROSSVAL_K" type="integer" value="10" optional="true" label="Cross Validation Subsamples" help="number of subsamples for k-fold cross validation"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_REGRESSION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESIDUALS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INFO_COEFF" type="select" label="Details: Coefficients" help="Details: Coefficients">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_INFO_COEFF" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INFO_MODEL" type="select" label="Details: Model" help="Details: Model">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_INFO_MODEL" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INFO_STEPS" type="select" label="Details: Steps" help="Details: Steps">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_INFO_STEPS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_REGRESSION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_REGRESSION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_RESIDUALS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESIDUALS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESIDUALS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESIDUALS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_INFO_COEFF" format="csv" hidden="false"/>
+    <data name="output_data_INFO_MODEL" format="csv" hidden="false"/>
+    <data name="output_data_INFO_STEPS" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Linear regression analysis of one grid as dependent and multiple grids as indepentent (predictor) variables. Details of the regression/correlation analysis will be saved to a table. Optionally the regression model is used to create a new grid with regression based values. The multiple regression analysis uses a forward selection procedure. &lt;br/&gt;&lt;br/&gt;Reference:&lt;br/&gt;- Bahrenberg, G., Giese, E., Nipper, J. (1992): 'Statistische Methoden in der Geographie 2 - Multivariate Statistik', Stuttgart, 415p.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

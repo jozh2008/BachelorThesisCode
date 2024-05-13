@@ -1,0 +1,95 @@
+<tool name="OTB.RigidTransformResample" id="otb_rigidtransformresample" version="1.0.0">
+  <description>Resample an image with a rigid transform</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.RigidTransformResample in $in
+out $out
+transform.type $transform.type
+transform.type.id.scalex $transform.type.id.scalex
+transform.type.id.scaley $transform.type.id.scaley
+transform.type.translation.tx $transform.type.translation.tx
+transform.type.translation.ty $transform.type.translation.ty
+transform.type.translation.scalex $transform.type.translation.scalex
+transform.type.translation.scaley $transform.type.translation.scaley
+transform.type.rotation.angle $transform.type.rotation.angle
+transform.type.rotation.scalex $transform.type.rotation.scalex
+transform.type.rotation.scaley $transform.type.rotation.scaley
+interpolator $interpolator
+interpolator.bco.radius $interpolator.bco.radius
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="The input image to translate." help="The input image to translate. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="out" type="select" optional="false" label="The transformed output image." help="The transformed output image.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="transform.type" type="select" optional="false" label="Type of transformation. Available transformations are spatial scaling, translation and rotation with scaling factor" help="Type of transformation. Available transformations are spatial scaling, translation and rotation with scaling factor">
+      <option selected="true" value="id">id</option>
+      <option value="rotation">rotation</option>
+      <option value="translation">translation</option>
+    </param>
+    <param name="transform.type.id.scalex" type="float" value="1" optional="false" label="Scaling factor between the output X spacing and the input X spacing" help="Scaling factor between the output X spacing and the input X spacing"/>
+    <param name="transform.type.id.scaley" type="float" value="1" optional="false" label="Scaling factor between the output Y spacing and the input Y spacing" help="Scaling factor between the output Y spacing and the input Y spacing"/>
+    <param name="transform.type.translation.tx" type="float" value="0" optional="false" label="The translation value along X axis (in physical units)." help="The translation value along X axis (in physical units)."/>
+    <param name="transform.type.translation.ty" type="float" value="0" optional="false" label="The translation value along Y axis (in physical units)" help="The translation value along Y axis (in physical units)"/>
+    <param name="transform.type.translation.scalex" type="float" value="1" optional="false" label="Scaling factor between the output X spacing and the input X spacing" help="Scaling factor between the output X spacing and the input X spacing"/>
+    <param name="transform.type.translation.scaley" type="float" value="1" optional="false" label="Scaling factor between the output Y spacing and the input Y spacing" help="Scaling factor between the output Y spacing and the input Y spacing"/>
+    <param name="transform.type.rotation.angle" type="float" value="0" optional="false" label="The rotation angle in degree (values between -180 and 180)" help="The rotation angle in degree (values between -180 and 180)"/>
+    <param name="transform.type.rotation.scalex" type="float" value="1" optional="false" label="Scale factor between the X spacing of the rotated output image and the X spacing of the unrotated image" help="Scale factor between the X spacing of the rotated output image and the X spacing of the unrotated image"/>
+    <param name="transform.type.rotation.scaley" type="float" value="1" optional="false" label="Scale factor between the Y spacing of the rotated output image and the Y spacing of the unrotated image" help="Scale factor between the Y spacing of the rotated output image and the Y spacing of the unrotated image"/>
+    <param name="interpolator" type="select" optional="false" label="This group of parameters allows one to define how the input image will be interpolated during resampling." help="This group of parameters allows one to define how the input image will be interpolated during resampling.">
+      <option selected="true" value="bco">bco</option>
+      <option value="linear">linear</option>
+      <option value="nn">nn</option>
+    </param>
+    <param name="interpolator.bco.radius" type="integer" value="128" optional="true" label="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)" help="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="The transformed output image." help="The transformed output image.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application performs a parametric transform on the input image. Scaling, translation and rotation with scaling factor are handled. Parameters of the transform is expressed in physical units, thus particular attention must be paid on pixel size (value, and sign). Moreover transform is expressed from input space to output space (on the contrary ITK Transforms are expressed form output space to input space). ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

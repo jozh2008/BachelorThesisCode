@@ -1,0 +1,48 @@
+<tool name="GdalExtractProfile" id="gdalextractprofile" version="1.0.0">
+  <description>Extract elevation values along a line. </description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGeometry False  output_data_Profile $output_data_Profile  name GdalExtractProfile RasterFile '$RasterFile'
+Geometry $Geometry
+prefer $prefer
+response $response
+outputType_Profile $OutputSection_Profile.outputType_Profile
+transmissionMode_Profile $OutputSection_Profile.transmissionMode_Profile]]></command>
+  <inputs>
+    <param name="RasterFile" type="text" value="topofr.tif" optional="true" label="The name of the MNT file" help="The file containing elevation model relative to the dataPath defined in the ZOO-Project main configuration file."/>
+    <param name="Geometry" type="data" optional="false" label="The path to calaculate profile" help="The input data source name to use as source for convertion. The following data types are allowed in the txt file:  json" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_Profile" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_Profile" type="select" label="The resulting profile" help="GeoJSON string containing the X Y Z values where (X,Y) is corresponding to the original coordinates and the elevation value. ">
+        <option value="application/json">json</option>
+      </param>
+      <param name="transmissionMode_Profile" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_Profile" format="json" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Fetch the x,y,z values of a DEM raster file along a linestring]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

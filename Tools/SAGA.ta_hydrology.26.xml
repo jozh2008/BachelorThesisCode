@@ -1,0 +1,71 @@
+<tool name="SAGA.ta_hydrology.26" id="saga_ta_hydrology_26" version="1.0.0">
+  <description>Slope Limited Flow Accumulation</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayWEIGHT False  output_data_FLOW $output_data_FLOW  name SAGA.ta_hydrology.26 DEM $DEM
+WEIGHT $WEIGHT
+SLOPE_MIN $SLOPE_MIN
+SLOPE_MAX $SLOPE_MAX
+B_FLOW $B_FLOW
+T_FLOW_MIN $T_FLOW_MIN
+T_FLOW_MAX $T_FLOW_MAX
+prefer $prefer
+response $response
+outputType_FLOW $OutputSection_FLOW.outputType_FLOW
+transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="SLOPE_MIN" type="float" value="0" optional="true" label="Slope Minimum" help="Assume a given minimum slope for each cell."/>
+    <param name="SLOPE_MAX" type="float" value="5" optional="true" label="Slope Threshold" help="Slope threshold, given as degree, above which flow transport is unlimited."/>
+    <param name="B_FLOW" type="select" optional="true" label="Use Flow Threshold" help="Use Flow Threshold">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="T_FLOW_MIN" type="float" optional="true" label="Flow Threshold (min value)" help="Flow threshold, given as amount of cells, above which flow transport is unlimited. Ignored if range equals zero."/>
+    <param name="T_FLOW_MAX" type="float" optional="true" label="Flow Threshold (max value)" help="Flow threshold, given as amount of cells, above which flow transport is unlimited. Ignored if range equals zero."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW" type="select" label="Flow Accumulation" help="Flow Accumulation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_FLOW" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_FLOW" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_FLOW" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_FLOW" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Flow accumulation is calculated as upslope contributing (catchment) area using the multiple flow direction approach of Freeman (1991). For this tool the approach has been modified to limit the flow portion routed through a cell depending on the local slope. If a cell is not inclined, no flow is routed through it at all. With increasing slopes the portion of flow routed through a cell becomes higher. Cells with slopes greater than a specified slope threshold route their entire accumulated flow downhill. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

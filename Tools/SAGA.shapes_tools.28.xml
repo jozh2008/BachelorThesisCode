@@ -1,0 +1,54 @@
+<tool name="SAGA.shapes_tools.28" id="saga_shapes_tools_28" version="1.0.0">
+  <description>Copy Shapes</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySHAPES False  output_data_COPY $output_data_COPY  name SAGA.shapes_tools.28 SHAPES $SHAPES
+prefer $prefer
+response $response
+outputType_COPY $OutputSection_COPY.outputType_COPY
+transmissionMode_COPY $OutputSection_COPY.transmissionMode_COPY]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_COPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COPY" type="select" label="Copy" help="Copy">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_COPY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_COPY" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COPY" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_COPY" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Creates a copy of a shapes layer.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,63 @@
+<tool name="SAGA.ta_hydrology.27" id="saga_ta_hydrology_27" version="1.0.0">
+  <description>Maximum Flow Path Length</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayELEVATION False  isArrayWEIGHTS False  output_data_DISTANCE $output_data_DISTANCE  name SAGA.ta_hydrology.27 ELEVATION $ELEVATION
+WEIGHTS $WEIGHTS
+DIRECTION $DIRECTION
+prefer $prefer
+response $response
+outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
+transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></command>
+  <inputs>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DIRECTION" type="select" optional="true" label="Direction of Measurement" help="Direction of Measurement">
+      <option selected="true" value="downstream">downstream</option>
+      <option value="upstream">upstream</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_DISTANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DISTANCE" type="select" label="Flow Path Length" help="Flow Path Length">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DISTANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DISTANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DISTANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool calculates the maximum upstream or downstream distance or weighted distance along the flow path for each cell based on 'Deterministic 8 (D8)' (O'Callaghan and Mark 1984) flow directions.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,94 @@
+<tool name="OTB.ComputeModulusAndPhase" id="otb_computemodulusandphase" version="1.0.0">
+  <description>This application computes the modulus and the phase of a complex SAR image.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_modulus $output_data_modulus  output_data_phase $output_data_phase  name OTB.ComputeModulusAndPhase in $in
+modulus $modulus
+phase $phase
+ram $ram
+prefer $prefer
+response $response
+outputType_modulus $OutputSection_modulus.outputType_modulus
+transmissionMode_modulus $OutputSection_modulus.transmissionMode_modulus
+outputType_phase $OutputSection_phase.outputType_phase
+transmissionMode_phase $OutputSection_phase.transmissionMode_phase]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Input image (complex single band)" help="Input image (complex single band) The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="modulus" type="select" optional="false" label="Modulus of the input image computes with thefollowing formula: :math:`\sqrt" help="Modulus of the input image computes with thefollowing formula: :math:`\sqrt">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="phase" type="select" optional="false" label="Phase of the input image computes with the following formula::math:`\tan^" help="Phase of the input image computes with the following formula::math:`\tan^">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_modulus" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_modulus" type="select" label="Modulus of the input image computes with thefollowing formula: :math:`\sqrt" help="Modulus of the input image computes with thefollowing formula: :math:`\sqrt">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_modulus" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_phase" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_phase" type="select" label="Phase of the input image computes with the following formula::math:`\tan^" help="Phase of the input image computes with the following formula::math:`\tan^">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_phase" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_modulus" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_modulus" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_modulus" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_phase" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_phase" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_phase" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application computes the modulus and the phase of a complex SAR image. The input should be a single band image with complex pixels.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

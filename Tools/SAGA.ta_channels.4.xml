@@ -1,0 +1,192 @@
+<tool name="SAGA.ta_channels.4" id="saga_ta_channels_4" version="1.0.0">
+  <description>Overland Flow Distance to Channel Network</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayELEVATION False  isArrayCHANNELS False  isArrayROUTE False  isArrayFIELDS False  isArrayFLOW_K False  isArrayFLOW_R False  output_data_DISTANCE $output_data_DISTANCE  output_data_DISTVERT $output_data_DISTVERT  output_data_DISTHORZ $output_data_DISTHORZ  output_data_TIME $output_data_TIME  output_data_SDR $output_data_SDR  output_data_PASSES $output_data_PASSES  name SAGA.ta_channels.4 ELEVATION $ELEVATION
+CHANNELS $CHANNELS
+ROUTE $ROUTE
+FIELDS $FIELDS
+METHOD $METHOD
+BOUNDARY $BOUNDARY
+FLOW_B $FLOW_B
+FLOW_K $FLOW_K
+FLOW_K_DEFAULT $FLOW_K_DEFAULT
+FLOW_R $FLOW_R
+FLOW_R_DEFAULT $FLOW_R_DEFAULT
+prefer $prefer
+response $response
+outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
+transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE
+outputType_DISTVERT $OutputSection_DISTVERT.outputType_DISTVERT
+transmissionMode_DISTVERT $OutputSection_DISTVERT.transmissionMode_DISTVERT
+outputType_DISTHORZ $OutputSection_DISTHORZ.outputType_DISTHORZ
+transmissionMode_DISTHORZ $OutputSection_DISTHORZ.transmissionMode_DISTHORZ
+outputType_TIME $OutputSection_TIME.outputType_TIME
+transmissionMode_TIME $OutputSection_TIME.transmissionMode_TIME
+outputType_SDR $OutputSection_SDR.outputType_SDR
+transmissionMode_SDR $OutputSection_SDR.transmissionMode_SDR
+outputType_PASSES $OutputSection_PASSES.outputType_PASSES
+transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></command>
+  <inputs>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="A grid that contains elevation data. The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="CHANNELS" type="data" optional="false" label="Channel Network" help="A grid providing information about the channel network. It is assumed that no-data cells are not part of the channel network. Vice versa all others cells are recognised as channel network members. The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="ROUTE" type="data" optional="false" label="Preferred Routing" help="Downhill flow is bound to preferred routing cells, where these are not no-data. Helps to model e.g. small ditches, that are not well represented in the elevation data. The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Fields" help="If set, output is given about the number of fields a flow path visits downhill. For D8 only. The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Flow Algorithm" help="Choose a flow routing algorithm that shall be used for the overland flow distance calculation:&amp;lt;br/&amp;gt;- D8&amp;lt;br/&amp;gt;- MFD">
+      <option value="D8">D8</option>
+      <option selected="true" value="MFD">MFD</option>
+    </param>
+    <param name="BOUNDARY" type="select" optional="true" label="Boundary Cells" help="Take cells at the boundary of the DEM as channel.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="FLOW_B" type="float" value="1" optional="true" label="Beta" help="catchment specific parameter for sediment delivery ratio calculation"/>
+    <param name="FLOW_K" type="data" optional="false" label="Manning-Strickler Coefficient" help="Manning-Strickler coefficient for flow travel time estimation (reciprocal of Manning's Roughness Coefficient) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="FLOW_K_DEFAULT" type="float" value="20" optional="true" label="Default" help="default value if no grid has been selected"/>
+    <param name="FLOW_R" type="data" optional="false" label="Flow Depth" help="flow depth [m] for flow travel time estimation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="FLOW_R_DEFAULT" type="float" value="0.05" optional="true" label="Default" help="default value if no grid has been selected"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_DISTANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DISTANCE" type="select" label="Overland Flow Distance" help="The overland flow distance in map units. It is assumed that the (vertical) elevation data use the same units as the (horizontal) grid coordinates.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DISTANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DISTVERT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DISTVERT" type="select" label="Vertical Overland Flow Distance" help="This is the vertical component of the overland flow">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DISTVERT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DISTHORZ" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DISTHORZ" type="select" label="Horizontal Overland Flow Distance" help="This is the horizontal component of the overland flow">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DISTHORZ" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_TIME" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TIME" type="select" label="Flow Travel Time" help="flow travel time to channel expressed in hours based on Manning's Equation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TIME" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SDR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SDR" type="select" label="Sediment Yield Delivery Ratio" help="This is the horizontal component of the overland flow">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SDR" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PASSES" type="select" label="Fields Visited" help="Number of fields a flow path visits downhill starting at a cell. For D8 only.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PASSES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DISTANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DISTANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DISTVERT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DISTVERT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DISTVERT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DISTVERT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DISTHORZ" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DISTHORZ" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DISTHORZ" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DISTHORZ" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_TIME" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TIME" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TIME" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TIME" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SDR" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SDR" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SDR" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SDR" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PASSES" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PASSES" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PASSES" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PASSES" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool calculates overland flow distances to a channel network based on gridded digital elevation data and channel network information. The flow algorithm may be either Deterministic 8 (O'Callaghan & Mark 1984) or Multiple Flow Direction (Freeman 1991). Sediment Delivery Rates (SDR) according to Ali & De Boer (2010) can be computed optionally. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

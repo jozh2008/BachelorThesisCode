@@ -1,0 +1,155 @@
+<tool name="SAGA.ta_lighting.3" id="saga_ta_lighting_3" version="1.0.0">
+  <description>Sky View Factor</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_VISIBLE $output_data_VISIBLE  output_data_SVF $output_data_SVF  output_data_SIMPLE $output_data_SIMPLE  output_data_TERRAIN $output_data_TERRAIN  output_data_DISTANCE $output_data_DISTANCE  name SAGA.ta_lighting.3 DEM $DEM
+RADIUS $RADIUS
+NDIRS $NDIRS
+METHOD $METHOD
+DLEVEL $DLEVEL
+prefer $prefer
+response $response
+outputType_VISIBLE $OutputSection_VISIBLE.outputType_VISIBLE
+transmissionMode_VISIBLE $OutputSection_VISIBLE.transmissionMode_VISIBLE
+outputType_SVF $OutputSection_SVF.outputType_SVF
+transmissionMode_SVF $OutputSection_SVF.transmissionMode_SVF
+outputType_SIMPLE $OutputSection_SIMPLE.outputType_SIMPLE
+transmissionMode_SIMPLE $OutputSection_SIMPLE.transmissionMode_SIMPLE
+outputType_TERRAIN $OutputSection_TERRAIN.outputType_TERRAIN
+transmissionMode_TERRAIN $OutputSection_TERRAIN.transmissionMode_TERRAIN
+outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
+transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="RADIUS" type="float" value="10000" optional="true" label="Maximum Search Radius" help="The maximum search radius [map units]. This value is ignored if set to zero."/>
+    <param name="NDIRS" type="integer" value="8" optional="true" label="Number of Sectors" help="Number of Sectors"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option selected="true" value="cell_size">cell size</option>
+      <option value="multi_scale">multi scale</option>
+    </param>
+    <param name="DLEVEL" type="float" value="3" optional="true" label="Multi Scale Factor" help="Multi Scale Factor"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_VISIBLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VISIBLE" type="select" label="Visible Sky" help="The unobstructed hemisphere given as percentage.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_VISIBLE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SVF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SVF" type="select" label="Sky View Factor" help="Sky View Factor">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SVF" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SIMPLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SIMPLE" type="select" label="Sky View Factor (Simplified)" help="Sky View Factor (Simplified)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SIMPLE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_TERRAIN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TERRAIN" type="select" label="Terrain View Factor" help="Terrain View Factor">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TERRAIN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DISTANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DISTANCE" type="select" label="Average View Distance" help="Average distance to horizon.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DISTANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_VISIBLE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VISIBLE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_VISIBLE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_VISIBLE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SVF" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SVF" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SVF" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SVF" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SIMPLE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SIMPLE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SIMPLE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SIMPLE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_TERRAIN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TERRAIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TERRAIN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TERRAIN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DISTANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DISTANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculation of visible sky, sky view factor (SVF) and related parameters.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

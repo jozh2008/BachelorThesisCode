@@ -1,0 +1,102 @@
+<tool name="SAGA.table_calculus.18" id="saga_table_calculus_18" version="1.0.0">
+  <description>Aggregate Values by Attributes</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTABLE False  isArrayFIELDS False  isArraySTATISTICS False  output_data_AGGREGATED $output_data_AGGREGATED  name SAGA.table_calculus.18 TABLE $TABLE
+FIELDS $FIELDS
+STATISTICS $STATISTICS
+STAT_SUM $STAT_SUM
+STAT_AVG $STAT_AVG
+STAT_MIN $STAT_MIN
+STAT_MAX $STAT_MAX
+STAT_RNG $STAT_RNG
+STAT_DEV $STAT_DEV
+STAT_VAR $STAT_VAR
+STAT_LST $STAT_LST
+STAT_NUM $STAT_NUM
+STAT_NAMING $STAT_NAMING
+prefer $prefer
+response $response
+outputType_AGGREGATED $OutputSection_AGGREGATED.outputType_AGGREGATED
+transmissionMode_AGGREGATED $OutputSection_AGGREGATED.transmissionMode_AGGREGATED]]></command>
+  <inputs>
+    <param name="TABLE" type="data" optional="false" label="Table" help="Table The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Aggregate by Field(s)" help="Aggregate by Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="STATISTICS" type="data" optional="false" label="Statistics Field(s)" help="Statistics Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="STAT_SUM" type="select" optional="true" label="Sum" help="Sum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_AVG" type="select" optional="true" label="Mean" help="Mean">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_MIN" type="select" optional="true" label="Minimum" help="Minimum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_MAX" type="select" optional="true" label="Maximum" help="Maximum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_RNG" type="select" optional="true" label="Range" help="Range">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_DEV" type="select" optional="true" label="Deviation" help="Deviation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_VAR" type="select" optional="true" label="Variance" help="Variance">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_LST" type="select" optional="true" label="Listing" help="Listing">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_NUM" type="select" optional="true" label="Count" help="Count">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STAT_NAMING" type="select" optional="true" label="Field Naming" help="Field Naming">
+      <option value="original_name">original name</option>
+      <option value="original_name_+_variable_type">original name + variable type</option>
+      <option value="variable_type">variable type</option>
+      <option selected="true" value="variable_type_+_original_name">variable type + original name</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_AGGREGATED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_AGGREGATED" type="select" label="Output" help="The calculated statistics.">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_AGGREGATED" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_AGGREGATED" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Aggregate Values by Attributes]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

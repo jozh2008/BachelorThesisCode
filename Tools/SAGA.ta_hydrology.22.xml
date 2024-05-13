@@ -1,0 +1,77 @@
+<tool name="SAGA.ta_hydrology.22" id="saga_ta_hydrology_22" version="1.0.0">
+  <description>LS Factor</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySLOPE False  isArrayAREA False  output_data_LS $output_data_LS  name SAGA.ta_hydrology.22 SLOPE $SLOPE
+AREA $AREA
+CONV $CONV
+METHOD $METHOD
+EROSIVITY $EROSIVITY
+STABILITY $STABILITY
+prefer $prefer
+response $response
+outputType_LS $OutputSection_LS.outputType_LS
+transmissionMode_LS $OutputSection_LS.transmissionMode_LS]]></command>
+  <inputs>
+    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="AREA" type="data" optional="false" label="Catchment Area" help="Catchment Area The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="CONV" type="select" optional="true" label="Area to Length Conversion" help="Derivation of slope lengths from catchment areas. These are rough approximations! Applies not to Desmet &amp; Govers' method.">
+      <option value="1_/_cell_size_(specific_catchment_area)">1 / cell size (specific catchment area)</option>
+      <option selected="true" value="no_conversion_(areas_already_given_as_specific_catchment_area)">no conversion (areas already given as specific catchment area)</option>
+      <option value="square_root_(catchment_length)">square root (catchment length)</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method (LS)" help="Method (LS)">
+      <option value="Boehner_&amp;_Selige_2006">Boehner &amp; Selige 2006</option>
+      <option value="Desmet_&amp;_Govers_1996">Desmet &amp; Govers 1996</option>
+      <option selected="true" value="Moore_et_al._1991">Moore et al. 1991</option>
+    </param>
+    <param name="EROSIVITY" type="float" value="1" optional="true" label="Rill/Interrill Erosivity" help="Rill/Interrill Erosivity"/>
+    <param name="STABILITY" type="select" optional="true" label="Stability" help="Stability">
+      <option value="instable_(thawing)">instable (thawing)</option>
+      <option selected="true" value="stable">stable</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_LS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LS" type="select" label="LS Factor" help="LS Factor">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_LS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculation of slope length (LS) factor as used by the Universal Soil Loss Equation (USLE), based on slope and specific catchment area (SCA, as substitute for slope length).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,136 @@
+<tool name="OTB.MorphologicalMultiScaleDecomposition" id="otb_morphologicalmultiscaledecomposition" version="1.0.0">
+  <description>Perform a geodesic morphology based image analysis on an input image channel</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_outconvex $output_data_outconvex  output_data_outconcave $output_data_outconcave  output_data_outleveling $output_data_outleveling  name OTB.MorphologicalMultiScaleDecomposition in $in
+outconvex $outconvex
+outconcave $outconcave
+outleveling $outleveling
+channel $channel
+ram $ram
+structype $structype
+radius $radius
+step $step
+levels $levels
+prefer $prefer
+response $response
+outputType_outconvex $OutputSection_outconvex.outputType_outconvex
+transmissionMode_outconvex $OutputSection_outconvex.transmissionMode_outconvex
+outputType_outconcave $OutputSection_outconcave.outputType_outconcave
+transmissionMode_outconcave $OutputSection_outconcave.transmissionMode_outconcave
+outputType_outleveling $OutputSection_outleveling.outputType_outleveling
+transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleveling]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="The input image to be classified." help="The input image to be classified. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="outconvex" type="select" optional="false" label="The output convex image with N bands" help="The output convex image with N bands">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="outconcave" type="select" optional="false" label="The output concave concave with N bands" help="The output concave concave with N bands">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="outleveling" type="select" optional="false" label="The output leveling image with N bands" help="The output leveling image with N bands">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="channel" type="integer" value="1" optional="false" label="The selected channel index for input image" help="The selected channel index for input image"/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="structype" type="select" optional="false" label="Choice of the structuring element type" help="Choice of the structuring element type">
+      <option selected="true" value="ball">ball</option>
+      <option value="cross">cross</option>
+    </param>
+    <param name="radius" type="integer" value="5" optional="false" label="Initial radius of the structuring element (in pixels)" help="Initial radius of the structuring element (in pixels)"/>
+    <param name="step" type="integer" value="1" optional="false" label="Radius step along the profile (in pixels)" help="Radius step along the profile (in pixels)"/>
+    <param name="levels" type="integer" value="1" optional="false" label="Number of levels use for multi scale" help="Number of levels use for multi scale"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_outconvex" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_outconvex" type="select" label="The output convex image with N bands" help="The output convex image with N bands">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_outconvex" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_outconcave" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_outconcave" type="select" label="The output concave concave with N bands" help="The output concave concave with N bands">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_outconcave" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_outleveling" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_outleveling" type="select" label="The output leveling image with N bands" help="The output leveling image with N bands">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_outleveling" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_outconvex" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_outconvex" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_outconvex" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_outconcave" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_outconcave" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_outconcave" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_outleveling" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_outleveling" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_outleveling" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application recursively apply geodesic decomposition. This algorithm is derived from the following publication:Martino Pesaresi and Jon Alti Benediktsson, Member, IEEE: A new approach for the morphological segmentation of high resolution satellite imagery.IEEE Transactions on geoscience and remote sensing, vol. 39, NO. 2, February 2001, p. 309-320.It provides a geodesic decomposition of the input image, with the following scheme. Let :math:`f_0` denote the input image, :math:`\stackrel]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

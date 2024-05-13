@@ -1,0 +1,88 @@
+<tool name="SAGA.shapes_polygons.11" id="saga_shapes_polygons_11" version="1.0.0">
+  <description>Polygon Clipping</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayCLIP False  isArrayS_INPUT False  isArrayM_INPUT True  output_data_S_OUTPUT $output_data_S_OUTPUT  output_data_M_OUTPUT $output_data_M_OUTPUT  name SAGA.shapes_polygons.11 CLIP $CLIP
+S_INPUT $S_INPUT
+M_INPUT $M_INPUT
+DISSOLVE $DISSOLVE
+MULTIPLE $MULTIPLE
+prefer $prefer
+response $response
+outputType_S_OUTPUT $OutputSection_S_OUTPUT.outputType_S_OUTPUT
+transmissionMode_S_OUTPUT $OutputSection_S_OUTPUT.transmissionMode_S_OUTPUT
+outputType_M_OUTPUT $OutputSection_M_OUTPUT.outputType_M_OUTPUT
+transmissionMode_M_OUTPUT $OutputSection_M_OUTPUT.transmissionMode_M_OUTPUT]]></command>
+  <inputs>
+    <param name="CLIP" type="data" optional="false" label="Clip Features" help="Clip Features The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="S_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="M_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="DISSOLVE" type="select" optional="true" label="Dissolve Clip Features" help="Dissolve Clip Features">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MULTIPLE" type="select" optional="true" label="Multiple Input Features" help="Multiple Input Features">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_S_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_S_OUTPUT" type="select" label="Output Features" help="Output Features">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_S_OUTPUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_M_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_M_OUTPUT" type="select" label="Output Features" help="Output Features">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_M_OUTPUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_S_OUTPUT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_S_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_S_OUTPUT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_M_OUTPUT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_M_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_M_OUTPUT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Clipping of vector layers with a polygon layer.&lt;br/&gt;Uses the free and open source software library &lt;b&gt;Clipper&lt;/b&gt; created by Angus Johnson.&lt;br/&gt;&lt;a target="_blank" href="http://www.angusj.com/delphi/clipper.php"&gt;Clipper Homepage&lt;/a&gt;&lt;br/&gt;&lt;a target="_blank" href="http://sourceforge.net/projects/polyclipping/"&gt;Clipper at SourceForge&lt;/a&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

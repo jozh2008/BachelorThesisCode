@@ -1,0 +1,50 @@
+<tool name="Gdal_Translate" id="gdal_translate" version="1.0.0">
+  <description>Convert raster data from one format to another. </description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name Gdal_Translate Format '$Format'
+GCP '$GCP'
+InputDSN '$InputDSN'
+OutputDSN '$OutputDSN'
+prefer $prefer
+response $response
+outputType_Result '$OutputSection_Result.outputType_Result'
+transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
+  <inputs>
+    <param name="Format" type="text" value="GTiff" optional="true" label="Format of the output data" help="Select the output format by usig short name of the format (use gda-config --formats for list of available formats on your platform)."/>
+    <param name="GCP" type="text" optional="true" label="Ground Point Control" help="Ground Point Control in the form : pixel,line,eating,northing(,elev)."/>
+    <param name="InputDSN" type="text" optional="false" label="The input data source name" help="The input data source name to use as source for convertion."/>
+    <param name="OutputDSN" type="text" optional="false" label="The output data source name" help="The output data source name to use as source for convertion."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_Result" type="text" optional="false" label="The resulting converted file" help="The file name resulting of the convertion"/>
+      <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_Result" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[http://www.gdal.org/gdal_translate.html]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

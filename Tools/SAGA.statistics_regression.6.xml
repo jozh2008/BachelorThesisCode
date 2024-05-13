@@ -1,0 +1,178 @@
+<tool name="SAGA.statistics_regression.6" id="saga_statistics_regression_6" version="1.0.0">
+  <description>GWR for Multiple Predictor Grids</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS False  isArrayDEPENDENT False  isArrayPREDICTORS True  output_data_RESIDUALS $output_data_RESIDUALS  output_data_REGRESSION $output_data_REGRESSION  output_data_QUALITY $output_data_QUALITY  output_data_MODEL $output_data_MODEL  name SAGA.statistics_regression.6 POINTS $POINTS
+DEPENDENT $DEPENDENT
+PREDICTORS $PREDICTORS
+LOGISTIC $LOGISTIC
+MODEL_OUT $MODEL_OUT
+RESOLUTION $RESOLUTION
+RESOLUTION_VAL $RESOLUTION_VAL
+DW_WEIGHTING $DW_WEIGHTING
+DW_IDW_POWER $DW_IDW_POWER
+DW_IDW_OFFSET $DW_IDW_OFFSET
+DW_BANDWIDTH $DW_BANDWIDTH
+SEARCH_RANGE $SEARCH_RANGE
+SEARCH_RADIUS $SEARCH_RADIUS
+SEARCH_POINTS_ALL $SEARCH_POINTS_ALL
+SEARCH_POINTS_MIN $SEARCH_POINTS_MIN
+SEARCH_POINTS_MAX $SEARCH_POINTS_MAX
+SEARCH_DIRECTION $SEARCH_DIRECTION
+prefer $prefer
+response $response
+outputType_RESIDUALS $OutputSection_RESIDUALS.outputType_RESIDUALS
+transmissionMode_RESIDUALS $OutputSection_RESIDUALS.transmissionMode_RESIDUALS
+outputType_REGRESSION $OutputSection_REGRESSION.outputType_REGRESSION
+transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSION
+outputType_QUALITY $OutputSection_QUALITY.outputType_QUALITY
+transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY
+outputType_MODEL $OutputSection_MODEL.outputType_MODEL
+transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MODEL_OUT" type="select" optional="true" label="Output of Regression Parameters" help="Output of Regression Parameters">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="RESOLUTION" type="select" optional="true" label="Model Resolution" help="Model Resolution">
+      <option value="same_as_predictors">same as predictors</option>
+      <option selected="true" value="user_defined">user defined</option>
+    </param>
+    <param name="RESOLUTION_VAL" type="float" value="1" optional="true" label="Resolution" help="map units"/>
+    <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
+      <option value="exponential">exponential</option>
+      <option selected="true" value="gaussian_weighting">gaussian weighting</option>
+      <option value="inverse_distance_to_a_power">inverse distance to a power</option>
+      <option value="no_distance_weighting">no distance weighting</option>
+    </param>
+    <param name="DW_IDW_POWER" type="float" value="1" optional="true" label="Inverse Distance Weighting Power" help="Inverse Distance Weighting Power"/>
+    <param name="DW_IDW_OFFSET" type="select" optional="true" label="Inverse Distance Offset" help="Calculates weights for distance plus one, avoiding division by zero for zero distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_BANDWIDTH" type="float" value="1" optional="true" label="Gaussian and Exponential Weighting Bandwidth" help="Gaussian and Exponential Weighting Bandwidth"/>
+    <param name="SEARCH_RANGE" type="select" optional="true" label="Search Range" help="Search Range">
+      <option selected="true" value="global">global</option>
+      <option value="local">local</option>
+    </param>
+    <param name="SEARCH_RADIUS" type="float" value="1000" optional="true" label="Maximum Search Distance" help="local maximum search distance given in map units"/>
+    <param name="SEARCH_POINTS_ALL" type="select" optional="true" label="Number of Points" help="Number of Points">
+      <option selected="true" value="all_points_within_search_distance">all points within search distance</option>
+      <option value="maximum_number_of_nearest_points">maximum number of nearest points</option>
+    </param>
+    <param name="SEARCH_POINTS_MIN" type="integer" value="16" optional="true" label="Minimum" help="minimum number of points to use"/>
+    <param name="SEARCH_POINTS_MAX" type="integer" value="20" optional="true" label="Maximum" help="maximum number of nearest points"/>
+    <param name="SEARCH_DIRECTION" type="select" optional="true" label="Direction" help="Direction">
+      <option selected="true" value="all_directions">all directions</option>
+      <option value="quadrants">quadrants</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESIDUALS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_REGRESSION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_QUALITY" type="select" label="Coefficient of Determination" help="Coefficient of Determination">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_QUALITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MODEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MODEL" type="select" label="Regression Parameters" help="Regression Parameters">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MODEL" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESIDUALS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESIDUALS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESIDUALS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_REGRESSION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_REGRESSION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_QUALITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_QUALITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_QUALITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_QUALITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MODEL" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MODEL" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MODEL" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MODEL" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Geographically Weighted Regression for a multiple predictors supplied as grids, to which the regression model is applied. Further details can be stored optionally.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

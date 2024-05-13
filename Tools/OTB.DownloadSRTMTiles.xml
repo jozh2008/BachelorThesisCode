@@ -1,0 +1,55 @@
+<tool name="OTB.DownloadSRTMTiles" id="otb_downloadsrtmtiles" version="1.0.0">
+  <description>Download or list SRTM tiles</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayil True  isArrayvl True  output_data_Result $output_data_Result  name OTB.DownloadSRTMTiles il $il
+vl $vl
+names '$names'
+tiledir '$tiledir'
+mode $mode
+prefer $prefer
+response $response
+outputType_Result '$OutputSection_Result.outputType_Result'
+transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
+  <inputs>
+    <param name="il" type="data" optional="false" label="List of images on which you want to determine corresponding SRTM tiles." help="List of images on which you want to determine corresponding SRTM tiles. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="vl" type="data" optional="false" label="List of vector data files on which you want to determine corresponding SRTM tiles." help="List of vector data files on which you want to determine corresponding SRTM tiles. The following data types are allowed in the txt file:  json, zip, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="names" type="text" optional="true" label="List of SRTM tile names to download. This list is added to the tiles derived from input images or vectors.The names should follow the SRTM tile naming convention, for instance N43E001." help="List of SRTM tile names to download. This list is added to the tiles derived from input images or vectors.The names should follow the SRTM tile naming convention, for instance N43E001."/>
+    <param name="tiledir" type="text" optional="false" label="Directory where SRTM tiles are stored. In download mode, the zipped archives will be downloaded to this directory. You'll need to unzip all tile files before using them in your application. In any case, this directory will be inspected to check which tiles are already downloaded." help="Directory where SRTM tiles are stored. In download mode, the zipped archives will be downloaded to this directory. You'll need to unzip all tile files before using them in your application. In any case, this directory will be inspected to check which tiles are already downloaded."/>
+    <param name="mode" type="select" optional="false" label="mode" help="mode">
+      <option selected="true" value="download">download</option>
+      <option value="list">list</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_Result" type="text" optional="false" label="the result message" help="the result message"/>
+      <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_Result" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application allows selecting the appropriate SRTM tiles that covers a list of images. It builds a list of the required tiles. Two modes are available: the first one download those tiles from the USGS SRTM3 website (http://dds.cr.usgs.gov/srtm/version2_1/SRTM3/), the second one list those tiles in a local directory. In both cases, you need to indicate the directory in which directory  tiles will be download or the location of local SRTM files.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,82 @@
+<tool name="SAGA.shapes_lines.3" id="saga_shapes_lines_3" version="1.0.0">
+  <description>Line-Polygon Intersection</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayLINES False  isArrayPOLYGONS False  output_data_INTERSECT $output_data_INTERSECT  output_data_DIFFERENCE $output_data_DIFFERENCE  name SAGA.shapes_lines.3 LINES $LINES
+POLYGONS $POLYGONS
+ATTRIBUTES $ATTRIBUTES
+prefer $prefer
+response $response
+outputType_INTERSECT $OutputSection_INTERSECT.outputType_INTERSECT
+transmissionMode_INTERSECT $OutputSection_INTERSECT.transmissionMode_INTERSECT
+outputType_DIFFERENCE $OutputSection_DIFFERENCE.outputType_DIFFERENCE
+transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENCE]]></command>
+  <inputs>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="ATTRIBUTES" type="select" optional="true" label="Attributes" help="attributes inherited to intersection result">
+      <option selected="true" value="line">line</option>
+      <option value="line_and_polygon">line and polygon</option>
+      <option value="polygon">polygon</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_INTERSECT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INTERSECT" type="select" label="Intersection" help="Intersection">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_INTERSECT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIFFERENCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIFFERENCE" type="select" label="Difference" help="Difference">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_DIFFERENCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_INTERSECT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_INTERSECT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_INTERSECT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIFFERENCE" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIFFERENCE" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_DIFFERENCE" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Line-polygon intersection.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,88 @@
+<tool name="SAGA.shapes_polygons.2" id="saga_shapes_polygons_2" version="1.0.0">
+  <description>Polygon Properties</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOLYGONS False  isArrayFIELDS False  output_data_OUTPUT $output_data_OUTPUT  name SAGA.shapes_polygons.2 POLYGONS $POLYGONS
+FIELDS $FIELDS
+BPARTS $BPARTS
+BPOINTS $BPOINTS
+BEXTENT $BEXTENT
+BCENTER $BCENTER
+BLENGTH $BLENGTH
+BAREA $BAREA
+SCALING $SCALING
+prefer $prefer
+response $response
+outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
+transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
+  <inputs>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Copy Attributes" help="Select one or more attributes to be copied to the target layer. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="BPARTS" type="select" optional="true" label="Number of Parts" help="Number of Parts">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BPOINTS" type="select" optional="true" label="Number of Vertices" help="Number of Vertices">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BEXTENT" type="select" optional="true" label="Extent" help="Extent">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BCENTER" type="select" optional="true" label="Centroid" help="Centroid">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BLENGTH" type="select" optional="true" label="Perimeter" help="Perimeter">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BAREA" type="select" optional="true" label="Area" help="Area">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SCALING" type="float" value="1" optional="true" label="Scaling" help="Scaling factor for perimeter and area (squared). meter to feet = 1 / 0.3048 = 3.2808"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT" type="select" label="Polygons with Property Attributes" help="If not set property attributes will be added to the orignal layer.">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_OUTPUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_OUTPUT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_OUTPUT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Add general and geometric properties of polygons to its atttributes.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

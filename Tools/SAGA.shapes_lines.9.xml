@@ -1,0 +1,62 @@
+<tool name="SAGA.shapes_lines.9" id="saga_shapes_lines_9" version="1.0.0">
+  <description>Line Crossings</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayLINES_A False  isArrayLINES_B False  output_data_CROSSINGS $output_data_CROSSINGS  name SAGA.shapes_lines.9 LINES_A $LINES_A
+LINES_B $LINES_B
+ATTRIBUTES $ATTRIBUTES
+prefer $prefer
+response $response
+outputType_CROSSINGS $OutputSection_CROSSINGS.outputType_CROSSINGS
+transmissionMode_CROSSINGS $OutputSection_CROSSINGS.transmissionMode_CROSSINGS]]></command>
+  <inputs>
+    <param name="LINES_A" type="data" optional="false" label="1st Lines Layer" help="1st Lines Layer The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="LINES_B" type="data" optional="false" label="2nd Lines Layer" help="2nd Lines Layer The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="ATTRIBUTES" type="select" optional="true" label="Parent Attributes" help="attributes inherited by parent lines layers">
+      <option value="attributes">attributes</option>
+      <option value="index">index</option>
+      <option selected="true" value="index_and_attributes">index and attributes</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CROSSINGS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CROSSINGS" type="select" label="Crossings" help="Crossings">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_CROSSINGS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CROSSINGS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CROSSINGS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_CROSSINGS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Line Crossings]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,99 @@
+<tool name="SAGA.climate_tools.0" id="saga_climate_tools_0" version="1.0.0">
+  <description>Multi Level to Surface Interpolation</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayVARIABLE True  isArrayX_GRIDS True  isArrayX_GRIDS_CHECK False  isArrayX_TABLE False  isArraySURFACE False  output_data_RESULT $output_data_RESULT  name SAGA.climate_tools.0 VARIABLE $VARIABLE
+X_SOURCE $X_SOURCE
+X_GRIDS $X_GRIDS
+X_GRIDS_CHECK $X_GRIDS_CHECK
+X_TABLE $X_TABLE
+H_METHOD $H_METHOD
+V_METHOD $V_METHOD
+COEFFICIENTS $COEFFICIENTS
+LINEAR_SORTED $LINEAR_SORTED
+SPLINE_ALL $SPLINE_ALL
+TREND_ORDER $TREND_ORDER
+SURFACE $SURFACE
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="VARIABLE" type="data" optional="false" label="Variable" help="Variable The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="X_SOURCE" type="select" optional="true" label="Get Heights from ..." help="Get Heights from ...">
+      <option selected="true" value="grid_list">grid list</option>
+      <option value="table">table</option>
+    </param>
+    <param name="X_GRIDS" type="data" optional="false" label="Level Heights" help="Level Heights The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="X_GRIDS_CHECK" type="data" optional="false" label="Minimum Height" help="if set, only values with level heights above DEM will be used The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="X_TABLE" type="data" optional="false" label="Level Heights" help="Level Heights The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="H_METHOD" type="select" optional="true" label="Horizontal Interpolation Method" help="Horizontal Interpolation Method">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="V_METHOD" type="select" optional="true" label="Vertical Interpolation Method" help="Vertical Interpolation Method">
+      <option selected="true" value="linear">linear</option>
+      <option value="polynomial_trend">polynomial trend</option>
+      <option value="spline">spline</option>
+    </param>
+    <param name="COEFFICIENTS" type="select" optional="true" label="Coefficient Interpolation" help="Coefficient Interpolation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="LINEAR_SORTED" type="select" optional="true" label="Sorted Levels" help="Sorted Levels">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SPLINE_ALL" type="select" optional="true" label="Pre-analyze" help="Pre-analyze">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="TREND_ORDER" type="integer" value="3" optional="true" label="Polynomial Order" help="Polynomial Order"/>
+    <param name="SURFACE" type="data" optional="false" label="Surface" help="Surface The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Interpolation" help="Interpolation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Multi Level to Surface Interpolation]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

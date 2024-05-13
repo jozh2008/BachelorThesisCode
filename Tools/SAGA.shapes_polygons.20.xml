@@ -1,0 +1,63 @@
+<tool name="SAGA.shapes_polygons.20" id="saga_shapes_polygons_20" version="1.0.0">
+  <description>Add Point Attributes to Polygons</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArrayPOINTS False  isArrayFIELDS False  output_data_OUTPUT $output_data_OUTPUT  name SAGA.shapes_polygons.20 INPUT $INPUT
+POINTS $POINTS
+FIELDS $FIELDS
+ADD_LOCATION_INFO $ADD_LOCATION_INFO
+prefer $prefer
+response $response
+outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
+transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Polygons" help="Input polygon shapefile The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Input point shapefile The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Attributes" help="Attributes to add. Select none to add all The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="ADD_LOCATION_INFO" type="select" optional="true" label="Add Location Info" help="Add location information from points (x,y,(z,m))">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT" type="select" label="Result" help="Optional output polygon shapefile">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_OUTPUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_OUTPUT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_OUTPUT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Spatial join for polygons. Retrieves for each polygon the selected attributes from that point, which is contained in the polygon. In case a polygon contains more than one point, the last point wins.&lt;br/&gt;Optionally, the tool allows one to attach the geometrical properties (x,y(z,m)) of each point as additional attributes.&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

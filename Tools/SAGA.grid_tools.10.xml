@@ -1,0 +1,104 @@
+<tool name="SAGA.grid_tools.10" id="saga_grid_tools_10" version="1.0.0">
+  <description>Grid Proximity Buffer</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySOURCE False  output_data_DISTANCE $output_data_DISTANCE  output_data_ALLOC $output_data_ALLOC  output_data_BUFFER $output_data_BUFFER  name SAGA.grid_tools.10 SOURCE $SOURCE
+DIST $DIST
+IVAL $IVAL
+prefer $prefer
+response $response
+outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
+transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE
+outputType_ALLOC $OutputSection_ALLOC.outputType_ALLOC
+transmissionMode_ALLOC $OutputSection_ALLOC.transmissionMode_ALLOC
+outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
+transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
+  <inputs>
+    <param name="SOURCE" type="data" optional="false" label="Source Grid" help="Grid with features to be buffered [Category/NoData] The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="DIST" type="float" value="500" optional="true" label="Buffer distance" help="Buffer distance (grid units)."/>
+    <param name="IVAL" type="integer" value="100" optional="true" label="Equidistance" help="Reclassify buffer distance to intervals of euqidistance ..."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_DISTANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DISTANCE" type="select" label="Distance Grid" help="Grid with euclidian distance to nearest source cell [grid units]">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DISTANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ALLOC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ALLOC" type="select" label="Allocation Grid" help="Grid with category of nearest source cell [Category]">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ALLOC" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_BUFFER" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BUFFER" type="select" label="Buffer Grid" help="Reclassification of distance grid to buffer zones with a width equal to the equidistance value.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BUFFER" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DISTANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DISTANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ALLOC" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ALLOC" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ALLOC" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ALLOC" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_BUFFER" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BUFFER" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BUFFER" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BUFFER" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool calculates the euclidian distance within a buffer distance from all NoData cells to the nearest valid neighbour in a source grid. Additionally, the source cells define the zones that will be used in the euclidean allocation calculations. Cell values in the source grid are treated as IDs (integer) and used in the allocation grid to identify the grid value of the closest source cell. If a cell is at an equal distance to two or more sources, the cell is assigned to the source that is first encountered in the tools scanning process. The buffer grid is a reclassification of the distance grid using a user specified equidistance to create a set of discrete distance buffers from source features. The buffer zones are coded with the maximum distance value of the corresponding buffer interval. The output value type for the distance grid is floating-point. The output values for the allocation and buffer grid are of type integer. The duration of tool execution is dependent on the number of source cells and the buffer distance.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

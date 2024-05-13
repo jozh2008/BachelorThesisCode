@@ -1,0 +1,62 @@
+<tool name="SAGA.grid_tools.35" id="saga_grid_tools_35" version="1.0.0">
+  <description>Mirror Grid</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_MIRROR $output_data_MIRROR  name SAGA.grid_tools.35 GRID $GRID
+METHOD $METHOD
+prefer $prefer
+response $response
+outputType_MIRROR $OutputSection_MIRROR.outputType_MIRROR
+transmissionMode_MIRROR $OutputSection_MIRROR.transmissionMode_MIRROR]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="both">both</option>
+      <option selected="true" value="horizontally">horizontally</option>
+      <option value="vertically">vertically</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_MIRROR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MIRROR" type="select" label="Mirror Grid" help="Mirror Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MIRROR" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_MIRROR" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MIRROR" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MIRROR" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MIRROR" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Mirror a grid at its center axes', either vertically, horizontally or both. If the target is not set, the changes will be stored to the original grid. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

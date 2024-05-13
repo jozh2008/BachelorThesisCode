@@ -66,7 +66,7 @@ class Initialize:
         tool.tests = gxt.define_tests()
         tool.citations = gxt.create_citations()
 
-        file_path = f"{name}.xml"
+        file_path = f"Tools/{name}.xml"
         with open(file_path, "w") as file:
             file.write(tool.export())
 

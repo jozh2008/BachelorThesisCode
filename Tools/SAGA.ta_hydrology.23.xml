@@ -1,0 +1,100 @@
+<tool name="SAGA.ta_hydrology.23" id="saga_ta_hydrology_23" version="1.0.0">
+  <description>Melton Ruggedness Number</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_AREA $output_data_AREA  output_data_ZMAX $output_data_ZMAX  output_data_MRN $output_data_MRN  name SAGA.ta_hydrology.23 DEM $DEM
+prefer $prefer
+response $response
+outputType_AREA $OutputSection_AREA.outputType_AREA
+transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA
+outputType_ZMAX $OutputSection_ZMAX.outputType_ZMAX
+transmissionMode_ZMAX $OutputSection_ZMAX.transmissionMode_ZMAX
+outputType_MRN $OutputSection_MRN.outputType_MRN
+transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_AREA" type="select" label="Catchment Area" help="Catchment Area">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_AREA" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ZMAX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ZMAX" type="select" label="Maximum Height" help="Maximum Height">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ZMAX" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MRN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MRN" type="select" label="Melton Ruggedness Number" help="Melton Ruggedness Number">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MRN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_AREA" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_AREA" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_AREA" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ZMAX" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ZMAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ZMAX" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ZMAX" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MRN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MRN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MRN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MRN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Melton ruggedness number (MNR) is a simple flow accumulation related index, calculated as difference between maximum and minimum elevation in catchment area divided by square root of catchment area size. The calculation is performed for each grid cell, therefore minimum elevation is same as elevation at cell's position. Due to the discrete character of a single maximum elevation, flow calculation is simply done with Deterministic 8.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

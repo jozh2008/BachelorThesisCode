@@ -1,0 +1,70 @@
+<tool name="SAGA.ta_morphometry.13" id="saga_ta_morphometry_13" version="1.0.0">
+  <description>Land Surface Temperature</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArraySWR False  isArrayLAI False  output_data_LST $output_data_LST  name SAGA.ta_morphometry.13 DEM $DEM
+SWR $SWR
+LAI $LAI
+LAI_MAX $LAI_MAX
+Z_REFERENCE $Z_REFERENCE
+T_REFERENCE $T_REFERENCE
+T_GRADIENT $T_GRADIENT
+C_FACTOR $C_FACTOR
+prefer $prefer
+response $response
+outputType_LST $OutputSection_LST.outputType_LST
+transmissionMode_LST $OutputSection_LST.transmissionMode_LST]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SWR" type="data" optional="false" label="Short Wave Radiation Ratio" help="The ratio of daily total short-wave irradiance on sloping sites compared to horizontal sites. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="LAI" type="data" optional="false" label="Leaf Area Index" help="Leaf Area Index The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="LAI_MAX" type="float" value="8" optional="true" label="Maximum LAI" help="Maximum LAI"/>
+    <param name="Z_REFERENCE" type="float" value="0" optional="true" label="Elevation" help="Elevation"/>
+    <param name="T_REFERENCE" type="float" value="0" optional="true" label="Temperature" help="Temperature at reference station in degree Celsius."/>
+    <param name="T_GRADIENT" type="float" value="0.65" optional="true" label="Temperature Lapse Rate" help="Vertical temperature gradient in degree Celsius per 100 meter."/>
+    <param name="C_FACTOR" type="float" value="1" optional="true" label="C Factor" help="C Factor"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_LST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LST" type="select" label="Land Surface Temperature" help="Land Surface Temperature">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LST" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_LST" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LST" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LST" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LST" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Temperature estimation at each grid point as a function of temperature, temperature lapse rate and elevation for a reference station. Further optional input is the Leaf Area Index (LAI) and the short-wave radiation ratio, which relates the irradiance including terrain effects to that calculated for a flat, horizontal plane. See Wilson & Gallant (2000) for more details. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

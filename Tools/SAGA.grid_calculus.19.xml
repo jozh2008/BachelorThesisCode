@@ -1,0 +1,70 @@
+<tool name="SAGA.grid_calculus.19" id="saga_grid_calculus_19" version="1.0.0">
+  <description>Spherical Harmonic Synthesis</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayFILE False  output_data_OUTPUT_GRID $output_data_OUTPUT_GRID  name SAGA.grid_calculus.19 FILE $FILE
+MINDEGREE $MINDEGREE
+MAXDEGREE $MAXDEGREE
+LAT_START $LAT_START
+END_LAT $END_LAT
+LONG_START $LONG_START
+END_LONG $END_LONG
+INC $INC
+prefer $prefer
+response $response
+outputType_OUTPUT_GRID $OutputSection_OUTPUT_GRID.outputType_OUTPUT_GRID
+transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_GRID]]></command>
+  <inputs>
+    <param name="FILE" type="data" optional="false" label="File with Coefficients" help="ASCII file with columns degree, order, c_lm, s_lm (separated by space) The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="MINDEGREE" type="integer" value="0" optional="true" label="Start Degree" help="Start Degree"/>
+    <param name="MAXDEGREE" type="integer" value="180" optional="true" label="Expansion Degree" help="Expansion Degree"/>
+    <param name="LAT_START" type="float" value="-90" optional="true" label="Start Latitude" help="Start Latitude"/>
+    <param name="END_LAT" type="float" value="90" optional="true" label="End Latitude" help="End Latitude"/>
+    <param name="LONG_START" type="float" value="-180" optional="true" label="Start Longitude" help="Start Longitude"/>
+    <param name="END_LONG" type="float" value="180" optional="true" label="End Longitude" help="End Longitude"/>
+    <param name="INC" type="float" value="1" optional="true" label="Latitude / Longitude Increment" help="Latitude / Longitude Increment"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_OUTPUT_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT_GRID" type="select" label="Synthesized Grid" help="Synthesized Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT_GRID" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_OUTPUT_GRID" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT_GRID" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT_GRID" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Synthesis of a completely normalized spherical harmonic expansion. The coefficients are read from the input file (ASCII file, columns separated by space).&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

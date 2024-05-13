@@ -1,0 +1,113 @@
+<tool name="SAGA.statistics_regression.15" id="saga_statistics_regression_15" version="1.0.0">
+  <description>Zonal Multiple Regression Analysis (Points and Predictor Grids)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPREDICTORS True  isArrayZONES False  isArrayPOINTS False  isArrayATTRIBUTE False  output_data_RESIDUALS $output_data_RESIDUALS  output_data_REGRESSION $output_data_REGRESSION  name SAGA.statistics_regression.15 PREDICTORS $PREDICTORS
+ZONES $ZONES
+POINTS $POINTS
+ATTRIBUTE $ATTRIBUTE
+RESAMPLING $RESAMPLING
+COORD_X $COORD_X
+COORD_Y $COORD_Y
+INTERCEPT $INTERCEPT
+METHOD $METHOD
+P_VALUE $P_VALUE
+prefer $prefer
+response $response
+outputType_RESIDUALS $OutputSection_RESIDUALS.outputType_RESIDUALS
+transmissionMode_RESIDUALS $OutputSection_RESIDUALS.transmissionMode_RESIDUALS
+outputType_REGRESSION $OutputSection_REGRESSION.outputType_REGRESSION
+transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSION]]></command>
+  <inputs>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="ZONES" type="data" optional="false" label="Zones" help="Zones The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="ATTRIBUTE" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="COORD_X" type="select" optional="true" label="Include X Coordinate" help="Include X Coordinate">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="COORD_Y" type="select" optional="true" label="Include Y Coordinate" help="Include Y Coordinate">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="INTERCEPT" type="select" optional="true" label="Intercept" help="Intercept">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="backward">backward</option>
+      <option value="forward">forward</option>
+      <option value="include_all">include all</option>
+      <option selected="true" value="stepwise">stepwise</option>
+    </param>
+    <param name="P_VALUE" type="float" value="5" optional="true" label="Significance Level" help="Significance level (aka p-value) as threshold for automated predictor selection, given as percentage"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESIDUALS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_REGRESSION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESIDUALS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESIDUALS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESIDUALS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_REGRESSION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_REGRESSION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Linear regression analysis of point attributes using multiple predictor grids. Details of the regression/correlation analysis will be saved to a table. The regression function is used to create a new grid with regression based values. The multiple regression analysis uses a forward selection procedure. Each polygon in the zones layer is processed as individual zone. &lt;br/&gt;Reference:&lt;br/&gt;- Bahrenberg, G., Giese, E., Nipper, J. (1992): 'Statistische Methoden in der Geographie 2 - Multivariate Statistik', Stuttgart, 415p.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

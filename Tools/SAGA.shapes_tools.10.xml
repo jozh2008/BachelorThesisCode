@@ -1,0 +1,78 @@
+<tool name="SAGA.shapes_tools.10" id="saga_shapes_tools_10" version="1.0.0">
+  <description>Transform Shapes</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySHAPES False  output_data_TRANSFORM $output_data_TRANSFORM  name SAGA.shapes_tools.10 SHAPES $SHAPES
+MOVEX $MOVEX
+MOVEY $MOVEY
+MOVEZ $MOVEZ
+ANCHORX $ANCHORX
+ANCHORY $ANCHORY
+ANCHORZ $ANCHORZ
+SCALEX $SCALEX
+SCALEY $SCALEY
+SCALEZ $SCALEZ
+ROTATEX $ROTATEX
+ROTATEY $ROTATEY
+ROTATEZ $ROTATEZ
+prefer $prefer
+response $response
+outputType_TRANSFORM $OutputSection_TRANSFORM.outputType_TRANSFORM
+transmissionMode_TRANSFORM $OutputSection_TRANSFORM.transmissionMode_TRANSFORM]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="MOVEX" type="float" value="0" optional="true" label="X" help="X"/>
+    <param name="MOVEY" type="float" value="0" optional="true" label="Y" help="Y"/>
+    <param name="MOVEZ" type="float" value="0" optional="true" label="Z" help="Z"/>
+    <param name="ANCHORX" type="float" value="0" optional="true" label="X" help="X"/>
+    <param name="ANCHORY" type="float" value="0" optional="true" label="Y" help="Y"/>
+    <param name="ANCHORZ" type="float" value="0" optional="true" label="Z" help="Z"/>
+    <param name="SCALEX" type="float" value="1" optional="true" label="X" help="X"/>
+    <param name="SCALEY" type="float" value="1" optional="true" label="Y" help="Y"/>
+    <param name="SCALEZ" type="float" value="1" optional="true" label="Z" help="Z"/>
+    <param name="ROTATEX" type="float" value="0" optional="true" label="X" help="X"/>
+    <param name="ROTATEY" type="float" value="0" optional="true" label="Y" help="Y"/>
+    <param name="ROTATEZ" type="float" value="0" optional="true" label="Z" help="Z"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TRANSFORM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TRANSFORM" type="select" label="Transformed Shapes" help="Transformed Shapes">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_TRANSFORM" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TRANSFORM" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TRANSFORM" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_TRANSFORM" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Use this tool to move, rotate and/or scale shapes.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

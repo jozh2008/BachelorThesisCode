@@ -1,0 +1,58 @@
+<tool name="SAGA.ta_hydrology.24" id="saga_ta_hydrology_24" version="1.0.0">
+  <description>TCI Low</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDISTANCE False  isArrayTWI False  output_data_TCILOW $output_data_TCILOW  name SAGA.ta_hydrology.24 DISTANCE $DISTANCE
+TWI $TWI
+prefer $prefer
+response $response
+outputType_TCILOW $OutputSection_TCILOW.outputType_TCILOW
+transmissionMode_TCILOW $OutputSection_TCILOW.transmissionMode_TCILOW]]></command>
+  <inputs>
+    <param name="DISTANCE" type="data" optional="false" label="Vertical Distance to Channel Network" help="Vertical Distance to Channel Network The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="TWI" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TCILOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TCILOW" type="select" label="TCI Low" help="TCI Low">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TCILOW" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TCILOW" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TCILOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TCILOW" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TCILOW" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Terrain Classification Index for Lowlands (TCI Low).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

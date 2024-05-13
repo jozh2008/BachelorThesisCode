@@ -1,0 +1,71 @@
+<tool name="SAGA.shapes_grid.15" id="saga_shapes_grid_15" version="1.0.0">
+  <description>Gradient Vectors from Surface</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySURFACE False  output_data_VECTORS $output_data_VECTORS  name SAGA.shapes_grid.15 SURFACE $SURFACE
+STEP $STEP
+SIZE_MIN $SIZE_MIN
+SIZE_MAX $SIZE_MAX
+AGGR $AGGR
+STYLE $STYLE
+prefer $prefer
+response $response
+outputType_VECTORS $OutputSection_VECTORS.outputType_VECTORS
+transmissionMode_VECTORS $OutputSection_VECTORS.transmissionMode_VECTORS]]></command>
+  <inputs>
+    <param name="SURFACE" type="data" optional="false" label="Surface" help="Surface The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="STEP" type="integer" value="1" optional="true" label="Step" help="Step"/>
+    <param name="SIZE_MIN" type="float" optional="true" label="Size Range (min value)" help="size range as percentage of step"/>
+    <param name="SIZE_MAX" type="float" optional="true" label="Size Range (max value)" help="size range as percentage of step"/>
+    <param name="AGGR" type="select" optional="true" label="Aggregation" help="how to request values if step size is more than one cell">
+      <option selected="true" value="mean_value">mean value</option>
+      <option value="nearest_neighbour">nearest neighbour</option>
+    </param>
+    <param name="STYLE" type="select" optional="true" label="Style" help="Style">
+      <option value="arrow">arrow</option>
+      <option selected="true" value="arrow_(centered_to_cell)">arrow (centered to cell)</option>
+      <option value="simple_line">simple line</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_VECTORS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VECTORS" type="select" label="Gradient Vectors" help="Gradient Vectors">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_VECTORS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_VECTORS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VECTORS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_VECTORS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Create lines indicating the gradient. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,174 @@
+<tool name="SAGA.ta_hydrology.2" id="saga_ta_hydrology_2" version="1.0.0">
+  <description>Flow Accumulation (Flow Tracing)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayELEVATION False  isArraySINKROUTE False  isArrayWEIGHTS False  isArrayVAL_INPUT False  isArrayACCU_MATERIAL False  isArrayACCU_TARGET False  output_data_FLOW $output_data_FLOW  output_data_VAL_MEAN $output_data_VAL_MEAN  output_data_ACCU_TOTAL $output_data_ACCU_TOTAL  output_data_ACCU_LEFT $output_data_ACCU_LEFT  output_data_ACCU_RIGHT $output_data_ACCU_RIGHT  name SAGA.ta_hydrology.2 ELEVATION $ELEVATION
+SINKROUTE $SINKROUTE
+WEIGHTS $WEIGHTS
+VAL_INPUT $VAL_INPUT
+ACCU_MATERIAL $ACCU_MATERIAL
+ACCU_TARGET $ACCU_TARGET
+STEP $STEP
+FLOW_UNIT $FLOW_UNIT
+METHOD $METHOD
+CORRECT $CORRECT
+MINDQV $MINDQV
+prefer $prefer
+response $response
+outputType_FLOW $OutputSection_FLOW.outputType_FLOW
+transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW
+outputType_VAL_MEAN $OutputSection_VAL_MEAN.outputType_VAL_MEAN
+transmissionMode_VAL_MEAN $OutputSection_VAL_MEAN.transmissionMode_VAL_MEAN
+outputType_ACCU_TOTAL $OutputSection_ACCU_TOTAL.outputType_ACCU_TOTAL
+transmissionMode_ACCU_TOTAL $OutputSection_ACCU_TOTAL.transmissionMode_ACCU_TOTAL
+outputType_ACCU_LEFT $OutputSection_ACCU_LEFT.outputType_ACCU_LEFT
+transmissionMode_ACCU_LEFT $OutputSection_ACCU_LEFT.transmissionMode_ACCU_LEFT
+outputType_ACCU_RIGHT $OutputSection_ACCU_RIGHT.outputType_ACCU_RIGHT
+transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGHT]]></command>
+  <inputs>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Sink Routes" help="Sink Routes The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="VAL_INPUT" type="data" optional="false" label="Input for Mean over Catchment" help="Input for Mean over Catchment The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="ACCU_MATERIAL" type="data" optional="false" label="Material for Accumulation" help="Material for Accumulation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="ACCU_TARGET" type="data" optional="false" label="Accumulation Target" help="Accumulation Target The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="STEP" type="integer" value="1" optional="true" label="Step" help="For testing purposes. Only generate flow at cells with step distance (each step row/column)."/>
+    <param name="FLOW_UNIT" type="select" optional="true" label="Flow Accumulation Unit" help="Flow Accumulation Unit">
+      <option selected="true" value="cell_area">cell area</option>
+      <option value="number_of_cells">number of cells</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="m_Method" help="m_Method">
+      <option value="DEMON">DEMON</option>
+      <option selected="true" value="Kinematic_Routing_Algorithm">Kinematic Routing Algorithm</option>
+      <option value="Rho_8">Rho 8</option>
+    </param>
+    <param name="CORRECT" type="select" optional="true" label="Flow Correction" help="Flow Correction">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MINDQV" type="float" value="0" optional="true" label="DEMON - Min. DQV" help="DEMON - Minimum Drainage Quota Volume (DQV) for traced flow tubes"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW" type="select" label="Flow Accumulation" help="Flow Accumulation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_FLOW" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_VAL_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VAL_MEAN" type="select" label="Mean over Catchment" help="Mean over Catchment">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_VAL_MEAN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ACCU_TOTAL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ACCU_TOTAL" type="select" label="Accumulated Material" help="Accumulated Material">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ACCU_TOTAL" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ACCU_LEFT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ACCU_LEFT" type="select" label="Accumulated Material (Left Side)" help="Accumulated Material (Left Side)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ACCU_LEFT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ACCU_RIGHT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ACCU_RIGHT" type="select" label="Accumulated Material (Right Side)" help="Accumulated Material (Right Side)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ACCU_RIGHT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_FLOW" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_FLOW" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_FLOW" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_VAL_MEAN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VAL_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_VAL_MEAN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_VAL_MEAN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ACCU_TOTAL" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ACCU_TOTAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ACCU_TOTAL" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ACCU_TOTAL" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ACCU_LEFT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ACCU_LEFT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ACCU_LEFT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ACCU_LEFT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ACCU_RIGHT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ACCU_RIGHT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ACCU_RIGHT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ACCU_RIGHT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Flow tracing algorithms for calculations of flow accumulation and related parameters. These algorithms trace the flow of each cell in a DEM separately until it finally leaves the DEM or ends in a sink.&lt;br/&gt;The Rho 8 implementation (Fairfield & Leymarie 1991) adopts the original algorithm only for the flow routing and will give quite different results.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

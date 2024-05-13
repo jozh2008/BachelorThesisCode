@@ -1,0 +1,207 @@
+<tool name="SAGA.sim_geomorphology.0" id="saga_sim_geomorphology_0" version="1.0.0">
+  <description>Gravitational Process Path Model</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayRELEASE_AREAS False  isArrayMATERIAL False  isArrayFRICTION_ANGLE_GRID False  isArraySLOPE_IMPACT_GRID False  isArrayFRICTION_MU_GRID False  isArrayFRICTION_MASS_TO_DRAG_GRID False  output_data_PROCESS_AREA $output_data_PROCESS_AREA  output_data_DEPOSITION $output_data_DEPOSITION  output_data_MAX_VELOCITY $output_data_MAX_VELOCITY  output_data_STOP_POSITIONS $output_data_STOP_POSITIONS  name SAGA.sim_geomorphology.0 DEM $DEM
+RELEASE_AREAS $RELEASE_AREAS
+MATERIAL $MATERIAL
+FRICTION_ANGLE_GRID $FRICTION_ANGLE_GRID
+SLOPE_IMPACT_GRID $SLOPE_IMPACT_GRID
+FRICTION_MU_GRID $FRICTION_MU_GRID
+FRICTION_MASS_TO_DRAG_GRID $FRICTION_MASS_TO_DRAG_GRID
+PROCESS_PATH_MODEL $PROCESS_PATH_MODEL
+RW_SLOPE_THRES $RW_SLOPE_THRES
+RW_EXPONENT $RW_EXPONENT
+RW_PERSISTENCE $RW_PERSISTENCE
+GPP_ITERATIONS $GPP_ITERATIONS
+GPP_PROCESSING_ORDER $GPP_PROCESSING_ORDER
+GPP_SEED $GPP_SEED
+FRICTION_MODEL $FRICTION_MODEL
+FRICTION_THRES_FREE_FALL $FRICTION_THRES_FREE_FALL
+FRICTION_METHOD_IMPACT $FRICTION_METHOD_IMPACT
+FRICTION_IMPACT_REDUCTION $FRICTION_IMPACT_REDUCTION
+FRICTION_ANGLE $FRICTION_ANGLE
+FRICTION_MU $FRICTION_MU
+FRICTION_MODE_OF_MOTION $FRICTION_MODE_OF_MOTION
+FRICTION_MASS_TO_DRAG $FRICTION_MASS_TO_DRAG
+FRICTION_INIT_VELOCITY $FRICTION_INIT_VELOCITY
+DEPOSITION_MODEL $DEPOSITION_MODEL
+DEPOSITION_INITIAL $DEPOSITION_INITIAL
+DEPOSITION_SLOPE_THRES $DEPOSITION_SLOPE_THRES
+DEPOSITION_VELOCITY_THRES $DEPOSITION_VELOCITY_THRES
+DEPOSITION_MAX $DEPOSITION_MAX
+DEPOSITION_MIN_PATH $DEPOSITION_MIN_PATH
+SINK_MIN_SLOPE $SINK_MIN_SLOPE
+prefer $prefer
+response $response
+outputType_PROCESS_AREA $OutputSection_PROCESS_AREA.outputType_PROCESS_AREA
+transmissionMode_PROCESS_AREA $OutputSection_PROCESS_AREA.transmissionMode_PROCESS_AREA
+outputType_DEPOSITION $OutputSection_DEPOSITION.outputType_DEPOSITION
+transmissionMode_DEPOSITION $OutputSection_DEPOSITION.transmissionMode_DEPOSITION
+outputType_MAX_VELOCITY $OutputSection_MAX_VELOCITY.outputType_MAX_VELOCITY
+transmissionMode_MAX_VELOCITY $OutputSection_MAX_VELOCITY.transmissionMode_MAX_VELOCITY
+outputType_STOP_POSITIONS $OutputSection_STOP_POSITIONS.outputType_STOP_POSITIONS
+transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_STOP_POSITIONS]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model [m]. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="RELEASE_AREAS" type="data" optional="false" label="Release Areas" help="Release areas encoded by unique integer IDs, all other cells NoData [-]. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="MATERIAL" type="data" optional="false" label="Material" help="Height of material available in each start cell [m]. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="FRICTION_ANGLE_GRID" type="data" optional="false" label="Friction Angle" help="Spatially distributed friction angles [degree]. Optionally used with the Geometric Gradient, Fahrboeschung's angle or Shadow Angle friction model. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="SLOPE_IMPACT_GRID" type="data" optional="false" label="Slope Impact Areas" help="Slope impact grid, impact areas encoded with valid values, all other NoData. Optionally used with the Shadow Angle or the 1-parameter friction model. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="FRICTION_MU_GRID" type="data" optional="false" label="Friction Parameter Mu" help="Spatially distributed friction parameter mu [-], optionally used with the 1-parameter friction model or the PCM Model. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="FRICTION_MASS_TO_DRAG_GRID" type="data" optional="false" label="Mass to Drag Ratio" help="Spatially distributed mass to drag ratio [m], optionally used with the PCM Model. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="PROCESS_PATH_MODEL" type="select" optional="true" label="Model" help="Choose a process path model.">
+      <option value="Maximum_Slope">Maximum Slope</option>
+      <option selected="true" value="Random_Walk">Random Walk</option>
+    </param>
+    <param name="RW_SLOPE_THRES" type="float" value="40" optional="true" label="Slope Threshold" help="In case the local slope is greater as this threshold [degree], no lateral spreading is modeled."/>
+    <param name="RW_EXPONENT" type="float" value="2" optional="true" label="Exponent" help="The exponent [-] is controlling the amount of lateral spreading in case the local slope is in between zero and the slope threshold."/>
+    <param name="RW_PERSISTENCE" type="float" value="1.5" optional="true" label="Persistence Factor" help="Factor [-] used as weight for the current flow direction. A higher factor reduces abrupt changes in flow direction."/>
+    <param name="GPP_ITERATIONS" type="integer" value="1000" optional="true" label="Iterations" help="The number of model runs from each start cell [-]."/>
+    <param name="GPP_PROCESSING_ORDER" type="select" optional="true" label="Processing Order" help="Choose the processing order.">
+      <option selected="true" value="RAs_in_Parallel_per_Iteration">RAs in Parallel per Iteration</option>
+      <option value="RAs_in_Sequence">RAs in Sequence</option>
+      <option value="RAs_in_Sequence_per_Iteration">RAs in Sequence per Iteration</option>
+    </param>
+    <param name="GPP_SEED" type="integer" value="1" optional="true" label="Seed Value" help="The seed value used to initialize the pseudo-random number generator. A value of 1 will initialize the generator with the current time, higher numbers will always produce the same succession of values for each seed value [-]."/>
+    <param name="FRICTION_MODEL" type="select" optional="true" label="Model" help="Choose a friction model.">
+      <option value="1-parameter_friction_model_(Scheidegger_1975)">1-parameter friction model (Scheidegger 1975)</option>
+      <option value="Fahrboeschung_Principle_(Heim_1932)">Fahrboeschung Principle (Heim 1932)</option>
+      <option value="Geometric_Gradient_(Heim_1932)">Geometric Gradient (Heim 1932)</option>
+      <option selected="true" value="None">None</option>
+      <option value="PCM_Model_(Perla_et_al._1980)">PCM Model (Perla et al. 1980)</option>
+      <option value="Shadow_Angle_(Evans_&amp;_Hungr_1988)">Shadow Angle (Evans &amp; Hungr 1988)</option>
+    </param>
+    <param name="FRICTION_THRES_FREE_FALL" type="float" value="60" optional="true" label="Threshold Angle Free Fall" help="The minimum slope angle [degree] between start cell and current cell for modeling free fall with the Shadow Angle or the 1-parameter friction model."/>
+    <param name="FRICTION_METHOD_IMPACT" type="select" optional="true" label="Method Impact" help="Choose the velocity calculation on slope impact with the 1-parameter friction model.">
+      <option selected="true" value="Energy_Reduction_(Scheidegger_1975)">Energy Reduction (Scheidegger 1975)</option>
+      <option value="Preserved_Component_of_Velocity_(Kirkby_&amp;_Statham_1975)">Preserved Component of Velocity (Kirkby &amp; Statham 1975)</option>
+    </param>
+    <param name="FRICTION_IMPACT_REDUCTION" type="float" value="75" optional="true" label="Reduction" help="The energy reduction [%] on slope impact with the 1-parameter friction model."/>
+    <param name="FRICTION_ANGLE" type="float" value="30" optional="true" label="Friction Angle" help="Friction angle [degree] used as Geometric Gradient, Fahrboeschung's angle or Shadow Angle."/>
+    <param name="FRICTION_MU" type="float" value="0.25" optional="true" label="Mu" help="The (constant) friction parameter mu [-] used with the 1-parameter friction model or the PCM Model."/>
+    <param name="FRICTION_MODE_OF_MOTION" type="select" optional="true" label="Mode of Motion" help="Choose the mode of motion on hillslope with the 1-parameter friction model.">
+      <option value="Rolling">Rolling</option>
+      <option selected="true" value="Sliding">Sliding</option>
+    </param>
+    <param name="FRICTION_MASS_TO_DRAG" type="float" value="200" optional="true" label="Mass to Drag Ratio" help="The (constant) mass to drag ratio [m] used with the PCM Model."/>
+    <param name="FRICTION_INIT_VELOCITY" type="float" value="1" optional="true" label="Initial Velocity" help="The initial velocity [m/s] used with the PCM Model."/>
+    <param name="DEPOSITION_MODEL" type="select" optional="true" label="Model" help="Choose a deposition model.">
+      <option selected="true" value="None">None</option>
+      <option value="On_Stop">On Stop</option>
+      <option value="Slope_&amp;_On_Stop">Slope &amp; On Stop</option>
+      <option value="Velocity)_&amp;_On_Stop">Velocity) &amp; On Stop</option>
+      <option value="Velocity_&amp;_On_Stop">Velocity &amp; On Stop</option>
+      <option value="min(Slope">min(Slope</option>
+    </param>
+    <param name="DEPOSITION_INITIAL" type="float" value="20" optional="true" label="Initial Deposition on Stop" help="The percentage of available material (per run) initially deposited at the stopping position [%]."/>
+    <param name="DEPOSITION_SLOPE_THRES" type="float" value="20" optional="true" label="Slope Threshold" help="The slope angle below which the deposition of material is starting [degree]."/>
+    <param name="DEPOSITION_VELOCITY_THRES" type="float" value="15" optional="true" label="Velocity Threshold" help="The velocity below which the deposition of material is starting [m/s]."/>
+    <param name="DEPOSITION_MAX" type="float" value="20" optional="true" label="Maximum Deposition along Path" help="The percentage of available material (per run) which is deposited at most (slope or velocity equal zero) [%]."/>
+    <param name="DEPOSITION_MIN_PATH" type="float" value="100" optional="true" label="Minimum Path Length" help="The minimum path length which has to be reached before material deposition is enabled [m]."/>
+    <param name="SINK_MIN_SLOPE" type="float" value="2.5" optional="true" label="Minimum Slope" help="The minimum slope to preserve on sink filling [degree]."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PROCESS_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PROCESS_AREA" type="select" label="Process Area" help="Delineated process area with encoded transition frequencies [count].">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PROCESS_AREA" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DEPOSITION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DEPOSITION" type="select" label="Deposition" help="Height of material deposited in each cell [m]. Optional output in case a grid with material amounts is provided as input.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DEPOSITION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MAX_VELOCITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MAX_VELOCITY" type="select" label="Maximum Velocity" help="Maximum velocity observed in each cell [m/s]. Optional output of the 1-parameter friction model and the PCM Model.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MAX_VELOCITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_STOP_POSITIONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_STOP_POSITIONS" type="select" label="Stopping Positions" help="Stopping positions, showing cells in which the run-out length has been reached [count].">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_STOP_POSITIONS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PROCESS_AREA" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PROCESS_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PROCESS_AREA" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PROCESS_AREA" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DEPOSITION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DEPOSITION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DEPOSITION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DEPOSITION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MAX_VELOCITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MAX_VELOCITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MAX_VELOCITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MAX_VELOCITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_STOP_POSITIONS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_STOP_POSITIONS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_STOP_POSITIONS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_STOP_POSITIONS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The Gravitational Process Path (GPP) model can be used to simulate the process path and run-out area of gravitational processes based on a digital terrain model (DTM). The conceptual model combines several components (process path, run-out length, sink filling and material deposition) to simulate the movement of a mass point from an initiation site to the deposition area. For each component several modeling approaches are provided, which makes the tool configurable for different processes such as rockfall, debris flows or snow avalanches.&lt;br/&gt;&lt;br/&gt;The tool can be applied to regional-scale studies such as natural hazard susceptibility mapping but also contains components for scenario-based modeling of single events. Both the modeling approaches and precursor implementations of the tool have proven their applicability in numerous studies, also including geomorphological research questions such as the delineation of sediment cascades or the study of process connectivity.&lt;br/&gt;&lt;br/&gt;Please provide the following reference in your work if you are using the GPP model:]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

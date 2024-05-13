@@ -1,0 +1,79 @@
+<tool name="SAGA.ta_morphometry.16" id="saga_ta_morphometry_16" version="1.0.0">
+  <description>Terrain Ruggedness Index (TRI)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_TRI $output_data_TRI  name SAGA.ta_morphometry.16 DEM $DEM
+MODE $MODE
+RADIUS $RADIUS
+DW_WEIGHTING $DW_WEIGHTING
+DW_IDW_POWER $DW_IDW_POWER
+DW_IDW_OFFSET $DW_IDW_OFFSET
+DW_BANDWIDTH $DW_BANDWIDTH
+prefer $prefer
+response $response
+outputType_TRI $OutputSection_TRI.outputType_TRI
+transmissionMode_TRI $OutputSection_TRI.transmissionMode_TRI]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
+      <option selected="true" value="Circle">Circle</option>
+      <option value="Square">Square</option>
+    </param>
+    <param name="RADIUS" type="integer" value="1" optional="true" label="Search Radius" help="radius in cells"/>
+    <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
+      <option value="exponential">exponential</option>
+      <option value="gaussian_weighting">gaussian weighting</option>
+      <option value="inverse_distance_to_a_power">inverse distance to a power</option>
+      <option selected="true" value="no_distance_weighting">no distance weighting</option>
+    </param>
+    <param name="DW_IDW_POWER" type="float" value="1" optional="true" label="Inverse Distance Weighting Power" help="Inverse Distance Weighting Power"/>
+    <param name="DW_IDW_OFFSET" type="select" optional="true" label="Inverse Distance Offset" help="Calculates weights for distance plus one, avoiding division by zero for zero distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_BANDWIDTH" type="float" value="75" optional="true" label="Gaussian and Exponential Weighting Bandwidth" help="Gaussian and Exponential Weighting Bandwidth"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TRI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TRI" type="select" label="Terrain Ruggedness Index (TRI)" help="Terrain Ruggedness Index (TRI)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TRI" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TRI" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TRI" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TRI" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TRI" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[References:&lt;br/&gt;Riley, S.J., De Gloria, S.D., Elliot, R. (1999): A Terrain Ruggedness that Quantifies Topographic Heterogeneity. Intermountain Journal of Science, Vol.5, No.1-4, pp.23-27. &lt;a href="http://www.fw.msu.edu/~rileysh2/Terrain%20Ruggedness%20Index.pdf"&gt;online&lt;/a&gt;.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

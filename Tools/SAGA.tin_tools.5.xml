@@ -1,0 +1,136 @@
+<tool name="SAGA.tin_tools.5" id="saga_tin_tools_5" version="1.0.0">
+  <description>Flow Accumulation (Trace)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayZFIELD False  output_data_FLOW_POINTS $output_data_FLOW_POINTS  output_data_FLOW_CENTER $output_data_FLOW_CENTER  output_data_FLOW_EDGES $output_data_FLOW_EDGES  output_data_FLOW_TRIANGLES $output_data_FLOW_TRIANGLES  output_data_FLOW_POLYGONS $output_data_FLOW_POLYGONS  name SAGA.tin_tools.5 DEM $DEM
+ZFIELD $ZFIELD
+prefer $prefer
+response $response
+outputType_FLOW_POINTS $OutputSection_FLOW_POINTS.outputType_FLOW_POINTS
+transmissionMode_FLOW_POINTS $OutputSection_FLOW_POINTS.transmissionMode_FLOW_POINTS
+outputType_FLOW_CENTER $OutputSection_FLOW_CENTER.outputType_FLOW_CENTER
+transmissionMode_FLOW_CENTER $OutputSection_FLOW_CENTER.transmissionMode_FLOW_CENTER
+outputType_FLOW_EDGES $OutputSection_FLOW_EDGES.outputType_FLOW_EDGES
+transmissionMode_FLOW_EDGES $OutputSection_FLOW_EDGES.transmissionMode_FLOW_EDGES
+outputType_FLOW_TRIANGLES $OutputSection_FLOW_TRIANGLES.outputType_FLOW_TRIANGLES
+transmissionMode_FLOW_TRIANGLES $OutputSection_FLOW_TRIANGLES.transmissionMode_FLOW_TRIANGLES
+outputType_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.outputType_FLOW_POLYGONS
+transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLOW_POLYGONS]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="ZFIELD" type="data" optional="false" label="Z Values" help="Z Values The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_FLOW_POINTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW_POINTS" type="select" label="Flow AccumulationPOINTS Shapes" help="Flow Accumulation">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_FLOW_POINTS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_FLOW_CENTER" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW_CENTER" type="select" label="Flow AccumulationCENTER Shapes" help="Flow Accumulation">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_FLOW_CENTER" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_FLOW_EDGES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW_EDGES" type="select" label="Flow AccumulationEDGES Shapes" help="Flow Accumulation">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_FLOW_EDGES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_FLOW_TRIANGLES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW_TRIANGLES" type="select" label="Flow AccumulationTRIANGLES Shapes" help="Flow Accumulation">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_FLOW_TRIANGLES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_FLOW_POLYGONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW_POLYGONS" type="select" label="Flow AccumulationPOLYGONS Shapes" help="Flow Accumulation">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_FLOW_POLYGONS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_FLOW_POINTS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_FLOW_POINTS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_FLOW_CENTER" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW_CENTER" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_FLOW_CENTER" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_FLOW_EDGES" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW_EDGES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_FLOW_EDGES" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_FLOW_TRIANGLES" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW_TRIANGLES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_FLOW_TRIANGLES" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_FLOW_POLYGONS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_FLOW_POLYGONS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculates the catchment area based on the selected elevation values.&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

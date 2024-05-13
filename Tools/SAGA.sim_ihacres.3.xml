@@ -1,0 +1,84 @@
+<tool name="SAGA.sim_ihacres.3" id="saga_sim_ihacres_3" version="1.0.0">
+  <description>IHACRES Elevation Bands</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_TABLEout $output_data_TABLEout  name SAGA.sim_ihacres.3 NELEVBANDS $NELEVBANDS
+AREA_tot $AREA_tot
+IHACVERS $IHACVERS
+STORAGE $STORAGE
+SNOW_TOOL $SNOW_TOOL
+prefer $prefer
+response $response
+outputType_TABLEout $OutputSection_TABLEout.outputType_TABLEout
+transmissionMode_TABLEout $OutputSection_TABLEout.transmissionMode_TABLEout]]></command>
+  <inputs>
+    <param name="NELEVBANDS" type="select" optional="true" label="Number of elevation bands" help="Number of elevation bands">
+      <option value="10">10</option>
+      <option selected="true" value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+    </param>
+    <param name="AREA_tot" type="float" value="0" optional="true" label="Total Catchment Area [km2]" help="Total Catchment Area [km2]"/>
+    <param name="IHACVERS" type="select" optional="true" label="IHACRES Version" help="IHACRES Version">
+      <option value="Croke_et_al._(2005)_!!!_not_yet_implemented_!!!">Croke et al. (2005) !!! not yet implemented !!!</option>
+      <option selected="true" value="Jakeman_&amp;_Hornberger_(1993)">Jakeman &amp; Hornberger (1993)</option>
+    </param>
+    <param name="STORAGE" type="select" optional="true" label="Storage" help="Storage">
+      <option selected="true" value="Single_Storage">Single Storage</option>
+      <option value="Two_Parallel_Storages">Two Parallel Storages</option>
+      <option value="Two_Storages_in_Series_!!!_not_yet_implemented_!!!">Two Storages in Series !!! not yet implemented !!!</option>
+    </param>
+    <param name="SNOW_TOOL" type="select" optional="true" label="Using the snow-melt module?" help="If checked, snow-melt module is used.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TABLEout" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TABLEout" type="select" label="Table" help="Table">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TABLEout" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TABLEout" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TABLEout" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TABLEout" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TABLEout" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The Rainfall-Runoff Model IHACRES &lt;br/&gt; &lt;br/&gt; &lt;br/&gt;Reference: &lt;br/&gt; &lt;br/&gt;Jakeman, A.J. / Hornberger, G.M. (1993). &lt;br/&gt;How Much Complexity Is Warranted in a Rainfall-Runoff Model? &lt;br/&gt;Water Resources Research, (29), NO. 8 (2637-2649) &lt;br/&gt; &lt;br/&gt;Croke, B. F. W., W. S. Merritt, et al. (2004).&lt;br/&gt;A dynamic model for predicting hydrologic response to land cover changes in gauged and ungauged catchments. &lt;br/&gt;Journal Of Hydrology 291(1-2): 115-131.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

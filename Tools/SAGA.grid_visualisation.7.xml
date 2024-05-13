@@ -1,0 +1,70 @@
+<tool name="SAGA.grid_visualisation.7" id="saga_grid_visualisation_7" version="1.0.0">
+  <description>Aspect-Slope Grid</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayASPECT False  isArraySLOPE False  output_data_ASPECT_SLOPE $output_data_ASPECT_SLOPE  output_data_LUT $output_data_LUT  name SAGA.grid_visualisation.7 ASPECT $ASPECT
+SLOPE $SLOPE
+prefer $prefer
+response $response
+outputType_ASPECT_SLOPE $OutputSection_ASPECT_SLOPE.outputType_ASPECT_SLOPE
+transmissionMode_ASPECT_SLOPE $OutputSection_ASPECT_SLOPE.transmissionMode_ASPECT_SLOPE
+outputType_LUT $OutputSection_LUT.outputType_LUT
+transmissionMode_LUT $OutputSection_LUT.transmissionMode_LUT]]></command>
+  <inputs>
+    <param name="ASPECT" type="data" optional="false" label="Aspect" help="Aspect grid, in radians and 360 degree from north. The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope grid, in radians. The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_ASPECT_SLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ASPECT_SLOPE" type="select" label="Aspect-Slope" help="Final aspect-slope grid.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ASPECT_SLOPE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_LUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LUT" type="select" label="Lookup Table" help="Lookup table.">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_LUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_ASPECT_SLOPE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ASPECT_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ASPECT_SLOPE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ASPECT_SLOPE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_LUT" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool creates an aspect-slope map which shows both the aspect and the slope of the terrain. Aspect is symbolized by different hues, while slope is mapped with saturation.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;Brewer, C.A. & Marlow, K.A. (1993): Color Representation of Aspect and Slope simultaneously. Proceedings, Eleventh International Symposium on Computer-Assisted Cartography (Auto-Carto-11), Minneapolis, October/November 1993, pp. 328-337.&lt;br/&gt;&lt;a href="http://www.personal.psu.edu/cab38/Terrain/AutoCarto.html"&gt;http://www.personal.psu.edu/cab38/Terrain/AutoCarto.html&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;a href="http://blogs.esri.com/esri/arcgis/2008/05/23/aspect-slope-map/"&gt;http://blogs.esri.com/esri/arcgis/2008/05/23/aspect-slope-map/&lt;/a&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

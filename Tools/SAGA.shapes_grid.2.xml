@@ -1,0 +1,120 @@
+<tool name="SAGA.shapes_grid.2" id="saga_shapes_grid_2" version="1.0.0">
+  <description>Grid Statistics for Polygons</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRIDS True  isArrayPOLYGONS False  output_data_RESULT $output_data_RESULT  name SAGA.shapes_grid.2 GRIDS $GRIDS
+POLYGONS $POLYGONS
+NAMING $NAMING
+METHOD $METHOD
+PARALLELIZED $PARALLELIZED
+COUNT $COUNT
+MIN $MIN
+MAX $MAX
+RANGE $RANGE
+SUM $SUM
+MEAN $MEAN
+VAR $VAR
+STDDEV $STDDEV
+GINI $GINI
+QUANTILES '$QUANTILES'
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="NAMING" type="select" optional="true" label="Field Naming" help="Field Naming">
+      <option selected="true" value="grid_name">grid name</option>
+      <option value="grid_number">grid number</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="polygon_wise_(cell_area)">polygon wise (cell area)</option>
+      <option value="polygon_wise_(cell_area_weighted)">polygon wise (cell area weighted)</option>
+      <option value="polygon_wise_(cell_centers)">polygon wise (cell centers)</option>
+      <option selected="true" value="simple_and_fast">simple and fast</option>
+    </param>
+    <param name="PARALLELIZED" type="select" optional="true" label="Use Multiple Cores" help="Use Multiple Cores">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="COUNT" type="select" optional="true" label="Number of Cells" help="Number of Cells">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MIN" type="select" optional="true" label="Minimum" help="Minimum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MAX" type="select" optional="true" label="Maximum" help="Maximum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="RANGE" type="select" optional="true" label="Range" help="Range">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SUM" type="select" optional="true" label="Sum" help="Sum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MEAN" type="select" optional="true" label="Mean" help="Mean">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="VAR" type="select" optional="true" label="Variance" help="Variance">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STDDEV" type="select" optional="true" label="Standard Deviation" help="Standard Deviation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="GINI" type="select" optional="true" label="Gini" help="Gini">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="QUANTILES" type="text" optional="true" label="Percentiles" help="Separate the desired percentiles by semicolon, e.g. &quot;5; 25; 50; 75; 95&quot;"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Statistics" help="Statistics">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESULT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Zonal grid statistics. For each polygon statistics based on all covered grid cells will be calculated.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

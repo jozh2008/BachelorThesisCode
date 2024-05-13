@@ -1,0 +1,235 @@
+<tool name="SAGA.sim_rivflow.0" id="saga_sim_rivflow_0" version="1.0.0">
+  <description>RiverBasin</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArrayINPUT2 False  isArrayINPUT3 False  output_data_OUTPUT2 $output_data_OUTPUT2  output_data_OUTPUT3 $output_data_OUTPUT3  output_data_OUTPUT4 $output_data_OUTPUT4  output_data_OUTPUT5 $output_data_OUTPUT5  output_data_OUTPUT6 $output_data_OUTPUT6  output_data_OUTPUT7 $output_data_OUTPUT7  output_data_OUTPUT8 $output_data_OUTPUT8  output_data_OUTPUT9 $output_data_OUTPUT9  name SAGA.sim_rivflow.0 INPUT $INPUT
+INPUT2 $INPUT2
+INPUT3 $INPUT3
+WCons $WCons
+WCons2 $WCons2
+pCr $pCr
+nCr $nCr
+EnfVmax $EnfVmax
+VTresh $VTresh
+prefer $prefer
+response $response
+outputType_OUTPUT2 $OutputSection_OUTPUT2.outputType_OUTPUT2
+transmissionMode_OUTPUT2 $OutputSection_OUTPUT2.transmissionMode_OUTPUT2
+outputType_OUTPUT3 $OutputSection_OUTPUT3.outputType_OUTPUT3
+transmissionMode_OUTPUT3 $OutputSection_OUTPUT3.transmissionMode_OUTPUT3
+outputType_OUTPUT4 $OutputSection_OUTPUT4.outputType_OUTPUT4
+transmissionMode_OUTPUT4 $OutputSection_OUTPUT4.transmissionMode_OUTPUT4
+outputType_OUTPUT5 $OutputSection_OUTPUT5.outputType_OUTPUT5
+transmissionMode_OUTPUT5 $OutputSection_OUTPUT5.transmissionMode_OUTPUT5
+outputType_OUTPUT6 $OutputSection_OUTPUT6.outputType_OUTPUT6
+transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6
+outputType_OUTPUT7 $OutputSection_OUTPUT7.outputType_OUTPUT7
+transmissionMode_OUTPUT7 $OutputSection_OUTPUT7.transmissionMode_OUTPUT7
+outputType_OUTPUT8 $OutputSection_OUTPUT8.outputType_OUTPUT8
+transmissionMode_OUTPUT8 $OutputSection_OUTPUT8.transmissionMode_OUTPUT8
+outputType_OUTPUT9 $OutputSection_OUTPUT9.outputType_OUTPUT9
+transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="DTM" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT2" type="data" optional="false" label="HGGrid" help="Eingaberaster der Hauptgerinnerasterzellen des Flussnetzwerkes The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT3" type="data" optional="false" label="statisches Entnahmeraster" help="Eingaberaster mit Angaben zur statischen Flaechenwasserentnahme. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="WCons" type="select" optional="true" label="Anteilige Flaechenwasserentnahme" help="Wenn gesetzt, werden die Werte des statischen Entahmerasters anteilig entnommen und als Raster statWUse ausgegeben">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="WCons2" type="select" optional="true" label="Dynamische Flaechenwassernutzung..." help="Auswahl der Art der anteiligen Flaechenwasserwasserentnahme.">
+      <option value="...anteilig_aus_Rasterzellen_der_Teileinzugegebiete">...anteilig aus Rasterzellen der Teileinzugegebiete</option>
+      <option selected="true" value="...anteilig_aus_den_Flussrasterzellen">...anteilig aus den Flussrasterzellen</option>
+    </param>
+    <param name="pCr" type="float" value="0.0035" optional="true" label="Hauptgerinne-Parameter pHG" help="Parameter pHG zur Berechnung der Lagtime kHG des Hauptgerinneabflusses"/>
+    <param name="nCr" type="integer" value="1" optional="true" label="Hauptgerinne-Speicherkaskade nHG" help="Festlegen, wieviele Speicher die ChannelFlow River-Speicherkaskade enthaelt"/>
+    <param name="EnfVmax" type="select" optional="true" label="Maximal Geschwindigkeit des Hauptgerinnes beruecksichtigen" help="Angegebene Maximalgeschwindigkeit im Hauptgerinne bei der Berechnung der durchschnittlichen Flieszgeschwindigkeit des Hauptgerinnes beruecksichtigen.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="VTresh" type="float" value="4" optional="true" label="Maximalgeschwindigkeit im Hauptgerinne in km/h" help="Festlegung der maximalen Wasserflussgeschwindigkeit im Hauptgerinne in km/h (oberer Grenzwert)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_OUTPUT2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT2" type="select" label="Grad" help="Ausgabe der Abflussgradienten jeder Rasterzelle">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT2" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUTPUT3" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT3" type="select" label="Direc" help="Ausgabe der Abflussrichtung fuer jede Rasterzelle">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT3" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUTPUT4" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT4" type="select" label="HGGrad" help="Ausgabe der Abflussgradienten jeder Hauptgerinnerasterzelle">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT4" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUTPUT5" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT5" type="select" label="RivSpeed" help="Ausgabe Flussgeschwindigkeiten der Hauptgerinnerasterzellen (siehe Parametereinstellungen)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT5" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUTPUT6" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT6" type="select" label="Coordinates" help="Ausgabe der Koordinatenwerte der Rasterzellen im Format xxxx.yyyy">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT6" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUTPUT7" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT7" type="select" label="BasinShare" help="Ausagbe der Rasterzellen des Flusseinzugsgebiets">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT7" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUTPUT8" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT8" type="select" label="statWUse" help="Ausagbe der anteiligen Flaechenwasserentnahme je Rasterzelle">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT8" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUTPUT9" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT9" type="select" label="NumInFlowCells" help="Ausgaberaster mit Angabe ueber die Anzahl der Rasterzellen, die in eine spezifische Rasterzelle (x,y) abflieszen">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT9" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_OUTPUT2" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT2" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT2" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT2" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUTPUT3" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT3" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT3" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT3" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUTPUT4" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT4" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT4" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT4" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUTPUT5" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT5" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT5" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT5" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUTPUT6" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT6" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT6" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT6" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUTPUT7" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT7" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT7" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT7" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUTPUT8" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT8" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT8" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT8" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUTPUT9" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT9" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT9" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT9" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Parameters of RiverBasin]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

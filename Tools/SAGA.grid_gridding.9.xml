@@ -1,0 +1,130 @@
+<tool name="SAGA.grid_gridding.9" id="saga_grid_gridding_9" version="1.0.0">
+  <description>Polygons to Grid</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOLYGONS False  isArrayFIELD False  isArrayTARGET_TEMPLATE False  output_data_GRID $output_data_GRID  output_data_COVERAGE $output_data_COVERAGE  name SAGA.grid_gridding.9 POLYGONS $POLYGONS
+FIELD $FIELD
+OUTPUT $OUTPUT
+MULTIPLE $MULTIPLE
+GRID_TYPE $GRID_TYPE
+TARGET_DEFINITION $TARGET_DEFINITION
+TARGET_USER_SIZE $TARGET_USER_SIZE
+TARGET_USER_XMIN $TARGET_USER_XMIN
+TARGET_USER_XMAX $TARGET_USER_XMAX
+TARGET_USER_YMIN $TARGET_USER_YMIN
+TARGET_USER_YMAX $TARGET_USER_YMAX
+TARGET_USER_COLS $TARGET_USER_COLS
+TARGET_USER_ROWS $TARGET_USER_ROWS
+TARGET_USER_FITS $TARGET_USER_FITS
+TARGET_TEMPLATE $TARGET_TEMPLATE
+prefer $prefer
+response $response
+outputType_GRID $OutputSection_GRID.outputType_GRID
+transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID
+outputType_COVERAGE $OutputSection_COVERAGE.outputType_COVERAGE
+transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></command>
+  <inputs>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="OUTPUT" type="select" optional="true" label="Output Values" help="Output Values">
+      <option value="attribute">attribute</option>
+      <option value="index_number">index number</option>
+    </param>
+    <param name="MULTIPLE" type="select" optional="true" label="Multiple Polygons" help="Output value for cells that intersect with more than one polygon.">
+      <option value="average_proportional_to_area_coverage">average proportional to area coverage</option>
+      <option selected="true" value="maximum_coverage">maximum coverage</option>
+      <option value="minimum_coverage">minimum coverage</option>
+    </param>
+    <param name="GRID_TYPE" type="select" optional="true" label="Data Type" help="Data Type">
+      <option value="1_bit">1 bit</option>
+      <option value="1_byte_signed_integer">1 byte signed integer</option>
+      <option value="1_byte_unsigned_integer">1 byte unsigned integer</option>
+      <option value="2_byte_signed_integer">2 byte signed integer</option>
+      <option value="2_byte_unsigned_integer">2 byte unsigned integer</option>
+      <option value="4_byte_floating_point">4 byte floating point</option>
+      <option value="4_byte_signed_integer">4 byte signed integer</option>
+      <option value="4_byte_unsigned_integer">4 byte unsigned integer</option>
+      <option value="8_byte_floating_point">8 byte floating point</option>
+      <option selected="true" value="same_as_attribute">same as attribute</option>
+    </param>
+    <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
+      <option value="grid_or_grid_system">grid or grid system</option>
+      <option selected="true" value="user_defined">user defined</option>
+    </param>
+    <param name="TARGET_USER_SIZE" type="float" value="1" optional="true" label="Cellsize" help="Cellsize"/>
+    <param name="TARGET_USER_XMIN" type="float" value="0" optional="true" label="West" help="West"/>
+    <param name="TARGET_USER_XMAX" type="float" value="100" optional="true" label="East" help="East"/>
+    <param name="TARGET_USER_YMIN" type="float" value="0" optional="true" label="South" help="South"/>
+    <param name="TARGET_USER_YMAX" type="float" value="100" optional="true" label="North" help="North"/>
+    <param name="TARGET_USER_COLS" type="integer" value="100" optional="true" label="Columns" help="Number of cells in East-West direction."/>
+    <param name="TARGET_USER_ROWS" type="integer" value="100" optional="true" label="Rows" help="Number of cells in North-South direction."/>
+    <param name="TARGET_USER_FITS" type="select" optional="true" label="Fit" help="Fit">
+      <option value="cells">cells</option>
+      <option selected="true" value="nodes">nodes</option>
+    </param>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GRID" type="select" label="Grid" help="Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GRID" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_COVERAGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COVERAGE" type="select" label="Coverage" help="Coverage">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_COVERAGE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GRID" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GRID" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GRID" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_COVERAGE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COVERAGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_COVERAGE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_COVERAGE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Gridding of polygons. If any polygons are selected, only these will be gridded.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

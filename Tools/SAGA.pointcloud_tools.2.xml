@@ -1,0 +1,48 @@
+<tool name="SAGA.pointcloud_tools.2" id="saga_pointcloud_tools_2" version="1.0.0">
+  <description>Point Cloud from Grid Points</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  isArrayGRIDS True  output_data_POINTS $output_data_POINTS  name SAGA.pointcloud_tools.2 GRID $GRID
+GRIDS $GRIDS
+prefer $prefer
+response $response
+outputType_POINTS $OutputSection_POINTS.outputType_POINTS
+transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Z Value" help="Z Value The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Additional Values" help="Additional Values The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_POINTS" type="select" label="Points" help="Points">
+        <option value="application/x-ogc-lasf">x-ogc-lasf</option>
+      </param>
+      <param name="transmissionMode_POINTS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_POINTS" format="x-ogc-lasf" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Point Cloud from Grid Points]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

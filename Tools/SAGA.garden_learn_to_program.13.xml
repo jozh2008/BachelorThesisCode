@@ -1,0 +1,78 @@
+<tool name="SAGA.garden_learn_to_program.13" id="saga_garden_learn_to_program_13" version="1.0.0">
+  <description>14: Vectorising channel lines</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayELEVATION False  output_data_CHANNELS $output_data_CHANNELS  output_data_SHAPES $output_data_SHAPES  name SAGA.garden_learn_to_program.13 ELEVATION $ELEVATION
+THRESHOLD $THRESHOLD
+prefer $prefer
+response $response
+outputType_CHANNELS $OutputSection_CHANNELS.outputType_CHANNELS
+transmissionMode_CHANNELS $OutputSection_CHANNELS.transmissionMode_CHANNELS
+outputType_SHAPES $OutputSection_SHAPES.outputType_SHAPES
+transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></command>
+  <inputs>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="Elevation grid The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="THRESHOLD" type="integer" value="4" optional="true" label="Threshold" help="Threshold"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CHANNELS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CHANNELS" type="select" label="Channels (Raster)" help="Channels (Raster)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CHANNELS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SHAPES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SHAPES" type="select" label="Channels (Vector)" help="Channels (Vector)">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_SHAPES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CHANNELS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CHANNELS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CHANNELS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CHANNELS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SHAPES" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SHAPES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_SHAPES" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Vectorising channel lines.&lt;br/&gt;(c) 2003 by Olaf Conrad, Goettingen&lt;br/&gt;email: oconrad@gwdg.de]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

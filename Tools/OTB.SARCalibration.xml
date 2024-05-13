@@ -1,0 +1,77 @@
+<tool name="OTB.SARCalibration" id="otb_sarcalibration" version="1.0.0">
+  <description>Perform radiometric calibration of SAR images. Following sensors are supported: TerraSAR-X, Sentinel1 and Radarsat-2.Both Single Look Complex(SLC) and detected products are supported as input.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.SARCalibration in $in
+out $out
+ram $ram
+noise $noise
+lut $lut
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Input complex image" help="Input complex image The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="out" type="select" optional="false" label="Output calibrated image. This image contains the backscatter (sigmaNought) of the input image." help="Output calibrated image. This image contains the backscatter (sigmaNought) of the input image.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="noise" type="select" optional="false" label="Flag to disable noise. For 5.2.0 release, the noise values are only read by TerraSARX product." help="Flag to disable noise. For 5.2.0 release, the noise values are only read by TerraSARX product.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="lut" type="select" optional="false" label="Lookup table values are not available with all SAR products. Products that provide lookup table with metadata are: Sentinel1, Radarsat2." help="Lookup table values are not available with all SAR products. Products that provide lookup table with metadata are: Sentinel1, Radarsat2.">
+      <option value="beta">beta</option>
+      <option value="dn">dn</option>
+      <option value="gamma">gamma</option>
+      <option selected="true" value="sigma">sigma</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output calibrated image. This image contains the backscatter (sigmaNought) of the input image." help="Output calibrated image. This image contains the backscatter (sigmaNought) of the input image.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The objective of SAR calibration is to provide imagery in which the pixel values can be directly related to the radar backscatter of the scene. This application allows computing Sigma Naught (Radiometric Calibration) for TerraSAR-X, Sentinel1 L1 and Radarsat-2 sensors. Metadata are automatically retrieved from image products.The application supports complex and non-complex images (SLC or detected products).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

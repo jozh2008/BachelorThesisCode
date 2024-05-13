@@ -1,0 +1,109 @@
+<tool name="SAGA.sim_hydrology.1" id="saga_sim_hydrology_1" version="1.0.0">
+  <description>Kinematic Wave Overland Flow</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayROUGHNESS False  isArrayGAUGES False  output_data_FLOW $output_data_FLOW  output_data_GAUGES_FLOW $output_data_GAUGES_FLOW  name SAGA.sim_hydrology.1 DEM $DEM
+ROUGHNESS $ROUGHNESS
+ROUGHNESS_DEFAULT $ROUGHNESS_DEFAULT
+GAUGES $GAUGES
+TIME_SPAN $TIME_SPAN
+TIME_STEP $TIME_STEP
+TIME_UPDATE $TIME_UPDATE
+MAXITER $MAXITER
+EPSILON $EPSILON
+ROUTING $ROUTING
+DYNAMIC $DYNAMIC
+FLOW_RESET $FLOW_RESET
+P_RATE $P_RATE
+P_DISTRIB $P_DISTRIB
+P_THRESHOLD $P_THRESHOLD
+prefer $prefer
+response $response
+outputType_FLOW $OutputSection_FLOW.outputType_FLOW
+transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW
+outputType_GAUGES_FLOW $OutputSection_GAUGES_FLOW.outputType_GAUGES_FLOW
+transmissionMode_GAUGES_FLOW $OutputSection_GAUGES_FLOW.transmissionMode_GAUGES_FLOW]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ROUGHNESS" type="data" optional="false" label="Manning Roughness" help="Manning Roughness The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ROUGHNESS_DEFAULT" type="float" value="0.03" optional="true" label="Default" help="default value if no grid has been selected"/>
+    <param name="GAUGES" type="data" optional="false" label="Gauges" help="Gauges The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="TIME_SPAN" type="float" value="1" optional="true" label="Simulation Time [h]" help="Simulation Time [h]"/>
+    <param name="TIME_STEP" type="float" value="1" optional="true" label="Simulation Time Step [min]" help="Simulation Time Step [min]"/>
+    <param name="TIME_UPDATE" type="float" value="1" optional="true" label="Map Update Frequency [min]" help="If zero each simulation time step will update the flow map."/>
+    <param name="MAXITER" type="integer" value="100" optional="true" label="Maximum Iterations" help="Maximum Iterations"/>
+    <param name="EPSILON" type="float" value="0.0001" optional="true" label="Epsilon" help="Epsilon"/>
+    <param name="ROUTING" type="select" optional="true" label="Flow Routing" help="Flow Routing">
+      <option value="Deterministic_8">Deterministic 8</option>
+      <option selected="true" value="Multiple_Flow_Direction">Multiple Flow Direction</option>
+    </param>
+    <param name="DYNAMIC" type="select" optional="true" label="Dynamic Water Surface" help="Dynamic Water Surface">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="FLOW_RESET" type="select" optional="true" label="Reset" help="Reset">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="P_RATE" type="float" value="10" optional="true" label="Precipitation [mm]" help="Precipitation [mm]"/>
+    <param name="P_DISTRIB" type="select" optional="true" label="Precipitation" help="Precipitation">
+      <option value="Above_Elevation">Above Elevation</option>
+      <option selected="true" value="Homogenous">Homogenous</option>
+      <option value="Left_Half">Left Half</option>
+    </param>
+    <param name="P_THRESHOLD" type="float" value="0" optional="true" label="Above Elevation" help="Above Elevation"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FLOW" type="select" label="Runoff" help="Runoff">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_FLOW" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_GAUGES_FLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GAUGES_FLOW" type="select" label="Flow at Gauges" help="Flow at Gauges">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_GAUGES_FLOW" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_FLOW" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_FLOW" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_FLOW" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_GAUGES_FLOW" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This is a simple tool that simulates overland flow with a kinematic wave approach. It is not designed for operational usage. Rather it should give an idea about some principles of dynamic simulation techniques and thus it might become a starting point for more sophisticated and applicable simulation tools. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

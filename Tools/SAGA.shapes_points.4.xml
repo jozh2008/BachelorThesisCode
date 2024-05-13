@@ -1,0 +1,60 @@
+<tool name="SAGA.shapes_points.4" id="saga_shapes_points_4" version="1.0.0">
+  <description>Populate Polygons with Points</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOLYGONS False  isArrayNUMFIELD False  output_data_POINTS $output_data_POINTS  name SAGA.shapes_points.4 POLYGONS $POLYGONS
+NUMFIELD $NUMFIELD
+NUMPOINTS $NUMPOINTS
+MAXITER $MAXITER
+prefer $prefer
+response $response
+outputType_POINTS $OutputSection_POINTS.outputType_POINTS
+transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
+  <inputs>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="NUMFIELD" type="data" optional="false" label="Number of Points" help="Desired number of points per polygon. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="NUMPOINTS" type="integer" value="100" optional="true" label="Number of Points" help="Desired number of points per polygon."/>
+    <param name="MAXITER" type="integer" value="30" optional="true" label="Maximum Iterations" help="Maximum Iterations"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_POINTS" type="select" label="Points" help="Points">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_POINTS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_POINTS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_POINTS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[For each selected polygon of the input layer or for all polygons, if none is selected, a multi-point record is created with evenly distributed points trying to meet the specified number of points per polygon. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

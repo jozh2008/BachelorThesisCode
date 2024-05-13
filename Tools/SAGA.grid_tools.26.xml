@@ -1,0 +1,100 @@
+<tool name="SAGA.grid_tools.26" id="saga_grid_tools_26" version="1.0.0">
+  <description>Proximity Grid</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayFEATURES False  output_data_DISTANCE $output_data_DISTANCE  output_data_DIRECTION $output_data_DIRECTION  output_data_ALLOCATION $output_data_ALLOCATION  name SAGA.grid_tools.26 FEATURES $FEATURES
+prefer $prefer
+response $response
+outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
+transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE
+outputType_DIRECTION $OutputSection_DIRECTION.outputType_DIRECTION
+transmissionMode_DIRECTION $OutputSection_DIRECTION.transmissionMode_DIRECTION
+outputType_ALLOCATION $OutputSection_ALLOCATION.outputType_ALLOCATION
+transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATION]]></command>
+  <inputs>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_DISTANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DISTANCE" type="select" label="Distance" help="Distance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DISTANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIRECTION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIRECTION" type="select" label="Direction" help="Direction">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIRECTION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ALLOCATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ALLOCATION" type="select" label="Allocation" help="Allocation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ALLOCATION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DISTANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DISTANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIRECTION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIRECTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIRECTION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIRECTION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ALLOCATION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ALLOCATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ALLOCATION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ALLOCATION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculates a grid with euclidean distance to feature cells (not no-data cells).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

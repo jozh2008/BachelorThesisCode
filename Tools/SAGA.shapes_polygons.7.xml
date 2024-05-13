@@ -1,0 +1,86 @@
+<tool name="SAGA.shapes_polygons.7" id="saga_shapes_polygons_7" version="1.0.0">
+  <description>Polygon Shape Indices</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySHAPES False  output_data_INDEX $output_data_INDEX  output_data_DMAX $output_data_DMAX  name SAGA.shapes_polygons.7 SHAPES $SHAPES
+GYROS $GYROS
+FERET $FERET
+FERET_DIRS $FERET_DIRS
+prefer $prefer
+response $response
+outputType_INDEX $OutputSection_INDEX.outputType_INDEX
+transmissionMode_INDEX $OutputSection_INDEX.transmissionMode_INDEX
+outputType_DMAX $OutputSection_DMAX.outputType_DMAX
+transmissionMode_DMAX $OutputSection_DMAX.transmissionMode_DMAX]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="GYROS" type="select" optional="true" label="Diameter of Gyration" help="Diameter of Gyration">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="FERET" type="select" optional="true" label="Feret Diameters" help="Feret Diameters">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="FERET_DIRS" type="integer" value="18" optional="true" label="Number of Directions" help="Number of directions (0-90) to be analyzed."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_INDEX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INDEX" type="select" label="Shape Indices" help="Polygon shapefile with the calculated indices.">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_INDEX" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DMAX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DMAX" type="select" label="Maximum Diameter" help="Line shapefile showing the maximum diameter.">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_DMAX" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_INDEX" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_INDEX" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_INDEX" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_DMAX" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DMAX" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_DMAX" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The tool calculates various indices describing the shape of polygons, mostly based on area, perimeter and maximum diameter. If the optional output 'Shape Indices' is not created, the tool attaches the attributes to the input dataset. Otherwise a new dataset is created and attributes existing in the input dataset are dropped.&lt;ul&gt;&lt;li&gt;&lt;b&gt;A&lt;/b&gt; area&lt;/li&gt;&lt;li&gt;&lt;b&gt;P&lt;/b&gt; perimeter&lt;/li&gt;&lt;li&gt;&lt;b&gt;P/A&lt;/b&gt; interior edge ratio&lt;/li&gt;&lt;li&gt;&lt;b&gt;P/sqrt(A)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Deqpc&lt;/b&gt; equivalent projected circle diameter (=2*sqrt(A/pi))&lt;/li&gt;&lt;li&gt;&lt;b&gt;Sphericity&lt;/b&gt; the ratio of the perimeter of the equivalent circle to the real perimeter (=P/(2*sqrt(A*pi)))&lt;/li&gt;&lt;li&gt;&lt;b&gt;Shape Index&lt;/b&gt; the inverse of the spericity&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax&lt;/b&gt; maximum diameter calculated as maximum distance between two polygon part's vertices&lt;/li&gt;&lt;li&gt;&lt;b&gt;DmaxDir&lt;/b&gt; direction of maximum diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax/A&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax/sqrt(A)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dgyros&lt;/b&gt; diameter of gyration, calculated as twice the maximum vertex distance to its polygon part's centroid&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmax&lt;/b&gt; maximum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;FmaxDir&lt;/b&gt; direction of the maximum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmin&lt;/b&gt; minimum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;FminDir&lt;/b&gt; direction of the minimum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmean&lt;/b&gt; mean Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmax90&lt;/b&gt; the Feret diameter measured at an angle of 90 degrees to that of the Fmax direction&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmin90&lt;/b&gt; the Feret diameter measured at an angle of 90 degrees to that of the Fmin direction&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fvol&lt;/b&gt; the diameter of a sphere having the same volume as the cylinder constructed by Fmin as the cylinder diameter and Fmax as its length&lt;/li&gt;&lt;/ul&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

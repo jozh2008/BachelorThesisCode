@@ -1,0 +1,86 @@
+<tool name="SAGA.ta_hydrology.19" id="saga_ta_hydrology_19" version="1.0.0">
+  <description>Flow Width and Specific Catchment Area</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayTCA False  output_data_WIDTH $output_data_WIDTH  output_data_SCA $output_data_SCA  name SAGA.ta_hydrology.19 DEM $DEM
+TCA $TCA
+METHOD $METHOD
+prefer $prefer
+response $response
+outputType_WIDTH $OutputSection_WIDTH.outputType_WIDTH
+transmissionMode_WIDTH $OutputSection_WIDTH.transmissionMode_WIDTH
+outputType_SCA $OutputSection_SCA.outputType_SCA
+transmissionMode_SCA $OutputSection_SCA.transmissionMode_SCA]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="TCA" type="data" optional="false" label="Total Catchment Area (TCA)" help="Total Catchment Area (TCA) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option selected="true" value="Aspect">Aspect</option>
+      <option value="Deterministic_8">Deterministic 8</option>
+      <option value="Multiple_Flow_Direction_(Quinn_et_al._1991)">Multiple Flow Direction (Quinn et al. 1991)</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_WIDTH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_WIDTH" type="select" label="Flow Width" help="Flow Width">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_WIDTH" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SCA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SCA" type="select" label="Specific Catchment Area (SCA)" help="Specific Catchment Area (SCA)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SCA" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_WIDTH" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_WIDTH" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_WIDTH" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_WIDTH" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SCA" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SCA" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SCA" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SCA" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Flow width and specific catchment area (SCA) calculation. SCA calculation needs total catchment area (TCA) as input, which can be calculated with one of the flow accumulation tools. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

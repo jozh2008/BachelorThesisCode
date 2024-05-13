@@ -1,0 +1,106 @@
+<tool name="SAGA.statistics_points.2" id="saga_statistics_points_2" version="1.0.0">
+  <description>Variogram Surface</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS False  isArrayFIELD False  output_data_COUNT $output_data_COUNT  output_data_VARIANCE $output_data_VARIANCE  output_data_COVARIANCE $output_data_COVARIANCE  name SAGA.statistics_points.2 POINTS $POINTS
+FIELD $FIELD
+DISTCOUNT $DISTCOUNT
+NSKIP $NSKIP
+prefer $prefer
+response $response
+outputType_COUNT $OutputSection_COUNT.outputType_COUNT
+transmissionMode_COUNT $OutputSection_COUNT.transmissionMode_COUNT
+outputType_VARIANCE $OutputSection_VARIANCE.outputType_VARIANCE
+transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE
+outputType_COVARIANCE $OutputSection_COVARIANCE.outputType_COVARIANCE
+transmissionMode_COVARIANCE $OutputSection_COVARIANCE.transmissionMode_COVARIANCE]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="DISTCOUNT" type="integer" value="10" optional="true" label="Number of Distance Classes" help="Number of Distance Classes"/>
+    <param name="NSKIP" type="integer" value="1" optional="true" label="Skip Number" help="Skip Number"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_COUNT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COUNT" type="select" label="Number of Pairs" help="Number of Pairs">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_COUNT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VARIANCE" type="select" label="Variogram Surface" help="Variogram Surface">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_VARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_COVARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COVARIANCE" type="select" label="Covariance Surface" help="Covariance Surface">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_COVARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_COUNT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_COUNT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_COUNT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_VARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_VARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_COVARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COVARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_COVARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_COVARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Variogram Surface]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

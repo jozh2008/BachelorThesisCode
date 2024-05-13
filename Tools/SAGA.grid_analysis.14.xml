@@ -1,0 +1,131 @@
+<tool name="SAGA.grid_analysis.14" id="saga_grid_analysis_14" version="1.0.0">
+  <description>Soil Texture Classification</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySAND False  isArraySILT False  isArrayCLAY False  isArrayUSER False  output_data_TEXTURE $output_data_TEXTURE  output_data_SUM $output_data_SUM  output_data_POLYGONS $output_data_POLYGONS  name SAGA.grid_analysis.14 SAND $SAND
+SILT $SILT
+CLAY $CLAY
+SCHEME $SCHEME
+COLORS $COLORS
+USER $USER
+XY_AXES $XY_AXES
+TRIANGLE $TRIANGLE
+prefer $prefer
+response $response
+outputType_TEXTURE $OutputSection_TEXTURE.outputType_TEXTURE
+transmissionMode_TEXTURE $OutputSection_TEXTURE.transmissionMode_TEXTURE
+outputType_SUM $OutputSection_SUM.outputType_SUM
+transmissionMode_SUM $OutputSection_SUM.transmissionMode_SUM
+outputType_POLYGONS $OutputSection_POLYGONS.outputType_POLYGONS
+transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></command>
+  <inputs>
+    <param name="SAND" type="data" optional="false" label="Sand" help="sand content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="SILT" type="data" optional="false" label="Silt" help="silt content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="CLAY" type="data" optional="false" label="Clay" help="clay content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="SCHEME" type="select" optional="true" label="Classification" help="Classification">
+      <option value="Belgium/France">Belgium/France</option>
+      <option value="Germany_KA5">Germany KA5</option>
+      <option selected="true" value="USDA">USDA</option>
+      <option value="user_defined">user defined</option>
+    </param>
+    <param name="COLORS" type="select" optional="true" label="Default Colour Scheme" help="Default Colour Scheme">
+      <option selected="true" value="Scheme_1">Scheme 1</option>
+      <option value="Scheme_2">Scheme 2</option>
+      <option value="Scheme_3">Scheme 3</option>
+    </param>
+    <param name="USER" type="data" optional="false" label="User Definition" help="The colour is defined as comma separated red, green and blue values (in the range 0 to 255). If the colour field is empty it will be generated from the chosen default colour scheme. Key and name are simple text labels specifying each class. The polygon is defined as pairs of sand (=x) and clay (=y) separated by a blank and separated from the next pair by a comma.  The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="XY_AXES" type="select" optional="true" label="X/Y Axes" help="X/Y Axes">
+      <option value="Clay_and_Sand">Clay and Sand</option>
+      <option value="Clay_and_Silt">Clay and Silt</option>
+      <option value="Sand_and_Clay">Sand and Clay</option>
+      <option value="Sand_and_Silt">Sand and Silt</option>
+      <option selected="true" value="Silt_and_Clay">Silt and Clay</option>
+      <option value="Silt_and_Sand">Silt and Sand</option>
+    </param>
+    <param name="TRIANGLE" type="select" optional="true" label="Triangle" help="Triangle">
+      <option selected="true" value="isosceles">isosceles</option>
+      <option value="right-angled">right-angled</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TEXTURE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TEXTURE" type="select" label="Soil Texture" help="soil texture">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TEXTURE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SUM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SUM" type="select" label="Sum" help="Sum of percentages">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SUM" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_POLYGONS" type="select" label="Scheme as Polygons" help="Scheme as Polygons">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_POLYGONS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TEXTURE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TEXTURE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TEXTURE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TEXTURE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SUM" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SUM" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SUM" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SUM" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_POLYGONS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_POLYGONS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Derive soil texture classes from sand, silt and clay contents. Currently supported schemes are USDA and German Kartieranleitung 5. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

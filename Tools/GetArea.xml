@@ -1,0 +1,42 @@
+<tool name="GetArea" id="getarea" version="2.0.0">
+  <description>Compute geometry area.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayInputPolygon False  output_data_Area $output_data_Area  name GetArea InputPolygon $InputPolygon
+prefer $prefer
+response $response
+transmissionMode_Area $OutputSection_Area.transmissionMode_Area]]></command>
+  <inputs>
+    <param name="InputPolygon" type="data" optional="false" label="Polygon to compute are" help="URI to a set of GML that describes the polygon. The following data types are allowed in the txt file:  xml" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_Area" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_Area" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_Area" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Computes the area of a geometry]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

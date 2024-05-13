@@ -1,0 +1,48 @@
+<tool name="OTB.ComputeOGRLayersFeaturesStatistics" id="otb_computeogrlayersfeaturesstatistics" version="1.0.0">
+  <description>Compute statistics of the features in a set of OGR Layers</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayinshp False  output_data_outstats $output_data_outstats  name OTB.ComputeOGRLayersFeaturesStatistics inshp $inshp
+feat '$feat'
+prefer $prefer
+response $response
+outputType_outstats $OutputSection_outstats.outputType_outstats
+transmissionMode_outstats $OutputSection_outstats.transmissionMode_outstats]]></command>
+  <inputs>
+    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  xml, zip, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="feat" type="text" optional="false" label="List of features to consider for statistics." help="List of features to consider for statistics."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_outstats" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_outstats" type="select" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature.">
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_outstats" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_outstats" format="xml" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Compute statistics (mean and standard deviation) of the features in a set of OGR Layers, and write them in an XML file. This XML file can then be used by the training application.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

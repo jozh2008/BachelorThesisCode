@@ -1,0 +1,98 @@
+<tool name="SAGA.grid_calculus.16" id="saga_grid_calculus_16" version="1.0.0">
+  <description>Gradient Vector from Polar to Cartesian Coordinates</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDIR False  isArrayLEN False  output_data_DX $output_data_DX  output_data_DY $output_data_DY  name SAGA.grid_calculus.16 DIR $DIR
+LEN $LEN
+UNITS $UNITS
+SYSTEM $SYSTEM
+SYSTEM_ZERO $SYSTEM_ZERO
+SYSTEM_ORIENT $SYSTEM_ORIENT
+prefer $prefer
+response $response
+outputType_DX $OutputSection_DX.outputType_DX
+transmissionMode_DX $OutputSection_DX.transmissionMode_DX
+outputType_DY $OutputSection_DY.outputType_DY
+transmissionMode_DY $OutputSection_DY.transmissionMode_DY]]></command>
+  <inputs>
+    <param name="DIR" type="data" optional="false" label="Direction" help="Direction The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="LEN" type="data" optional="false" label="Length" help="Length The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="UNITS" type="select" optional="true" label="Polar Angle Units" help="Polar Angle Units">
+      <option value="degree">degree</option>
+      <option selected="true" value="radians">radians</option>
+    </param>
+    <param name="SYSTEM" type="select" optional="true" label="Polar Coordinate System" help="Polar Coordinate System">
+      <option selected="true" value="geographical">geographical</option>
+      <option value="mathematical">mathematical</option>
+      <option value="user_defined">user defined</option>
+    </param>
+    <param name="SYSTEM_ZERO" type="float" value="0" optional="true" label="User defined Zero Direction" help="given in degree clockwise from North direction"/>
+    <param name="SYSTEM_ORIENT" type="select" optional="true" label="User defined Orientation" help="User defined Orientation">
+      <option selected="true" value="clockwise">clockwise</option>
+      <option value="counterclockwise">counterclockwise</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_DX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DX" type="select" label="X Component" help="X Component">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DX" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DY" type="select" label="Y Component" help="Y Component">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_DX" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DX" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DX" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DX" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Converts gradient vector from polar coordinates (direction or aspect angle and length or tangens of slope) to directional components (Cartesian).&lt;br/&gt;The tool supports three conventions on how the angle of direction can be supplied:&lt;br/&gt;(a) mathematical: direction angle is zero in East direction and the angle increases counterclockwise&lt;br/&gt;(b) geographical: direction angle is zero in North direction and the angle increases clockwise&lt;br/&gt;(c) zero direction and orientation are user defined&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,95 @@
+<tool name="SAGA.table_calculus.16" id="saga_table_calculus_16" version="1.0.0">
+  <description>Record Statistics</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTABLE False  isArrayFIELDS False  output_data_RESULT $output_data_RESULT  name SAGA.table_calculus.16 MEAN $MEAN
+MIN $MIN
+MAX $MAX
+RANGE $RANGE
+SUM $SUM
+NUM $NUM
+VAR $VAR
+STDDEV $STDDEV
+PCTL $PCTL
+PCTL_VAL $PCTL_VAL
+TABLE $TABLE
+FIELDS $FIELDS
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="MEAN" type="select" optional="true" label="Arithmetic Mean" help="Arithmetic Mean">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MIN" type="select" optional="true" label="Minimum" help="Minimum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MAX" type="select" optional="true" label="Maximum" help="Maximum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="RANGE" type="select" optional="true" label="Range" help="Range">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SUM" type="select" optional="true" label="Sum" help="Sum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="NUM" type="select" optional="true" label="Number of Values" help="Number of Values">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="VAR" type="select" optional="true" label="Variance" help="Variance">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STDDEV" type="select" optional="true" label="Standard Deviation" help="Standard Deviation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="PCTL" type="select" optional="true" label="Percentile" help="Percentile">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="PCTL_VAL" type="float" value="50" optional="true" label="Value" help="Value"/>
+    <param name="TABLE" type="data" optional="false" label="Table" help="Table The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Attributes" help="If no field is selected statistics will be built from all numeric fields. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool calculates record-wise the statistics over the selected attribute fields.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

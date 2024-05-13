@@ -1,0 +1,73 @@
+<tool name="OTB.LSMSSmallRegionsMerging" id="otb_lsmssmallregionsmerging" version="1.0.0">
+  <description>This application performs the third (optional) step of the exact Large-Scale Mean-Shift segmentation workflow [1].</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArrayinseg False  output_data_out $output_data_out  name OTB.LSMSSmallRegionsMerging in $in
+inseg $inseg
+out $out
+minsize $minsize
+tilesizex $tilesizex
+tilesizey $tilesizey
+ram $ram
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="The input image, containing initial spectral signatures corresponding to the segmented image (inseg)." help="The input image, containing initial spectral signatures corresponding to the segmented image (inseg). The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="inseg" type="data" optional="false" label="Segmented image where each pixel value is the unique integer label of the segment it belongs to." help="Segmented image where each pixel value is the unique integer label of the segment it belongs to. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="out" type="select" optional="false" label="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised." help="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised.">
+      <option value="double">double</option>
+      <option value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option selected="true" value="uint8">uint8</option>
+    </param>
+    <param name="minsize" type="integer" value="50" optional="true" label="Minimum Segment Size. If, after the segmentation, a segment is of size lower than this criterion, the segment is merged with the segment that has the closest sepctral signature." help="Minimum Segment Size. If, after the segmentation, a segment is of size lower than this criterion, the segment is merged with the segment that has the closest sepctral signature."/>
+    <param name="tilesizex" type="integer" value="500" optional="false" label="Size of tiles along the X-axis for tile-wise processing." help="Size of tiles along the X-axis for tile-wise processing."/>
+    <param name="tilesizey" type="integer" value="500" optional="false" label="Size of tiles along the Y-axis for tile-wise processing." help="Size of tiles along the Y-axis for tile-wise processing."/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised." help="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Given a segmentation result (can be the out output parameter of the LSMSSegmentation application [2]) and the original image, it will merge segments whose size in pixels is lower than minsize parameter with the adjacent segments with the adjacent segment with closest radiometry and acceptable size.Small segments will be processed by increasing size: first all segments for which area is equal to 1 pixel will be merged with adjacent segments, then all segments of area equal to 2 pixels will be processed, until segments of area minsize. For large images one can use the tilesizex and tilesizey parameters for tile-wise processing, with the guarantees of identical results.The output of this application can be passed to the LSMSVectorization application [3] to complete the LSMS workflow.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

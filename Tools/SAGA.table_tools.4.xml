@@ -1,0 +1,77 @@
+<tool name="SAGA.table_tools.4" id="saga_table_tools_4" version="1.0.0">
+  <description>Join Attributes from a Table (Shapes)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTABLE_A False  isArrayTABLE_B False  isArrayID_A False  isArrayID_B False  isArrayFIELDS False  output_data_RESULT $output_data_RESULT  name SAGA.table_tools.4 TABLE_A $TABLE_A
+TABLE_B $TABLE_B
+ID_A $ID_A
+ID_B $ID_B
+FIELDS_ALL $FIELDS_ALL
+FIELDS $FIELDS
+KEEP_ALL $KEEP_ALL
+CMP_CASE $CMP_CASE
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="TABLE_A" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="TABLE_B" type="data" optional="false" label="Join Table" help="Join Table The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="ID_A" type="data" optional="false" label="Identifier" help="Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="ID_B" type="data" optional="false" label="Identifier" help="Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELDS_ALL" type="select" optional="true" label="Add All Fields" help="Add All Fields">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="KEEP_ALL" type="select" optional="true" label="Keep All" help="Keep All">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="CMP_CASE" type="select" optional="true" label="Case Sensitive String Comparison" help="Case Sensitive String Comparison">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESULT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Joins two tables using key attributes.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

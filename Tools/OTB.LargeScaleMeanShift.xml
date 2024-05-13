@@ -1,0 +1,109 @@
+<tool name="OTB.LargeScaleMeanShift" id="otb_largescalemeanshift" version="1.0.0">
+  <description>Large-scale segmentation using MeanShift</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymode.vector.imfield False  output_data_mode.vector.out $output_data_mode.vector.out  output_data_mode.raster.out $output_data_mode.raster.out  name OTB.LargeScaleMeanShift in $in
+spatialr $spatialr
+ranger $ranger
+minsize $minsize
+tilesizex $tilesizex
+tilesizey $tilesizey
+mode $mode
+mode.vector.imfield $mode.vector.imfield
+mode.raster.out $mode.raster.out
+cleanup $cleanup
+ram $ram
+prefer $prefer
+response $response
+outputType_mode.vector.out $OutputSection_mode.vector.out.outputType_mode.vector.out
+transmissionMode_mode.vector.out $OutputSection_mode.vector.out.transmissionMode_mode.vector.out
+outputType_mode.raster.out $OutputSection_mode.raster.out.outputType_mode.raster.out
+transmissionMode_mode.raster.out $OutputSection_mode.raster.out.transmissionMode_mode.raster.out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance." help="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="spatialr" type="integer" value="5" optional="true" label="Radius of the spatial neighborhood for averaging. Higher values will result in more smoothing and higher processing time." help="Radius of the spatial neighborhood for averaging. Higher values will result in more smoothing and higher processing time."/>
+    <param name="ranger" type="float" value="15" optional="true" label="Threshold on spectral signature euclidean distance (expressed in radiometry unit) to consider neighborhood pixel for averaging. Higher values will be less edge-preserving (more similar to simple average in neighborhood), whereas lower values will result in less noise smoothing. Note that this parameter has no effect on processing time." help="Threshold on spectral signature euclidean distance (expressed in radiometry unit) to consider neighborhood pixel for averaging. Higher values will be less edge-preserving (more similar to simple average in neighborhood), whereas lower values will result in less noise smoothing. Note that this parameter has no effect on processing time."/>
+    <param name="minsize" type="integer" value="50" optional="true" label="Minimum Segment Size. If, after the segmentation, a segment is of size lower than this criterion, the segment is merged with the segment that has the closest sepctral signature." help="Minimum Segment Size. If, after the segmentation, a segment is of size lower than this criterion, the segment is merged with the segment that has the closest sepctral signature."/>
+    <param name="tilesizex" type="integer" value="500" optional="false" label="Size of tiles along the X-axis for tile-wise processing." help="Size of tiles along the X-axis for tile-wise processing."/>
+    <param name="tilesizey" type="integer" value="500" optional="false" label="Size of tiles along the Y-axis for tile-wise processing." help="Size of tiles along the Y-axis for tile-wise processing."/>
+    <param name="mode" type="select" optional="false" label="Type of segmented output" help="Type of segmented output">
+      <option value="raster">raster</option>
+      <option selected="true" value="vector">vector</option>
+    </param>
+    <param name="mode.vector.imfield" type="data" optional="false" label="This is an optional support image that can be used to compute field values in each region. Otherwise, the input image is used as support." help="This is an optional support image that can be used to compute field values in each region. Otherwise, the input image is used as support. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="mode.raster.out" type="select" optional="false" label="It corresponds to the output of the small region merging step." help="It corresponds to the output of the small region merging step.">
+      <option value="double">double</option>
+      <option value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option selected="true" value="uint8">uint8</option>
+    </param>
+    <param name="cleanup" type="select" optional="false" label="If activated, the application will try to clean all temporary files it created" help="If activated, the application will try to clean all temporary files it created">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_mode.vector.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_mode.vector.out" type="select" label="The output GIS vector file, representing the vectorized version of the segmented image where the features of the polygons are the radiometric means and variances." help="The output GIS vector file, representing the vectorized version of the segmented image where the features of the polygons are the radiometric means and variances.">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="application/zip">zip</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_mode.vector.out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_mode.raster.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_mode.raster.out" type="select" label="It corresponds to the output of the small region merging step." help="It corresponds to the output of the small region merging step.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_mode.raster.out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_mode.vector.out" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_mode.vector.out" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_mode.vector.out" format="json" value="application/json"/>
+        <when input="outputType_mode.vector.out" format="zip" value="application/zip"/>
+      </change_format>
+    </data>
+    <data name="output_data_mode.raster.out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_mode.raster.out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_mode.raster.out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application chains together the 4 steps of the MeanShit framework, that is the MeanShiftSmoothing [1], the LSMSSegmentation [2], the LSMSSmallRegionsMerging [3] and the LSMSVectorization [4].This application can be a preliminary step for an object-based analysis.It generates a vector data file containing the regions extracted with the MeanShift algorithm. The spatial and range radius parameters allow adapting the sensitivity of the algorithm depending on the image dynamic and resolution. There is a step to remove small regions whose size (in pixels) is less than the given 'minsize' parameter. These regions are merged to a similar neighbor region. In the output vectors, there are additional fields to describe each region. In particular the mean and standard deviation (for each band) is computed for each region using the input image as support. If an optional 'imfield' image is given, it will be used as support image instead.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

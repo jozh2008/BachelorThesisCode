@@ -1,0 +1,84 @@
+<tool name="SAGA.climate_tools.8" id="saga_climate_tools_8" version="1.0.0">
+  <description>ETpot (after Hargreaves, Grid)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayT False  isArrayT_MIN False  isArrayT_MAX False  output_data_PET $output_data_PET  name SAGA.climate_tools.8 T $T
+T_MIN $T_MIN
+T_MAX $T_MAX
+LAT $LAT
+TIME $TIME
+MONTH $MONTH
+DAY $DAY
+prefer $prefer
+response $response
+outputType_PET $OutputSection_PET.outputType_PET
+transmissionMode_PET $OutputSection_PET.transmissionMode_PET]]></command>
+  <inputs>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="T_MIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="T_MAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="LAT" type="float" value="53" optional="true" label="Latitude [Degree]" help="Latitude [Degree]"/>
+    <param name="TIME" type="select" optional="true" label="Time" help="Time">
+      <option selected="true" value="day">day</option>
+      <option value="month">month</option>
+    </param>
+    <param name="MONTH" type="select" optional="true" label="Month" help="Month">
+      <option value="April">April</option>
+      <option value="August">August</option>
+      <option value="December">December</option>
+      <option selected="true" value="February">February</option>
+      <option value="January">January</option>
+      <option value="July">July</option>
+      <option value="June">June</option>
+      <option value="March">March</option>
+      <option value="May">May</option>
+      <option value="November">November</option>
+      <option value="October">October</option>
+      <option value="September">September</option>
+    </param>
+    <param name="DAY" type="integer" value="14" optional="true" label="Day of Month" help="Day of Month"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PET" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PET" type="select" label="Potential Evapotranspiration" help="Potential Evapotranspiration">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PET" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PET" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PET" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PET" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PET" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Estimation of daily potential evapotranspiration from daily average, minimum and maximum temperatures using Hargreave's empirical equation. In order to estimate extraterrestrial net radiation geographic latitude of observation and Julian day have to be supplied too. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

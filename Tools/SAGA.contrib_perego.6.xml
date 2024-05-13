@@ -1,0 +1,116 @@
+<tool name="SAGA.contrib_perego.6" id="saga_contrib_perego_6" version="1.0.0">
+  <description>Destriping with Mask</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArrayMASK False  output_data_RESULT3 $output_data_RESULT3  output_data_RESULT1 $output_data_RESULT1  output_data_RESULT2 $output_data_RESULT2  name SAGA.contrib_perego.6 INPUT $INPUT
+MASK $MASK
+ANG $ANG
+R $R
+D $D
+MIN $MIN
+MAX $MAX
+MMIN $MMIN
+MMAX $MMAX
+prefer $prefer
+response $response
+outputType_RESULT3 $OutputSection_RESULT3.outputType_RESULT3
+transmissionMode_RESULT3 $OutputSection_RESULT3.transmissionMode_RESULT3
+outputType_RESULT1 $OutputSection_RESULT1.outputType_RESULT1
+transmissionMode_RESULT1 $OutputSection_RESULT1.transmissionMode_RESULT1
+outputType_RESULT2 $OutputSection_RESULT2.outputType_RESULT2
+transmissionMode_RESULT2 $OutputSection_RESULT2.transmissionMode_RESULT2]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask Grid" help="This grid is used to select cells. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ANG" type="float" value="0" optional="true" label="Angle (in degrees)" help="0 is horizontal, 90 is vertical."/>
+    <param name="R" type="float" value="20" optional="true" label="Radius" help="Radius"/>
+    <param name="D" type="float" value="2" optional="true" label="Stripes distance" help="Stripes distance"/>
+    <param name="MIN" type="float" value="-10" optional="true" label="Min" help="Min"/>
+    <param name="MAX" type="float" value="10" optional="true" label="Max" help="Max"/>
+    <param name="MMIN" type="float" value="-10000" optional="true" label="Mask Min" help="Mask Min"/>
+    <param name="MMAX" type="float" value="10000" optional="true" label="Mask Max" help="Mask Max"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT3" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT3" type="select" label="Destriped Grid" help="New grid filtered with the destriping2 tool">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT3" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_RESULT1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT1" type="select" label="Low-pass 1" help="Step 1: low-pass of stripe">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT1" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_RESULT2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT2" type="select" label="Low-pass 2" help="Step 2: low-pass between stripe and its surruondings">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT2" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT3" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT3" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT3" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT3" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_RESULT1" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT1" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT1" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT1" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_RESULT2" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT2" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT2" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT2" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Destriping filter removes straight parallel stripes in raster data. It uses two low-pass filters elongated in the stripes direction; the first one is 1 pixel unit wide while the second one is wide as the striping wavelength. Their difference is the striping error which is removed from the original data to obtain the destriped DEM. This method is equivalent to that proposed by Oimoen (2000). With destriping 2 you can choose a range of value (min-max) from the input grid and a range of value (Mask min - Mask max) from a mask grid to select the target cells. &lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;- Oimoen, M.J. (2000): An Effective Filter For Removal Of Production Artifacts. In U.S. Geological Survey 7.5-Minute Digital Elevation Models. Proceedings of the Fourteenth International Conference on Applied Geologic Remote Sensing, 6-8 November, Las Vegas, NV.&lt;br/&gt;&lt;br/&gt;- Perego, A. (2009): SRTM DEM destriping with SAGA GIS: consequences on drainage network extraction. &lt;a target="_blank" href="http://www.webalice.it/alper78/saga_mod/destriping/destriping.html"&gt;online&lt;/a&gt;.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

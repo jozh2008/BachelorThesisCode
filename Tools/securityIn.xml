@@ -1,0 +1,42 @@
+<tool name="securityIn" id="securityin" version="1.0.0">
+  <description>Basic in filtering </description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name securityIn prefer $prefer
+response $response
+outputType_Result '$OutputSection_Result.outputType_Result'
+transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
+  <inputs>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_Result" type="text" optional="false" label="The resulting string" help="Unused string"/>
+      <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_Result" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This service can be executed as a filter for OGC API - Processes requests before handling them]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

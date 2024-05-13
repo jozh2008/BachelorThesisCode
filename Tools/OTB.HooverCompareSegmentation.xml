@@ -1,0 +1,130 @@
+<tool name="OTB.HooverCompareSegmentation" id="otb_hoovercomparesegmentation" version="1.0.0">
+  <description>Compare two segmentations with Hoover metrics</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayingt False  isArrayinms False  output_data_outgt $output_data_outgt  output_data_outms $output_data_outms  output_data_rc $output_data_rc  output_data_rf $output_data_rf  output_data_ra $output_data_ra  output_data_rm $output_data_rm  name OTB.HooverCompareSegmentation ingt $ingt
+inms $inms
+bg $bg
+th $th
+outgt $outgt
+outms $outms
+prefer $prefer
+response $response
+outputType_outgt $OutputSection_outgt.outputType_outgt
+transmissionMode_outgt $OutputSection_outgt.transmissionMode_outgt
+outputType_outms $OutputSection_outms.outputType_outms
+transmissionMode_outms $OutputSection_outms.transmissionMode_outms
+transmissionMode_rc $OutputSection_rc.transmissionMode_rc
+transmissionMode_rf $OutputSection_rf.transmissionMode_rf
+transmissionMode_ra $OutputSection_ra.transmissionMode_ra
+transmissionMode_rm $OutputSection_rm.transmissionMode_rm]]></command>
+  <inputs>
+    <param name="ingt" type="data" optional="false" label="A partial ground truth segmentation image." help="A partial ground truth segmentation image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="inms" type="data" optional="false" label="A machine segmentation image." help="A machine segmentation image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="bg" type="integer" value="0" optional="false" label="Label value of the background in the input segmentations" help="Label value of the background in the input segmentations"/>
+    <param name="th" type="float" value="0.75" optional="false" label="Overlapping threshold used to find Hoover instances." help="Overlapping threshold used to find Hoover instances."/>
+    <param name="outgt" type="select" optional="true" label="The colored ground truth output image." help="The colored ground truth output image.">
+      <option value="double">double</option>
+      <option value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option selected="true" value="uint8">uint8</option>
+    </param>
+    <param name="outms" type="select" optional="true" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
+      <option value="double">double</option>
+      <option value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option selected="true" value="uint8">uint8</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_outgt" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_outgt" type="select" label="The colored ground truth output image." help="The colored ground truth output image.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_outgt" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_outms" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_outms" type="select" label="The colored machine segmentation output image." help="The colored machine segmentation output image.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_outms" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_rc" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_rc" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_rf" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_rf" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ra" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_ra" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_rm" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_rm" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_outgt" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_outgt" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_outgt" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_outms" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_outms" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_outms" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_rc" format="txt" hidden="false"/>
+    <data name="output_data_rf" format="txt" hidden="false"/>
+    <data name="output_data_ra" format="txt" hidden="false"/>
+    <data name="output_data_rm" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application compares a machine segmentation (MS) with a partial ground truth segmentation (GT). The Hoover metrics are used to estimate scores for correct detection, over-segmentation, under-segmentation and missed detection. The application can output the overall Hoover scores along with coloredimages of the MS and GT segmentation showing the state of each region (correct detection, over-segmentation, under-segmentation, missed) The Hoover metrics are described in : Hoover et al., "An experimental comparison of range image segmentation algorithms", IEEE PAMI vol. 18, no. 7, July 1996.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,67 @@
+<tool name="SAGA.climate_tools.19" id="saga_climate_tools_19" version="1.0.0">
+  <description>Climate Classification</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayT True  isArrayP True  output_data_CLASSES $output_data_CLASSES  name SAGA.climate_tools.19 T $T
+P $P
+METHOD $METHOD
+prefer $prefer
+response $response
+outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
+transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
+  <inputs>
+    <param name="T" type="data" optional="false" label="Temperature" help="Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Classification" help="Classification">
+      <option value="Koeppen-Geiger">Koeppen-Geiger</option>
+      <option value="Koeppen-Geiger_after_Peel_et_al._(2007)">Koeppen-Geiger after Peel et al. (2007)</option>
+      <option selected="true" value="Koeppen-Geiger_without_As/Aw_differentiation">Koeppen-Geiger without As/Aw differentiation</option>
+      <option value="Thornthwaite_(1931)">Thornthwaite (1931)</option>
+      <option value="Troll-Paffen">Troll-Paffen</option>
+      <option value="Wissmann_(1939)">Wissmann (1939)</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLASSES" type="select" label="Climate Classification" help="Climate Classification">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CLASSES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLASSES" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLASSES" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CLASSES" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CLASSES" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool applies a climate classification scheme using monthly mean temperature and precipitation data. Currently implemented classification schemes are Koeppen-Geiger (1936), Thornthwaite (1931), and Troll-Paffen (1964). Because of some less precise definitions the Troll-Paffen scheme still needs some revisions. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

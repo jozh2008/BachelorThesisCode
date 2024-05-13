@@ -1,0 +1,207 @@
+<tool name="SAGA.statistics_kriging.2" id="saga_statistics_kriging_2" version="1.0.0">
+  <description>Universal Kriging</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS False  isArrayFIELD False  isArrayTARGET_TEMPLATE False  isArrayPREDICTORS True  output_data_PREDICTION $output_data_PREDICTION  output_data_VARIANCE $output_data_VARIANCE  output_data_CV_SUMMARY $output_data_CV_SUMMARY  output_data_CV_RESIDUALS $output_data_CV_RESIDUALS  name SAGA.statistics_kriging.2 POINTS $POINTS
+FIELD $FIELD
+TARGET_DEFINITION $TARGET_DEFINITION
+TARGET_USER_SIZE $TARGET_USER_SIZE
+TARGET_USER_XMIN $TARGET_USER_XMIN
+TARGET_USER_XMAX $TARGET_USER_XMAX
+TARGET_USER_YMIN $TARGET_USER_YMIN
+TARGET_USER_YMAX $TARGET_USER_YMAX
+TARGET_USER_COLS $TARGET_USER_COLS
+TARGET_USER_ROWS $TARGET_USER_ROWS
+TARGET_USER_FITS $TARGET_USER_FITS
+TARGET_TEMPLATE $TARGET_TEMPLATE
+VAR_MAXDIST $VAR_MAXDIST
+VAR_NCLASSES $VAR_NCLASSES
+VAR_NSKIP $VAR_NSKIP
+VAR_MODEL '$VAR_MODEL'
+TQUALITY $TQUALITY
+LOG $LOG
+BLOCK $BLOCK
+DBLOCK $DBLOCK
+CV_METHOD $CV_METHOD
+CV_SAMPLES $CV_SAMPLES
+SEARCH_RANGE $SEARCH_RANGE
+SEARCH_RADIUS $SEARCH_RADIUS
+SEARCH_POINTS_ALL $SEARCH_POINTS_ALL
+SEARCH_POINTS_MIN $SEARCH_POINTS_MIN
+SEARCH_POINTS_MAX $SEARCH_POINTS_MAX
+SEARCH_DIRECTION $SEARCH_DIRECTION
+PREDICTORS $PREDICTORS
+RESAMPLING $RESAMPLING
+COORDS $COORDS
+prefer $prefer
+response $response
+outputType_PREDICTION $OutputSection_PREDICTION.outputType_PREDICTION
+transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTION
+outputType_VARIANCE $OutputSection_VARIANCE.outputType_VARIANCE
+transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE
+outputType_CV_SUMMARY $OutputSection_CV_SUMMARY.outputType_CV_SUMMARY
+transmissionMode_CV_SUMMARY $OutputSection_CV_SUMMARY.transmissionMode_CV_SUMMARY
+outputType_CV_RESIDUALS $OutputSection_CV_RESIDUALS.outputType_CV_RESIDUALS
+transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RESIDUALS]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
+      <option value="grid_or_grid_system">grid or grid system</option>
+      <option selected="true" value="user_defined">user defined</option>
+    </param>
+    <param name="TARGET_USER_SIZE" type="float" value="1" optional="true" label="Cellsize" help="Cellsize"/>
+    <param name="TARGET_USER_XMIN" type="float" value="0" optional="true" label="West" help="West"/>
+    <param name="TARGET_USER_XMAX" type="float" value="100" optional="true" label="East" help="East"/>
+    <param name="TARGET_USER_YMIN" type="float" value="0" optional="true" label="South" help="South"/>
+    <param name="TARGET_USER_YMAX" type="float" value="100" optional="true" label="North" help="North"/>
+    <param name="TARGET_USER_COLS" type="integer" value="100" optional="true" label="Columns" help="Number of cells in East-West direction."/>
+    <param name="TARGET_USER_ROWS" type="integer" value="100" optional="true" label="Rows" help="Number of cells in North-South direction."/>
+    <param name="TARGET_USER_FITS" type="select" optional="true" label="Fit" help="Fit">
+      <option value="cells">cells</option>
+      <option selected="true" value="nodes">nodes</option>
+    </param>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="VAR_MAXDIST" type="float" value="0" optional="true" label="Maximum Distance" help="maximum distance for variogram estimation, ignored if set to zero"/>
+    <param name="VAR_NCLASSES" type="integer" value="100" optional="true" label="Lag Distance Classes" help="initial number of lag distance classes"/>
+    <param name="VAR_NSKIP" type="integer" value="1" optional="true" label="Skip" help="Skip"/>
+    <param name="VAR_MODEL" type="text" value="a + b * x" optional="true" label="Model" help="Model"/>
+    <param name="TQUALITY" type="select" optional="true" label="Type of Quality Measure" help="Type of Quality Measure">
+      <option selected="true" value="Standard_Deviation">Standard Deviation</option>
+      <option value="Variance">Variance</option>
+    </param>
+    <param name="LOG" type="select" optional="true" label="Logarithmic Transformation" help="Logarithmic Transformation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BLOCK" type="select" optional="true" label="Block Kriging" help="Block Kriging">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DBLOCK" type="float" value="100" optional="true" label="Block Size" help="Edge length [map units]"/>
+    <param name="CV_METHOD" type="select" optional="true" label="Cross Validation" help="Cross Validation">
+      <option value="2-fold">2-fold</option>
+      <option value="k-fold">k-fold</option>
+      <option value="leave_one_out">leave one out</option>
+      <option selected="true" value="none">none</option>
+    </param>
+    <param name="CV_SAMPLES" type="integer" value="10" optional="true" label="Cross Validation Subsamples" help="number of subsamples for k-fold cross validation"/>
+    <param name="SEARCH_RANGE" type="select" optional="true" label="Search Range" help="Search Range">
+      <option selected="true" value="global">global</option>
+      <option value="local">local</option>
+    </param>
+    <param name="SEARCH_RADIUS" type="float" value="1000" optional="true" label="Maximum Search Distance" help="local maximum search distance given in map units"/>
+    <param name="SEARCH_POINTS_ALL" type="select" optional="true" label="Number of Points" help="Number of Points">
+      <option selected="true" value="all_points_within_search_distance">all points within search distance</option>
+      <option value="maximum_number_of_nearest_points">maximum number of nearest points</option>
+    </param>
+    <param name="SEARCH_POINTS_MIN" type="integer" value="16" optional="true" label="Minimum" help="minimum number of points to use"/>
+    <param name="SEARCH_POINTS_MAX" type="integer" value="20" optional="true" label="Maximum" help="maximum number of nearest points"/>
+    <param name="SEARCH_DIRECTION" type="select" optional="true" label="Direction" help="Direction">
+      <option selected="true" value="all_directions">all directions</option>
+      <option value="quadrants">quadrants</option>
+    </param>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="COORDS" type="select" optional="true" label="Coordinates" help="Coordinates">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PREDICTION" type="select" label="Prediction" help="Prediction">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PREDICTION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VARIANCE" type="select" label="Quality Measure" help="Quality Measure">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_VARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CV_SUMMARY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CV_SUMMARY" type="select" label="Cross Validation Summary" help="Cross Validation Summary">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_CV_SUMMARY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CV_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CV_RESIDUALS" type="select" label="Cross Validation Residuals" help="Cross Validation Residuals">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_CV_RESIDUALS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PREDICTION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PREDICTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PREDICTION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PREDICTION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_VARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_VARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_CV_SUMMARY" format="csv" hidden="false"/>
+    <data name="output_data_CV_RESIDUALS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CV_RESIDUALS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_CV_RESIDUALS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Universal Kriging for grid interpolation from irregular sample points.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

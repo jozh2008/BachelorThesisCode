@@ -1,0 +1,222 @@
+<tool name="SAGA.statistics_grid.1" id="saga_statistics_grid_1" version="1.0.0">
+  <description>Residual Analysis (Grid)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_MEAN $output_data_MEAN  output_data_DIFF $output_data_DIFF  output_data_STDDEV $output_data_STDDEV  output_data_RANGE $output_data_RANGE  output_data_MIN $output_data_MIN  output_data_MAX $output_data_MAX  output_data_DEVMEAN $output_data_DEVMEAN  output_data_PERCENT $output_data_PERCENT  name SAGA.statistics_grid.1 GRID $GRID
+MODE $MODE
+RADIUS $RADIUS
+BCENTER $BCENTER
+prefer $prefer
+response $response
+outputType_MEAN $OutputSection_MEAN.outputType_MEAN
+transmissionMode_MEAN $OutputSection_MEAN.transmissionMode_MEAN
+outputType_DIFF $OutputSection_DIFF.outputType_DIFF
+transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF
+outputType_STDDEV $OutputSection_STDDEV.outputType_STDDEV
+transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
+outputType_RANGE $OutputSection_RANGE.outputType_RANGE
+transmissionMode_RANGE $OutputSection_RANGE.transmissionMode_RANGE
+outputType_MIN $OutputSection_MIN.outputType_MIN
+transmissionMode_MIN $OutputSection_MIN.transmissionMode_MIN
+outputType_MAX $OutputSection_MAX.outputType_MAX
+transmissionMode_MAX $OutputSection_MAX.transmissionMode_MAX
+outputType_DEVMEAN $OutputSection_DEVMEAN.outputType_DEVMEAN
+transmissionMode_DEVMEAN $OutputSection_DEVMEAN.transmissionMode_DEVMEAN
+outputType_PERCENT $OutputSection_PERCENT.outputType_PERCENT
+transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
+      <option selected="true" value="Circle">Circle</option>
+      <option value="Square">Square</option>
+    </param>
+    <param name="RADIUS" type="integer" value="7" optional="true" label="Radius (Cells)" help="Radius (Cells)"/>
+    <param name="BCENTER" type="select" optional="true" label="Include Center Cell" help="Include Center Cell">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MEAN" type="select" label="Mean Value" help="Mean Value">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MEAN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIFF" type="select" label="Difference from Mean Value" help="Difference from Mean Value">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIFF" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_STDDEV" type="select" label="Standard Deviation" help="Standard Deviation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_STDDEV" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RANGE" type="select" label="Value Range" help="Value Range">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RANGE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MIN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MIN" type="select" label="Minimum Value" help="Minimum Value">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MIN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MAX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MAX" type="select" label="Maximum Value" help="Maximum Value">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MAX" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DEVMEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DEVMEAN" type="select" label="Deviation from Mean Value" help="Deviation from Mean Value">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DEVMEAN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PERCENT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PERCENT" type="select" label="Percentile" help="Percentile">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PERCENT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_MEAN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MEAN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MEAN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIFF" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIFF" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIFF" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIFF" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_STDDEV" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_STDDEV" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_STDDEV" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_RANGE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RANGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RANGE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RANGE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MIN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MIN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MIN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MAX" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MAX" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MAX" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DEVMEAN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DEVMEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DEVMEAN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DEVMEAN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PERCENT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PERCENT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PERCENT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PERCENT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Relations of each grid cell to its neighborhood. Wilson & Gallant (2000) used this type of calculation in terrain analysis.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

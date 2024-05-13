@@ -1,0 +1,82 @@
+<tool name="OTB.CompareImages" id="otb_compareimages" version="1.0.0">
+  <description>Estimator between 2 images.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayref.in False  isArraymeas.in False  output_data_mse $output_data_mse  output_data_mae $output_data_mae  output_data_psnr $output_data_psnr  output_data_count $output_data_count  name OTB.CompareImages ref.in $ref.in
+ref.channel $ref.channel
+meas.in $meas.in
+meas.channel $meas.channel
+roi.startx $roi.startx
+roi.starty $roi.starty
+roi.sizex $roi.sizex
+roi.sizey $roi.sizey
+ram $ram
+prefer $prefer
+response $response
+transmissionMode_mse $OutputSection_mse.transmissionMode_mse
+transmissionMode_mae $OutputSection_mae.transmissionMode_mae
+transmissionMode_psnr $OutputSection_psnr.transmissionMode_psnr
+transmissionMode_count $OutputSection_count.transmissionMode_count]]></command>
+  <inputs>
+    <param name="ref.in" type="data" optional="false" label="Image used as reference in the comparison" help="Image used as reference in the comparison The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="ref.channel" type="integer" value="1" optional="false" label="Used channel for the reference image" help="Used channel for the reference image"/>
+    <param name="meas.in" type="data" optional="false" label="Image used as measured in the comparison" help="Image used as measured in the comparison The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="meas.channel" type="integer" value="1" optional="false" label="Used channel for the measured image" help="Used channel for the measured image"/>
+    <param name="roi.startx" type="integer" value="0" optional="false" label="ROI start x position." help="ROI start x position."/>
+    <param name="roi.starty" type="integer" value="0" optional="false" label="ROI start y position." help="ROI start y position."/>
+    <param name="roi.sizex" type="integer" value="0" optional="false" label="Size along x in pixels." help="Size along x in pixels."/>
+    <param name="roi.sizey" type="integer" value="0" optional="false" label="Size along y in pixels." help="Size along y in pixels."/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_mse" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_mse" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_mae" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_mae" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_psnr" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_psnr" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_count" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_count" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_mse" format="txt" hidden="false"/>
+    <data name="output_data_mae" format="txt" hidden="false"/>
+    <data name="output_data_psnr" format="txt" hidden="false"/>
+    <data name="output_data_count" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application computes MSE (Mean Squared Error), MAE (Mean Absolute Error) and PSNR (Peak Signal to Noise Ratio) between the channel of two images (reference and measurement). The user has to set the used channel and can specify a ROI.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

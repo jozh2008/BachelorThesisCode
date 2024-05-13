@@ -1,0 +1,69 @@
+<tool name="SAGA.sim_ecosystems_hugget.2" id="saga_sim_ecosystems_hugget_2" version="1.0.0">
+  <description>03: Spatially Distributed Simulation of Soil Nitrogen Dynamics</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_NSTORE $output_data_NSTORE  name SAGA.sim_ecosystems_hugget.2 DEM $DEM
+TIME_SPAN $TIME_SPAN
+TIME_STEP $TIME_STEP
+UPDATE $UPDATE
+NINIT $NINIT
+NRAIN $NRAIN
+prefer $prefer
+response $response
+outputType_NSTORE $OutputSection_NSTORE.outputType_NSTORE
+transmissionMode_NSTORE $OutputSection_NSTORE.transmissionMode_NSTORE]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="TIME_SPAN" type="float" value="100" optional="true" label="Time Span [a]" help="Time Span [a]"/>
+    <param name="TIME_STEP" type="float" value="0.1" optional="true" label="Time Interval [a]" help="Time Interval [a]"/>
+    <param name="UPDATE" type="select" optional="true" label="Update View" help="Update View">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="NINIT" type="float" value="5000" optional="true" label="Initial Nitrogen Content [kg/ha]" help="Initial Nitrogen Content [kg/ha]"/>
+    <param name="NRAIN" type="float" value="16" optional="true" label="Nitrogen in Rainfall [kg/ha/a]" help="Nitrogen in Rainfall [kg/ha/a]"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_NSTORE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_NSTORE" type="select" label="Soil Nitrogen" help="Soil Nitrogen">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_NSTORE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_NSTORE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_NSTORE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_NSTORE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_NSTORE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Spatially Distributed Simulation of Soil Nitrogen Dynamics. &lt;br/&gt;Reference:&lt;br/&gt;Hugget, R.J. (1993): 'Modelling the Human Impact on Nature', Oxford University Press.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

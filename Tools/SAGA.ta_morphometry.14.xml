@@ -1,0 +1,150 @@
+<tool name="SAGA.ta_morphometry.14" id="saga_ta_morphometry_14" version="1.0.0">
+  <description>Relative Heights and Slope Positions</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_HO $output_data_HO  output_data_HU $output_data_HU  output_data_NH $output_data_NH  output_data_SH $output_data_SH  output_data_MS $output_data_MS  name SAGA.ta_morphometry.14 DEM $DEM
+W $W
+T $T
+E $E
+prefer $prefer
+response $response
+outputType_HO $OutputSection_HO.outputType_HO
+transmissionMode_HO $OutputSection_HO.transmissionMode_HO
+outputType_HU $OutputSection_HU.outputType_HU
+transmissionMode_HU $OutputSection_HU.transmissionMode_HU
+outputType_NH $OutputSection_NH.outputType_NH
+transmissionMode_NH $OutputSection_NH.transmissionMode_NH
+outputType_SH $OutputSection_SH.outputType_SH
+transmissionMode_SH $OutputSection_SH.transmissionMode_SH
+outputType_MS $OutputSection_MS.outputType_MS
+transmissionMode_MS $OutputSection_MS.transmissionMode_MS]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="W" type="float" value="0.5" optional="true" label="w" help="The parameter weights the influence of catchment size on relative elevation (inversely proportional)."/>
+    <param name="T" type="float" value="10" optional="true" label="t" help="The parameter controls the amount by which a maximum in the neighbourhood of a cell is taken over into the cell (considering the local slope between the cells). The smaller 't' and/or the smaller the slope, the more of the maximum value is taken over into the cell. This results in a greater generalization/smoothing of the result. The greater 't' and/or the higher the slope, the less is taken over into the cell and the result will show a more irregular pattern caused by small changes in elevation between the cells."/>
+    <param name="E" type="float" value="2" optional="true" label="e" help="The parameter controls the position of relative height maxima as a function of slope."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_HO" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_HO" type="select" label="Slope Height" help="Slope Height">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_HO" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_HU" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_HU" type="select" label="Valley Depth" help="Valley Depth">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_HU" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_NH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_NH" type="select" label="Normalized Height" help="Normalized Height">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_NH" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SH" type="select" label="Standardized Height" help="Standardized Height">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SH" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MS" type="select" label="Mid-Slope Positon" help="Mid-Slope Positon">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_HO" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_HO" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_HO" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_HO" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_HU" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_HU" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_HU" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_HU" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_NH" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_NH" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_NH" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_NH" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SH" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SH" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SH" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SH" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The tool allows one to calculate several terrain indices from a digital elevation model.&lt;br/&gt;&lt;br/&gt;General information on the computational concept can be found in:&lt;br/&gt;- Boehner, J. and Selige, T. (2006): Spatial prediction of soil attributes using terrain analysis and climate regionalisation. In: Boehner, J., McCloy, K.R., Strobl, J. [Ed.]: SAGA - Analysis and Modelling Applications, Goettinger Geographische Abhandlungen, Goettingen: 13-28. (&lt;a target="_blank" href="http://downloads.sourceforge.net/saga-gis/gga115_02.pdf"&gt;pdf&lt;/a&gt;)&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

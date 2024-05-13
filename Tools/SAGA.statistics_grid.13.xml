@@ -1,0 +1,118 @@
+<tool name="SAGA.statistics_grid.13" id="saga_statistics_grid_13" version="1.0.0">
+  <description>Save Grid Statistics to Table</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRIDS True  output_data_STATS $output_data_STATS  name SAGA.statistics_grid.13 GRIDS $GRIDS
+DATA_CELLS $DATA_CELLS
+NODATA_CELLS $NODATA_CELLS
+CELLSIZE $CELLSIZE
+MEAN $MEAN
+MIN $MIN
+MAX $MAX
+RANGE $RANGE
+SUM $SUM
+SUM2 $SUM2
+VAR $VAR
+STDDEV $STDDEV
+STDDEVLO $STDDEVLO
+STDDEVHI $STDDEVHI
+PCTL_VAL '$PCTL_VAL'
+PCTL_HST $PCTL_HST
+prefer $prefer
+response $response
+outputType_STATS $OutputSection_STATS.outputType_STATS
+transmissionMode_STATS $OutputSection_STATS.transmissionMode_STATS]]></command>
+  <inputs>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="DATA_CELLS" type="select" optional="true" label="Number of Data Cells" help="Number of Data Cells">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="NODATA_CELLS" type="select" optional="true" label="Number of No-Data Cells" help="Number of No-Data Cells">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="CELLSIZE" type="select" optional="true" label="Cellsize" help="Cellsize">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MEAN" type="select" optional="true" label="Arithmetic Mean" help="Arithmetic Mean">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MIN" type="select" optional="true" label="Minimum" help="Minimum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MAX" type="select" optional="true" label="Maximum" help="Maximum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="RANGE" type="select" optional="true" label="Range" help="Range">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SUM" type="select" optional="true" label="Sum" help="Sum">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SUM2" type="select" optional="true" label="Sum of Squares" help="Sum of Squares">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="VAR" type="select" optional="true" label="Variance" help="Variance">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STDDEV" type="select" optional="true" label="Standard Deviation" help="Standard Deviation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STDDEVLO" type="select" optional="true" label="Mean less Standard Deviation" help="Mean less Standard Deviation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="STDDEVHI" type="select" optional="true" label="Mean plus Standard Deviation" help="Mean plus Standard Deviation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="PCTL_VAL" type="text" value="5; 25; 50; 75; 95" optional="true" label="Percentiles" help="Separate the desired percentiles by semicolon"/>
+    <param name="PCTL_HST" type="select" optional="true" label="From Histogram" help="From Histogram">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_STATS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_STATS" type="select" label="Statistics for Grids" help="Statistics for Grids">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_STATS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_STATS" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculates statistical properties (arithmetic mean, minimum, maximum, variance, standard deviation) for each of the given grids and saves it to a table.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

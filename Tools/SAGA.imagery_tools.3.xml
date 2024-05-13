@@ -1,0 +1,110 @@
+<tool name="SAGA.imagery_tools.3" id="saga_imagery_tools_3" version="1.0.0">
+  <description>Tasseled Cap Transformation</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayBLUE False  isArrayGREEN False  isArrayRED False  isArrayNIR False  isArrayMIR1 False  isArrayMIR2 False  output_data_BRIGHTNESS $output_data_BRIGHTNESS  output_data_GREENNESS $output_data_GREENNESS  output_data_WETNESS $output_data_WETNESS  name SAGA.imagery_tools.3 BLUE $BLUE
+GREEN $GREEN
+RED $RED
+NIR $NIR
+MIR1 $MIR1
+MIR2 $MIR2
+prefer $prefer
+response $response
+outputType_BRIGHTNESS $OutputSection_BRIGHTNESS.outputType_BRIGHTNESS
+transmissionMode_BRIGHTNESS $OutputSection_BRIGHTNESS.transmissionMode_BRIGHTNESS
+outputType_GREENNESS $OutputSection_GREENNESS.outputType_GREENNESS
+transmissionMode_GREENNESS $OutputSection_GREENNESS.transmissionMode_GREENNESS
+outputType_WETNESS $OutputSection_WETNESS.outputType_WETNESS
+transmissionMode_WETNESS $OutputSection_WETNESS.transmissionMode_WETNESS]]></command>
+  <inputs>
+    <param name="BLUE" type="data" optional="false" label="Blue (TM 1)" help="Blue (TM 1) The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GREEN" type="data" optional="false" label="Green (TM 2)" help="Green (TM 2) The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="RED" type="data" optional="false" label="Red (TM 3)" help="Red (TM 3) The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="NIR" type="data" optional="false" label="Near Infrared (TM 4)" help="Near Infrared (TM 4) The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="MIR1" type="data" optional="false" label="Mid Infrared (TM 5)" help="Mid Infrared (TM 5) The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="MIR2" type="data" optional="false" label="Mid Infrared (TM 7)" help="Mid Infrared (TM 7) The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_BRIGHTNESS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BRIGHTNESS" type="select" label="Brightness" help="Brightness">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BRIGHTNESS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_GREENNESS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GREENNESS" type="select" label="Greenness" help="Greenness">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GREENNESS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_WETNESS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_WETNESS" type="select" label="Wetness" help="Wetness">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_WETNESS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_BRIGHTNESS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BRIGHTNESS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BRIGHTNESS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BRIGHTNESS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_GREENNESS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GREENNESS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GREENNESS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GREENNESS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_WETNESS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_WETNESS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_WETNESS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_WETNESS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Tasseled Cap Transformation as proposed for Landsat Thematic Mapper.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

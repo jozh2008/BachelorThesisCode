@@ -1,0 +1,63 @@
+<tool name="SAGA.statistics_regression.10" id="saga_statistics_regression_10" version="1.0.0">
+  <description>Trend Analysis</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTABLE False  isArrayFIELD_X False  isArrayFIELD_Y False  output_data_TREND $output_data_TREND  name SAGA.statistics_regression.10 TABLE $TABLE
+FIELD_X $FIELD_X
+FIELD_Y $FIELD_Y
+FORMULA '$FORMULA'
+FORMULAS $FORMULAS
+prefer $prefer
+response $response
+outputType_TREND $OutputSection_TREND.outputType_TREND
+transmissionMode_TREND $OutputSection_TREND.transmissionMode_TREND]]></command>
+  <inputs>
+    <param name="TABLE" type="data" optional="false" label="Table" help="Table The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_X" type="data" optional="false" label="X Values" help="X Values The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_Y" type="data" optional="false" label="Y Values" help="Y Values The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FORMULA" type="text" value="m * x + b" optional="true" label="Formula" help="Formula"/>
+    <param name="FORMULAS" type="select" optional="true" label="Pre-defined Formulas" help="Pre-defined Formulas">
+      <option value="a_+_b_*_(1_-_exp(-(x_/_c)^2))">a + b * (1 - exp(-(x / c)^2))</option>
+      <option value="a_+_b_*_(1_-_exp(-x_/_c))">a + b * (1 - exp(-x / c))</option>
+      <option value="a_+_b_*_ln(x)_(logarithmic)">a + b * ln(x) (logarithmic)</option>
+      <option value="a_+_b_*_x^c_(power)">a + b * x^c (power)</option>
+      <option selected="true" value="a_+_b_*_x_(linear)">a + b * x (linear)</option>
+      <option value="a_+_b_*_x_+_c_*_x^2_(quadric)">a + b * x + c * x^2 (quadric)</option>
+      <option value="a_+_b_*_x_+_c_*_x^2_+_d_*_x^3_(cubic)">a + b * x + c * x^2 + d * x^3 (cubic)</option>
+      <option value="a_+_b_/_x">a + b / x</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TREND" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TREND" type="select" label="Table (with Trend)" help="Table (with Trend)">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_TREND" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TREND" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Trend Analysis]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,64 @@
+<tool name="SAGA.contrib_perego.3" id="saga_contrib_perego_3" version="1.0.0">
+  <description>Average With Mask 1</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArrayMASK False  output_data_RESULT $output_data_RESULT  name SAGA.contrib_perego.3 INPUT $INPUT
+MASK $MASK
+V $V
+RX $RX
+RY $RY
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask Grid" help="This grid indicates the cells you want calculate the average. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="V" type="float" value="1" optional="true" label="Mask value" help="Value of right cells in the Mask Grid"/>
+    <param name="RX" type="integer" value="1" optional="true" label="Radius X" help="Radius X"/>
+    <param name="RY" type="integer" value="1" optional="true" label="Radius Y" help="Radius Y"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="AWM1 Grid" help="New grid filtered with the AvWiMa1 tool">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Average With Mask 1 calculates average for cells specified by a mask grid. Cell excluded by the mask grid are NOT used in the average calculation.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

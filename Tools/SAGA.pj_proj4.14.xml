@@ -1,0 +1,114 @@
+<tool name="SAGA.pj_proj4.14" id="saga_pj_proj4_14" version="1.0.0">
+  <description>Latitude/Longitude Graticule</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayCRS_FILE False  output_data_GRATICULE $output_data_GRATICULE  output_data_COORDS $output_data_COORDS  name SAGA.pj_proj4.14 CRS_METHOD $CRS_METHOD
+CRS_PROJ4 '$CRS_PROJ4'
+CRS_FILE $CRS_FILE
+CRS_EPSG $CRS_EPSG
+CRS_EPSG_AUTH '$CRS_EPSG_AUTH'
+CRS_EPSG_GEOGCS '$CRS_EPSG_GEOGCS'
+CRS_EPSG_PROJCS '$CRS_EPSG_PROJCS'
+PRECISE $PRECISE
+XMIN $XMIN
+XMAX $XMAX
+YMIN $YMIN
+YMAX $YMAX
+INTERVAL $INTERVAL
+FIXED $FIXED
+FITTED $FITTED
+RESOLUTION $RESOLUTION
+prefer $prefer
+response $response
+outputType_GRATICULE $OutputSection_GRATICULE.outputType_GRATICULE
+transmissionMode_GRATICULE $OutputSection_GRATICULE.transmissionMode_GRATICULE
+outputType_COORDS $OutputSection_COORDS.outputType_COORDS
+transmissionMode_COORDS $OutputSection_COORDS.transmissionMode_COORDS]]></command>
+  <inputs>
+    <param name="CRS_METHOD" type="select" optional="true" label="Get CRS Definition from..." help="Get CRS Definition from...">
+      <option value="EPSG_Code">EPSG Code</option>
+      <option selected="true" value="Proj4_Parameters">Proj4 Parameters</option>
+      <option value="Well_Known_Text_File">Well Known Text File</option>
+    </param>
+    <param name="CRS_PROJ4" type="text" optional="true" label="Proj4 Parameters" help="Proj4 Parameters"/>
+    <param name="CRS_FILE" type="data" optional="false" label="Well Known Text File" help="Well Known Text File The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="CRS_EPSG" type="integer" value="-1" optional="true" label="Authority Code" help="Authority Code"/>
+    <param name="CRS_EPSG_AUTH" type="text" value="EPSG" optional="true" label="Authority" help="Authority"/>
+    <param name="CRS_EPSG_GEOGCS" type="text" optional="true" label="Geographic Coordinate Systems" help="Geographic Coordinate Systems"/>
+    <param name="CRS_EPSG_PROJCS" type="text" optional="true" label="Projected Coordinate Systems" help="Projected Coordinate Systems"/>
+    <param name="PRECISE" type="select" optional="true" label="Precise Datum Conversion" help="avoids precision problems when source and target crs use different geodedtic datums.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="XMIN" type="float" value="0" optional="true" label="Minimum" help="Minimum"/>
+    <param name="XMAX" type="float" value="0" optional="true" label="Maximum" help="Maximum"/>
+    <param name="YMIN" type="float" value="0" optional="true" label="Minimum" help="Minimum"/>
+    <param name="YMAX" type="float" value="0" optional="true" label="Maximum" help="Maximum"/>
+    <param name="INTERVAL" type="select" optional="true" label="Interval" help="Interval">
+      <option value="fitted_interval">fitted interval</option>
+      <option selected="true" value="fixed_interval">fixed interval</option>
+    </param>
+    <param name="FIXED" type="float" value="1" optional="true" label="Fixed Interval (Degree)" help="Fixed Interval (Degree)"/>
+    <param name="FITTED" type="integer" value="10" optional="true" label="Number of Intervals" help="Number of Intervals"/>
+    <param name="RESOLUTION" type="float" value="0.5" optional="true" label="Minimum Resolution (Degree)" help="Minimum Resolution (Degree)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GRATICULE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GRATICULE" type="select" label="Graticule" help="Graticule">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_GRATICULE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_COORDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COORDS" type="select" label="Frame Coordinates" help="Frame Coordinates">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_COORDS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GRATICULE" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GRATICULE" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_GRATICULE" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_COORDS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COORDS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_COORDS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Creates a longitude/latitude graticule for the extent and projection of the input shapes layer. &lt;br/&gt;Projection routines make use of the Proj.4 Cartographic Projections library.&lt;br/&gt;Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).&lt;br/&gt;Proj.4 Version is Rel. 5.2.0, September 15th, 2018&lt;br/&gt;&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

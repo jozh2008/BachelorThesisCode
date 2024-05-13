@@ -1,0 +1,89 @@
+<tool name="OTB.HaralickTextureExtraction" id="otb_haralicktextureextraction" version="1.0.0">
+  <description>Computes Haralick textural features on the selected channel of the input image</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.HaralickTextureExtraction in $in
+channel $channel
+step $step
+ram $ram
+parameters.xrad $parameters.xrad
+parameters.yrad $parameters.yrad
+parameters.xoff $parameters.xoff
+parameters.yoff $parameters.yoff
+parameters.min $parameters.min
+parameters.max $parameters.max
+parameters.nbbin $parameters.nbbin
+texture $texture
+out $out
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="The input image to compute the features on." help="The input image to compute the features on. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="channel" type="integer" value="1" optional="false" label="The selected channel index" help="The selected channel index"/>
+    <param name="step" type="integer" value="1" optional="true" label="Step (in pixels) to compute output texture values. The first computed pixel position is shifted by (step-1)/2 in both directions." help="Step (in pixels) to compute output texture values. The first computed pixel position is shifted by (step-1)/2 in both directions."/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="parameters.xrad" type="integer" value="2" optional="false" label="X Radius" help="X Radius"/>
+    <param name="parameters.yrad" type="integer" value="2" optional="false" label="Y Radius" help="Y Radius"/>
+    <param name="parameters.xoff" type="integer" value="1" optional="false" label="X Offset" help="X Offset"/>
+    <param name="parameters.yoff" type="integer" value="1" optional="false" label="Y Offset" help="Y Offset"/>
+    <param name="parameters.min" type="float" value="0" optional="false" label="Image Minimum" help="Image Minimum"/>
+    <param name="parameters.max" type="float" value="255" optional="false" label="Image Maximum" help="Image Maximum"/>
+    <param name="parameters.nbbin" type="integer" value="8" optional="false" label="Histogram number of bin" help="Histogram number of bin"/>
+    <param name="texture" type="select" optional="false" label="Choice of The Texture Set" help="Choice of The Texture Set">
+      <option value="advanced">advanced</option>
+      <option value="higher">higher</option>
+      <option selected="true" value="simple">simple</option>
+    </param>
+    <param name="out" type="select" optional="true" label="Output image containing the selected texture features." help="Output image containing the selected texture features.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output image containing the selected texture features." help="Output image containing the selected texture features.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application computes three sets of Haralick features [1][2].  * simple: a set of 8 local Haralick features: Energy (texture uniformity) , Entropy (measure of randomness of intensity image), Correlation (how correlated a pixel is to its neighborhood), Inverse Difference Moment (measures the texture homogeneity), Inertia (intensity contrast between a pixel and its neighborhood), Cluster Shade, Cluster Prominence, Haralick Correlation;  * advanced: a set of 10 advanced Haralick features : Mean, Variance (measures the texture heterogeneity), Dissimilarity, Sum Average, Sum Variance, Sum Entropy, Difference of Entropies, Difference of Variances, IC1, IC2;  * higher: a set of 11 higher Haralick features : Short Run Emphasis (measures the texture sharpness), Long Run Emphasis (measures the texture roughness), Grey-Level Nonuniformity, Run Length Nonuniformity, Run Percentage (measures the texture sharpness homogeneity), Low Grey-Level Run Emphasis, High Grey-Level Run Emphasis, Short Run Low Grey-Level Emphasis, Short Run High Grey-Level Emphasis, Long Run Low Grey-Level Emphasis and Long Run High Grey-Level Emphasis.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

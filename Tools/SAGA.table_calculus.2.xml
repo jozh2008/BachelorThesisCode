@@ -1,0 +1,70 @@
+<tool name="SAGA.table_calculus.2" id="saga_table_calculus_2" version="1.0.0">
+  <description>Field Calculator [Shapes]</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTABLE False  isArrayFIELD False  output_data_RESULT $output_data_RESULT  name SAGA.table_calculus.2 TABLE $TABLE
+FIELD $FIELD
+NAME '$NAME'
+FORMULA '$FORMULA'
+SELECTION $SELECTION
+USE_NODATA $USE_NODATA
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="TABLE" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Field" help="Field The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="NAME" type="text" value="Calculation" optional="true" label="Field Name" help="Field Name"/>
+    <param name="FORMULA" type="text" value="f1 + f2" optional="true" label="Formula" help="Formula"/>
+    <param name="SELECTION" type="select" optional="true" label="Selection" help="Selection">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="USE_NODATA" type="select" optional="true" label="Use No-Data" help="Use No-Data">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESULT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The table calculator calculates a new attribute from existing attributes based on a mathematical formula. Attributes are addressed by the character 'f' (for 'field') followed by the field number (i.e.: f1, f2, ..., fn) or by the field name in square brackets (e.g.: [Field Name]).&lt;br/&gt;Examples:&lt;br/&gt;- sin(f1) * f2 + f3&lt;br/&gt;- [Population] / [Area]&lt;br/&gt;&lt;br/&gt;If the use no-data flag is unchecked and a no-data value appears in a record's input, no calculation is performed for it and the result is set to no-data.&lt;br/&gt;&lt;br/&gt;Following operators are available for the formula definition:&lt;br/&gt;&lt;table border="0"&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;+&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Addition&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;-&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Subtraction&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;*&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Multiplication&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;/&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Division&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;abs(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Absolute Value&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;mod(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the floating point remainder of x/y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;int(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the integer part of floating point value x&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sqr(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Square&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sqrt(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Square Root&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;exp(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Exponential&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;pow(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x raised to the power of y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x ^ y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x raised to the power of y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ln(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Natural Logarithm&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;log(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Base 10 Logarithm&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;pi()&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the value of Pi&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sin(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Sine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;cos(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Cosine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;tan(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Tangent&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;asin(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arcsine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;acos(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arccosine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;atan(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arctangent&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;atan2(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arctangent of x/y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;min(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the minimum of values x and y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;max(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the maximum of values x and y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;gt(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is greater than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x &gt; y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is greater than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;lt(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is less than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x &lt; y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is less than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;eq(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x equals y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x = y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x equals y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;and(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if both x and y are true (i.e. not 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;or(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if at least one of both x and y is true (i.e. not 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ifelse(c, x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x, if condition c is true (i.e. not 0), else y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;rand_u(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Random number, uniform distribution with minimum x and maximum y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;rand_g(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Random number, Gaussian distribution with mean x and standard deviation y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;nodata()&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns tables's no-data value&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;isnodata(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is a no-data value, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,72 @@
+<tool name="SAGA.garden_fractals.1" id="saga_garden_fractals_1" version="1.0.0">
+  <description>Pythagoras' Tree</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_RESULT $output_data_RESULT  name SAGA.garden_fractals.1 TYPE $TYPE
+ANGLE $ANGLE
+MINSIZE $MINSIZE
+METHOD $METHOD
+VARRANGE_MIN $VARRANGE_MIN
+VARRANGE_MAX $VARRANGE_MAX
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="TYPE" type="select" optional="true" label="Shape Type" help="Shape Type">
+      <option value="Lines">Lines</option>
+      <option selected="true" value="Polygons">Polygons</option>
+    </param>
+    <param name="ANGLE" type="float" value="55" optional="true" label="Angle [Degree]" help="Angle [Degree]"/>
+    <param name="MINSIZE" type="float" value="2" optional="true" label="Minimum Size [%]" help="Minimum Size [%]"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="Constant_variation_range">Constant variation range</option>
+      <option selected="true" value="Fixed_angle">Fixed angle</option>
+      <option value="High_variation_for_low_sizes">High variation for low sizes</option>
+      <option value="Low_variation_for_low_sizes">Low variation for low sizes</option>
+    </param>
+    <param name="VARRANGE_MIN" type="float" optional="true" label="Constant Variation Range [Degree] (min value)" help="Constant Variation Range [Degree]"/>
+    <param name="VARRANGE_MAX" type="float" optional="true" label="Constant Variation Range [Degree] (max value)" help="Constant Variation Range [Degree]"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Pythagoras' Tree" help="Pythagoras' Tree">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESULT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Pythagoras' Tree.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

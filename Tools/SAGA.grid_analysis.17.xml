@@ -1,0 +1,69 @@
+<tool name="SAGA.grid_analysis.17" id="saga_grid_analysis_17" version="1.0.0">
+  <description>Fragmentation Classes from Density and Connectivity</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDENSITY False  isArrayCONNECTIVITY False  output_data_FRAGMENTATION $output_data_FRAGMENTATION  name SAGA.grid_analysis.17 DENSITY $DENSITY
+CONNECTIVITY $CONNECTIVITY
+BORDER $BORDER
+WEIGHT $WEIGHT
+DENSITY_MIN $DENSITY_MIN
+DENSITY_INT $DENSITY_INT
+prefer $prefer
+response $response
+outputType_FRAGMENTATION $OutputSection_FRAGMENTATION.outputType_FRAGMENTATION
+transmissionMode_FRAGMENTATION $OutputSection_FRAGMENTATION.transmissionMode_FRAGMENTATION]]></command>
+  <inputs>
+    <param name="DENSITY" type="data" optional="false" label="Density [Percent]" help="Density Index (Pf). The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="CONNECTIVITY" type="data" optional="false" label="Connectivity [Percent]" help="Connectivity Index (Pff). The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="BORDER" type="select" optional="true" label="Add Border" help="Add Border">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="WEIGHT" type="float" value="1.1" optional="true" label="Connectivity Weighting" help="Connectivity Weighting"/>
+    <param name="DENSITY_MIN" type="float" value="10" optional="true" label="Minimum Density [Percent]" help="Minimum Density [Percent]"/>
+    <param name="DENSITY_INT" type="float" value="99" optional="true" label="Minimum Density for Interior Forest [Percent]" help="if less than 100, it is distinguished between interior and core forest"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_FRAGMENTATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FRAGMENTATION" type="select" label="Fragmentation" help="Fragmentation Index">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_FRAGMENTATION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_FRAGMENTATION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FRAGMENTATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_FRAGMENTATION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_FRAGMENTATION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Fragmentation classes:&lt;br/&gt;(1) interior, if Density = 1.0&lt;br/&gt;(2) undetermined, if Density &gt; 0.6 and Density = Connectivity&lt;br/&gt;(3) perforated, if Density &gt; 0.6 and Density - Connectivity &gt; 0&lt;br/&gt;(4) edge, if Density &gt; 0.6 and Density - Connectivity &lt; 0&lt;br/&gt;(5) transitional, if 0.4 &lt; Density &lt; 0.6&lt;br/&gt;(6) patch, if Density &lt; 0.4&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

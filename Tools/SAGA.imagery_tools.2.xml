@@ -1,0 +1,68 @@
+<tool name="SAGA.imagery_tools.2" id="saga_imagery_tools_2" version="1.0.0">
+  <description>Enhanced Vegetation Index</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayBLUE False  isArrayRED False  isArrayNIR False  output_data_EVI $output_data_EVI  name SAGA.imagery_tools.2 BLUE $BLUE
+RED $RED
+NIR $NIR
+GAIN $GAIN
+L $L
+CBLUE $CBLUE
+CRED $CRED
+prefer $prefer
+response $response
+outputType_EVI $OutputSection_EVI.outputType_EVI
+transmissionMode_EVI $OutputSection_EVI.transmissionMode_EVI]]></command>
+  <inputs>
+    <param name="BLUE" type="data" optional="false" label="Blue Reflectance" help="Blue Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GAIN" type="float" value="2.5" optional="true" label="Gain" help="Gain"/>
+    <param name="L" type="float" value="1" optional="true" label="Canopy Background Adjustment" help="Canopy Background Adjustment"/>
+    <param name="CBLUE" type="float" value="7.5" optional="true" label="Aerosol Resistance Coefficient (Blue)" help="Aerosol Resistance Coefficient (Blue)"/>
+    <param name="CRED" type="float" value="6" optional="true" label="Aerosol Resistance Coefficient (Red)" help="Aerosol Resistance Coefficient (Red)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_EVI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_EVI" type="select" label="Enhanced Vegetation Index" help="Enhanced Vegetation Index">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_EVI" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_EVI" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_EVI" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_EVI" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_EVI" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Enhanced Vegetation Index (EVI).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,64 @@
+<tool name="SAGA.climate_tools.15" id="saga_climate_tools_15" version="1.0.0">
+  <description>Thermic Belt Classification</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGSL False  isArrayGST False  isArrayFROST False  output_data_ATB $output_data_ATB  name SAGA.climate_tools.15 GSL $GSL
+GST $GST
+FROST $FROST
+NIVAL_TEMP $NIVAL_TEMP
+TREE_TEMP $TREE_TEMP
+prefer $prefer
+response $response
+outputType_ATB $OutputSection_ATB.outputType_ATB
+transmissionMode_ATB $OutputSection_ATB.transmissionMode_ATB]]></command>
+  <inputs>
+    <param name="GSL" type="data" optional="false" label="Growing Season Length" help="Growing season length given as number of days of a year. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="GST" type="data" optional="false" label="Mean Temperature" help="Mean temperature of the growing season. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="FROST" type="data" optional="false" label="Frost occurence" help="Frost occurence as binary factor. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="NIVAL_TEMP" type="float" value="3.5" optional="true" label="Minimum Temperature Nival" help="Minimum Temperature for nival belt."/>
+    <param name="TREE_TEMP" type="float" value="6.4" optional="true" label="Minimum Temperature Treeline" help="Minimum Temperature for treeline."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_ATB" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ATB" type="select" label="Thermal Belts" help="Thermal Belts">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ATB" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_ATB" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ATB" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ATB" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ATB" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculates the thermal belts based on mean temperature and length of the growing season.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

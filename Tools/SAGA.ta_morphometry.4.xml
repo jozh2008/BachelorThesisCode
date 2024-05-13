@@ -1,0 +1,58 @@
+<tool name="SAGA.ta_morphometry.4" id="saga_ta_morphometry_4" version="1.0.0">
+  <description>Curvature Classification</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_CLASS $output_data_CLASS  name SAGA.ta_morphometry.4 DEM $DEM
+THRESHOLD $THRESHOLD
+prefer $prefer
+response $response
+outputType_CLASS $OutputSection_CLASS.outputType_CLASS
+transmissionMode_CLASS $OutputSection_CLASS.transmissionMode_CLASS]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="THRESHOLD" type="float" value="0.0005" optional="true" label="Threshold for plane" help="Threshold for plane"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLASS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLASS" type="select" label="Curvature Classification" help="Curvature Classification">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CLASS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLASS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLASS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CLASS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CLASS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Surface curvature based terrain classification.&lt;br/&gt;Reference:&lt;br/&gt;Dikau, R. (1988):&lt;br/&gt;'Entwurf einer geomorphographisch-analytischen Systematik von Reliefeinheiten',&lt;br/&gt;Heidelberger Geographische Bausteine, Heft 5&lt;br/&gt;&lt;br/&gt;0 - V  / V&lt;br/&gt;1 - GE / V&lt;br/&gt;2 - X  / V&lt;br/&gt;3 - V  / GR&lt;br/&gt;4 - GE / GR&lt;br/&gt;5 - X  / GR&lt;br/&gt;6 - V  / X&lt;br/&gt;7 - GE / X&lt;br/&gt;8 - X  / X&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,66 @@
+<tool name="echo" id="echo" version="2.0.0">
+  <description>Echo input</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayb False  output_data_a $output_data_a  output_data_b $output_data_b  name echo a '$a'
+b $b
+pause $pause
+prefer $prefer
+response $response
+outputType_a '$OutputSection_a.outputType_a'
+transmissionMode_a $OutputSection_a.transmissionMode_a
+outputType_b $OutputSection_b.outputType_b
+transmissionMode_b $OutputSection_b.transmissionMode_b]]></command>
+  <inputs>
+    <param name="a" type="text" optional="true" label="Literal Input (string)" help="An input string"/>
+    <param name="b" type="data" optional="false" label="Complex Input" help="A complex input  The following data types are allowed in the txt file:  xml, json" format="txt"/>
+    <param name="pause" type="float" value="10" optional="true" label="Literal Input (double)" help="An optional input which can be used to specify the number of seconds to pause the service before returning"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_a" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_a" type="text" optional="false" label="The output a" help="The output a returned"/>
+      <param name="transmissionMode_a" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_b" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_b" type="select" label="The output b" help="The output b returned">
+        <option value="application/json">json</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_b" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_a" format="txt" hidden="false"/>
+    <data name="output_data_b" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_b" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Simply echo the value provided as input]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

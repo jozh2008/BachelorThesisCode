@@ -1,0 +1,94 @@
+<tool name="SAGA.garden_webservices.0" id="saga_garden_webservices_0" version="1.0.0">
+  <description>Import a Map via Web Map Service (WMS)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_MAP $output_data_MAP  output_data_LEGENDS $output_data_LEGENDS  name SAGA.garden_webservices.0 SERVER '$SERVER'
+VERSION $VERSION
+LEGEND $LEGEND
+USERNAME '$USERNAME'
+PASSWORD '$PASSWORD'
+ABSTRACT '$ABSTRACT'
+prefer $prefer
+response $response
+outputType_MAP $OutputSection_MAP.outputType_MAP
+transmissionMode_MAP $OutputSection_MAP.transmissionMode_MAP
+outputType_LEGENDS $OutputSection_LEGENDS.outputType_LEGENDS
+transmissionMode_LEGENDS $OutputSection_LEGENDS.transmissionMode_LEGENDS]]></command>
+  <inputs>
+    <param name="SERVER" type="text" value="ogc.bgs.ac.uk/cgi-bin/BGS_Bedrock_and_Superficial_Geology/wms" optional="true" label="Server" help="Server"/>
+    <param name="VERSION" type="select" optional="true" label="Version" help="Version">
+      <option selected="true" value="1.1.1">1.1.1</option>
+      <option value="1.3.0">1.3.0</option>
+    </param>
+    <param name="LEGEND" type="select" optional="true" label="Legend" help="Legend">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="USERNAME" type="text" optional="true" label="User Name" help="User Name"/>
+    <param name="PASSWORD" type="text" optional="true" label="Password" help="Password"/>
+    <param name="ABSTRACT" type="text" optional="false" label="Abstract" help="Abstract"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_MAP" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MAP" type="select" label="WMS Map" help="WMS Map">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MAP" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_LEGENDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LEGENDS" type="select" label="Legends" help="Legends">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LEGENDS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_MAP" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MAP" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MAP" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MAP" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_LEGENDS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LEGENDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LEGENDS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LEGENDS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool works as Web Map Service (WMS) client. More information on the WMS specifications can be obtained from the Open Geospatial Consortium (OGC). ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

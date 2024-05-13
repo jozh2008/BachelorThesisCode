@@ -1,0 +1,120 @@
+<tool name="SAGA.ta_slope_stability.0" id="saga_ta_slope_stability_0" version="1.0.0">
+  <description>SAFETYFACTOR</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayA False  isArrayBmin False  isArrayBmax False  isArrayCmin False  isArrayCmax False  isArrayDmin False  isArrayDmax False  isArrayEmin False  isArrayEmax False  isArrayFmin False  isArrayFmax False  output_data_G $output_data_G  output_data_H $output_data_H  name SAGA.ta_slope_stability.0 A $A
+Bmin $Bmin
+Bmax $Bmax
+Cmin $Cmin
+Cmax $Cmax
+Dmin $Dmin
+Dmax $Dmax
+Emin $Emin
+Emax $Emax
+Fmin $Fmin
+Fmax $Fmax
+fBmin $fBmin
+fBmax $fBmax
+fCmin $fCmin
+fCmax $fCmax
+fDmin $fDmin
+fDmax $fDmax
+fEmin $fEmin
+fEmax $fEmax
+fFmin $fFmin
+fFmax $fFmax
+fI $fI
+prefer $prefer
+response $response
+outputType_G $OutputSection_G.outputType_G
+transmissionMode_G $OutputSection_G.transmissionMode_G
+outputType_H $OutputSection_H.outputType_H
+transmissionMode_H $OutputSection_H.transmissionMode_H]]></command>
+  <inputs>
+    <param name="A" type="data" optional="false" label="Slope grid (rad)" help="Slope grid (rad) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Bmin" type="data" optional="false" label="Min thickness grid (m) " help="A grid representing minimum cell layer thicknesses to potential shear plane (in meters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Bmax" type="data" optional="false" label="Max thickness grid (m) " help="A grid representing maximum cell layer thicknesses to potential shear plane (in meters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Cmin" type="data" optional="false" label="Min saturation grid (-) " help="A grid representing minimum cell relative water saturation of layer (dimensionless) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Cmax" type="data" optional="false" label="Max saturation grid (-) " help="A grid representing maximum cell relative water saturation of layer (dimensionless) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Dmin" type="data" optional="false" label="Min friction grid (degree) " help="A grid representing minimum cell frictional shear strength of layer (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Dmax" type="data" optional="false" label="Max friction grid (degree) " help="A grid representing maximum cell frictional shear strength of layer (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Emin" type="data" optional="false" label="Min density grid (g/cm3)" help="A grid representing minimum cell bulk density of layer (in grams per cubiccentimeters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Emax" type="data" optional="false" label="Max density grid (g/cm3)" help="A grid representing maximum cell bulk density of layer (in grams per cubiccentimeters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Fmin" type="data" optional="false" label="Min cohesion grid (MPa) " help="A grid representing minimum cell layer cohesion (in Megapascals) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="Fmax" type="data" optional="false" label="Max cohesion grid (MPa) " help="A grid representing maximum cell layer cohesion (in Megapascals) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="fBmin" type="float" value="1" optional="true" label="Min global thickness (m)" help="Constant value if no raster set"/>
+    <param name="fBmax" type="float" value="1" optional="true" label="Max global thickness (m)" help="Constant value if no raster set"/>
+    <param name="fCmin" type="float" value="0" optional="true" label="Min global saturation (-)" help="Constant value if no raster set"/>
+    <param name="fCmax" type="float" value="0" optional="true" label="Max global saturation (-)" help="Constant value if no raster set"/>
+    <param name="fDmin" type="float" value="33" optional="true" label="Min global friction (degree)" help="Constant value if no raster set"/>
+    <param name="fDmax" type="float" value="33" optional="true" label="Max global friction (degree)" help="Constant value if no raster set"/>
+    <param name="fEmin" type="float" value="1.6" optional="true" label="Min global density (g/cm3)" help="Constant value if no raster set"/>
+    <param name="fEmax" type="float" value="1.6" optional="true" label="Max global density (g/cm3)" help="Constant value if no raster set"/>
+    <param name="fFmin" type="float" value="0" optional="true" label="Min global cohesion (MPa)" help="Constant value if no raster set"/>
+    <param name="fFmax" type="float" value="0" optional="true" label="Max global cohesion (MPa)" help="Constant value if no raster set"/>
+    <param name="fI" type="integer" value="1" optional="true" label="Parameter sampling runs" help="Number of sampling cycles"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_G" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_G" type="select" label="FS values" help="Resulting factor-of-safety (-) grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_G" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_H" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_H" type="select" label="FS classes" help="Resulting stability (0/1) grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_H" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_G" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_G" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_G" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_G" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_H" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_H" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_H" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_H" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool computes a slope stability (expressed as a factor-of-safety) raster according to the traditional infinite slope model theory (see cf Selby, 1993) The resulting raster represents the ratio of resisting forces/driving forces (fs) on a potential shear plane with fs lesser 1 unstable, fs greater 1 stable. Except for a slope raster (in radians), all input variables can be specified either globally or distributed (through grids). The tool creates a continuous fs raster (values above 10 are truncated), and a binary stability grid with nodata = stable, 1 = unstable (optional).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

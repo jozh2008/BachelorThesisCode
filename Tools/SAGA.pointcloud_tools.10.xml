@@ -1,0 +1,67 @@
+<tool name="SAGA.pointcloud_tools.10" id="saga_pointcloud_tools_10" version="1.0.0">
+  <description>Point Cloud Attribute Calculator</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPC_IN False  output_data_PC_OUT $output_data_PC_OUT  name SAGA.pointcloud_tools.10 PC_IN $PC_IN
+FORMULA '$FORMULA'
+NAME '$NAME'
+TYPE $TYPE
+USE_NODATA $USE_NODATA
+prefer $prefer
+response $response
+outputType_PC_OUT $OutputSection_PC_OUT.outputType_PC_OUT
+transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></command>
+  <inputs>
+    <param name="PC_IN" type="data" optional="false" label="Point Cloud" help="Input The following data types are allowed in the txt file:  x-ogc-lasf" format="txt"/>
+    <param name="FORMULA" type="text" value="f1+f2" optional="true" label="Formula" help="Formula"/>
+    <param name="NAME" type="text" value="Calculation" optional="true" label="Output Field Name" help="Output Field Name"/>
+    <param name="TYPE" type="select" optional="true" label="Field data type" help="Field data type">
+      <option value="1_bit">1 bit</option>
+      <option value="1_byte_signed_integer">1 byte signed integer</option>
+      <option value="1_byte_unsigned_integer">1 byte unsigned integer</option>
+      <option value="2_byte_signed_integer">2 byte signed integer</option>
+      <option value="2_byte_unsigned_integer">2 byte unsigned integer</option>
+      <option selected="true" value="4_byte_floating_point">4 byte floating point</option>
+      <option value="4_byte_signed_integer">4 byte signed integer</option>
+      <option value="4_byte_unsigned_integer">4 byte unsigned integer</option>
+      <option value="8_byte_floating_point">8 byte floating point</option>
+    </param>
+    <param name="USE_NODATA" type="select" optional="true" label="Use NoData" help="Check this in order to include NoData points in the calculation.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PC_OUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PC_OUT" type="select" label="Result" help="Output">
+        <option value="application/x-ogc-lasf">x-ogc-lasf</option>
+      </param>
+      <param name="transmissionMode_PC_OUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PC_OUT" format="x-ogc-lasf" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The Point Cloud Attribute Calculator calculates a new attribute based on existing attributes and a mathematical formula. Attribute fields are addressed by the character 'f' (for 'field') followed by the field number (i.e.: f1, f2, ..., fn) or by the field name in square brackets (e.g.: [Field Name]).&lt;br/&gt;Examples:&lt;br/&gt;sin(f1) * f2 + f3&lt;br/&gt;[intensity] / 1000&lt;br/&gt;&lt;br/&gt;The following operators are available for the formula definition:&lt;br/&gt;&lt;table border="0"&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;+&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Addition&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;-&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Subtraction&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;*&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Multiplication&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;/&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Division&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;abs(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Absolute Value&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;mod(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the floating point remainder of x/y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;int(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the integer part of floating point value x&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sqr(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Square&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sqrt(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Square Root&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;exp(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Exponential&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;pow(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x raised to the power of y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x ^ y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x raised to the power of y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ln(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Natural Logarithm&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;log(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Base 10 Logarithm&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;pi()&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the value of Pi&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;sin(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Sine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;cos(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Cosine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;tan(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Tangent&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;asin(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arcsine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;acos(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arccosine&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;atan(x)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arctangent&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;atan2(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Arctangent of x/y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;min(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the minimum of values x and y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;max(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns the maximum of values x and y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;gt(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is greater than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x &gt; y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is greater than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;lt(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is less than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x &lt; y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x is less than y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;eq(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x equals y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;x = y&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if x equals y, else false (0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;and(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if both x and y are true (i.e. not 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;or(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns true (1), if at least one of both x and y is true (i.e. not 0)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ifelse(c, x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Returns x, if condition c is true (i.e. not 0), else y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;rand_u(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Random number, uniform distribution with minimum x and maximum y&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;rand_g(x, y)&lt;/b&gt;&lt;/td&gt;&lt;td&gt;Random number, Gaussian distribution with mean x and standard deviation y&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

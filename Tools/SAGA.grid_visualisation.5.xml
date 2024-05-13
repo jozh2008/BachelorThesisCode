@@ -1,0 +1,114 @@
+<tool name="SAGA.grid_visualisation.5" id="saga_grid_visualisation_5" version="1.0.0">
+  <description>Color Triangle Composite</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayA_GRID False  isArrayB_GRID False  isArrayC_GRID False  output_data_GRID $output_data_GRID  name SAGA.grid_visualisation.5 A_GRID $A_GRID
+A_METHOD $A_METHOD
+A_RANGE_MIN $A_RANGE_MIN
+A_RANGE_MAX $A_RANGE_MAX
+A_PERCTL_MIN $A_PERCTL_MIN
+A_PERCTL_MAX $A_PERCTL_MAX
+A_PERCENT $A_PERCENT
+B_GRID $B_GRID
+B_METHOD $B_METHOD
+B_RANGE_MIN $B_RANGE_MIN
+B_RANGE_MAX $B_RANGE_MAX
+B_PERCTL_MIN $B_PERCTL_MIN
+B_PERCTL_MAX $B_PERCTL_MAX
+B_PERCENT $B_PERCENT
+C_GRID $C_GRID
+C_METHOD $C_METHOD
+C_RANGE_MIN $C_RANGE_MIN
+C_RANGE_MAX $C_RANGE_MAX
+C_PERCTL_MIN $C_PERCTL_MIN
+C_PERCTL_MAX $C_PERCTL_MAX
+C_PERCENT $C_PERCENT
+prefer $prefer
+response $response
+outputType_GRID $OutputSection_GRID.outputType_GRID
+transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
+  <inputs>
+    <param name="A_GRID" type="data" optional="false" label="A" help="A The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="A_METHOD" type="select" optional="true" label="Value Preparation" help="Value Preparation">
+      <option value="0_-_1">0 - 1</option>
+      <option selected="true" value="Percentage_of_standard_deviation">Percentage of standard deviation</option>
+      <option value="Percentiles">Percentiles</option>
+      <option value="Rescale_to_0_-_1">Rescale to 0 - 1</option>
+      <option value="User_defined_rescale">User defined rescale</option>
+    </param>
+    <param name="A_RANGE_MIN" type="float" optional="true" label="Rescale Range (min value)" help="Rescale Range"/>
+    <param name="A_RANGE_MAX" type="float" optional="true" label="Rescale Range (max value)" help="Rescale Range"/>
+    <param name="A_PERCTL_MIN" type="float" optional="true" label="Percentiles (min value)" help="Percentiles"/>
+    <param name="A_PERCTL_MAX" type="float" optional="true" label="Percentiles (max value)" help="Percentiles"/>
+    <param name="A_PERCENT" type="float" value="150" optional="true" label="Percentage of standard deviation" help="Percentage of standard deviation"/>
+    <param name="B_GRID" type="data" optional="false" label="B" help="B The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="B_METHOD" type="select" optional="true" label="Value Preparation" help="Value Preparation">
+      <option value="0_-_1">0 - 1</option>
+      <option selected="true" value="Percentage_of_standard_deviation">Percentage of standard deviation</option>
+      <option value="Percentiles">Percentiles</option>
+      <option value="Rescale_to_0_-_1">Rescale to 0 - 1</option>
+      <option value="User_defined_rescale">User defined rescale</option>
+    </param>
+    <param name="B_RANGE_MIN" type="float" optional="true" label="Rescale Range (min value)" help="Rescale Range"/>
+    <param name="B_RANGE_MAX" type="float" optional="true" label="Rescale Range (max value)" help="Rescale Range"/>
+    <param name="B_PERCTL_MIN" type="float" optional="true" label="Percentiles (min value)" help="Percentiles"/>
+    <param name="B_PERCTL_MAX" type="float" optional="true" label="Percentiles (max value)" help="Percentiles"/>
+    <param name="B_PERCENT" type="float" value="150" optional="true" label="Percentage of standard deviation" help="Percentage of standard deviation"/>
+    <param name="C_GRID" type="data" optional="false" label="C" help="C The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="C_METHOD" type="select" optional="true" label="Value Preparation" help="Value Preparation">
+      <option value="0_-_1.0">0 - 1.0</option>
+      <option selected="true" value="Percentage_of_standard_deviation">Percentage of standard deviation</option>
+      <option value="Percentiles">Percentiles</option>
+      <option value="Rescale_to_0_-_1.0">Rescale to 0 - 1.0</option>
+      <option value="User_defined_rescale">User defined rescale</option>
+    </param>
+    <param name="C_RANGE_MIN" type="float" optional="true" label="Rescale Range (min value)" help="Rescale Range"/>
+    <param name="C_RANGE_MAX" type="float" optional="true" label="Rescale Range (max value)" help="Rescale Range"/>
+    <param name="C_PERCTL_MIN" type="float" optional="true" label="Percentiles (min value)" help="Percentiles"/>
+    <param name="C_PERCTL_MAX" type="float" optional="true" label="Percentiles (max value)" help="Percentiles"/>
+    <param name="C_PERCENT" type="float" value="150" optional="true" label="Percentage of standard deviation" help="Percentage of standard deviation"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GRID" type="select" label="Composite" help="Composite">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GRID" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GRID" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GRID" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GRID" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Similar to 'RGB Composite', but the three colors representing intensity of each data set can be chosen by user. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

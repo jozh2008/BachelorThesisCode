@@ -1,0 +1,113 @@
+<tool name="OTB.ColorMapping" id="otb_colormapping" version="1.0.0">
+  <description>Maps an input label image to 8-bits RGB using look-up tables.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymethod.custom.lut False  isArraymethod.image.in False  output_data_out $output_data_out  name OTB.ColorMapping in $in
+out $out
+op $op
+op.colortolabel.notfound $op.colortolabel.notfound
+method $method
+method.custom.lut $method.custom.lut
+method.continuous.lut $method.continuous.lut
+method.continuous.min $method.continuous.min
+method.continuous.max $method.continuous.max
+method.optimal.background $method.optimal.background
+method.image.in $method.image.in
+method.image.nodatavalue $method.image.nodatavalue
+method.image.low $method.image.low
+method.image.up $method.image.up
+ram $ram
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Input image filename" help="Input image filename The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="out" type="select" optional="false" label="Output image filename" help="Output image filename">
+      <option value="double">double</option>
+      <option value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option selected="true" value="uint8">uint8</option>
+    </param>
+    <param name="op" type="select" optional="false" label="Selection of the operation to execute (default is : label to color)." help="Selection of the operation to execute (default is : label to color).">
+      <option value="colortolabel">colortolabel</option>
+      <option selected="true" value="labeltocolor">labeltocolor</option>
+    </param>
+    <param name="op.colortolabel.notfound" type="integer" value="404" optional="true" label="Label to use for unknown colors." help="Label to use for unknown colors."/>
+    <param name="method" type="select" optional="false" label="Selection of color mapping methods and their parameters." help="Selection of color mapping methods and their parameters.">
+      <option value="continuous">continuous</option>
+      <option selected="true" value="custom">custom</option>
+      <option value="image">image</option>
+      <option value="optimal">optimal</option>
+    </param>
+    <param name="method.custom.lut" type="data" optional="false" label="An ASCII file containing the look-up tablewith one color per line(for instance the line '1 255 0 0' means that all pixels with label 1 will be replaced by RGB color 255 0 0)Lines beginning with a # are ignored" help="An ASCII file containing the look-up tablewith one color per line(for instance the line '1 255 0 0' means that all pixels with label 1 will be replaced by RGB color 255 0 0)Lines beginning with a # are ignored The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="method.continuous.lut" type="select" optional="false" label="Available look-up tables." help="Available look-up tables.">
+      <option value="autumn">autumn</option>
+      <option value="blue">blue</option>
+      <option value="cool">cool</option>
+      <option value="copper">copper</option>
+      <option value="green">green</option>
+      <option value="grey">grey</option>
+      <option value="hot">hot</option>
+      <option value="hsv">hsv</option>
+      <option value="jet">jet</option>
+      <option value="overunder">overunder</option>
+      <option selected="true" value="red">red</option>
+      <option value="relief">relief</option>
+      <option value="spring">spring</option>
+      <option value="summer">summer</option>
+      <option value="winter">winter</option>
+    </param>
+    <param name="method.continuous.min" type="float" value="0" optional="false" label="Set the lower input value of the mapping range." help="Set the lower input value of the mapping range."/>
+    <param name="method.continuous.max" type="float" value="255" optional="false" label="Set the higher input value of the mapping range." help="Set the higher input value of the mapping range."/>
+    <param name="method.optimal.background" type="integer" value="0" optional="false" label="Value of the background label" help="Value of the background label"/>
+    <param name="method.image.in" type="data" optional="false" label="Support image filename. For each label, the LUT is calculated from the mean pixel value in the support image, over the corresponding labeled areas. First of all, the support image is normalized with extrema rejection" help="Support image filename. For each label, the LUT is calculated from the mean pixel value in the support image, over the corresponding labeled areas. First of all, the support image is normalized with extrema rejection The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="method.image.nodatavalue" type="float" value="0" optional="true" label="NoData value for each channel of the support image, which will not be handled in the LUT estimation. If NOT checked, ALL the pixel values of the support image will be handled in the LUT estimation." help="NoData value for each channel of the support image, which will not be handled in the LUT estimation. If NOT checked, ALL the pixel values of the support image will be handled in the LUT estimation."/>
+    <param name="method.image.low" type="integer" value="2" optional="true" label="lower quantile for image normalization" help="lower quantile for image normalization"/>
+    <param name="method.image.up" type="integer" value="2" optional="true" label="upper quantile for image normalization" help="upper quantile for image normalization"/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output image filename" help="Output image filename">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application allows one to map a label image to a 8-bits RGB image (in both ways) using different methods. -The custom method allows one to use a custom look-up table. The look-up table is loaded from a text file where each line describes an entry. The typical use of this method is to colorise a classification map. -The continuous method allows mapping a range of values in a scalar input image to a colored image using continuous look-up table, in order to enhance image interpretation. Several look-up tables can been chosen with different color ranges.-The optimal method computes an optimal look-up table. When processing a segmentation label image (label to color), the color difference between adjacent segmented regions is maximized. When processing an unknown color image (color to label), all the present colors are mapped to a continuous label list. - The support image method uses a color support image to associate an average color to each region.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

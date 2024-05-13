@@ -1,0 +1,58 @@
+<tool name="OTB.PixelValue" id="otb_pixelvalue" version="1.0.0">
+  <description>Get the value of a pixel.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_value $output_data_value  name OTB.PixelValue in $in
+coordx $coordx
+coordy $coordy
+mode $mode
+mode.epsg.code $mode.epsg.code
+cl '$cl'
+prefer $prefer
+response $response
+outputType_value '$OutputSection_value.outputType_value'
+transmissionMode_value $OutputSection_value.transmissionMode_value]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="coordx" type="float" optional="false" label="This will be the X coordinate interpreted depending on the chosen mode" help="This will be the X coordinate interpreted depending on the chosen mode"/>
+    <param name="coordy" type="float" optional="false" label="This will be the Y coordinate interpreted depending on the chosen mode" help="This will be the Y coordinate interpreted depending on the chosen mode"/>
+    <param name="mode" type="select" optional="false" label="Different modes can be selected, default mode is Index." help="Different modes can be selected, default mode is Index.">
+      <option value="epsg">epsg</option>
+      <option selected="true" value="index">index</option>
+      <option value="physical">physical</option>
+    </param>
+    <param name="mode.epsg.code" type="integer" optional="true" label="This code is used to define a geographical coordinate system. If no system is specified, WGS84 (EPSG : 4326) is used by default." help="This code is used to define a geographical coordinate system. If no system is specified, WGS84 (EPSG : 4326) is used by default."/>
+    <param name="cl" type="text" optional="true" label="Displayed channels" help="Displayed channels"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_value" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_value" type="text" optional="false" label="Pixel radiometric value" help="Pixel radiometric value"/>
+      <param name="transmissionMode_value" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_value" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application gives the value of a selected pixel. There are three ways to designate a pixel, with its index, its physical coordinate (in the physical space attached to the image), and with geographical coordinate system. Coordinates will be interpreted differently depending on which mode is chosen.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

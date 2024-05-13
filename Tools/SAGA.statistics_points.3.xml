@@ -1,0 +1,46 @@
+<tool name="SAGA.statistics_points.3" id="saga_statistics_points_3" version="1.0.0">
+  <description>Minimum Distance Analysis</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS False  output_data_TABLE $output_data_TABLE  name SAGA.statistics_points.3 POINTS $POINTS
+prefer $prefer
+response $response
+outputType_TABLE $OutputSection_TABLE.outputType_TABLE
+transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TABLE" type="select" label="Minimum Distance Analysis" help="Minimum Distance Analysis">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_TABLE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TABLE" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Minimum Distance Analysis]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,71 @@
+<tool name="SAGA.shapes_grid.6" id="saga_shapes_grid_6" version="1.0.0">
+  <description>Vectorising Grid Classes</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_POLYGONS $output_data_POLYGONS  name SAGA.shapes_grid.6 GRID $GRID
+CLASS_ALL $CLASS_ALL
+CLASS_ID $CLASS_ID
+SPLIT $SPLIT
+ALLVERTICES $ALLVERTICES
+prefer $prefer
+response $response
+outputType_POLYGONS $OutputSection_POLYGONS.outputType_POLYGONS
+transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="CLASS_ALL" type="select" optional="true" label="Class Selection" help="Class Selection">
+      <option selected="true" value="all_classes">all classes</option>
+      <option value="one_single_class_specified_by_class_identifier">one single class specified by class identifier</option>
+    </param>
+    <param name="CLASS_ID" type="float" value="1" optional="true" label="Class Identifier" help="Class Identifier"/>
+    <param name="SPLIT" type="select" optional="true" label="Vectorised class as..." help="Vectorised class as...">
+      <option value="each_island_as_separated_polygon">each island as separated polygon</option>
+      <option selected="true" value="one_single_(multi-)polygon_object">one single (multi-)polygon object</option>
+    </param>
+    <param name="ALLVERTICES" type="select" optional="true" label="Keep Vertices on Straight Lines" help="Keep Vertices on Straight Lines">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_POLYGONS" type="select" label="Polygons" help="Polygons">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_POLYGONS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_POLYGONS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_POLYGONS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Vectorising grid classes.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

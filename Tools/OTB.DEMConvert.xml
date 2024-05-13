@@ -1,0 +1,52 @@
+<tool name="OTB.DEMConvert" id="otb_demconvert" version="1.0.0">
+  <description>Converts a geo-referenced DEM image into a general raster file compatible with OTB DEM handling.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.DEMConvert in $in
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Input geo-referenced DEM to convert to general raster format." help="Input geo-referenced DEM to convert to general raster format. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="will be used to get the prefix (name withtout extensions) of the files to write. Three files - prefix.geom, prefix.omd and prefix.ras - will be generated." help="will be used to get the prefix (name withtout extensions) of the files to write. Three files - prefix.geom, prefix.omd and prefix.ras - will be generated.">
+        <option value="text/plain">plain</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="plain" value="text/plain"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[In order to be understood by the Orfeo ToolBox and the underlying OSSIM library, a geo-referenced Digital Elevation Model image can be converted into a general raster image, which consists in 3 files with the following extensions: .ras, .geom and .omd. Once converted, you have to place these files in a separate directory, and you can then use this directory to set the "DEM Directory" parameter of a DEM based OTB application or filter.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

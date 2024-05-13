@@ -1,0 +1,69 @@
+<tool name="OTB.ConvertCartoToGeoPoint" id="otb_convertcartotogeopoint" version="1.0.0">
+  <description>Convert cartographic coordinates to geographic ones.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_long $output_data_long  output_data_lat $output_data_lat  name OTB.ConvertCartoToGeoPoint carto.x $carto.x
+carto.y $carto.y
+mapproj $mapproj
+mapproj.utm.zone $mapproj.utm.zone
+mapproj.utm.northhem $mapproj.utm.northhem
+mapproj.epsg.code $mapproj.epsg.code
+prefer $prefer
+response $response
+transmissionMode_long $OutputSection_long.transmissionMode_long
+transmissionMode_lat $OutputSection_lat.transmissionMode_lat]]></command>
+  <inputs>
+    <param name="carto.x" type="float" optional="false" label="X cartographic coordinates in the projection defined by mapproj parameter" help="X cartographic coordinates in the projection defined by mapproj parameter"/>
+    <param name="carto.y" type="float" optional="false" label="Y cartographic coordinates in the projection defined by mapproj parameter" help="Y cartographic coordinates in the projection defined by mapproj parameter"/>
+    <param name="mapproj" type="select" optional="false" label="Defines the map projection to be used." help="Defines the map projection to be used.">
+      <option value="epsg">epsg</option>
+      <option value="lambert2">lambert2</option>
+      <option value="lambert93">lambert93</option>
+      <option selected="true" value="utm">utm</option>
+      <option value="wgs">wgs</option>
+    </param>
+    <param name="mapproj.utm.zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
+    <param name="mapproj.utm.northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="mapproj.epsg.code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_long" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_long" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_lat" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_lat" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_long" format="txt" hidden="false"/>
+    <data name="output_data_lat" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application computes the geographic coordinates from cartographic ones. User has to give the X and Y coordinate and the cartographic projection (see mapproj parameter for details).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

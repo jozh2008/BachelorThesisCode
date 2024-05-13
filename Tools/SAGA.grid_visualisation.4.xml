@@ -1,0 +1,106 @@
+<tool name="SAGA.grid_visualisation.4" id="saga_grid_visualisation_4" version="1.0.0">
+  <description>Create 3D Image</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArrayIMAGE False  isArraySHAPES True  output_data_RGB $output_data_RGB  output_data_RGB_Z $output_data_RGB_Z  name SAGA.grid_visualisation.4 DEM $DEM
+IMAGE $IMAGE
+SHAPES $SHAPES
+ZEXAGG $ZEXAGG
+ZEXAGG_MIN $ZEXAGG_MIN
+Z_ROTATE $Z_ROTATE
+X_ROTATE $X_ROTATE
+X_ROTATE_LEVEL $X_ROTATE_LEVEL
+PANBREAK $PANBREAK
+PROJECTION $PROJECTION
+NX $NX
+NY $NY
+prefer $prefer
+response $response
+outputType_RGB $OutputSection_RGB.outputType_RGB
+transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB
+outputType_RGB_Z $OutputSection_RGB_Z.outputType_RGB_Z
+transmissionMode_RGB_Z $OutputSection_RGB_Z.transmissionMode_RGB_Z]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="IMAGE" type="data" optional="false" label="Overlay Image" help="Overlay Image The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes to project" help="Shapes to project The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="ZEXAGG" type="float" value="1" optional="true" label="Exaggeration" help="Exaggeration"/>
+    <param name="ZEXAGG_MIN" type="float" value="10" optional="true" label="Minimum Exaggeration [%]" help="Minimum Exaggeration [%]"/>
+    <param name="Z_ROTATE" type="float" value="0" optional="true" label="Image Rotation [Degree]" help="Image Rotation [Degree]"/>
+    <param name="X_ROTATE" type="float" value="1" optional="true" label="Local Rotation [Degree]" help="Local Rotation [Degree]"/>
+    <param name="X_ROTATE_LEVEL" type="select" optional="true" label="Local Rotation Base Level" help="Local Rotation Base Level">
+      <option selected="true" value="Mean_Elevation">Mean Elevation</option>
+      <option value="Zero">Zero</option>
+    </param>
+    <param name="PANBREAK" type="float" value="70" optional="true" label="Panorama Break [%]" help="Panorama Break [%]"/>
+    <param name="PROJECTION" type="select" optional="true" label="Projection" help="Projection">
+      <option value="Circular">Circular</option>
+      <option selected="true" value="Panorama">Panorama</option>
+    </param>
+    <param name="NX" type="integer" value="100" optional="true" label="3D Image Width" help="3D Image Width"/>
+    <param name="NY" type="integer" value="100" optional="true" label="3D Image Height" help="3D Image Height"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RGB" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RGB" type="select" label="3D Image" help="3D Image">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RGB" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_RGB_Z" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RGB_Z" type="select" label="Projected Height" help="Projected Height">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RGB_Z" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RGB" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RGB" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RGB" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RGB" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_RGB_Z" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RGB_Z" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RGB_Z" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RGB_Z" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Create 3D Image]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

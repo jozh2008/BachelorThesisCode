@@ -1,0 +1,73 @@
+<tool name="SAGA.garden_webservices.2" id="saga_garden_webservices_2" version="1.0.0">
+  <description>Geocoding</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayADDRESSES False  isArrayFIELD False  output_data_LOCATIONS $output_data_LOCATIONS  name SAGA.garden_webservices.2 ADDRESSES $ADDRESSES
+FIELD $FIELD
+ADDRESS '$ADDRESS'
+PROVIDER $PROVIDER
+API_KEY '$API_KEY'
+METADATA $METADATA
+prefer $prefer
+response $response
+outputType_LOCATIONS $OutputSection_LOCATIONS.outputType_LOCATIONS
+transmissionMode_LOCATIONS $OutputSection_LOCATIONS.transmissionMode_LOCATIONS]]></command>
+  <inputs>
+    <param name="ADDRESSES" type="data" optional="false" label="Address List" help="Address List The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Address Field" help="Address Field The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="ADDRESS" type="text" value="Bundesstrasse 55, Hamburg, Germany" optional="true" label="Single Address" help="Single Address"/>
+    <param name="PROVIDER" type="select" optional="true" label="Service Provider" help="Service Provider">
+      <option value="Bing">Bing</option>
+      <option value="Google">Google</option>
+      <option value="MapQuest">MapQuest</option>
+      <option selected="true" value="Nominatim_(OpenStreetMap)">Nominatim (OpenStreetMap)</option>
+      <option value="The_Data_Science_Toolkit">The Data Science Toolkit</option>
+    </param>
+    <param name="API_KEY" type="text" optional="true" label="API Key" help="API Key"/>
+    <param name="METADATA" type="select" optional="true" label="Store Metadata" help="Store Metadata">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_LOCATIONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LOCATIONS" type="select" label="Locations" help="Locations">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_LOCATIONS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_LOCATIONS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LOCATIONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_LOCATIONS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Geocoding of addresses using geocoding services. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,146 @@
+<tool name="SAGA.ta_morphometry.26" id="saga_ta_morphometry_26" version="1.0.0">
+  <description>Upslope and Downslope Curvature</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_C_LOCAL $output_data_C_LOCAL  output_data_C_UP $output_data_C_UP  output_data_C_UP_LOCAL $output_data_C_UP_LOCAL  output_data_C_DOWN $output_data_C_DOWN  output_data_C_DOWN_LOCAL $output_data_C_DOWN_LOCAL  name SAGA.ta_morphometry.26 DEM $DEM
+WEIGHTING $WEIGHTING
+prefer $prefer
+response $response
+outputType_C_LOCAL $OutputSection_C_LOCAL.outputType_C_LOCAL
+transmissionMode_C_LOCAL $OutputSection_C_LOCAL.transmissionMode_C_LOCAL
+outputType_C_UP $OutputSection_C_UP.outputType_C_UP
+transmissionMode_C_UP $OutputSection_C_UP.transmissionMode_C_UP
+outputType_C_UP_LOCAL $OutputSection_C_UP_LOCAL.outputType_C_UP_LOCAL
+transmissionMode_C_UP_LOCAL $OutputSection_C_UP_LOCAL.transmissionMode_C_UP_LOCAL
+outputType_C_DOWN $OutputSection_C_DOWN.outputType_C_DOWN
+transmissionMode_C_DOWN $OutputSection_C_DOWN.transmissionMode_C_DOWN
+outputType_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.outputType_C_DOWN_LOCAL
+transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOWN_LOCAL]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="WEIGHTING" type="float" value="0.5" optional="true" label="Upslope Weighting" help="Upslope Weighting"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_C_LOCAL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_C_LOCAL" type="select" label="Local Curvature" help="Local Curvature">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_C_LOCAL" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_C_UP" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_C_UP" type="select" label="Upslope Curvature" help="Upslope Curvature">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_C_UP" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_C_UP_LOCAL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_C_UP_LOCAL" type="select" label="Local Upslope Curvature" help="Local Upslope Curvature">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_C_UP_LOCAL" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_C_DOWN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_C_DOWN" type="select" label="Downslope Curvature" help="Downslope Curvature">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_C_DOWN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_C_DOWN_LOCAL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_C_DOWN_LOCAL" type="select" label="Local Downslope Curvature" help="Local Downslope Curvature">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_C_DOWN_LOCAL" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_C_LOCAL" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_C_LOCAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_C_LOCAL" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_C_LOCAL" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_C_UP" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_C_UP" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_C_UP" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_C_UP" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_C_UP_LOCAL" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_C_UP_LOCAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_C_UP_LOCAL" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_C_UP_LOCAL" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_C_DOWN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_C_DOWN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_C_DOWN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_C_DOWN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_C_DOWN_LOCAL" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_C_DOWN_LOCAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_C_DOWN_LOCAL" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_C_DOWN_LOCAL" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool first calculates the local curvature of a cell as sum of the gradients (i.e. tangens of slope) to its neighbour cells. This is a simple estimation of the general curvature and is strongly correlated with general curvatures calculated with other methods (e.g. Zevenbergen & Thorne 1987). Then upslope curvature is calculated as the distance and flow proportional weighted average local curvature over a cell's upslope contributing area following the multiple flow direction algorithm after Freeman (1991). In a similar way the downslope curvature is calculated by summarizing the curvatures of all hydrologically downslope connected cells. The local upslope/downslope curvatures just take the immediately neighboured cells into account. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

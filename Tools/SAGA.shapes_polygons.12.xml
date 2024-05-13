@@ -1,0 +1,56 @@
+<tool name="SAGA.shapes_polygons.12" id="saga_shapes_polygons_12" version="1.0.0">
+  <description>Polygon Self-Intersection</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOLYGONS False  isArrayID False  output_data_INTERSECT $output_data_INTERSECT  name SAGA.shapes_polygons.12 POLYGONS $POLYGONS
+ID $ID
+prefer $prefer
+response $response
+outputType_INTERSECT $OutputSection_INTERSECT.outputType_INTERSECT
+transmissionMode_INTERSECT $OutputSection_INTERSECT.transmissionMode_INTERSECT]]></command>
+  <inputs>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="ID" type="data" optional="false" label="Identifier" help="Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_INTERSECT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INTERSECT" type="select" label="Intersection" help="Intersection">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_INTERSECT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_INTERSECT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_INTERSECT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_INTERSECT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Self-intersection of one layer's polygons.&lt;br/&gt;Uses the free and open source software library &lt;b&gt;Clipper&lt;/b&gt; created by Angus Johnson.&lt;br/&gt;&lt;a target="_blank" href="http://www.angusj.com/delphi/clipper.php"&gt;Clipper Homepage&lt;/a&gt;&lt;br/&gt;&lt;a target="_blank" href="http://sourceforge.net/projects/polyclipping/"&gt;Clipper at SourceForge&lt;/a&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

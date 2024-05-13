@@ -1,0 +1,72 @@
+<tool name="SAGA.db_pgsql.33" id="saga_db_pgsql_33" version="1.0.0">
+  <description>Import Single Raster Band from PostGIS</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_GRID $output_data_GRID  name SAGA.db_pgsql.33 PG_HOST '$PG_HOST'
+PG_PORT $PG_PORT
+PG_NAME '$PG_NAME'
+PG_USER '$PG_USER'
+PG_PWD '$PG_PWD'
+CONNECTION '$CONNECTION'
+TABLES '$TABLES'
+BANDS '$BANDS'
+RID '$RID'
+prefer $prefer
+response $response
+outputType_GRID $OutputSection_GRID.outputType_GRID
+transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
+  <inputs>
+    <param name="PG_HOST" type="text" optional="true" label="Host" help="Password"/>
+    <param name="PG_PORT" type="integer" value="5432" optional="true" label="Port" help="Port"/>
+    <param name="PG_NAME" type="text" optional="true" label="Database" help="Database Name"/>
+    <param name="PG_USER" type="text" optional="true" label="User" help="User Name"/>
+    <param name="PG_PWD" type="text" optional="true" label="Password" help="Password"/>
+    <param name="CONNECTION" type="text" optional="true" label="Available Connections" help="Available Connections"/>
+    <param name="TABLES" type="text" optional="true" label="Tables" help="Tables"/>
+    <param name="BANDS" type="text" optional="true" label="Bands" help="Bands"/>
+    <param name="RID" type="text" optional="true" label="Raster Band Identifier" help="Raster Band Identifier"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GRID" type="select" label="Grid" help="Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GRID" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GRID" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GRID" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GRID" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Imports grids from a PostGIS database.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

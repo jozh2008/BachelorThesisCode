@@ -1,0 +1,80 @@
+<tool name="SAGA.ta_morphometry.19" id="saga_ta_morphometry_19" version="1.0.0">
+  <description>TPI Based Landform Classification</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_LANDFORMS $output_data_LANDFORMS  name SAGA.ta_morphometry.19 DEM $DEM
+RADIUS_A_MIN $RADIUS_A_MIN
+RADIUS_A_MAX $RADIUS_A_MAX
+RADIUS_B_MIN $RADIUS_B_MIN
+RADIUS_B_MAX $RADIUS_B_MAX
+DW_WEIGHTING $DW_WEIGHTING
+DW_IDW_POWER $DW_IDW_POWER
+DW_IDW_OFFSET $DW_IDW_OFFSET
+DW_BANDWIDTH $DW_BANDWIDTH
+prefer $prefer
+response $response
+outputType_LANDFORMS $OutputSection_LANDFORMS.outputType_LANDFORMS
+transmissionMode_LANDFORMS $OutputSection_LANDFORMS.transmissionMode_LANDFORMS]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="RADIUS_A_MIN" type="float" optional="true" label="Small Scale (min value)" help="radius in map units"/>
+    <param name="RADIUS_A_MAX" type="float" optional="true" label="Small Scale (max value)" help="radius in map units"/>
+    <param name="RADIUS_B_MIN" type="float" optional="true" label="Large Scale (min value)" help="kernel radius in map units"/>
+    <param name="RADIUS_B_MAX" type="float" optional="true" label="Large Scale (max value)" help="kernel radius in map units"/>
+    <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
+      <option value="exponential">exponential</option>
+      <option value="gaussian_weighting">gaussian weighting</option>
+      <option value="inverse_distance_to_a_power">inverse distance to a power</option>
+      <option selected="true" value="no_distance_weighting">no distance weighting</option>
+    </param>
+    <param name="DW_IDW_POWER" type="float" value="1" optional="true" label="Inverse Distance Weighting Power" help="Inverse Distance Weighting Power"/>
+    <param name="DW_IDW_OFFSET" type="select" optional="true" label="Inverse Distance Offset" help="Calculates weights for distance plus one, avoiding division by zero for zero distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_BANDWIDTH" type="float" value="75" optional="true" label="Gaussian and Exponential Weighting Bandwidth" help="Gaussian and Exponential Weighting Bandwidth"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_LANDFORMS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LANDFORMS" type="select" label="Landforms" help="Landforms">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LANDFORMS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_LANDFORMS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LANDFORMS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LANDFORMS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LANDFORMS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Topographic Position Index (TPI) calculation as proposed by Guisan et al. (1999). This is literally the same as the difference to the mean calculation (residual analysis) proposed by Wilson & Gallant (2000). The bandwidth parameter for distance weighting is given as percentage of the (outer) radius.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

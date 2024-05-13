@@ -1,0 +1,118 @@
+<tool name="SAGA.statistics_grid.9" id="saga_statistics_grid_9" version="1.0.0">
+  <description>Multi-Band Variation</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayBANDS True  output_data_MEAN $output_data_MEAN  output_data_STDDEV $output_data_STDDEV  output_data_DIFF $output_data_DIFF  name SAGA.statistics_grid.9 BANDS $BANDS
+RADIUS $RADIUS
+DW_WEIGHTING $DW_WEIGHTING
+DW_IDW_POWER $DW_IDW_POWER
+DW_IDW_OFFSET $DW_IDW_OFFSET
+DW_BANDWIDTH $DW_BANDWIDTH
+prefer $prefer
+response $response
+outputType_MEAN $OutputSection_MEAN.outputType_MEAN
+transmissionMode_MEAN $OutputSection_MEAN.transmissionMode_MEAN
+outputType_STDDEV $OutputSection_STDDEV.outputType_STDDEV
+transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
+outputType_DIFF $OutputSection_DIFF.outputType_DIFF
+transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
+  <inputs>
+    <param name="BANDS" type="data" optional="false" label="Bands" help="Bands The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="RADIUS" type="integer" value="1" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
+    <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
+      <option value="exponential">exponential</option>
+      <option value="gaussian_weighting">gaussian weighting</option>
+      <option value="inverse_distance_to_a_power">inverse distance to a power</option>
+      <option selected="true" value="no_distance_weighting">no distance weighting</option>
+    </param>
+    <param name="DW_IDW_POWER" type="float" value="1" optional="true" label="Inverse Distance Weighting Power" help="Inverse Distance Weighting Power"/>
+    <param name="DW_IDW_OFFSET" type="select" optional="true" label="Inverse Distance Offset" help="Calculates weights for distance plus one, avoiding division by zero for zero distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_BANDWIDTH" type="float" value="1" optional="true" label="Gaussian and Exponential Weighting Bandwidth" help="Gaussian and Exponential Weighting Bandwidth"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MEAN" type="select" label="Mean Distance" help="Mean Distance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MEAN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_STDDEV" type="select" label="Standard Deviation" help="Standard Deviation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_STDDEV" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIFF" type="select" label="Distance" help="Distance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIFF" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_MEAN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MEAN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MEAN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_STDDEV" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_STDDEV" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_STDDEV" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIFF" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIFF" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIFF" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIFF" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculates for each cell the spectral variation based on feature space distances to the centroid for all cells in specified neighbourhood. The average distance has been used for Spectral Variation Hypothesis (SVH).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

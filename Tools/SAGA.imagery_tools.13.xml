@@ -1,0 +1,137 @@
+<tool name="SAGA.imagery_tools.13" id="saga_imagery_tools_13" version="1.0.0">
+  <description>Universal Image Quality Index</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID_A False  isArrayGRID_B False  output_data_QUALITY $output_data_QUALITY  output_data_CORRELATION $output_data_CORRELATION  output_data_LUMINANCE $output_data_LUMINANCE  output_data_CONTRAST $output_data_CONTRAST  name SAGA.imagery_tools.13 GRID_A $GRID_A
+GRID_B $GRID_B
+K1 $K1
+K2 $K2
+L $L
+KERNEL_TYPE $KERNEL_TYPE
+KERNEL_RADIUS $KERNEL_RADIUS
+prefer $prefer
+response $response
+outputType_QUALITY $OutputSection_QUALITY.outputType_QUALITY
+transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY
+outputType_CORRELATION $OutputSection_CORRELATION.outputType_CORRELATION
+transmissionMode_CORRELATION $OutputSection_CORRELATION.transmissionMode_CORRELATION
+outputType_LUMINANCE $OutputSection_LUMINANCE.outputType_LUMINANCE
+transmissionMode_LUMINANCE $OutputSection_LUMINANCE.transmissionMode_LUMINANCE
+outputType_CONTRAST $OutputSection_CONTRAST.outputType_CONTRAST
+transmissionMode_CONTRAST $OutputSection_CONTRAST.transmissionMode_CONTRAST]]></command>
+  <inputs>
+    <param name="GRID_A" type="data" optional="false" label="First Grid" help="First Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="GRID_B" type="data" optional="false" label="Second Grid" help="Second Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="K1" type="float" value="0.01" optional="true" label="k1" help="k1"/>
+    <param name="K2" type="float" value="0.03" optional="true" label="k2" help="k2"/>
+    <param name="L" type="integer" value="255" optional="true" label="L" help="The dynamic range for the image pixel, i.e. the number of different grey values."/>
+    <param name="KERNEL_TYPE" type="select" optional="true" label="Kernel Type" help="The shape of the filter kernel.">
+      <option selected="true" value="Circle">Circle</option>
+      <option value="Square">Square</option>
+    </param>
+    <param name="KERNEL_RADIUS" type="integer" value="2" optional="true" label="Kernel Radius" help="The kernel radius in cells."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_QUALITY" type="select" label="Universal Image Quality Index" help="The product of correlation, luminance and contrast similarity.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_QUALITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CORRELATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CORRELATION" type="select" label="Correlation" help="The correlation coefficient.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CORRELATION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_LUMINANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LUMINANCE" type="select" label="Luminance" help="The similarity of mean luminance.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LUMINANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CONTRAST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CONTRAST" type="select" label="Contrast" help="The similarity of contrast.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CONTRAST" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_QUALITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_QUALITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_QUALITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_QUALITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_CORRELATION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CORRELATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CORRELATION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CORRELATION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_LUMINANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LUMINANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LUMINANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LUMINANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_CONTRAST" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CONTRAST" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CONTRAST" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CONTRAST" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The Universal Image Quality Index compares two grids (greyscale images) using the three parameters luminance, contrast and structure. This is done for each pixel using a moving window as specified by the kernel radius. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

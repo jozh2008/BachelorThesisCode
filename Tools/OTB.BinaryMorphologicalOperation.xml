@@ -1,0 +1,97 @@
+<tool name="OTB.BinaryMorphologicalOperation" id="otb_binarymorphologicaloperation" version="1.0.0">
+  <description>Performs morphological operations on an input image channel</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.BinaryMorphologicalOperation in $in
+out $out
+channel $channel
+ram $ram
+structype $structype
+structype.ball.xradius $structype.ball.xradius
+structype.ball.yradius $structype.ball.yradius
+filter $filter
+filter.dilate.foreval $filter.dilate.foreval
+filter.dilate.backval $filter.dilate.backval
+filter.erode.foreval $filter.erode.foreval
+filter.erode.backval $filter.erode.backval
+filter.opening.foreval $filter.opening.foreval
+filter.opening.backval $filter.opening.backval
+filter.closing.foreval $filter.closing.foreval
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="The input image to be filtered." help="The input image to be filtered. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="out" type="select" optional="false" label="Output image" help="Output image">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="channel" type="integer" value="1" optional="false" label="The selected channel index" help="The selected channel index"/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="structype" type="select" optional="false" label="Choice of the structuring element type" help="Choice of the structuring element type">
+      <option selected="true" value="ball">ball</option>
+      <option value="cross">cross</option>
+    </param>
+    <param name="structype.ball.xradius" type="integer" value="5" optional="false" label="The structuring element radius along the X axis." help="The structuring element radius along the X axis."/>
+    <param name="structype.ball.yradius" type="integer" value="5" optional="false" label="The structuring element radius along the y axis." help="The structuring element radius along the y axis."/>
+    <param name="filter" type="select" optional="false" label="Choice of the morphological operation" help="Choice of the morphological operation">
+      <option value="closing">closing</option>
+      <option selected="true" value="dilate">dilate</option>
+      <option value="erode">erode</option>
+      <option value="opening">opening</option>
+    </param>
+    <param name="filter.dilate.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="filter.dilate.backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
+    <param name="filter.erode.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="filter.erode.backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
+    <param name="filter.opening.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="filter.opening.backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
+    <param name="filter.closing.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output image" help="Output image">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application performs binary morphological operations on a mono band image or a channel of the input.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

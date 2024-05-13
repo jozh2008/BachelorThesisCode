@@ -1,0 +1,92 @@
+<tool name="SAGA.ta_morphometry.21" id="saga_ta_morphometry_21" version="1.0.0">
+  <description>Terrain Surface Convexity</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_CONVEXITY $output_data_CONVEXITY  name SAGA.ta_morphometry.21 DEM $DEM
+KERNEL $KERNEL
+TYPE $TYPE
+EPSILON $EPSILON
+SCALE $SCALE
+METHOD $METHOD
+DW_WEIGHTING $DW_WEIGHTING
+DW_IDW_POWER $DW_IDW_POWER
+DW_IDW_OFFSET $DW_IDW_OFFSET
+DW_BANDWIDTH $DW_BANDWIDTH
+prefer $prefer
+response $response
+outputType_CONVEXITY $OutputSection_CONVEXITY.outputType_CONVEXITY
+transmissionMode_CONVEXITY $OutputSection_CONVEXITY.transmissionMode_CONVEXITY]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="KERNEL" type="select" optional="true" label="Laplacian Filter Kernel" help="Laplacian Filter Kernel">
+      <option value="conventional_eight-neihbourhood">conventional eight-neihbourhood</option>
+      <option selected="true" value="conventional_four-neighbourhood">conventional four-neighbourhood</option>
+      <option value="eight-neihbourhood_(distance_based_weighting)">eight-neihbourhood (distance based weighting)</option>
+    </param>
+    <param name="TYPE" type="select" optional="true" label="Type" help="Type">
+      <option value="concavity">concavity</option>
+      <option selected="true" value="convexity">convexity</option>
+    </param>
+    <param name="EPSILON" type="float" value="0" optional="true" label="Flat Area Threshold" help="Flat Area Threshold"/>
+    <param name="SCALE" type="integer" value="10" optional="true" label="Scale (Cells)" help="Scale (Cells)"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="counting_cells">counting cells</option>
+      <option selected="true" value="resampling">resampling</option>
+    </param>
+    <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
+      <option value="exponential">exponential</option>
+      <option selected="true" value="gaussian_weighting">gaussian weighting</option>
+      <option value="inverse_distance_to_a_power">inverse distance to a power</option>
+      <option value="no_distance_weighting">no distance weighting</option>
+    </param>
+    <param name="DW_IDW_POWER" type="float" value="1" optional="true" label="Inverse Distance Weighting Power" help="Inverse Distance Weighting Power"/>
+    <param name="DW_IDW_OFFSET" type="select" optional="true" label="Inverse Distance Offset" help="Calculates weights for distance plus one, avoiding division by zero for zero distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_BANDWIDTH" type="float" value="0.7" optional="true" label="Gaussian and Exponential Weighting Bandwidth" help="Gaussian and Exponential Weighting Bandwidth"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CONVEXITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CONVEXITY" type="select" label="Convexity" help="Convexity">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CONVEXITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CONVEXITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CONVEXITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CONVEXITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CONVEXITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Terrain surface convexity as proposed by Iwahashi & Pike (2007) for subsequent terrain classification.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

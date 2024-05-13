@@ -1,0 +1,63 @@
+<tool name="SAGA.shapes_points.8" id="saga_shapes_points_8" version="1.0.0">
+  <description>Clip Points with Polygons</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS False  isArrayPOLYGONS False  isArrayFIELD False  output_data_CLIPS $output_data_CLIPS  name SAGA.shapes_points.8 POINTS $POINTS
+POLYGONS $POLYGONS
+FIELD $FIELD
+METHOD $METHOD
+prefer $prefer
+response $response
+outputType_CLIPS $OutputSection_CLIPS.outputType_CLIPS
+transmissionMode_CLIPS $OutputSection_CLIPS.transmissionMode_CLIPS]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Add Attribute to Clipped Points" help="Add Attribute to Clipped Points The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Clipping Options" help="Clipping Options">
+      <option selected="true" value="one_layer_for_all_points">one layer for all points</option>
+      <option value="separate_layer_for_each_polygon">separate layer for each polygon</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLIPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLIPS" type="select" label="Clipped Points" help="Clipped Points">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_CLIPS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLIPS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLIPS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_CLIPS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Clip Points with Polygons]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,54 @@
+<tool name="SAGA.sim_ecosystems_hugget.0" id="saga_sim_ecosystems_hugget_0" version="1.0.0">
+  <description>01: A Simple Litter System</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_TABLE $output_data_TABLE  name SAGA.sim_ecosystems_hugget.0 TIME_SPAN $TIME_SPAN
+TIME_STEP $TIME_STEP
+C_INIT $C_INIT
+C_INPUT $C_INPUT
+C_OUTPUT $C_OUTPUT
+prefer $prefer
+response $response
+outputType_TABLE $OutputSection_TABLE.outputType_TABLE
+transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
+  <inputs>
+    <param name="TIME_SPAN" type="float" value="100" optional="true" label="Time Span" help="Time Span"/>
+    <param name="TIME_STEP" type="float" value="0.1" optional="true" label="Time Interval [a]" help="Time Interval [a]"/>
+    <param name="C_INIT" type="float" value="0" optional="true" label="No title found"/>
+    <param name="C_INPUT" type="float" value="240" optional="true" label="No title found"/>
+    <param name="C_OUTPUT" type="float" value="0.4" optional="true" label="Rate Constant for Litter Loss [1/a]" help="Rate Constant for Litter Loss [1/a]"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TABLE" type="select" label="Results" help="Results">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_TABLE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TABLE" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[A simple litter system model using the euler method. Carbon storage C is calculated in dependency of litter fall rate (Cinput) and rate constant for litter loss (Closs) as:&lt;br/&gt;C(t + 1) = C(t) + (Cinput - Closs * C(t)) * dt&lt;br/&gt;&lt;br/&gt;Typical values:&lt;br/&gt;&lt;br/&gt;- Tropical Rainforest:&lt;br/&gt;-- Litter fall rate: 500 [g/m&lt;sup&gt;2&lt;/sup&gt;/a]&lt;br/&gt;-- Litter loss rate: 2.0 [1/a]&lt;br/&gt;&lt;br/&gt;- Temperate forest:&lt;br/&gt;-- Litter fall rate: 240 [g/m&lt;sup&gt;2&lt;/sup&gt;/a]&lt;br/&gt;-- Litter loss rate: 0.4 [1/a]&lt;br/&gt;&lt;br/&gt;- Boreal forest:&lt;br/&gt;-- Litter fall rate: 50 [g/m&lt;sup&gt;2&lt;/sup&gt;/a]&lt;br/&gt;-- Litter loss rate: 0.05 [1/a]&lt;br/&gt;&lt;br/&gt;Reference:&lt;br/&gt;Hugget, R.J. (1993): 'Modelling the Human Impact on Nature', Oxford University Press.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,58 @@
+<tool name="OTB.OGRLayerClassifier" id="otb_ogrlayerclassifier" version="1.0.0">
+  <description>Classify an OGR layer based on a machine learning model and a list of features to consider.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayinshp False  isArrayinstats False  output_data_insvm $output_data_insvm  name OTB.OGRLayerClassifier inshp $inshp
+instats $instats
+feat '$feat'
+cfield '$cfield'
+prefer $prefer
+response $response
+outputType_insvm $OutputSection_insvm.outputType_insvm
+transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
+  <inputs>
+    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  json, zip, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="instats" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
+    <param name="feat" type="text" optional="false" label="Features to be calculated" help="Features to be calculated"/>
+    <param name="cfield" type="text" value="predicted" optional="false" label="Field containing the predicted class" help="Field containing the predicted class"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_insvm" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_insvm" type="select" label="Input model filename." help="Input model filename.">
+        <option value="text/plain">plain</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_insvm" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_insvm" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_insvm" format="plain" value="text/plain"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application will apply a trained machine learning model on the selected feature to get a classification of each geometry contained in an OGR layer. The list of feature must match the list used for training. The predicted label is written in the user defined field for each geometry.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

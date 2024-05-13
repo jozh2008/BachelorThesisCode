@@ -1,0 +1,156 @@
+<tool name="SAGA.grid_analysis.21" id="saga_grid_analysis_21" version="1.0.0">
+  <description>Diversity of Categories</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayCATEGORIES False  output_data_COUNT $output_data_COUNT  output_data_DIVERSITY $output_data_DIVERSITY  output_data_CONNECTIVITY $output_data_CONNECTIVITY  output_data_CONNECTEDAVG $output_data_CONNECTEDAVG  name SAGA.grid_analysis.21 CATEGORIES $CATEGORIES
+SEARCH_MODE $SEARCH_MODE
+SEARCH_RADIUS $SEARCH_RADIUS
+NB_CASE $NB_CASE
+NORMALIZE $NORMALIZE
+DW_WEIGHTING $DW_WEIGHTING
+DW_IDW_POWER $DW_IDW_POWER
+DW_IDW_OFFSET $DW_IDW_OFFSET
+DW_BANDWIDTH $DW_BANDWIDTH
+prefer $prefer
+response $response
+outputType_COUNT $OutputSection_COUNT.outputType_COUNT
+transmissionMode_COUNT $OutputSection_COUNT.transmissionMode_COUNT
+outputType_DIVERSITY $OutputSection_DIVERSITY.outputType_DIVERSITY
+transmissionMode_DIVERSITY $OutputSection_DIVERSITY.transmissionMode_DIVERSITY
+outputType_CONNECTIVITY $OutputSection_CONNECTIVITY.outputType_CONNECTIVITY
+transmissionMode_CONNECTIVITY $OutputSection_CONNECTIVITY.transmissionMode_CONNECTIVITY
+outputType_CONNECTEDAVG $OutputSection_CONNECTEDAVG.outputType_CONNECTEDAVG
+transmissionMode_CONNECTEDAVG $OutputSection_CONNECTEDAVG.transmissionMode_CONNECTEDAVG]]></command>
+  <inputs>
+    <param name="CATEGORIES" type="data" optional="false" label="Categories" help="Categories The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="SEARCH_MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
+      <option selected="true" value="Circle">Circle</option>
+      <option value="Square">Square</option>
+    </param>
+    <param name="SEARCH_RADIUS" type="integer" value="3" optional="true" label="Search Distance" help="Search distance given as number cells."/>
+    <param name="NB_CASE" type="select" optional="true" label="Connectivity Neighbourhood" help="Connectivity Neighbourhood">
+      <option selected="true" value="Queen's_case">Queen's case</option>
+      <option value="Rook's_case">Rook's case</option>
+    </param>
+    <param name="NORMALIZE" type="select" optional="true" label="Normalize" help="Normalize">
+      <option value="by_area_size">by area size</option>
+      <option value="by_number_of_cells">by number of cells</option>
+      <option selected="true" value="no">no</option>
+    </param>
+    <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
+      <option value="exponential">exponential</option>
+      <option selected="true" value="gaussian_weighting">gaussian weighting</option>
+      <option value="inverse_distance_to_a_power">inverse distance to a power</option>
+      <option value="no_distance_weighting">no distance weighting</option>
+    </param>
+    <param name="DW_IDW_POWER" type="float" value="1" optional="true" label="Inverse Distance Weighting Power" help="Inverse Distance Weighting Power"/>
+    <param name="DW_IDW_OFFSET" type="select" optional="true" label="Inverse Distance Offset" help="Calculates weights for distance plus one, avoiding division by zero for zero distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_BANDWIDTH" type="float" value="0.7" optional="true" label="Gaussian and Exponential Weighting Bandwidth" help="Gaussian and Exponential Weighting Bandwidth"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_COUNT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COUNT" type="select" label="Number of Categories" help="number of different categories (unique values) within search area">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_COUNT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIVERSITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIVERSITY" type="select" label="Diversity" help="distance weighted average of the number of different categories for distance classes">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIVERSITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CONNECTIVITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CONNECTIVITY" type="select" label="Connectivity" help="Connectivity">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CONNECTIVITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CONNECTEDAVG" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CONNECTEDAVG" type="select" label="Averaged Connectivity" help="average size of the area covered by each category that occurs within search area">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CONNECTEDAVG" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_COUNT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_COUNT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_COUNT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIVERSITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIVERSITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIVERSITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIVERSITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_CONNECTIVITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CONNECTIVITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CONNECTIVITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CONNECTIVITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_CONNECTEDAVG" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CONNECTEDAVG" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CONNECTEDAVG" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CONNECTEDAVG" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Grid based analysis of diversity. It is assumed that the input grid provides a classification (i.e. not a contiuous field). For each cell it counts the number of different categories (classes) as well as the connectivity within the chosen search window. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

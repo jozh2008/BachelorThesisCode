@@ -1,0 +1,214 @@
+<tool name="OTB.StereoRectificationGridGenerator" id="otb_stereorectificationgridgenerator" version="1.0.0">
+  <description>Generates two deformation fields to resample in epipolar geometry, a pair of stereo images up to the sensor model precision</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio.inleft False  isArrayio.inright False  isArrayepi.elevation.geoid False  output_data_io.outleft $output_data_io.outleft  output_data_io.outright $output_data_io.outright  output_data_epi.elevation.avgdem.value $output_data_epi.elevation.avgdem.value  output_data_epi.elevation.avgdem.mindisp $output_data_epi.elevation.avgdem.mindisp  output_data_epi.elevation.avgdem.maxdisp $output_data_epi.elevation.avgdem.maxdisp  output_data_epi.rectsizex $output_data_epi.rectsizex  output_data_epi.rectsizey $output_data_epi.rectsizey  output_data_epi.baseline $output_data_epi.baseline  output_data_inverse.outleft $output_data_inverse.outleft  output_data_inverse.outright $output_data_inverse.outright  name OTB.StereoRectificationGridGenerator io.inleft $io.inleft
+io.inright $io.inright
+io.outleft $io.outleft
+io.outright $io.outright
+epi.elevation.dem '$epi.elevation.dem'
+epi.elevation.geoid $epi.elevation.geoid
+epi.elevation.default $epi.elevation.default
+epi.elevation.avgdem.step $epi.elevation.avgdem.step
+epi.scale $epi.scale
+epi.step $epi.step
+inverse.outleft $inverse.outleft
+inverse.outright $inverse.outright
+inverse.ssrate $inverse.ssrate
+prefer $prefer
+response $response
+outputType_io.outleft $OutputSection_io.outleft.outputType_io.outleft
+transmissionMode_io.outleft $OutputSection_io.outleft.transmissionMode_io.outleft
+outputType_io.outright $OutputSection_io.outright.outputType_io.outright
+transmissionMode_io.outright $OutputSection_io.outright.transmissionMode_io.outright
+transmissionMode_epi.elevation.avgdem.value $OutputSection_epi.elevation.avgdem.value.transmissionMode_epi.elevation.avgdem.value
+transmissionMode_epi.elevation.avgdem.mindisp $OutputSection_epi.elevation.avgdem.mindisp.transmissionMode_epi.elevation.avgdem.mindisp
+transmissionMode_epi.elevation.avgdem.maxdisp $OutputSection_epi.elevation.avgdem.maxdisp.transmissionMode_epi.elevation.avgdem.maxdisp
+transmissionMode_epi.rectsizex $OutputSection_epi.rectsizex.transmissionMode_epi.rectsizex
+transmissionMode_epi.rectsizey $OutputSection_epi.rectsizey.transmissionMode_epi.rectsizey
+transmissionMode_epi.baseline $OutputSection_epi.baseline.transmissionMode_epi.baseline
+outputType_inverse.outleft $OutputSection_inverse.outleft.outputType_inverse.outleft
+transmissionMode_inverse.outleft $OutputSection_inverse.outleft.transmissionMode_inverse.outleft
+outputType_inverse.outright $OutputSection_inverse.outright.outputType_inverse.outright
+transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMode_inverse.outright]]></command>
+  <inputs>
+    <param name="io.inleft" type="data" optional="false" label="The left image from the stereo pair, in sensor geometry." help="The left image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="io.inright" type="data" optional="false" label="The right image from the stereo pair, in sensor geometry." help="The right image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="io.outleft" type="select" optional="false" label="The deformation grid to resample the left image from sensor geometry to epipolar geometry." help="The deformation grid to resample the left image from sensor geometry to epipolar geometry.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="io.outright" type="select" optional="false" label="The deformation grid to resample the right image from sensor geometry to epipolar geometry." help="The deformation grid to resample the right image from sensor geometry to epipolar geometry.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="epi.elevation.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
+    <param name="epi.elevation.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
+    <param name="epi.elevation.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
+    <param name="epi.elevation.avgdem.step" type="integer" value="1" optional="true" label="Step of sub-sampling for average elevation estimation" help="Step of sub-sampling for average elevation estimation"/>
+    <param name="epi.scale" type="float" value="1" optional="false" label="The scale parameter allows generating zoomed-in (scale &amp;lt; 1) or zoomed-out (scale &gt; 1) epipolar images." help="The scale parameter allows generating zoomed-in (scale &amp;lt; 1) or zoomed-out (scale &gt; 1) epipolar images."/>
+    <param name="epi.step" type="integer" value="1" optional="false" label="Stereo-rectification deformation grid only varies slowly. Therefore, it is recommended to use a coarser grid (higher step value) in case of large images" help="Stereo-rectification deformation grid only varies slowly. Therefore, it is recommended to use a coarser grid (higher step value) in case of large images"/>
+    <param name="inverse.outleft" type="select" optional="true" label="The deformation grid to resample the left image from the epipolar geometry back into its original sensor geometry." help="The deformation grid to resample the left image from the epipolar geometry back into its original sensor geometry.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="inverse.outright" type="select" optional="true" label="The output deformation grid to resample the right image from the epipolar geometry back into its original sensor geometry." help="The output deformation grid to resample the right image from the epipolar geometry back into its original sensor geometry.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="inverse.ssrate" type="integer" value="16" optional="false" label="Grid inversion is an heavy process that implies spline regression on control points. To avoid eating to much memory, this parameter allows one to first sub-sample the field to invert." help="Grid inversion is an heavy process that implies spline regression on control points. To avoid eating to much memory, this parameter allows one to first sub-sample the field to invert."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_io.outleft" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_io.outleft" type="select" label="The deformation grid to resample the left image from sensor geometry to epipolar geometry." help="The deformation grid to resample the left image from sensor geometry to epipolar geometry.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_io.outleft" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_io.outright" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_io.outright" type="select" label="The deformation grid to resample the right image from sensor geometry to epipolar geometry." help="The deformation grid to resample the right image from sensor geometry to epipolar geometry.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_io.outright" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_epi.elevation.avgdem.value" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_epi.elevation.avgdem.value" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_epi.elevation.avgdem.mindisp" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_epi.elevation.avgdem.mindisp" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_epi.elevation.avgdem.maxdisp" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_epi.elevation.avgdem.maxdisp" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_epi.rectsizex" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_epi.rectsizex" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_epi.rectsizey" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_epi.rectsizey" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_epi.baseline" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="transmissionMode_epi.baseline" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_inverse.outleft" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_inverse.outleft" type="select" label="The deformation grid to resample the left image from the epipolar geometry back into its original sensor geometry." help="The deformation grid to resample the left image from the epipolar geometry back into its original sensor geometry.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_inverse.outleft" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_inverse.outright" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_inverse.outright" type="select" label="The output deformation grid to resample the right image from the epipolar geometry back into its original sensor geometry." help="The output deformation grid to resample the right image from the epipolar geometry back into its original sensor geometry.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_inverse.outright" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_io.outleft" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_io.outleft" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_io.outleft" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_io.outright" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_io.outright" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_io.outright" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_epi.elevation.avgdem.value" format="txt" hidden="false"/>
+    <data name="output_data_epi.elevation.avgdem.mindisp" format="txt" hidden="false"/>
+    <data name="output_data_epi.elevation.avgdem.maxdisp" format="txt" hidden="false"/>
+    <data name="output_data_epi.rectsizex" format="txt" hidden="false"/>
+    <data name="output_data_epi.rectsizey" format="txt" hidden="false"/>
+    <data name="output_data_epi.baseline" format="txt" hidden="false"/>
+    <data name="output_data_inverse.outleft" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_inverse.outleft" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_inverse.outleft" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_inverse.outright" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_inverse.outright" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_inverse.outright" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application generates a pair of deformation grid to stereo-rectify a pair of stereo images according to sensor modelling and a mean elevation hypothesis.This application is the first part of the stereo reconstruction framework. The output deformation grids can be passed to the GridBasedImageResampling application for actual resampling into epipolar geometry.There are several ways to set the elevation source:  * An arbitrary constant elevation  * A DEM directory  * Compute an average elevation from a DEMIf needed, the application can compute inverse resampling grids (from epipolar to original sensor geometry). Don't forget to check the other outputs from the application. For instance, the application gives the X and Y size of the rectified images, along with an estimated baseline ratio.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

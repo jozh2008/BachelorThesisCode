@@ -1,0 +1,74 @@
+<tool name="SAGA.shapes_tools.18" id="saga_shapes_tools_18" version="1.0.0">
+  <description>Shapes Buffer</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySHAPES False  isArrayDIST_FIELD False  output_data_BUFFER $output_data_BUFFER  name SAGA.shapes_tools.18 SHAPES $SHAPES
+DIST_FIELD $DIST_FIELD
+DIST_FIELD_DEFAULT $DIST_FIELD_DEFAULT
+DIST_SCALE $DIST_SCALE
+DISSOLVE $DISSOLVE
+NZONES $NZONES
+POLY_INNER $POLY_INNER
+DARC $DARC
+prefer $prefer
+response $response
+outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
+transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DIST_FIELD" type="data" optional="false" label="Buffer Distance" help="Buffer Distance The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="DIST_FIELD_DEFAULT" type="float" value="100" optional="true" label="Default" help="default value if no attribute has been selected"/>
+    <param name="DIST_SCALE" type="float" value="1" optional="true" label="Scaling Factor for Attribute Value" help="Scaling Factor for Attribute Value"/>
+    <param name="DISSOLVE" type="select" optional="true" label="Dissolve Buffers" help="Dissolve Buffers">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="NZONES" type="integer" value="1" optional="true" label="Number of Buffer Zones" help="Number of Buffer Zones"/>
+    <param name="POLY_INNER" type="select" optional="true" label="Inner Buffer" help="Inner Buffer">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DARC" type="float" value="5" optional="true" label="Arc Vertex Distance [Degree]" help="Arc Vertex Distance [Degree]"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_BUFFER" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BUFFER" type="select" label="Buffer" help="Buffer">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_BUFFER" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_BUFFER" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BUFFER" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_BUFFER" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[A vector based buffer construction partly based on the method supposed by Dong et al. (2003).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

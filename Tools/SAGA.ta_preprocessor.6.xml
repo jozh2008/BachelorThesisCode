@@ -1,0 +1,68 @@
+<tool name="SAGA.ta_preprocessor.6" id="saga_ta_preprocessor_6" version="1.0.0">
+  <description>Burn Stream Network into DEM</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  isArraySTREAM False  isArrayFLOWDIR False  output_data_BURN $output_data_BURN  name SAGA.ta_preprocessor.6 DEM $DEM
+STREAM $STREAM
+FLOWDIR $FLOWDIR
+METHOD $METHOD
+EPSILON $EPSILON
+prefer $prefer
+response $response
+outputType_BURN $OutputSection_BURN.outputType_BURN
+transmissionMode_BURN $OutputSection_BURN.transmissionMode_BURN]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="STREAM" type="data" optional="false" label="Streams" help="Streams The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="FLOWDIR" type="data" optional="false" label="Flow Direction" help="Flow Direction The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="lower_cell's_value_to_neighbours_minimum_value_minus_epsilon">lower cell's value to neighbours minimum value minus epsilon</option>
+      <option selected="true" value="simply_decrease_cell's_value_by_epsilon">simply decrease cell's value by epsilon</option>
+      <option value="trace_stream_network_downstream">trace stream network downstream</option>
+    </param>
+    <param name="EPSILON" type="float" value="1" optional="true" label="Epsilon" help="Epsilon"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_BURN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BURN" type="select" label="Processed DEM" help="Processed DEM">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BURN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_BURN" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BURN" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BURN" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BURN" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Burns a stream network into a Digital Elevation Model (DEM). Stream cells have to be coded with valid data values, all other cells should be set to no data value. First two methods decrease . The third method ensures a steady downstream gradient. An elevation decrease is only applied, if a downstream cell is equally high or higher. You should provide a grid with flow directions for determination of downstream cells. The 'Sink Drainage Route Detection' tool offers such flow directions. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

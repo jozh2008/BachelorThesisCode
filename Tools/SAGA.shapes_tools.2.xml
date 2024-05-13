@@ -1,0 +1,69 @@
+<tool name="SAGA.shapes_tools.2" id="saga_shapes_tools_2" version="1.0.0">
+  <description>Merge Layers</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT True  output_data_MERGED $output_data_MERGED  name SAGA.shapes_tools.2 INPUT $INPUT
+SRCINFO $SRCINFO
+MATCH $MATCH
+DELETE $DELETE
+prefer $prefer
+response $response
+outputType_MERGED $OutputSection_MERGED.outputType_MERGED
+transmissionMode_MERGED $OutputSection_MERGED.transmissionMode_MERGED]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Layers" help="Output will inherit shape type and table structure from the first layer in this list. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="SRCINFO" type="select" optional="true" label="Add Source Information" help="Adds a field with the name of the original input data set.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="MATCH" type="select" optional="true" label="Match Fields by Name" help="Match Fields by Name">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DELETE" type="select" optional="true" label="Delete" help="Deletes each input data set immediately after it has been merged, thus saving memory resources.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_MERGED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MERGED" type="select" label="Merged Layer" help="Merged Layer">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_MERGED" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_MERGED" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MERGED" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_MERGED" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Merge vector layers.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,94 @@
+<tool name="SAGA.garden_learn_to_program.6" id="saga_garden_learn_to_program_6" version="1.0.0">
+  <description>07: Extended neighbourhoods - catchment areas (trace flow)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayELEVATION False  output_data_AREA $output_data_AREA  output_data_LENGTH $output_data_LENGTH  name SAGA.garden_learn_to_program.6 ELEVATION $ELEVATION
+STEP $STEP
+METHOD $METHOD
+ONECELL $ONECELL
+XCELL $XCELL
+YCELL $YCELL
+prefer $prefer
+response $response
+outputType_AREA $OutputSection_AREA.outputType_AREA
+transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA
+outputType_LENGTH $OutputSection_LENGTH.outputType_LENGTH
+transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></command>
+  <inputs>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="STEP" type="integer" value="1" optional="true" label="Step" help="Skip cells (step value)."/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Choose a method">
+      <option selected="true" value="Needs_less_memory,_but_is_slow">Needs less memory, but is slow</option>
+      <option value="Needs_more_memory,_but_is_quicker">Needs more memory, but is quicker</option>
+    </param>
+    <param name="ONECELL" type="select" optional="true" label="Single Cell" help="Set 'false' to execute the calculation for each point in grid. Set 'true' tu calculate the flow of one single cell.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="XCELL" type="integer" value="0" optional="true" label="X Position" help="X Position"/>
+    <param name="YCELL" type="integer" value="0" optional="true" label="Y Position" help="Y Position"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_AREA" type="select" label="Catchment area" help="This will contain your output data of type grid.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_AREA" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_LENGTH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LENGTH" type="select" label="Flow Path Length" help="This will contain your output data of type grid.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LENGTH" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_AREA" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_AREA" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_AREA" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_LENGTH" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LENGTH" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LENGTH" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LENGTH" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Extended Neighbourhoods - Catchment areas.&lt;br/&gt;(c) 2003 by Olaf Conrad, Goettingen&lt;br/&gt;email: oconrad@gwdg.de]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

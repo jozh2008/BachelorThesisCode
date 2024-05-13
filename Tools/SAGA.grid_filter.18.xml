@@ -1,0 +1,71 @@
+<tool name="SAGA.grid_filter.18" id="saga_grid_filter_18" version="1.0.0">
+  <description>Simple Filter (Restricted to Polygons)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArraySHAPES False  output_data_RESULT $output_data_RESULT  name SAGA.grid_filter.18 INPUT $INPUT
+SHAPES $SHAPES
+METHOD $METHOD
+KERNEL_TYPE $KERNEL_TYPE
+KERNEL_RADIUS $KERNEL_RADIUS
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="pPolygons" help="pPolygons: the simple filter will only operate on grid cells which fall in the same shape The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Filter" help="Choose the shape of the filter kernel.">
+      <option value="Edge">Edge</option>
+      <option value="Sharpen">Sharpen</option>
+      <option selected="true" value="Smooth">Smooth</option>
+    </param>
+    <param name="KERNEL_TYPE" type="select" optional="true" label="Kernel Type" help="The shape of the filter kernel.">
+      <option selected="true" value="Circle">Circle</option>
+      <option value="Square">Square</option>
+    </param>
+    <param name="KERNEL_RADIUS" type="integer" value="2" optional="true" label="Kernel Radius" help="The kernel radius in cells."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Filtered Grid" help="Filtered Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Simple standard filters for grids, evaluation within polygons.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

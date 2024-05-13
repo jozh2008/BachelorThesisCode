@@ -1,0 +1,86 @@
+<tool name="SAGA.grid_calculus.11" id="saga_grid_calculus_11" version="1.0.0">
+  <description>Fuzzify</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  output_data_OUTPUT $output_data_OUTPUT  name SAGA.grid_calculus.11 INPUT $INPUT
+INC_MIN $INC_MIN
+INC_MAX $INC_MAX
+DEC_MIN $DEC_MIN
+DEC_MAX $DEC_MAX
+METHOD $METHOD
+TRANSITION $TRANSITION
+INVERT $INVERT
+AUTOFIT $AUTOFIT
+prefer $prefer
+response $response
+outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
+transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="INC_MIN" type="float" value="0" optional="true" label="From" help="From"/>
+    <param name="INC_MAX" type="float" value="0.3" optional="true" label="To" help="To"/>
+    <param name="DEC_MIN" type="float" value="0.7" optional="true" label="From" help="From"/>
+    <param name="DEC_MAX" type="float" value="1" optional="true" label="To" help="To"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="Decrease">Decrease</option>
+      <option selected="true" value="Increase">Increase</option>
+      <option value="Increase_and_Decrease">Increase and Decrease</option>
+    </param>
+    <param name="TRANSITION" type="select" optional="true" label="Transition" help="Transition">
+      <option value="j-shaped">j-shaped</option>
+      <option selected="true" value="linear">linear</option>
+      <option value="sigmoidal">sigmoidal</option>
+    </param>
+    <param name="INVERT" type="select" optional="true" label="Invert" help="Invert">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="AUTOFIT" type="select" optional="true" label="Adjust" help="Automatically adjust control points to grid's data range">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT" type="select" label="Fuzzified Grid" help="Fuzzified Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUTPUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_OUTPUT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUTPUT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUTPUT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Translates grid values into fuzzy set membership as preparation for fuzzy set analysis. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

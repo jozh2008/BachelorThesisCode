@@ -1,0 +1,44 @@
+<tool name="longProcess" id="longprocess" version="1.0.0">
+  <description>Demo long process. </description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name longProcess sid $sid
+prefer $prefer
+response $response
+outputType_Result '$OutputSection_Result.outputType_Result'
+transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
+  <inputs>
+    <param name="sid" type="integer" optional="true" label="Service ID" help="A ZOO Service ID (unused)."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_Result" type="text" optional="false" label="ExecuteResponse document" help="The resulting ExecuteResponse document."/>
+      <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_Result" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This service doesn't do anything except taking its time, it demonstrates how to use the updateStatus function from your ZOO Service. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

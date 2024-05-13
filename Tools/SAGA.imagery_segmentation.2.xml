@@ -1,0 +1,131 @@
+<tool name="SAGA.imagery_segmentation.2" id="saga_imagery_segmentation_2" version="1.0.0">
+  <description>Seed Generation</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayFEATURES True  output_data_VARIANCE $output_data_VARIANCE  output_data_SEED_GRID $output_data_SEED_GRID  output_data_SEED_POINTS $output_data_SEED_POINTS  name SAGA.imagery_segmentation.2 FEATURES $FEATURES
+SEED_TYPE $SEED_TYPE
+METHOD $METHOD
+BAND_WIDTH $BAND_WIDTH
+NORMALIZE $NORMALIZE
+DW_WEIGHTING $DW_WEIGHTING
+DW_IDW_POWER $DW_IDW_POWER
+DW_IDW_OFFSET $DW_IDW_OFFSET
+DW_BANDWIDTH $DW_BANDWIDTH
+prefer $prefer
+response $response
+outputType_VARIANCE $OutputSection_VARIANCE.outputType_VARIANCE
+transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE
+outputType_SEED_GRID $OutputSection_SEED_GRID.outputType_SEED_GRID
+transmissionMode_SEED_GRID $OutputSection_SEED_GRID.transmissionMode_SEED_GRID
+outputType_SEED_POINTS $OutputSection_SEED_POINTS.outputType_SEED_POINTS
+transmissionMode_SEED_POINTS $OutputSection_SEED_POINTS.transmissionMode_SEED_POINTS]]></command>
+  <inputs>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="SEED_TYPE" type="select" optional="true" label="Seed Type" help="Seed Type">
+      <option value="maxima_of_variance">maxima of variance</option>
+      <option selected="true" value="minima_of_variance">minima of variance</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="band_width_search">band width search</option>
+      <option selected="true" value="band_width_smoothing">band width smoothing</option>
+    </param>
+    <param name="BAND_WIDTH" type="float" value="10" optional="true" label="Bandwidth (Cells)" help="Bandwidth (Cells)"/>
+    <param name="NORMALIZE" type="select" optional="true" label="Normalize Features" help="Standardize the input features, i.e. rescale the input data (features) such that the mean equals 0 and the standard deviation equals 1. This is helpful when the input features have different scales, units or outliers.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
+      <option value="exponential">exponential</option>
+      <option selected="true" value="gaussian_weighting">gaussian weighting</option>
+      <option value="inverse_distance_to_a_power">inverse distance to a power</option>
+      <option value="no_distance_weighting">no distance weighting</option>
+    </param>
+    <param name="DW_IDW_POWER" type="float" value="1" optional="true" label="Inverse Distance Weighting Power" help="Inverse Distance Weighting Power"/>
+    <param name="DW_IDW_OFFSET" type="select" optional="true" label="Inverse Distance Offset" help="Calculates weights for distance plus one, avoiding division by zero for zero distances">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DW_BANDWIDTH" type="float" value="5" optional="true" label="Gaussian and Exponential Weighting Bandwidth" help="Gaussian and Exponential Weighting Bandwidth"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VARIANCE" type="select" label="Variance" help="Variance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_VARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SEED_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SEED_GRID" type="select" label="Seeds Grid" help="Seeds Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SEED_GRID" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SEED_POINTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SEED_POINTS" type="select" label="Seed Points" help="Seed Points">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_SEED_POINTS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_VARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_VARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SEED_GRID" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SEED_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SEED_GRID" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SEED_GRID" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SEED_POINTS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SEED_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_SEED_POINTS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The tool allows one to create seed points from a stack of input features. Such seed points can be used, for example, as input in the 'Seeded Region Growing' tool.&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

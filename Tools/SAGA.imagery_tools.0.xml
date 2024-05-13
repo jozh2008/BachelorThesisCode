@@ -1,0 +1,172 @@
+<tool name="SAGA.imagery_tools.0" id="saga_imagery_tools_0" version="1.0.0">
+  <description>Vegetation Index (Distance Based)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayRED False  isArrayNIR False  output_data_PVI0 $output_data_PVI0  output_data_PVI1 $output_data_PVI1  output_data_PVI2 $output_data_PVI2  output_data_PVI3 $output_data_PVI3  output_data_TSAVI $output_data_TSAVI  output_data_ATSAVI $output_data_ATSAVI  name SAGA.imagery_tools.0 RED $RED
+NIR $NIR
+INTERCEPT $INTERCEPT
+SLOPE $SLOPE
+prefer $prefer
+response $response
+outputType_PVI0 $OutputSection_PVI0.outputType_PVI0
+transmissionMode_PVI0 $OutputSection_PVI0.transmissionMode_PVI0
+outputType_PVI1 $OutputSection_PVI1.outputType_PVI1
+transmissionMode_PVI1 $OutputSection_PVI1.transmissionMode_PVI1
+outputType_PVI2 $OutputSection_PVI2.outputType_PVI2
+transmissionMode_PVI2 $OutputSection_PVI2.transmissionMode_PVI2
+outputType_PVI3 $OutputSection_PVI3.outputType_PVI3
+transmissionMode_PVI3 $OutputSection_PVI3.transmissionMode_PVI3
+outputType_TSAVI $OutputSection_TSAVI.outputType_TSAVI
+transmissionMode_TSAVI $OutputSection_TSAVI.transmissionMode_TSAVI
+outputType_ATSAVI $OutputSection_ATSAVI.outputType_ATSAVI
+transmissionMode_ATSAVI $OutputSection_ATSAVI.transmissionMode_ATSAVI]]></command>
+  <inputs>
+    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INTERCEPT" type="float" value="0" optional="true" label="Intercept of Soil Line" help="Intercept of Soil Line"/>
+    <param name="SLOPE" type="float" value="0.5" optional="true" label="Slope of Soil Line" help="Slope of Soil Line"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PVI0" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PVI0" type="select" label="Perpendicular Vegetation Index (Richardson and Wiegand, 1977)" help="Perpendicular Vegetation Index (Richardson and Wiegand, 1977)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PVI0" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PVI1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PVI1" type="select" label="Perpendicular Vegetation Index (Perry and Lautenschlager, 1984)" help="Perpendicular Vegetation Index (Perry and Lautenschlager, 1984)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PVI1" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PVI2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PVI2" type="select" label="Perpendicular Vegetation Index (Walther and Shabaani)" help="Perpendicular Vegetation Index (Walther and Shabaani)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PVI2" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PVI3" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PVI3" type="select" label="Perpendicular Vegetation Index (Qi, et al., 1994)" help="Perpendicular Vegetation Index (Qi, et al., 1994)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PVI3" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_TSAVI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TSAVI" type="select" label="Transformed Soil Adjusted Vegetation Index (Baret et al. 1989)" help="Transformed Soil Adjusted Vegetation Index (Baret et al. 1989)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TSAVI" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ATSAVI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ATSAVI" type="select" label="Transformed Soil Adjusted Vegetation Index (Baret and Guyot, 1991)" help="Transformed Soil Adjusted Vegetation Index (Baret and Guyot, 1991)">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ATSAVI" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PVI0" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PVI0" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PVI0" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PVI0" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PVI1" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PVI1" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PVI1" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PVI1" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PVI2" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PVI2" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PVI2" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PVI2" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PVI3" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PVI3" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PVI3" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PVI3" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_TSAVI" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TSAVI" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TSAVI" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TSAVI" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ATSAVI" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ATSAVI" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ATSAVI" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ATSAVI" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Distance based vegetation indices.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

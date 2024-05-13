@@ -1,0 +1,76 @@
+<tool name="Gdal_Warp" id="gdal_warp" version="1.0.0">
+  <description>GDAL Warp Tool</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name Gdal_Warp Format '$Format'
+InputDSN '$InputDSN'
+OutputDSN '$OutputDSN'
+s_srs '$s_srs'
+t_srs '$t_srs'
+tps $tps
+geoloc $geoloc
+rpc $rpc
+r $r
+order '$order'
+te '$te'
+prefer $prefer
+response $response
+outputType_Result '$OutputSection_Result.outputType_Result'
+transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
+  <inputs>
+    <param name="Format" type="text" value="GTiff" optional="true" label="Format of the output data" help="Select the output format by usig short name of the format (use gda-config --formats for list of available formats on your platform)."/>
+    <param name="InputDSN" type="text" optional="false" label="The input data source name" help="The input data source name to use as source for convertion."/>
+    <param name="OutputDSN" type="text" optional="false" label="The output data source name" help="The output data source name to use as source for convertion."/>
+    <param name="s_srs" type="text" optional="true" label="The source Spatial reference Set" help="The coordinate systems that can be passed are anything supported by the OGRSpatialReference.SetFromUserInput() call, which includes EPSG PCS and GCSes (ie. EPSG:4296), PROJ.4 declarations (as above), or the name of a .prf file containing well known text."/>
+    <param name="t_srs" type="text" optional="true" label="The target Spatial reference Set" help="The coordinate systems that can be passed are anything supported by the OGRSpatialReference.SetFromUserInput() call, which includes EPSG PCS and GCSes (ie. EPSG:4296), PROJ.4 declarations (as above), or the name of a .prf file containing well known text."/>
+    <param name="tps" type="select" optional="true" label="Thin Plate Spline" help="Force use of thin plate spline transformer based on available GCPs">
+      <option value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="geoloc" type="select" optional="true" label="Geolocation" help="Force use of Geolocation Arrays">
+      <option value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="rpc" type="select" optional="true" label="RPCs" help="Force use of RPCs">
+      <option value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="r" type="select" optional="true" label="Resampling method to use" help="Available methods are: near (nearest neighbour resampling - default, fastest algorithm, worst interpolation quality), bilinear, cubic, cubicspline, lanczos (Lanczos windowed sinc resampling)">
+      <option value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="order" type="text" value="1" optional="true" label="The order of polynomial used for warping (1 to 3)" help="The default is to select a polynomial order based on the number of GCPs."/>
+    <param name="te" type="text" optional="true" label="xmin,ymin,xmax,ymax" help="set georeferenced extents of output file to be created (in target SRS)."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_Result" type="text" optional="false" label="The resulting converted file" help="The file name resulting of the convertion"/>
+      <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_Result" format="txt" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The gdalwarp utility is an image mosaicing, reprojection and warping utility. The program can reproject to any supported projection, and can also apply GCPs stored with the image if the image is "raw" with control information.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

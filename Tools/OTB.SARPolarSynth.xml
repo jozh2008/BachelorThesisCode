@@ -1,0 +1,83 @@
+<tool name="OTB.SARPolarSynth" id="otb_sarpolarsynth" version="1.0.0">
+  <description>Gives, for each pixel, the power that would have been received by a SAR system with a basis different from the classical (H,V) one (polarimetric synthetis).</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.SARPolarSynth in $in
+out $out
+psii $psii
+khii $khii
+psir $psir
+khir $khir
+emissionh $emissionh
+emissionv $emissionv
+mode $mode
+ram $ram
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="Input image." help="Input image. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="out" type="select" optional="false" label="Output image." help="Output image.">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="psii" type="float" value="0" optional="false" label="Orientation (transmitting antenna)" help="Orientation (transmitting antenna)"/>
+    <param name="khii" type="float" value="0" optional="false" label="Ellipticity (transmitting antenna)" help="Ellipticity (transmitting antenna)"/>
+    <param name="psir" type="float" value="0" optional="false" label="Orientation (receiving antenna)" help="Orientation (receiving antenna)"/>
+    <param name="khir" type="float" value="0" optional="false" label="Ellipticity (receiving antenna)" help="Ellipticity (receiving antenna)"/>
+    <param name="emissionh" type="integer" value="0" optional="true" label="This parameter is useful in determining the polarization architecture (dual polarization case)." help="This parameter is useful in determining the polarization architecture (dual polarization case)."/>
+    <param name="emissionv" type="integer" value="0" optional="true" label="This parameter is useful in determining the polarization architecture (dual polarization case)." help="This parameter is useful in determining the polarization architecture (dual polarization case)."/>
+    <param name="mode" type="select" optional="false" label="mode" help="mode">
+      <option value="co">co</option>
+      <option value="cross">cross</option>
+      <option selected="true" value="none">none</option>
+    </param>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output image." help="Output image.">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application gives, for each pixel, the power that would have been received by a SAR system with a basis different from the classical (H,V) one (polarimetric synthetis).The new basis A and B are indicated through two Jones vectors, defined by the user thanks to orientation (psi) and ellipticity (khi) parameters.These parameters are namely psii, khii, psir and khir. The suffixes (i) and (r) refer to the transmitting antenna and the receiving antenna respectively.Orientations and ellipticities are given in degrees, and are between -90/90 degrees and -45/45 degrees respectively. Four polarization architectures can be processed : 1. HH_HV_VH_VV : full polarization, general bistatic case.2. HH_HV_VV or HH_VH_VV : full polarization, monostatic case (transmitter and receiver are co-located).3. HH_HV : dual polarization.4. VH_VV : dual polarization.The application takes a complex vector image as input, where each band correspond to a particular emission/reception polarization scheme.User must comply with the band order given above, since the bands are used to build the Sinclair matrix.In order to determine the architecture, the application first relies on the number of bands of the input image.1. Architecture HH_HV_VH_VV is the only one with four bands, there is no possible confusion.2. Concerning HH_HV_VV and HH_VH_VV architectures, both correspond to a three channels image. But they are processed in the same way, as the Sinclair matrix is symmetric in the monostatic case.3. Finally, the two last architectures (dual polarizations), can't be distinguished only by the number of bands of the input image. User must then use the parameters emissionh and emissionv to indicate the architecture of the system : emissionh=1 and emissionv=0 --> HH_HV,  emissionh=0 and emissionv=1 --> VH_VV.Note : if the architecture is HH_HV, khii and psii are automatically both set to 0 degree; if the architecture is VH_VV, khii and psii are automatically set to 0 degree and 90 degrees respectively.It is also possible to force the calculation to co-polar or cross-polar modes.In the co-polar case, values for psir and khir will be ignored and forced to psii and khii; same as the cross-polar mode, where khir and psir will be forced to (psii + 90 degrees) and -khii.Finally, the result of the polarimetric synthetis is expressed in the power domain, through a one-band scalar image.Note: this application doesn't take into account the terms which do not depend on the polarization of the antennas. The parameter gain can be used for this purpose.More details can be found in the OTB CookBook (SAR processing chapter).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

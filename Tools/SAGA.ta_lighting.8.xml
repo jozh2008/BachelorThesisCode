@@ -1,0 +1,67 @@
+<tool name="SAGA.ta_lighting.8" id="saga_ta_lighting_8" version="1.0.0">
+  <description>Geomorphons</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_GEOMORPHONS $output_data_GEOMORPHONS  name SAGA.ta_lighting.8 DEM $DEM
+THRESHOLD $THRESHOLD
+RADIUS $RADIUS
+METHOD $METHOD
+DLEVEL $DLEVEL
+prefer $prefer
+response $response
+outputType_GEOMORPHONS $OutputSection_GEOMORPHONS.outputType_GEOMORPHONS
+transmissionMode_GEOMORPHONS $OutputSection_GEOMORPHONS.transmissionMode_GEOMORPHONS]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="THRESHOLD" type="float" value="1" optional="true" label="Threshold Angle" help="Flatness threshold angle (degrees)."/>
+    <param name="RADIUS" type="float" value="10000" optional="true" label="Radial Limit" help="Radial Limit"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option selected="true" value="line_tracing">line tracing</option>
+      <option value="multi_scale">multi scale</option>
+    </param>
+    <param name="DLEVEL" type="float" value="3" optional="true" label="Multi Scale Factor" help="Multi Scale Factor"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GEOMORPHONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GEOMORPHONS" type="select" label="Geomorphons" help="Geomorphons">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GEOMORPHONS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GEOMORPHONS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GEOMORPHONS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GEOMORPHONS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GEOMORPHONS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool derives so called geomorphons, which represent categories of terrain forms, from a digital elevation model using a machine vision approach. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

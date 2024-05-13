@@ -1,0 +1,88 @@
+<tool name="SAGA.imagery_tools.9" id="saga_imagery_tools_9" version="1.0.0">
+  <description>Automated Cloud Cover Assessment</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayBAND2 False  isArrayBAND3 False  isArrayBAND4 False  isArrayBAND5 False  isArrayBAND6 False  output_data_CLOUD $output_data_CLOUD  name SAGA.imagery_tools.9 BAND2 $BAND2
+BAND3 $BAND3
+BAND4 $BAND4
+BAND5 $BAND5
+BAND6 $BAND6
+FILTER $FILTER
+B56C $B56C
+B45R $B45R
+CSIG $CSIG
+PASS2 $PASS2
+SHADOW $SHADOW
+prefer $prefer
+response $response
+outputType_CLOUD $OutputSection_CLOUD.outputType_CLOUD
+transmissionMode_CLOUD $OutputSection_CLOUD.transmissionMode_CLOUD]]></command>
+  <inputs>
+    <param name="BAND2" type="data" optional="false" label="Landsat Band 2" help="Landsat Band 2 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="BAND3" type="data" optional="false" label="Landsat Band 3" help="Landsat Band 3 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="BAND4" type="data" optional="false" label="Landsat Band 4" help="Landsat Band 4 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="BAND5" type="data" optional="false" label="Landsat Band 5" help="Landsat Band 5 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="BAND6" type="data" optional="false" label="Landsat Band 6" help="Landsat Band 6 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="FILTER" type="select" optional="true" label="Apply post-processing filter to remove small holes" help="Apply post-processing filter to remove small holes">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="B56C" type="float" value="225" optional="true" label="B56 Composite (step 6)" help="B56 Composite (step 6)"/>
+    <param name="B45R" type="float" value="1" optional="true" label="B45 Ratio: Desert detection (step 10)" help="B45 Ratio: Desert detection (step 10)"/>
+    <param name="CSIG" type="select" optional="true" label="Always use cloud signature (step 14)" help="Always use cloud signature (step 14)">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="PASS2" type="select" optional="true" label="Bypass second-pass processing, and merge warm (not ambiguous) and cold clouds" help="Bypass second-pass processing, and merge warm (not ambiguous) and cold clouds">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SHADOW" type="select" optional="true" label="Include a category for cloud shadows" help="Include a category for cloud shadows">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLOUD" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLOUD" type="select" label="Cloud Cover" help="Cloud Cover">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CLOUD" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLOUD" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLOUD" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CLOUD" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CLOUD" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Automated Cloud-Cover Assessment (ACCA) for Landsat TM/ETM+ imagery as proposed by Irish (2000). This tool incorporates E.J. Tizado's GRASS GIS implementation (i.landsat.acca).]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

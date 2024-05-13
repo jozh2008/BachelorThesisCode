@@ -1,0 +1,128 @@
+<tool name="SAGA.grid_gridding.10" id="saga_grid_gridding_10" version="1.0.0">
+  <description>Polygon Categories to Grid</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOLYGONS False  isArrayFIELD False  isArrayTARGET_TEMPLATE False  output_data_CLASSES $output_data_CLASSES  output_data_CATEGORY $output_data_CATEGORY  output_data_COVERAGE $output_data_COVERAGE  name SAGA.grid_gridding.10 POLYGONS $POLYGONS
+FIELD $FIELD
+METHOD $METHOD
+MULTIPLE $MULTIPLE
+TARGET_DEFINITION $TARGET_DEFINITION
+TARGET_USER_SIZE $TARGET_USER_SIZE
+TARGET_USER_XMIN $TARGET_USER_XMIN
+TARGET_USER_XMAX $TARGET_USER_XMAX
+TARGET_USER_YMIN $TARGET_USER_YMIN
+TARGET_USER_YMAX $TARGET_USER_YMAX
+TARGET_USER_COLS $TARGET_USER_COLS
+TARGET_USER_ROWS $TARGET_USER_ROWS
+TARGET_USER_FITS $TARGET_USER_FITS
+TARGET_TEMPLATE $TARGET_TEMPLATE
+prefer $prefer
+response $response
+outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
+transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES
+outputType_CATEGORY $OutputSection_CATEGORY.outputType_CATEGORY
+transmissionMode_CATEGORY $OutputSection_CATEGORY.transmissionMode_CATEGORY
+outputType_COVERAGE $OutputSection_COVERAGE.outputType_COVERAGE
+transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></command>
+  <inputs>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Category" help="The attribute field that specifies the category a polygon belongs to. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Choose cell wise, if you have not many polygons. Polygon wise will show much better performance, if you have many (small) polygons.">
+      <option value="cell_wise">cell wise</option>
+      <option selected="true" value="polygon_wise">polygon wise</option>
+    </param>
+    <param name="MULTIPLE" type="select" optional="true" label="Multiple Polygons" help="Output value for cells that intersect wiht more than one polygon.">
+      <option selected="true" value="maximum_coverage">maximum coverage</option>
+      <option value="minimum_coverage">minimum coverage</option>
+    </param>
+    <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
+      <option value="grid_or_grid_system">grid or grid system</option>
+      <option selected="true" value="user_defined">user defined</option>
+    </param>
+    <param name="TARGET_USER_SIZE" type="float" value="1" optional="true" label="Cellsize" help="Cellsize"/>
+    <param name="TARGET_USER_XMIN" type="float" value="0" optional="true" label="West" help="West"/>
+    <param name="TARGET_USER_XMAX" type="float" value="100" optional="true" label="East" help="East"/>
+    <param name="TARGET_USER_YMIN" type="float" value="0" optional="true" label="South" help="South"/>
+    <param name="TARGET_USER_YMAX" type="float" value="100" optional="true" label="North" help="North"/>
+    <param name="TARGET_USER_COLS" type="integer" value="100" optional="true" label="Columns" help="Number of cells in East-West direction."/>
+    <param name="TARGET_USER_ROWS" type="integer" value="100" optional="true" label="Rows" help="Number of cells in North-South direction."/>
+    <param name="TARGET_USER_FITS" type="select" optional="true" label="Fit" help="Fit">
+      <option value="cells">cells</option>
+      <option selected="true" value="nodes">nodes</option>
+    </param>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLASSES" type="select" label="Classification" help="Classification look-up table for interpretation of resulting grid cell values.">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_CLASSES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CATEGORY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CATEGORY" type="select" label="Category" help="Category">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CATEGORY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_COVERAGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COVERAGE" type="select" label="Coverage" help="Coverage">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_COVERAGE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLASSES" format="csv" hidden="false"/>
+    <data name="output_data_CATEGORY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CATEGORY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CATEGORY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CATEGORY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_COVERAGE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COVERAGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_COVERAGE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_COVERAGE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool has been designed to rasterize polygons representing categories and selects that category, which has maximum coverage of a cell. The advantage using this tool (instead the more simple 'Shapes to Grid' or 'Polygons to Grid' tools) is that it summarizes all polygon coverages belonging to the same category. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,101 @@
+<tool name="SAGA.grid_spline.5" id="saga_grid_spline_5" version="1.0.0">
+  <description>Multilevel B-Spline from Grid Points</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  isArrayTARGET_TEMPLATE False  output_data_TARGET_OUT_GRID $output_data_TARGET_OUT_GRID  name SAGA.grid_spline.5 GRID $GRID
+TARGET_DEFINITION $TARGET_DEFINITION
+TARGET_USER_SIZE $TARGET_USER_SIZE
+TARGET_USER_XMIN $TARGET_USER_XMIN
+TARGET_USER_XMAX $TARGET_USER_XMAX
+TARGET_USER_YMIN $TARGET_USER_YMIN
+TARGET_USER_YMAX $TARGET_USER_YMAX
+TARGET_USER_COLS $TARGET_USER_COLS
+TARGET_USER_ROWS $TARGET_USER_ROWS
+TARGET_USER_FITS $TARGET_USER_FITS
+TARGET_TEMPLATE $TARGET_TEMPLATE
+METHOD $METHOD
+EPSILON $EPSILON
+LEVEL_MAX $LEVEL_MAX
+UPDATE $UPDATE
+DATATYPE $DATATYPE
+prefer $prefer
+response $response
+outputType_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.outputType_TARGET_OUT_GRID
+transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode_TARGET_OUT_GRID]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
+      <option value="grid_or_grid_system">grid or grid system</option>
+      <option selected="true" value="user_defined">user defined</option>
+    </param>
+    <param name="TARGET_USER_SIZE" type="float" value="1" optional="true" label="Cellsize" help="Cellsize"/>
+    <param name="TARGET_USER_XMIN" type="float" value="0" optional="true" label="West" help="West"/>
+    <param name="TARGET_USER_XMAX" type="float" value="100" optional="true" label="East" help="East"/>
+    <param name="TARGET_USER_YMIN" type="float" value="0" optional="true" label="South" help="South"/>
+    <param name="TARGET_USER_YMAX" type="float" value="100" optional="true" label="North" help="North"/>
+    <param name="TARGET_USER_COLS" type="integer" value="100" optional="true" label="Columns" help="Number of cells in East-West direction."/>
+    <param name="TARGET_USER_ROWS" type="integer" value="100" optional="true" label="Rows" help="Number of cells in North-South direction."/>
+    <param name="TARGET_USER_FITS" type="select" optional="true" label="Fit" help="Fit">
+      <option value="cells">cells</option>
+      <option selected="true" value="nodes">nodes</option>
+    </param>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Refinement" help="Refinement">
+      <option selected="true" value="no">no</option>
+      <option value="yes">yes</option>
+    </param>
+    <param name="EPSILON" type="float" value="0.0001" optional="true" label="Threshold Error" help="Threshold Error"/>
+    <param name="LEVEL_MAX" type="integer" value="11" optional="true" label="Maximum Level" help="Maximum Level"/>
+    <param name="UPDATE" type="select" optional="true" label="Update View" help="Update View">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DATATYPE" type="select" optional="true" label="Data Type" help="Data Type">
+      <option value="4_byte_floating_point_number">4 byte floating point number</option>
+      <option selected="true" value="same_as_input_grid">same as input grid</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TARGET_OUT_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TARGET_OUT_GRID" type="select" label="Target Grid" help="Target Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TARGET_OUT_GRID" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TARGET_OUT_GRID" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TARGET_OUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TARGET_OUT_GRID" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TARGET_OUT_GRID" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Multilevel B-spline algorithm for spatial interpolation of scattered data as proposed by Lee, Wolberg and Shin (1997). The algorithm makes use of a coarse-to-fine hierarchy of control lattices to generate a sequence of bicubic B-spline functions, whose sum approaches the desired interpolation function. Large performance gains are realized by using B-spline refinement to reduce the sum of these functions into one equivalent B-spline function. &lt;br/&gt;&lt;br/&gt;The 'Maximum Level' determines the maximum size of the final B-spline matrix and increases exponential with each level. Where level=10 requires about 1mb level=12 needs about 16mb and level=14 about 256mb(!) of additional memory. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

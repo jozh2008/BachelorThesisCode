@@ -1,0 +1,60 @@
+<tool name="SAGA.shapes_tools.19" id="saga_shapes_tools_19" version="1.0.0">
+  <description>Get Shapes Extents</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySHAPES False  output_data_EXTENTS $output_data_EXTENTS  name SAGA.shapes_tools.19 SHAPES $SHAPES
+OUTPUT $OUTPUT
+prefer $prefer
+response $response
+outputType_EXTENTS $OutputSection_EXTENTS.outputType_EXTENTS
+transmissionMode_EXTENTS $OutputSection_EXTENTS.transmissionMode_EXTENTS]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="OUTPUT" type="select" optional="true" label="Get Extent for ..." help="Get Extent for ...">
+      <option value="all_shapes">all shapes</option>
+      <option selected="true" value="each_shape">each shape</option>
+      <option value="each_shape's_part">each shape's part</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_EXTENTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_EXTENTS" type="select" label="Extents" help="Extents">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_EXTENTS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_EXTENTS" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_EXTENTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_EXTENTS" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Get Shapes Extents]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

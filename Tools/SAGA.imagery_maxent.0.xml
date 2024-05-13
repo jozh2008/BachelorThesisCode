@@ -1,0 +1,143 @@
+<tool name="SAGA.imagery_maxent.0" id="saga_imagery_maxent_0" version="1.0.0">
+  <description>Maximum Entropy Classifcation</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTRAINING False  isArrayFIELD False  isArrayFEATURES_NUM True  isArrayFEATURES_CAT True  isArrayYT_FILE_LOAD False  isArrayYT_FILE_SAVE False  output_data_CLASSES $output_data_CLASSES  output_data_PROB $output_data_PROB  output_data_PROBS $output_data_PROBS  name SAGA.imagery_maxent.0 TRAINING $TRAINING
+FIELD $FIELD
+FEATURES_NUM $FEATURES_NUM
+FEATURES_CAT $FEATURES_CAT
+PROBS_CREATE $PROBS_CREATE
+METHOD $METHOD
+YT_FILE_LOAD $YT_FILE_LOAD
+YT_FILE_SAVE $YT_FILE_SAVE
+YT_REGUL $YT_REGUL
+YT_REGUL_VAL $YT_REGUL_VAL
+YT_NUMASREAL $YT_NUMASREAL
+DL_ALPHA $DL_ALPHA
+DL_THRESHOLD $DL_THRESHOLD
+DL_ITERATIONS $DL_ITERATIONS
+NUM_CLASSES $NUM_CLASSES
+PROB_MIN $PROB_MIN
+prefer $prefer
+response $response
+outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
+transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES
+outputType_PROB $OutputSection_PROB.outputType_PROB
+transmissionMode_PROB $OutputSection_PROB.transmissionMode_PROB
+outputType_PROBS $OutputSection_PROBS.outputType_PROBS
+transmissionMode_PROBS $OutputSection_PROBS.transmissionMode_PROBS]]></command>
+  <inputs>
+    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Class Name" help="Class Name The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="PROBS_CREATE" type="select" optional="true" label="Create Propabilities" help="Create Propabilities">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="Dekang_Lin">Dekang Lin</option>
+      <option selected="true" value="Yoshimasa_Tsuruoka">Yoshimasa Tsuruoka</option>
+    </param>
+    <param name="YT_FILE_LOAD" type="data" optional="false" label="Load from File..." help="Load from File... The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="YT_FILE_SAVE" type="data" optional="false" label="Save to File..." help="Save to File... The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="YT_REGUL" type="select" optional="true" label="Regularization" help="Regularization">
+      <option selected="true" value="L1">L1</option>
+      <option value="L2">L2</option>
+      <option value="none">none</option>
+    </param>
+    <param name="YT_REGUL_VAL" type="float" value="1" optional="true" label="Regularization Factor" help="Regularization Factor"/>
+    <param name="YT_NUMASREAL" type="select" optional="true" label="Real-valued Numerical Features" help="Real-valued Numerical Features">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DL_ALPHA" type="float" value="0.1" optional="true" label="Alpha" help="Alpha"/>
+    <param name="DL_THRESHOLD" type="float" value="0" optional="true" label="Threshold" help="Threshold"/>
+    <param name="DL_ITERATIONS" type="integer" value="100" optional="true" label="Maximum Iterations" help="Maximum Iterations"/>
+    <param name="NUM_CLASSES" type="integer" value="32" optional="true" label="Number of Numeric Value Classes" help="Number of Numeric Value Classes"/>
+    <param name="PROB_MIN" type="float" value="0" optional="true" label="Minimum Probability" help="Minimum probability to accept a classification result for a cell."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLASSES" type="select" label="Classes" help="Classes">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CLASSES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PROB" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PROB" type="select" label="Probability" help="Probability">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PROB" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PROBS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PROBS" type="select" label="Probabilities" help="Probabilities">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PROBS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLASSES" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLASSES" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CLASSES" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CLASSES" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PROB" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PROB" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PROB" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PROB" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PROBS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PROBS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PROBS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PROBS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Maximum Entropy Classifcation]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

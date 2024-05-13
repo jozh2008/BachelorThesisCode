@@ -1,0 +1,121 @@
+<tool name="SAGA.sim_landscape_evolution.0" id="saga_sim_landscape_evolution_0" version="1.0.0">
+  <description>SaLEM</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySURFACE_T0 False  isArrayREGOLITH_T0 False  isArrayALLOCHTHONE False  output_data_SURFACE $output_data_SURFACE  output_data_REGOLITH $output_data_REGOLITH  output_data_DIFFERENCE $output_data_DIFFERENCE  name SAGA.sim_landscape_evolution.0 SURFACE_T0 $SURFACE_T0
+REGOLITH_T0 $REGOLITH_T0
+REGOLITH_T0_DEFAULT $REGOLITH_T0_DEFAULT
+ALLOCHTHONE $ALLOCHTHONE
+ALLOCHTHONE_DEFAULT $ALLOCHTHONE_DEFAULT
+TIME_START $TIME_START
+TIME_STOP $TIME_STOP
+TIME_STEP $TIME_STEP
+DIFFUSIVE_KD $DIFFUSIVE_KD
+DIFFUSIVE_NEIGHBOURS $DIFFUSIVE_NEIGHBOURS
+prefer $prefer
+response $response
+outputType_SURFACE $OutputSection_SURFACE.outputType_SURFACE
+transmissionMode_SURFACE $OutputSection_SURFACE.transmissionMode_SURFACE
+outputType_REGOLITH $OutputSection_REGOLITH.outputType_REGOLITH
+transmissionMode_REGOLITH $OutputSection_REGOLITH.transmissionMode_REGOLITH
+outputType_DIFFERENCE $OutputSection_DIFFERENCE.outputType_DIFFERENCE
+transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENCE]]></command>
+  <inputs>
+    <param name="SURFACE_T0" type="data" optional="false" label="Initial Surface Elevation" help="Initial Surface Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="REGOLITH_T0" type="data" optional="false" label="Initial Regolith Thickness" help="Initial sediment cover (m) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="REGOLITH_T0_DEFAULT" type="float" value="0" optional="true" label="Default" help="default value if no grid has been selected"/>
+    <param name="ALLOCHTHONE" type="data" optional="false" label="Allochthone Input" help="Allochthone input in meter per year (e.g. of aeolian origin, 'Loess'). The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="ALLOCHTHONE_DEFAULT" type="float" value="0" optional="true" label="Default" help="default value if no grid has been selected"/>
+    <param name="TIME_START" type="integer" value="50000" optional="true" label="Start [Years BP]" help="Start [Years BP]"/>
+    <param name="TIME_STOP" type="integer" value="10000" optional="true" label="Stop [Years BP]" help="Stop [Years BP]"/>
+    <param name="TIME_STEP" type="integer" value="100" optional="true" label="Step [Years]" help="Step [Years]"/>
+    <param name="DIFFUSIVE_KD" type="float" value="0.01" optional="true" label="Diffusivity Coefficient Kd [m^2/a]" help="Diffusivity Coefficient Kd [m^2/a]"/>
+    <param name="DIFFUSIVE_NEIGHBOURS" type="select" optional="true" label="Neighbourhood" help="Neighbourhood">
+      <option selected="true" value="Moore">Moore</option>
+      <option value="Neumann">Neumann</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_SURFACE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SURFACE" type="select" label="Surface Elevation" help="Surface Elevation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SURFACE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_REGOLITH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_REGOLITH" type="select" label="Regolith Thickness" help="Regolith Thickness">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_REGOLITH" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIFFERENCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIFFERENCE" type="select" label="Difference" help="Difference">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIFFERENCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_SURFACE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SURFACE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SURFACE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SURFACE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_REGOLITH" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_REGOLITH" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_REGOLITH" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_REGOLITH" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIFFERENCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIFFERENCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIFFERENCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIFFERENCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This is the implementation of a Soil and Landscape Evolution Model (SaLEM) for the spatiotemporal investigation of soil parent material evolution following a lithologically differentiated approach. The model needs a digital elevation model and (paleo-)climatic data for the simulation of weathering, erosion and transport processes. Weathering is controlled by user defined functions in dependence of climate conditions, local slope, regolith cover and outcropping bedrock lithology. Lithology can be supplied as a set of grids, of which each grid represents the top elevation of the underlying bedrock type. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

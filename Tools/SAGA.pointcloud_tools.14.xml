@@ -1,0 +1,48 @@
+<tool name="SAGA.pointcloud_tools.14" id="saga_pointcloud_tools_14" version="1.0.0">
+  <description>Select Point Cloud from List</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPC_LIST True  output_data_PC $output_data_PC  name SAGA.pointcloud_tools.14 PC_LIST $PC_LIST
+INDEX $INDEX
+prefer $prefer
+response $response
+outputType_PC $OutputSection_PC.outputType_PC
+transmissionMode_PC $OutputSection_PC.transmissionMode_PC]]></command>
+  <inputs>
+    <param name="PC_LIST" type="data" optional="false" label="Point Cloud List" help="The input point cloud list. The following data types are allowed in the txt file:  x-ogc-lasf" format="txt"/>
+    <param name="INDEX" type="integer" value="0" optional="true" label="Index" help="The list index of the point cloud to pick. Indices start at zero."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PC" type="select" label="Point Cloud" help="The point cloud picked from the point cloud list.">
+        <option value="application/x-ogc-lasf">x-ogc-lasf</option>
+      </param>
+      <param name="transmissionMode_PC" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PC" format="x-ogc-lasf" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Main use of this tool is to support tool chain development, allowing to pick a single point cloud from a point cloud list.&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

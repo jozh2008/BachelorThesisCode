@@ -1,0 +1,76 @@
+<tool name="OTB.MultiResolutionPyramid" id="otb_multiresolutionpyramid" version="1.0.0">
+  <description>Build a multi-resolution pyramid of the image.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.MultiResolutionPyramid in $in
+out $out
+ram $ram
+level $level
+sfactor $sfactor
+vfactor $vfactor
+fast $fast
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="in" type="data" optional="false" label="in" help="in The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="out" type="select" optional="false" label="will be used to get the prefix and the extension of the images to write" help="will be used to get the prefix and the extension of the images to write">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="level" type="integer" value="1" optional="false" label="Number of levels in the pyramid (default is 1)." help="Number of levels in the pyramid (default is 1)."/>
+    <param name="sfactor" type="integer" value="2" optional="false" label="Subsampling factor between each level of the pyramid (default is 2)." help="Subsampling factor between each level of the pyramid (default is 2)."/>
+    <param name="vfactor" type="float" value="0.6" optional="false" label="Variance factor use in smoothing. It is multiplied by the subsampling factor of each level in the  pyramid (default is 0.6)." help="Variance factor use in smoothing. It is multiplied by the subsampling factor of each level in the  pyramid (default is 0.6)."/>
+    <param name="fast" type="select" optional="false" label="If used, this option allows one to speed-up computation by iteratively subsampling previous level of pyramid instead of processing the full input." help="If used, this option allows one to speed-up computation by iteratively subsampling previous level of pyramid instead of processing the full input.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="will be used to get the prefix and the extension of the images to write" help="will be used to get the prefix and the extension of the images to write">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application builds a multi-resolution pyramid of the input image. User can specified the number of levels of the pyramid and the subsampling factor. To speed up the process, you can use the fast scheme option]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

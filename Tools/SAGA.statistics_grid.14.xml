@@ -1,0 +1,124 @@
+<tool name="SAGA.statistics_grid.14" id="saga_statistics_grid_14" version="1.0.0">
+  <description>Categorical Coincidence</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRIDS True  output_data_CATEGORIES $output_data_CATEGORIES  output_data_COINCIDENCE $output_data_COINCIDENCE  output_data_MAJ_COUNT $output_data_MAJ_COUNT  output_data_MAJ_VALUE $output_data_MAJ_VALUE  name SAGA.statistics_grid.14 GRIDS $GRIDS
+RADIUS $RADIUS
+prefer $prefer
+response $response
+outputType_CATEGORIES $OutputSection_CATEGORIES.outputType_CATEGORIES
+transmissionMode_CATEGORIES $OutputSection_CATEGORIES.transmissionMode_CATEGORIES
+outputType_COINCIDENCE $OutputSection_COINCIDENCE.outputType_COINCIDENCE
+transmissionMode_COINCIDENCE $OutputSection_COINCIDENCE.transmissionMode_COINCIDENCE
+outputType_MAJ_COUNT $OutputSection_MAJ_COUNT.outputType_MAJ_COUNT
+transmissionMode_MAJ_COUNT $OutputSection_MAJ_COUNT.transmissionMode_MAJ_COUNT
+outputType_MAJ_VALUE $OutputSection_MAJ_VALUE.outputType_MAJ_VALUE
+transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]></command>
+  <inputs>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="RADIUS" type="integer" value="0" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CATEGORIES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CATEGORIES" type="select" label="Number of Categories" help="Number of Categories">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CATEGORIES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_COINCIDENCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COINCIDENCE" type="select" label="Coincidence" help="Coincidence">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_COINCIDENCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MAJ_COUNT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MAJ_COUNT" type="select" label="Dominance of Majority" help="Dominance of Majority">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MAJ_COUNT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MAJ_VALUE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MAJ_VALUE" type="select" label="Value of Majority" help="Value of Majority">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MAJ_VALUE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CATEGORIES" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CATEGORIES" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CATEGORIES" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CATEGORIES" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_COINCIDENCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COINCIDENCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_COINCIDENCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_COINCIDENCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MAJ_COUNT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MAJ_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MAJ_COUNT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MAJ_COUNT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MAJ_VALUE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MAJ_VALUE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MAJ_VALUE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MAJ_VALUE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculates for each cell the categorical coincidence, which can be useful to compare different classifications.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

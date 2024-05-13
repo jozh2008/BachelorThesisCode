@@ -1,0 +1,128 @@
+<tool name="SAGA.imagery_vigra.10" id="saga_imagery_vigra_10" version="1.0.0">
+  <description>Random Forest Presence Prediction (ViGrA)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayFEATURES True  isArrayPRESENCE False  isArrayRF_IMPORT False  isArrayRF_EXPORT False  output_data_PREDICTION $output_data_PREDICTION  output_data_PROBABILITY $output_data_PROBABILITY  name SAGA.imagery_vigra.10 FEATURES $FEATURES
+PRESENCE $PRESENCE
+BACKGROUND $BACKGROUND
+DO_MRMR $DO_MRMR
+mRMR_NFEATURES $mRMR_NFEATURES
+mRMR_DISCRETIZE $mRMR_DISCRETIZE
+mRMR_THRESHOLD $mRMR_THRESHOLD
+mRMR_METHOD $mRMR_METHOD
+RF_IMPORT $RF_IMPORT
+RF_EXPORT $RF_EXPORT
+RF_TREE_COUNT $RF_TREE_COUNT
+RF_TREE_SAMPLES $RF_TREE_SAMPLES
+RF_REPLACE $RF_REPLACE
+RF_SPLIT_MIN_SIZE $RF_SPLIT_MIN_SIZE
+RF_NODE_FEATURES $RF_NODE_FEATURES
+RF_STRATIFICATION $RF_STRATIFICATION
+prefer $prefer
+response $response
+outputType_PREDICTION $OutputSection_PREDICTION.outputType_PREDICTION
+transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTION
+outputType_PROBABILITY $OutputSection_PROBABILITY.outputType_PROBABILITY
+transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABILITY]]></command>
+  <inputs>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="BACKGROUND" type="float" value="1" optional="true" label="Background Sample Density [Percent]" help="Background Sample Density [Percent]"/>
+    <param name="DO_MRMR" type="select" optional="true" label="Minimum Redundancy Feature Selection" help="Use only features selected by the minimum Redundancy Maximum Relevance (mRMR) algorithm">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="mRMR_NFEATURES" type="integer" value="50" optional="true" label="Number of Features" help="Number of Features"/>
+    <param name="mRMR_DISCRETIZE" type="select" optional="true" label="Discretization" help="uncheck this means no discretizaton (i.e. data is already integer)">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="mRMR_THRESHOLD" type="float" value="1" optional="true" label="Discretization Threshold" help="a double number of the discretization threshold; set to 0 to make binarization"/>
+    <param name="mRMR_METHOD" type="select" optional="true" label="Selection Method" help="Selection Method">
+      <option selected="true" value="Mutual_Information_Difference_(MID)">Mutual Information Difference (MID)</option>
+      <option value="Mutual_Information_Quotient_(MIQ)">Mutual Information Quotient (MIQ)</option>
+    </param>
+    <param name="RF_IMPORT" type="data" optional="false" label="Import from File" help="Import from File The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="RF_EXPORT" type="data" optional="false" label="Export to File" help="Export to File The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="RF_TREE_COUNT" type="integer" value="32" optional="true" label="Tree Count" help="How many trees to create?"/>
+    <param name="RF_TREE_SAMPLES" type="float" value="1" optional="true" label="Samples per Tree" help="Specifies the fraction of the total number of samples used per tree for learning."/>
+    <param name="RF_REPLACE" type="select" optional="true" label="Sample with Replacement" help="Sample from training population with or without replacement?">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="RF_SPLIT_MIN_SIZE" type="integer" value="1" optional="true" label="Minimum Node Split Size" help="Number of examples required for a node to be split. Choose 1 for complete growing."/>
+    <param name="RF_NODE_FEATURES" type="select" optional="true" label="Features per Node" help="Features per Node">
+      <option value="all">all</option>
+      <option value="logarithmic">logarithmic</option>
+      <option selected="true" value="square_root">square root</option>
+    </param>
+    <param name="RF_STRATIFICATION" type="select" optional="true" label="Stratification" help="Specifies stratification strategy. Either none, equal amount of class samples, or proportional to fraction of class samples.">
+      <option value="equal">equal</option>
+      <option selected="true" value="none">none</option>
+      <option value="proportional">proportional</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PREDICTION" type="select" label="Presence Prediction" help="Presence Prediction">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PREDICTION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PROBABILITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PROBABILITY" type="select" label="Presence Probability" help="Presence Probability">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PROBABILITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PREDICTION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PREDICTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PREDICTION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PREDICTION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PROBABILITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PROBABILITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PROBABILITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PROBABILITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Random Forest Presence Prediction (ViGrA)]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,86 @@
+<tool name="SAGA.imagery_tools.10" id="saga_imagery_tools_10" version="1.0.0">
+  <description>Landsat Import with Options</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayFILES False  output_data_BANDS $output_data_BANDS  name SAGA.imagery_tools.10 FILES $FILES
+PROJECTION $PROJECTION
+RESAMPLING $RESAMPLING
+SHOW_RGB $SHOW_RGB
+SHOW_R $SHOW_R
+SHOW_G $SHOW_G
+SHOW_B $SHOW_B
+prefer $prefer
+response $response
+outputType_BANDS $OutputSection_BANDS.outputType_BANDS
+transmissionMode_BANDS $OutputSection_BANDS.transmissionMode_BANDS]]></command>
+  <inputs>
+    <param name="FILES" type="data" optional="false" label="Files" help="Files The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="PROJECTION" type="select" optional="true" label="Coordinate System" help="Coordinate System">
+      <option value="Geographic_Coordinates">Geographic Coordinates</option>
+      <option selected="true" value="UTM_North">UTM North</option>
+      <option value="UTM_South">UTM South</option>
+    </param>
+    <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="SHOW_RGB" type="select" optional="true" label="Show a Composite" help="Show a Composite">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SHOW_R" type="select" optional="true" label="Red" help="Red">
+      <option selected="true" value="no_choice_available">no choice available</option>
+    </param>
+    <param name="SHOW_G" type="select" optional="true" label="Green" help="Green">
+      <option selected="true" value="no_choice_available">no choice available</option>
+    </param>
+    <param name="SHOW_B" type="select" optional="true" label="Blue" help="Blue">
+      <option selected="true" value="no_choice_available">no choice available</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_BANDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BANDS" type="select" label="Bands" help="Bands">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BANDS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_BANDS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BANDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BANDS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BANDS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool facilitates the import and display of Landsat scenes, which have each band given as a single GeoTIFF file.&lt;br/&gt;&lt;br/&gt;The development of this tool has been requested and sponsored by Rohan Fisher, Charles Darwin University, Australia. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

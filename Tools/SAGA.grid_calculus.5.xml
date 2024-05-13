@@ -1,0 +1,66 @@
+<tool name="SAGA.grid_calculus.5" id="saga_grid_calculus_5" version="1.0.0">
+  <description>Geometric Figures</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_RESULT $output_data_RESULT  name SAGA.grid_calculus.5 CELL_COUNT $CELL_COUNT
+CELL_SIZE $CELL_SIZE
+FIGURE $FIGURE
+PLANE $PLANE
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="CELL_COUNT" type="integer" value="100" optional="true" label="Cell Count" help="Cell Count"/>
+    <param name="CELL_SIZE" type="float" value="1" optional="true" label="Cell Size" help="Cell Size"/>
+    <param name="FIGURE" type="select" optional="true" label="Figure" help="Figure">
+      <option value="Cone_(down)">Cone (down)</option>
+      <option selected="true" value="Cone_(up)">Cone (up)</option>
+      <option value="Plane">Plane</option>
+    </param>
+    <param name="PLANE" type="float" value="22.5" optional="true" label="Direction of Plane [Degree]" help="Direction of Plane [Degree]"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESULT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESULT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Construct grids from geometric figures (planes, cones).&lt;br/&gt;(c) 2001 by Olaf Conrad, Goettingen&lt;br/&gt;email: oconrad@gwdg.de]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

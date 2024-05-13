@@ -1,0 +1,76 @@
+<tool name="OTB.GeneratePlyFile" id="otb_generateplyfile" version="1.0.0">
+  <description>Generate a 3D Ply file from a DEM and a color image.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayindem False  isArrayincolor False  output_data_out $output_data_out  name OTB.GeneratePlyFile indem $indem
+mode $mode
+map $map
+map.utm.zone $map.utm.zone
+map.utm.northhem $map.utm.northhem
+map.epsg.code $map.epsg.code
+incolor $incolor
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="indem" type="data" optional="false" label="The image should be either a projected DEM or a 3D grid containing 3D point coordinates and a validity mask." help="The image should be either a projected DEM or a 3D grid containing 3D point coordinates and a validity mask. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="mode" type="select" optional="false" label="mode" help="mode">
+      <option value="3dgrid">3dgrid</option>
+      <option selected="true" value="dem">dem</option>
+    </param>
+    <param name="map" type="select" optional="false" label="Defines the map projection to be used." help="Defines the map projection to be used.">
+      <option value="epsg">epsg</option>
+      <option value="lambert2">lambert2</option>
+      <option value="lambert93">lambert93</option>
+      <option selected="true" value="utm">utm</option>
+      <option value="wgs">wgs</option>
+    </param>
+    <param name="map.utm.zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
+    <param name="map.utm.northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="map.epsg.code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
+    <param name="incolor" type="data" optional="false" label="If the color image has 4 bands it will be interpreted as Red, Green, Blue, NIR. In other cases, only the first one is used (gray scale colors). The color values are expected in the range 0 - 255, and will be embedded with each 3D point of the PLY file." help="If the color image has 4 bands it will be interpreted as Red, Green, Blue, NIR. In other cases, only the first one is used (gray scale colors). The color values are expected in the range 0 - 255, and will be embedded with each 3D point of the PLY file. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="The output Ply file will contain as many 3D points as pixels in the input DEM." help="The output Ply file will contain as many 3D points as pixels in the input DEM.">
+        <option value="text/plain">plain</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="plain" value="text/plain"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The application converts an image containing elevations into a PLY file, which is a file format to store 3D models. This format is adpated for visualization on software such as MeshLab [2] or CloudCompare [3]This application is part of the stereo reconstruction framework. The input data can be produced by the application DisparityMapToElevationMap.There are two types of supported input images:  * A DEM image, with a ground projection, containing elevation values. Each elevation value can be considered as a 3D point.  * A 3D grid image, containing 5 bands (the first 3 are the 3D coordinates of each point, the 5th is a validity mask where valid values are larger or equal to 1)The user shall also give a support image that contains color values for each 3D point. The color values will be embedded in the PLY file.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,86 @@
+<tool name="SAGA.ta_morphometry.9" id="saga_ta_morphometry_9" version="1.0.0">
+  <description>Downslope Distance Gradient</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_GRADIENT $output_data_GRADIENT  output_data_DIFFERENCE $output_data_DIFFERENCE  name SAGA.ta_morphometry.9 DEM $DEM
+DISTANCE $DISTANCE
+OUTPUT $OUTPUT
+prefer $prefer
+response $response
+outputType_GRADIENT $OutputSection_GRADIENT.outputType_GRADIENT
+transmissionMode_GRADIENT $OutputSection_GRADIENT.transmissionMode_GRADIENT
+outputType_DIFFERENCE $OutputSection_DIFFERENCE.outputType_DIFFERENCE
+transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENCE]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="DISTANCE" type="float" value="10" optional="true" label="Vertical Distance" help="Vertical Distance"/>
+    <param name="OUTPUT" type="select" optional="true" label="Output" help="Output">
+      <option value="distance">distance</option>
+      <option selected="true" value="gradient_(degree)">gradient (degree)</option>
+      <option value="gradient_(tangens)">gradient (tangens)</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GRADIENT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GRADIENT" type="select" label="Gradient" help="Gradient">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GRADIENT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIFFERENCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIFFERENCE" type="select" label="Gradient Difference" help="Difference to local gradient.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIFFERENCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GRADIENT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GRADIENT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GRADIENT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GRADIENT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIFFERENCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIFFERENCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIFFERENCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIFFERENCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculation of a new topographic index to quantify downslope controls on local drainage. &lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;- Hjerdt, K.N., McDonnell, J.J., Seibert, J. Rodhe, A. (2004):   'A new topographic index to quantify downslope controls on local drainage',   Water Resources Research, 40&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

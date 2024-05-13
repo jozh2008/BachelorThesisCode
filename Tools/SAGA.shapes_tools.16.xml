@@ -1,0 +1,83 @@
+<tool name="SAGA.shapes_tools.16" id="saga_shapes_tools_16" version="1.0.0">
+  <description>Split Shapes Layer Randomly</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySHAPES False  isArrayFIELD False  output_data_A $output_data_A  output_data_B $output_data_B  name SAGA.shapes_tools.16 SHAPES $SHAPES
+FIELD $FIELD
+PERCENT $PERCENT
+EXACT $EXACT
+prefer $prefer
+response $response
+outputType_A $OutputSection_A.outputType_A
+transmissionMode_A $OutputSection_A.transmissionMode_A
+outputType_B $OutputSection_B.outputType_B
+transmissionMode_B $OutputSection_B.transmissionMode_B]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Categories" help="Categories The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="PERCENT" type="float" value="25" optional="true" label="Relation B / A" help="Relation B / A"/>
+    <param name="EXACT" type="select" optional="true" label="Exact" help="Exact">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_A" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_A" type="select" label="Group A" help="Group A">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_A" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_B" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_B" type="select" label="Group B" help="Group B">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_B" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_A" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_A" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_A" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_B" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_B" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_B" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Randomly splits one layer into to two new layers. Useful to create a control group for model testing. Optionally this can be done category-wise if a category field is specified. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

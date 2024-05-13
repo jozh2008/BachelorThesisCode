@@ -1,0 +1,89 @@
+<tool name="SAGA.ta_lighting.5" id="saga_ta_lighting_5" version="1.0.0">
+  <description>Topographic Openness</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayDEM False  output_data_POS $output_data_POS  output_data_NEG $output_data_NEG  name SAGA.ta_lighting.5 DEM $DEM
+RADIUS $RADIUS
+METHOD $METHOD
+DLEVEL $DLEVEL
+NDIRS $NDIRS
+prefer $prefer
+response $response
+outputType_POS $OutputSection_POS.outputType_POS
+transmissionMode_POS $OutputSection_POS.transmissionMode_POS
+outputType_NEG $OutputSection_NEG.outputType_NEG
+transmissionMode_NEG $OutputSection_NEG.transmissionMode_NEG]]></command>
+  <inputs>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="RADIUS" type="float" value="10000" optional="true" label="Radial Limit" help="Radial Limit"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option selected="true" value="line_tracing">line tracing</option>
+      <option value="multi_scale">multi scale</option>
+    </param>
+    <param name="DLEVEL" type="float" value="3" optional="true" label="Multi Scale Factor" help="Multi Scale Factor"/>
+    <param name="NDIRS" type="integer" value="8" optional="true" label="Number of Sectors" help="Number of Sectors"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_POS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_POS" type="select" label="Positive Openness" help="Positive Openness">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_POS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_NEG" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_NEG" type="select" label="Negative Openness" help="Negative Openness">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_NEG" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_POS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_POS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_POS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_POS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_NEG" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_NEG" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_NEG" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_NEG" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Topographic openness expresses the dominance (positive) or enclosure (negative) of a landscape location. See Yokoyama et al. (2002) for a precise definition. Openness has been related to how wide a landscape can be viewed from any position. It has been proven to be a meaningful input for computer aided geomorphological mapping. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

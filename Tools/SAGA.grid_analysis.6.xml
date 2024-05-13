@@ -1,0 +1,112 @@
+<tool name="SAGA.grid_analysis.6" id="saga_grid_analysis_6" version="1.0.0">
+  <description>Change Vector Analysis</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayA True  isArrayB True  output_data_DIST $output_data_DIST  output_data_DIR $output_data_DIR  output_data_C $output_data_C  name SAGA.grid_analysis.6 A $A
+B $B
+ANGLE $ANGLE
+C_OUT $C_OUT
+prefer $prefer
+response $response
+outputType_DIST $OutputSection_DIST.outputType_DIST
+transmissionMode_DIST $OutputSection_DIST.transmissionMode_DIST
+outputType_DIR $OutputSection_DIR.outputType_DIR
+transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR
+outputType_C $OutputSection_C.outputType_C
+transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
+  <inputs>
+    <param name="A" type="data" optional="false" label="Initial State" help="Initial State The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="B" type="data" optional="false" label="Final State" help="Final State The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ANGLE" type="select" optional="true" label="Angle Calculation" help="angle calculation is only available when exact two features are compared">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="C_OUT" type="select" optional="true" label="Output of Change Vector" help="Output of Change Vector">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_DIST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIST" type="select" label="Distance" help="Distance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIST" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIR" type="select" label="Direction" help="Direction">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIR" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_C" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_C" type="select" label="Change Vector" help="Change Vector">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_C" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_DIST" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIST" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIST" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIST" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIR" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIR" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIR" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIR" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_C" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_C" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_C" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_C" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool performs a change vector analysis (CVA) for the given input features. Input features are supplied as grid lists for initial and final state. In both lists features have to be given in the same order. Distance is measured as Euclidean distance in features space. When analyzing two features direction is calculated as angle (radians) by default. Otherwise direction is coded as the quadrant it points to in terms of feature space. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

@@ -1,0 +1,83 @@
+<tool name="SAGA.table_calculus.14" id="saga_table_calculus_14" version="1.0.0">
+  <description>Cluster Analysis (Shapes)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArrayFIELDS False  isArrayCLUSTER False  output_data_RESULT $output_data_RESULT  output_data_STATISTICS $output_data_STATISTICS  name SAGA.table_calculus.14 INPUT $INPUT
+FIELDS $FIELDS
+CLUSTER $CLUSTER
+METHOD $METHOD
+NCLUSTER $NCLUSTER
+NORMALISE $NORMALISE
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT
+outputType_STATISTICS $OutputSection_STATISTICS.outputType_STATISTICS
+transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTICS]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Attributes" help="Attributes The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="CLUSTER" type="data" optional="false" label="Cluster" help="Cluster The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="Combined_Minimum_Distance_/_Hillclimbing">Combined Minimum Distance / Hillclimbing</option>
+      <option selected="true" value="Hill-Climbing_(Rubin_1967)">Hill-Climbing (Rubin 1967)</option>
+      <option value="Iterative_Minimum_Distance_(Forgy_1965)">Iterative Minimum Distance (Forgy 1965)</option>
+    </param>
+    <param name="NCLUSTER" type="integer" value="10" optional="true" label="Clusters" help="Number of clusters"/>
+    <param name="NORMALISE" type="select" optional="true" label="Normalise" help="Automatically normalise grids by standard deviation before clustering.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_STATISTICS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_STATISTICS" type="select" label="Statistics" help="Statistics">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_STATISTICS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESULT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_STATISTICS" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Cluster Analysis for tables.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;&lt;br/&gt;Iterative Minimum Distance:&lt;br/&gt;- Forgy, E. (1965):&lt;br/&gt;  'Cluster Analysis of multivariate data: efficiency vs. interpretability of classifications',&lt;br/&gt;  Biometrics 21:768&lt;br/&gt;&lt;br/&gt;Hill-Climbing:- Rubin, J. (1967):&lt;br/&gt;  'Optimal Classification into Groups: An Approach for Solving the Taxonomy Problem',&lt;br/&gt;  J. Theoretical Biology, 15:103-144&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

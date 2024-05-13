@@ -1,0 +1,115 @@
+<tool name="SAGA.statistics_grid.15" id="saga_statistics_grid_15" version="1.0.0">
+  <description>Focal PCA on a Grid</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_BASE $output_data_BASE  output_data_PCA $output_data_PCA  output_data_EIGEN $output_data_EIGEN  name SAGA.statistics_grid.15 GRID $GRID
+COMPONENTS $COMPONENTS
+BASE_OUT $BASE_OUT
+OVERWRITE $OVERWRITE
+KERNEL_TYPE $KERNEL_TYPE
+KERNEL_RADIUS $KERNEL_RADIUS
+METHOD $METHOD
+prefer $prefer
+response $response
+outputType_BASE $OutputSection_BASE.outputType_BASE
+transmissionMode_BASE $OutputSection_BASE.transmissionMode_BASE
+outputType_PCA $OutputSection_PCA.outputType_PCA
+transmissionMode_PCA $OutputSection_PCA.transmissionMode_PCA
+outputType_EIGEN $OutputSection_EIGEN.outputType_EIGEN
+transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="COMPONENTS" type="integer" value="7" optional="true" label="Number of Components" help="number of first components in the output; set to zero to get all"/>
+    <param name="BASE_OUT" type="select" optional="true" label="Output of Base Topographies" help="Output of Base Topographies">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="OVERWRITE" type="select" optional="true" label="Overwrite Previous Results" help="Overwrite Previous Results">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="KERNEL_TYPE" type="select" optional="true" label="Kernel Type" help="Kernel Type">
+      <option selected="true" value="Circle">Circle</option>
+      <option value="Square">Square</option>
+    </param>
+    <param name="KERNEL_RADIUS" type="integer" value="2" optional="true" label="Kernel Radius" help="Kernel radius in cells."/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="correlation_matrix">correlation matrix</option>
+      <option value="sums-of-squares-and-cross-products_matrix">sums-of-squares-and-cross-products matrix</option>
+      <option selected="true" value="variance-covariance_matrix">variance-covariance matrix</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_BASE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_BASE" type="select" label="Base Topographies" help="Base Topographies">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_BASE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PCA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PCA" type="select" label="Principal Components" help="Principal Components">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PCA" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_EIGEN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_EIGEN" type="select" label="Eigen Vectors" help="Eigen Vectors">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_EIGEN" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_BASE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_BASE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_BASE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_BASE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PCA" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PCA" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PCA" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PCA" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_EIGEN" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool uses the difference in cell values of a center cell and its neighbours (as specified by the kernel) as features for a Principal Component Analysis (PCA). This method has been used by Thomas and Herzfeld (2004) to parameterize the topography for a subsequent regionalization of climate variables with the principal components as predictors in a regression model. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

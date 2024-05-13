@@ -1,0 +1,204 @@
+<tool name="OTB.TrainVectorClassifier" id="otb_trainvectorclassifier" version="1.0.0">
+  <description>Train a classifier based on labeled geometries and a list of features to consider.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio.vd True  isArrayio.stats False  isArrayvalid.vd True  output_data_io.out $output_data_io.out  output_data_io.confmatout $output_data_io.confmatout  name OTB.TrainVectorClassifier io.vd $io.vd
+io.stats $io.stats
+layer $layer
+feat '$feat'
+valid.vd $valid.vd
+valid.layer $valid.layer
+cfield '$cfield'
+v $v
+classifier $classifier
+classifier.libsvm.k $classifier.libsvm.k
+classifier.libsvm.m $classifier.libsvm.m
+classifier.libsvm.c $classifier.libsvm.c
+classifier.libsvm.nu $classifier.libsvm.nu
+classifier.libsvm.opt $classifier.libsvm.opt
+classifier.libsvm.prob $classifier.libsvm.prob
+classifier.boost.t $classifier.boost.t
+classifier.boost.w $classifier.boost.w
+classifier.boost.r $classifier.boost.r
+classifier.boost.m $classifier.boost.m
+classifier.dt.max $classifier.dt.max
+classifier.dt.min $classifier.dt.min
+classifier.dt.ra $classifier.dt.ra
+classifier.dt.cat $classifier.dt.cat
+classifier.dt.f $classifier.dt.f
+classifier.dt.r $classifier.dt.r
+classifier.dt.t $classifier.dt.t
+classifier.ann.t $classifier.ann.t
+classifier.ann.sizes '$classifier.ann.sizes'
+classifier.ann.f $classifier.ann.f
+classifier.ann.a $classifier.ann.a
+classifier.ann.b $classifier.ann.b
+classifier.ann.bpdw $classifier.ann.bpdw
+classifier.ann.bpms $classifier.ann.bpms
+classifier.ann.rdw $classifier.ann.rdw
+classifier.ann.rdwm $classifier.ann.rdwm
+classifier.ann.term $classifier.ann.term
+classifier.ann.eps $classifier.ann.eps
+classifier.ann.iter $classifier.ann.iter
+classifier.rf.max $classifier.rf.max
+classifier.rf.min $classifier.rf.min
+classifier.rf.ra $classifier.rf.ra
+classifier.rf.cat $classifier.rf.cat
+classifier.rf.var $classifier.rf.var
+classifier.rf.nbtrees $classifier.rf.nbtrees
+classifier.rf.acc $classifier.rf.acc
+classifier.knn.k $classifier.knn.k
+rand $rand
+prefer $prefer
+response $response
+outputType_io.out $OutputSection_io.out.outputType_io.out
+transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out
+outputType_io.confmatout $OutputSection_io.confmatout.outputType_io.confmatout
+transmissionMode_io.confmatout $OutputSection_io.confmatout.transmissionMode_io.confmatout]]></command>
+  <inputs>
+    <param name="io.vd" type="data" optional="false" label="Input geometries used for training (note : all geometries from the layer will be used)" help="Input geometries used for training (note : all geometries from the layer will be used) The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml, zip" format="txt"/>
+    <param name="io.stats" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
+    <param name="layer" type="integer" value="0" optional="true" label="Index of the layer to use in the input vector file." help="Index of the layer to use in the input vector file."/>
+    <param name="feat" type="text" optional="false" label="List of field names in the input vector data to be used as features for training." help="List of field names in the input vector data to be used as features for training."/>
+    <param name="valid.vd" type="data" optional="false" label="Geometries used for validation (must contain the same fields used for training, all geometries from the layer will be used)" help="Geometries used for validation (must contain the same fields used for training, all geometries from the layer will be used) The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml, zip" format="txt"/>
+    <param name="valid.layer" type="integer" value="0" optional="true" label="Index of the layer to use in the validation vector file." help="Index of the layer to use in the validation vector file."/>
+    <param name="cfield" type="text" optional="false" label="Field containing the class id for supervision. The values in this field shall be cast into integers. Only geometries with this field available will be taken into account." help="Field containing the class id for supervision. The values in this field shall be cast into integers. Only geometries with this field available will be taken into account."/>
+    <param name="v" type="select" optional="false" label="Verbose mode, display the contingency table result." help="Verbose mode, display the contingency table result.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="classifier" type="select" optional="false" label="Choice of the classifier to use for the training." help="Choice of the classifier to use for the training.">
+      <option value="ann">ann</option>
+      <option value="bayes">bayes</option>
+      <option value="boost">boost</option>
+      <option value="dt">dt</option>
+      <option value="knn">knn</option>
+      <option selected="true" value="libsvm">libsvm</option>
+      <option value="rf">rf</option>
+    </param>
+    <param name="classifier.libsvm.k" type="select" optional="false" label="SVM Kernel Type." help="SVM Kernel Type.">
+      <option selected="true" value="linear">linear</option>
+      <option value="poly">poly</option>
+      <option value="rbf">rbf</option>
+      <option value="sigmoid">sigmoid</option>
+    </param>
+    <param name="classifier.libsvm.m" type="select" optional="false" label="Type of SVM formulation." help="Type of SVM formulation.">
+      <option selected="true" value="csvc">csvc</option>
+      <option value="nusvc">nusvc</option>
+      <option value="oneclass">oneclass</option>
+    </param>
+    <param name="classifier.libsvm.c" type="float" value="1" optional="false" label="SVM models have a cost parameter C (1 by default) to control the trade-off between training errors and forcing rigid margins." help="SVM models have a cost parameter C (1 by default) to control the trade-off between training errors and forcing rigid margins."/>
+    <param name="classifier.libsvm.nu" type="float" value="0.5" optional="false" label="Cost parameter Nu, in the range 0..1, the larger the value, the smoother the decision." help="Cost parameter Nu, in the range 0..1, the larger the value, the smoother the decision."/>
+    <param name="classifier.libsvm.opt" type="select" optional="false" label="SVM parameters optimization flag." help="SVM parameters optimization flag.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="classifier.libsvm.prob" type="select" optional="false" label="Probability estimation flag." help="Probability estimation flag.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="classifier.boost.t" type="select" optional="false" label="Type of Boosting algorithm." help="Type of Boosting algorithm.">
+      <option value="discrete">discrete</option>
+      <option value="gentle">gentle</option>
+      <option value="logit">logit</option>
+      <option selected="true" value="real">real</option>
+    </param>
+    <param name="classifier.boost.w" type="integer" value="100" optional="false" label="The number of weak classifiers." help="The number of weak classifiers."/>
+    <param name="classifier.boost.r" type="float" value="0.95" optional="false" label="A threshold between 0 and 1 used to save computational time. Samples with summary weight &amp;lt;= (1 - weight_trim_rate) do not participate in the next iteration of training. Set this parameter to 0 to turn off this functionality." help="A threshold between 0 and 1 used to save computational time. Samples with summary weight &amp;lt;= (1 - weight_trim_rate) do not participate in the next iteration of training. Set this parameter to 0 to turn off this functionality."/>
+    <param name="classifier.boost.m" type="integer" value="1" optional="false" label="Maximum depth of the tree." help="Maximum depth of the tree."/>
+    <param name="classifier.dt.max" type="integer" value="10" optional="false" label="The training algorithm attempts to split each node while its depth is smaller than the maximum possible depth of the tree. The actual depth may be smaller if the other termination criteria are met, and/or if the tree is pruned." help="The training algorithm attempts to split each node while its depth is smaller than the maximum possible depth of the tree. The actual depth may be smaller if the other termination criteria are met, and/or if the tree is pruned."/>
+    <param name="classifier.dt.min" type="integer" value="10" optional="false" label="If the number of samples in a node is smaller than this parameter, then this node will not be split." help="If the number of samples in a node is smaller than this parameter, then this node will not be split."/>
+    <param name="classifier.dt.ra" type="float" value="0.01" optional="false" label="If all absolute differences between an estimated value in a node and the values of the train samples in this node are smaller than this regression accuracy parameter, then the node will not be split further." help="If all absolute differences between an estimated value in a node and the values of the train samples in this node are smaller than this regression accuracy parameter, then the node will not be split further."/>
+    <param name="classifier.dt.cat" type="integer" value="10" optional="false" label="Cluster possible values of a categorical variable into K &amp;lt;= cat clusters to find a suboptimal split." help="Cluster possible values of a categorical variable into K &amp;lt;= cat clusters to find a suboptimal split."/>
+    <param name="classifier.dt.f" type="integer" value="0" optional="false" label="If cv_folds &gt; 1, then it prunes a tree with K-fold cross-validation where K is equal to cv_folds." help="If cv_folds &gt; 1, then it prunes a tree with K-fold cross-validation where K is equal to cv_folds."/>
+    <param name="classifier.dt.r" type="select" optional="false" label="If true, then a pruning will be harsher. This will make a tree more compact and more resistant to the training data noise but a bit less accurate." help="If true, then a pruning will be harsher. This will make a tree more compact and more resistant to the training data noise but a bit less accurate.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="classifier.dt.t" type="select" optional="false" label="If true, then pruned branches are physically removed from the tree." help="If true, then pruned branches are physically removed from the tree.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="classifier.ann.t" type="select" optional="false" label="Type of training method for the multilayer perceptron (MLP) neural network." help="Type of training method for the multilayer perceptron (MLP) neural network.">
+      <option value="back">back</option>
+      <option selected="true" value="reg">reg</option>
+    </param>
+    <param name="classifier.ann.sizes" type="text" optional="false" label="The number of neurons in each intermediate layer (excluding input and output layers)." help="The number of neurons in each intermediate layer (excluding input and output layers)."/>
+    <param name="classifier.ann.f" type="select" optional="false" label="This function determine whether the output of the node is positive or not depending on the output of the transfert function." help="This function determine whether the output of the node is positive or not depending on the output of the transfert function.">
+      <option value="gau">gau</option>
+      <option value="ident">ident</option>
+      <option selected="true" value="sig">sig</option>
+    </param>
+    <param name="classifier.ann.a" type="float" value="1" optional="false" label="Alpha parameter of the activation function (used only with sigmoid and gaussian functions)." help="Alpha parameter of the activation function (used only with sigmoid and gaussian functions)."/>
+    <param name="classifier.ann.b" type="float" value="1" optional="false" label="Beta parameter of the activation function (used only with sigmoid and gaussian functions)." help="Beta parameter of the activation function (used only with sigmoid and gaussian functions)."/>
+    <param name="classifier.ann.bpdw" type="float" value="0.1" optional="false" label="Strength of the weight gradient term in the BACKPROP method. The recommended value is about 0.1." help="Strength of the weight gradient term in the BACKPROP method. The recommended value is about 0.1."/>
+    <param name="classifier.ann.bpms" type="float" value="0.1" optional="false" label="Strength of the momentum term (the difference between weights on the 2 previous iterations). This parameter provides some inertia to smooth the random fluctuations of the weights. It can vary from 0 (the feature is disabled) to 1 and beyond. The value 0.1 or so is good enough." help="Strength of the momentum term (the difference between weights on the 2 previous iterations). This parameter provides some inertia to smooth the random fluctuations of the weights. It can vary from 0 (the feature is disabled) to 1 and beyond. The value 0.1 or so is good enough."/>
+    <param name="classifier.ann.rdw" type="float" value="0.1" optional="false" label="Initial value Delta_0 of update-values Delta_" help="Initial value Delta_0 of update-values Delta_"/>
+    <param name="classifier.ann.rdwm" type="float" value="1e-07" optional="false" label="Update-values lower limit Delta_" help="Update-values lower limit Delta_"/>
+    <param name="classifier.ann.term" type="select" optional="false" label="Termination criteria." help="Termination criteria.">
+      <option selected="true" value="all">all</option>
+      <option value="eps">eps</option>
+      <option value="iter">iter</option>
+    </param>
+    <param name="classifier.ann.eps" type="float" value="0.01" optional="false" label="Epsilon value used in the Termination criteria." help="Epsilon value used in the Termination criteria."/>
+    <param name="classifier.ann.iter" type="integer" value="1000" optional="false" label="Maximum number of iterations used in the Termination criteria." help="Maximum number of iterations used in the Termination criteria."/>
+    <param name="classifier.rf.max" type="integer" value="5" optional="false" label="The depth of the tree. A low value will likely underfit and conversely a high value will likely overfit. The optimal value can be obtained using cross validation or other suitable methods." help="The depth of the tree. A low value will likely underfit and conversely a high value will likely overfit. The optimal value can be obtained using cross validation or other suitable methods."/>
+    <param name="classifier.rf.min" type="integer" value="10" optional="false" label="If the number of samples in a node is smaller than this parameter, then the node will not be split. A reasonable value is a small percentage of the total data e.g. 1 percent." help="If the number of samples in a node is smaller than this parameter, then the node will not be split. A reasonable value is a small percentage of the total data e.g. 1 percent."/>
+    <param name="classifier.rf.ra" type="float" value="0" optional="false" label="If all absolute differences between an estimated value in a node and the values of the train samples in this node are smaller than this regression accuracy parameter, then the node will not be split." help="If all absolute differences between an estimated value in a node and the values of the train samples in this node are smaller than this regression accuracy parameter, then the node will not be split."/>
+    <param name="classifier.rf.cat" type="integer" value="10" optional="false" label="Cluster possible values of a categorical variable into K &amp;lt;= cat clusters to find a suboptimal split." help="Cluster possible values of a categorical variable into K &amp;lt;= cat clusters to find a suboptimal split."/>
+    <param name="classifier.rf.var" type="integer" value="0" optional="false" label="The size of the subset of features, randomly selected at each tree node, that are used to find the best split(s). If you set it to 0, then the size will be set to the square root of the total number of features." help="The size of the subset of features, randomly selected at each tree node, that are used to find the best split(s). If you set it to 0, then the size will be set to the square root of the total number of features."/>
+    <param name="classifier.rf.nbtrees" type="integer" value="100" optional="false" label="The maximum number of trees in the forest. Typically, the more trees you have, the better the accuracy. However, the improvement in accuracy generally diminishes and reaches an asymptote for a certain number of trees. Also to keep in mind, increasing the number of trees increases the prediction time linearly." help="The maximum number of trees in the forest. Typically, the more trees you have, the better the accuracy. However, the improvement in accuracy generally diminishes and reaches an asymptote for a certain number of trees. Also to keep in mind, increasing the number of trees increases the prediction time linearly."/>
+    <param name="classifier.rf.acc" type="float" value="0.01" optional="false" label="Sufficient accuracy (OOB error)." help="Sufficient accuracy (OOB error)."/>
+    <param name="classifier.knn.k" type="integer" value="32" optional="false" label="The number of neighbors to use." help="The number of neighbors to use."/>
+    <param name="rand" type="integer" optional="true" label="Set specific seed. with integer value." help="Set specific seed. with integer value."/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_io.out" type="select" label="Output file containing the model estimated (.txt format)." help="Output file containing the model estimated (.txt format).">
+        <option value="text/plain">plain</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_io.out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_io.confmatout" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_io.confmatout" type="select" label="Output file containing the confusion matrix or contingency table (.csv format).The contingency table is output when we unsupervised algorithms is used otherwise the confusion matrix is output." help="Output file containing the confusion matrix or contingency table (.csv format).The contingency table is output when we unsupervised algorithms is used otherwise the confusion matrix is output.">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_io.confmatout" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_io.out" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_io.out" format="plain" value="text/plain"/>
+      </change_format>
+    </data>
+    <data name="output_data_io.confmatout" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This application trains a classifier based on labeled geometries and a list of features to consider for classification.This application is based on LibSVM, OpenCV Machine Learning (2.3.1 and later), and Shark ML The output of this application is a text model file, whose format corresponds to the ML model type chosen. There is no image nor vector data output.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

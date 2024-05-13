@@ -1,0 +1,74 @@
+<tool name="SAGA.shapes_grid.18" id="saga_shapes_grid_18" version="1.0.0">
+  <description>Grid Classes Area for Polygons</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOLYGONS False  isArrayGRID False  isArrayGRID_LUT False  isArrayGRID_LUT_MIN False  isArrayGRID_LUT_MAX False  isArrayGRID_LUT_NAM False  output_data_RESULT $output_data_RESULT  name SAGA.shapes_grid.18 POLYGONS $POLYGONS
+GRID $GRID
+METHOD $METHOD
+GRID_VALUES $GRID_VALUES
+GRID_LUT $GRID_LUT
+GRID_LUT_MIN $GRID_LUT_MIN
+GRID_LUT_MAX $GRID_LUT_MAX
+GRID_LUT_NAM $GRID_LUT_NAM
+prefer $prefer
+response $response
+outputType_RESULT $OutputSection_RESULT.outputType_RESULT
+transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
+  <inputs>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="cell_area">cell area</option>
+      <option selected="true" value="cell_center">cell center</option>
+    </param>
+    <param name="GRID_VALUES" type="select" optional="true" label="Value Interpretation" help="Value Interpretation">
+      <option selected="true" value="use_look-up_table">use look-up table</option>
+      <option value="values_are_class_identifiers">values are class identifiers</option>
+    </param>
+    <param name="GRID_LUT" type="data" optional="false" label="Look-up Table" help="Look-up Table The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="GRID_LUT_MIN" type="data" optional="false" label="Value" help="Value The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="GRID_LUT_MAX" type="data" optional="false" label="Value (Maximum)" help="Value (Maximum) The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="GRID_LUT_NAM" type="data" optional="false" label="Name" help="Name The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_RESULT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_RESULT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Calculates for each polygon the area covered by each grid class.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

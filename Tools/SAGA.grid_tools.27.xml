@@ -1,0 +1,96 @@
+<tool name="SAGA.grid_tools.27" id="saga_grid_tools_27" version="1.0.0">
+  <description>Tiling</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  isArrayTILES_PATH False  output_data_TILES $output_data_TILES  name SAGA.grid_tools.27 GRID $GRID
+TILES_SAVE $TILES_SAVE
+TILES_PATH $TILES_PATH
+TILES_NAME '$TILES_NAME'
+OVERLAP $OVERLAP
+OVERLAP_SYM $OVERLAP_SYM
+METHOD $METHOD
+NX $NX
+NY $NY
+XRANGE_MIN $XRANGE_MIN
+XRANGE_MAX $XRANGE_MAX
+YRANGE_MIN $YRANGE_MIN
+YRANGE_MAX $YRANGE_MAX
+DCELL $DCELL
+DX $DX
+DY $DY
+prefer $prefer
+response $response
+outputType_TILES $OutputSection_TILES.outputType_TILES
+transmissionMode_TILES $OutputSection_TILES.transmissionMode_TILES]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="TILES_SAVE" type="select" optional="true" label="Save Tiles to Disk" help="Save tiles to disk individually">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="TILES_PATH" type="data" optional="false" label="Output Directory" help="Output Directory The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="TILES_NAME" type="text" value="tile" optional="true" label="Base Name" help="The base name of the tiles"/>
+    <param name="OVERLAP" type="integer" value="0" optional="true" label="Overlapping Cells" help="Overlapping Cells"/>
+    <param name="OVERLAP_SYM" type="select" optional="true" label="Add Cells" help="Add Cells">
+      <option value="bottom_/_left">bottom / left</option>
+      <option selected="true" value="symmetric">symmetric</option>
+      <option value="top_/_right">top / right</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Tile Size Definition" help="Tile Size Definition">
+      <option value="coordinates_(offset,_range">coordinates (offset, range</option>
+      <option selected="true" value="number_of_grid_cells_per_tile">number of grid cells per tile</option>
+    </param>
+    <param name="NX" type="integer" value="100" optional="true" label="Number of Column Cells" help="Number of Column Cells"/>
+    <param name="NY" type="integer" value="100" optional="true" label="Number of Row Cells" help="Number of Row Cells"/>
+    <param name="XRANGE_MIN" type="float" optional="true" label="Offset and Range (X) (min value)" help="Offset and Range (X)"/>
+    <param name="XRANGE_MAX" type="float" optional="true" label="Offset and Range (X) (max value)" help="Offset and Range (X)"/>
+    <param name="YRANGE_MIN" type="float" optional="true" label="Offset and Range (Y) (min value)" help="Offset and Range (Y)"/>
+    <param name="YRANGE_MAX" type="float" optional="true" label="Offset and Range (Y) (max value)" help="Offset and Range (Y)"/>
+    <param name="DCELL" type="float" value="1" optional="true" label="Cell Size" help="Cell Size"/>
+    <param name="DX" type="float" value="100" optional="true" label="Tile Size (X)" help="Tile Size (X)"/>
+    <param name="DY" type="float" value="100" optional="true" label="Tile Size (Y)" help="Tile Size (Y)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_TILES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TILES" type="select" label="Tiles" help="Tiles">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TILES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_TILES" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TILES" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TILES" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TILES" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Tiling]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

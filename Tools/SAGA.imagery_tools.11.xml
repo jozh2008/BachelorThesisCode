@@ -1,0 +1,334 @@
+<tool name="SAGA.imagery_tools.11" id="saga_imagery_tools_11" version="1.0.0">
+  <description>Textural Features</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_ASM $output_data_ASM  output_data_CONTRAST $output_data_CONTRAST  output_data_CORRELATION $output_data_CORRELATION  output_data_VARIANCE $output_data_VARIANCE  output_data_IDM $output_data_IDM  output_data_SUM_AVERAGE $output_data_SUM_AVERAGE  output_data_SUM_ENTROPY $output_data_SUM_ENTROPY  output_data_SUM_VARIANCE $output_data_SUM_VARIANCE  output_data_ENTROPY $output_data_ENTROPY  output_data_DIF_VARIANCE $output_data_DIF_VARIANCE  output_data_DIF_ENTROPY $output_data_DIF_ENTROPY  output_data_MOC_1 $output_data_MOC_1  output_data_MOC_2 $output_data_MOC_2  name SAGA.imagery_tools.11 GRID $GRID
+DIRECTION $DIRECTION
+RADIUS $RADIUS
+DISTANCE $DISTANCE
+MAX_CATS $MAX_CATS
+prefer $prefer
+response $response
+outputType_ASM $OutputSection_ASM.outputType_ASM
+transmissionMode_ASM $OutputSection_ASM.transmissionMode_ASM
+outputType_CONTRAST $OutputSection_CONTRAST.outputType_CONTRAST
+transmissionMode_CONTRAST $OutputSection_CONTRAST.transmissionMode_CONTRAST
+outputType_CORRELATION $OutputSection_CORRELATION.outputType_CORRELATION
+transmissionMode_CORRELATION $OutputSection_CORRELATION.transmissionMode_CORRELATION
+outputType_VARIANCE $OutputSection_VARIANCE.outputType_VARIANCE
+transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE
+outputType_IDM $OutputSection_IDM.outputType_IDM
+transmissionMode_IDM $OutputSection_IDM.transmissionMode_IDM
+outputType_SUM_AVERAGE $OutputSection_SUM_AVERAGE.outputType_SUM_AVERAGE
+transmissionMode_SUM_AVERAGE $OutputSection_SUM_AVERAGE.transmissionMode_SUM_AVERAGE
+outputType_SUM_ENTROPY $OutputSection_SUM_ENTROPY.outputType_SUM_ENTROPY
+transmissionMode_SUM_ENTROPY $OutputSection_SUM_ENTROPY.transmissionMode_SUM_ENTROPY
+outputType_SUM_VARIANCE $OutputSection_SUM_VARIANCE.outputType_SUM_VARIANCE
+transmissionMode_SUM_VARIANCE $OutputSection_SUM_VARIANCE.transmissionMode_SUM_VARIANCE
+outputType_ENTROPY $OutputSection_ENTROPY.outputType_ENTROPY
+transmissionMode_ENTROPY $OutputSection_ENTROPY.transmissionMode_ENTROPY
+outputType_DIF_VARIANCE $OutputSection_DIF_VARIANCE.outputType_DIF_VARIANCE
+transmissionMode_DIF_VARIANCE $OutputSection_DIF_VARIANCE.transmissionMode_DIF_VARIANCE
+outputType_DIF_ENTROPY $OutputSection_DIF_ENTROPY.outputType_DIF_ENTROPY
+transmissionMode_DIF_ENTROPY $OutputSection_DIF_ENTROPY.transmissionMode_DIF_ENTROPY
+outputType_MOC_1 $OutputSection_MOC_1.outputType_MOC_1
+transmissionMode_MOC_1 $OutputSection_MOC_1.transmissionMode_MOC_1
+outputType_MOC_2 $OutputSection_MOC_2.outputType_MOC_2
+transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="DIRECTION" type="select" optional="true" label="Direction" help="Direction">
+      <option value="E-W">E-W</option>
+      <option value="N-S">N-S</option>
+      <option value="NE-SW">NE-SW</option>
+      <option value="SE-NW">SE-NW</option>
+      <option selected="true" value="all">all</option>
+    </param>
+    <param name="RADIUS" type="integer" value="1" optional="true" label="Radius" help="kernel radius in cells"/>
+    <param name="DISTANCE" type="integer" value="1" optional="true" label="Distance" help="The distance between two samples."/>
+    <param name="MAX_CATS" type="integer" value="256" optional="true" label="Maximum Number of Categories" help="Maximum Number of Categories"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_ASM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ASM" type="select" label="Angular Second Moment" help="Angular Second Moment">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ASM" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CONTRAST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CONTRAST" type="select" label="Contrast" help="Contrast">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CONTRAST" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_CORRELATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CORRELATION" type="select" label="Correlation" help="Correlation">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CORRELATION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VARIANCE" type="select" label="Variance" help="Variance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_VARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_IDM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_IDM" type="select" label="Inverse Diff Moment" help="Inverse Diff Moment">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_IDM" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SUM_AVERAGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SUM_AVERAGE" type="select" label="Sum Average" help="Sum Average">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SUM_AVERAGE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SUM_ENTROPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SUM_ENTROPY" type="select" label="Sum Entropy" help="Sum Entropy">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SUM_ENTROPY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SUM_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SUM_VARIANCE" type="select" label="Sum Variance" help="Sum Variance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SUM_VARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_ENTROPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_ENTROPY" type="select" label="Entropy" help="Entropy">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_ENTROPY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIF_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIF_VARIANCE" type="select" label="Difference Variance" help="Difference Variance">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIF_VARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_DIF_ENTROPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_DIF_ENTROPY" type="select" label="Difference Entropy" help="Difference Entropy">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_DIF_ENTROPY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MOC_1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MOC_1" type="select" label="Measure of Correlation-1" help="Measure of Correlation-1">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MOC_1" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MOC_2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MOC_2" type="select" label="Measure of Correlation-2" help="Measure of Correlation-2">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_MOC_2" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_ASM" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ASM" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ASM" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ASM" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_CONTRAST" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CONTRAST" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CONTRAST" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CONTRAST" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_CORRELATION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CORRELATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CORRELATION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CORRELATION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_VARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_VARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_IDM" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_IDM" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_IDM" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_IDM" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SUM_AVERAGE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SUM_AVERAGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SUM_AVERAGE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SUM_AVERAGE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SUM_ENTROPY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SUM_ENTROPY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SUM_ENTROPY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SUM_ENTROPY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SUM_VARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SUM_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SUM_VARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SUM_VARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_ENTROPY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_ENTROPY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_ENTROPY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_ENTROPY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIF_VARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIF_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIF_VARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIF_VARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_DIF_ENTROPY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_DIF_ENTROPY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_DIF_ENTROPY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_DIF_ENTROPY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MOC_1" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MOC_1" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MOC_1" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MOC_1" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_MOC_2" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MOC_2" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_MOC_2" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_MOC_2" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Textural Features]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

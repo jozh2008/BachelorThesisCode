@@ -1,0 +1,78 @@
+<tool name="SAGA.grid_tools.25" id="saga_grid_tools_25" version="1.0.0">
+  <description>Close Gaps with Spline</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  isArrayMASK False  output_data_CLOSED $output_data_CLOSED  name SAGA.grid_tools.25 GRID $GRID
+MASK $MASK
+MAXGAPCELLS $MAXGAPCELLS
+MAXPOINTS $MAXPOINTS
+LOCALPOINTS $LOCALPOINTS
+EXTENDED $EXTENDED
+NEIGHBOURS $NEIGHBOURS
+RADIUS $RADIUS
+RELAXATION $RELAXATION
+prefer $prefer
+response $response
+outputType_CLOSED $OutputSection_CLOSED.outputType_CLOSED
+transmissionMode_CLOSED $OutputSection_CLOSED.transmissionMode_CLOSED]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="MAXGAPCELLS" type="integer" value="0" optional="true" label="Only Process Gaps with Less Cells" help="is ignored if set to zero"/>
+    <param name="MAXPOINTS" type="integer" value="1000" optional="true" label="Maximum Points" help="Maximum Points"/>
+    <param name="LOCALPOINTS" type="integer" value="20" optional="true" label="Number of Points for Local Interpolation" help="Number of Points for Local Interpolation"/>
+    <param name="EXTENDED" type="select" optional="true" label="Extended Neighourhood" help="Extended Neighourhood">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="NEIGHBOURS" type="select" optional="true" label="Neighbourhood" help="Neighbourhood">
+      <option value="Moore">Moore</option>
+      <option selected="true" value="Neumann">Neumann</option>
+    </param>
+    <param name="RADIUS" type="integer" value="0" optional="true" label="Radius (Cells)" help="Radius (Cells)"/>
+    <param name="RELAXATION" type="float" value="0" optional="true" label="Relaxation" help="Relaxation"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLOSED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLOSED" type="select" label="Closed Gaps Grid" help="Closed Gaps Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_CLOSED" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLOSED" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLOSED" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_CLOSED" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_CLOSED" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Close Gaps with Spline]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

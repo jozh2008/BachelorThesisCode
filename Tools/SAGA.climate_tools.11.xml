@@ -1,0 +1,192 @@
+<tool name="SAGA.climate_tools.11" id="saga_climate_tools_11" version="1.0.0">
+  <description>Tree Growth Season</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayT True  isArrayTMIN True  isArrayTMAX True  isArrayP True  isArraySWC False  output_data_SMT $output_data_SMT  output_data_SMP $output_data_SMP  output_data_LGS $output_data_LGS  output_data_FIRST $output_data_FIRST  output_data_LAST $output_data_LAST  output_data_TLH $output_data_TLH  name SAGA.climate_tools.11 T $T
+TMIN $TMIN
+TMAX $TMAX
+P $P
+SWC $SWC
+SWC_DEFAULT $SWC_DEFAULT
+SWC_SURFACE $SWC_SURFACE
+SW1_RESIST $SW1_RESIST
+LAT_DEF $LAT_DEF
+DT_MIN $DT_MIN
+SW_MIN $SW_MIN
+LGS_MIN $LGS_MIN
+SMT_MIN $SMT_MIN
+TLH_MAX_DIFF $TLH_MAX_DIFF
+prefer $prefer
+response $response
+outputType_SMT $OutputSection_SMT.outputType_SMT
+transmissionMode_SMT $OutputSection_SMT.transmissionMode_SMT
+outputType_SMP $OutputSection_SMP.outputType_SMP
+transmissionMode_SMP $OutputSection_SMP.transmissionMode_SMP
+outputType_LGS $OutputSection_LGS.outputType_LGS
+transmissionMode_LGS $OutputSection_LGS.transmissionMode_LGS
+outputType_FIRST $OutputSection_FIRST.outputType_FIRST
+transmissionMode_FIRST $OutputSection_FIRST.transmissionMode_FIRST
+outputType_LAST $OutputSection_LAST.outputType_LAST
+transmissionMode_LAST $OutputSection_LAST.transmissionMode_LAST
+outputType_TLH $OutputSection_TLH.outputType_TLH
+transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
+  <inputs>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="SWC" type="data" optional="false" label="Soil Water Capacity of Profile" help="Total soil water capacity (mm H2O). The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="SWC_DEFAULT" type="float" value="220" optional="true" label="Default" help="default value if no grid has been selected"/>
+    <param name="SWC_SURFACE" type="float" value="30" optional="true" label="Top Soil Water Capacity" help="Top Soil Water Capacity"/>
+    <param name="SW1_RESIST" type="float" value="0.5" optional="true" label="Transpiration Resistance" help="Transpiration Resistance"/>
+    <param name="LAT_DEF" type="float" value="0" optional="true" label="Default Latitude" help="Default Latitude"/>
+    <param name="DT_MIN" type="float" value="0.9" optional="true" label="Threshold Temperature" help="Threshold temperature (C) that constrains the growing season."/>
+    <param name="SW_MIN" type="float" value="2" optional="true" label="Minimum Soil Water Content (Percent)" help="Minimum Soil Water Content (Percent)"/>
+    <param name="LGS_MIN" type="integer" value="94" optional="true" label="Minimum Length" help="Minimum length (days) of the growing season."/>
+    <param name="SMT_MIN" type="float" value="6.4" optional="true" label="Minimum Mean Temperature" help="Minimum mean temperature (C) for all days of the growing season."/>
+    <param name="TLH_MAX_DIFF" type="float" value="3000" optional="true" label="Maximum Tree Line Height Difference" help="Maximum Tree Line Height Difference"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_SMT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SMT" type="select" label="Mean Temperature" help="Mean temperature of the growing season.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SMT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_SMP" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_SMP" type="select" label="Precipitation Sum" help="Precipitation sum of the growing season.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_SMP" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_LGS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LGS" type="select" label="Length" help="Number of days of the growing season.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LGS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_FIRST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_FIRST" type="select" label="First Growing Day" help="First growing day of the year (1-365).">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_FIRST" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_LAST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_LAST" type="select" label="Last Growing Day" help="Last degree day of the year (1-365).">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_LAST" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_TLH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_TLH" type="select" label="Tree Line Height" help="Estimated relative tree line height.">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_TLH" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_SMT" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SMT" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SMT" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SMT" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_SMP" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_SMP" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_SMP" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_SMP" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_LGS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LGS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LGS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LGS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_FIRST" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_FIRST" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_FIRST" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_FIRST" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_LAST" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_LAST" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_LAST" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_LAST" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_TLH" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_TLH" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_TLH" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_TLH" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The 'Tree Growth Season' tool estimates the potential number of days suitable for tree growth as well as the average temperature for these days. The estimation needs monthly data of mean, minimum, and maximum temperature and precipitation. Internally a soil water balance model is run on a daily basis. Using the given thresholds a relative tree line height can optionally be estimated.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

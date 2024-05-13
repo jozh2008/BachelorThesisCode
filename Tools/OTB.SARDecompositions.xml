@@ -1,0 +1,80 @@
+<tool name="OTB.SARDecompositions" id="otb_sardecompositions" version="1.0.0">
+  <description>From one-band complex images (each one related to an element of the Sinclair matrix), returns the selected decomposition.</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayinhh False  isArrayinhv False  isArrayinvh False  isArrayinvv False  output_data_out $output_data_out  name OTB.SARDecompositions inhh $inhh
+inhv $inhv
+invh $invh
+invv $invv
+out $out
+decomp $decomp
+inco.kernelsize $inco.kernelsize
+ram $ram
+prefer $prefer
+response $response
+outputType_out $OutputSection_out.outputType_out
+transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
+  <inputs>
+    <param name="inhh" type="data" optional="false" label="Input image (HH)" help="Input image (HH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="inhv" type="data" optional="false" label="Input image (HV)" help="Input image (HV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="invh" type="data" optional="false" label="Input image (VH)" help="Input image (VH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="invv" type="data" optional="false" label="Input image (VV)" help="Input image (VV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="out" type="select" optional="false" label="Output image" help="Output image">
+      <option value="double">double</option>
+      <option selected="true" value="float">float</option>
+      <option value="int16">int16</option>
+      <option value="int32">int32</option>
+      <option value="uint16">uint16</option>
+      <option value="uint8">uint8</option>
+    </param>
+    <param name="decomp" type="select" optional="false" label="decomp" help="decomp">
+      <option value="barnes">barnes</option>
+      <option selected="true" value="haa">haa</option>
+      <option value="huynen">huynen</option>
+      <option value="pauli">pauli</option>
+    </param>
+    <param name="inco.kernelsize" type="integer" value="3" optional="true" label="Minute (0-59)" help="Minute (0-59)"/>
+    <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_out" type="select" label="Output image" help="Output image">
+        <option value="image/jpeg">jpeg</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_out" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_out" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_out" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[From one-band complex images (HH, HV, VH, VV), returns the selected decomposition. All the decompositions implemented are intended for the mono-static case (transmitter and receiver are co-located).There are two kinds of decomposition : coherent ones and incoherent ones.In the coherent case, only the Pauli decomposition is available.In the incoherent case, there the decompositions available : Huynen, Barnes, and H-alpha-A.User must provide three one-band complex images HH, HV or VH, and VV (mono-static case ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

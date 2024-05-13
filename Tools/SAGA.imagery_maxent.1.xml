@@ -1,0 +1,114 @@
+<tool name="SAGA.imagery_maxent.1" id="saga_imagery_maxent_1" version="1.0.0">
+  <description>Maximum Entropy Presence Prediction</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPRESENCE False  isArrayFEATURES_NUM True  isArrayFEATURES_CAT True  isArrayYT_FILE_LOAD False  isArrayYT_FILE_SAVE False  output_data_PREDICTION $output_data_PREDICTION  output_data_PROBABILITY $output_data_PROBABILITY  name SAGA.imagery_maxent.1 PRESENCE $PRESENCE
+FEATURES_NUM $FEATURES_NUM
+FEATURES_CAT $FEATURES_CAT
+BACKGROUND $BACKGROUND
+METHOD $METHOD
+YT_FILE_LOAD $YT_FILE_LOAD
+YT_FILE_SAVE $YT_FILE_SAVE
+YT_REGUL $YT_REGUL
+YT_REGUL_VAL $YT_REGUL_VAL
+YT_NUMASREAL $YT_NUMASREAL
+DL_ALPHA $DL_ALPHA
+DL_THRESHOLD $DL_THRESHOLD
+DL_ITERATIONS $DL_ITERATIONS
+NUM_CLASSES $NUM_CLASSES
+prefer $prefer
+response $response
+outputType_PREDICTION $OutputSection_PREDICTION.outputType_PREDICTION
+transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTION
+outputType_PROBABILITY $OutputSection_PROBABILITY.outputType_PROBABILITY
+transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABILITY]]></command>
+  <inputs>
+    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="BACKGROUND" type="float" value="1" optional="true" label="Background Sample Density [Percent]" help="Background Sample Density [Percent]"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="Dekang_Lin">Dekang Lin</option>
+      <option selected="true" value="Yoshimasa_Tsuruoka">Yoshimasa Tsuruoka</option>
+    </param>
+    <param name="YT_FILE_LOAD" type="data" optional="false" label="Load from File..." help="Load from File... The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="YT_FILE_SAVE" type="data" optional="false" label="Save to File..." help="Save to File... The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="YT_REGUL" type="select" optional="true" label="Regularization" help="Regularization">
+      <option selected="true" value="L1">L1</option>
+      <option value="L2">L2</option>
+      <option value="none">none</option>
+    </param>
+    <param name="YT_REGUL_VAL" type="float" value="1" optional="true" label="Regularization Factor" help="Regularization Factor"/>
+    <param name="YT_NUMASREAL" type="select" optional="true" label="Real-valued Numerical Features" help="Real-valued Numerical Features">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DL_ALPHA" type="float" value="0.1" optional="true" label="Alpha" help="Alpha"/>
+    <param name="DL_THRESHOLD" type="float" value="0" optional="true" label="Threshold" help="Threshold"/>
+    <param name="DL_ITERATIONS" type="integer" value="100" optional="true" label="Maximum Iterations" help="Maximum Iterations"/>
+    <param name="NUM_CLASSES" type="integer" value="32" optional="true" label="Number of Numeric Value Classes" help="Number of Numeric Value Classes"/>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PREDICTION" type="select" label="Presence Prediction" help="Presence Prediction">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PREDICTION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PROBABILITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PROBABILITY" type="select" label="Presence Probability" help="Presence Probability">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PROBABILITY" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_PREDICTION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PREDICTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PREDICTION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PREDICTION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PROBABILITY" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PROBABILITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PROBABILITY" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PROBABILITY" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Maximum Entropy Presence Prediction]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

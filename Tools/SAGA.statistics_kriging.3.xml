@@ -1,0 +1,244 @@
+<tool name="SAGA.statistics_kriging.3" id="saga_statistics_kriging_3" version="1.0.0">
+  <description>Regression Kriging</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayPOINTS False  isArrayFIELD False  isArrayPREDICTORS True  output_data_REGRESSION $output_data_REGRESSION  output_data_PREDICTION $output_data_PREDICTION  output_data_RESIDUALS $output_data_RESIDUALS  output_data_VARIANCE $output_data_VARIANCE  output_data_INFO_COEFF $output_data_INFO_COEFF  output_data_INFO_MODEL $output_data_INFO_MODEL  output_data_INFO_STEPS $output_data_INFO_STEPS  name SAGA.statistics_kriging.3 POINTS $POINTS
+FIELD $FIELD
+PREDICTORS $PREDICTORS
+COORD_X $COORD_X
+COORD_Y $COORD_Y
+INTERCEPT $INTERCEPT
+METHOD $METHOD
+P_VALUE $P_VALUE
+RESAMPLING $RESAMPLING
+VAR_MAXDIST $VAR_MAXDIST
+VAR_NCLASSES $VAR_NCLASSES
+VAR_NSKIP $VAR_NSKIP
+VAR_MODEL '$VAR_MODEL'
+KRIGING $KRIGING
+TQUALITY $TQUALITY
+LOG $LOG
+BLOCK $BLOCK
+DBLOCK $DBLOCK
+SEARCH_RANGE $SEARCH_RANGE
+SEARCH_RADIUS $SEARCH_RADIUS
+SEARCH_POINTS_ALL $SEARCH_POINTS_ALL
+SEARCH_POINTS_MIN $SEARCH_POINTS_MIN
+SEARCH_POINTS_MAX $SEARCH_POINTS_MAX
+SEARCH_DIRECTION $SEARCH_DIRECTION
+prefer $prefer
+response $response
+outputType_REGRESSION $OutputSection_REGRESSION.outputType_REGRESSION
+transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSION
+outputType_PREDICTION $OutputSection_PREDICTION.outputType_PREDICTION
+transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTION
+outputType_RESIDUALS $OutputSection_RESIDUALS.outputType_RESIDUALS
+transmissionMode_RESIDUALS $OutputSection_RESIDUALS.transmissionMode_RESIDUALS
+outputType_VARIANCE $OutputSection_VARIANCE.outputType_VARIANCE
+transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE
+outputType_INFO_COEFF $OutputSection_INFO_COEFF.outputType_INFO_COEFF
+transmissionMode_INFO_COEFF $OutputSection_INFO_COEFF.transmissionMode_INFO_COEFF
+outputType_INFO_MODEL $OutputSection_INFO_MODEL.outputType_INFO_MODEL
+transmissionMode_INFO_MODEL $OutputSection_INFO_MODEL.transmissionMode_INFO_MODEL
+outputType_INFO_STEPS $OutputSection_INFO_STEPS.outputType_INFO_STEPS
+transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEPS]]></command>
+  <inputs>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="COORD_X" type="select" optional="true" label="Include X Coordinate" help="Include X Coordinate">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="COORD_Y" type="select" optional="true" label="Include Y Coordinate" help="Include Y Coordinate">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="INTERCEPT" type="select" optional="true" label="Intercept" help="Intercept">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="backward">backward</option>
+      <option value="forward">forward</option>
+      <option value="include_all">include all</option>
+      <option selected="true" value="stepwise">stepwise</option>
+    </param>
+    <param name="P_VALUE" type="float" value="5" optional="true" label="Significance Level" help="Significance level (aka p-value) as threshold for automated predictor selection, given as percentage"/>
+    <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="VAR_MAXDIST" type="float" value="0" optional="true" label="Maximum Distance" help="maximum distance for variogram estimation, ignored if set to zero"/>
+    <param name="VAR_NCLASSES" type="integer" value="100" optional="true" label="Lag Distance Classes" help="initial number of lag distance classes for variogram estimation"/>
+    <param name="VAR_NSKIP" type="integer" value="1" optional="true" label="Skip" help="Skip"/>
+    <param name="VAR_MODEL" type="text" value="a + b * x" optional="true" label="Variogram Model" help="Variogram Model"/>
+    <param name="KRIGING" type="select" optional="true" label="Kriging Type" help="Kriging Type">
+      <option value="Ordinary_Kriging">Ordinary Kriging</option>
+      <option selected="true" value="Simple_Kriging">Simple Kriging</option>
+    </param>
+    <param name="TQUALITY" type="select" optional="true" label="Type of Quality Measure" help="Type of Quality Measure">
+      <option selected="true" value="standard_deviation">standard deviation</option>
+      <option value="variance">variance</option>
+    </param>
+    <param name="LOG" type="select" optional="true" label="Logarithmic Transformation" help="Logarithmic Transformation">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BLOCK" type="select" optional="true" label="Block Kriging" help="Block Kriging">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="DBLOCK" type="float" value="100" optional="true" label="Block Size" help="Block Size"/>
+    <param name="SEARCH_RANGE" type="select" optional="true" label="Search Range" help="Search Range">
+      <option selected="true" value="global">global</option>
+      <option value="local">local</option>
+    </param>
+    <param name="SEARCH_RADIUS" type="float" value="1000" optional="true" label="Maximum Search Distance" help="local maximum search distance given in map units"/>
+    <param name="SEARCH_POINTS_ALL" type="select" optional="true" label="Number of Points" help="Number of Points">
+      <option selected="true" value="all_points_within_search_distance">all points within search distance</option>
+      <option value="maximum_number_of_nearest_points">maximum number of nearest points</option>
+    </param>
+    <param name="SEARCH_POINTS_MIN" type="integer" value="16" optional="true" label="Minimum" help="minimum number of points to use"/>
+    <param name="SEARCH_POINTS_MAX" type="integer" value="20" optional="true" label="Maximum" help="maximum number of nearest points"/>
+    <param name="SEARCH_DIRECTION" type="select" optional="true" label="Direction" help="Direction">
+      <option selected="true" value="all_directions">all directions</option>
+      <option value="quadrants">quadrants</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_REGRESSION" type="select" label="Regression" help="regression model applied to predictor grids">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_REGRESSION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_PREDICTION" type="select" label="Prediction" help="Prediction">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_PREDICTION" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_RESIDUALS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_VARIANCE" type="select" label="Quality Measure" help="Quality Measure">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_VARIANCE" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INFO_COEFF" type="select" label="Regression: Coefficients" help="Regression: Coefficients">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_INFO_COEFF" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INFO_MODEL" type="select" label="Regression: Model" help="Regression: Model">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_INFO_MODEL" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_INFO_STEPS" type="select" label="Regression: Steps" help="Regression: Steps">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_INFO_STEPS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_REGRESSION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_REGRESSION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_PREDICTION" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_PREDICTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_PREDICTION" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_PREDICTION" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_RESIDUALS" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_RESIDUALS" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_RESIDUALS" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_RESIDUALS" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_VARIANCE" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_VARIANCE" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_INFO_COEFF" format="csv" hidden="false"/>
+    <data name="output_data_INFO_MODEL" format="csv" hidden="false"/>
+    <data name="output_data_INFO_STEPS" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Regression Kriging for grid interpolation from irregular sample points.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

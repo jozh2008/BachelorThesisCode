@@ -1,0 +1,54 @@
+<tool name="SAGA.table_calculus.8" id="saga_table_calculus_8" version="1.0.0">
+  <description>Fill Gaps in Ordered Records</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayTABLE False  isArrayORDER False  output_data_NOGAPS $output_data_NOGAPS  name SAGA.table_calculus.8 TABLE $TABLE
+ORDER $ORDER
+METHOD $METHOD
+prefer $prefer
+response $response
+outputType_NOGAPS $OutputSection_NOGAPS.outputType_NOGAPS
+transmissionMode_NOGAPS $OutputSection_NOGAPS.transmissionMode_NOGAPS]]></command>
+  <inputs>
+    <param name="TABLE" type="data" optional="false" label="Table" help="Table The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="ORDER" type="data" optional="false" label="Order" help="Order The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Interpolation" help="Interpolation">
+      <option selected="true" value="Linear">Linear</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+      <option value="Spline">Spline</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_NOGAPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_NOGAPS" type="select" label="Table without Gaps" help="Table without Gaps">
+        <option value="text/csv">csv</option>
+      </param>
+      <param name="transmissionMode_NOGAPS" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_NOGAPS" format="csv" hidden="false"/>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[This tool inserts records where the chosen order field has gaps expecting an increment of one. It is assumed that the order field represents integers.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

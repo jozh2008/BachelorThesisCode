@@ -1,0 +1,173 @@
+<tool name="SAGA.pj_proj4.24" id="saga_pj_proj4_24" version="1.0.0">
+  <description>UTM Projection (Grid)</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayCRS_FILE False  isArraySOURCE False  isArrayTARGET_TEMPLATE False  output_data_GRID $output_data_GRID  output_data_OUT_X $output_data_OUT_X  output_data_OUT_Y $output_data_OUT_Y  name SAGA.pj_proj4.24 CRS_METHOD $CRS_METHOD
+CRS_PROJ4 '$CRS_PROJ4'
+CRS_FILE $CRS_FILE
+CRS_EPSG $CRS_EPSG
+CRS_EPSG_AUTH '$CRS_EPSG_AUTH'
+CRS_EPSG_GEOGCS '$CRS_EPSG_GEOGCS'
+CRS_EPSG_PROJCS '$CRS_EPSG_PROJCS'
+PRECISE $PRECISE
+SOURCE $SOURCE
+RESAMPLING $RESAMPLING
+KEEP_TYPE $KEEP_TYPE
+TARGET_AREA $TARGET_AREA
+TARGET_DEFINITION $TARGET_DEFINITION
+TARGET_USER_SIZE $TARGET_USER_SIZE
+TARGET_USER_XMIN $TARGET_USER_XMIN
+TARGET_USER_XMAX $TARGET_USER_XMAX
+TARGET_USER_YMIN $TARGET_USER_YMIN
+TARGET_USER_YMAX $TARGET_USER_YMAX
+TARGET_USER_COLS $TARGET_USER_COLS
+TARGET_USER_ROWS $TARGET_USER_ROWS
+TARGET_USER_FITS $TARGET_USER_FITS
+TARGET_TEMPLATE $TARGET_TEMPLATE
+UTM_ZONE $UTM_ZONE
+UTM_SOUTH $UTM_SOUTH
+prefer $prefer
+response $response
+outputType_GRID $OutputSection_GRID.outputType_GRID
+transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID
+outputType_OUT_X $OutputSection_OUT_X.outputType_OUT_X
+transmissionMode_OUT_X $OutputSection_OUT_X.transmissionMode_OUT_X
+outputType_OUT_Y $OutputSection_OUT_Y.outputType_OUT_Y
+transmissionMode_OUT_Y $OutputSection_OUT_Y.transmissionMode_OUT_Y]]></command>
+  <inputs>
+    <param name="CRS_METHOD" type="select" optional="true" label="Get CRS Definition from..." help="Get CRS Definition from...">
+      <option value="EPSG_Code">EPSG Code</option>
+      <option selected="true" value="Proj4_Parameters">Proj4 Parameters</option>
+      <option value="Well_Known_Text_File">Well Known Text File</option>
+    </param>
+    <param name="CRS_PROJ4" type="text" optional="true" label="Proj4 Parameters" help="Proj4 Parameters"/>
+    <param name="CRS_FILE" type="data" optional="false" label="Well Known Text File" help="Well Known Text File The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="CRS_EPSG" type="integer" value="-1" optional="true" label="Authority Code" help="Authority Code"/>
+    <param name="CRS_EPSG_AUTH" type="text" value="EPSG" optional="true" label="Authority" help="Authority"/>
+    <param name="CRS_EPSG_GEOGCS" type="text" optional="true" label="Geographic Coordinate Systems" help="Geographic Coordinate Systems"/>
+    <param name="CRS_EPSG_PROJCS" type="text" optional="true" label="Projected Coordinate Systems" help="Projected Coordinate Systems"/>
+    <param name="PRECISE" type="select" optional="true" label="Precise Datum Conversion" help="avoids precision problems when source and target crs use different geodedtic datums.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="KEEP_TYPE" type="select" optional="true" label="Preserve Data Type" help="Preserve Data Type">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="TARGET_AREA" type="select" optional="true" label="Use Target Area Polygon" help="Restricts targeted grid cells to area of the projected bounding rectangle. Useful with certain projections for global data.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
+      <option value="grid_or_grid_system">grid or grid system</option>
+      <option selected="true" value="user_defined">user defined</option>
+    </param>
+    <param name="TARGET_USER_SIZE" type="float" value="1" optional="true" label="Cellsize" help="Cellsize"/>
+    <param name="TARGET_USER_XMIN" type="float" value="0" optional="true" label="West" help="West"/>
+    <param name="TARGET_USER_XMAX" type="float" value="100" optional="true" label="East" help="East"/>
+    <param name="TARGET_USER_YMIN" type="float" value="0" optional="true" label="South" help="South"/>
+    <param name="TARGET_USER_YMAX" type="float" value="100" optional="true" label="North" help="North"/>
+    <param name="TARGET_USER_COLS" type="integer" value="100" optional="true" label="Columns" help="Number of cells in East-West direction."/>
+    <param name="TARGET_USER_ROWS" type="integer" value="100" optional="true" label="Rows" help="Number of cells in North-South direction."/>
+    <param name="TARGET_USER_FITS" type="select" optional="true" label="Fit" help="Fit">
+      <option value="cells">cells</option>
+      <option selected="true" value="nodes">nodes</option>
+    </param>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="UTM_ZONE" type="integer" value="1" optional="true" label="Zone" help="Zone"/>
+    <param name="UTM_SOUTH" type="select" optional="true" label="South" help="South">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_GRID" type="select" label="Target" help="Target">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_GRID" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUT_X" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUT_X" type="select" label="X Coordinates" help="X Coordinates">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUT_X" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_OUT_Y" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUT_Y" type="select" label="Y Coordinates" help="Y Coordinates">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_OUT_Y" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_GRID" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_GRID" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_GRID" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUT_X" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUT_X" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUT_X" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUT_X" format="png" value="image/png"/>
+      </change_format>
+    </data>
+    <data name="output_data_OUT_Y" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUT_Y" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_OUT_Y" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_OUT_Y" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Project grids into UTM coordinates.&lt;br/&gt;Projection routines make use of the Proj.4 Cartographic Projections library.&lt;br/&gt;Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).&lt;br/&gt;Proj.4 Version is Rel. 5.2.0, September 15th, 2018&lt;br/&gt;&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

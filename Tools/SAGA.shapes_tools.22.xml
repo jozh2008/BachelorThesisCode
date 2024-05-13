@@ -1,0 +1,68 @@
+<tool name="SAGA.shapes_tools.22" id="saga_shapes_tools_22" version="1.0.0">
+  <description>Generate Shapes</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayINPUT False  isArrayFIELD_ID False  isArrayFIELD_X False  isArrayFIELD_Y False  isArrayFIELD_Z False  output_data_OUTPUT $output_data_OUTPUT  name SAGA.shapes_tools.22 INPUT $INPUT
+FIELD_ID $FIELD_ID
+FIELD_X $FIELD_X
+FIELD_Y $FIELD_Y
+FIELD_Z $FIELD_Z
+SHAPE_TYPE $SHAPE_TYPE
+prefer $prefer
+response $response
+outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
+transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
+  <inputs>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Table with coordinates. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_ID" type="data" optional="false" label="ID" help="Field with the identifier. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_X" type="data" optional="false" label="X" help="Field with the x coordinate. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_Y" type="data" optional="false" label="Y" help="Field with the y coordinate. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FIELD_Z" type="data" optional="false" label="Z" help="Field with the z coordinate. The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="SHAPE_TYPE" type="select" optional="true" label="Shape Type" help="Shape type to generate.">
+      <option value="Line(s)">Line(s)</option>
+      <option selected="true" value="Point(s)">Point(s)</option>
+      <option value="Polygon(s)">Polygon(s)</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_OUTPUT" type="select" label="Output" help="Generated Shapefile.">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_OUTPUT" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_OUTPUT" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_OUTPUT" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[The tool allows one to generate point, line or polygon shapes from a table with the following attribute fields:&lt;br/&gt;&lt;br/&gt;- identifier&lt;br/&gt;- x coordinate&lt;br/&gt;- y coordinate&lt;br/&gt;- optional: z coordinate (this will create a 3D shapefile)&lt;br/&gt;&lt;br/&gt;The table must be sorted in vertex order.&lt;br/&gt;&lt;br/&gt;The identifier has different meanings:&lt;br/&gt;&lt;br/&gt;* Point Shapes: The identifier is arbitrary&lt;br/&gt;&lt;br/&gt;* Line Shapes: The identifier is unique for each line&lt;br/&gt;&lt;br/&gt;* Polygon Shapes: The identifier is unique for each polygon; the first polygon vertex may but must not be duplicated in order to close the polygon&lt;br/&gt;&lt;br/&gt;]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

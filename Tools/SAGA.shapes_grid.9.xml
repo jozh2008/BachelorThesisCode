@@ -1,0 +1,89 @@
+<tool name="SAGA.shapes_grid.9" id="saga_shapes_grid_9" version="1.0.0">
+  <description>Local Minima and Maxima</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayGRID False  output_data_MINIMA $output_data_MINIMA  output_data_MAXIMA $output_data_MAXIMA  name SAGA.shapes_grid.9 GRID $GRID
+IDENTITY $IDENTITY
+ABSOLUTE $ABSOLUTE
+BOUNDARY $BOUNDARY
+prefer $prefer
+response $response
+outputType_MINIMA $OutputSection_MINIMA.outputType_MINIMA
+transmissionMode_MINIMA $OutputSection_MINIMA.transmissionMode_MINIMA
+outputType_MAXIMA $OutputSection_MAXIMA.outputType_MAXIMA
+transmissionMode_MAXIMA $OutputSection_MAXIMA.transmissionMode_MAXIMA]]></command>
+  <inputs>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="IDENTITY" type="select" optional="true" label="Identical Values" help="If set, neighbour cells with the same value as the center cell are interpreted to be lower for minima and higher for maxima identification.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="ABSOLUTE" type="select" optional="true" label="Absolute" help="If set, only the grid's absolute maximum/minimum point is returned.">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="BOUNDARY" type="select" optional="true" label="Boundary Cells" help="Boundary Cells">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_MINIMA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MINIMA" type="select" label="Minima" help="Minima">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_MINIMA" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_MAXIMA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_MAXIMA" type="select" label="Maxima" help="Maxima">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_MAXIMA" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_MINIMA" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MINIMA" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_MINIMA" format="json" value="application/json"/>
+      </change_format>
+    </data>
+    <data name="output_data_MAXIMA" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_MAXIMA" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_MAXIMA" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Extracts local grid value minima and maxima of to vector points.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

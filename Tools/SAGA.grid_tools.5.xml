@@ -1,0 +1,65 @@
+<tool name="SAGA.grid_tools.5" id="saga_grid_tools_5" version="1.0.0">
+  <description>Patching</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayORIGINAL False  isArrayADDITIONAL False  output_data_COMPLETED $output_data_COMPLETED  name SAGA.grid_tools.5 ORIGINAL $ORIGINAL
+ADDITIONAL $ADDITIONAL
+RESAMPLING $RESAMPLING
+prefer $prefer
+response $response
+outputType_COMPLETED $OutputSection_COMPLETED.outputType_COMPLETED
+transmissionMode_COMPLETED $OutputSection_COMPLETED.transmissionMode_COMPLETED]]></command>
+  <inputs>
+    <param name="ORIGINAL" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="ADDITIONAL" type="data" optional="false" label="Patch Grid" help="Patch Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
+      <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
+      <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
+      <option value="Bilinear_Interpolation">Bilinear Interpolation</option>
+      <option value="Nearest_Neighbour">Nearest Neighbour</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_COMPLETED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_COMPLETED" type="select" label="Completed Grid" help="Completed Grid">
+        <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
+        <option value="application/x-ogc-envi">x-ogc-envi</option>
+        <option value="image/png">png</option>
+        <option value="image/tiff">tiff</option>
+      </param>
+      <param name="transmissionMode_COMPLETED" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_COMPLETED" format="tiff" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_COMPLETED" format="x-ogc-envi" value="application/x-ogc-envi"/>
+        <when input="outputType_COMPLETED" format="x-ogc-aaigrid" value="application/x-ogc-aaigrid"/>
+        <when input="outputType_COMPLETED" format="png" value="image/png"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Fill gaps of a grid with data from another grid. ]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>

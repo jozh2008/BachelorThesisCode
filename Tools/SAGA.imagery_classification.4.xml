@@ -1,0 +1,118 @@
+<tool name="SAGA.imagery_classification.4" id="saga_imagery_classification_4" version="1.0.0">
+  <description>Supervised Classification for Shapes</description>
+  <requirements>
+    <requirement version="3.9" type="package">python</requirement>
+  </requirements>
+  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraySHAPES False  isArrayFEATURES False  isArrayTRAINING False  isArrayFILE_LOAD False  isArrayFILE_SAVE False  output_data_CLASSES $output_data_CLASSES  name SAGA.imagery_classification.4 SHAPES $SHAPES
+FEATURES $FEATURES
+NORMALISE $NORMALISE
+TRAINING $TRAINING
+FILE_LOAD $FILE_LOAD
+FILE_SAVE $FILE_SAVE
+METHOD $METHOD
+THRESHOLD_DIST $THRESHOLD_DIST
+THRESHOLD_ANGLE $THRESHOLD_ANGLE
+THRESHOLD_PROB $THRESHOLD_PROB
+RELATIVE_PROB $RELATIVE_PROB
+WTA_0 $WTA_0
+WTA_1 $WTA_1
+WTA_2 $WTA_2
+WTA_3 $WTA_3
+WTA_4 $WTA_4
+WTA_5 $WTA_5
+prefer $prefer
+response $response
+outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
+transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
+  <inputs>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="NORMALISE" type="select" optional="true" label="Normalise" help="Normalise">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="TRAINING" type="data" optional="false" label="Training Classes" help="Training Classes The following data types are allowed in the txt file:  csv" format="txt"/>
+    <param name="FILE_LOAD" type="data" optional="false" label="Load Statistics from File..." help="Load Statistics from File... The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="FILE_SAVE" type="data" optional="false" label="Save Statistics to File..." help="Save Statistics to File... The following data types are allowed in the txt file:  plain" format="txt"/>
+    <param name="METHOD" type="select" optional="true" label="Method" help="Method">
+      <option value="Binary_Encoding">Binary Encoding</option>
+      <option value="Mahalanobis_Distance">Mahalanobis Distance</option>
+      <option value="Maximum_Likelihood">Maximum Likelihood</option>
+      <option selected="true" value="Minimum_Distance">Minimum Distance</option>
+      <option value="Parallelepiped">Parallelepiped</option>
+      <option value="Spectral_Angle_Mapping">Spectral Angle Mapping</option>
+      <option value="Winner_Takes_All">Winner Takes All</option>
+    </param>
+    <param name="THRESHOLD_DIST" type="float" value="0" optional="true" label="Distance Threshold" help="Let pixel stay unclassified, if minimum euclidian or mahalanobis distance is greater than threshold."/>
+    <param name="THRESHOLD_ANGLE" type="float" value="0" optional="true" label="Spectral Angle Threshold (Degree)" help="Let pixel stay unclassified, if spectral angle distance is greater than threshold."/>
+    <param name="THRESHOLD_PROB" type="float" value="0" optional="true" label="Probability Threshold" help="Let pixel stay unclassified, if maximum likelihood probability value is less than threshold."/>
+    <param name="RELATIVE_PROB" type="select" optional="true" label="Probability Reference" help="Probability Reference">
+      <option value="absolute">absolute</option>
+      <option selected="true" value="relative">relative</option>
+    </param>
+    <param name="WTA_0" type="select" optional="true" label="Binary Encoding" help="Binary Encoding">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="WTA_1" type="select" optional="true" label="Parallelepiped" help="Parallelepiped">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="WTA_2" type="select" optional="true" label="Minimum Distance" help="Minimum Distance">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="WTA_3" type="select" optional="true" label="Mahalanobis Distance" help="Mahalanobis Distance">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="WTA_4" type="select" optional="true" label="Maximum Likelihood" help="Maximum Likelihood">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="WTA_5" type="select" optional="true" label="Spectral Angle Mapping" help="Spectral Angle Mapping">
+      <option selected="true" value="false">false</option>
+      <option value="true">true</option>
+    </param>
+    <param name="prefer" type="select" label="Choose the Prefer">
+      <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
+      <option value="return=minimal">return=minimal</option>
+      <option value="return=representation">return=representation</option>
+    </param>
+    <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
+      <option selected="true" value="document">document</option>
+      <option value="raw">raw</option>
+    </param>
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+      <param name="outputType_CLASSES" type="select" label="Classification" help="Classification">
+        <option value="application/json">json</option>
+        <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
+        <option value="text/xml">xml</option>
+      </param>
+      <param name="transmissionMode_CLASSES" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+  </inputs>
+  <outputs>
+    <data name="output_data_CLASSES" format="xml" hidden="false">
+      <change_format>
+        <when input="response" format="txt" value="document"/>
+        <when input="outputType_CLASSES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_CLASSES" format="json" value="application/json"/>
+      </change_format>
+    </data>
+  </outputs>
+  <tests>
+    <test>
+      <output name="output_data" value="txt"/>
+      <param name="response" value="document"/>
+    </test>
+  </tests>
+  <help><![CDATA[Supervised classification for attribute data. To train the classifier choose an attribute that provides class identifiers for those records, for which the target class is known, and no data for all other records.]]></help>
+  <citations>
+    <citation type="bibtex">Josh</citation>
+  </citations>
+</tool>
