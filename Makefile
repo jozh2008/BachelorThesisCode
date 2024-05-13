@@ -15,3 +15,6 @@ checkstyle:
 clean:
 	rm -rf __pycache__
 	rm -f *.pyc
+	rm -rf Tools/Code/__pycache__
+	rm -f Tools/Code/*.pyc
+	
