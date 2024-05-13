@@ -73,7 +73,6 @@ class Galaxyxmltool:
             SelectParam: The created select parameter.
         """
         enum_values = param_dict["schema"].get("enum")
-        print(enum_values)
 
         if enum_values is not None:
             enum_values = self.merge_strings(enum_values=enum_values)
@@ -379,8 +378,6 @@ class Galaxyxmltool:
         Returns:
             None
         """
-        # output_section = self.gxtp.Section(name="Output",
-        # title="Choose the output format and/or transmission mode", expanded=True)
 
         for param_name, param_dict in output_schema.items():
             param_schema = param_dict.get("schema")

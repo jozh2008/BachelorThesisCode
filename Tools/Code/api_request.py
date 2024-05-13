@@ -158,4 +158,4 @@ class APIRequest:
                     with open(output_file_path, "w") as f:
                         f.write((transmission_item["href"]) + "\n")
         else:
-            print("Error:", response.status_code)
+            print("Error: ", response.status_code)

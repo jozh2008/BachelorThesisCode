@@ -178,7 +178,6 @@ class ApiJson:
         Returns:
             dict: A dictionary containing non-data input values.
         """
-        # print(self.isexcluededList)
         excluded_prefixes = set(data_inputs.keys()).union(set(self.isexcluededList))
         extracted_values = {
             key: value
