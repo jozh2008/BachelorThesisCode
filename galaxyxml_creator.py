@@ -184,7 +184,34 @@ class Galaxyxmltool:
             format="txt",
             optional=is_nullable
         )
-
+    
+    def create_object_param(self,inputs, param_name, param_dict, is_nullable):
+        pprint(param_dict)
+        required = param_dict["schema"].get("required",[])
+        print(required)
+        description = param_dict.get("description")
+        title = param_dict.get("title")
+        enum_values = []
+        section = self.gxtp.Section(
+                name=param_name,
+                title=title,
+                help=description,
+                expanded=True
+            )
+        for i in required:
+            print(i)
+            schema = param_dict["schema"]["properties"][i]
+            schema_type = param_dict["schema"]["properties"][i].get("type")
+            print(schema_type)
+            if schema_type == "string":
+                enum_values = schema.get("enum")
+                options = {value: value for value in enum_values}
+                param = self.gxtp.SelectParam(name=i, optional=is_nullable, options=options)
+                section.append(param)
+            elif schema_type == "array":
+               param = self.gxtp.DataParam(name = i, optional=is_nullable) 
+        return section
+    
     def create_select_param_output(self, param_name: str, param_dict: Dict, param_extended_schema: Dict):
         enum_values = []
         self.extract_enum(param_extended_schema, enum_values)
@@ -267,6 +294,8 @@ class Galaxyxmltool:
                     is_nullable=is_nullable,
                     isArray=is_array
                 )
+            elif param_type == "object":
+                param = self.create_object_param(inputs=inputs, param_name=param_name, param_dict=param_dict, is_nullable=is_nullable)
 
             else:
                 # Handle unsupported parameter types gracefully
@@ -278,6 +307,7 @@ class Galaxyxmltool:
         self.create_output_param(output_schema=output_schema, inputs=inputs, transmission_schema=transmission_schema)
 
         return inputs
+
 
     def create_select_raw_param(self, inputs):
         """
@@ -391,7 +421,7 @@ class Galaxyxmltool:
                     enum_values = param_schema.get("enum")
                 else:
                     # check for correct value for is_nullable
-                    param = self.create_text_param(output_param_name, param_dict, is_nullable=False)
+                    param = None
             elif param_extended_schema is not None:
                 param = self.create_select_param_output(output_param_name, param_dict, param_extended_schema)
                 self.extract_enum(param_extended_schema, enum_values=enum_values)
