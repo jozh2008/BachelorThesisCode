@@ -516,7 +516,7 @@ class Galaxyxmltool:
         title: str,
         description: str
     ):
-        # To Do: check string
+         # To Do: check string
         if param_type == "string":
             if param_schema.get("enum"):
                 param = self.create_select_param(
