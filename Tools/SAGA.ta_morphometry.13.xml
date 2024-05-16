@@ -17,9 +17,9 @@ response $response
 outputType_LST $OutputSection_LST.outputType_LST
 transmissionMode_LST $OutputSection_LST.transmissionMode_LST]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
-    <param name="SWR" type="data" optional="false" label="Short Wave Radiation Ratio" help="The ratio of daily total short-wave irradiance on sloping sites compared to horizontal sites. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
-    <param name="LAI" type="data" optional="false" label="Leaf Area Index" help="Leaf Area Index The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="SWR" type="data" optional="false" label="Short Wave Radiation Ratio" help="The ratio of daily total short-wave irradiance on sloping sites compared to horizontal sites. The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="LAI" type="data" optional="false" label="Leaf Area Index" help="Leaf Area Index The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="LAI_MAX" type="float" value="8" optional="true" label="Maximum LAI" help="Maximum LAI"/>
     <param name="Z_REFERENCE" type="float" value="0" optional="true" label="Elevation" help="Elevation"/>
     <param name="T_REFERENCE" type="float" value="0" optional="true" label="Temperature" help="Temperature at reference station in degree Celsius."/>
@@ -34,7 +34,7 @@ transmissionMode_LST $OutputSection_LST.transmissionMode_LST]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_LST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LST" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LST" type="select" label="Land Surface Temperature" help="Land Surface Temperature">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

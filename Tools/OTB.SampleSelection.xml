@@ -66,7 +66,7 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Output resampled geometries" help="Output resampled geometries">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
@@ -76,7 +76,7 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_outrates" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outrates" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outrates" type="select" label="Output rates (CSV formatted)" help="Output rates (CSV formatted)">
         <option value="text/csv">csv</option>
       </param>

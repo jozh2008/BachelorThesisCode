@@ -20,10 +20,10 @@ transmissionMode_B_SHARP $OutputSection_B_SHARP.transmissionMode_B_SHARP
 outputType_SHARPEN $OutputSection_SHARPEN.outputType_SHARPEN
 transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></command>
   <inputs>
-    <param name="R" type="data" optional="false" label="Red" help="Red The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="G" type="data" optional="false" label="Green" help="Green The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="B" type="data" optional="false" label="Blue" help="Blue The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="R" type="data" optional="false" label="Red" help="Red The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="G" type="data" optional="false" label="Green" help="Green The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="B" type="data" optional="false" label="Blue" help="Blue The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option value="bilinear">bilinear</option>
       <option selected="true" value="cubic_convolution">cubic convolution</option>
@@ -38,7 +38,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_R_SHARP" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_R_SHARP" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_R_SHARP" type="select" label="Red" help="Red">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -50,7 +50,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_G_SHARP" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_G_SHARP" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_G_SHARP" type="select" label="Green" help="Green">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -62,7 +62,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_B_SHARP" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_B_SHARP" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_B_SHARP" type="select" label="Blue" help="Blue">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -74,7 +74,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SHARPEN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SHARPEN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SHARPEN" type="select" label="Sharpened Channels" help="Sharpened Channels">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

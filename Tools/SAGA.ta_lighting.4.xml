@@ -17,8 +17,8 @@ response $response
 outputType_CORRECTED $OutputSection_CORRECTED.outputType_CORRECTED
 transmissionMode_CORRECTED $OutputSection_CORRECTED.transmissionMode_CORRECTED]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="ORIGINAL" type="data" optional="false" label="Original Image" help="Original Image The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="ORIGINAL" type="data" optional="false" label="Original Image" help="Original Image The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="AZI" type="float" value="180" optional="true" label="Azimuth" help="direction of sun (degree, clockwise from North)"/>
     <param name="HGT" type="float" value="45" optional="true" label="Height" help="height of sun above horizon (degree)"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
@@ -45,7 +45,7 @@ transmissionMode_CORRECTED $OutputSection_CORRECTED.transmissionMode_CORRECTED]]
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CORRECTED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CORRECTED" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CORRECTED" type="select" label="Corrected Image" help="Corrected Image">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

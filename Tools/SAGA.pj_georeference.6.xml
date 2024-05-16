@@ -47,7 +47,7 @@ transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_EXTENT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_EXTENT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_EXTENT" type="select" label="Extent" help="Extent">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

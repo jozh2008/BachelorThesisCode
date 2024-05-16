@@ -13,8 +13,8 @@ transmissionMode_ASPECT_SLOPE $OutputSection_ASPECT_SLOPE.transmissionMode_ASPEC
 outputType_LUT $OutputSection_LUT.outputType_LUT
 transmissionMode_LUT $OutputSection_LUT.transmissionMode_LUT]]></command>
   <inputs>
-    <param name="ASPECT" type="data" optional="false" label="Aspect" help="Aspect grid, in radians and 360 degree from north. The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope grid, in radians. The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="ASPECT" type="data" optional="false" label="Aspect" help="Aspect grid, in radians and 360 degree from north. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope grid, in radians. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -24,7 +24,7 @@ transmissionMode_LUT $OutputSection_LUT.transmissionMode_LUT]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_ASPECT_SLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ASPECT_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ASPECT_SLOPE" type="select" label="Aspect-Slope" help="Final aspect-slope grid.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -36,7 +36,7 @@ transmissionMode_LUT $OutputSection_LUT.transmissionMode_LUT]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_LUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LUT" type="select" label="Lookup Table" help="Lookup table.">
         <option value="text/csv">csv</option>
       </param>

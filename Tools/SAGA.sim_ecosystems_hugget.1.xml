@@ -50,7 +50,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TABLE" type="select" label="Results" help="Results">
         <option value="text/csv">csv</option>
       </param>

@@ -38,7 +38,7 @@ transmissionMode_LEGENDS $OutputSection_LEGENDS.transmissionMode_LEGENDS]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_MAP" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MAP" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MAP" type="select" label="WMS Map" help="WMS Map">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -50,7 +50,7 @@ transmissionMode_LEGENDS $OutputSection_LEGENDS.transmissionMode_LEGENDS]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_LEGENDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LEGENDS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LEGENDS" type="select" label="Legends" help="Legends">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

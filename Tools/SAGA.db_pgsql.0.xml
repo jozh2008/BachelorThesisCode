@@ -18,7 +18,7 @@ transmissionMode_CONNECTIONS $OutputSection_CONNECTIONS.transmissionMode_CONNECT
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CONNECTIONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CONNECTIONS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CONNECTIONS" type="select" label="Connections" help="Connections">
         <option value="text/csv">csv</option>
       </param>

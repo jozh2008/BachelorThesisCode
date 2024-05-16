@@ -22,7 +22,7 @@ transmissionMode_PC $OutputSection_PC.transmissionMode_PC]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_PC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PC" type="select" label="Point Cloud" help="The point cloud picked from the point cloud list.">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>

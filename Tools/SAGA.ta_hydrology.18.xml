@@ -23,7 +23,7 @@ transmissionMode_G_AREA $OutputSection_G_AREA.transmissionMode_G_AREA
 outputType_G_FLOW $OutputSection_G_FLOW.outputType_G_FLOW
 transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Flow Split Method" help="Flow Split Method">
       <option value="cell_area">cell area</option>
       <option selected="true" value="flow_width_(original)">flow width (original)</option>
@@ -53,7 +53,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_AREA" type="select" label="Flow Accumulation" help="Flow Accumulation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -65,7 +65,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_G_SLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_G_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_G_SLOPE" type="select" label="Slope" help="Slope">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -77,7 +77,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_G_ASPECT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_G_ASPECT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_G_ASPECT" type="select" label="Aspect" help="Aspect">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -89,7 +89,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_G_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_G_AREA" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_G_AREA" type="select" label="Flow Accumulation" help="Flow Accumulation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -101,7 +101,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_G_FLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_G_FLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_G_FLOW" type="select" label="Flow Lines" help="Flow Lines">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

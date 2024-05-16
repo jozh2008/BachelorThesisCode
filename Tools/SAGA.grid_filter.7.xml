@@ -15,7 +15,7 @@ transmissionMode_GROUND $OutputSection_GROUND.transmissionMode_GROUND
 outputType_NONGROUND $OutputSection_NONGROUND.outputType_NONGROUND
 transmissionMode_NONGROUND $OutputSection_NONGROUND.transmissionMode_NONGROUND]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid to filter" help="The grid to filter. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid to filter" help="The grid to filter. The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="RADIUS" type="integer" value="2" optional="true" label="Search Radius" help="Search radius of kernel in cells."/>
     <param name="TERRAINSLOPE" type="float" value="30" optional="true" label="Approx. Terrain Slope" help="Approximate Terrain Slope [%]"/>
     <param name="STDDEV" type="select" optional="true" label="Use Confidence Interval" help="Use 5 percent confidence interval">
@@ -31,7 +31,7 @@ transmissionMode_NONGROUND $OutputSection_NONGROUND.transmissionMode_NONGROUND]]
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_GROUND" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_GROUND" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_GROUND" type="select" label="Bare Earth" help="Filtered DTM">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -43,7 +43,7 @@ transmissionMode_NONGROUND $OutputSection_NONGROUND.transmissionMode_NONGROUND]]
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_NONGROUND" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_NONGROUND" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_NONGROUND" type="select" label="Removed Objects" help="Objects removed from input grid">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

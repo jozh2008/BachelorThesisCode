@@ -23,11 +23,11 @@ response $response
 outputType_io.out $OutputSection_io.out.outputType_io.out
 transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
   <inputs>
-    <param name="io.in" type="data" optional="false" label="The input disparity map (horizontal disparity in first band, vertical in second). This map can be computed by BlockMatching application." help="The input disparity map (horizontal disparity in first band, vertical in second). This map can be computed by BlockMatching application. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="io.left" type="data" optional="false" label="Left image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values." help="Left image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="io.right" type="data" optional="false" label="Right image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values." help="Right image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="io.lgrid" type="data" optional="false" label="Left epipolar grid (deformation grid between left sensor et disparity spaces)" help="Left epipolar grid (deformation grid between left sensor et disparity spaces) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="io.rgrid" type="data" optional="false" label="Right epipolar grid (deformation grid between right sensor et disparity spaces)" help="Right epipolar grid (deformation grid between right sensor et disparity spaces) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="io.in" type="data" optional="false" label="The input disparity map (horizontal disparity in first band, vertical in second). This map can be computed by BlockMatching application." help="The input disparity map (horizontal disparity in first band, vertical in second). This map can be computed by BlockMatching application. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="io.left" type="data" optional="false" label="Left image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values." help="Left image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="io.right" type="data" optional="false" label="Right image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values." help="Right image in original (sensor) geometry. Only the geometric model of this image will be used, not the pixel values. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="io.lgrid" type="data" optional="false" label="Left epipolar grid (deformation grid between left sensor et disparity spaces)" help="Left epipolar grid (deformation grid between left sensor et disparity spaces) The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="io.rgrid" type="data" optional="false" label="Right epipolar grid (deformation grid between right sensor et disparity spaces)" help="Right epipolar grid (deformation grid between right sensor et disparity spaces) The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="io.out" type="select" optional="false" label="Output elevation map in ground projection. Elevation values are in meters. Floating point pixel type are expected." help="Output elevation map in ground projection. Elevation values are in meters. Floating point pixel type are expected.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -36,7 +36,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="io.mask" type="data" optional="false" label="Masked disparity pixels won't be projected (mask values equal to zero)" help="Masked disparity pixels won't be projected (mask values equal to zero) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="io.mask" type="data" optional="false" label="Masked disparity pixels won't be projected (mask values equal to zero)" help="Masked disparity pixels won't be projected (mask values equal to zero) The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="step" type="float" value="5" optional="false" label="Spacing of the output elevation map (in meters)" help="Spacing of the output elevation map (in meters)"/>
     <param name="hmin" type="float" value="0" optional="false" label="Minimum elevation expected (in meters)" help="Minimum elevation expected (in meters)"/>
     <param name="hmax" type="float" value="100" optional="false" label="Maximum elevation expected (in meters)" help="Maximum elevation expected (in meters)"/>
@@ -53,7 +53,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_io.out" type="select" label="Output elevation map in ground projection. Elevation values are in meters. Floating point pixel type are expected." help="Output elevation map in ground projection. Elevation values are in meters. Floating point pixel type are expected.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

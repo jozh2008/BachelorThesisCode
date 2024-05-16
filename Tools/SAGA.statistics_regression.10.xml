@@ -37,7 +37,7 @@ transmissionMode_TREND $OutputSection_TREND.transmissionMode_TREND]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_TREND" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TREND" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TREND" type="select" label="Table (with Trend)" help="Table (with Trend)">
         <option value="text/csv">csv</option>
       </param>

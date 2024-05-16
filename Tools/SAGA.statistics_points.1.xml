@@ -13,7 +13,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DISTMAX" type="float" value="0" optional="true" label="Maximum Distance" help="Maximum Distance"/>
     <param name="NSKIP" type="integer" value="1" optional="true" label="Skip Number" help="Skip Number"/>
@@ -26,7 +26,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT" type="select" label="Variogram Cloud" help="Variogram Cloud">
         <option value="text/csv">csv</option>
       </param>

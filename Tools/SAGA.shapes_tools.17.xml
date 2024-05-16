@@ -22,7 +22,7 @@ transmissionMode_CUTS $OutputSection_CUTS.transmissionMode_CUTS]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CUTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CUTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CUTS" type="select" label="Cuts" help="Cuts">
         <option value="text/csv">csv</option>
       </param>

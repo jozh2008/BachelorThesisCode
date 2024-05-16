@@ -13,7 +13,7 @@ response $response
 outputType_outendm $OutputSection_outendm.outputType_outendm
 transmissionMode_outendm $OutputSection_outendm.transmissionMode_outendm]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input hyperspectral data cube" help="Input hyperspectral data cube The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input hyperspectral data cube" help="Input hyperspectral data cube The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="ne" type="integer" value="1" optional="false" label="The number of endmembers to extract from the hyperspectral image." help="The number of endmembers to extract from the hyperspectral image."/>
     <param name="outendm" type="select" optional="false" label="Endmembers, stored in aone-line multi-spectral image.Each pixel corresponds to oneendmembers and each band values corresponds to the spectralsignature of the corresponding endmember." help="Endmembers, stored in aone-line multi-spectral image.Each pixel corresponds to oneendmembers and each band values corresponds to the spectralsignature of the corresponding endmember.">
       <option value="double">double</option>
@@ -33,7 +33,7 @@ transmissionMode_outendm $OutputSection_outendm.transmissionMode_outendm]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_outendm" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outendm" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outendm" type="select" label="Endmembers, stored in aone-line multi-spectral image.Each pixel corresponds to oneendmembers and each band values corresponds to the spectralsignature of the corresponding endmember." help="Endmembers, stored in aone-line multi-spectral image.Each pixel corresponds to oneendmembers and each band values corresponds to the spectralsignature of the corresponding endmember.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

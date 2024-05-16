@@ -13,7 +13,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="RX" type="integer" value="1" optional="true" label="Radius X" help="Radius X"/>
     <param name="RY" type="integer" value="1" optional="true" label="Radius Y" help="Radius Y"/>
     <param name="THRESH" type="float" value="2" optional="true" label="Threshold" help="The values in the specified radius is used in the average calculation only if its difference with the central value is lesser or equal to this threshold."/>
@@ -26,7 +26,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT" type="select" label="AWT Grid" help="New grid filtered with the A3WiTh tool">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

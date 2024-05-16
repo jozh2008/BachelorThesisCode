@@ -22,8 +22,8 @@ transmissionMode_LUMINANCE $OutputSection_LUMINANCE.transmissionMode_LUMINANCE
 outputType_CONTRAST $OutputSection_CONTRAST.outputType_CONTRAST
 transmissionMode_CONTRAST $OutputSection_CONTRAST.transmissionMode_CONTRAST]]></command>
   <inputs>
-    <param name="GRID_A" type="data" optional="false" label="First Grid" help="First Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
-    <param name="GRID_B" type="data" optional="false" label="Second Grid" help="Second Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="GRID_A" type="data" optional="false" label="First Grid" help="First Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRID_B" type="data" optional="false" label="Second Grid" help="Second Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="K1" type="float" value="0.01" optional="true" label="k1" help="k1"/>
     <param name="K2" type="float" value="0.03" optional="true" label="k2" help="k2"/>
     <param name="L" type="integer" value="255" optional="true" label="L" help="The dynamic range for the image pixel, i.e. the number of different grey values."/>
@@ -41,7 +41,7 @@ transmissionMode_CONTRAST $OutputSection_CONTRAST.transmissionMode_CONTRAST]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_QUALITY" type="select" label="Universal Image Quality Index" help="The product of correlation, luminance and contrast similarity.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -53,7 +53,7 @@ transmissionMode_CONTRAST $OutputSection_CONTRAST.transmissionMode_CONTRAST]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CORRELATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CORRELATION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CORRELATION" type="select" label="Correlation" help="The correlation coefficient.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -65,7 +65,7 @@ transmissionMode_CONTRAST $OutputSection_CONTRAST.transmissionMode_CONTRAST]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_LUMINANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LUMINANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LUMINANCE" type="select" label="Luminance" help="The similarity of mean luminance.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -77,7 +77,7 @@ transmissionMode_CONTRAST $OutputSection_CONTRAST.transmissionMode_CONTRAST]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CONTRAST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CONTRAST" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CONTRAST" type="select" label="Contrast" help="The similarity of contrast.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

@@ -16,8 +16,8 @@ response $response
 outputType_FLOW $OutputSection_FLOW.outputType_FLOW
 transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="SLOPE_MIN" type="float" value="0" optional="true" label="Slope Minimum" help="Assume a given minimum slope for each cell."/>
     <param name="SLOPE_MAX" type="float" value="5" optional="true" label="Slope Threshold" help="Slope threshold, given as degree, above which flow transport is unlimited."/>
     <param name="B_FLOW" type="select" optional="true" label="Use Flow Threshold" help="Use Flow Threshold">
@@ -35,7 +35,7 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW" type="select" label="Flow Accumulation" help="Flow Accumulation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

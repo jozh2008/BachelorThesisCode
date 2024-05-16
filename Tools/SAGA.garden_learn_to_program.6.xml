@@ -17,7 +17,7 @@ transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA
 outputType_LENGTH $OutputSection_LENGTH.outputType_LENGTH
 transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="STEP" type="integer" value="1" optional="true" label="Step" help="Skip cells (step value)."/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose a method">
       <option selected="true" value="Needs_less_memory,_but_is_slow">Needs less memory, but is slow</option>
@@ -38,7 +38,7 @@ transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_AREA" type="select" label="Catchment area" help="This will contain your output data of type grid.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -50,7 +50,7 @@ transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_LENGTH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LENGTH" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LENGTH" type="select" label="Flow Path Length" help="This will contain your output data of type grid.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

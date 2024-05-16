@@ -29,7 +29,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES
 outputType_QUALITY $OutputSection_QUALITY.outputType_QUALITY
 transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="NORMALISE" type="select" optional="true" label="Normalise" help="Normalise">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -91,7 +91,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CLASSES" type="select" label="Classification" help="Classification">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -103,7 +103,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_QUALITY" type="select" label="Quality" help="Dependent on chosen method, these are distances or probabilities.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

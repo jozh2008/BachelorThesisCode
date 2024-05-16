@@ -20,7 +20,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS
 outputType_BORDERS $OutputSection_BORDERS.outputType_BORDERS
 transmissionMode_BORDERS $OutputSection_BORDERS.transmissionMode_BORDERS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output" help="The values of the resultant grid can be either the seed value (e.g. the local maximum) or the enumerated segment id.">
       <option value="Seed_Value">Seed Value</option>
       <option selected="true" value="Segment_ID">Segment ID</option>
@@ -52,7 +52,7 @@ transmissionMode_BORDERS $OutputSection_BORDERS.transmissionMode_BORDERS]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_SEGMENTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SEGMENTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SEGMENTS" type="select" label="Segments" help="Segments">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -64,7 +64,7 @@ transmissionMode_BORDERS $OutputSection_BORDERS.transmissionMode_BORDERS]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SEEDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SEEDS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SEEDS" type="select" label="Seed Points" help="Seed Points">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -75,7 +75,7 @@ transmissionMode_BORDERS $OutputSection_BORDERS.transmissionMode_BORDERS]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_BORDERS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_BORDERS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_BORDERS" type="select" label="Borders" help="Borders">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

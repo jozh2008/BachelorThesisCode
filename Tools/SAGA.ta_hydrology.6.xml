@@ -14,8 +14,8 @@ response $response
 outputType_LENGTH $OutputSection_LENGTH.outputType_LENGTH
 transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="SEED" type="data" optional="false" label="Seeds" help="Seeds The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="SEED" type="data" optional="false" label="Seeds" help="Seeds The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="SEEDS_ONLY" type="select" optional="true" label="Seeds Only" help="Use only seed cells as starting points.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -34,7 +34,7 @@ transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_LENGTH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LENGTH" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LENGTH" type="select" label="Flow Path Length" help="Flow Path Length">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

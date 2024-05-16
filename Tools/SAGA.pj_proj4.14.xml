@@ -62,7 +62,7 @@ transmissionMode_COORDS $OutputSection_COORDS.transmissionMode_COORDS]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_GRATICULE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_GRATICULE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_GRATICULE" type="select" label="Graticule" help="Graticule">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -73,7 +73,7 @@ transmissionMode_COORDS $OutputSection_COORDS.transmissionMode_COORDS]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_COORDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_COORDS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_COORDS" type="select" label="Frame Coordinates" help="Frame Coordinates">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

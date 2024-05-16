@@ -7,7 +7,6 @@
   <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_result $output_data_result  name hellojs S '$S'
 prefer $prefer
 response $response
-outputType_result '$OutputSection_result.outputType_result'
 transmissionMode_result $OutputSection_result.transmissionMode_result]]></command>
   <inputs>
     <param name="S" type="text" optional="false" label="Name" help="The name to display in the hello message"/>
@@ -20,8 +19,7 @@ transmissionMode_result $OutputSection_result.transmissionMode_result]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_result" type="text" optional="false" label="The resulting string" help="The string created by service."/>
+    <section name="OutputSection_result" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_result" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

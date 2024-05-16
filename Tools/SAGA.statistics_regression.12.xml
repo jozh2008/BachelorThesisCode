@@ -46,7 +46,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RESULTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULTS" type="select" label="Results" help="Results">
         <option value="text/csv">csv</option>
       </param>
@@ -55,7 +55,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_COEFF" type="select" label="Details: Coefficients" help="Details: Coefficients">
         <option value="text/csv">csv</option>
       </param>
@@ -64,7 +64,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_MODEL" type="select" label="Details: Model" help="Details: Model">
         <option value="text/csv">csv</option>
       </param>
@@ -73,7 +73,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_STEPS" type="select" label="Details: Steps" help="Details: Steps">
         <option value="text/csv">csv</option>
       </param>

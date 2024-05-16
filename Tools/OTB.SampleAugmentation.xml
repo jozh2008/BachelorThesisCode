@@ -19,7 +19,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Vector data file containing samples (OGR format)" help="Vector data file containing samples (OGR format) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Vector data file containing samples (OGR format)" help="Vector data file containing samples (OGR format) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="field" type="text" optional="false" label="Name of the field carrying the class name in the input vectors." help="Name of the field carrying the class name in the input vectors."/>
     <param name="layer" type="integer" value="0" optional="true" label="Layer index to read in the input vector file." help="Layer index to read in the input vector file."/>
     <param name="label" type="integer" value="1" optional="false" label="Label of the class of the input file for which new samples will be generated." help="Label of the class of the input file for which new samples will be generated."/>
@@ -42,7 +42,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Output vector data file storing new samples(OGR format)." help="Output vector data file storing new samples(OGR format).">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

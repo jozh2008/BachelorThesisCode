@@ -14,7 +14,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The image to scale." help="The image to scale. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The image to scale." help="The image to scale. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="The rescaled image filename." help="The rescaled image filename.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -35,7 +35,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="The rescaled image filename." help="The rescaled image filename.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

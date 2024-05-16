@@ -22,7 +22,7 @@ transmissionMode_OUT_SHAPES $OutputSection_OUT_SHAPES.transmissionMode_OUT_SHAPE
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OUT_TABLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUT_TABLE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUT_TABLE" type="select" label="Copied Selection" help="Copied Selection">
         <option value="text/csv">csv</option>
       </param>
@@ -31,7 +31,7 @@ transmissionMode_OUT_SHAPES $OutputSection_OUT_SHAPES.transmissionMode_OUT_SHAPE
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OUT_SHAPES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUT_SHAPES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUT_SHAPES" type="select" label="Copied Selection" help="Copied Selection">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

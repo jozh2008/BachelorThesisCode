@@ -11,11 +11,10 @@ tiledir '$tiledir'
 mode $mode
 prefer $prefer
 response $response
-outputType_Result '$OutputSection_Result.outputType_Result'
 transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
   <inputs>
     <param name="il" type="data" optional="false" label="List of images on which you want to determine corresponding SRTM tiles." help="List of images on which you want to determine corresponding SRTM tiles. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="vl" type="data" optional="false" label="List of vector data files on which you want to determine corresponding SRTM tiles." help="List of vector data files on which you want to determine corresponding SRTM tiles. The following data types are allowed in the txt file:  json, xml, zip, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="vl" type="data" optional="false" label="List of vector data files on which you want to determine corresponding SRTM tiles." help="List of vector data files on which you want to determine corresponding SRTM tiles. The following data types are allowed in the txt file:  json, zip, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="names" type="text" optional="true" label="List of SRTM tile names to download. This list is added to the tiles derived from input images or vectors.The names should follow the SRTM tile naming convention, for instance N43E001." help="List of SRTM tile names to download. This list is added to the tiles derived from input images or vectors.The names should follow the SRTM tile naming convention, for instance N43E001."/>
     <param name="tiledir" type="text" optional="false" label="Directory where SRTM tiles are stored. In download mode, the zipped archives will be downloaded to this directory. You'll need to unzip all tile files before using them in your application. In any case, this directory will be inspected to check which tiles are already downloaded." help="Directory where SRTM tiles are stored. In download mode, the zipped archives will be downloaded to this directory. You'll need to unzip all tile files before using them in your application. In any case, this directory will be inspected to check which tiles are already downloaded."/>
     <param name="mode" type="select" optional="false" label="mode" help="mode">
@@ -31,8 +30,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_Result" type="text" optional="false" label="the result message" help="the result message"/>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

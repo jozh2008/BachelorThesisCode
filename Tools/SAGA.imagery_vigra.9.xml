@@ -33,12 +33,12 @@ transmissionMode_PROBABILITIES $OutputSection_PROBABILITIES.transmissionMode_PRO
 outputType_IMPORTANCES $OutputSection_IMPORTANCES.outputType_IMPORTANCES
 transmissionMode_IMPORTANCES $OutputSection_IMPORTANCES.transmissionMode_IMPORTANCES]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="BPROBABILITIES" type="select" optional="true" label="Feature Probabilities" help="Feature Probabilities">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Label Field" help="Label Field The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LABEL_AS_ID" type="select" optional="true" label="Use Label as Identifier" help="Use training area labels as identifier in classification result, assumes all label values are integer numbers!">
       <option selected="true" value="false">false</option>
@@ -86,7 +86,7 @@ transmissionMode_IMPORTANCES $OutputSection_IMPORTANCES.transmissionMode_IMPORTA
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CLASSES" type="select" label="Random Forest Classification" help="Random Forest Classification">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -98,7 +98,7 @@ transmissionMode_IMPORTANCES $OutputSection_IMPORTANCES.transmissionMode_IMPORTA
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PROBABILITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PROBABILITY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PROBABILITY" type="select" label="Prediction Probability" help="Prediction Probability">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -110,7 +110,7 @@ transmissionMode_IMPORTANCES $OutputSection_IMPORTANCES.transmissionMode_IMPORTA
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PROBABILITIES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PROBABILITIES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PROBABILITIES" type="select" label="Feature Probabilities" help="Feature Probabilities">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -122,7 +122,7 @@ transmissionMode_IMPORTANCES $OutputSection_IMPORTANCES.transmissionMode_IMPORTA
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_IMPORTANCES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_IMPORTANCES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_IMPORTANCES" type="select" label="Feature Importances" help="Feature Importances">
         <option value="text/csv">csv</option>
       </param>

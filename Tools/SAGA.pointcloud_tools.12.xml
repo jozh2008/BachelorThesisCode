@@ -32,7 +32,7 @@ transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_PC_OUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PC_OUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PC_OUT" type="select" label="Merged Point Cloud" help="Merged Point Cloud">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>

@@ -21,7 +21,7 @@ transmissionMode_outstat $OutputSection_outstat.transmissionMode_outstat
 outputType_outvector $OutputSection_outvector.outputType_outvector
 transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]></command>
   <inputs>
-    <param name="inpoints" type="data" optional="false" label="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored." help="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="inpoints" type="data" optional="false" label="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored." help="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="map" type="select" optional="false" label="Defines the map projection to be used." help="Defines the map projection to be used.">
       <option value="epsg">epsg</option>
       <option value="lambert2">lambert2</option>
@@ -47,7 +47,7 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_outgeom" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outgeom" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outgeom" type="select" label="Geom file containing the generated RPC sensor model" help="Geom file containing the generated RPC sensor model">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
@@ -57,7 +57,7 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_outstat" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outstat" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outstat" type="select" label="Output file containing the following info: ref_lon ref_lat elevation predicted_lon predicted_lat x_error_ref(meters) y_error_ref(meters) global_error_ref(meters) x_error(meters) y_error(meters) overall_error(meters)" help="Output file containing the following info: ref_lon ref_lat elevation predicted_lon predicted_lat x_error_ref(meters) y_error_ref(meters) global_error_ref(meters) x_error(meters) y_error(meters) overall_error(meters)">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
@@ -67,7 +67,7 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_outvector" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outvector" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outvector" type="select" label="File containing segments representing residues" help="File containing segments representing residues">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>

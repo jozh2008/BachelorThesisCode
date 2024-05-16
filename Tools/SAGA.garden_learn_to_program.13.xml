@@ -13,7 +13,7 @@ transmissionMode_CHANNELS $OutputSection_CHANNELS.transmissionMode_CHANNELS
 outputType_SHAPES $OutputSection_SHAPES.outputType_SHAPES
 transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="Elevation grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="Elevation grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="THRESHOLD" type="integer" value="4" optional="true" label="Threshold" help="Threshold"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -24,7 +24,7 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CHANNELS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CHANNELS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CHANNELS" type="select" label="Channels (Raster)" help="Channels (Raster)">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -36,7 +36,7 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SHAPES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SHAPES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SHAPES" type="select" label="Channels (Vector)" help="Channels (Vector)">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

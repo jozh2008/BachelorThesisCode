@@ -10,7 +10,6 @@ crs $c.crs
 pause $pause
 prefer $prefer
 response $response
-outputType_a '$OutputSection_a.outputType_a'
 transmissionMode_a $OutputSection_a.transmissionMode_a
 outputType_b $OutputSection_b.outputType_b
 transmissionMode_b $OutputSection_b.transmissionMode_b]]></command>
@@ -33,14 +32,13 @@ transmissionMode_b $OutputSection_b.transmissionMode_b]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_a" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_a" type="text" optional="false" label="The output a" help="The output a returned"/>
+    <section name="OutputSection_a" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_a" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_b" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_b" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_b" type="select" label="The output b" help="The output b returned">
         <option value="application/json">json</option>
         <option value="text/xml">xml</option>

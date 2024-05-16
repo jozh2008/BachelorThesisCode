@@ -13,7 +13,7 @@ transmissionMode_SURF $OutputSection_SURF.transmissionMode_SURF
 outputType_GRAD $OutputSection_GRAD.outputType_GRAD
 transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD]]></command>
   <inputs>
-    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="SURF_E" type="float" value="0.001" optional="true" label="Surface Approximation Threshold" help="Surface Approximation Threshold"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -24,7 +24,7 @@ transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_SURF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SURF" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SURF" type="select" label="Surface" help="Surface">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -36,7 +36,7 @@ transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_GRAD" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_GRAD" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_GRAD" type="select" label="Gradient" help="Gradient">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

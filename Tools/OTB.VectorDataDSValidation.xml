@@ -15,7 +15,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input vector data to validate" help="Input vector data to validate The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, zip, json, xml" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input vector data to validate" help="Input vector data to validate The following data types are allowed in the txt file:  json, zip, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="descmod" type="data" optional="false" label="Fuzzy descriptors model (xml file)" help="Fuzzy descriptors model (xml file) The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="belsup" type="text" optional="false" label="Dempster Shafer study hypothesis to compute belief" help="Dempster Shafer study hypothesis to compute belief"/>
     <param name="plasup" type="text" optional="false" label="Dempster Shafer study hypothesis to compute plausibility" help="Dempster Shafer study hypothesis to compute plausibility"/>
@@ -30,7 +30,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Output VectorData containing only the validated samples" help="Output VectorData containing only the validated samples">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

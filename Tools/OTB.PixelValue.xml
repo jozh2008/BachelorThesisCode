@@ -12,7 +12,6 @@ mode.epsg.code $mode.epsg.code
 cl '$cl'
 prefer $prefer
 response $response
-outputType_value '$OutputSection_value.outputType_value'
 transmissionMode_value $OutputSection_value.transmissionMode_value]]></command>
   <inputs>
     <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
@@ -34,8 +33,7 @@ transmissionMode_value $OutputSection_value.transmissionMode_value]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_value" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_value" type="text" optional="false" label="Pixel radiometric value" help="Pixel radiometric value"/>
+    <section name="OutputSection_value" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_value" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

@@ -20,7 +20,7 @@ transmissionMode_FLOW_TRIANGLES $OutputSection_FLOW_TRIANGLES.transmissionMode_F
 outputType_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.outputType_FLOW_POLYGONS
 transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLOW_POLYGONS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="ZFIELD" type="data" optional="false" label="Z Values" help="Z Values The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Multiple_Flow_Direction">Multiple Flow Direction</option>
@@ -35,7 +35,7 @@ transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLO
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_FLOW_POINTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW_POINTS" type="select" label="Flow AccumulationPOINTS Shapes" help="Flow Accumulation">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -46,7 +46,7 @@ transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLO
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FLOW_CENTER" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW_CENTER" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW_CENTER" type="select" label="Flow AccumulationCENTER Shapes" help="Flow Accumulation">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -57,7 +57,7 @@ transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLO
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FLOW_EDGES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW_EDGES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW_EDGES" type="select" label="Flow AccumulationEDGES Shapes" help="Flow Accumulation">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -68,7 +68,7 @@ transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLO
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FLOW_TRIANGLES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW_TRIANGLES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW_TRIANGLES" type="select" label="Flow AccumulationTRIANGLES Shapes" help="Flow Accumulation">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -79,7 +79,7 @@ transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLO
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FLOW_POLYGONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW_POLYGONS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW_POLYGONS" type="select" label="Flow AccumulationPOLYGONS Shapes" help="Flow Accumulation">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

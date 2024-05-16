@@ -13,7 +13,7 @@ transmissionMode_LOPASS $OutputSection_LOPASS.transmissionMode_LOPASS
 outputType_HIPASS $OutputSection_HIPASS.outputType_HIPASS
 transmissionMode_HIPASS $OutputSection_HIPASS.transmissionMode_HIPASS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="SCALE" type="float" value="10" optional="true" label="Scale Factor" help="Scale Factor"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -24,7 +24,7 @@ transmissionMode_HIPASS $OutputSection_HIPASS.transmissionMode_HIPASS]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_LOPASS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LOPASS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LOPASS" type="select" label="Low Pass Filter" help="Low Pass Filter">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -36,7 +36,7 @@ transmissionMode_HIPASS $OutputSection_HIPASS.transmissionMode_HIPASS]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_HIPASS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_HIPASS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_HIPASS" type="select" label="High Pass Filter" help="High Pass Filter">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

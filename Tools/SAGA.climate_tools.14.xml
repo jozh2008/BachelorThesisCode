@@ -21,8 +21,8 @@ transmissionMode_TMIN_MEAN $OutputSection_TMIN_MEAN.transmissionMode_TMIN_MEAN
 outputType_TMIN_MIN $OutputSection_TMIN_MIN.outputType_TMIN_MIN
 transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></command>
   <inputs>
-    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -32,7 +32,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_FREQUENCY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FREQUENCY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FREQUENCY" type="select" label="Frost Change Frequency" help="The number of days with frost change.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -44,7 +44,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DT_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DT_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DT_MEAN" type="select" label="Mean Temperature Span" help="Mean daily temperature span of frost change days.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -56,7 +56,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DT_MAX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DT_MAX" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DT_MAX" type="select" label="Maximum Temperature Span" help="Maximum daily temperature span of frost change days.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -68,7 +68,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DT_STDV" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DT_STDV" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DT_STDV" type="select" label="Standard Deviation of Temperature Span" help="Standard deviation of daily temperature span of frost change days.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -80,7 +80,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_TMIN_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TMIN_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TMIN_MEAN" type="select" label="Mean Minimum Temperature" help="Mean daily minimum temperature of frost change days.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -92,7 +92,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_TMIN_MIN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TMIN_MIN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TMIN_MIN" type="select" label="Minimum Temperature" help="Coldest daily minimum temperature of all frost change days.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

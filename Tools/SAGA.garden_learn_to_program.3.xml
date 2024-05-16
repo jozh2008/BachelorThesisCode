@@ -11,7 +11,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose a method">
       <option selected="true" value="Arithmetic_mean_(version_1)">Arithmetic mean (version 1)</option>
       <option value="Arithmetic_mean_(version_2)">Arithmetic mean (version 2)</option>
@@ -29,7 +29,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT" type="select" label="Output" help="This will contain your output data of type grid.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

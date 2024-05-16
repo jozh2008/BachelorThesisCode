@@ -13,8 +13,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in1" type="data" optional="false" label="Multiband image of the scene before perturbations" help="Multiband image of the scene before perturbations The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="in2" type="data" optional="false" label="Mutliband image of the scene after perturbations." help="Mutliband image of the scene after perturbations. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in1" type="data" optional="false" label="Multiband image of the scene before perturbations" help="Multiband image of the scene before perturbations The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in2" type="data" optional="false" label="Mutliband image of the scene after perturbations." help="Mutliband image of the scene after perturbations. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="out" type="select" optional="false" label="Multiband image containing change maps. Each map will be in the range [-1,1], so a floating point output type is advised." help="Multiband image containing change maps. Each map will be in the range [-1,1], so a floating point output type is advised.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -33,7 +33,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Multiband image containing change maps. Each map will be in the range [-1,1], so a floating point output type is advised." help="Multiband image containing change maps. Each map will be in the range [-1,1], so a floating point output type is advised.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

@@ -13,7 +13,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE
 outputType_ASPECT $OutputSection_ASPECT.outputType_ASPECT
 transmissionMode_ASPECT $OutputSection_ASPECT.transmissionMode_ASPECT]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Input grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Input grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose a method">
       <option selected="true" value="Steepest_gradient_(first_version)">Steepest gradient (first version)</option>
       <option value="Steepest_gradient_(second_version)">Steepest gradient (second version)</option>
@@ -28,7 +28,7 @@ transmissionMode_ASPECT $OutputSection_ASPECT.transmissionMode_ASPECT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SLOPE" type="select" label="Slope" help="This will contain your output data of type grid.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -40,7 +40,7 @@ transmissionMode_ASPECT $OutputSection_ASPECT.transmissionMode_ASPECT]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ASPECT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ASPECT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ASPECT" type="select" label="Aspect" help="This will contain your output data of type grid.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

@@ -14,7 +14,7 @@ response $response
 outputType_POLYGONS $OutputSection_POLYGONS.outputType_POLYGONS
 transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="CLASS_ALL" type="select" optional="true" label="Class Selection" help="Class Selection">
       <option selected="true" value="all_classes">all classes</option>
       <option value="one_single_class_specified_by_class_identifier">one single class specified by class identifier</option>
@@ -37,7 +37,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_POLYGONS" type="select" label="Polygons" help="Polygons">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

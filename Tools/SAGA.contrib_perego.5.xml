@@ -17,7 +17,7 @@ transmissionMode_RESULT1 $OutputSection_RESULT1.transmissionMode_RESULT1
 outputType_RESULT2 $OutputSection_RESULT2.outputType_RESULT2
 transmissionMode_RESULT2 $OutputSection_RESULT2.transmissionMode_RESULT2]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="This must be your input data of type grid. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="ANG" type="float" value="0" optional="true" label="Angle (in degrees)" help="0 is horizontal, 90 is vertical."/>
     <param name="R" type="float" value="10" optional="true" label="Radius" help="Radius"/>
     <param name="D" type="float" value="2" optional="true" label="Stripes distance" help="Stripes distance"/>
@@ -30,7 +30,7 @@ transmissionMode_RESULT2 $OutputSection_RESULT2.transmissionMode_RESULT2]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RESULT3" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT3" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT3" type="select" label="Destriped Grid" help="New grid filtered with the destriping1 tool">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -42,7 +42,7 @@ transmissionMode_RESULT2 $OutputSection_RESULT2.transmissionMode_RESULT2]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RESULT1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT1" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT1" type="select" label="Low-pass 1" help="Step 1: low-pass of stripe">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -54,7 +54,7 @@ transmissionMode_RESULT2 $OutputSection_RESULT2.transmissionMode_RESULT2]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RESULT2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT2" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT2" type="select" label="Low-pass 2" help="Step 2: low-pass between stripe and its surruondings">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

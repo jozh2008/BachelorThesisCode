@@ -28,7 +28,7 @@ transmissionMode_SOLARRAD $OutputSection_SOLARRAD.transmissionMode_SOLARRAD]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_SOLARRAD" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SOLARRAD" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SOLARRAD" type="select" label="Solar Radiation" help="Solar Radiation">
         <option value="text/csv">csv</option>
       </param>

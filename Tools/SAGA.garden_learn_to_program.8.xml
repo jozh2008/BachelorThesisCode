@@ -10,7 +10,7 @@ response $response
 outputType_AREA $OutputSection_AREA.outputType_AREA
 transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -20,7 +20,7 @@ transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_AREA" type="select" label="Catchment area" help="This will contain your output data of type grid.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

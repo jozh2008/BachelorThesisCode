@@ -20,7 +20,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE
 outputType_CONTOURS $OutputSection_CONTOURS.outputType_CONTOURS
 transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model. The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose the map type to generate.">
       <option value="Morphology">Morphology</option>
       <option selected="true" value="Topography">Topography</option>
@@ -40,7 +40,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_SHADE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SHADE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SHADE" type="select" label="Shade" help="The shaded DTM.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -52,7 +52,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OPENNESS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OPENNESS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OPENNESS" type="select" label="Openness" help="The difference of positive and negative openness.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -64,7 +64,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SLOPE" type="select" label="Slope" help="The calculated terrain slope [radians].">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -76,7 +76,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CONTOURS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CONTOURS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CONTOURS" type="select" label="Contours" help="The generated contour lines.">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

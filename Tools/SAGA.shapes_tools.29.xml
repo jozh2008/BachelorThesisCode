@@ -19,7 +19,7 @@ response $response
 outputType_PLOTS $OutputSection_PLOTS.outputType_PLOTS
 transmissionMode_PLOTS $OutputSection_PLOTS.transmissionMode_PLOTS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="STRIKE" type="data" optional="false" label="Strike" help="Strike The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DIP" type="data" optional="false" label="Dip" help="Dip The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RAKE" type="data" optional="false" label="Rake" help="Rake The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -41,7 +41,7 @@ transmissionMode_PLOTS $OutputSection_PLOTS.transmissionMode_PLOTS]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_PLOTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PLOTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PLOTS" type="select" label="Focal Mechanism Beachballs" help="Focal Mechanism Beachballs">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

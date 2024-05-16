@@ -16,7 +16,7 @@ transmissionMode_STDDIST $OutputSection_STDDIST.transmissionMode_STDDIST
 outputType_BBOX $OutputSection_BBOX.outputType_BBOX
 transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STEP" type="float" value="5" optional="true" label="Vertex Distance [Degree]" help="Vertex Distance [Degree]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -28,7 +28,7 @@ transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CENTRE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CENTRE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CENTRE" type="select" label="Mean Centre" help="Mean Centre">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -39,7 +39,7 @@ transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_STDDIST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_STDDIST" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_STDDIST" type="select" label="Standard Distance" help="Standard Distance">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -50,7 +50,7 @@ transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_BBOX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_BBOX" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_BBOX" type="select" label="Bounding Box" help="Bounding Box">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

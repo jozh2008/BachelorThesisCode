@@ -21,11 +21,8 @@ transmissionMode_originy $OutputSection_originy.transmissionMode_originy
 transmissionMode_estimatedgroundspacingx $OutputSection_estimatedgroundspacingx.transmissionMode_estimatedgroundspacingx
 transmissionMode_estimatedgroundspacingy $OutputSection_estimatedgroundspacingy.transmissionMode_estimatedgroundspacingy
 transmissionMode_numberbands $OutputSection_numberbands.transmissionMode_numberbands
-outputType_sensor '$OutputSection_sensor.outputType_sensor'
 transmissionMode_sensor $OutputSection_sensor.transmissionMode_sensor
-outputType_id '$OutputSection_id.outputType_id'
 transmissionMode_id $OutputSection_id.transmissionMode_id
-outputType_time '$OutputSection_time.outputType_time'
 transmissionMode_time $OutputSection_time.transmissionMode_time
 transmissionMode_ullat $OutputSection_ullat.transmissionMode_ullat
 transmissionMode_ullon $OutputSection_ullon.transmissionMode_ullon
@@ -35,30 +32,21 @@ transmissionMode_lrlat $OutputSection_lrlat.transmissionMode_lrlat
 transmissionMode_lrlon $OutputSection_lrlon.transmissionMode_lrlon
 transmissionMode_lllat $OutputSection_lllat.transmissionMode_lllat
 transmissionMode_lllon $OutputSection_lllon.transmissionMode_lllon
-outputType_town '$OutputSection_town.outputType_town'
 transmissionMode_town $OutputSection_town.transmissionMode_town
-outputType_country '$OutputSection_country.outputType_country'
 transmissionMode_country $OutputSection_country.transmissionMode_country
 transmissionMode_rgb.r $OutputSection_rgb.r.transmissionMode_rgb.r
 transmissionMode_rgb.g $OutputSection_rgb.g.transmissionMode_rgb.g
 transmissionMode_rgb.b $OutputSection_rgb.b.transmissionMode_rgb.b
-outputType_projectionref '$OutputSection_projectionref.outputType_projectionref'
 transmissionMode_projectionref $OutputSection_projectionref.transmissionMode_projectionref
-outputType_keyword '$OutputSection_keyword.outputType_keyword'
 transmissionMode_keyword $OutputSection_keyword.transmissionMode_keyword
 transmissionMode_gcp.count $OutputSection_gcp.count.transmissionMode_gcp.count
-outputType_gcp.proj '$OutputSection_gcp.proj.outputType_gcp.proj'
 transmissionMode_gcp.proj $OutputSection_gcp.proj.transmissionMode_gcp.proj
-outputType_gcp.ids '$OutputSection_gcp.ids.outputType_gcp.ids'
 transmissionMode_gcp.ids $OutputSection_gcp.ids.transmissionMode_gcp.ids
-outputType_gcp.info '$OutputSection_gcp.info.outputType_gcp.info'
 transmissionMode_gcp.info $OutputSection_gcp.info.transmissionMode_gcp.info
-outputType_gcp.imcoord '$OutputSection_gcp.imcoord.outputType_gcp.imcoord'
 transmissionMode_gcp.imcoord $OutputSection_gcp.imcoord.transmissionMode_gcp.imcoord
-outputType_gcp.geocoord '$OutputSection_gcp.geocoord.outputType_gcp.geocoord'
 transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.geocoord]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image to analyse" help="Input image to analyse The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image to analyse" help="Input image to analyse The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="keywordlist" type="select" optional="false" label="Output the OSSIM keyword list. It contains metadata information (sensor model, geometry ). Information is stored in keyword list (pairs of key/value)" help="Output the OSSIM keyword list. It contains metadata information (sensor model, geometry ). Information is stored in keyword list (pairs of key/value)">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -72,7 +60,7 @@ transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.g
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_outkwl" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outkwl" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outkwl" type="select" label="This option allows extracting the OSSIM keywordlist of the image into a geom file." help="This option allows extracting the OSSIM keywordlist of the image into a geom file.">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
@@ -82,223 +70,211 @@ transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.g
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_indexx" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_indexx" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_indexx" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_indexy" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_indexy" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_indexy" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_sizex" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_sizex" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_sizex" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_sizey" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_sizey" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_sizey" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_spacingx" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_spacingx" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_spacingx" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_spacingy" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_spacingy" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_spacingy" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_originx" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_originx" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_originx" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_originy" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_originy" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_originy" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_estimatedgroundspacingx" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_estimatedgroundspacingx" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_estimatedgroundspacingx" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_estimatedgroundspacingy" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_estimatedgroundspacingy" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_estimatedgroundspacingy" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_numberbands" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_numberbands" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_numberbands" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_sensor" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_sensor" type="text" optional="false" label="Sensor identifier" help="Sensor identifier"/>
+    <section name="OutputSection_sensor" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_sensor" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_id" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_id" type="text" optional="false" label="Image identifier" help="Image identifier"/>
+    <section name="OutputSection_id" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_id" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_time" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_time" type="text" optional="false" label="Acquisition time." help="Acquisition time."/>
+    <section name="OutputSection_time" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_time" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ullat" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ullat" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_ullat" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ullon" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ullon" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_ullon" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_urlat" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_urlat" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_urlat" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_urlon" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_urlon" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_urlon" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_lrlat" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_lrlat" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_lrlat" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_lrlon" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_lrlon" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_lrlon" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_lllat" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_lllat" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_lllat" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_lllon" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_lllon" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_lllon" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_town" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_town" type="text" optional="false" label="Main town near center of image" help="Main town near center of image"/>
+    <section name="OutputSection_town" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_town" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_country" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_country" type="text" optional="false" label="Country of the image" help="Country of the image"/>
+    <section name="OutputSection_country" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_country" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_rgb.r" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_rgb.r" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_rgb.r" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_rgb.g" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_rgb.g" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_rgb.g" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_rgb.b" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_rgb.b" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_rgb.b" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_projectionref" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_projectionref" type="text" optional="false" label="Projection Coordinate System" help="Projection Coordinate System"/>
+    <section name="OutputSection_projectionref" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_projectionref" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_keyword" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_keyword" type="text" optional="false" label="Image keyword list" help="Image keyword list"/>
+    <section name="OutputSection_keyword" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_keyword" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.count" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_gcp.count" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_gcp.count" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.proj" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_gcp.proj" type="text" optional="false" label="Projection Coordinate System for GCPs" help="Projection Coordinate System for GCPs"/>
+    <section name="OutputSection_gcp.proj" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_gcp.proj" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.ids" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_gcp.ids" type="text" optional="false" label="GCPs identifier" help="GCPs identifier"/>
+    <section name="OutputSection_gcp.ids" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_gcp.ids" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.info" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_gcp.info" type="text" optional="false" label="GCPs Information" help="GCPs Information"/>
+    <section name="OutputSection_gcp.info" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_gcp.info" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.imcoord" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_gcp.imcoord" type="text" optional="false" label="GCPs Image coordinates" help="GCPs Image coordinates"/>
+    <section name="OutputSection_gcp.imcoord" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_gcp.imcoord" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.geocoord" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_gcp.geocoord" type="text" optional="false" label="GCPs Geographic Coordinates" help="GCPs Geographic Coordinates"/>
+    <section name="OutputSection_gcp.geocoord" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_gcp.geocoord" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

@@ -13,7 +13,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1))." help="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1)). The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="il" type="data" optional="false" label="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1))." help="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1)). The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="cols" type="integer" optional="false" label="Number of columns in the tile array" help="Number of columns in the tile array"/>
     <param name="rows" type="integer" optional="false" label="Number of rows in the tile array" help="Number of rows in the tile array"/>
     <param name="out" type="select" optional="false" label="Output entire image" help="Output entire image">
@@ -33,7 +33,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Output entire image" help="Output entire image">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

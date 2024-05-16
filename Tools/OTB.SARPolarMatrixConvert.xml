@@ -21,12 +21,12 @@ transmissionMode_outc $OutputSection_outc.transmissionMode_outc
 outputType_outf $OutputSection_outf.outputType_outf
 transmissionMode_outf $OutputSection_outf.transmissionMode_outf]]></command>
   <inputs>
-    <param name="inc" type="data" optional="false" label="Input : multi-band complex image" help="Input : multi-band complex image The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="inf" type="data" optional="false" label="Input : multi-band real image" help="Input : multi-band real image The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="inhh" type="data" optional="false" label="Input : one-band complex image (HH)" help="Input : one-band complex image (HH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="inhv" type="data" optional="false" label="Input : one-band complex image (HV)" help="Input : one-band complex image (HV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="invh" type="data" optional="false" label="Input : one-band complex image (VH)" help="Input : one-band complex image (VH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="invv" type="data" optional="false" label="Input : one-band complex image (VV)" help="Input : one-band complex image (VV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="inc" type="data" optional="false" label="Input : multi-band complex image" help="Input : multi-band complex image The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inf" type="data" optional="false" label="Input : multi-band real image" help="Input : multi-band real image The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inhh" type="data" optional="false" label="Input : one-band complex image (HH)" help="Input : one-band complex image (HH) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inhv" type="data" optional="false" label="Input : one-band complex image (HV)" help="Input : one-band complex image (HV) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="invh" type="data" optional="false" label="Input : one-band complex image (VH)" help="Input : one-band complex image (VH) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="invv" type="data" optional="false" label="Input : one-band complex image (VV)" help="Input : one-band complex image (VV) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="outc" type="select" optional="true" label="Output Complex image." help="Output Complex image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -68,7 +68,7 @@ transmissionMode_outf $OutputSection_outf.transmissionMode_outf]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_outc" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outc" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outc" type="select" label="Output Complex image." help="Output Complex image.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
@@ -79,7 +79,7 @@ transmissionMode_outf $OutputSection_outf.transmissionMode_outf]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_outf" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outf" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outf" type="select" label="Output Real image." help="Output Real image.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

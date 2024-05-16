@@ -20,9 +20,9 @@ transmissionMode_B_GRID $OutputSection_B_GRID.transmissionMode_B_GRID
 outputType_WINDCORR $OutputSection_WINDCORR.outputType_WINDCORR
 transmissionMode_WINDCORR $OutputSection_WINDCORR.transmissionMode_WINDCORR]]></command>
   <inputs>
-    <param name="BOUNDARY" type="data" optional="false" label="Boundary Layer" help="The absolute vertical distance to the boundary layer. The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="WIND" type="data" optional="false" label="Wind Effect" help="Wind Effect The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="OBSERVED" type="data" optional="false" label="Observations" help="Observations used for local scaling factor calibration (e.g. precipitation, cloudiness). The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="BOUNDARY" type="data" optional="false" label="Boundary Layer" help="The absolute vertical distance to the boundary layer. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="WIND" type="data" optional="false" label="Wind Effect" help="Wind Effect The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="OBSERVED" type="data" optional="false" label="Observations" help="Observations used for local scaling factor calibration (e.g. precipitation, cloudiness). The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="B_SOURCE" type="select" optional="true" label="Scaling Factor" help="Scaling Factor">
       <option selected="true" value="calibrate">calibrate</option>
       <option value="constant">constant</option>
@@ -44,7 +44,7 @@ transmissionMode_WINDCORR $OutputSection_WINDCORR.transmissionMode_WINDCORR]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_B_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_B_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_B_GRID" type="select" label="Calibrated Scaling Factor" help="Calibrated scaling factor used in the wind effect correction.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -56,7 +56,7 @@ transmissionMode_WINDCORR $OutputSection_WINDCORR.transmissionMode_WINDCORR]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_WINDCORR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_WINDCORR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_WINDCORR" type="select" label="Corrected Wind Effect" help="Corrected Wind Effect">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

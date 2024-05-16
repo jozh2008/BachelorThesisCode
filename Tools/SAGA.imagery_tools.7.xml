@@ -15,8 +15,8 @@ response $response
 outputType_SHARPEN $OutputSection_SHARPEN.outputType_SHARPEN
 transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Original Channels" help="Original Channels The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Original Channels" help="Original Channels The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="correlation_matrix">correlation matrix</option>
       <option value="sums-of-squares-and-cross-products_matrix">sums-of-squares-and-cross-products matrix</option>
@@ -44,7 +44,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_SHARPEN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SHARPEN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SHARPEN" type="select" label="Sharpened Channels" help="Sharpened Channels">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

@@ -13,7 +13,7 @@ response $response
 outputType_LINES $OutputSection_LINES.outputType_LINES
 transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="ORDER" type="data" optional="false" label="Order by..." help="Order by... The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="SEPARATE" type="data" optional="false" label="Separate by..." help="Separate by... The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -26,7 +26,7 @@ transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_LINES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LINES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LINES" type="select" label="Lines" help="Lines">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

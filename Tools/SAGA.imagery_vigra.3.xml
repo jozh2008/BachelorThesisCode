@@ -11,7 +11,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Features" help="Features are all pixels not representing a no-data value. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Features" help="Features are all pixels not representing a no-data value. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="NORM" type="select" optional="true" label="Type of distance calculation" help="Type of distance calculation">
       <option selected="true" value="Chessboard">Chessboard</option>
       <option value="Euclidean">Euclidean</option>
@@ -26,7 +26,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT" type="select" label="Distance" help="Distance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

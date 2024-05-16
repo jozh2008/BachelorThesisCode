@@ -19,7 +19,7 @@ transmissionMode_CONTOUR $OutputSection_CONTOUR.transmissionMode_CONTOUR
 outputType_POLYGONS $OutputSection_POLYGONS.outputType_POLYGONS
 transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="VERTEX" type="select" optional="true" label="Vertex Type" help="choose vertex type for resulting contours">
       <option selected="true" value="x,_y">x, y</option>
     </param>
@@ -44,7 +44,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CONTOUR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CONTOUR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CONTOUR" type="select" label="Contour" help="Contour">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -55,7 +55,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_POLYGONS" type="select" label="Polygons" help="Polygons">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

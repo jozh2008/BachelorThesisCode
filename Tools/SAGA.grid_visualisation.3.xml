@@ -37,7 +37,7 @@ response $response
 outputType_RGB $OutputSection_RGB.outputType_RGB
 transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB]]></command>
   <inputs>
-    <param name="R_GRID" type="data" optional="false" label="Red" help="Red The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="R_GRID" type="data" optional="false" label="Red" help="Red The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="R_METHOD" type="select" optional="true" label="Value Preparation" help="Value Preparation">
       <option value="percentiles">percentiles</option>
       <option value="rescale_to_0_-_255">rescale to 0 - 255</option>
@@ -50,7 +50,7 @@ transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB]]></command>
     <param name="R_PERCTL_MIN" type="float" optional="true" label="Percentiles (min value)" help="Percentiles"/>
     <param name="R_PERCTL_MAX" type="float" optional="true" label="Percentiles (max value)" help="Percentiles"/>
     <param name="R_STDDEV" type="float" value="2" optional="true" label="Standard Deviation" help="Standard Deviation"/>
-    <param name="G_GRID" type="data" optional="false" label="Green" help="Green The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="G_GRID" type="data" optional="false" label="Green" help="Green The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="G_METHOD" type="select" optional="true" label="Value Preparation" help="Value Preparation">
       <option value="percentiles">percentiles</option>
       <option value="rescale_to_0_-_255">rescale to 0 - 255</option>
@@ -63,7 +63,7 @@ transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB]]></command>
     <param name="G_PERCTL_MIN" type="float" optional="true" label="Percentiles (min value)" help="Percentiles"/>
     <param name="G_PERCTL_MAX" type="float" optional="true" label="Percentiles (max value)" help="Percentiles"/>
     <param name="G_STDDEV" type="float" value="2" optional="true" label="Standard Deviation" help="Standard Deviation"/>
-    <param name="B_GRID" type="data" optional="false" label="Blue" help="Blue The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="B_GRID" type="data" optional="false" label="Blue" help="Blue The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="B_METHOD" type="select" optional="true" label="Value Preparation" help="Value Preparation">
       <option value="percentiles">percentiles</option>
       <option value="rescale_to_0_-_255">rescale to 0 - 255</option>
@@ -76,7 +76,7 @@ transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB]]></command>
     <param name="B_PERCTL_MIN" type="float" optional="true" label="Percentiles (min value)" help="Percentiles"/>
     <param name="B_PERCTL_MAX" type="float" optional="true" label="Percentiles (max value)" help="Percentiles"/>
     <param name="B_STDDEV" type="float" value="2" optional="true" label="Standard Deviation" help="Standard Deviation"/>
-    <param name="A_GRID" type="data" optional="false" label="Alpha" help="Alpha The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="A_GRID" type="data" optional="false" label="Alpha" help="Alpha The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="A_METHOD" type="select" optional="true" label="Value Preparation" help="Value Preparation">
       <option value="percentiles">percentiles</option>
       <option value="rescale_to_0_-_255">rescale to 0 - 255</option>
@@ -98,7 +98,7 @@ transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RGB" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RGB" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RGB" type="select" label="Composite" help="Composite">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

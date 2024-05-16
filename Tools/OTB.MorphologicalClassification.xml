@@ -16,7 +16,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to be classified." help="The input image to be classified. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to be classified." help="The input image to be classified. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="out" type="select" optional="false" label="The output classified image with 3 different values (0 : Flat, 1 : Convex, 2 : Concave)" help="The output classified image with 3 different values (0 : Flat, 1 : Convex, 2 : Concave)">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -42,7 +42,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="The output classified image with 3 different values (0 : Flat, 1 : Convex, 2 : Concave)" help="The output classified image with 3 different values (0 : Flat, 1 : Convex, 2 : Concave)">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

@@ -15,7 +15,7 @@ transmissionMode_RESULT_LOD $OutputSection_RESULT_LOD.transmissionMode_RESULT_LO
 outputType_SEEDS $OutputSection_SEEDS.outputType_SEEDS
 transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input for tool calculations. The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input for tool calculations. The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="LOD" type="float" value="16" optional="true" label="Level of Generalisation" help="Level of Generalisation"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -26,7 +26,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT" type="select" label="Output" help="Output of tool calculations.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -38,7 +38,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RESULT_LOD" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT_LOD" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT_LOD" type="select" label="Output Lod" help="Output of tool calculations.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -50,7 +50,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SEEDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SEEDS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SEEDS" type="select" label="Output Seeds" help="Output of tool calculations.">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

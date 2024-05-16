@@ -30,7 +30,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option selected="true" value="Queen's_case">Queen's case</option>
       <option value="Rooke's_case">Rooke's case</option>
     </param>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="OUTPUT_ADD" type="select" optional="true" label="Additional Output" help="Additional Output">
       <option value="edge_cells">edge cells</option>
       <option value="gradients">gradients</option>
@@ -49,7 +49,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_EDGE_CELLS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_EDGE_CELLS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_EDGE_CELLS" type="select" label="Edges" help="Edges">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -61,7 +61,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT" type="select" label="Output" help="Output">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

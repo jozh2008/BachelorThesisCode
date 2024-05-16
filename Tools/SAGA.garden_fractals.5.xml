@@ -31,7 +31,7 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_GRID" type="select" label="Grid" help="Grid">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

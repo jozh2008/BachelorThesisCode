@@ -14,7 +14,7 @@ response $response
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ADD" type="select" optional="true" label="Insert Additional Points" help="Insert Additional Points">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -38,7 +38,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_POINTS" type="select" label="Points" help="Points">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

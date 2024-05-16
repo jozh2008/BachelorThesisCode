@@ -15,7 +15,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="List of input classification maps to fuse. Labels in each classification image must represent the same class." help="List of input classification maps to fuse. Labels in each classification image must represent the same class. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="il" type="data" optional="false" label="List of input classification maps to fuse. Labels in each classification image must represent the same class." help="List of input classification maps to fuse. Labels in each classification image must represent the same class. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="method" type="select" optional="false" label="Selection of the fusion method and its parameters." help="Selection of the fusion method and its parameters.">
       <option value="dempstershafer">dempstershafer</option>
       <option selected="true" value="majorityvoting">majorityvoting</option>
@@ -45,7 +45,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="The output classification image resulting from the fusion of the input classification images." help="The output classification image resulting from the fusion of the input classification images.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

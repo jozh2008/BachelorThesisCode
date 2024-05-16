@@ -23,13 +23,13 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="VARIABLE" type="data" optional="false" label="Variable" help="Variable The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="VARIABLE" type="data" optional="false" label="Variable" help="Variable The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="X_SOURCE" type="select" optional="true" label="Get Heights from ..." help="Get Heights from ...">
       <option selected="true" value="grid_list">grid list</option>
       <option value="table">table</option>
     </param>
-    <param name="X_GRIDS" type="data" optional="false" label="Level Heights" help="Level Heights The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="X_GRIDS_CHECK" type="data" optional="false" label="Minimum Height" help="if set, only values with level heights above DEM will be used The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="X_GRIDS" type="data" optional="false" label="Level Heights" help="Level Heights The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="X_GRIDS_CHECK" type="data" optional="false" label="Minimum Height" help="if set, only values with level heights above DEM will be used The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="X_TABLE" type="data" optional="false" label="Level Heights" help="Level Heights The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="H_METHOD" type="select" optional="true" label="Horizontal Interpolation Method" help="Horizontal Interpolation Method">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
@@ -55,7 +55,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option value="true">true</option>
     </param>
     <param name="TREND_ORDER" type="integer" value="3" optional="true" label="Polynomial Order" help="Polynomial Order"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="ZFIELD" type="data" optional="false" label="Height" help="Height The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NAME" type="text" value="Variable" optional="true" label="Field Name" help="Field Name"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -67,7 +67,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESULT" type="select" label="Result" help="Result">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

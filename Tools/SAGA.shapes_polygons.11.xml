@@ -16,9 +16,9 @@ transmissionMode_S_OUTPUT $OutputSection_S_OUTPUT.transmissionMode_S_OUTPUT
 outputType_M_OUTPUT $OutputSection_M_OUTPUT.outputType_M_OUTPUT
 transmissionMode_M_OUTPUT $OutputSection_M_OUTPUT.transmissionMode_M_OUTPUT]]></command>
   <inputs>
-    <param name="CLIP" type="data" optional="false" label="Clip Features" help="Clip Features The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="S_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="M_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="CLIP" type="data" optional="false" label="Clip Features" help="Clip Features The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="S_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="M_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="DISSOLVE" type="select" optional="true" label="Dissolve Clip Features" help="Dissolve Clip Features">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -36,7 +36,7 @@ transmissionMode_M_OUTPUT $OutputSection_M_OUTPUT.transmissionMode_M_OUTPUT]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_S_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_S_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_S_OUTPUT" type="select" label="Output Features" help="Output Features">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -47,7 +47,7 @@ transmissionMode_M_OUTPUT $OutputSection_M_OUTPUT.transmissionMode_M_OUTPUT]]></
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_M_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_M_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_M_OUTPUT" type="select" label="Output Features" help="Output Features">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

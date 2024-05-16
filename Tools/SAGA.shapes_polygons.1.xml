@@ -25,7 +25,7 @@ transmissionMode_CENTROIDS $OutputSection_CENTROIDS.transmissionMode_CENTROIDS]]
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CENTROIDS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CENTROIDS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CENTROIDS" type="select" label="Centroids" help="Centroids">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

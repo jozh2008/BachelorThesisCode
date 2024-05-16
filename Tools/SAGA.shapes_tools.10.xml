@@ -22,7 +22,7 @@ response $response
 outputType_TRANSFORM $OutputSection_TRANSFORM.outputType_TRANSFORM
 transmissionMode_TRANSFORM $OutputSection_TRANSFORM.transmissionMode_TRANSFORM]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="MOVEX" type="float" value="0" optional="true" label="X" help="X"/>
     <param name="MOVEY" type="float" value="0" optional="true" label="Y" help="Y"/>
     <param name="MOVEZ" type="float" value="0" optional="true" label="Z" help="Z"/>
@@ -44,7 +44,7 @@ transmissionMode_TRANSFORM $OutputSection_TRANSFORM.transmissionMode_TRANSFORM]]
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_TRANSFORM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TRANSFORM" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TRANSFORM" type="select" label="Transformed Shapes" help="Transformed Shapes">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

@@ -14,7 +14,7 @@ response $response
 outputType_TPI $OutputSection_TPI.outputType_TPI
 transmissionMode_TPI $OutputSection_TPI.transmissionMode_TPI]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="SCALE_MIN" type="integer" value="1" optional="true" label="Minimum Scale" help="kernel radius in cells"/>
     <param name="SCALE_MAX" type="integer" value="8" optional="true" label="Maximum Scale" help="kernel radius in cells"/>
     <param name="SCALE_NUM" type="integer" value="3" optional="true" label="Number of Scales" help="Number of Scales"/>
@@ -31,7 +31,7 @@ transmissionMode_TPI $OutputSection_TPI.transmissionMode_TPI]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_TPI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TPI" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TPI" type="select" label="Topographic Position Index" help="Topographic Position Index">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

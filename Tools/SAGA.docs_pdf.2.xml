@@ -19,8 +19,8 @@ response $response
 outputType_SECTIONS $OutputSection_SECTIONS.outputType_SECTIONS
 transmissionMode_SECTIONS $OutputSection_SECTIONS.transmissionMode_SECTIONS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="Digital Terrain Model The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="LINES" type="data" optional="false" label="Path" help="Path The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital Terrain Model The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Path" help="Path The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="NUMPOINTS" type="integer" value="10" optional="true" label="Number of points" help="Number of points on each side of the section"/>
     <param name="INTERVAL" type="float" value="10" optional="true" label="Interval" help="Interval between points (in grid units)."/>
     <param name="STEP" type="integer" value="2" optional="true" label="n" help="Draw a section each n points"/>
@@ -41,7 +41,7 @@ transmissionMode_SECTIONS $OutputSection_SECTIONS.transmissionMode_SECTIONS]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_SECTIONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SECTIONS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SECTIONS" type="select" label="Cross Sections" help="Cross Sections">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

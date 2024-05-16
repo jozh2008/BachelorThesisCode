@@ -58,12 +58,12 @@ transmissionMode_FSPUR $OutputSection_FSPUR.transmissionMode_FSPUR
 outputType_SSPUR $OutputSection_SSPUR.outputType_SSPUR
 transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="MINCURV" type="data" optional="false" label="Minimum Curvature" help="Minimum Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="MAXCURV" type="data" optional="false" label="Maximum Curvature" help="Maximum Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="PCURV" type="data" optional="false" label="Profile Curvature" help="Profile Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="TCURV" type="data" optional="false" label="Tangential Curvature" help="Tangential Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="MINCURV" type="data" optional="false" label="Minimum Curvature" help="Minimum Curvature The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="MAXCURV" type="data" optional="false" label="Maximum Curvature" help="Maximum Curvature The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="PCURV" type="data" optional="false" label="Profile Curvature" help="Profile Curvature The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="TCURV" type="data" optional="false" label="Tangential Curvature" help="Tangential Curvature The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="INPUT" type="select" optional="true" label="Input" help="if elevation is selected, slopes and curvatures will be calculated internally">
       <option selected="true" value="elevation">elevation</option>
       <option value="slope_and_curvatures">slope and curvatures</option>
@@ -89,7 +89,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_FORM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FORM" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FORM" type="select" label="Landform" help="Landform">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -101,7 +101,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MEM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MEM" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MEM" type="select" label="Maximum Membership" help="Maximum Membership">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -113,7 +113,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ENTROPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ENTROPY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ENTROPY" type="select" label="Entropy" help="Entropy">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -125,7 +125,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CI" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CI" type="select" label="Confusion Index" help="Confusion Index">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -137,7 +137,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PLAIN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PLAIN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PLAIN" type="select" label="Plain" help="Plain">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -149,7 +149,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PIT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PIT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PIT" type="select" label="Pit" help="Pit">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -161,7 +161,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PEAK" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PEAK" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PEAK" type="select" label="Peak" help="Peak">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -173,7 +173,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RIDGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RIDGE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RIDGE" type="select" label="Ridge" help="Ridge">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -185,7 +185,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CHANNEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CHANNEL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CHANNEL" type="select" label="Channel" help="Channel">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -197,7 +197,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SADDLE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SADDLE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SADDLE" type="select" label="Saddle" help="Saddle">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -209,7 +209,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_BSLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_BSLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_BSLOPE" type="select" label="Back Slope" help="Back Slope">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -221,7 +221,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FSLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FSLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FSLOPE" type="select" label="Foot Slope" help="Foot Slope">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -233,7 +233,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SSLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SSLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SSLOPE" type="select" label="Shoulder Slope" help="Shoulder Slope">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -245,7 +245,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_HOLLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_HOLLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_HOLLOW" type="select" label="Hollow" help="Hollow">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -257,7 +257,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FHOLLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FHOLLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FHOLLOW" type="select" label="Foot Hollow" help="Foot Hollow">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -269,7 +269,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SHOLLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SHOLLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SHOLLOW" type="select" label="Shoulder Hollow" help="Shoulder Hollow">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -281,7 +281,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SPUR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SPUR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SPUR" type="select" label="Spur" help="Spur">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -293,7 +293,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FSPUR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FSPUR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FSPUR" type="select" label="Foot Spur" help="Foot Spur">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -305,7 +305,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SSPUR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SSPUR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SSPUR" type="select" label="Shoulder Spur" help="Shoulder Spur">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

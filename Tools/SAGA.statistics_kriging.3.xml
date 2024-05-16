@@ -45,9 +45,9 @@ transmissionMode_INFO_MODEL $OutputSection_INFO_MODEL.transmissionMode_INFO_MODE
 outputType_INFO_STEPS $OutputSection_INFO_STEPS.outputType_INFO_STEPS
 transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEPS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="COORD_X" type="select" optional="true" label="Include X Coordinate" help="Include X Coordinate">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -118,7 +118,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_REGRESSION" type="select" label="Regression" help="regression model applied to predictor grids">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -130,7 +130,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PREDICTION" type="select" label="Prediction" help="Prediction">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -142,7 +142,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -154,7 +154,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_VARIANCE" type="select" label="Quality Measure" help="Quality Measure">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -166,7 +166,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_COEFF" type="select" label="Regression: Coefficients" help="Regression: Coefficients">
         <option value="text/csv">csv</option>
       </param>
@@ -175,7 +175,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_MODEL" type="select" label="Regression: Model" help="Regression: Model">
         <option value="text/csv">csv</option>
       </param>
@@ -184,7 +184,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_STEPS" type="select" label="Regression: Steps" help="Regression: Steps">
         <option value="text/csv">csv</option>
       </param>

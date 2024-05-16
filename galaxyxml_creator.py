@@ -19,79 +19,68 @@ class Galaxyxmltool:
     def get_tool(self):
         return self.gxt
 
-    def create_text_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
+    def create_text_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
         """
-        Create a text parameter.
+        Create a text parameter for the Galaxy interface.
 
         Args:
             param_name (str): The name of the parameter.
-            param_dict (Dict): The dictionary containing parameter details.
+            param_schema (Dict): The dictionary containing parameter details.
             is_nullable (bool): Indicates whether the parameter can be null.
 
         Returns:
             TextParam: The created text parameter.
         """
-        default_value = param_dict["schema"].get("default")
+        default_value = param_schema.get("default")
         return self.gxtp.TextParam(
             name=param_name,
-            label=param_dict["title"],
-            help=param_dict["description"],
+            label=title,
+            help=description,
             value=default_value,
             optional=is_nullable
         )
-    
-    def merge_strings(self, enum_values):
+
+    def create_select_param(
+        self,
+        param_name: str,
+        param_schema: Dict,
+        is_nullable: bool,
+        param_type_bool: bool,
+        title: str,
+        description: str
+    ):
         """
-        If odd string element i in list, index beginns with 0, starts with " ", then combine it with the element i-1 element of list
-        """
-        merged_list = copy.deepcopy(enum_values)
-        indices_not_to_merge = []
-        merged_strings = []
-
-        for i in range(1, len(enum_values)):
-            current_string = enum_values[i]
-            if current_string.startswith(" "):
-                merged_list[i - 1] = f"{enum_values[i - 1]},{current_string}"
-                indices_not_to_merge.append(i)
-
-        for i in range(len(merged_list)):
-            if i not in indices_not_to_merge:
-                merged_strings.append(merged_list[i])
-
-        return merged_strings
-
-    def create_select_param(self, param_name: str, param_dict: Dict, is_nullable: bool, param_type_bool: bool):
-        """
-        Create a select parameter.
+        Create a select parameter for the Galaxy interface.
 
         Args:
             param_name (str): The name of the parameter.
-            param_dict (Dict): The dictionary containing parameter details.
+            param_schema (Dict): The dictionary containing parameter details.
             is_nullable (bool): Indicates whether the parameter can be null.
+            param_type_bool (bool): Indicates whether the parameter is a boolean.
 
         Returns:
             SelectParam: The created select parameter.
         """
-        enum_values = param_dict["schema"].get("enum")
-
+        enum_values = param_schema.get("enum")
         if enum_values is not None:
+            # Merge enum values if they are split for better readability
             enum_values = self.merge_strings(enum_values=enum_values)
-            options = {self.normalize_tool_name(value): value for value in enum_values}
+            options = {self.normalize_name(value): value for value in enum_values}
         elif param_type_bool:
             options = {"true": "true", "false": "false"}
         else:
             # If enum values are not provided, handle this case gracefully
-            print("Warning: Enum values are not provided for select parameter. Implementation needed.")
+            pprint("Warning: Enum values are not provided for select parameter. Implementation needed.")
             options = {}  # Placeholder for options
-        
-        default_value = (param_dict["schema"].get("default"))
+
+        default_value = param_schema.get("default")
+        # pprint(default_value)
 
         if default_value is not None and param_type_bool:
             default_value = self.create_default_value(default_value=default_value)
 
-        default_value = self.normalize_tool_name(tool_name=default_value)
-        description = param_dict.get("description")
-        title = param_dict.get("title")
+        # Normalize default values, ensuring they are keys in the options dictionary
+        default_value = self.normalize_name(name=default_value)
         return self.gxtp.SelectParam(
             name=param_name,
             default=default_value,
@@ -101,23 +90,7 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    # check for better solution
-    def normalize_tool_name(self, tool_name: Union[str, None]):
-        if tool_name is None:
-            return None
-        # Replace non-alphanumeric characters with underscores
-        cleaned_name = tool_name.replace(" ", "_")
-        # Convert to lowercase
-        return cleaned_name
-
-    def create_default_value(self, default_value):
-        if default_value:
-            default = "true"
-        else:
-            default = "false"
-        return default
-
-    def create_integer_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
+    def create_integer_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
         """
         Create an integer parameter.
 
@@ -129,9 +102,7 @@ class Galaxyxmltool:
         Returns:
             IntegerParam: The created integer parameter.
         """
-        default_value = param_dict["schema"].get("default")
-        description = param_dict.get("description")
-        title = param_dict.get("title")
+        default_value = param_schema.get("default")
         return self.gxtp.IntegerParam(
             name=param_name,
             label=title,
@@ -140,7 +111,7 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    def create_float_param(self, param_name: str, param_dict: Dict, is_nullable: bool):
+    def create_float_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
         """
         Create a float parameter.
 
@@ -152,18 +123,24 @@ class Galaxyxmltool:
         Returns:
             FloatParam: The created float parameter.
         """
-        default_value = param_dict["schema"].get("default")
-        description = param_dict.get("description")
-        title = param_dict.get("title")
+        default_value = param_schema.get("default")
         return self.gxtp.FloatParam(
             name=param_name,
             label=title,
-            help= description,
+            help=description,
             value=default_value,
             optional=is_nullable
         )
 
-    def create_data_param(self, param_name: str, param_dict: Dict, param_extended_schema: Dict, is_nullable, isArray: bool):
+    def create_data_param(
+        self,
+        param_name: str,
+        param_extended_schema: Dict,
+        is_nullable: bool,
+        isArray: bool,
+        title: str,
+        description: str
+    ):
         # change for return for not array
         enum_values = []
         isArrayName = "isArray" + param_name
@@ -175,8 +152,6 @@ class Galaxyxmltool:
             self.executable_dict[isArrayName] = False
 
         data_types = ', '.join({value.split('/')[-1] for value in enum_values})
-        description = param_dict.get("description")
-        title = param_dict.get("title")
         return self.gxtp.DataParam(
             name=param_name,
             label=title,
@@ -184,71 +159,35 @@ class Galaxyxmltool:
             format="txt",
             optional=is_nullable
         )
-    
-    def create_object_param(self,inputs, param_name, param_dict, is_nullable):
-        pprint(param_dict)
-        required = param_dict["schema"].get("required",[])
+
+    # To do:
+    def create_object_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
+        required = param_schema.get("required", [])
         print(required)
-        description = param_dict.get("description")
-        title = param_dict.get("title")
         enum_values = []
-        section = self.gxtp.Section(
-                name=param_name,
-                title=title,
-                help=description,
-                expanded=True
-            )
-        for i in required:
-            print(i)
-            schema = param_dict["schema"]["properties"][i]
-            schema_type = param_dict["schema"]["properties"][i].get("type")
+        section = self.create_section(name=param_name, title=title, description=description)
+        for req in required:
+            print(req)
+            schema = param_schema["properties"][req]
+            schema_type = param_schema["properties"][req].get("type")
             print(schema_type)
             if schema_type == "string":
                 enum_values = schema.get("enum")
                 options = {value: value for value in enum_values}
-                param = self.gxtp.SelectParam(name=i, optional=is_nullable, options=options)
+                param = self.gxtp.SelectParam(name=req, optional=is_nullable, options=options)
                 section.append(param)
             elif schema_type == "array":
-               param = self.gxtp.DataParam(name = i, optional=is_nullable) 
+                # To do: Check best param for array
+                param = self.gxtp.DataParam(name=req, optional=is_nullable)
         return section
-    
-    def create_select_param_output(self, param_name: str, param_dict: Dict, param_extended_schema: Dict):
-        enum_values = []
-        self.extract_enum(param_extended_schema, enum_values)
-        data_types_dict = {data_type: data_type.split('/')[-1] for data_type in enum_values}
-        description = param_dict.get("description")
-        title = param_dict.get("title")
-        return self.gxtp.SelectParam(
-            name=param_name,
-            label=title,
+
+    def create_section(self, name: str, title: str, description=None):
+        return self.gxtp.Section(
+            name=name,
+            title=title,
             help=description,
-            options=data_types_dict
+            expanded=True
         )
-
-    def extract_enum(self, schema_item: Dict, enum_values: List):
-        """
-        Recursively extracts enum values from a JSON schema item.
-
-        Args:
-            schema_item (dict): The JSON schema item to extract enum values from.
-            enum_values (list): A list to store the extracted enum values.
-
-        Returns:
-            None
-        """
-        lst = []
-        if 'enum' in schema_item:
-            enum_values.extend(schema_item['enum'])
-            lst.extend(schema_item['enum'])
-        elif 'properties' in schema_item:
-            for prop in schema_item['properties'].values():
-                self.extract_enum(prop, enum_values)
-        elif 'oneOf' in schema_item:
-            for option in schema_item['oneOf']:
-                self.extract_enum(option, enum_values)
-        elif 'allOf' in schema_item:
-            for sub_item in schema_item['allOf']:
-                self.extract_enum(sub_item, enum_values)
 
     def create_params(self, input_schema: Dict, output_schema: Dict, transmission_schema: Dict):
         """
@@ -270,32 +209,75 @@ class Galaxyxmltool:
         """
         inputs = self.gxtp.Inputs()
         for param_name, param_dict in input_schema.items():
+
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
+            description = param_dict.get("description")
+            title = param_dict.get("title")
+
             if param_type == "string":
                 if param_schema.get("enum"):
-                    param = self.create_select_param(param_name, param_dict, is_nullable, param_type_bool=False)
+                    param = self.create_select_param(
+                        param_name=param_name,
+                        param_schema=param_schema,
+                        is_nullable=is_nullable,
+                        param_type_bool=False,
+                        title=title,
+                        description=description
+                    )
                 else:
-                    param = self.create_text_param(param_name, param_dict, is_nullable)
+                    param = self.create_text_param(
+                        param_name=param_name,
+                        param_schema=param_schema,
+                        is_nullable=is_nullable,
+                        title=title,
+                        description=description
+                    )
             elif param_type == "integer":
-                param = self.create_integer_param(param_name, param_dict, is_nullable)
+                param = self.create_integer_param(
+                    param_name=param_name,
+                    param_schema=param_schema,
+                    is_nullable=is_nullable,
+                    title=title,
+                    description=description
+                )
             elif param_type == "number":
-                param = self.create_float_param(param_name, param_dict, is_nullable)
+                param = self.create_float_param(
+                    param_name=param_name,
+                    param_schema=param_schema,
+                    is_nullable=is_nullable,
+                    title=title,
+                    description=description
+                )
             elif param_type == "boolean":
-                param = self.create_select_param(param_name, param_dict, is_nullable, param_type_bool=True)
+                param = self.create_select_param(
+                    param_name=param_name,
+                    param_schema=param_schema,
+                    is_nullable=is_nullable,
+                    param_type_bool=True,
+                    title=title,
+                    description=description
+                )
             elif param_extended_schema is not None:
                 is_array = param_extended_schema.get("type") == "array"
                 param = self.create_data_param(
                     param_name=param_name,
-                    param_dict=param_dict,
                     param_extended_schema=param_extended_schema,
                     is_nullable=is_nullable,
-                    isArray=is_array
+                    isArray=is_array,
+                    title=title,
+                    description=description
                 )
             elif param_type == "object":
-                param = self.create_object_param(inputs=inputs, param_name=param_name, param_dict=param_dict, is_nullable=is_nullable)
+                param = self.create_object_param(
+                    param_name=param_name,
+                    param_schema=param_schema,
+                    is_nullable=is_nullable,
+                    title=title,
+                    description=description
+                )
 
             else:
                 # Handle unsupported parameter types gracefully
@@ -303,11 +285,10 @@ class Galaxyxmltool:
                 continue
             inputs.append(param)
         self.choose_prefer(inputs=inputs)
-        self.create_select_raw_param(inputs)
+        self.create_select_raw_param(inputs=inputs)
         self.create_output_param(output_schema=output_schema, inputs=inputs, transmission_schema=transmission_schema)
 
         return inputs
-
 
     def create_select_raw_param(self, inputs):
         """
@@ -345,6 +326,11 @@ class Galaxyxmltool:
         return inputs
 
     def choose_prefer(self, inputs):
+        """
+        Create a select parameter for choosing between "return=representation", "return=minimal"
+        and "respond-async;return=representation". Specification is for synchronyous or ansychrounous excecutions
+        Ansynchronous execution is default value.
+        """
 
         label = "Choose the Prefer"
         prefer_options = {
@@ -420,12 +406,12 @@ class Galaxyxmltool:
                     param = self.create_select_param(output_param_name, param_dict, is_nullable=False)
                     enum_values = param_schema.get("enum")
                 else:
-                    # check for correct value for is_nullable
+                    # If no enum, then nothing to specify and so param is None
                     param = None
             elif param_extended_schema is not None:
                 param = self.create_select_param_output(output_param_name, param_dict, param_extended_schema)
                 self.extract_enum(param_extended_schema, enum_values=enum_values)
-            elif param_type == "number" or param_type =="integer" or param_type=="boolean":
+            elif param_type == "number" or param_type == "integer" or param_type == "boolean":
                 # if not a string then param is None
                 param = None
             else:
@@ -436,11 +422,8 @@ class Galaxyxmltool:
             self.output_type_dictionary[output_param_name] = enum_values
 
             output_param_section_name = f"OutputSection_{param_name}"
-            output_param_section = self.gxtp.Section(
-                name=output_param_section_name,
-                title="Select the appropriate transmission mode for the output format and the output value",
-                expanded=True
-            )
+            title = "Select the appropriate transmission mode for the output format"
+            output_param_section = self.create_section(name=output_param_section_name, title=title)
             if param is not None:
                 output_param_section.append(param)
             self.choose_transmission_mode(
@@ -449,6 +432,120 @@ class Galaxyxmltool:
                 available_transmissions=transmission_schema
             )
             inputs.append(output_param_section)
+
+    def create_select_param_output(self, param_name: str, param_dict: Dict, param_extended_schema: Dict):
+        enum_values = []
+        self.extract_enum(param_extended_schema, enum_values)
+        data_types_dict = {data_type: data_type.split('/')[-1] for data_type in enum_values}
+        description = param_dict.get("description")
+        title = param_dict.get("title")
+        return self.gxtp.SelectParam(
+            name=param_name,
+            label=title,
+            help=description,
+            options=data_types_dict
+        )
+
+    # To do: check for better solution
+    def normalize_name(self, name: Union[str, None]):
+        """
+        Normalize a tool name by replacing spaces with underscores.
+
+        This method is designed to prevent the splitting of strings with spaces
+        in different commands within Galaxy XML.
+
+        Args:
+            tool_name (str or None): The name of the tool to normalize.
+
+        Returns:
+            str or None: The normalized tool name with spaces replaced by underscores,
+                         or None if the input is None.
+        """
+        if name is None:
+            return None
+
+        # Replace spaces with underscores
+        normalized_name = name.replace(" ", "_")
+
+        return normalized_name
+
+    def extract_enum(self, schema_item: Dict, enum_values: List):
+        """
+        Recursively extracts enum values from a JSON schema item.
+
+        Args:
+            schema_item (dict): The JSON schema item to extract enum values from.
+            enum_values (list): A list to store the extracted enum values.
+
+        Returns:
+            None
+        """
+        lst = []
+        if 'enum' in schema_item:
+            enum_values.extend(schema_item['enum'])
+            lst.extend(schema_item['enum'])
+        elif 'properties' in schema_item:
+            for prop in schema_item['properties'].values():
+                self.extract_enum(prop, enum_values)
+        elif 'oneOf' in schema_item:
+            for option in schema_item['oneOf']:
+                self.extract_enum(option, enum_values)
+        elif 'allOf' in schema_item:
+            for sub_item in schema_item['allOf']:
+                self.extract_enum(sub_item, enum_values)
+
+    def merge_strings(self, enum_values):
+        """
+        Merges adjacent string elements in the list if the current element (odd index i, starting from 0)
+        begins with a space. The merged string is formed by combining it with the previous element (i-1).
+
+        Args:
+            enum_values (list): A list of string values.
+
+        Returns:
+            list: A new list containing merged strings.
+        """
+        merged_list = copy.deepcopy(enum_values)
+        indices_not_to_merge = []
+        merged_strings = []
+
+        for i in range(1, len(enum_values)):
+            current_string = enum_values[i]
+            if current_string.startswith(" "):
+                merged_list[i - 1] = f"{enum_values[i - 1]},{current_string}"
+                indices_not_to_merge.append(i)
+
+        for i in range(len(merged_list)):
+            if i not in indices_not_to_merge:
+                merged_strings.append(merged_list[i])
+
+        return merged_strings
+
+    def create_default_value(self, default_value):
+        """
+        Default value should be "true" and "false" instead of True and False.
+        """
+        if default_value:
+            default = "true"
+        else:
+            default = "false"
+        return default
+
+    def dict_to_string(self, dictionary: Dict):
+        """
+        Convert a dictionary to a string.
+
+        Args:
+            dictionary (dict): The dictionary to be converted.
+
+        Returns:
+            str: The string representation of the dictionary.
+        """
+        return ' '.join([f" {key} {value}" for key, value in dictionary.items()])
+
+    def find_index(self, string, pattern):
+        match = re.search(pattern=pattern, string=string)
+        return (match.end())
 
     def define_command(self, title):
         """
@@ -462,20 +559,7 @@ class Galaxyxmltool:
             str: The formatted command.
         """
         self.executable_dict["name"] = title
-        #print(self.executable_dict)
         return self.executable + self.dict_to_string(self.executable_dict)
-
-    def dict_to_string(self, dictionary: Dict):
-        """
-        Convert a dictionary to a string.
-
-        Args:
-            dictionary (dict): The dictionary to be converted.
-
-        Returns:
-            str: The string representation of the dictionary.
-        """
-        return ' '.join([f" {key} {value}" for key, value in dictionary.items()])
 
     # possible output options need to be discussed, which is better
     def define_output_collections(self):
@@ -501,7 +585,7 @@ class Galaxyxmltool:
             gxtp.Outputs: An instance of gxtp.Outputs containing the defined output options.
         """
         outputs = self.gxtp.Outputs()
-        #t(self.output_type_dictionary)
+        # (self.output_type_dictionary)
         for key, values in self.output_type_dictionary.items():
             index = self.find_index(string=key, pattern=f"{self.output_type}_")
             name = f"output_data_{key[index:]}"
@@ -526,10 +610,6 @@ class Galaxyxmltool:
             outputs.append(param)
 
         return outputs
-
-    def find_index(self, string, pattern):
-        match = re.search(pattern=pattern, string=string)
-        return (match.end())
 
     def define_requirements(self):
         requirements = self.gxtp.Requirements()

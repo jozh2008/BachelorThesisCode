@@ -12,7 +12,7 @@ response $response
 outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
 transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Type" help="Type">
       <option value="cell's_value">cell's value</option>
       <option selected="true" value="fixed">fixed</option>
@@ -27,7 +27,7 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_BUFFER" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_BUFFER" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_BUFFER" type="select" label="Buffer" help="Buffer">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

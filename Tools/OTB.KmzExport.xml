@@ -16,10 +16,10 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="tilesize" type="integer" value="512" optional="true" label="Size of the tiles in the kmz product, in number of pixels (default = 512)." help="Size of the tiles in the kmz product, in number of pixels (default = 512)."/>
-    <param name="logo" type="data" optional="false" label="Path to the image logo to add to the KMZ product." help="Path to the image logo to add to the KMZ product. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="legend" type="data" optional="false" label="Path to the image legend to add to the KMZ product." help="Path to the image legend to add to the KMZ product. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="logo" type="data" optional="false" label="Path to the image logo to add to the KMZ product." help="Path to the image logo to add to the KMZ product. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="legend" type="data" optional="false" label="Path to the image legend to add to the KMZ product." help="Path to the image legend to add to the KMZ product. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
     <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
     <param name="elev.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
@@ -32,7 +32,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Output Kmz product directory (with .kmz extension)" help="Output Kmz product directory (with .kmz extension)">
         <option value="application/vnd.google-earth.kmz">vnd.google-earth.kmz</option>
       </param>

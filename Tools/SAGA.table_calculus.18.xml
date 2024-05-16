@@ -76,7 +76,7 @@ transmissionMode_AGGREGATED $OutputSection_AGGREGATED.transmissionMode_AGGREGATE
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_AGGREGATED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_AGGREGATED" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_AGGREGATED" type="select" label="Output" help="The calculated statistics.">
         <option value="text/csv">csv</option>
       </param>

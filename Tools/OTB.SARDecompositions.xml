@@ -17,10 +17,10 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="inhh" type="data" optional="false" label="Input image (HH)" help="Input image (HH) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="inhv" type="data" optional="false" label="Input image (HV)" help="Input image (HV) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="invh" type="data" optional="false" label="Input image (VH)" help="Input image (VH) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="invv" type="data" optional="false" label="Input image (VV)" help="Input image (VV) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="inhh" type="data" optional="false" label="Input image (HH)" help="Input image (HH) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="inhv" type="data" optional="false" label="Input image (HV)" help="Input image (HV) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="invh" type="data" optional="false" label="Input image (VH)" help="Input image (VH) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="invv" type="data" optional="false" label="Input image (VV)" help="Input image (VV) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image" help="Output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -46,7 +46,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Output image" help="Output image">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

@@ -40,8 +40,8 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT
 outputType_POINTS_OUT $OutputSection_POINTS_OUT.outputType_POINTS_OUT
 transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OUT]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="DIRECTION" type="float" value="0" optional="true" label="Direction [Degree]" help="Direction [Degree]"/>
     <param name="TOLERANCE" type="float" value="0" optional="true" label="Tolerance [Degree]" help="Tolerance [Degree]"/>
     <param name="MAXDISTANCE" type="integer" value="0" optional="true" label="Maximum Distance [Cells]" help="Maximum distance parameter is ignored if set to zero (default)."/>
@@ -66,7 +66,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MEAN" type="select" label="Arithmetic Mean" help="Arithmetic Mean">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -78,7 +78,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DIFMEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DIFMEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DIFMEAN" type="select" label="Difference from Arithmetic Mean" help="Difference from Arithmetic Mean">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -90,7 +90,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MIN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MIN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MIN" type="select" label="Minimum" help="Minimum">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -102,7 +102,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MAX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MAX" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MAX" type="select" label="Maximum" help="Maximum">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -114,7 +114,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RANGE" type="select" label="Range" help="Range">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -126,7 +126,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_VAR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_VAR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_VAR" type="select" label="Variance" help="Variance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -138,7 +138,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_STDDEV" type="select" label="Standard Deviation" help="Standard Deviation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -150,7 +150,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_STDDEVLO" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_STDDEVLO" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_STDDEVLO" type="select" label="Mean less Standard Deviation" help="Mean less Standard Deviation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -162,7 +162,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_STDDEVHI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_STDDEVHI" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_STDDEVHI" type="select" label="Mean plus Standard Deviation" help="Mean plus Standard Deviation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -174,7 +174,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DEVMEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DEVMEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DEVMEAN" type="select" label="Deviation from Arithmetic Mean" help="Deviation from Arithmetic Mean">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -186,7 +186,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PERCENT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PERCENT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PERCENT" type="select" label="Percentile" help="Percentile">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -198,7 +198,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_POINTS_OUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_POINTS_OUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_POINTS_OUT" type="select" label="Directional Statistics for Points" help="Directional Statistics for Points">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

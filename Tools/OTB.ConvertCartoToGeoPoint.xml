@@ -39,13 +39,13 @@ transmissionMode_lat $OutputSection_lat.transmissionMode_lat]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_long" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_long" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_long" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_lat" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_lat" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_lat" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

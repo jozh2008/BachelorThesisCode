@@ -13,8 +13,8 @@ response $response
 outputType_BALANCE $OutputSection_BALANCE.outputType_BALANCE
 transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="WEIGHTS_DEFAULT" type="float" value="1" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Deterministic_8">Deterministic 8</option>
@@ -29,7 +29,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_BALANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_BALANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_BALANCE" type="select" label="Cell Balance" help="Cell Balance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

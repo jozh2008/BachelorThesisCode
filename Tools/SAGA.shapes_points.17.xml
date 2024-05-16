@@ -25,7 +25,7 @@ response $response
 outputType_AGGREGATED $OutputSection_AGGREGATED.outputType_AGGREGATED
 transmissionMode_AGGREGATED $OutputSection_AGGREGATED.transmissionMode_AGGREGATED]]></command>
   <inputs>
-    <param name="REFERENCE" type="data" optional="false" label="Reference Points" help="Reference Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="REFERENCE" type="data" optional="false" label="Reference Points" help="Reference Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="REFERENCE_ID" type="data" optional="false" label="ID" help="ID The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OBSERVATIONS" type="data" optional="false" label="Observations" help="Observations The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="X" type="data" optional="false" label="X" help="X The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -60,7 +60,7 @@ transmissionMode_AGGREGATED $OutputSection_AGGREGATED.transmissionMode_AGGREGATE
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_AGGREGATED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_AGGREGATED" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_AGGREGATED" type="select" label="Aggregated" help="Aggregated">
         <option value="text/csv">csv</option>
       </param>

@@ -18,7 +18,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The image to segment." help="The image to segment. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The image to segment." help="The image to segment. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="mask" type="text" optional="true" label="Mask mathematical expression (only if support image is given)" help="Mask mathematical expression (only if support image is given)"/>
     <param name="expr" type="text" optional="false" label="Formula used for connected component segmentation" help="Formula used for connected component segmentation"/>
     <param name="minsize" type="integer" value="2" optional="true" label="Min object size (area in pixel)" help="Min object size (area in pixel)"/>
@@ -36,7 +36,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="The segmentation shape." help="The segmentation shape.">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

@@ -21,7 +21,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS
 outputType_SUPERPIXELS $OutputSection_SUPERPIXELS.outputType_SUPERPIXELS
 transmissionMode_SUPERPIXELS $OutputSection_SUPERPIXELS.transmissionMode_SUPERPIXELS]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="NORMALIZE" type="select" optional="true" label="Normalize" help="Normalize">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -52,7 +52,7 @@ transmissionMode_SUPERPIXELS $OutputSection_SUPERPIXELS.transmissionMode_SUPERPI
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_POLYGONS" type="select" label="Segments" help="Segments">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -63,7 +63,7 @@ transmissionMode_SUPERPIXELS $OutputSection_SUPERPIXELS.transmissionMode_SUPERPI
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SUPERPIXELS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SUPERPIXELS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SUPERPIXELS" type="select" label="Superpixels" help="Superpixels">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

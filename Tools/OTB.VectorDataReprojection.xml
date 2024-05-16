@@ -20,13 +20,13 @@ response $response
 outputType_out.vd $OutputSection_out.vd.outputType_out.vd
 transmissionMode_out.vd $OutputSection_out.vd.transmissionMode_out.vd]]></command>
   <inputs>
-    <param name="in.vd" type="data" optional="false" label="The input vector data to reproject" help="The input vector data to reproject The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, zip, json" format="txt"/>
-    <param name="in.kwl" type="data" optional="false" label="Optional input image to fill vector data with image kwl." help="Optional input image to fill vector data with image kwl. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in.vd" type="data" optional="false" label="The input vector data to reproject" help="The input vector data to reproject The following data types are allowed in the txt file:  xml, json, zip, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="in.kwl" type="data" optional="false" label="Optional input image to fill vector data with image kwl." help="Optional input image to fill vector data with image kwl. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out.proj" type="select" optional="false" label="out.proj" help="out.proj">
       <option selected="true" value="image">image</option>
       <option value="user">user</option>
     </param>
-    <param name="out.proj.image.in" type="data" optional="false" label="Projection map will be found using image metadata" help="Projection map will be found using image metadata The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="out.proj.image.in" type="data" optional="false" label="Projection map will be found using image metadata" help="Projection map will be found using image metadata The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out.proj.user.map" type="select" optional="false" label="Defines the map projection to be used." help="Defines the map projection to be used.">
       <option value="epsg">epsg</option>
       <option value="lambert2">lambert2</option>
@@ -52,7 +52,7 @@ transmissionMode_out.vd $OutputSection_out.vd.transmissionMode_out.vd]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out.vd" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out.vd" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out.vd" type="select" label="The reprojected vector data" help="The reprojected vector data">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

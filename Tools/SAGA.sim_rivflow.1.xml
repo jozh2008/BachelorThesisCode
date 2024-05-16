@@ -90,17 +90,17 @@ transmissionMode_OUTPUT5 $OutputSection_OUTPUT5.transmissionMode_OUTPUT5
 outputType_OUTPUT6 $OutputSection_OUTPUT6.outputType_OUTPUT6
 transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Gelaendemodell (DTM)" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT2" type="data" optional="false" label="Hoehengradienten (Grad)" help="Abflussgradienten jeder Rasterzelle des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT10" type="data" optional="false" label="Flusseinzugsgebiet (BasinShare)" help="Abgrenzung des Flusseinzugsgebiets mit den Teileinzugsgebieten des Flussnetzwerkes The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT8" type="data" optional="false" label="HG-Raster (HGGrid)" help="Hauptgerinnerasterzellen The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT9" type="data" optional="false" label="HG-Hoehengradienten (HGGrad)" help="Abflussgradienten der Hauptgerinnerasterzellen The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT11" type="data" optional="false" label="Referenzverlauf Flussbilanz" help="Raster des Referenzverlauf des (linearen) Hauptflussarmes, der zur Erstellung der Flusswasserbilanz herangezogen werden soll The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT12" type="data" optional="false" label="Zuflussrasterzellen (NumInFlowCells)" help="Raster mit Angabe ueber die Anzahl der Rasterzellen, die in eine spezifische Rasterzelle (x,y) abflieszen The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT3" type="data" optional="false" label="statische Wassserentnahme (statWUse)" help="Flaechenbasierte statische Wassserentnahme pro RiverGridbox in. ACHTUNG: Funktioniert ggf. nur bei bereits initiierten Systemen bzw. Vorlauf The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT5" type="data" optional="false" label="Fluss-Speicher einlesen" help="Simulation mit spezifischen Gerinne- bzw. Hauptgerinne-Speicherwerten (ChannelFlow) initiieren The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT6" type="data" optional="false" label="Oberflaechenabfluss-Speicher einlesen" help="Simulation mit spezifischen Oberflaechenabfluss-Speicherwerten (OverlandFlow) initiieren The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="INPUT7" type="data" optional="false" label="Grundwasserabfluss-Speicher einlesen" help="Simulation mit spezifischen Grundwasserabfluss-Speicherwerten (BaseFlow) initiieren The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Gelaendemodell (DTM)" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT2" type="data" optional="false" label="Hoehengradienten (Grad)" help="Abflussgradienten jeder Rasterzelle des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT10" type="data" optional="false" label="Flusseinzugsgebiet (BasinShare)" help="Abgrenzung des Flusseinzugsgebiets mit den Teileinzugsgebieten des Flussnetzwerkes The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT8" type="data" optional="false" label="HG-Raster (HGGrid)" help="Hauptgerinnerasterzellen The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT9" type="data" optional="false" label="HG-Hoehengradienten (HGGrad)" help="Abflussgradienten der Hauptgerinnerasterzellen The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT11" type="data" optional="false" label="Referenzverlauf Flussbilanz" help="Raster des Referenzverlauf des (linearen) Hauptflussarmes, der zur Erstellung der Flusswasserbilanz herangezogen werden soll The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT12" type="data" optional="false" label="Zuflussrasterzellen (NumInFlowCells)" help="Raster mit Angabe ueber die Anzahl der Rasterzellen, die in eine spezifische Rasterzelle (x,y) abflieszen The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT3" type="data" optional="false" label="statische Wassserentnahme (statWUse)" help="Flaechenbasierte statische Wassserentnahme pro RiverGridbox in. ACHTUNG: Funktioniert ggf. nur bei bereits initiierten Systemen bzw. Vorlauf The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT5" type="data" optional="false" label="Fluss-Speicher einlesen" help="Simulation mit spezifischen Gerinne- bzw. Hauptgerinne-Speicherwerten (ChannelFlow) initiieren The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT6" type="data" optional="false" label="Oberflaechenabfluss-Speicher einlesen" help="Simulation mit spezifischen Oberflaechenabfluss-Speicherwerten (OverlandFlow) initiieren The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT7" type="data" optional="false" label="Grundwasserabfluss-Speicher einlesen" help="Simulation mit spezifischen Grundwasserabfluss-Speicherwerten (BaseFlow) initiieren The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="onlyRB" type="select" optional="true" label="Berechnung nur im Flusseinzugsgebiet" help="Der Abfluss wird nur ueber die Rasterzellen des Flusseinzugsgebietes berechnet">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -223,7 +223,7 @@ transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT" type="select" label="Fluss-Speicher ausgeben" help="Fluss-Speicher 'CFCache' (ChannelFlowCache) am Ende der Simulation ausgeben - Initialisierungsdaten)">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -235,7 +235,7 @@ transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OUTPUT2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT2" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT2" type="select" label="Oberflaechenabfluss-Speicher ausgeben" help="Oberflaechenabfluss-Speicher 'OFCache' (OverlandFlowCache) am Ende der Simulation ausgeben - Initialisierungsdaten">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -247,7 +247,7 @@ transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OUTPUT3" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT3" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT3" type="select" label="Grundwasserabfluss-Speicher ausgeben" help="Grundwasserabfluss-Speicher 'BFCache' (BaseFlowCache) am Ende der Simulation ausgeben - Initialisierungsdaten">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -259,7 +259,7 @@ transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OUTPUT4" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT4" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT4" type="select" label="Wasserflussvolumen" help="Wasserflussvolumen in m3/s">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -271,7 +271,7 @@ transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OUTPUT5" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT5" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT5" type="select" label="SumRunoffDrainage" help="Aufsummieren der vertikalen Runoff und Drainage Zufluesse fuer jede Rasterzelle ueber den gesamten Simulationsverlauf">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -283,7 +283,7 @@ transmissionMode_OUTPUT6 $OutputSection_OUTPUT6.transmissionMode_OUTPUT6]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_OUTPUT6" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT6" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT6" type="select" label="DynWUse" help="Dynamisch eingelesene Flaechenwasssernutzung pro Rasterzelle. ACHTUNG: Funktioniert nur bei bereits initiierten Systemen bzw. Vorlauf">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

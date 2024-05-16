@@ -24,7 +24,7 @@ transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_FILLED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FILLED" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FILLED" type="select" label="DEM without Sinks" help="DEM without Sinks">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -36,7 +36,7 @@ transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SINKS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SINKS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SINKS" type="select" label="Sinks" help="Sinks">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

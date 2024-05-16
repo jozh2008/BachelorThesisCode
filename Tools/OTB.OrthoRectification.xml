@@ -34,7 +34,7 @@ response $response
 outputType_io.out $OutputSection_io.out.outputType_io.out
 transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
   <inputs>
-    <param name="io.in" type="data" optional="false" label="The input image to ortho-rectify" help="The input image to ortho-rectify The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="io.in" type="data" optional="false" label="The input image to ortho-rectify" help="The input image to ortho-rectify The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="io.out" type="select" optional="false" label="The ortho-rectified output image" help="The ortho-rectified output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -71,7 +71,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
     <param name="outputs.spacingy" type="float" optional="false" label="Size of each pixel along Y axis (meters for cartographic projections, degrees for geographic ones)" help="Size of each pixel along Y axis (meters for cartographic projections, degrees for geographic ones)"/>
     <param name="outputs.lrx" type="float" optional="true" label="Cartographic X coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic X coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)"/>
     <param name="outputs.lry" type="float" optional="true" label="Cartographic Y coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic Y coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)"/>
-    <param name="outputs.ortho" type="data" optional="false" label="A model ortho-image that can be used to compute size, origin and spacing of the output" help="A model ortho-image that can be used to compute size, origin and spacing of the output The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="outputs.ortho" type="data" optional="false" label="A model ortho-image that can be used to compute size, origin and spacing of the output" help="A model ortho-image that can be used to compute size, origin and spacing of the output The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="outputs.isotropic" type="select" optional="false" label="Default spacing (pixel size) values are estimated from the sensor modeling of the image. It can therefore result in a non-isotropic spacing. This option allows you to force default values to be isotropic (in this case, the minimum of spacing in both direction is applied. Values overridden by user are not affected by this option." help="Default spacing (pixel size) values are estimated from the sensor modeling of the image. It can therefore result in a non-isotropic spacing. This option allows you to force default values to be isotropic (in this case, the minimum of spacing in both direction is applied. Values overridden by user are not affected by this option.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -97,7 +97,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_io.out" type="select" label="The ortho-rectified output image" help="The ortho-rectified output image">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

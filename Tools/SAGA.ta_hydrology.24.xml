@@ -11,8 +11,8 @@ response $response
 outputType_TCILOW $OutputSection_TCILOW.outputType_TCILOW
 transmissionMode_TCILOW $OutputSection_TCILOW.transmissionMode_TCILOW]]></command>
   <inputs>
-    <param name="DISTANCE" type="data" optional="false" label="Vertical Distance to Channel Network" help="Vertical Distance to Channel Network The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="TWI" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="DISTANCE" type="data" optional="false" label="Vertical Distance to Channel Network" help="Vertical Distance to Channel Network The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="TWI" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -22,7 +22,7 @@ transmissionMode_TCILOW $OutputSection_TCILOW.transmissionMode_TCILOW]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_TCILOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TCILOW" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TCILOW" type="select" label="TCI Low" help="TCI Low">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

@@ -36,19 +36,19 @@ transmissionMode_FLOW_LENGTH $OutputSection_FLOW_LENGTH.transmissionMode_FLOW_LE
 outputType_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.outputType_WEIGHT_LOSS
 transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_LOSS]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="SINKROUTE" type="data" optional="false" label="Sink Routes" help="Sink Routes The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="VAL_INPUT" type="data" optional="false" label="Input for Mean over Catchment" help="Input for Mean over Catchment The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="ACCU_MATERIAL" type="data" optional="false" label="Material for Accumulation" help="Material for Accumulation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="ACCU_TARGET" type="data" optional="false" label="Accumulation Target" help="Accumulation Target The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Sink Routes" help="Sink Routes The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="VAL_INPUT" type="data" optional="false" label="Input for Mean over Catchment" help="Input for Mean over Catchment The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="ACCU_MATERIAL" type="data" optional="false" label="Material for Accumulation" help="Material for Accumulation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="ACCU_TARGET" type="data" optional="false" label="Accumulation Target" help="Accumulation Target The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="STEP" type="integer" value="1" optional="true" label="Step" help="For testing purposes. Only generate flow at cells with step distance (each step row/column)."/>
     <param name="FLOW_UNIT" type="select" optional="true" label="Flow Accumulation Unit" help="Flow Accumulation Unit">
       <option selected="true" value="cell_area">cell area</option>
       <option value="number_of_cells">number of cells</option>
     </param>
-    <param name="LINEAR_VAL" type="data" optional="false" label="Linear Flow Threshold Grid" help="optional grid providing values to be compared with linear flow threshold instead of flow accumulation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="LINEAR_DIR" type="data" optional="false" label="Channel Direction" help="use this for (linear) flow routing, if the value is a valid direction (0-7 = N, NE, E, SE, S, SW, W, NW) The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="LINEAR_VAL" type="data" optional="false" label="Linear Flow Threshold Grid" help="optional grid providing values to be compared with linear flow threshold instead of flow accumulation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="LINEAR_DIR" type="data" optional="false" label="Channel Direction" help="use this for (linear) flow routing, if the value is a valid direction (0-7 = N, NE, E, SE, S, SW, W, NW) The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Braunschweiger_Reliefmodell">Braunschweiger Reliefmodell</option>
       <option value="Deterministic_8">Deterministic 8</option>
@@ -77,7 +77,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW" type="select" label="Flow Accumulation" help="Flow Accumulation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -89,7 +89,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_VAL_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_VAL_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_VAL_MEAN" type="select" label="Mean over Catchment" help="Mean over Catchment">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -101,7 +101,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ACCU_TOTAL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ACCU_TOTAL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ACCU_TOTAL" type="select" label="Accumulated Material" help="Accumulated Material">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -113,7 +113,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ACCU_LEFT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ACCU_LEFT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ACCU_LEFT" type="select" label="Accumulated Material (Left Side)" help="Accumulated Material (Left Side)">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -125,7 +125,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ACCU_RIGHT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ACCU_RIGHT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ACCU_RIGHT" type="select" label="Accumulated Material (Right Side)" help="Accumulated Material (Right Side)">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -137,7 +137,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FLOW_LENGTH" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FLOW_LENGTH" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FLOW_LENGTH" type="select" label="Flow Path Length" help="average distance that a cell's accumulated flow travelled">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -149,7 +149,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_WEIGHT_LOSS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_WEIGHT_LOSS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_WEIGHT_LOSS" type="select" label="Loss through Negative Weights" help="when using weights without support for negative flow: output of the absolute amount of negative flow that occurred">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

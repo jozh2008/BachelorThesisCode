@@ -16,7 +16,7 @@ transmissionMode_OBJECT_GRID $OutputSection_OBJECT_GRID.transmissionMode_OBJECT_
 outputType_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.outputType_DIFFERENCE_GRID
 transmissionMode_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.transmissionMode_DIFFERENCE_GRID]]></command>
   <inputs>
-    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Input for the morphological reconstruction The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Input for the morphological reconstruction The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="SHIFT_VALUE" type="float" value="5" optional="true" label="Shift value" help="Shift value"/>
     <param name="BORDER_YES_NO" type="select" optional="true" label="Preserve 1px border Yes/No" help="Preserve 1px border Yes/No">
       <option selected="true" value="false">false</option>
@@ -36,7 +36,7 @@ transmissionMode_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.transmissionMode
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OBJECT_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OBJECT_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OBJECT_GRID" type="select" label="Object Grid" help="Binary object mask">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -48,7 +48,7 @@ transmissionMode_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.transmissionMode
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DIFFERENCE_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DIFFERENCE_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DIFFERENCE_GRID" type="select" label="Difference Input - Reconstruction" help="Difference Input - Reconstruction">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

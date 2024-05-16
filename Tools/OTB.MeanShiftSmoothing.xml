@@ -21,7 +21,7 @@ transmissionMode_fout $OutputSection_fout.transmissionMode_fout
 outputType_foutpos $OutputSection_foutpos.outputType_foutpos
 transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance." help="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance." help="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="fout" type="select" optional="false" label="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -57,7 +57,7 @@ transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_fout" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_fout" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_fout" type="select" label="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
@@ -68,7 +68,7 @@ transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></com
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_foutpos" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_foutpos" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_foutpos" type="select" label="This output image contains the 2D displacement between the input pixel spatial position and the final position after convergence. Floating point encoding is mandatory. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the 2D displacement between the input pixel spatial position and the final position after convergence. Floating point encoding is mandatory. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

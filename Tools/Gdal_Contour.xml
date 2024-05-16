@@ -11,7 +11,6 @@ a '$a'
 b $b
 prefer $prefer
 response $response
-outputType_Result '$OutputSection_Result.outputType_Result'
 transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
   <inputs>
     <param name="InputDSN" type="text" optional="false" label="The input data source name" help="The input data source name to use."/>
@@ -28,8 +27,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_Result" type="text" optional="false" label="The resulting converted file" help="The file name resulting of the convertion"/>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

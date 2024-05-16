@@ -28,7 +28,7 @@ transmissionMode_HOURS $OutputSection_HOURS.transmissionMode_HOURS]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_HOURS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_HOURS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_HOURS" type="select" label="Hourly Data" help="Hourly Data">
         <option value="text/csv">csv</option>
       </param>

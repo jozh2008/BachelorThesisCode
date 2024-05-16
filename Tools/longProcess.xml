@@ -7,7 +7,6 @@
   <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name longProcess sid $sid
 prefer $prefer
 response $response
-outputType_Result '$OutputSection_Result.outputType_Result'
 transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
   <inputs>
     <param name="sid" type="integer" optional="true" label="Service ID" help="A ZOO Service ID (unused)."/>
@@ -20,8 +19,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_Result" type="text" optional="false" label="ExecuteResponse document" help="The resulting ExecuteResponse document."/>
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

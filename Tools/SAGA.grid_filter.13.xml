@@ -11,7 +11,7 @@ response $response
 outputType_OUTPUT_GRID $OutputSection_OUTPUT_GRID.outputType_OUTPUT_GRID
 transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_GRID]]></command>
   <inputs>
-    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Grid to be filtered The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Grid to be filtered The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="RADIUS" type="integer" value="3" optional="true" label="Filter Size (Radius)" help="Filter size (radius in grid cells)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -22,7 +22,7 @@ transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OUTPUT_GRID" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUTPUT_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUTPUT_GRID" type="select" label="Output Grid" help="Reconstruction result">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

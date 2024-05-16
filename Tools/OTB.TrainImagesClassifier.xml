@@ -64,9 +64,9 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out
 outputType_io.confmatout $OutputSection_io.confmatout.outputType_io.confmatout
 transmissionMode_io.confmatout $OutputSection_io.confmatout.transmissionMode_io.confmatout]]></command>
   <inputs>
-    <param name="io.il" type="data" optional="false" label="A list of input images." help="A list of input images. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="io.vd" type="data" optional="false" label="A list of vector data to select the training samples." help="A list of vector data to select the training samples. The following data types are allowed in the txt file:  xml, json, zip, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="io.valid" type="data" optional="false" label="A list of vector data to select the validation samples." help="A list of vector data to select the validation samples. The following data types are allowed in the txt file:  xml, json, zip, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="io.il" type="data" optional="false" label="A list of input images." help="A list of input images. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="io.vd" type="data" optional="false" label="A list of vector data to select the training samples." help="A list of vector data to select the training samples. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, zip, xml, json" format="txt"/>
+    <param name="io.valid" type="data" optional="false" label="A list of vector data to select the validation samples." help="A list of vector data to select the validation samples. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, zip, xml, json" format="txt"/>
     <param name="io.imstat" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="cleanup" type="select" optional="false" label="If activated, the application will try to clean all temporary files it created" help="If activated, the application will try to clean all temporary files it created">
       <option selected="true" value="false">false</option>
@@ -174,7 +174,7 @@ transmissionMode_io.confmatout $OutputSection_io.confmatout.transmissionMode_io.
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_io.out" type="select" label="Output file containing the model estimated (.txt format)." help="Output file containing the model estimated (.txt format).">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
@@ -184,7 +184,7 @@ transmissionMode_io.confmatout $OutputSection_io.confmatout.transmissionMode_io.
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_io.confmatout" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_io.confmatout" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_io.confmatout" type="select" label="Output file containing the confusion matrix or contingency table (.csv format).The contingency table is output when we unsupervised algorithms is used otherwise the confusion matrix is output." help="Output file containing the confusion matrix or contingency table (.csv format).The contingency table is output when we unsupervised algorithms is used otherwise the confusion matrix is output.">
         <option value="text/csv">csv</option>
       </param>

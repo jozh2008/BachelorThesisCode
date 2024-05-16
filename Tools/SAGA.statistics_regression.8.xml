@@ -26,8 +26,8 @@ transmissionMode_INFO_MODEL $OutputSection_INFO_MODEL.transmissionMode_INFO_MODE
 outputType_INFO_STEPS $OutputSection_INFO_STEPS.outputType_INFO_STEPS
 transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEPS]]></command>
   <inputs>
-    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
@@ -65,7 +65,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -77,7 +77,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -89,7 +89,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_COEFF" type="select" label="Details: Coefficients" help="Details: Coefficients">
         <option value="text/csv">csv</option>
       </param>
@@ -98,7 +98,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_MODEL" type="select" label="Details: Model" help="Details: Model">
         <option value="text/csv">csv</option>
       </param>
@@ -107,7 +107,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_STEPS" type="select" label="Details: Steps" help="Details: Steps">
         <option value="text/csv">csv</option>
       </param>

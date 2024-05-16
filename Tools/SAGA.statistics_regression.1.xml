@@ -31,8 +31,8 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
 outputType_REGRESCORR $OutputSection_REGRESCORR.outputType_REGRESCORR
 transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCORR]]></command>
   <inputs>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="ATTRIBUTE" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
@@ -79,7 +79,7 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_COEFF" type="select" label="Details: Coefficients" help="Details: Coefficients">
         <option value="text/csv">csv</option>
       </param>
@@ -88,7 +88,7 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_MODEL" type="select" label="Details: Model" help="Details: Model">
         <option value="text/csv">csv</option>
       </param>
@@ -97,7 +97,7 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INFO_STEPS" type="select" label="Details: Steps" help="Details: Steps">
         <option value="text/csv">csv</option>
       </param>
@@ -106,7 +106,7 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -117,7 +117,7 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_REGRESSION" type="select" label="Regression" help="regression model applied to predictor grids">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -129,7 +129,7 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_REGRESCORR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_REGRESCORR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_REGRESCORR" type="select" label="Regression with Residual Correction" help="regression model applied to predictor grids with interpolated residuals added">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

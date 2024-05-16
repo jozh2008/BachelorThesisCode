@@ -14,7 +14,7 @@ response $response
 outputType_GEOMORPHONS $OutputSection_GEOMORPHONS.outputType_GEOMORPHONS
 transmissionMode_GEOMORPHONS $OutputSection_GEOMORPHONS.transmissionMode_GEOMORPHONS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="THRESHOLD" type="float" value="1" optional="true" label="Threshold Angle" help="Flatness threshold angle (degrees)."/>
     <param name="RADIUS" type="float" value="10000" optional="true" label="Radial Limit" help="Radial Limit"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
@@ -31,7 +31,7 @@ transmissionMode_GEOMORPHONS $OutputSection_GEOMORPHONS.transmissionMode_GEOMORP
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_GEOMORPHONS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_GEOMORPHONS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_GEOMORPHONS" type="select" label="Geomorphons" help="Geomorphons">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

@@ -14,7 +14,7 @@ transmissionMode_ZMAX $OutputSection_ZMAX.transmissionMode_ZMAX
 outputType_MRN $OutputSection_MRN.outputType_MRN
 transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -24,7 +24,7 @@ transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_AREA" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_AREA" type="select" label="Catchment Area" help="Catchment Area">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -36,7 +36,7 @@ transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ZMAX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ZMAX" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ZMAX" type="select" label="Maximum Height" help="Maximum Height">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -48,7 +48,7 @@ transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MRN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MRN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MRN" type="select" label="Melton Ruggedness Number" help="Melton Ruggedness Number">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

@@ -24,7 +24,7 @@ transmissionMode_ORBPAR $OutputSection_ORBPAR.transmissionMode_ORBPAR]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_ORBPAR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ORBPAR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ORBPAR" type="select" label="Earth's Orbital Parameters" help="Earth's Orbital Parameters">
         <option value="text/csv">csv</option>
       </param>

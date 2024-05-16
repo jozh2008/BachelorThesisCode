@@ -31,9 +31,9 @@ transmissionMode_INTERCEPT $OutputSection_INTERCEPT.transmissionMode_INTERCEPT
 outputType_SLOPE $OutputSection_SLOPE.outputType_SLOPE
 transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -74,7 +74,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -85,7 +85,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -97,7 +97,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_QUALITY" type="select" label="Coefficient of Determination" help="Coefficient of Determination">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -109,7 +109,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_INTERCEPT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_INTERCEPT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_INTERCEPT" type="select" label="Intercept" help="Intercept">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -121,7 +121,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SLOPE" type="select" label="Slope" help="Slope">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

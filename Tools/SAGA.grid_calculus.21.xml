@@ -14,8 +14,8 @@ response $response
 outputType_MATCHED $OutputSection_MATCHED.outputType_MATCHED
 transmissionMode_MATCHED $OutputSection_MATCHED.transmissionMode_MATCHED]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="REFERENCE" type="data" optional="false" label="Reference Grid" help="Reference Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="REFERENCE" type="data" optional="false" label="Reference Grid" help="Reference Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option selected="true" value="histogram">histogram</option>
       <option value="standard_deviation">standard deviation</option>
@@ -31,7 +31,7 @@ transmissionMode_MATCHED $OutputSection_MATCHED.transmissionMode_MATCHED]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_MATCHED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MATCHED" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MATCHED" type="select" label="Adjusted Grid" help="Adjusted Grid">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

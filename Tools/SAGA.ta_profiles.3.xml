@@ -14,8 +14,8 @@ response $response
 outputType_PROFILES $OutputSection_PROFILES.outputType_PROFILES
 transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="DIST_LINE" type="float" value="10" optional="true" label="Profile Distance" help="Profile Distance"/>
     <param name="DIST_PROFILE" type="float" value="10" optional="true" label="Profile Length" help="Profile Length"/>
     <param name="NUM_PROFILE" type="integer" value="10" optional="true" label="Profile Samples" help="Profile Samples"/>
@@ -28,7 +28,7 @@ transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_PROFILES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PROFILES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PROFILES" type="select" label="Cross Profiles" help="Cross Profiles">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

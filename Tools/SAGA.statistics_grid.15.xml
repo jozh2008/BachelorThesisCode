@@ -20,7 +20,7 @@ transmissionMode_PCA $OutputSection_PCA.transmissionMode_PCA
 outputType_EIGEN $OutputSection_EIGEN.outputType_EIGEN
 transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="COMPONENTS" type="integer" value="7" optional="true" label="Number of Components" help="number of first components in the output; set to zero to get all"/>
     <param name="BASE_OUT" type="select" optional="true" label="Output of Base Topographies" help="Output of Base Topographies">
       <option selected="true" value="false">false</option>
@@ -49,7 +49,7 @@ transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_BASE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_BASE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_BASE" type="select" label="Base Topographies" help="Base Topographies">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -61,7 +61,7 @@ transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PCA" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PCA" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PCA" type="select" label="Principal Components" help="Principal Components">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -73,7 +73,7 @@ transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_EIGEN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_EIGEN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_EIGEN" type="select" label="Eigen Vectors" help="Eigen Vectors">
         <option value="text/csv">csv</option>
       </param>

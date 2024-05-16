@@ -9,7 +9,6 @@ InputDSN '$InputDSN'
 OutputDSN '$OutputDSN'
 prefer $prefer
 response $response
-outputType_OutputedDataSourceName '$OutputSection_OutputedDataSourceName.outputType_OutputedDataSourceName'
 transmissionMode_OutputedDataSourceName $OutputSection_OutputedDataSourceName.transmissionMode_OutputedDataSourceName]]></command>
   <inputs>
     <param name="OF" type="text" value="AAIGrid" optional="true" label="Format of the output data" help="Select the output format."/>
@@ -24,8 +23,7 @@ transmissionMode_OutputedDataSourceName $OutputSection_OutputedDataSourceName.tr
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OutputedDataSourceName" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_OutputedDataSourceName" type="text" optional="false" label="The resulting converted file" help="The file name resulting of the convertion"/>
+    <section name="OutputSection_OutputedDataSourceName" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_OutputedDataSourceName" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

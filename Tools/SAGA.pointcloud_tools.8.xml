@@ -44,7 +44,7 @@ transmissionMode_OUT $OutputSection_OUT.transmissionMode_OUT]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_OUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_OUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_OUT" type="select" label="Output" help="Output">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>

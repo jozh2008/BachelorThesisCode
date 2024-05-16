@@ -17,7 +17,7 @@ transmissionMode_B $OutputSection_B.transmissionMode_B
 outputType_A $OutputSection_A.outputType_A
 transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
   <inputs>
-    <param name="RGB" type="data" optional="false" label="RGB Composite" help="RGB Composite The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="RGB" type="data" optional="false" label="RGB Composite" help="RGB Composite The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="NODATA" type="select" optional="true" label="Ignore No Data" help="Ignore No Data">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -31,7 +31,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_R" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_R" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_R" type="select" label="Red" help="Red">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -43,7 +43,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_G" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_G" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_G" type="select" label="Green" help="Green">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -55,7 +55,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_B" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_B" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_B" type="select" label="Blue" help="Blue">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -67,7 +67,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_A" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_A" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_A" type="select" label="Alpha" help="Alpha">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

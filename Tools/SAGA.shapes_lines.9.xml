@@ -12,8 +12,8 @@ response $response
 outputType_CROSSINGS $OutputSection_CROSSINGS.outputType_CROSSINGS
 transmissionMode_CROSSINGS $OutputSection_CROSSINGS.transmissionMode_CROSSINGS]]></command>
   <inputs>
-    <param name="LINES_A" type="data" optional="false" label="1st Lines Layer" help="1st Lines Layer The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="LINES_B" type="data" optional="false" label="2nd Lines Layer" help="2nd Lines Layer The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="LINES_A" type="data" optional="false" label="1st Lines Layer" help="1st Lines Layer The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="LINES_B" type="data" optional="false" label="2nd Lines Layer" help="2nd Lines Layer The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="ATTRIBUTES" type="select" optional="true" label="Parent Attributes" help="attributes inherited by parent lines layers">
       <option value="attributes">attributes</option>
       <option value="index">index</option>
@@ -28,7 +28,7 @@ transmissionMode_CROSSINGS $OutputSection_CROSSINGS.transmissionMode_CROSSINGS]]
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CROSSINGS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CROSSINGS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CROSSINGS" type="select" label="Crossings" help="Crossings">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

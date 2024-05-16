@@ -38,7 +38,7 @@ transmissionMode_MOC_1 $OutputSection_MOC_1.transmissionMode_MOC_1
 outputType_MOC_2 $OutputSection_MOC_2.outputType_MOC_2
 transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="DIRECTION" type="select" optional="true" label="Direction" help="Direction">
       <option value="E-W">E-W</option>
       <option value="N-S">N-S</option>
@@ -58,7 +58,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_ASM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ASM" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ASM" type="select" label="Angular Second Moment" help="Angular Second Moment">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -70,7 +70,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CONTRAST" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CONTRAST" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CONTRAST" type="select" label="Contrast" help="Contrast">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -82,7 +82,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CORRELATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CORRELATION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CORRELATION" type="select" label="Correlation" help="Correlation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -94,7 +94,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_VARIANCE" type="select" label="Variance" help="Variance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -106,7 +106,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_IDM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_IDM" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_IDM" type="select" label="Inverse Diff Moment" help="Inverse Diff Moment">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -118,7 +118,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SUM_AVERAGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SUM_AVERAGE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SUM_AVERAGE" type="select" label="Sum Average" help="Sum Average">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -130,7 +130,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SUM_ENTROPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SUM_ENTROPY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SUM_ENTROPY" type="select" label="Sum Entropy" help="Sum Entropy">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -142,7 +142,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SUM_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SUM_VARIANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SUM_VARIANCE" type="select" label="Sum Variance" help="Sum Variance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -154,7 +154,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ENTROPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ENTROPY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ENTROPY" type="select" label="Entropy" help="Entropy">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -166,7 +166,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DIF_VARIANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DIF_VARIANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DIF_VARIANCE" type="select" label="Difference Variance" help="Difference Variance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -178,7 +178,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DIF_ENTROPY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DIF_ENTROPY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DIF_ENTROPY" type="select" label="Difference Entropy" help="Difference Entropy">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -190,7 +190,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MOC_1" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MOC_1" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MOC_1" type="select" label="Measure of Correlation-1" help="Measure of Correlation-1">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -202,7 +202,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MOC_2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MOC_2" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MOC_2" type="select" label="Measure of Correlation-2" help="Measure of Correlation-2">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

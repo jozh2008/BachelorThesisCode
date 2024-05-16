@@ -21,7 +21,7 @@ response $response
 outputType_CLIPPED $OutputSection_CLIPPED.outputType_CLIPPED
 transmissionMode_CLIPPED $OutputSection_CLIPPED.transmissionMode_CLIPPED]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="EXTENT" type="select" optional="true" label="Extent" help="Extent">
       <option value="grid_system">grid system</option>
       <option value="polygon">polygon</option>
@@ -50,7 +50,7 @@ transmissionMode_CLIPPED $OutputSection_CLIPPED.transmissionMode_CLIPPED]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CLIPPED" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CLIPPED" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CLIPPED" type="select" label="Clipped Grids" help="Clipped Grids">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

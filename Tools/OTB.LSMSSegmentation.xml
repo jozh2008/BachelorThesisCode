@@ -19,8 +19,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application." help="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
-    <param name="inpos" type="data" optional="false" label="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application." help="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application." help="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="inpos" type="data" optional="false" label="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application." help="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="This output contains the segmented image, where each pixel value is the unique integer label of the segment it belongs to. It is recommended to set the pixel type to uint32." help="This output contains the segmented image, where each pixel value is the unique integer label of the segment it belongs to. It is recommended to set the pixel type to uint32.">
       <option value="double">double</option>
       <option value="float">float</option>
@@ -48,7 +48,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="This output contains the segmented image, where each pixel value is the unique integer label of the segment it belongs to. It is recommended to set the pixel type to uint32." help="This output contains the segmented image, where each pixel value is the unique integer label of the segment it belongs to. It is recommended to set the pixel type to uint32.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

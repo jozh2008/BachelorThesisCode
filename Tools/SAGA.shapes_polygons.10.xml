@@ -11,7 +11,7 @@ response $response
 outputType_PARTS $OutputSection_PARTS.outputType_PARTS
 transmissionMode_PARTS $OutputSection_PARTS.transmissionMode_PARTS]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="LAKES" type="select" optional="true" label="Lakes" help="Lakes">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -25,7 +25,7 @@ transmissionMode_PARTS $OutputSection_PARTS.transmissionMode_PARTS]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_PARTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PARTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PARTS" type="select" label="Polygon Parts" help="Polygon Parts">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

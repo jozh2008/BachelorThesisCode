@@ -22,7 +22,7 @@ transmissionMode_Profile $OutputSection_Profile.transmissionMode_Profile]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_Profile" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_Profile" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_Profile" type="select" label="The resulting profile" help="GeoJSON string containing the X Y Z values where (X,Y) is corresponding to the original coordinates and the elevation value. ">
         <option value="application/json">json</option>
       </param>

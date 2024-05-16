@@ -30,7 +30,7 @@ transmissionMode_NOGAPS $OutputSection_NOGAPS.transmissionMode_NOGAPS]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_NOGAPS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_NOGAPS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_NOGAPS" type="select" label="Table without Gaps" help="Table without Gaps">
         <option value="text/csv">csv</option>
       </param>

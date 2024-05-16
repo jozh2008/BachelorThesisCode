@@ -33,8 +33,8 @@ transmissionMode_STDDEVHI $OutputSection_STDDEVHI.transmissionMode_STDDEVHI
 outputType_PCTL $OutputSection_PCTL.outputType_PCTL
 transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
@@ -51,7 +51,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MEAN" type="select" label="Arithmetic Mean" help="Arithmetic Mean">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -63,7 +63,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MIN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MIN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MIN" type="select" label="Minimum" help="Minimum">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -75,7 +75,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MAX" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MAX" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MAX" type="select" label="Maximum" help="Maximum">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -87,7 +87,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RANGE" type="select" label="Range" help="Range">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -99,7 +99,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SUM" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SUM" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SUM" type="select" label="Sum" help="Sum">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -111,7 +111,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SUM2" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SUM2" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SUM2" type="select" label="Sum2" help="Sum2">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -123,7 +123,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_VAR" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_VAR" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_VAR" type="select" label="Variance" help="Variance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -135,7 +135,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_STDDEV" type="select" label="Standard Deviation" help="Standard Deviation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -147,7 +147,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_STDDEVLO" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_STDDEVLO" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_STDDEVLO" type="select" label="Mean less Standard Deviation" help="Mean less Standard Deviation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -159,7 +159,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_STDDEVHI" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_STDDEVHI" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_STDDEVHI" type="select" label="Mean plus Standard Deviation" help="Mean plus Standard Deviation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -171,7 +171,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PCTL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PCTL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PCTL" type="select" label="Percentile" help="Percentile">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

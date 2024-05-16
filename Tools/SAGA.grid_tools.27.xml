@@ -25,7 +25,7 @@ response $response
 outputType_TILES $OutputSection_TILES.outputType_TILES
 transmissionMode_TILES $OutputSection_TILES.transmissionMode_TILES]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="TILES_SAVE" type="select" optional="true" label="Save Tiles to Disk" help="Save tiles to disk individually">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -60,7 +60,7 @@ transmissionMode_TILES $OutputSection_TILES.transmissionMode_TILES]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_TILES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_TILES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_TILES" type="select" label="Tiles" help="Tiles">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

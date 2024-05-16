@@ -21,7 +21,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>

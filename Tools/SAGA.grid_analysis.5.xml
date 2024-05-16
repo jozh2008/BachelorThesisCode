@@ -14,9 +14,9 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS
 outputType_LINE $OutputSection_LINE.outputType_LINE
 transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
   <inputs>
-    <param name="SOURCE" type="data" optional="false" label="Source Point(s)" help="Point shapefile with source point(s) The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="DEM" type="data" optional="false" label="Accumulated Cost Surface" help="Accumulated Cost Surface The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Allows writing cell values from additional grids to the output The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source Point(s)" help="Point shapefile with source point(s) The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Accumulated Cost Surface" help="Accumulated Cost Surface The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Allows writing cell values from additional grids to the output The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -26,7 +26,7 @@ transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_POINTS" type="select" label="Profile Points" help="Least cost path profile points">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -37,7 +37,7 @@ transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_LINE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LINE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LINE" type="select" label="Profile Lines" help="Least cost path profile lines">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

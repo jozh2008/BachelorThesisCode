@@ -22,7 +22,7 @@ response $response
 outputType_io.out $OutputSection_io.out.outputType_io.out
 transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
   <inputs>
-    <param name="io.in" type="data" optional="false" label="The input image to resample" help="The input image to resample The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="io.in" type="data" optional="false" label="The input image to resample" help="The input image to resample The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="io.out" type="select" optional="false" label="The resampled output image" help="The resampled output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -31,7 +31,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="grid.in" type="data" optional="false" label="The resampling grid" help="The resampling grid The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="grid.in" type="data" optional="false" label="The resampling grid" help="The resampling grid The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="grid.type" type="select" optional="false" label="allows one to choose between two grid types" help="allows one to choose between two grid types">
       <option selected="true" value="def">def</option>
       <option value="loc">loc</option>
@@ -58,7 +58,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_io.out" type="select" label="The resampled output image" help="The resampled output image">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

@@ -22,7 +22,7 @@ transmissionMode_NDC $OutputSection_NDC.transmissionMode_NDC
 outputType_CVN $OutputSection_CVN.outputType_CVN
 transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input Grid" help="Input Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input Grid" help="Input Grid The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="WINSIZE" type="select" optional="true" label="Size of Analysis Window" help="Size of Analysis Window">
       <option selected="true" value="3_X_3">3 X 3</option>
       <option value="5_X_5">5 X 5</option>
@@ -38,7 +38,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_RELATIVE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_RELATIVE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_RELATIVE" type="select" label="Relative Richness" help="Relative Richness">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -50,7 +50,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DIVERSITY" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DIVERSITY" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DIVERSITY" type="select" label="Diversity" help="Diversity">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -62,7 +62,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_DOMINANCE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_DOMINANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_DOMINANCE" type="select" label="Dominance" help="Dominance">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -74,7 +74,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_FRAGMENTATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FRAGMENTATION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FRAGMENTATION" type="select" label="Fragmentation" help="Fragmentation">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -86,7 +86,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_NDC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_NDC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_NDC" type="select" label="Number of Different Classes" help="Number of Different Classes">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -98,7 +98,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CVN" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CVN" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CVN" type="select" label="Center Versus Neighbours" help="Center Versus Neighbours">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

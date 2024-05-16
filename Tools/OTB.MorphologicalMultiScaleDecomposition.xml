@@ -66,7 +66,7 @@ transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleve
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_outconvex" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outconvex" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outconvex" type="select" label="The output convex image with N bands" help="The output convex image with N bands">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
@@ -77,7 +77,7 @@ transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleve
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_outconcave" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outconcave" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outconcave" type="select" label="The output concave concave with N bands" help="The output concave concave with N bands">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
@@ -88,7 +88,7 @@ transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleve
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_outleveling" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_outleveling" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_outleveling" type="select" label="The output leveling image with N bands" help="The output leveling image with N bands">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

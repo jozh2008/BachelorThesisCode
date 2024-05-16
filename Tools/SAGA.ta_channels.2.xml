@@ -22,8 +22,8 @@ transmissionMode_HEADS $OutputSection_HEADS.transmissionMode_HEADS
 outputType_MOUTHS $OutputSection_MOUTHS.outputType_MOUTHS
 transmissionMode_MOUTHS $OutputSection_MOUTHS.transmissionMode_MOUTHS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="CHANNELS" type="data" optional="false" label="Drainage Network" help="Drainage Network The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="CHANNELS" type="data" optional="false" label="Drainage Network" help="Drainage Network The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="DISTANCE" type="select" optional="true" label="Flow Distances" help="Flow Distances">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -37,7 +37,7 @@ transmissionMode_MOUTHS $OutputSection_MOUTHS.transmissionMode_MOUTHS]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_BASINS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_BASINS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_BASINS" type="select" label="Basins" help="Basins">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -49,7 +49,7 @@ transmissionMode_MOUTHS $OutputSection_MOUTHS.transmissionMode_MOUTHS]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SUBBASINS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SUBBASINS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SUBBASINS" type="select" label="Subbasins" help="Subbasins">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -61,7 +61,7 @@ transmissionMode_MOUTHS $OutputSection_MOUTHS.transmissionMode_MOUTHS]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_V_BASINS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_V_BASINS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_V_BASINS" type="select" label="Basins" help="Basins">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -72,7 +72,7 @@ transmissionMode_MOUTHS $OutputSection_MOUTHS.transmissionMode_MOUTHS]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_V_SUBBASINS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_V_SUBBASINS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_V_SUBBASINS" type="select" label="Subbasins" help="Subbasins">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -83,7 +83,7 @@ transmissionMode_MOUTHS $OutputSection_MOUTHS.transmissionMode_MOUTHS]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_HEADS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_HEADS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_HEADS" type="select" label="River Heads" help="River Heads">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -94,7 +94,7 @@ transmissionMode_MOUTHS $OutputSection_MOUTHS.transmissionMode_MOUTHS]]></comman
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MOUTHS" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MOUTHS" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MOUTHS" type="select" label="River Mouths" help="River Mouths">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>

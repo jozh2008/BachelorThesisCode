@@ -38,7 +38,7 @@ transmissionMode_mode.vector.out $OutputSection_mode.vector.out.transmissionMode
 outputType_mode.raster.out $OutputSection_mode.raster.out.outputType_mode.raster.out
 transmissionMode_mode.raster.out $OutputSection_mode.raster.out.transmissionMode_mode.raster.out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to segment" help="The input image to segment The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to segment" help="The input image to segment The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="filter" type="select" optional="false" label="Choice of segmentation algorithm (mean-shift by default)" help="Choice of segmentation algorithm (mean-shift by default)">
       <option value="cc">cc</option>
       <option selected="true" value="meanshift">meanshift</option>
@@ -67,7 +67,7 @@ transmissionMode_mode.raster.out $OutputSection_mode.raster.out.transmissionMode
       <option value="ulovw">ulovw</option>
       <option value="ulu">ulu</option>
     </param>
-    <param name="mode.vector.inmask" type="data" optional="false" label="Only pixels whose mask value is strictly positive will be segmented." help="Only pixels whose mask value is strictly positive will be segmented. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="mode.vector.inmask" type="data" optional="false" label="Only pixels whose mask value is strictly positive will be segmented." help="Only pixels whose mask value is strictly positive will be segmented. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="mode.vector.neighbor" type="select" optional="false" label="Activate 8-Neighborhood connectivity (default is 4)." help="Activate 8-Neighborhood connectivity (default is 4).">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -100,7 +100,7 @@ transmissionMode_mode.raster.out $OutputSection_mode.raster.out.transmissionMode
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_mode.vector.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_mode.vector.out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_mode.vector.out" type="select" label="The output vector file or database (name can be anything understood by OGR)" help="The output vector file or database (name can be anything understood by OGR)">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
@@ -112,7 +112,7 @@ transmissionMode_mode.raster.out $OutputSection_mode.raster.out.transmissionMode
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_mode.raster.out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_mode.raster.out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_mode.raster.out" type="select" label="The output labeled image." help="The output labeled image.">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

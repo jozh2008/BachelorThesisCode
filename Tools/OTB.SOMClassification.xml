@@ -66,7 +66,7 @@ transmissionMode_som $OutputSection_som.transmissionMode_som]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_out" type="select" label="Output classified image (each pixel contains the index of its corresponding vector in the SOM)." help="Output classified image (each pixel contains the index of its corresponding vector in the SOM).">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
@@ -77,7 +77,7 @@ transmissionMode_som $OutputSection_som.transmissionMode_som]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_som" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_som" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_som" type="select" label="Output image containing the Self-Organizing Map" help="Output image containing the Self-Organizing Map">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>

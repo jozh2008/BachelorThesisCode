@@ -32,7 +32,7 @@ transmissionMode_CUT $OutputSection_CUT.transmissionMode_CUT]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CUT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CUT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CUT" type="select" label="Cut" help="The cutted output point cloud dataset(s).">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>

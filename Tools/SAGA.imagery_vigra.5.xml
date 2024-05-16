@@ -13,7 +13,7 @@ transmissionMode_REAL $OutputSection_REAL.transmissionMode_REAL
 outputType_IMAG $OutputSection_IMAG.outputType_IMAG
 transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="CENTER" type="select" optional="true" label="Centered" help="Centered">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -27,7 +27,7 @@ transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_REAL" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_REAL" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_REAL" type="select" label="Real" help="Real">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -39,7 +39,7 @@ transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_IMAG" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_IMAG" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_IMAG" type="select" label="Imaginary" help="Imaginary">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

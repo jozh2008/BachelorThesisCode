@@ -34,7 +34,7 @@ transmissionMode_MAXIC $OutputSection_MAXIC.transmissionMode_MAXIC
 outputType_MINIC $OutputSection_MINIC.outputType_MINIC
 transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="SIZE" type="integer" value="5" optional="true" label="Scale Radius (Cells)" help="Size of processing window (= 1 + 2 * radius) given as number of cells"/>
     <param name="TOL_SLOPE" type="float" value="1" optional="true" label="Slope Tolerance" help="Slope tolerance that defines a 'flat' surface (degrees)"/>
     <param name="TOL_CURVE" type="float" value="0.0001" optional="true" label="Curvature Tolerance" help="Curvature tolerance that defines 'planar' surface"/>
@@ -53,7 +53,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_FEATURES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_FEATURES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_FEATURES" type="select" label="Morphometric Features" help="Morphometric Features">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -65,7 +65,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ELEVATION" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ELEVATION" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ELEVATION" type="select" label="Generalized Surface" help="Generalized Surface">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -77,7 +77,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_SLOPE" type="select" label="Slope" help="Slope">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -89,7 +89,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_ASPECT" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_ASPECT" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_ASPECT" type="select" label="Aspect" help="Aspect">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -101,7 +101,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PROFC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PROFC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PROFC" type="select" label="Profile Curvature" help="Profile Curvature">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -113,7 +113,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_PLANC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_PLANC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_PLANC" type="select" label="Plan Curvature" help="Plan Curvature">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -125,7 +125,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_LONGC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_LONGC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_LONGC" type="select" label="Longitudinal Curvature" help="Longitudinal Curvature">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -137,7 +137,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_CROSC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CROSC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CROSC" type="select" label="Cross-Sectional Curvature" help="Cross-Sectional Curvature">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -149,7 +149,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MAXIC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MAXIC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MAXIC" type="select" label="Maximum Curvature" help="Maximum Curvature">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
@@ -161,7 +161,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_MINIC" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_MINIC" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_MINIC" type="select" label="Minimum Curvature" help="Minimum Curvature">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>

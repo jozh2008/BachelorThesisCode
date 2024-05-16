@@ -84,7 +84,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="outputType_CLASSES" type="select" label="Classification" help="Classification">
         <option value="text/csv">csv</option>
       </param>

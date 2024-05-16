@@ -11,12 +11,10 @@ prefer $prefer
 response $response
 transmissionMode_output.idx $OutputSection_output.idx.transmissionMode_output.idx
 transmissionMode_output.idy $OutputSection_output.idy.transmissionMode_output.idy
-outputType_output.town '$OutputSection_output.town.outputType_output.town'
 transmissionMode_output.town $OutputSection_output.town.transmissionMode_output.town
-outputType_output.country '$OutputSection_output.country.outputType_output.country'
 transmissionMode_output.country $OutputSection_output.country.transmissionMode_output.country]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input sensor image." help="Input sensor image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input sensor image." help="Input sensor image. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="input.idx" type="float" value="0" optional="false" label="X coordinate of the point to transform." help="X coordinate of the point to transform."/>
     <param name="input.idy" type="float" value="0" optional="false" label="Y coordinate of the point to transform." help="Y coordinate of the point to transform."/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -28,27 +26,25 @@ transmissionMode_output.country $OutputSection_output.country.transmissionMode_o
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_output.idx" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_output.idx" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_output.idx" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_output.idy" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
+    <section name="OutputSection_output.idy" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_output.idy" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_output.town" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_output.town" type="text" optional="false" label="Nearest main town of the computed geographic point." help="Nearest main town of the computed geographic point."/>
+    <section name="OutputSection_output.town" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_output.town" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_output.country" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_output.country" type="text" optional="false" label="Country of the input image" help="Country of the input image"/>
+    <section name="OutputSection_output.country" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_output.country" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
