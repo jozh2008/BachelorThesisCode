@@ -41,7 +41,7 @@ transmissionMode_VALL_DEPTH $OutputSection_VALL_DEPTH.transmissionMode_VALL_DEPT
 outputType_RSP $OutputSection_RSP.outputType_RSP
 transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="THRESHOLD" type="integer" value="5" optional="true" label="Channel Density" help="Strahler order to begin a channel."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -53,7 +53,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_SHADE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SHADE" type="select" label="Analytical Hillshading" help="Analytical Hillshading">
+      <param name="outputType_SHADE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -65,7 +65,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SLOPE" type="select" label="Slope" help="Slope">
+      <param name="outputType_SLOPE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -77,7 +77,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_ASPECT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ASPECT" type="select" label="Aspect" help="Aspect">
+      <param name="outputType_ASPECT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -89,7 +89,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_HCURV" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_HCURV" type="select" label="Plan Curvature" help="Plan Curvature">
+      <param name="outputType_HCURV" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -101,7 +101,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_VCURV" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VCURV" type="select" label="Profile Curvature" help="Profile Curvature">
+      <param name="outputType_VCURV" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -113,7 +113,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_CONVERGENCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONVERGENCE" type="select" label="Convergence Index" help="Convergence Index">
+      <param name="outputType_CONVERGENCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -125,7 +125,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_SINKS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SINKS" type="select" label="Closed Depressions" help="Closed Depressions">
+      <param name="outputType_SINKS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -137,7 +137,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_FLOW" type="select" label="Total Catchment Area" help="Total Catchment Area">
+      <param name="outputType_FLOW" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -149,7 +149,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_WETNESS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_WETNESS" type="select" label="Topographic Wetness Index" help="Topographic Wetness Index">
+      <param name="outputType_WETNESS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -161,7 +161,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_LSFACTOR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_LSFACTOR" type="select" label="LS-Factor" help="LS-Factor">
+      <param name="outputType_LSFACTOR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -173,7 +173,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_CHANNELS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CHANNELS" type="select" label="Channel Network" help="Channel Network">
+      <param name="outputType_CHANNELS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -184,7 +184,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_BASINS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BASINS" type="select" label="Drainage Basins" help="Drainage Basins">
+      <param name="outputType_BASINS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -195,7 +195,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_CHNL_BASE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CHNL_BASE" type="select" label="Channel Network Base Level" help="Channel Network Base Level">
+      <param name="outputType_CHNL_BASE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -207,7 +207,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_CHNL_DIST" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CHNL_DIST" type="select" label="Channel Network Distance" help="Channel Network Distance">
+      <param name="outputType_CHNL_DIST" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -219,7 +219,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_VALL_DEPTH" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VALL_DEPTH" type="select" label="Valley Depth" help="Valley Depth">
+      <param name="outputType_VALL_DEPTH" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -231,7 +231,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
       </param>
     </section>
     <section name="OutputSection_RSP" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RSP" type="select" label="Relative Slope Position" help="Relative Slope Position">
+      <param name="outputType_RSP" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

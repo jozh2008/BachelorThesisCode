@@ -16,7 +16,7 @@ outputType_RETENTION $OutputSection_RETENTION.outputType_RETENTION
 transmissionMode_RETENTION $OutputSection_RETENTION.transmissionMode_RETENTION]]></command>
   <inputs>
     <param name="SHAPES" type="data" optional="false" label="Plot Holes" help="Plot Holes The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="INTERPOL" type="select" optional="true" label="Interpolation" help="Interpolation">
       <option value="Inverse_Distance_Weighted">Inverse Distance Weighted</option>
       <option selected="true" value="Multilevel_B-Spline_Interpolation">Multilevel B-Spline Interpolation</option>
@@ -35,7 +35,7 @@ transmissionMode_RETENTION $OutputSection_RETENTION.transmissionMode_RETENTION]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Final Parameters" help="Final Parameters">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -46,7 +46,7 @@ transmissionMode_RETENTION $OutputSection_RETENTION.transmissionMode_RETENTION]]
       </param>
     </section>
     <section name="OutputSection_RETENTION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RETENTION" type="select" label="Water Retention Capacity" help="Water Retention Capacity">
+      <param name="outputType_RETENTION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

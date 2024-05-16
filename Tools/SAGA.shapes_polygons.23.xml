@@ -11,7 +11,7 @@ response $response
 outputType_GENERALIZED $OutputSection_GENERALIZED.outputType_GENERALIZED
 transmissionMode_GENERALIZED $OutputSection_GENERALIZED.transmissionMode_GENERALIZED]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="THRESHOLD" type="float" value="100" optional="true" label="Threshold" help="Threshold"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -23,7 +23,7 @@ transmissionMode_GENERALIZED $OutputSection_GENERALIZED.transmissionMode_GENERAL
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_GENERALIZED" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_GENERALIZED" type="select" label="Shape Indices" help="Shape Indices">
+      <param name="outputType_GENERALIZED" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

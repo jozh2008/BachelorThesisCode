@@ -15,7 +15,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A
 outputType_B $OutputSection_B.outputType_B
 transmissionMode_B $OutputSection_B.transmissionMode_B]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Categories" help="Categories The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PERCENT" type="float" value="25" optional="true" label="Relation B / A" help="Relation B / A"/>
     <param name="EXACT" type="select" optional="true" label="Exact" help="Exact">
@@ -32,7 +32,7 @@ transmissionMode_B $OutputSection_B.transmissionMode_B]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_A" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_A" type="select" label="Group A" help="Group A">
+      <param name="outputType_A" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -43,7 +43,7 @@ transmissionMode_B $OutputSection_B.transmissionMode_B]]></command>
       </param>
     </section>
     <section name="OutputSection_B" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_B" type="select" label="Group B" help="Group B">
+      <param name="outputType_B" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

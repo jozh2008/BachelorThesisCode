@@ -13,7 +13,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -34,7 +34,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

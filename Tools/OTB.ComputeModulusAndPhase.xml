@@ -15,7 +15,7 @@ transmissionMode_modulus $OutputSection_modulus.transmissionMode_modulus
 outputType_phase $OutputSection_phase.outputType_phase
 transmissionMode_phase $OutputSection_phase.transmissionMode_phase]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image (complex single band)" help="Input image (complex single band) The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image (complex single band)" help="Input image (complex single band) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="modulus" type="select" optional="false" label="Modulus of the input image computes with thefollowing formula: :math:`\sqrt" help="Modulus of the input image computes with thefollowing formula: :math:`\sqrt">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -43,7 +43,7 @@ transmissionMode_phase $OutputSection_phase.transmissionMode_phase]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_modulus" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_modulus" type="select" label="Modulus of the input image computes with thefollowing formula: :math:`\sqrt" help="Modulus of the input image computes with thefollowing formula: :math:`\sqrt">
+      <param name="outputType_modulus" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -54,7 +54,7 @@ transmissionMode_phase $OutputSection_phase.transmissionMode_phase]]></command>
       </param>
     </section>
     <section name="OutputSection_phase" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_phase" type="select" label="Phase of the input image computes with the following formula::math:`\tan^" help="Phase of the input image computes with the following formula::math:`\tan^">
+      <param name="outputType_phase" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

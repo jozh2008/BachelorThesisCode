@@ -45,13 +45,13 @@ transmissionMode_MAX_VELOCITY $OutputSection_MAX_VELOCITY.transmissionMode_MAX_V
 outputType_STOP_POSITIONS $OutputSection_STOP_POSITIONS.outputType_STOP_POSITIONS
 transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_STOP_POSITIONS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model [m]. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="RELEASE_AREAS" type="data" optional="false" label="Release Areas" help="Release areas encoded by unique integer IDs, all other cells NoData [-]. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="MATERIAL" type="data" optional="false" label="Material" help="Height of material available in each start cell [m]. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="FRICTION_ANGLE_GRID" type="data" optional="false" label="Friction Angle" help="Spatially distributed friction angles [degree]. Optionally used with the Geometric Gradient, Fahrboeschung's angle or Shadow Angle friction model. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="SLOPE_IMPACT_GRID" type="data" optional="false" label="Slope Impact Areas" help="Slope impact grid, impact areas encoded with valid values, all other NoData. Optionally used with the Shadow Angle or the 1-parameter friction model. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="FRICTION_MU_GRID" type="data" optional="false" label="Friction Parameter Mu" help="Spatially distributed friction parameter mu [-], optionally used with the 1-parameter friction model or the PCM Model. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="FRICTION_MASS_TO_DRAG_GRID" type="data" optional="false" label="Mass to Drag Ratio" help="Spatially distributed mass to drag ratio [m], optionally used with the PCM Model. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model [m]. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="RELEASE_AREAS" type="data" optional="false" label="Release Areas" help="Release areas encoded by unique integer IDs, all other cells NoData [-]. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="MATERIAL" type="data" optional="false" label="Material" help="Height of material available in each start cell [m]. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FRICTION_ANGLE_GRID" type="data" optional="false" label="Friction Angle" help="Spatially distributed friction angles [degree]. Optionally used with the Geometric Gradient, Fahrboeschung's angle or Shadow Angle friction model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SLOPE_IMPACT_GRID" type="data" optional="false" label="Slope Impact Areas" help="Slope impact grid, impact areas encoded with valid values, all other NoData. Optionally used with the Shadow Angle or the 1-parameter friction model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FRICTION_MU_GRID" type="data" optional="false" label="Friction Parameter Mu" help="Spatially distributed friction parameter mu [-], optionally used with the 1-parameter friction model or the PCM Model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FRICTION_MASS_TO_DRAG_GRID" type="data" optional="false" label="Mass to Drag Ratio" help="Spatially distributed mass to drag ratio [m], optionally used with the PCM Model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="PROCESS_PATH_MODEL" type="select" optional="true" label="Model" help="Choose a process path model.">
       <option value="Maximum_Slope">Maximum Slope</option>
       <option selected="true" value="Random_Walk">Random Walk</option>
@@ -112,7 +112,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PROCESS_AREA" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PROCESS_AREA" type="select" label="Process Area" help="Delineated process area with encoded transition frequencies [count].">
+      <param name="outputType_PROCESS_AREA" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -124,7 +124,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_DEPOSITION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DEPOSITION" type="select" label="Deposition" help="Height of material deposited in each cell [m]. Optional output in case a grid with material amounts is provided as input.">
+      <param name="outputType_DEPOSITION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -136,7 +136,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_MAX_VELOCITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MAX_VELOCITY" type="select" label="Maximum Velocity" help="Maximum velocity observed in each cell [m/s]. Optional output of the 1-parameter friction model and the PCM Model.">
+      <param name="outputType_MAX_VELOCITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -148,7 +148,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_STOP_POSITIONS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STOP_POSITIONS" type="select" label="Stopping Positions" help="Stopping positions, showing cells in which the run-out length has been reached [count].">
+      <param name="outputType_STOP_POSITIONS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

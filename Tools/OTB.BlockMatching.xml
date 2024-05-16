@@ -115,7 +115,7 @@ transmissionMode_io.outmask $OutputSection_io.outmask.transmissionMode_io.outmas
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.out" type="select" label="An image containing the estimated disparities as well as the metric values if the option is used. If no metric is output and no sub-pixel interpolation is done, pixel type canbe a signed integer. In the other cases, floating point pixel is advised." help="An image containing the estimated disparities as well as the metric values if the option is used. If no metric is output and no sub-pixel interpolation is done, pixel type canbe a signed integer. In the other cases, floating point pixel is advised.">
+      <param name="outputType_io.out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -126,7 +126,7 @@ transmissionMode_io.outmask $OutputSection_io.outmask.transmissionMode_io.outmas
       </param>
     </section>
     <section name="OutputSection_io.outmask" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.outmask" type="select" label="An output mask image corresponding to all citerions (see masking parameters). Only required if variance threshold or nodata criterions are set. Output pixel type is unsigned 8bit by default." help="An output mask image corresponding to all citerions (see masking parameters). Only required if variance threshold or nodata criterions are set. Output pixel type is unsigned 8bit by default.">
+      <param name="outputType_io.outmask" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

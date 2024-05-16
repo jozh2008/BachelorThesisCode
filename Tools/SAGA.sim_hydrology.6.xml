@@ -16,8 +16,8 @@ response $response
 outputType_CONC $OutputSection_CONC.outputType_CONC
 transmissionMode_CONC $OutputSection_CONC.transmissionMode_CONC]]></command>
   <inputs>
-    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="GRAD" type="data" optional="false" label="Gradient" help="Gradient The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="GRAD" type="data" optional="false" label="Gradient" help="Gradient The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="CONC_IN" type="float" value="5" optional="true" label="Inlet Concentration" help="Inlet Concentration"/>
     <param name="CONC_OUT" type="float" value="3" optional="true" label="Outlet Concentration" help="Outlet Concentration"/>
     <param name="CONC_E" type="float" value="0.001" optional="true" label="Concentration Approximation Threshold" help="Concentration Approximation Threshold"/>
@@ -37,7 +37,7 @@ transmissionMode_CONC $OutputSection_CONC.transmissionMode_CONC]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CONC" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONC" type="select" label="Concentration" help="Concentration">
+      <param name="outputType_CONC" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

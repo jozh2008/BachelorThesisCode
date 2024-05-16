@@ -10,7 +10,7 @@ response $response
 outputType_TABLE $OutputSection_TABLE.outputType_TABLE
 transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -21,7 +21,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TABLE" type="select" label="Minimum Distance Analysis" help="Minimum Distance Analysis">
+      <param name="outputType_TABLE" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_TABLE" type="select" label="Choose the transmission mode">

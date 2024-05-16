@@ -12,8 +12,8 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="Layer A" help="Layer A The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="B" type="data" optional="false" label="Layer B" help="Layer B The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="A" type="data" optional="false" label="Layer A" help="Layer A The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="B" type="data" optional="false" label="Layer B" help="Layer B The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="SPLIT" type="select" optional="true" label="Split Parts" help="Set true if you want multipart polygons to become separate polygons.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -28,7 +28,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RESULT" type="select" label="Symmetrical Difference" help="Symmetrical Difference">
+      <param name="outputType_RESULT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

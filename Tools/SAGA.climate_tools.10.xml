@@ -50,10 +50,10 @@ transmissionMode_BIO_18 $OutputSection_BIO_18.transmissionMode_BIO_18
 outputType_BIO_19 $OutputSection_BIO_19.outputType_BIO_19
 transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></command>
   <inputs>
-    <param name="TMEAN" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="TMEAN" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="SEASONALITY" type="select" optional="true" label="Temperature Seasonality" help="Temperature Seasonality">
       <option value="Coefficient_of_Variation">Coefficient of Variation</option>
       <option selected="true" value="Standard_Deviation">Standard Deviation</option>
@@ -68,7 +68,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_BIO_01" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_01" type="select" label="Annual Mean Temperature" help="Annual Mean Temperature">
+      <param name="outputType_BIO_01" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -80,7 +80,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_02" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_02" type="select" label="Mean Diurnal Range" help="Mean Diurnal Range">
+      <param name="outputType_BIO_02" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -92,7 +92,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_03" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_03" type="select" label="Isothermality" help="Isothermality">
+      <param name="outputType_BIO_03" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -104,7 +104,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_04" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_04" type="select" label="Temperature Seasonality" help="Temperature Seasonality">
+      <param name="outputType_BIO_04" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -116,7 +116,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_05" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_05" type="select" label="Maximum Temperature of Warmest Month" help="Maximum Temperature of Warmest Month">
+      <param name="outputType_BIO_05" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -128,7 +128,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_06" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_06" type="select" label="Minimum Temperature of Coldest Month" help="Minimum Temperature of Coldest Month">
+      <param name="outputType_BIO_06" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -140,7 +140,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_07" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_07" type="select" label="Temperature Annual Range" help="Temperature Annual Range">
+      <param name="outputType_BIO_07" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -152,7 +152,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_08" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_08" type="select" label="Mean Temperature of Wettest Quarter" help="Mean Temperature of Wettest Quarter">
+      <param name="outputType_BIO_08" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -164,7 +164,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_09" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_09" type="select" label="Mean Temperature of Driest Quarter" help="Mean Temperature of Driest Quarter">
+      <param name="outputType_BIO_09" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -176,7 +176,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_10" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_10" type="select" label="Mean Temperature of Warmest Quarter" help="Mean Temperature of Warmest Quarter">
+      <param name="outputType_BIO_10" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -188,7 +188,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_11" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_11" type="select" label="Mean Temperature of Coldest Quarter" help="Mean Temperature of Coldest Quarter">
+      <param name="outputType_BIO_11" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -200,7 +200,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_12" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_12" type="select" label="Annual Precipitation" help="Annual Precipitation">
+      <param name="outputType_BIO_12" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -212,7 +212,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_13" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_13" type="select" label="Precipitation of Wettest Month" help="Precipitation of Wettest Month">
+      <param name="outputType_BIO_13" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -224,7 +224,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_14" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_14" type="select" label="Precipitation of Driest Month" help="Precipitation of Driest Month">
+      <param name="outputType_BIO_14" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -236,7 +236,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_15" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_15" type="select" label="Precipitation Seasonality" help="Precipitation Seasonality">
+      <param name="outputType_BIO_15" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -248,7 +248,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_16" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_16" type="select" label="Precipitation of Wettest Quarter" help="Precipitation of Wettest Quarter">
+      <param name="outputType_BIO_16" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -260,7 +260,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_17" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_17" type="select" label="Precipitation of Driest Quarter" help="Precipitation of Driest Quarter">
+      <param name="outputType_BIO_17" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -272,7 +272,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_18" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_18" type="select" label="Precipitation of Warmest Quarter" help="Precipitation of Warmest Quarter">
+      <param name="outputType_BIO_18" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -284,7 +284,7 @@ transmissionMode_BIO_19 $OutputSection_BIO_19.transmissionMode_BIO_19]]></comman
       </param>
     </section>
     <section name="OutputSection_BIO_19" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BIO_19" type="select" label="Precipitation of Coldest Quarter" help="Precipitation of Coldest Quarter">
+      <param name="outputType_BIO_19" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

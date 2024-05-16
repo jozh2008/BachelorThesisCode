@@ -37,7 +37,7 @@ transmissionMode_TARGET $OutputSection_TARGET.transmissionMode_TARGET]]></comman
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="TRANSFORM_Z" type="select" optional="true" label="Z Transformation" help="Transform elevation (z) values, if appropriate.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -61,7 +61,7 @@ transmissionMode_TARGET $OutputSection_TARGET.transmissionMode_TARGET]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TARGET" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TARGET" type="select" label="Target" help="Target">
+      <param name="outputType_TARGET" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

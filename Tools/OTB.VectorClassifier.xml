@@ -15,7 +15,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input vector data file to classify." help="The input vector data file to classify. The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml, zip" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input vector data file to classify." help="The input vector data file to classify. The following data types are allowed in the txt file:  zip, xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="instat" type="data" optional="false" label="A XML file containing mean and standard deviation to centerand reduce samples before classification, produced by ComputeImagesStatistics application." help="A XML file containing mean and standard deviation to centerand reduce samples before classification, produced by ComputeImagesStatistics application. The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="model" type="data" optional="false" label="Model file produced by TrainVectorClassifier application." help="Model file produced by TrainVectorClassifier application. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="cfield" type="text" value="predicted" optional="false" label="Field containing the predicted class.Only geometries with this field available will be taken into account.The field is added either in the input file (if 'out' off) or in the output file.Caution, the 'cfield' must not exist in the input file if you are updating the file." help="Field containing the predicted class.Only geometries with this field available will be taken into account.The field is added either in the input file (if 'out' off) or in the output file.Caution, the 'cfield' must not exist in the input file if you are updating the file."/>
@@ -34,7 +34,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output vector data file storing sample values (OGR format).If not given, the input vector data file is updated." help="Output vector data file storing sample values (OGR format).If not given, the input vector data file is updated.">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="application/zip">zip</option>

@@ -46,7 +46,7 @@ transmissionMode_gcp.info $OutputSection_gcp.info.transmissionMode_gcp.info
 transmissionMode_gcp.imcoord $OutputSection_gcp.imcoord.transmissionMode_gcp.imcoord
 transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.geocoord]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image to analyse" help="Input image to analyse The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image to analyse" help="Input image to analyse The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="keywordlist" type="select" optional="false" label="Output the OSSIM keyword list. It contains metadata information (sensor model, geometry ). Information is stored in keyword list (pairs of key/value)" help="Output the OSSIM keyword list. It contains metadata information (sensor model, geometry ). Information is stored in keyword list (pairs of key/value)">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -61,7 +61,7 @@ transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.g
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_outkwl" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_outkwl" type="select" label="This option allows extracting the OSSIM keywordlist of the image into a geom file." help="This option allows extracting the OSSIM keywordlist of the image into a geom file.">
+      <param name="outputType_outkwl" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
       </param>

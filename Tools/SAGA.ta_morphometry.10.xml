@@ -29,7 +29,7 @@ transmissionMode_MBI $OutputSection_MBI.transmissionMode_MBI]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_MBI" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MBI" type="select" label="Mass Balance Index" help="Mass Balance Index">
+      <param name="outputType_MBI" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

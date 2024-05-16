@@ -41,7 +41,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_SHADE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SHADE" type="select" label="Shade" help="The shaded DTM.">
+      <param name="outputType_SHADE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -53,7 +53,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
       </param>
     </section>
     <section name="OutputSection_OPENNESS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OPENNESS" type="select" label="Openness" help="The difference of positive and negative openness.">
+      <param name="outputType_OPENNESS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -65,7 +65,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
       </param>
     </section>
     <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SLOPE" type="select" label="Slope" help="The calculated terrain slope [radians].">
+      <param name="outputType_SLOPE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -77,7 +77,7 @@ transmissionMode_CONTOURS $OutputSection_CONTOURS.transmissionMode_CONTOURS]]></
       </param>
     </section>
     <section name="OutputSection_CONTOURS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONTOURS" type="select" label="Contours" help="The generated contour lines.">
+      <param name="outputType_CONTOURS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

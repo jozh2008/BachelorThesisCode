@@ -12,7 +12,7 @@ response $response
 outputType_THINNED $OutputSection_THINNED.outputType_THINNED
 transmissionMode_THINNED $OutputSection_THINNED.transmissionMode_THINNED]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RESOLUTION" type="float" value="1" optional="true" label="Resolution" help="Resolution"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -25,7 +25,7 @@ transmissionMode_THINNED $OutputSection_THINNED.transmissionMode_THINNED]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_THINNED" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_THINNED" type="select" label="Thinned Points" help="Thinned Points">
+      <param name="outputType_THINNED" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

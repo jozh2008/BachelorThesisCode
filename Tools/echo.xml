@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayb False  output_data_a $output_data_a  output_data_b $output_data_b  name echo a '$a'
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayb False  output_data_a $output_data_a  output_data_b $output_data_b  output_data_c $output_data_c  name echo a '$a'
 b $b
 #for $i_repeat in $c.bbox
 floatData $i_repeat.floatData
@@ -15,13 +15,14 @@ prefer $prefer
 response $response
 transmissionMode_a $OutputSection_a.transmissionMode_a
 outputType_b $OutputSection_b.outputType_b
-transmissionMode_b $OutputSection_b.transmissionMode_b]]></command>
+transmissionMode_b $OutputSection_b.transmissionMode_b
+transmissionMode_c $OutputSection_c.transmissionMode_c]]></command>
   <inputs>
     <param name="a" type="text" optional="true" label="Literal Input (string)" help="An input string"/>
-    <param name="b" type="data" optional="false" label="Complex Input" help="A complex input  The following data types are allowed in the txt file:  xml, json" format="txt"/>
+    <param name="b" type="data" optional="false" label="Complex Input" help="A complex input  The following data types are allowed in the txt file:  json, xml" format="txt"/>
     <section name="c" title="BoundingBox Input " expanded="true" help="A boundingbox input ">
       <repeat name="bbox" title="Array item" min="4" max="6">
-        <param name="floatData" type="float" optional="true" label="Author did not provide help for this parameter... "/>
+        <param name="floatData" type="float" optional="false" label="Author did not provide help for this parameter... "/>
       </repeat>
       <param name="crs" type="select" optional="true" label="Author did not provide help for this parameter... ">
         <option value="urn:ogc:def:crs:EPSG:6.6:3785">urn:ogc:def:crs:EPSG:6.6:3785</option>
@@ -45,11 +46,17 @@ transmissionMode_b $OutputSection_b.transmissionMode_b]]></command>
       </param>
     </section>
     <section name="OutputSection_b" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_b" type="select" label="The output b" help="The output b returned">
+      <param name="outputType_b" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="text/xml">xml</option>
       </param>
       <param name="transmissionMode_b" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_c" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_c" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
@@ -63,6 +70,7 @@ transmissionMode_b $OutputSection_b.transmissionMode_b]]></command>
         <when input="outputType_b" format="json" value="application/json"/>
       </change_format>
     </data>
+    <data name="output_data_c" format="txt" hidden="false"/>
   </outputs>
   <tests>
     <test>

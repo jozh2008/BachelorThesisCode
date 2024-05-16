@@ -17,7 +17,7 @@ transmissionMode_FIRST $OutputSection_FIRST.transmissionMode_FIRST
 outputType_LAST $OutputSection_LAST.outputType_LAST
 transmissionMode_LAST $OutputSection_LAST.transmissionMode_LAST]]></command>
   <inputs>
-    <param name="TMEAN" type="data" optional="false" label="Mean Monthly Temperatures" help="Monthly (12) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="TMEAN" type="data" optional="false" label="Mean Monthly Temperatures" help="Monthly (12) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="TBASE" type="float" value="0" optional="true" label="Base Temperature" help="Base temperature in degree Celsius"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -29,7 +29,7 @@ transmissionMode_LAST $OutputSection_LAST.transmissionMode_LAST]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_NGDD" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_NGDD" type="select" label="Number of Days above Base Temperature" help="Number of days above base temperature.">
+      <param name="outputType_NGDD" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -41,7 +41,7 @@ transmissionMode_LAST $OutputSection_LAST.transmissionMode_LAST]]></command>
       </param>
     </section>
     <section name="OutputSection_TSUM" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TSUM" type="select" label="Growing Degree Days" help="Integral of daily temperature above base temperature.">
+      <param name="outputType_TSUM" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -53,7 +53,7 @@ transmissionMode_LAST $OutputSection_LAST.transmissionMode_LAST]]></command>
       </param>
     </section>
     <section name="OutputSection_FIRST" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_FIRST" type="select" label="First Growing Degree Day" help="First growing degree day of the year (1-365).">
+      <param name="outputType_FIRST" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -65,7 +65,7 @@ transmissionMode_LAST $OutputSection_LAST.transmissionMode_LAST]]></command>
       </param>
     </section>
     <section name="OutputSection_LAST" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_LAST" type="select" label="Last Growing Degree Day" help="Last growing degree day of the year (1-365).">
+      <param name="outputType_LAST" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

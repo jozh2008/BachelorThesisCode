@@ -27,8 +27,8 @@ transmissionMode_RESIDUALS $OutputSection_RESIDUALS.transmissionMode_RESIDUALS
 outputType_MODEL $OutputSection_MODEL.outputType_MODEL
 transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
   <inputs>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -64,7 +64,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
+      <param name="outputType_REGRESSION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -76,7 +76,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       </param>
     </section>
     <section name="OutputSection_REG_RESCORR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_REG_RESCORR" type="select" label="Regression with Residual Correction" help="Regression with Residual Correction">
+      <param name="outputType_REG_RESCORR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -88,7 +88,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       </param>
     </section>
     <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_QUALITY" type="select" label="Coefficient of Determination" help="Coefficient of Determination">
+      <param name="outputType_QUALITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -100,7 +100,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       </param>
     </section>
     <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
+      <param name="outputType_RESIDUALS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -112,7 +112,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       </param>
     </section>
     <section name="OutputSection_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MODEL" type="select" label="Regression Parameters" help="Regression Parameters">
+      <param name="outputType_MODEL" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

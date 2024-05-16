@@ -23,7 +23,7 @@ transmissionMode_outconcave $OutputSection_outconcave.transmissionMode_outconcav
 outputType_outleveling $OutputSection_outleveling.outputType_outleveling
 transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleveling]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to be classified." help="The input image to be classified. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to be classified." help="The input image to be classified. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="outconvex" type="select" optional="false" label="The output convex image with N bands" help="The output convex image with N bands">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -67,7 +67,7 @@ transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleve
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_outconvex" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_outconvex" type="select" label="The output convex image with N bands" help="The output convex image with N bands">
+      <param name="outputType_outconvex" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -78,7 +78,7 @@ transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleve
       </param>
     </section>
     <section name="OutputSection_outconcave" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_outconcave" type="select" label="The output concave concave with N bands" help="The output concave concave with N bands">
+      <param name="outputType_outconcave" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -89,7 +89,7 @@ transmissionMode_outleveling $OutputSection_outleveling.transmissionMode_outleve
       </param>
     </section>
     <section name="OutputSection_outleveling" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_outleveling" type="select" label="The output leveling image with N bands" help="The output leveling image with N bands">
+      <param name="outputType_outleveling" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

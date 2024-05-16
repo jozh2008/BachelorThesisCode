@@ -13,7 +13,7 @@ response $response
 outputType_TABLE $OutputSection_TABLE.outputType_TABLE
 transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Field" help="Field The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PDF" type="select" optional="true" label="Create PDF Docs" help="Create PDF Docs">
       <option selected="true" value="false">false</option>
@@ -30,7 +30,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TABLE" type="select" label="Summary Table" help="Summary Table">
+      <param name="outputType_TABLE" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_TABLE" type="select" label="Choose the transmission mode">

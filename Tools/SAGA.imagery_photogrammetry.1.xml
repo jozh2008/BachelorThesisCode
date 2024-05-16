@@ -28,7 +28,7 @@ response $response
 outputType_PC_OUT $OutputSection_PC_OUT.outputType_PC_OUT
 transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></command>
   <inputs>
-    <param name="rgbImage" type="data" optional="false" label="RGB Image" help="RGB Image The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="rgbImage" type="data" optional="false" label="RGB Image" help="RGB Image The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="PC_IN" type="data" optional="false" label="Points to be Colorised" help="Points to be Colorised The following data types are allowed in the txt file:  x-ogc-lasf" format="txt"/>
     <param name="GIVE_TIME" type="select" optional="true" label="Provide Time stamp of Image?" help="Do you wish to provide the time stamp of Image?">
       <option selected="true" value="false">false</option>
@@ -63,7 +63,7 @@ transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PC_OUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PC_OUT" type="select" label="Colorised Point Cloud" help="Colorised Point Cloud">
+      <param name="outputType_PC_OUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>
       <param name="transmissionMode_PC_OUT" type="select" label="Choose the transmission mode">

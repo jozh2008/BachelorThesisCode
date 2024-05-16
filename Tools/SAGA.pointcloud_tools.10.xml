@@ -42,7 +42,7 @@ transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PC_OUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PC_OUT" type="select" label="Result" help="Output">
+      <param name="outputType_PC_OUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>
       <param name="transmissionMode_PC_OUT" type="select" label="Choose the transmission mode">

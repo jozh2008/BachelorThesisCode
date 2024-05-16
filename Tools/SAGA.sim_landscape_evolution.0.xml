@@ -23,10 +23,10 @@ transmissionMode_REGOLITH $OutputSection_REGOLITH.transmissionMode_REGOLITH
 outputType_DIFFERENCE $OutputSection_DIFFERENCE.outputType_DIFFERENCE
 transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENCE]]></command>
   <inputs>
-    <param name="SURFACE_T0" type="data" optional="false" label="Initial Surface Elevation" help="Initial Surface Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="REGOLITH_T0" type="data" optional="false" label="Initial Regolith Thickness" help="Initial sediment cover (m) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="SURFACE_T0" type="data" optional="false" label="Initial Surface Elevation" help="Initial Surface Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="REGOLITH_T0" type="data" optional="false" label="Initial Regolith Thickness" help="Initial sediment cover (m) The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="REGOLITH_T0_DEFAULT" type="float" value="0" optional="true" label="Default" help="default value if no grid has been selected"/>
-    <param name="ALLOCHTHONE" type="data" optional="false" label="Allochthone Input" help="Allochthone input in meter per year (e.g. of aeolian origin, 'Loess'). The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="ALLOCHTHONE" type="data" optional="false" label="Allochthone Input" help="Allochthone input in meter per year (e.g. of aeolian origin, 'Loess'). The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="ALLOCHTHONE_DEFAULT" type="float" value="0" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="TIME_START" type="integer" value="50000" optional="true" label="Start [Years BP]" help="Start [Years BP]"/>
     <param name="TIME_STOP" type="integer" value="10000" optional="true" label="Stop [Years BP]" help="Stop [Years BP]"/>
@@ -46,7 +46,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_SURFACE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SURFACE" type="select" label="Surface Elevation" help="Surface Elevation">
+      <param name="outputType_SURFACE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -58,7 +58,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
       </param>
     </section>
     <section name="OutputSection_REGOLITH" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_REGOLITH" type="select" label="Regolith Thickness" help="Regolith Thickness">
+      <param name="outputType_REGOLITH" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -70,7 +70,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
       </param>
     </section>
     <section name="OutputSection_DIFFERENCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DIFFERENCE" type="select" label="Difference" help="Difference">
+      <param name="outputType_DIFFERENCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

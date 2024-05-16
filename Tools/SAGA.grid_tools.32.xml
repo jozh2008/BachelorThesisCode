@@ -11,7 +11,7 @@ response $response
 outputType_GRID $OutputSection_GRID.outputType_GRID
 transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grid List" help="Grid List The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grid List" help="Grid List The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="INDEX" type="integer" value="0" optional="true" label="Index" help="Index"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -23,7 +23,7 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_GRID" type="select" label="Grid" help="Grid">
+      <param name="outputType_GRID" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

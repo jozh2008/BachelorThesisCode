@@ -16,9 +16,9 @@ response $response
 outputType_PET $OutputSection_PET.outputType_PET
 transmissionMode_PET $OutputSection_PET.transmissionMode_PET]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="T_MIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="T_MAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="T_MIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="T_MAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="LAT" type="float" value="53" optional="true" label="Latitude [Degree]" help="Latitude [Degree]"/>
     <param name="TIME" type="select" optional="true" label="Time" help="Time">
       <option selected="true" value="day">day</option>
@@ -49,7 +49,7 @@ transmissionMode_PET $OutputSection_PET.transmissionMode_PET]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PET" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PET" type="select" label="Potential Evapotranspiration" help="Potential Evapotranspiration">
+      <param name="outputType_PET" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

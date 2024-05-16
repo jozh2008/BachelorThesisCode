@@ -11,7 +11,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Line or polygon shapefile to simplify. The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Line or polygon shapefile to simplify. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="TOLERANCE" type="float" value="1" optional="true" label="Tolerance" help="Maximum deviation allowed between original and simplified curve [map units]."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -23,7 +23,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Simplified Lines" help="If not set points will be removed from the input data set.">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

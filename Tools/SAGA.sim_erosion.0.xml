@@ -106,7 +106,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_IF" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_IF" type="select" label="Interflow" help="IF">
+      <param name="outputType_IF" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -118,7 +118,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
       </param>
     </section>
     <section name="OutputSection_Q" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_Q" type="select" label="Mean runoff" help="Q, estimation of mean runoff [mm]">
+      <param name="outputType_Q" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -130,7 +130,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
       </param>
     </section>
     <section name="OutputSection_SL" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SL" type="select" label="Mean soil loss" help="SL, estimation of mean soil loss [kg]">
+      <param name="outputType_SL" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -142,7 +142,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
       </param>
     </section>
     <section name="OutputSection_Rf" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_Rf" type="select" label="Effective Rainfall" help="Rf">
+      <param name="outputType_Rf" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -154,7 +154,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
       </param>
     </section>
     <section name="OutputSection_KE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_KE" type="select" label="Total Kinetic Energy" help="KE">
+      <param name="outputType_KE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -166,7 +166,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
       </param>
     </section>
     <section name="OutputSection_Rc" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_Rc" type="select" label="Soil moisture storage capacity" help="Rc">
+      <param name="outputType_Rc" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -178,7 +178,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
       </param>
     </section>
     <section name="OutputSection_TCc" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TCc" type="select" label="Transport Capacity Clay" help="TCc">
+      <param name="outputType_TCc" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/tiff">tiff</option>
       </param>
       <param name="transmissionMode_TCc" type="select" label="Choose the transmission mode">

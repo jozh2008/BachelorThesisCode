@@ -25,9 +25,9 @@ transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTIO
 outputType_PROBABILITY $OutputSection_PROBABILITY.outputType_PROBABILITY
 transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABILITY]]></command>
   <inputs>
-    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="BACKGROUND" type="float" value="1" optional="true" label="Background Sample Density [Percent]" help="Background Sample Density [Percent]"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Dekang_Lin">Dekang Lin</option>
@@ -59,7 +59,7 @@ transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABI
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PREDICTION" type="select" label="Presence Prediction" help="Presence Prediction">
+      <param name="outputType_PREDICTION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -71,7 +71,7 @@ transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABI
       </param>
     </section>
     <section name="OutputSection_PROBABILITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PROBABILITY" type="select" label="Presence Probability" help="Presence Probability">
+      <param name="outputType_PROBABILITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

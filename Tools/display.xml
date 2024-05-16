@@ -21,7 +21,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_Result" type="select" label="The welcome message" help="The HTML content out of the template.">
+      <param name="outputType_Result" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/html">html</option>
         <option value="text/plain">plain</option>
       </param>

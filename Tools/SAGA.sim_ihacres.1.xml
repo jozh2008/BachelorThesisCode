@@ -65,7 +65,7 @@ transmissionMode_TABLEsettings $OutputSection_TABLEsettings.transmissionMode_TAB
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TABLEout" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TABLEout" type="select" label="Table" help="Table">
+      <param name="outputType_TABLEout" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -77,7 +77,7 @@ transmissionMode_TABLEsettings $OutputSection_TABLEsettings.transmissionMode_TAB
       </param>
     </section>
     <section name="OutputSection_TABLEparms" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TABLEparms" type="select" label="Table" help="Table">
+      <param name="outputType_TABLEparms" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -89,7 +89,7 @@ transmissionMode_TABLEsettings $OutputSection_TABLEsettings.transmissionMode_TAB
       </param>
     </section>
     <section name="OutputSection_TABLEsettings" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TABLEsettings" type="select" label="Table" help="Table">
+      <param name="outputType_TABLEsettings" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

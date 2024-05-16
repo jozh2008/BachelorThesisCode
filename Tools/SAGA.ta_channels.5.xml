@@ -23,7 +23,7 @@ transmissionMode_BASINS $OutputSection_BASINS.transmissionMode_BASINS
 outputType_NODES $OutputSection_NODES.outputType_NODES
 transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="THRESHOLD" type="integer" value="5" optional="true" label="Threshold" help="Strahler order to begin a channel."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -35,7 +35,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_DIRECTION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DIRECTION" type="select" label="Flow Direction" help="Flow Direction">
+      <param name="outputType_DIRECTION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -47,7 +47,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
       </param>
     </section>
     <section name="OutputSection_CONNECTION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONNECTION" type="select" label="Flow Connectivity" help="Flow Connectivity">
+      <param name="outputType_CONNECTION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -59,7 +59,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
       </param>
     </section>
     <section name="OutputSection_ORDER" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ORDER" type="select" label="Strahler Order" help="Strahler Order">
+      <param name="outputType_ORDER" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -71,7 +71,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
       </param>
     </section>
     <section name="OutputSection_BASIN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BASIN" type="select" label="Drainage Basins" help="Drainage Basins">
+      <param name="outputType_BASIN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -83,7 +83,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
       </param>
     </section>
     <section name="OutputSection_SEGMENTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SEGMENTS" type="select" label="Channels" help="Channels">
+      <param name="outputType_SEGMENTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -94,7 +94,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
       </param>
     </section>
     <section name="OutputSection_BASINS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BASINS" type="select" label="Drainage Basins" help="Drainage Basins">
+      <param name="outputType_BASINS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -105,7 +105,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
       </param>
     </section>
     <section name="OutputSection_NODES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_NODES" type="select" label="Junctions" help="Junctions">
+      <param name="outputType_NODES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

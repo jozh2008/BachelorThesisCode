@@ -12,8 +12,8 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="FIELDS" type="data" optional="false" label="Attributes" help="Attributes to add. Select none to add all The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -25,7 +25,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Result" help="Result">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

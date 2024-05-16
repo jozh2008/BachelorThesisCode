@@ -205,7 +205,9 @@ class Galaxyxmltool:
                 min_items, max_items = self.get_array_length(schema)
                 array_type = array_items.get("type")
                 param = self.create_array_param(req, array_type, min_items, max_items)
+
             section.append(param)
+
         return section
 
     def get_array_length(self, schema: Dict):
@@ -402,9 +404,9 @@ class Galaxyxmltool:
 
     def choose_prefer(self, inputs):
         """
-        Create a select parameter for choosing between "return=representation", "return=minimal"
-        and "respond-async;return=representation". Specification is for synchronyous or ansychrounous excecutions
-        Ansynchronous execution is default value.
+        Creates a select parameter to choose between "return=representation", "return=minimal",
+        and "respond-async;return=representation". The specification is for synchronous or
+        asynchronous executions, with asynchronous execution as the default value.
         """
 
         label = "Choose the Prefer"
@@ -456,6 +458,7 @@ class Galaxyxmltool:
 
         return section
 
+    # To do: Implement solution for param_type object
     def create_output_param(self, output_schema: Dict, inputs: List, transmission_schema: Dict):
         """
         Create output parameters based on provided output schema and transmission schema.
@@ -471,29 +474,24 @@ class Galaxyxmltool:
         """
 
         for param_name, param_dict in output_schema.items():
+
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
             output_param_name = f"{self.output_type}_{param_name}"
+            title = param_schema.get("title")
+            description = param_schema.get("description")
             enum_values = []
-            if param_type == "string":
-                if param_schema.get("enum"):
-                    param = self.create_select_param(output_param_name, param_dict, is_nullable=False)
-                    enum_values = param_schema.get("enum")
-                else:
-                    # If no enum, then nothing to specify and so param is None
-                    param = None
-            elif param_extended_schema is not None:
-                param = self.create_select_param_output(output_param_name, param_dict, param_extended_schema)
-                self.extract_enum(param_extended_schema, enum_values=enum_values)
-            elif param_type == "number" or param_type == "integer" or param_type == "boolean":
-                # if not a string then param is None
-                param = None
-            else:
-                # Handle unsupported parameter types gracefully
-                print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
-                continue
 
+            param, enum_values = self.process_output_param(
+                output_param_name=output_param_name,
+                param_extended_schema=param_extended_schema,
+                param_schema=param_schema,
+                param_type=param_type,
+                enum_values=enum_values,
+                title=title,
+                description=description
+            )
             self.output_type_dictionary[output_param_name] = enum_values
 
             output_param_section_name = f"OutputSection_{param_name}"
@@ -508,12 +506,50 @@ class Galaxyxmltool:
             )
             inputs.append(output_param_section)
 
-    def create_select_param_output(self, param_name: str, param_dict: Dict, param_extended_schema: Dict):
+    def process_output_param(
+        self,
+        output_param_name: str,
+        param_extended_schema: Dict,
+        param_schema: Dict,
+        param_type: str,
+        enum_values: List,
+        title: str,
+        description: str
+    ):
+        # To Do: check string
+        if param_type == "string":
+            if param_schema.get("enum"):
+                param = self.create_select_param(
+                    param_name=output_param_name,
+                    param_schema=param_schema,
+                    is_nullable=False,
+                    param_type_bool=False,
+                    title=title,
+                    description=description
+                )
+                enum_values = param_schema.get("enum")
+
+            else:
+                # If no enum, then nothing to specify and so param is None
+                param = None
+        elif param_extended_schema is not None:
+            param = self.create_select_param_output(output_param_name, param_extended_schema, title, description)
+            self.extract_enum(param_extended_schema, enum_values=enum_values)
+        elif param_type in ["number", "integer", "boolean", "object"]:
+            # if not a string then param is None
+            param = None
+        else:
+            # Handle unsupported parameter types gracefully
+            print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
+            param = None
+
+        return param, enum_values
+
+    # To do: Add docstring
+    def create_select_param_output(self, param_name: str, param_extended_schema: Dict, title: str, description: str):
         enum_values = []
         self.extract_enum(param_extended_schema, enum_values)
         data_types_dict = {data_type: data_type.split('/')[-1] for data_type in enum_values}
-        description = param_dict.get("description")
-        title = param_dict.get("title")
         return self.gxtp.SelectParam(
             name=param_name,
             label=title,
@@ -686,11 +722,13 @@ class Galaxyxmltool:
 
         return outputs
 
+    # To do add requirements
     def define_requirements(self):
         requirements = self.gxtp.Requirements()
         requirements.append(self.gxtp.Requirement(type="package", version="3.9", value="python"))
         return requirements
 
+    # To do add tests
     def define_tests(self):
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
@@ -702,6 +740,7 @@ class Galaxyxmltool:
         tests.append(test_a)
         return tests
 
+    # To do: What should I citate
     def create_citations(self):
         citations = self.gxtp.Citations()
         citations.append(self.gxtp.Citation(type="bibtex", value="Josh"))

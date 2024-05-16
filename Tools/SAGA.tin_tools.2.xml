@@ -18,7 +18,7 @@ transmissionMode_TIN_TRIANGLES $OutputSection_TIN_TRIANGLES.transmissionMode_TIN
 outputType_TIN_POLYGONS $OutputSection_TIN_POLYGONS.outputType_TIN_POLYGONS
 transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_POLYGONS]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -29,7 +29,7 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TIN_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TIN_POINTS" type="select" label="TINPOINTS Shapes" help="TIN">
+      <param name="outputType_TIN_POINTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -40,7 +40,7 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
       </param>
     </section>
     <section name="OutputSection_TIN_CENTER" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TIN_CENTER" type="select" label="TINCENTER Shapes" help="TIN">
+      <param name="outputType_TIN_CENTER" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -51,7 +51,7 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
       </param>
     </section>
     <section name="OutputSection_TIN_EDGES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TIN_EDGES" type="select" label="TINEDGES Shapes" help="TIN">
+      <param name="outputType_TIN_EDGES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -62,7 +62,7 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
       </param>
     </section>
     <section name="OutputSection_TIN_TRIANGLES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TIN_TRIANGLES" type="select" label="TINTRIANGLES Shapes" help="TIN">
+      <param name="outputType_TIN_TRIANGLES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -73,7 +73,7 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
       </param>
     </section>
     <section name="OutputSection_TIN_POLYGONS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TIN_POLYGONS" type="select" label="TINPOLYGONS Shapes" help="TIN">
+      <param name="outputType_TIN_POLYGONS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

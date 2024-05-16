@@ -16,8 +16,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image, containing initial spectral signatures corresponding to the segmented image (inseg)." help="The input image, containing initial spectral signatures corresponding to the segmented image (inseg). The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
-    <param name="inseg" type="data" optional="false" label="Segmented image where each pixel value is the unique integer label of the segment it belongs to." help="Segmented image where each pixel value is the unique integer label of the segment it belongs to. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image, containing initial spectral signatures corresponding to the segmented image (inseg)." help="The input image, containing initial spectral signatures corresponding to the segmented image (inseg). The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="inseg" type="data" optional="false" label="Segmented image where each pixel value is the unique integer label of the segment it belongs to." help="Segmented image where each pixel value is the unique integer label of the segment it belongs to. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised." help="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised.">
       <option value="double">double</option>
       <option value="float">float</option>
@@ -40,7 +40,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised." help="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised.">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

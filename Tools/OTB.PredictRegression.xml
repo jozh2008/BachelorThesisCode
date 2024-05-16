@@ -15,9 +15,9 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to predict." help="The input image to predict. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="mask" type="data" optional="false" label="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0." help="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="model" type="data" optional="false" label="A regression model file (produced by TrainRegression application)." help="A regression model file (produced by TrainRegression application). The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to predict." help="The input image to predict. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="mask" type="data" optional="false" label="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0." help="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="model" type="data" optional="false" label="A regression model file (produced by TrainRegression application)." help="A regression model file (produced by TrainRegression application). The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="imstat" type="data" optional="false" label="A XML file containing mean and standard deviation to center and reduce samples before prediction (produced by ComputeImagesStatistics application). If this file containsone more band than the sample size, the last stat of last band will beapplied to expand the output predicted value" help="A XML file containing mean and standard deviation to center and reduce samples before prediction (produced by ComputeImagesStatistics application). If this file containsone more band than the sample size, the last stat of last band will beapplied to expand the output predicted value The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image containing predicted values" help="Output image containing predicted values">
       <option value="double">double</option>
@@ -38,7 +38,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output image containing predicted values" help="Output image containing predicted values">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

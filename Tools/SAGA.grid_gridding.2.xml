@@ -27,7 +27,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
 outputType_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.outputType_TARGET_OUT_GRID
 transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode_TARGET_OUT_GRID]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="CV_METHOD" type="select" optional="true" label="Cross Validation" help="Cross Validation">
       <option value="2-fold">2-fold</option>
@@ -51,7 +51,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -62,7 +62,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CV_SUMMARY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CV_SUMMARY" type="select" label="Cross Validation Summary" help="Cross Validation Summary">
+      <param name="outputType_CV_SUMMARY" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_CV_SUMMARY" type="select" label="Choose the transmission mode">
@@ -71,7 +71,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       </param>
     </section>
     <section name="OutputSection_CV_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CV_RESIDUALS" type="select" label="Cross Validation Residuals" help="Cross Validation Residuals">
+      <param name="outputType_CV_RESIDUALS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -82,7 +82,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       </param>
     </section>
     <section name="OutputSection_TARGET_OUT_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TARGET_OUT_GRID" type="select" label="Target Grid" help="Target Grid">
+      <param name="outputType_TARGET_OUT_GRID" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

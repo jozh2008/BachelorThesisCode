@@ -12,7 +12,7 @@ response $response
 outputType_GRADIENT $OutputSection_GRADIENT.outputType_GRADIENT
 transmissionMode_GRADIENT $OutputSection_GRADIENT.transmissionMode_GRADIENT]]></command>
   <inputs>
-    <param name="TIN" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="TIN" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="ZFIELD" type="data" optional="false" label="Z Values" help="Z Values The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DEGREE" type="select" optional="true" label="Output Unit" help="Output Unit">
       <option selected="true" value="Degree">Degree</option>
@@ -28,7 +28,7 @@ transmissionMode_GRADIENT $OutputSection_GRADIENT.transmissionMode_GRADIENT]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_GRADIENT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_GRADIENT" type="select" label="TIN_Gradient" help="TIN_Gradient">
+      <param name="outputType_GRADIENT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

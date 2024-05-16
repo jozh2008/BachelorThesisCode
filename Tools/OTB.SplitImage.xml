@@ -32,7 +32,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="The output filename will be used to get the prefix an the extension of the output written's image. For example with outimage.tif as output filename, the generated images will had an indice (corresponding at each bands) between the prefix and the extension, such as: outimage_0.tif  and outimage_1.tif (if 2 bands)." help="The output filename will be used to get the prefix an the extension of the output written's image. For example with outimage.tif as output filename, the generated images will had an indice (corresponding at each bands) between the prefix and the extension, such as: outimage_0.tif  and outimage_1.tif (if 2 bands).">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

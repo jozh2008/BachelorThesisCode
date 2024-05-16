@@ -18,7 +18,7 @@ transmissionMode_TRIANGLES $OutputSection_TRIANGLES.transmissionMode_TRIANGLES
 outputType_POLYGONS $OutputSection_POLYGONS.outputType_POLYGONS
 transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></command>
   <inputs>
-    <param name="TIN" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="TIN" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -29,7 +29,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_POINTS" type="select" label="Points" help="Points">
+      <param name="outputType_POINTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -40,7 +40,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
       </param>
     </section>
     <section name="OutputSection_CENTER" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CENTER" type="select" label="Center of Triangles" help="Center of Triangles">
+      <param name="outputType_CENTER" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -51,7 +51,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
       </param>
     </section>
     <section name="OutputSection_EDGES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_EDGES" type="select" label="Edges" help="Edges">
+      <param name="outputType_EDGES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -62,7 +62,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
       </param>
     </section>
     <section name="OutputSection_TRIANGLES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TRIANGLES" type="select" label="Triangles" help="Triangles">
+      <param name="outputType_TRIANGLES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -73,7 +73,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
       </param>
     </section>
     <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_POLYGONS" type="select" label="Polygons" help="Polygons">
+      <param name="outputType_POLYGONS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

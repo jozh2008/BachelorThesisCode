@@ -12,7 +12,7 @@ response $response
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="ZFIELD" type="data" optional="false" label="Z Value" help="Z Value The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output" help="Output">
       <option value="all_attributes">all attributes</option>
@@ -28,7 +28,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_POINTS" type="select" label="Points" help="Points">
+      <param name="outputType_POINTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>
       <param name="transmissionMode_POINTS" type="select" label="Choose the transmission mode">

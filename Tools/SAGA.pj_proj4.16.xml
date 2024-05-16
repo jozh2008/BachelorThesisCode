@@ -48,7 +48,7 @@ transmissionMode_TARGET $OutputSection_TARGET.transmissionMode_TARGET]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TARGET" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TARGET" type="select" label="Indicatrix" help="Indicatrix">
+      <param name="outputType_TARGET" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

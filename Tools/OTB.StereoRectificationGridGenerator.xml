@@ -34,8 +34,8 @@ transmissionMode_inverse.outleft $OutputSection_inverse.outleft.transmissionMode
 outputType_inverse.outright $OutputSection_inverse.outright.outputType_inverse.outright
 transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMode_inverse.outright]]></command>
   <inputs>
-    <param name="io.inleft" type="data" optional="false" label="The left image from the stereo pair, in sensor geometry." help="The left image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="io.inright" type="data" optional="false" label="The right image from the stereo pair, in sensor geometry." help="The right image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="io.inleft" type="data" optional="false" label="The left image from the stereo pair, in sensor geometry." help="The left image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="io.inright" type="data" optional="false" label="The right image from the stereo pair, in sensor geometry." help="The right image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="io.outleft" type="select" optional="false" label="The deformation grid to resample the left image from sensor geometry to epipolar geometry." help="The deformation grid to resample the left image from sensor geometry to epipolar geometry.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -85,7 +85,7 @@ transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMo
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_io.outleft" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.outleft" type="select" label="The deformation grid to resample the left image from sensor geometry to epipolar geometry." help="The deformation grid to resample the left image from sensor geometry to epipolar geometry.">
+      <param name="outputType_io.outleft" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -96,7 +96,7 @@ transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMo
       </param>
     </section>
     <section name="OutputSection_io.outright" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.outright" type="select" label="The deformation grid to resample the right image from sensor geometry to epipolar geometry." help="The deformation grid to resample the right image from sensor geometry to epipolar geometry.">
+      <param name="outputType_io.outright" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -143,7 +143,7 @@ transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMo
       </param>
     </section>
     <section name="OutputSection_inverse.outleft" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_inverse.outleft" type="select" label="The deformation grid to resample the left image from the epipolar geometry back into its original sensor geometry." help="The deformation grid to resample the left image from the epipolar geometry back into its original sensor geometry.">
+      <param name="outputType_inverse.outleft" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -154,7 +154,7 @@ transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMo
       </param>
     </section>
     <section name="OutputSection_inverse.outright" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_inverse.outright" type="select" label="The output deformation grid to resample the right image from the epipolar geometry back into its original sensor geometry." help="The output deformation grid to resample the right image from the epipolar geometry back into its original sensor geometry.">
+      <param name="outputType_inverse.outright" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

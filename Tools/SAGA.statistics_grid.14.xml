@@ -17,7 +17,7 @@ transmissionMode_MAJ_COUNT $OutputSection_MAJ_COUNT.transmissionMode_MAJ_COUNT
 outputType_MAJ_VALUE $OutputSection_MAJ_VALUE.outputType_MAJ_VALUE
 transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="RADIUS" type="integer" value="0" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -29,7 +29,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CATEGORIES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CATEGORIES" type="select" label="Number of Categories" help="Number of Categories">
+      <param name="outputType_CATEGORIES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -41,7 +41,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
       </param>
     </section>
     <section name="OutputSection_COINCIDENCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_COINCIDENCE" type="select" label="Coincidence" help="Coincidence">
+      <param name="outputType_COINCIDENCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -53,7 +53,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
       </param>
     </section>
     <section name="OutputSection_MAJ_COUNT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MAJ_COUNT" type="select" label="Dominance of Majority" help="Dominance of Majority">
+      <param name="outputType_MAJ_COUNT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -65,7 +65,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
       </param>
     </section>
     <section name="OutputSection_MAJ_VALUE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MAJ_VALUE" type="select" label="Value of Majority" help="Value of Majority">
+      <param name="outputType_MAJ_VALUE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

@@ -15,7 +15,7 @@ transmissionMode_FDIR $OutputSection_FDIR.transmissionMode_FDIR
 outputType_WSHED $OutputSection_WSHED.outputType_WSHED
 transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
   <inputs>
-    <param name="ELEV" type="data" optional="false" label="DEM" help="Digital elevation model The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="ELEV" type="data" optional="false" label="DEM" help="Digital elevation model The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="MINSLOPE" type="float" value="0.1" optional="true" label="Minimum Slope [Degree]" help="Minimum slope gradient to preserve from cell to cell; with a value of zero sinks are filled up to the spill elevation (which results in flat areas). Unit [Degree]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -27,7 +27,7 @@ transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_FILLED" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_FILLED" type="select" label="Filled DEM" help="Depression-free digital elevation model">
+      <param name="outputType_FILLED" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -39,7 +39,7 @@ transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
       </param>
     </section>
     <section name="OutputSection_FDIR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_FDIR" type="select" label="Flow Directions" help="Computed flow directions, 0=N, 1=NE, 2=E, ... 7=NW">
+      <param name="outputType_FDIR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -51,7 +51,7 @@ transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
       </param>
     </section>
     <section name="OutputSection_WSHED" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_WSHED" type="select" label="Watershed Basins" help="Delineated watershed basins">
+      <param name="outputType_WSHED" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

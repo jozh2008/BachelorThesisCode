@@ -19,7 +19,7 @@ transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABI
 outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
 transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="NORMALIZE" type="select" optional="true" label="Normalize" help="Normalize">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -43,7 +43,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PROBABILITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PROBABILITY" type="select" label="Probability" help="Probability">
+      <param name="outputType_PROBABILITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -55,7 +55,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
       </param>
     </section>
     <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CLASSES" type="select" label="Classification" help="Classification">
+      <param name="outputType_CLASSES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

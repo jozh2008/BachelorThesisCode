@@ -52,7 +52,7 @@ transmissionMode_SUMMARY $OutputSection_SUMMARY.transmissionMode_SUMMARY]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PHENOLOGY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PHENOLOGY" type="select" label="Phenology" help="Phenology">
+      <param name="outputType_PHENOLOGY" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_PHENOLOGY" type="select" label="Choose the transmission mode">
@@ -61,7 +61,7 @@ transmissionMode_SUMMARY $OutputSection_SUMMARY.transmissionMode_SUMMARY]]></com
       </param>
     </section>
     <section name="OutputSection_SUMMARY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SUMMARY" type="select" label="Summary" help="Summary">
+      <param name="outputType_SUMMARY" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_SUMMARY" type="select" label="Choose the transmission mode">

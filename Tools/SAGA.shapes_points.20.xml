@@ -16,8 +16,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT
 outputType_MOVES $OutputSection_MOVES.outputType_MOVES
 transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="DISTANCE" type="float" value="0" optional="true" label="Search Distance (Map Units)" help="Search Distance (Map Units)"/>
     <param name="SHAPE" type="select" optional="true" label="Search Shape" help="Search Shape">
       <option selected="true" value="circle">circle</option>
@@ -37,7 +37,7 @@ transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Result" help="Result">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -48,7 +48,7 @@ transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
       </param>
     </section>
     <section name="OutputSection_MOVES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MOVES" type="select" label="Moves" help="Moves">
+      <param name="outputType_MOVES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

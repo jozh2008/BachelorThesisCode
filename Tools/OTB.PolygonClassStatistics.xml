@@ -18,9 +18,9 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Support image that will be classified" help="Support image that will be classified The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="mask" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="vec" type="data" optional="false" label="Input geometries to analyze" help="Input geometries to analyze The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Support image that will be classified" help="Support image that will be classified The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="mask" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="vec" type="data" optional="false" label="Input geometries to analyze" help="Input geometries to analyze The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="field" type="text" optional="false" label="Name of the field carrying the class name in the input vectors." help="Name of the field carrying the class name in the input vectors."/>
     <param name="layer" type="integer" value="0" optional="true" label="Layer index to read in the input vector file." help="Layer index to read in the input vector file."/>
     <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
@@ -37,7 +37,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output file to store statistics (XML format)" help="Output file to store statistics (XML format)">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/xml">xml</option>
       </param>
       <param name="transmissionMode_out" type="select" label="Choose the transmission mode">

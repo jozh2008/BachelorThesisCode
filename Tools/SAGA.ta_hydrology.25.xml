@@ -27,8 +27,8 @@ transmissionMode_LS_FACTOR $OutputSection_LS_FACTOR.transmissionMode_LS_FACTOR
 outputType_BALANCE $OutputSection_BALANCE.outputType_BALANCE
 transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="LS Calculation" help="LS Calculation">
       <option value="Desmet_&amp;_Govers_1996">Desmet &amp; Govers 1996</option>
       <option selected="true" value="Moore_&amp;_Nieber_1989">Moore &amp; Nieber 1989</option>
@@ -63,7 +63,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_STATISTICS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATISTICS" type="select" label="Field Statistics" help="Field Statistics">
+      <param name="outputType_STATISTICS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -74,7 +74,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
       </param>
     </section>
     <section name="OutputSection_UPSLOPE_AREA" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_UPSLOPE_AREA" type="select" label="Upslope Length Factor" help="Upslope Length Factor">
+      <param name="outputType_UPSLOPE_AREA" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -86,7 +86,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
       </param>
     </section>
     <section name="OutputSection_UPSLOPE_LENGTH" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_UPSLOPE_LENGTH" type="select" label="Effective Flow Length" help="Effective Flow Length">
+      <param name="outputType_UPSLOPE_LENGTH" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -98,7 +98,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
       </param>
     </section>
     <section name="OutputSection_UPSLOPE_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_UPSLOPE_SLOPE" type="select" label="Upslope Slope" help="Upslope Slope">
+      <param name="outputType_UPSLOPE_SLOPE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -110,7 +110,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
       </param>
     </section>
     <section name="OutputSection_LS_FACTOR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_LS_FACTOR" type="select" label="LS Factor" help="LS Factor">
+      <param name="outputType_LS_FACTOR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -122,7 +122,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
       </param>
     </section>
     <section name="OutputSection_BALANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_BALANCE" type="select" label="Sediment Balance" help="Sediment Balance">
+      <param name="outputType_BALANCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

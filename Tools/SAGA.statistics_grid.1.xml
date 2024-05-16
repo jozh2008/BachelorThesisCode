@@ -27,7 +27,7 @@ transmissionMode_DEVMEAN $OutputSection_DEVMEAN.transmissionMode_DEVMEAN
 outputType_PERCENT $OutputSection_PERCENT.outputType_PERCENT
 transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
       <option selected="true" value="Circle">Circle</option>
       <option value="Square">Square</option>
@@ -47,7 +47,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MEAN" type="select" label="Mean Value" help="Mean Value">
+      <param name="outputType_MEAN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -59,7 +59,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       </param>
     </section>
     <section name="OutputSection_DIFF" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DIFF" type="select" label="Difference from Mean Value" help="Difference from Mean Value">
+      <param name="outputType_DIFF" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -71,7 +71,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       </param>
     </section>
     <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STDDEV" type="select" label="Standard Deviation" help="Standard Deviation">
+      <param name="outputType_STDDEV" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -83,7 +83,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       </param>
     </section>
     <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RANGE" type="select" label="Value Range" help="Value Range">
+      <param name="outputType_RANGE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -95,7 +95,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       </param>
     </section>
     <section name="OutputSection_MIN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MIN" type="select" label="Minimum Value" help="Minimum Value">
+      <param name="outputType_MIN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -107,7 +107,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       </param>
     </section>
     <section name="OutputSection_MAX" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MAX" type="select" label="Maximum Value" help="Maximum Value">
+      <param name="outputType_MAX" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -119,7 +119,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       </param>
     </section>
     <section name="OutputSection_DEVMEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DEVMEAN" type="select" label="Deviation from Mean Value" help="Deviation from Mean Value">
+      <param name="outputType_DEVMEAN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -131,7 +131,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
       </param>
     </section>
     <section name="OutputSection_PERCENT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PERCENT" type="select" label="Percentile" help="Percentile">
+      <param name="outputType_PERCENT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

@@ -67,7 +67,7 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output resampled geometries" help="Output resampled geometries">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
       </param>
@@ -77,7 +77,7 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
       </param>
     </section>
     <section name="OutputSection_outrates" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_outrates" type="select" label="Output rates (CSV formatted)" help="Output rates (CSV formatted)">
+      <param name="outputType_outrates" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_outrates" type="select" label="Choose the transmission mode">

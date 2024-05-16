@@ -23,7 +23,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_Result" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_Result" type="select" label="The difference between two geometries" help="The difference between the two geometries.">
+      <param name="outputType_Result" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="text/xml">xml</option>
       </param>

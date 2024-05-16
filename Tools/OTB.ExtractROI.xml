@@ -33,7 +33,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Image to be processed." help="Image to be processed. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Image to be processed." help="Image to be processed. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Region of interest from the input image" help="Region of interest from the input image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -48,8 +48,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="radius">radius</option>
       <option selected="true" value="standard">standard</option>
     </param>
-    <param name="mode.fit.im" type="data" optional="false" label="Reference image to define the ROI" help="Reference image to define the ROI The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="mode.fit.vect" type="data" optional="false" label="The extent of the input vector file is computed and then gives a region of interest that will be extracted." help="The extent of the input vector file is computed and then gives a region of interest that will be extracted. The following data types are allowed in the txt file:  json, xml, zip, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="mode.fit.im" type="data" optional="false" label="Reference image to define the ROI" help="Reference image to define the ROI The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="mode.fit.vect" type="data" optional="false" label="The extent of the input vector file is computed and then gives a region of interest that will be extracted." help="The extent of the input vector file is computed and then gives a region of interest that will be extracted. The following data types are allowed in the txt file:  zip, json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="mode.extent.ulx" type="float" value="0" optional="false" label="X coordinate of upper left corner point." help="X coordinate of upper left corner point."/>
     <param name="mode.extent.uly" type="float" value="0" optional="false" label="Y coordinate of upper left corner point." help="Y coordinate of upper left corner point."/>
     <param name="mode.extent.lrx" type="float" value="0" optional="false" label="X coordinate of lower right corner point." help="X coordinate of lower right corner point."/>
@@ -90,7 +90,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Region of interest from the input image" help="Region of interest from the input image">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

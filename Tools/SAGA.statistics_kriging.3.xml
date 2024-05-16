@@ -45,9 +45,9 @@ transmissionMode_INFO_MODEL $OutputSection_INFO_MODEL.transmissionMode_INFO_MODE
 outputType_INFO_STEPS $OutputSection_INFO_STEPS.outputType_INFO_STEPS
 transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEPS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="COORD_X" type="select" optional="true" label="Include X Coordinate" help="Include X Coordinate">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -119,7 +119,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_REGRESSION" type="select" label="Regression" help="regression model applied to predictor grids">
+      <param name="outputType_REGRESSION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -131,7 +131,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       </param>
     </section>
     <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PREDICTION" type="select" label="Prediction" help="Prediction">
+      <param name="outputType_PREDICTION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -143,7 +143,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       </param>
     </section>
     <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
+      <param name="outputType_RESIDUALS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -155,7 +155,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       </param>
     </section>
     <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VARIANCE" type="select" label="Quality Measure" help="Quality Measure">
+      <param name="outputType_VARIANCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -167,7 +167,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       </param>
     </section>
     <section name="OutputSection_INFO_COEFF" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_INFO_COEFF" type="select" label="Regression: Coefficients" help="Regression: Coefficients">
+      <param name="outputType_INFO_COEFF" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_INFO_COEFF" type="select" label="Choose the transmission mode">
@@ -176,7 +176,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       </param>
     </section>
     <section name="OutputSection_INFO_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_INFO_MODEL" type="select" label="Regression: Model" help="Regression: Model">
+      <param name="outputType_INFO_MODEL" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_INFO_MODEL" type="select" label="Choose the transmission mode">
@@ -185,7 +185,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
       </param>
     </section>
     <section name="OutputSection_INFO_STEPS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_INFO_STEPS" type="select" label="Regression: Steps" help="Regression: Steps">
+      <param name="outputType_INFO_STEPS" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_INFO_STEPS" type="select" label="Choose the transmission mode">

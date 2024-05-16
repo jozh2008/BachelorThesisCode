@@ -44,7 +44,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TABLE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TABLE" type="select" label="Table from SQL Query" help="Table from SQL Query">
+      <param name="outputType_TABLE" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_TABLE" type="select" label="Choose the transmission mode">

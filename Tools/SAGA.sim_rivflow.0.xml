@@ -32,9 +32,9 @@ transmissionMode_OUTPUT8 $OutputSection_OUTPUT8.transmissionMode_OUTPUT8
 outputType_OUTPUT9 $OutputSection_OUTPUT9.outputType_OUTPUT9
 transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="DTM" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="INPUT2" type="data" optional="false" label="HGGrid" help="Eingaberaster der Hauptgerinnerasterzellen des Flussnetzwerkes The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="INPUT3" type="data" optional="false" label="statisches Entnahmeraster" help="Eingaberaster mit Angaben zur statischen Flaechenwasserentnahme. The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="DTM" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT2" type="data" optional="false" label="HGGrid" help="Eingaberaster der Hauptgerinnerasterzellen des Flussnetzwerkes The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="INPUT3" type="data" optional="false" label="statisches Entnahmeraster" help="Eingaberaster mit Angaben zur statischen Flaechenwasserentnahme. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="WCons" type="select" optional="true" label="Anteilige Flaechenwasserentnahme" help="Wenn gesetzt, werden die Werte des statischen Entahmerasters anteilig entnommen und als Raster statWUse ausgegeben">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -60,7 +60,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT2" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT2" type="select" label="Grad" help="Ausgabe der Abflussgradienten jeder Rasterzelle">
+      <param name="outputType_OUTPUT2" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -72,7 +72,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       </param>
     </section>
     <section name="OutputSection_OUTPUT3" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT3" type="select" label="Direc" help="Ausgabe der Abflussrichtung fuer jede Rasterzelle">
+      <param name="outputType_OUTPUT3" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -84,7 +84,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       </param>
     </section>
     <section name="OutputSection_OUTPUT4" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT4" type="select" label="HGGrad" help="Ausgabe der Abflussgradienten jeder Hauptgerinnerasterzelle">
+      <param name="outputType_OUTPUT4" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -96,7 +96,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       </param>
     </section>
     <section name="OutputSection_OUTPUT5" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT5" type="select" label="RivSpeed" help="Ausgabe Flussgeschwindigkeiten der Hauptgerinnerasterzellen (siehe Parametereinstellungen)">
+      <param name="outputType_OUTPUT5" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -108,7 +108,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       </param>
     </section>
     <section name="OutputSection_OUTPUT6" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT6" type="select" label="Coordinates" help="Ausgabe der Koordinatenwerte der Rasterzellen im Format xxxx.yyyy">
+      <param name="outputType_OUTPUT6" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -120,7 +120,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       </param>
     </section>
     <section name="OutputSection_OUTPUT7" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT7" type="select" label="BasinShare" help="Ausagbe der Rasterzellen des Flusseinzugsgebiets">
+      <param name="outputType_OUTPUT7" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -132,7 +132,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       </param>
     </section>
     <section name="OutputSection_OUTPUT8" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT8" type="select" label="statWUse" help="Ausagbe der anteiligen Flaechenwasserentnahme je Rasterzelle">
+      <param name="outputType_OUTPUT8" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -144,7 +144,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
       </param>
     </section>
     <section name="OutputSection_OUTPUT9" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT9" type="select" label="NumInFlowCells" help="Ausgaberaster mit Angabe ueber die Anzahl der Rasterzellen, die in eine spezifische Rasterzelle (x,y) abflieszen">
+      <param name="outputType_OUTPUT9" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

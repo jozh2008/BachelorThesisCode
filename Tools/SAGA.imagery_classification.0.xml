@@ -29,12 +29,12 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES
 outputType_QUALITY $OutputSection_QUALITY.outputType_QUALITY
 transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="NORMALISE" type="select" optional="true" label="Normalise" help="Normalise">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="TRAINING_CLASS" type="data" optional="false" label="Class Identifier" help="Class Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="FILE_LOAD" type="data" optional="false" label="Load Statistics from File..." help="Load Statistics from File... The following data types are allowed in the txt file:  plain" format="txt"/>
     <param name="FILE_SAVE" type="data" optional="false" label="Save Statistics to File..." help="Save Statistics to File... The following data types are allowed in the txt file:  plain" format="txt"/>
@@ -92,7 +92,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CLASSES" type="select" label="Classification" help="Classification">
+      <param name="outputType_CLASSES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -104,7 +104,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
       </param>
     </section>
     <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_QUALITY" type="select" label="Quality" help="Dependent on chosen method, these are distances or probabilities.">
+      <param name="outputType_QUALITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

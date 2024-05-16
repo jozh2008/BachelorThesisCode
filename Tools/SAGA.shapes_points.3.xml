@@ -15,9 +15,9 @@ response $response
 outputType_DISTANCES $OutputSection_DISTANCES.outputType_DISTANCES
 transmissionMode_DISTANCES $OutputSection_DISTANCES.transmissionMode_DISTANCES]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="ID_POINTS" type="data" optional="false" label="Identifier" help="Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="NEAR" type="data" optional="false" label="Near Points" help="Near Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="NEAR" type="data" optional="false" label="Near Points" help="Near Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="ID_NEAR" type="data" optional="false" label="Identifier" help="Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="FORMAT" type="select" optional="true" label="Output Format" help="Output Format">
       <option value="complete_input_times_near_points_matrix">complete input times near points matrix</option>
@@ -34,7 +34,7 @@ transmissionMode_DISTANCES $OutputSection_DISTANCES.transmissionMode_DISTANCES]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_DISTANCES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DISTANCES" type="select" label="Distances" help="Distances">
+      <param name="outputType_DISTANCES" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_DISTANCES" type="select" label="Choose the transmission mode">

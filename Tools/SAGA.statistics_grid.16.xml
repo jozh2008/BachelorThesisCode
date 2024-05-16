@@ -55,7 +55,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_COUNT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_COUNT" type="select" label="Number of Values" help="Number of Values">
+      <param name="outputType_COUNT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -67,7 +67,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_MIN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MIN" type="select" label="Minimum" help="Minimum">
+      <param name="outputType_MIN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -79,7 +79,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_MAX" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MAX" type="select" label="Maximum" help="Maximum">
+      <param name="outputType_MAX" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -91,7 +91,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RANGE" type="select" label="Range" help="Range">
+      <param name="outputType_RANGE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -103,7 +103,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_SUM" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SUM" type="select" label="Sum" help="Sum">
+      <param name="outputType_SUM" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -115,7 +115,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_SUM2" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SUM2" type="select" label="Sum of Squares" help="Sum of Squares">
+      <param name="outputType_SUM2" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -127,7 +127,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MEAN" type="select" label="Arithmetic Mean" help="Arithmetic Mean">
+      <param name="outputType_MEAN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -139,7 +139,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_VAR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VAR" type="select" label="Variance" help="Variance">
+      <param name="outputType_VAR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -151,7 +151,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STDDEV" type="select" label="Standard Deviation" help="Standard Deviation">
+      <param name="outputType_STDDEV" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -163,7 +163,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_HISTOGRAM" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_HISTOGRAM" type="select" label="Histogram" help="Histogram">
+      <param name="outputType_HISTOGRAM" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -175,7 +175,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_QUANTILES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_QUANTILES" type="select" label="Percentiles" help="Percentiles">
+      <param name="outputType_QUANTILES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

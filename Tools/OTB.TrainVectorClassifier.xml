@@ -58,11 +58,11 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out
 outputType_io.confmatout $OutputSection_io.confmatout.outputType_io.confmatout
 transmissionMode_io.confmatout $OutputSection_io.confmatout.transmissionMode_io.confmatout]]></command>
   <inputs>
-    <param name="io.vd" type="data" optional="false" label="Input geometries used for training (note : all geometries from the layer will be used)" help="Input geometries used for training (note : all geometries from the layer will be used) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, zip, json" format="txt"/>
+    <param name="io.vd" type="data" optional="false" label="Input geometries used for training (note : all geometries from the layer will be used)" help="Input geometries used for training (note : all geometries from the layer will be used) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json, zip" format="txt"/>
     <param name="io.stats" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="layer" type="integer" value="0" optional="true" label="Index of the layer to use in the input vector file." help="Index of the layer to use in the input vector file."/>
     <param name="feat" type="text" optional="false" label="List of field names in the input vector data to be used as features for training." help="List of field names in the input vector data to be used as features for training."/>
-    <param name="valid.vd" type="data" optional="false" label="Geometries used for validation (must contain the same fields used for training, all geometries from the layer will be used)" help="Geometries used for validation (must contain the same fields used for training, all geometries from the layer will be used) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, zip, json" format="txt"/>
+    <param name="valid.vd" type="data" optional="false" label="Geometries used for validation (must contain the same fields used for training, all geometries from the layer will be used)" help="Geometries used for validation (must contain the same fields used for training, all geometries from the layer will be used) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json, zip" format="txt"/>
     <param name="valid.layer" type="integer" value="0" optional="true" label="Index of the layer to use in the validation vector file." help="Index of the layer to use in the validation vector file."/>
     <param name="cfield" type="text" optional="false" label="Field containing the class id for supervision. The values in this field shall be cast into integers. Only geometries with this field available will be taken into account." help="Field containing the class id for supervision. The values in this field shall be cast into integers. Only geometries with this field available will be taken into account."/>
     <param name="v" type="select" optional="false" label="Verbose mode, display the contingency table result." help="Verbose mode, display the contingency table result.">
@@ -163,7 +163,7 @@ transmissionMode_io.confmatout $OutputSection_io.confmatout.transmissionMode_io.
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.out" type="select" label="Output file containing the model estimated (.txt format)." help="Output file containing the model estimated (.txt format).">
+      <param name="outputType_io.out" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
       </param>
@@ -173,7 +173,7 @@ transmissionMode_io.confmatout $OutputSection_io.confmatout.transmissionMode_io.
       </param>
     </section>
     <section name="OutputSection_io.confmatout" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.confmatout" type="select" label="Output file containing the confusion matrix or contingency table (.csv format).The contingency table is output when we unsupervised algorithms is used otherwise the confusion matrix is output." help="Output file containing the confusion matrix or contingency table (.csv format).The contingency table is output when we unsupervised algorithms is used otherwise the confusion matrix is output.">
+      <param name="outputType_io.confmatout" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_io.confmatout" type="select" label="Choose the transmission mode">

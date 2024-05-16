@@ -13,7 +13,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Detector type" help="Detector type">
       <option selected="true" value="Canny">Canny</option>
       <option value="Shen-Castan">Shen-Castan</option>
@@ -30,7 +30,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Edges" help="Edges">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

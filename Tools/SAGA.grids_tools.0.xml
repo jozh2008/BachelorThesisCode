@@ -19,7 +19,7 @@ response $response
 outputType_GRIDS $OutputSection_GRIDS.outputType_GRIDS
 transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   <inputs>
-    <param name="LIST" type="data" optional="false" label="Single Grids" help="Single Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="LIST" type="data" optional="false" label="Single Grids" help="Single Grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="NAME" type="text" optional="true" label="Name" help="Name"/>
     <param name="DELETE" type="select" optional="true" label="Delete" help="Delete">
       <option selected="true" value="false">false</option>
@@ -35,7 +35,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
     <param name="TABLE_Z" type="data" optional="false" label="Z Attribute" help="Z Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NFIELDS" type="integer" value="2" optional="true" label="Number of Attributes" help="Number of Attributes"/>
     <param name="ZFIELD" type="integer" value="1" optional="true" label="Z Attribute" help="Z Attribute"/>
-    <param name="COPY" type="data" optional="false" label="Copy from Grid Collection" help="Copy from Grid Collection The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="COPY" type="data" optional="false" label="Copy from Grid Collection" help="Copy from Grid Collection The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="COPY_SET" type="select" optional="true" label="Copy Settings" help="Copy Settings">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -50,7 +50,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_GRIDS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_GRIDS" type="select" label="Grid Collection" help="Grid Collection">
+      <param name="outputType_GRIDS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

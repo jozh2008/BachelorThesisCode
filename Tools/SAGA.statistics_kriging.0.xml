@@ -43,7 +43,7 @@ transmissionMode_CV_SUMMARY $OutputSection_CV_SUMMARY.transmissionMode_CV_SUMMAR
 outputType_CV_RESIDUALS $OutputSection_CV_RESIDUALS.outputType_CV_RESIDUALS
 transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RESIDUALS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
       <option value="grid_or_grid_system">grid or grid system</option>
@@ -60,7 +60,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="VAR_MAXDIST" type="float" value="0" optional="true" label="Maximum Distance" help="maximum distance for variogram estimation, ignored if set to zero"/>
     <param name="VAR_NCLASSES" type="integer" value="100" optional="true" label="Lag Distance Classes" help="initial number of lag distance classes"/>
     <param name="VAR_NSKIP" type="integer" value="1" optional="true" label="Skip" help="Skip"/>
@@ -110,7 +110,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PREDICTION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PREDICTION" type="select" label="Prediction" help="Prediction">
+      <param name="outputType_PREDICTION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -122,7 +122,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
       </param>
     </section>
     <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VARIANCE" type="select" label="Quality Measure" help="Quality Measure">
+      <param name="outputType_VARIANCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -134,7 +134,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
       </param>
     </section>
     <section name="OutputSection_CV_SUMMARY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CV_SUMMARY" type="select" label="Cross Validation Summary" help="Cross Validation Summary">
+      <param name="outputType_CV_SUMMARY" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_CV_SUMMARY" type="select" label="Choose the transmission mode">
@@ -143,7 +143,7 @@ transmissionMode_CV_RESIDUALS $OutputSection_CV_RESIDUALS.transmissionMode_CV_RE
       </param>
     </section>
     <section name="OutputSection_CV_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CV_RESIDUALS" type="select" label="Cross Validation Residuals" help="Cross Validation Residuals">
+      <param name="outputType_CV_RESIDUALS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

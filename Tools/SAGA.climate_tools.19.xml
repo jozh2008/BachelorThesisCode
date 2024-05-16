@@ -12,8 +12,8 @@ response $response
 outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
 transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Temperature" help="Temperature The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="T" type="data" optional="false" label="Temperature" help="Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Classification" help="Classification">
       <option value="Koeppen-Geiger">Koeppen-Geiger</option>
       <option value="Koeppen-Geiger_after_Peel_et_al._(2007)">Koeppen-Geiger after Peel et al. (2007)</option>
@@ -32,7 +32,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CLASSES" type="select" label="Climate Classification" help="Climate Classification">
+      <param name="outputType_CLASSES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

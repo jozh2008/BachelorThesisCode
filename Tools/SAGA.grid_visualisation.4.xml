@@ -23,8 +23,8 @@ transmissionMode_RGB $OutputSection_RGB.transmissionMode_RGB
 outputType_RGB_Z $OutputSection_RGB_Z.outputType_RGB_Z
 transmissionMode_RGB_Z $OutputSection_RGB_Z.transmissionMode_RGB_Z]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="IMAGE" type="data" optional="false" label="Overlay Image" help="Overlay Image The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="IMAGE" type="data" optional="false" label="Overlay Image" help="Overlay Image The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="SHAPES" type="data" optional="false" label="Shapes to project" help="Shapes to project The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ZEXAGG" type="float" value="1" optional="true" label="Exaggeration" help="Exaggeration"/>
     <param name="ZEXAGG_MIN" type="float" value="10" optional="true" label="Minimum Exaggeration [%]" help="Minimum Exaggeration [%]"/>
@@ -51,7 +51,7 @@ transmissionMode_RGB_Z $OutputSection_RGB_Z.transmissionMode_RGB_Z]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_RGB" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RGB" type="select" label="3D Image" help="3D Image">
+      <param name="outputType_RGB" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -63,7 +63,7 @@ transmissionMode_RGB_Z $OutputSection_RGB_Z.transmissionMode_RGB_Z]]></command>
       </param>
     </section>
     <section name="OutputSection_RGB_Z" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RGB_Z" type="select" label="Projected Height" help="Projected Height">
+      <param name="outputType_RGB_Z" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

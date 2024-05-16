@@ -14,8 +14,8 @@ transmissionMode_OUTDEPTH $OutputSection_OUTDEPTH.transmissionMode_OUTDEPTH
 outputType_OUTLEVEL $OutputSection_OUTLEVEL.outputType_OUTLEVEL
 transmissionMode_OUTLEVEL $OutputSection_OUTLEVEL.transmissionMode_OUTLEVEL]]></command>
   <inputs>
-    <param name="ELEV" type="data" optional="false" label="DEM" help="digital elevation model The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="SEEDS" type="data" optional="false" label="Seeds" help="seed cells coded with local water depth or absolute water level, all other cells NoData The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ELEV" type="data" optional="false" label="DEM" help="digital elevation model The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="SEEDS" type="data" optional="false" label="Seeds" help="seed cells coded with local water depth or absolute water level, all other cells NoData The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="LEVEL" type="select" optional="true" label="Absolute Water Levels" help="check this in case seed cells are coded with absolute water level">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -30,7 +30,7 @@ transmissionMode_OUTLEVEL $OutputSection_OUTLEVEL.transmissionMode_OUTLEVEL]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTDEPTH" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTDEPTH" type="select" label="Lake" help="extent of lake, coded with water depth">
+      <param name="outputType_OUTDEPTH" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -42,7 +42,7 @@ transmissionMode_OUTLEVEL $OutputSection_OUTLEVEL.transmissionMode_OUTLEVEL]]></
       </param>
     </section>
     <section name="OutputSection_OUTLEVEL" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTLEVEL" type="select" label="Surface" help="Flooded digital elevation model">
+      <param name="outputType_OUTLEVEL" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

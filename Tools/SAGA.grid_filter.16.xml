@@ -31,7 +31,7 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
       <option selected="true" value="Queen's_case">Queen's case</option>
       <option value="Rooke's_case">Rooke's case</option>
     </param>
-    <param name="FEATURE" type="data" optional="false" label="Feature" help="Feature The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="FEATURE" type="data" optional="false" label="Feature" help="Feature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="GRADIENTS_OUT" type="select" optional="true" label="Output of Gradients" help="Output of Gradients">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -46,7 +46,7 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_EDGE_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_EDGE_POINTS" type="select" label="Edge Points" help="Edge Points">
+      <param name="outputType_EDGE_POINTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -57,7 +57,7 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
       </param>
     </section>
     <section name="OutputSection_EDGE_LINES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_EDGE_LINES" type="select" label="Edge Segments" help="Edge Segments">
+      <param name="outputType_EDGE_LINES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -68,7 +68,7 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
       </param>
     </section>
     <section name="OutputSection_GRADIENTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_GRADIENTS" type="select" label="Gradients" help="Gradients">
+      <param name="outputType_GRADIENTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

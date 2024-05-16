@@ -12,7 +12,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="RANGE_MIN" type="float" optional="true" label="Target Range (min value)" help="Target Range"/>
     <param name="RANGE_MAX" type="float" optional="true" label="Target Range (max value)" help="Target Range"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -25,7 +25,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Normalized Grid" help="Normalized Grid">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

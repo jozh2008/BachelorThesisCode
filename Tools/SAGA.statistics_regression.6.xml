@@ -32,9 +32,9 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY
 outputType_MODEL $OutputSection_MODEL.outputType_MODEL
 transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -85,7 +85,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_RESIDUALS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RESIDUALS" type="select" label="Residuals" help="Residuals">
+      <param name="outputType_RESIDUALS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -96,7 +96,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       </param>
     </section>
     <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
+      <param name="outputType_REGRESSION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -108,7 +108,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       </param>
     </section>
     <section name="OutputSection_QUALITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_QUALITY" type="select" label="Coefficient of Determination" help="Coefficient of Determination">
+      <param name="outputType_QUALITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -120,7 +120,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL]]></command>
       </param>
     </section>
     <section name="OutputSection_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MODEL" type="select" label="Regression Parameters" help="Regression Parameters">
+      <param name="outputType_MODEL" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

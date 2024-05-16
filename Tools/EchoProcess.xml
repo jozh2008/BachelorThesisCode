@@ -4,17 +4,30 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraycomplexInput False  output_data_literalOutput $output_data_literalOutput  output_data_complexOutput $output_data_complexOutput  name EchoProcess literalInput '$literalInput'
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArraycomplexInput False  output_data_literalOutput $output_data_literalOutput  output_data_complexOutput $output_data_complexOutput  output_data_c $output_data_c  name EchoProcess literalInput '$literalInput'
 complexInput $complexInput
+#for $i_repeat in $c.bbox
+floatData $i_repeat.floatData
+#end for
+crs $c.crs
 prefer $prefer
 response $response
-outputType_literalOutput '$OutputSection_literalOutput.outputType_literalOutput'
 transmissionMode_literalOutput $OutputSection_literalOutput.transmissionMode_literalOutput
 outputType_complexOutput $OutputSection_complexOutput.outputType_complexOutput
-transmissionMode_complexOutput $OutputSection_complexOutput.transmissionMode_complexOutput]]></command>
+transmissionMode_complexOutput $OutputSection_complexOutput.transmissionMode_complexOutput
+transmissionMode_c $OutputSection_c.transmissionMode_c]]></command>
   <inputs>
     <param name="literalInput" type="text" optional="true" label="Literal Input (string)" help="An input string"/>
     <param name="complexInput" type="data" optional="false" label="Complex Input" help="A complex input  The following data types are allowed in the txt file:  xml, json" format="txt"/>
+    <section name="c" title="BoundingBox Input " expanded="true" help="A boundingbox input ">
+      <repeat name="bbox" title="Array item" min="4" max="6">
+        <param name="floatData" type="float" optional="false" label="Author did not provide help for this parameter... "/>
+      </repeat>
+      <param name="crs" type="select" optional="true" label="Author did not provide help for this parameter... ">
+        <option value="urn:ogc:def:crs:EPSG:6.6:3785">urn:ogc:def:crs:EPSG:6.6:3785</option>
+        <option value="urn:ogc:def:crs:EPSG:6.6:4326">urn:ogc:def:crs:EPSG:6.6:4326</option>
+      </param>
+    </section>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -24,19 +37,24 @@ transmissionMode_complexOutput $OutputSection_complexOutput.transmissionMode_com
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_literalOutput" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_literalOutput" type="text" optional="false" label="The output a" help="The output a returned"/>
+    <section name="OutputSection_literalOutput" title="Select the appropriate transmission mode for the output format" expanded="true">
       <param name="transmissionMode_literalOutput" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_complexOutput" title="Select the appropriate transmission mode for the output format and the output value" expanded="true">
-      <param name="outputType_complexOutput" type="select" label="The output b" help="The output b returned">
+    <section name="OutputSection_complexOutput" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType_complexOutput" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="text/xml">xml</option>
       </param>
       <param name="transmissionMode_complexOutput" type="select" label="Choose the transmission mode">
+        <option selected="true" value="reference">reference</option>
+        <option value="value">value</option>
+      </param>
+    </section>
+    <section name="OutputSection_c" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_c" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
@@ -50,6 +68,7 @@ transmissionMode_complexOutput $OutputSection_complexOutput.transmissionMode_com
         <when input="outputType_complexOutput" format="json" value="application/json"/>
       </change_format>
     </data>
+    <data name="output_data_c" format="txt" hidden="false"/>
   </outputs>
   <tests>
     <test>

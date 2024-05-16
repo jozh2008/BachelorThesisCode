@@ -13,7 +13,7 @@ response $response
 outputType_insvm $OutputSection_insvm.outputType_insvm
 transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
   <inputs>
-    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, zip, xml" format="txt"/>
+    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, zip, json" format="txt"/>
     <param name="instats" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="feat" type="text" optional="false" label="Features to be calculated" help="Features to be calculated"/>
     <param name="cfield" type="text" value="predicted" optional="false" label="Field containing the predicted class" help="Field containing the predicted class"/>
@@ -27,7 +27,7 @@ transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_insvm" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_insvm" type="select" label="Input model filename." help="Input model filename.">
+      <param name="outputType_insvm" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
       </param>

@@ -19,9 +19,9 @@ transmissionMode_out $OutputSection_out.transmissionMode_out
 outputType_confmap $OutputSection_confmap.outputType_confmap
 transmissionMode_confmap $OutputSection_confmap.transmissionMode_confmap]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to classify." help="The input image to classify. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="mask" type="data" optional="false" label="The mask allows restricting classification of the input image to the area where mask pixel values are greater than 0." help="The mask allows restricting classification of the input image to the area where mask pixel values are greater than 0. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="model" type="data" optional="false" label="A model file (produced by TrainImagesClassifier application, maximal class label = 65535)." help="A model file (produced by TrainImagesClassifier application, maximal class label = 65535). The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to classify." help="The input image to classify. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="mask" type="data" optional="false" label="The mask allows restricting classification of the input image to the area where mask pixel values are greater than 0." help="The mask allows restricting classification of the input image to the area where mask pixel values are greater than 0. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="model" type="data" optional="false" label="A model file (produced by TrainImagesClassifier application, maximal class label = 65535)." help="A model file (produced by TrainImagesClassifier application, maximal class label = 65535). The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="imstat" type="data" optional="false" label="A XML file containing mean and standard deviation to center and reduce samples before classification (produced by ComputeImagesStatistics application)." help="A XML file containing mean and standard deviation to center and reduce samples before classification (produced by ComputeImagesStatistics application). The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="nodatalabel" type="integer" value="0" optional="true" label="By default, hidden pixels will have the assigned label 0 in the output image. It's possible to define the label mask by another value, but be careful to not take a label from another class (max. 65535)." help="By default, hidden pixels will have the assigned label 0 in the output image. It's possible to define the label mask by another value, but be careful to not take a label from another class (max. 65535)."/>
     <param name="out" type="select" optional="false" label="Output image containing class labels" help="Output image containing class labels">
@@ -51,7 +51,7 @@ transmissionMode_confmap $OutputSection_confmap.transmissionMode_confmap]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output image containing class labels" help="Output image containing class labels">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -62,7 +62,7 @@ transmissionMode_confmap $OutputSection_confmap.transmissionMode_confmap]]></com
       </param>
     </section>
     <section name="OutputSection_confmap" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_confmap" type="select" label="Confidence map of the produced classification. The confidence index depends on the model :   - LibSVM : difference between the two highest probabilities (needs a model with probability estimates, so that classes probabilities can be computed for each sample)  - OpenCV    * Boost : sum of votes    * DecisionTree : (not supported)    * GradientBoostedTree : (not supported)    * KNearestNeighbors : number of neighbors with the same label    * NeuralNetwork : difference between the two highest responses    * NormalBayes : (not supported)    * RandomForest : Confidence (proportion of votes for the majority class). Margin (normalized difference of the votes of the 2 majority classes) is not available for now.    * SVM : distance to margin (only works for 2-class models)" help="Confidence map of the produced classification. The confidence index depends on the model :   - LibSVM : difference between the two highest probabilities (needs a model with probability estimates, so that classes probabilities can be computed for each sample)  - OpenCV    * Boost : sum of votes    * DecisionTree : (not supported)    * GradientBoostedTree : (not supported)    * KNearestNeighbors : number of neighbors with the same label    * NeuralNetwork : difference between the two highest responses    * NormalBayes : (not supported)    * RandomForest : Confidence (proportion of votes for the majority class). Margin (normalized difference of the votes of the 2 majority classes) is not available for now.    * SVM : distance to margin (only works for 2-class models)">
+      <param name="outputType_confmap" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

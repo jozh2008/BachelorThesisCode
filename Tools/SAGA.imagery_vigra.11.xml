@@ -59,7 +59,7 @@ transmissionMode_IMPORTANCES $OutputSection_IMPORTANCES.transmissionMode_IMPORTA
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_IMPORTANCES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_IMPORTANCES" type="select" label="Feature Importances" help="Feature Importances">
+      <param name="outputType_IMPORTANCES" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_IMPORTANCES" type="select" label="Choose the transmission mode">

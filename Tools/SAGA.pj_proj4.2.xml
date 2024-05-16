@@ -37,7 +37,7 @@ transmissionMode_TARGET_PC $OutputSection_TARGET_PC.transmissionMode_TARGET_PC]]
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="TRANSFORM_Z" type="select" optional="true" label="Z Transformation" help="Transform elevation (z) values, if appropriate.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -56,7 +56,7 @@ transmissionMode_TARGET_PC $OutputSection_TARGET_PC.transmissionMode_TARGET_PC]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TARGET" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TARGET" type="select" label="Target" help="Target">
+      <param name="outputType_TARGET" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -67,7 +67,7 @@ transmissionMode_TARGET_PC $OutputSection_TARGET_PC.transmissionMode_TARGET_PC]]
       </param>
     </section>
     <section name="OutputSection_TARGET_PC" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TARGET_PC" type="select" label="Target" help="Target">
+      <param name="outputType_TARGET_PC" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>
       <param name="transmissionMode_TARGET_PC" type="select" label="Choose the transmission mode">

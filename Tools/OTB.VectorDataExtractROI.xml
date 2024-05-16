@@ -14,7 +14,7 @@ response $response
 outputType_io.out $OutputSection_io.out.outputType_io.out
 transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
   <inputs>
-    <param name="io.vd" type="data" optional="false" label="Input vector data" help="Input vector data The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, zip, xml, json" format="txt"/>
+    <param name="io.vd" type="data" optional="false" label="Input vector data" help="Input vector data The following data types are allowed in the txt file:  xml, json, zip, vnd.google-earth.kml+xml" format="txt"/>
     <param name="io.in" type="data" optional="false" label="Support image that specifies the extracted region" help="Support image that specifies the extracted region The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
     <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
@@ -29,7 +29,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.out" type="select" label="Output extracted vector data" help="Output extracted vector data">
+      <param name="outputType_io.out" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="application/zip">zip</option>

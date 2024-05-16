@@ -30,9 +30,9 @@ transmissionMode_out $OutputSection_out.transmissionMode_out
 outputType_outvector $OutputSection_outvector.outputType_outvector
 transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]></command>
   <inputs>
-    <param name="in1" type="data" optional="false" label="First input image" help="First input image The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in1" type="data" optional="false" label="First input image" help="First input image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="band1" type="integer" value="1" optional="false" label="Index of the band from input image 1 to use for keypoints extraction" help="Index of the band from input image 1 to use for keypoints extraction"/>
-    <param name="in2" type="data" optional="false" label="Second input image" help="Second input image The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in2" type="data" optional="false" label="Second input image" help="Second input image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="band2" type="integer" value="1" optional="false" label="Index of the band from input image 1 to use for keypoints extraction" help="Index of the band from input image 1 to use for keypoints extraction"/>
     <param name="algorithm" type="select" optional="false" label="Choice of the detection algorithm to use" help="Choice of the detection algorithm to use">
       <option value="sift">sift</option>
@@ -74,7 +74,7 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="File containing the list of tie points" help="File containing the list of tie points">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
       </param>
@@ -84,7 +84,7 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
       </param>
     </section>
     <section name="OutputSection_outvector" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_outvector" type="select" label="File containing segments representing matches " help="File containing segments representing matches ">
+      <param name="outputType_outvector" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
       </param>

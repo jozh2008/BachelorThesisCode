@@ -31,7 +31,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+      <param name="outputType_RESULT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

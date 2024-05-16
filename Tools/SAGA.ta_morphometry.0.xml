@@ -35,7 +35,7 @@ transmissionMode_C_TOTA $OutputSection_C_TOTA.transmissionMode_C_TOTA
 outputType_C_ROTO $OutputSection_C_ROTO.outputType_C_ROTO
 transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="10_parameter_3rd_order_polynom_(Haralick_1983)">10 parameter 3rd order polynom (Haralick 1983)</option>
       <option value="6_parameter_2nd_order_polynom_(Bauer,_Rohdenburg">6 parameter 2nd order polynom (Bauer, Rohdenburg</option>
@@ -65,7 +65,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_SLOPE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SLOPE" type="select" label="Slope" help="Slope">
+      <param name="outputType_SLOPE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -77,7 +77,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_ASPECT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ASPECT" type="select" label="Aspect" help="Aspect">
+      <param name="outputType_ASPECT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -89,7 +89,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_GENE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_GENE" type="select" label="General Curvature" help="General Curvature">
+      <param name="outputType_C_GENE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -101,7 +101,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_PROF" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_PROF" type="select" label="Profile Curvature" help="Profile Curvature">
+      <param name="outputType_C_PROF" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -113,7 +113,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_PLAN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_PLAN" type="select" label="Plan Curvature" help="Plan Curvature">
+      <param name="outputType_C_PLAN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -125,7 +125,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_TANG" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_TANG" type="select" label="Tangential Curvature" help="Tangential Curvature">
+      <param name="outputType_C_TANG" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -137,7 +137,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_LONG" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_LONG" type="select" label="Longitudinal Curvature" help="Zevenbergen &amp; Thorne (1987) refer to this as profile curvature">
+      <param name="outputType_C_LONG" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -149,7 +149,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_CROS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_CROS" type="select" label="Cross-Sectional Curvature" help="Zevenbergen &amp; Thorne (1987) refer to this as plan curvature">
+      <param name="outputType_C_CROS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -161,7 +161,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_MINI" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_MINI" type="select" label="Minimal Curvature" help="Minimal Curvature">
+      <param name="outputType_C_MINI" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -173,7 +173,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_MAXI" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_MAXI" type="select" label="Maximal Curvature" help="Maximal Curvature">
+      <param name="outputType_C_MAXI" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -185,7 +185,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_TOTA" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_TOTA" type="select" label="Total Curvature" help="Total Curvature">
+      <param name="outputType_C_TOTA" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -197,7 +197,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
       </param>
     </section>
     <section name="OutputSection_C_ROTO" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_C_ROTO" type="select" label="Flow Line Curvature" help="Flow Line Curvature">
+      <param name="outputType_C_ROTO" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

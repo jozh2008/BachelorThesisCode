@@ -27,8 +27,8 @@ transmissionMode_DISPARITY $OutputSection_DISPARITY.transmissionMode_DISPARITY
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="LEFT" type="data" optional="false" label="Left Image" help="Left Image The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="RIGHT" type="data" optional="false" label="Right Image" help="Right Image The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="LEFT" type="data" optional="false" label="Left Image" help="Left Image The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="RIGHT" type="data" optional="false" label="Right Image" help="Right Image The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="ALGORITHM" type="select" optional="true" label="Algorithm" help="Algorithm">
       <option selected="true" value="Block_Matching">Block Matching</option>
       <option value="Modified_Hirschmuller">Modified Hirschmuller</option>
@@ -60,7 +60,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_DISPARITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DISPARITY" type="select" label="Disparity Image" help="Disparity Image">
+      <param name="outputType_DISPARITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -72,7 +72,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       </param>
     </section>
     <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_POINTS" type="select" label="Points" help="Points">
+      <param name="outputType_POINTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-lasf">x-ogc-lasf</option>
       </param>
       <param name="transmissionMode_POINTS" type="select" label="Choose the transmission mode">

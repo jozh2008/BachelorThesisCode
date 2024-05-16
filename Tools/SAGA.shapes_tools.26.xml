@@ -11,7 +11,7 @@ response $response
 outputType_SHAPES $OutputSection_SHAPES.outputType_SHAPES
 transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></command>
   <inputs>
-    <param name="SHAPESLIST" type="data" optional="false" label="Shapes List" help="The input shapes list. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="SHAPESLIST" type="data" optional="false" label="Shapes List" help="The input shapes list. The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="INDEX" type="integer" value="0" optional="true" label="Index" help="The list index of the shapefile to pick. Indices start at zero."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -23,7 +23,7 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_SHAPES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SHAPES" type="select" label="Shapes" help="The shapefile picked from the shapes list.">
+      <param name="outputType_SHAPES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

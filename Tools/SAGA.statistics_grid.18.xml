@@ -24,12 +24,12 @@ transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
 outputType_QUANTILES $OutputSection_QUANTILES.outputType_QUANTILES
 transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]></command>
   <inputs>
-    <param name="COUNT" type="data" optional="false" label="Number of Values" help="Number of Values The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="SUM" type="data" optional="false" label="Sum" help="Sum The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="SUM2" type="data" optional="false" label="Sum of Squares" help="Sum of Squares The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="MIN" type="data" optional="false" label="Minimum" help="Minimum The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="MAX" type="data" optional="false" label="Maximum" help="Maximum The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="HISTOGRAM" type="data" optional="false" label="Histogram" help="Histogram The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="COUNT" type="data" optional="false" label="Number of Values" help="Number of Values The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="SUM" type="data" optional="false" label="Sum" help="Sum The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="SUM2" type="data" optional="false" label="Sum of Squares" help="Sum of Squares The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="MIN" type="data" optional="false" label="Minimum" help="Minimum The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="MAX" type="data" optional="false" label="Maximum" help="Maximum The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="HISTOGRAM" type="data" optional="false" label="Histogram" help="Histogram The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="QUANTVALS" type="text" value="5; 25; 50; 75; 95" optional="true" label="Percentiles" help="Separate the desired percentiles by semicolon"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -41,7 +41,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_RANGE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RANGE" type="select" label="Range" help="Range">
+      <param name="outputType_RANGE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -53,7 +53,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MEAN" type="select" label="Arithmetic Mean" help="Arithmetic Mean">
+      <param name="outputType_MEAN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -65,7 +65,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_VAR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VAR" type="select" label="Variance" help="Variance">
+      <param name="outputType_VAR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -77,7 +77,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_STDDEV" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STDDEV" type="select" label="Standard Deviation" help="Standard Deviation">
+      <param name="outputType_STDDEV" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -89,7 +89,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
       </param>
     </section>
     <section name="OutputSection_QUANTILES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_QUANTILES" type="select" label="Percentiles" help="Percentiles">
+      <param name="outputType_QUANTILES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

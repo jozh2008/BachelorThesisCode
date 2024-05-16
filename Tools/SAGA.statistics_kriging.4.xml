@@ -16,7 +16,7 @@ response $response
 outputType_VARIOGRAM $OutputSection_VARIOGRAM.outputType_VARIOGRAM
 transmissionMode_VARIOGRAM $OutputSection_VARIOGRAM.transmissionMode_VARIOGRAM]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="ATTRIBUTE" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LOG" type="select" optional="true" label="Logarithmic Transformation" help="Logarithmic Transformation">
       <option selected="true" value="false">false</option>
@@ -36,7 +36,7 @@ transmissionMode_VARIOGRAM $OutputSection_VARIOGRAM.transmissionMode_VARIOGRAM]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_VARIOGRAM" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VARIOGRAM" type="select" label="Variogram" help="Variogram">
+      <param name="outputType_VARIOGRAM" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_VARIOGRAM" type="select" label="Choose the transmission mode">

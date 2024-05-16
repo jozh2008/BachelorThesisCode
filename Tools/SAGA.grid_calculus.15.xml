@@ -17,8 +17,8 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR
 outputType_LEN $OutputSection_LEN.outputType_LEN
 transmissionMode_LEN $OutputSection_LEN.transmissionMode_LEN]]></command>
   <inputs>
-    <param name="DX" type="data" optional="false" label="X Component" help="X Component The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="DY" type="data" optional="false" label="Y Component" help="Y Component The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DX" type="data" optional="false" label="X Component" help="X Component The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DY" type="data" optional="false" label="Y Component" help="Y Component The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="UNITS" type="select" optional="true" label="Polar Angle Units" help="Polar Angle Units">
       <option value="degree">degree</option>
       <option selected="true" value="radians">radians</option>
@@ -43,7 +43,7 @@ transmissionMode_LEN $OutputSection_LEN.transmissionMode_LEN]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_DIR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DIR" type="select" label="Direction" help="Direction">
+      <param name="outputType_DIR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -55,7 +55,7 @@ transmissionMode_LEN $OutputSection_LEN.transmissionMode_LEN]]></command>
       </param>
     </section>
     <section name="OutputSection_LEN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_LEN" type="select" label="Length" help="Length">
+      <param name="outputType_LEN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

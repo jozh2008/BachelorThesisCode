@@ -24,7 +24,7 @@ transmissionMode_CONNECTIVITY $OutputSection_CONNECTIVITY.transmissionMode_CONNE
 outputType_CONNECTEDAVG $OutputSection_CONNECTEDAVG.outputType_CONNECTEDAVG
 transmissionMode_CONNECTEDAVG $OutputSection_CONNECTEDAVG.transmissionMode_CONNECTEDAVG]]></command>
   <inputs>
-    <param name="CATEGORIES" type="data" optional="false" label="Categories" help="Categories The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="CATEGORIES" type="data" optional="false" label="Categories" help="Categories The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="SEARCH_MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
       <option selected="true" value="Circle">Circle</option>
       <option value="Square">Square</option>
@@ -61,7 +61,7 @@ transmissionMode_CONNECTEDAVG $OutputSection_CONNECTEDAVG.transmissionMode_CONNE
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_COUNT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_COUNT" type="select" label="Number of Categories" help="number of different categories (unique values) within search area">
+      <param name="outputType_COUNT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -73,7 +73,7 @@ transmissionMode_CONNECTEDAVG $OutputSection_CONNECTEDAVG.transmissionMode_CONNE
       </param>
     </section>
     <section name="OutputSection_DIVERSITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DIVERSITY" type="select" label="Diversity" help="distance weighted average of the number of different categories for distance classes">
+      <param name="outputType_DIVERSITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -85,7 +85,7 @@ transmissionMode_CONNECTEDAVG $OutputSection_CONNECTEDAVG.transmissionMode_CONNE
       </param>
     </section>
     <section name="OutputSection_CONNECTIVITY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONNECTIVITY" type="select" label="Connectivity" help="Connectivity">
+      <param name="outputType_CONNECTIVITY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -97,7 +97,7 @@ transmissionMode_CONNECTEDAVG $OutputSection_CONNECTEDAVG.transmissionMode_CONNE
       </param>
     </section>
     <section name="OutputSection_CONNECTEDAVG" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONNECTEDAVG" type="select" label="Averaged Connectivity" help="average size of the area covered by each category that occurs within search area">
+      <param name="outputType_CONNECTEDAVG" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

@@ -14,7 +14,7 @@ response $response
 outputType_INSOLATION $OutputSection_INSOLATION.outputType_INSOLATION
 transmissionMode_INSOLATION $OutputSection_INSOLATION.transmissionMode_INSOLATION]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="STEPS" type="integer" value="14" optional="true" label="Number of Steps" help="Number of time steps per year."/>
     <param name="UNITS" type="select" optional="true" label="Units" help="Units for output radiation values.">
       <option value="J_/_cm2">J / cm2</option>
@@ -33,7 +33,7 @@ transmissionMode_INSOLATION $OutputSection_INSOLATION.transmissionMode_INSOLATIO
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_INSOLATION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_INSOLATION" type="select" label="Annual Insolation" help="Annual Insolation">
+      <param name="outputType_INSOLATION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

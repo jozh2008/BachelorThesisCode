@@ -14,8 +14,8 @@ transmissionMode_INTERSECT $OutputSection_INTERSECT.transmissionMode_INTERSECT
 outputType_DIFFERENCE $OutputSection_DIFFERENCE.outputType_DIFFERENCE
 transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENCE]]></command>
   <inputs>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="ATTRIBUTES" type="select" optional="true" label="Attributes" help="attributes inherited to intersection result">
       <option selected="true" value="line">line</option>
       <option value="line_and_polygon">line and polygon</option>
@@ -31,7 +31,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_INTERSECT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_INTERSECT" type="select" label="Intersection" help="Intersection">
+      <param name="outputType_INTERSECT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -42,7 +42,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
       </param>
     </section>
     <section name="OutputSection_DIFFERENCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DIFFERENCE" type="select" label="Difference" help="Difference">
+      <param name="outputType_DIFFERENCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

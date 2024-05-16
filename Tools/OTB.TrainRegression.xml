@@ -146,7 +146,7 @@ transmissionMode_io.mse $OutputSection_io.mse.transmissionMode_io.mse]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.out" type="select" label="Output file containing the model estimated (.txt format)." help="Output file containing the model estimated (.txt format).">
+      <param name="outputType_io.out" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/plain">plain</option>
         <option value="text/xml">xml</option>
       </param>

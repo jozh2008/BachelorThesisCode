@@ -19,7 +19,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image" help="Output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -40,7 +40,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     <param name="mode.buildmask.inv" type="float" value="1" optional="false" label="Value given in the output mask to pixels that are not no data pixels" help="Value given in the output mask to pixels that are not no data pixels"/>
     <param name="mode.buildmask.outv" type="float" value="0" optional="false" label="Value given in the output mask to pixels that are no data pixels" help="Value given in the output mask to pixels that are no data pixels"/>
     <param name="mode.changevalue.newv" type="float" value="0" optional="false" label="The new no-data value" help="The new no-data value"/>
-    <param name="mode.apply.mask" type="data" optional="false" label="Mask to be applied on input image (valid pixels have non null values)" help="Mask to be applied on input image (valid pixels have non null values) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="mode.apply.mask" type="data" optional="false" label="Mask to be applied on input image (valid pixels have non null values)" help="Mask to be applied on input image (valid pixels have non null values) The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="mode.apply.ndval" type="float" value="0" optional="false" label="No Data value used according to the mask image" help="No Data value used according to the mask image"/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -53,7 +53,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output image" help="Output image">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

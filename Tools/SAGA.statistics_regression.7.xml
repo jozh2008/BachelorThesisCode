@@ -23,7 +23,7 @@ response $response
 outputType_REGRESSION $OutputSection_REGRESSION.outputType_REGRESSION
 transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSION]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
@@ -67,7 +67,7 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_REGRESSION" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_REGRESSION" type="select" label="Regression" help="Regression">
+      <param name="outputType_REGRESSION" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

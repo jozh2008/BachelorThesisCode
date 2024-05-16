@@ -35,7 +35,7 @@ transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT_GRID" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT_GRID" type="select" label="Synthesized Grid" help="Synthesized Grid">
+      <param name="outputType_OUTPUT_GRID" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

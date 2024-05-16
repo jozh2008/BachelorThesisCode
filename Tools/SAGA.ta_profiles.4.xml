@@ -16,9 +16,9 @@ transmissionMode_PROFILE $OutputSection_PROFILE.transmissionMode_PROFILE
 outputType_PROFILES $OutputSection_PROFILES.outputType_PROFILES
 transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Additional values that shall be saved to the output table. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Additional values that shall be saved to the output table. The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="NAME" type="data" optional="false" label="Name" help="Naming for split lines The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="SPLIT" type="select" optional="true" label="Each Line as new Profile" help="Each Line as new Profile">
       <option selected="true" value="false">false</option>
@@ -34,7 +34,7 @@ transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_PROFILE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PROFILE" type="select" label="Profiles" help="Profiles">
+      <param name="outputType_PROFILE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -45,7 +45,7 @@ transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></
       </param>
     </section>
     <section name="OutputSection_PROFILES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PROFILES" type="select" label="Profiles" help="Profiles">
+      <param name="outputType_PROFILES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

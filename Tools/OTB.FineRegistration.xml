@@ -34,8 +34,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out
 outputType_wo $OutputSection_wo.outputType_wo
 transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
   <inputs>
-    <param name="ref" type="data" optional="false" label="The reference image." help="The reference image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="sec" type="data" optional="false" label="The secondary image." help="The secondary image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="ref" type="data" optional="false" label="The reference image." help="The reference image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="sec" type="data" optional="false" label="The secondary image." help="The secondary image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="The output image contains 3 bands, for X offset, Y offset and the metric value. It may contain a 4th one with the validity mask (if used)." help="The output image contains 3 bands, for X offset, Y offset and the metric value. It may contain a 4th one with the validity mask (if used).">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -48,7 +48,7 @@ transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
     <param name="ery" type="integer" optional="false" label="The exploration radius along y (in pixels)" help="The exploration radius along y (in pixels)"/>
     <param name="mrx" type="integer" optional="false" label="Radius along x (in pixels) of the metric computation window" help="Radius along x (in pixels) of the metric computation window"/>
     <param name="mry" type="integer" optional="false" label="Radius along y (in pixels) of the metric computation window" help="Radius along y (in pixels) of the metric computation window"/>
-    <param name="w" type="data" optional="false" label="The image to warp after disparity estimation is completed." help="The image to warp after disparity estimation is completed. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="w" type="data" optional="false" label="The image to warp after disparity estimation is completed." help="The image to warp after disparity estimation is completed. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="wo" type="select" optional="true" label="The output warped image" help="The output warped image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -81,7 +81,7 @@ transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="The output image contains 3 bands, for X offset, Y offset and the metric value. It may contain a 4th one with the validity mask (if used)." help="The output image contains 3 bands, for X offset, Y offset and the metric value. It may contain a 4th one with the validity mask (if used).">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
@@ -92,7 +92,7 @@ transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
       </param>
     </section>
     <section name="OutputSection_wo" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_wo" type="select" label="The output warped image" help="The output warped image">
+      <param name="outputType_wo" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>

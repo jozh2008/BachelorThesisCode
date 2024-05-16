@@ -14,7 +14,7 @@ response $response
 outputType_SCENARIO $OutputSection_SCENARIO.outputType_SCENARIO
 transmissionMode_SCENARIO $OutputSection_SCENARIO.transmissionMode_SCENARIO]]></command>
   <inputs>
-    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="FIELD_ID" type="data" optional="false" label="Field Identifier" help="Field Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output of..." help="Output of...">
       <option selected="true" value="Identifier">Identifier</option>
@@ -32,7 +32,7 @@ transmissionMode_SCENARIO $OutputSection_SCENARIO.transmissionMode_SCENARIO]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_SCENARIO" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SCENARIO" type="select" label="Land Use Scenario" help="Land Use Scenario">
+      <param name="outputType_SCENARIO" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

@@ -12,8 +12,8 @@ response $response
 outputType_TRANSECT_RESULT $OutputSection_TRANSECT_RESULT.outputType_TRANSECT_RESULT
 transmissionMode_TRANSECT_RESULT $OutputSection_TRANSECT_RESULT.transmissionMode_TRANSECT_RESULT]]></command>
   <inputs>
-    <param name="TRANSECT" type="data" optional="false" label="Line Transect(s)" help="Line Transect(s) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
-    <param name="THEME" type="data" optional="false" label="Theme" help="Theme The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="TRANSECT" type="data" optional="false" label="Line Transect(s)" help="Line Transect(s) The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="THEME" type="data" optional="false" label="Theme" help="Theme The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="THEME_FIELD" type="data" optional="false" label="Theme Field" help="Theme Field The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -25,7 +25,7 @@ transmissionMode_TRANSECT_RESULT $OutputSection_TRANSECT_RESULT.transmissionMode
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_TRANSECT_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TRANSECT_RESULT" type="select" label="Result table" help="Result table">
+      <param name="outputType_TRANSECT_RESULT" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_TRANSECT_RESULT" type="select" label="Choose the transmission mode">

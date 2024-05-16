@@ -40,7 +40,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_out" type="select" label="Output filename storing sampling rates (CSV format with class name, required samples, total samples, and rate). The given filename will be used with a suffix to indicate the corresponding input index (for instance: rates.csv will give rates_1.csv, rates_2.csv, ...)." help="Output filename storing sampling rates (CSV format with class name, required samples, total samples, and rate). The given filename will be used with a suffix to indicate the corresponding input index (for instance: rates.csv will give rates_1.csv, rates_2.csv, ...).">
+      <param name="outputType_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_out" type="select" label="Choose the transmission mode">

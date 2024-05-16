@@ -47,9 +47,9 @@ transmissionMode_STATE_FILIAL_3 $OutputSection_STATE_FILIAL_3.transmissionMode_S
 outputType_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.outputType_STATE_SISTER_3
 transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_STATE_SISTER_3]]></command>
   <inputs>
-    <param name="ATmean" type="data" optional="false" label="Mean Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="ATmax" type="data" optional="false" label="Maximum Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="SIrel" type="data" optional="false" label="Solar Irradiation" help="Wh/m^2 The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="ATmean" type="data" optional="false" label="Mean Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="ATmax" type="data" optional="false" label="Maximum Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="SIrel" type="data" optional="false" label="Solar Irradiation" help="Wh/m^2 The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="LATITUDE" type="float" value="50" optional="true" label="Latitude" help="Latitude"/>
     <param name="DToptimum" type="float" value="30.4" optional="true" label="Developmental Optimum Temperature" help="Degree Celsius"/>
     <param name="DTminimum" type="float" value="8.3" optional="true" label="Developmental Minimum Temperature" help="Degree Celsius"/>
@@ -69,7 +69,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_ONSET" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ONSET" type="select" label="Onset Day of Infestation" help="Onset Day of Infestation">
+      <param name="outputType_ONSET" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -81,7 +81,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_NUMBER" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_NUMBER" type="select" label="Potential Number of Generations" help="Potential Number of Generations">
+      <param name="outputType_NUMBER" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -93,7 +93,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_ONSET_FILIAL_1" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ONSET_FILIAL_1" type="select" label="Onset Day of 1st Filial Generation" help="Onset Day of 1st Filial Generation">
+      <param name="outputType_ONSET_FILIAL_1" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -105,7 +105,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_ONSET_SISTER_1" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ONSET_SISTER_1" type="select" label="Onset Day of 1st Sister Generation" help="Onset Day of 1st Sister Generation">
+      <param name="outputType_ONSET_SISTER_1" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -117,7 +117,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_ONSET_FILIAL_2" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ONSET_FILIAL_2" type="select" label="Onset Day of 2nd Filial Generation" help="Onset Day of 2nd Filial Generation">
+      <param name="outputType_ONSET_FILIAL_2" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -129,7 +129,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_ONSET_SISTER_2" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ONSET_SISTER_2" type="select" label="Onset Day of 2nd Sister Generation" help="Onset Day of 2nd Sister Generation">
+      <param name="outputType_ONSET_SISTER_2" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -141,7 +141,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_ONSET_FILIAL_3" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ONSET_FILIAL_3" type="select" label="Onset Day of 3rd Filial Generation" help="Onset Day of 3rd Filial Generation">
+      <param name="outputType_ONSET_FILIAL_3" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -153,7 +153,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_ONSET_SISTER_3" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ONSET_SISTER_3" type="select" label="Onset Day of 3rd Sister Generation" help="Onset Day of 3rd Sister Generation">
+      <param name="outputType_ONSET_SISTER_3" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -165,7 +165,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_STATE_FILIAL_1" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATE_FILIAL_1" type="select" label="State of 1st Filial Generation" help="State of 1st Filial Generation">
+      <param name="outputType_STATE_FILIAL_1" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -177,7 +177,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_STATE_SISTER_1" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATE_SISTER_1" type="select" label="State of 1st Sister Generation" help="State of 1st Sister Generation">
+      <param name="outputType_STATE_SISTER_1" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -189,7 +189,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_STATE_FILIAL_2" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATE_FILIAL_2" type="select" label="State of 2nd Filial Generation" help="State of 2nd Filial Generation">
+      <param name="outputType_STATE_FILIAL_2" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -201,7 +201,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_STATE_SISTER_2" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATE_SISTER_2" type="select" label="State of 2nd Sister Generation" help="State of 2nd Sister Generation">
+      <param name="outputType_STATE_SISTER_2" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -213,7 +213,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_STATE_FILIAL_3" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATE_FILIAL_3" type="select" label="State of 3rd Filial Generation" help="State of 3rd Filial Generation">
+      <param name="outputType_STATE_FILIAL_3" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -225,7 +225,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
       </param>
     </section>
     <section name="OutputSection_STATE_SISTER_3" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATE_SISTER_3" type="select" label="State of 3rd Sister Generation" help="State of 3rd Sister Generation">
+      <param name="outputType_STATE_SISTER_3" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

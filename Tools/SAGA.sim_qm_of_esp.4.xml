@@ -18,8 +18,8 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL
 outputType_DIFF $OutputSection_DIFF.outputType_DIFF
 transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="CHANNELS" type="data" optional="false" label="Channel Mask" help="use a zero value for hillslopes, any other value for channel cells. The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="CHANNELS" type="data" optional="false" label="Channel Mask" help="use a zero value for hillslopes, any other value for channel cells. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="UPDATE" type="select" optional="true" label="Update" help="Update">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -41,7 +41,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_MODEL" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MODEL" type="select" label="Modelled Elevation" help="Modelled Elevation">
+      <param name="outputType_MODEL" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -53,7 +53,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
       </param>
     </section>
     <section name="OutputSection_DIFF" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DIFF" type="select" label="Elevation Difference" help="Elevation Difference">
+      <param name="outputType_DIFF" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

@@ -21,7 +21,7 @@ transmissionMode_ENTROPY $OutputSection_ENTROPY.transmissionMode_ENTROPY
 outputType_VARIANCE $OutputSection_VARIANCE.outputType_VARIANCE
 transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Kernel" help="kernel radius in cells">
       <option selected="true" value="circle">circle</option>
       <option value="square">square</option>
@@ -43,7 +43,7 @@ transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CONTRAST" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONTRAST" type="select" label="Contrast" help="Contrast">
+      <param name="outputType_CONTRAST" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -55,7 +55,7 @@ transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE]]></
       </param>
     </section>
     <section name="OutputSection_ENERGY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ENERGY" type="select" label="Energy" help="Energy">
+      <param name="outputType_ENERGY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -67,7 +67,7 @@ transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE]]></
       </param>
     </section>
     <section name="OutputSection_ENTROPY" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ENTROPY" type="select" label="Entropy" help="Entropy">
+      <param name="outputType_ENTROPY" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -79,7 +79,7 @@ transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE]]></
       </param>
     </section>
     <section name="OutputSection_VARIANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_VARIANCE" type="select" label="Variance" help="Variance">
+      <param name="outputType_VARIANCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

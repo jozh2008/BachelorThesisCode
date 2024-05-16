@@ -15,7 +15,7 @@ transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ATTRIBUTE" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -27,7 +27,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_POLYGONS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_POLYGONS" type="select" label="Polygons" help="Polygons">
+      <param name="outputType_POLYGONS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -38,7 +38,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       </param>
     </section>
     <section name="OutputSection_LINES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_LINES" type="select" label="Lines" help="Lines">
+      <param name="outputType_LINES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -49,7 +49,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       </param>
     </section>
     <section name="OutputSection_POINTS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_POINTS" type="select" label="Duplicated Points" help="Duplicated Points">
+      <param name="outputType_POINTS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

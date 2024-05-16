@@ -12,7 +12,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="The shapefile to convert. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="The shapefile to convert. The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD_Z" type="data" optional="false" label="Z" help="Field with z-coordinate information. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="FIELD_M" type="data" optional="false" label="M" help="Field with measure information. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -25,7 +25,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Output" help="The converted shapefile.">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

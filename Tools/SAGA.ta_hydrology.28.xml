@@ -14,8 +14,8 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW
 outputType_UPAREA $OutputSection_UPAREA.outputType_UPAREA
 transmissionMode_UPAREA $OutputSection_UPAREA.transmissionMode_UPAREA]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="FIELDS" type="data" optional="false" label="FIELDS" help="FIELDS The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="FIELDS" help="FIELDS The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="STOP" type="select" optional="true" label="Stop at edge" help="Stop flow at the edge of a field">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -30,7 +30,7 @@ transmissionMode_UPAREA $OutputSection_UPAREA.transmissionMode_UPAREA]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_FLOW" type="select" label="Flow table" help="Table containing the flow from and to each field">
+      <param name="outputType_FLOW" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_FLOW" type="select" label="Choose the transmission mode">
@@ -39,7 +39,7 @@ transmissionMode_UPAREA $OutputSection_UPAREA.transmissionMode_UPAREA]]></comman
       </param>
     </section>
     <section name="OutputSection_UPAREA" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_UPAREA" type="select" label="Uparea" help="uparea">
+      <param name="outputType_UPAREA" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

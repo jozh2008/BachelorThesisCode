@@ -13,7 +13,7 @@ response $response
 outputType_FLOW $OutputSection_FLOW.outputType_FLOW
 transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="UPDATE" type="integer" value="0" optional="true" label="Update Frequency" help="if zero no updates will be done"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="D8">D8</option>
@@ -31,7 +31,7 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_FLOW" type="select" label="Flow Accumulation" help="Flow Accumulation">
+      <param name="outputType_FLOW" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

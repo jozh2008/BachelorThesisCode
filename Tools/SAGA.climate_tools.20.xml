@@ -24,11 +24,11 @@ transmissionMode_SW_0 $OutputSection_SW_0.transmissionMode_SW_0
 outputType_SW_1 $OutputSection_SW_1.outputType_SW_1
 transmissionMode_SW_1 $OutputSection_SW_1.transmissionMode_SW_1]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="SWC" type="data" optional="false" label="Soil Water Capacity of Profile" help="Total soil water capacity (mm H2O). The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="SWC" type="data" optional="false" label="Soil Water Capacity of Profile" help="Total soil water capacity (mm H2O). The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="SWC_DEFAULT" type="float" value="220" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="SWC_SURFACE" type="float" value="30" optional="true" label="Top Soil Water Capacity" help="Top Soil Water Capacity"/>
     <param name="SW1_RESIST" type="float" value="0.5" optional="true" label="Transpiration Resistance" help="Transpiration Resistance"/>
@@ -43,7 +43,7 @@ transmissionMode_SW_1 $OutputSection_SW_1.transmissionMode_SW_1]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_SNOW" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SNOW" type="select" label="Snow Depth" help="Snow Depth">
+      <param name="outputType_SNOW" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -55,7 +55,7 @@ transmissionMode_SW_1 $OutputSection_SW_1.transmissionMode_SW_1]]></command>
       </param>
     </section>
     <section name="OutputSection_ETP" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ETP" type="select" label="Evapotranspiration" help="Evapotranspiration">
+      <param name="outputType_ETP" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -67,7 +67,7 @@ transmissionMode_SW_1 $OutputSection_SW_1.transmissionMode_SW_1]]></command>
       </param>
     </section>
     <section name="OutputSection_SW_0" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SW_0" type="select" label="Soil Water (Upper Layer)" help="Soil Water (Upper Layer)">
+      <param name="outputType_SW_0" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -79,7 +79,7 @@ transmissionMode_SW_1 $OutputSection_SW_1.transmissionMode_SW_1]]></command>
       </param>
     </section>
     <section name="OutputSection_SW_1" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SW_1" type="select" label="Soil Water (Lower Layer)" help="Soil Water (Lower Layer)">
+      <param name="outputType_SW_1" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

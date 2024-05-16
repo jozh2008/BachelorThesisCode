@@ -11,7 +11,7 @@ response $response
 outputType_OR $OutputSection_OR.outputType_OR
 transmissionMode_OR $OutputSection_OR.transmissionMode_OR]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Operator Type" help="Operator Type">
       <option value="a_+_b_-_a_*_b">a + b - a * b</option>
       <option selected="true" value="max(a,_b)_(non-interactive)">max(a, b) (non-interactive)</option>
@@ -27,7 +27,7 @@ transmissionMode_OR $OutputSection_OR.transmissionMode_OR]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OR" type="select" label="Union" help="Union">
+      <param name="outputType_OR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

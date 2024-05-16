@@ -22,7 +22,7 @@ response $response
 outputType_DISSOLVED $OutputSection_DISSOLVED.outputType_DISSOLVED
 transmissionMode_DISSOLVED $OutputSection_DISSOLVED.transmissionMode_DISSOLVED]]></command>
   <inputs>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="FIELDS" type="data" optional="false" label="Dissolve Field(s)" help="Dissolve Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STATISTICS" type="data" optional="false" label="Statistics Field(s)" help="Statistics Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STAT_SUM" type="select" optional="true" label="Sum" help="Sum">
@@ -77,7 +77,7 @@ transmissionMode_DISSOLVED $OutputSection_DISSOLVED.transmissionMode_DISSOLVED]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_DISSOLVED" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DISSOLVED" type="select" label="Dissolved Lines" help="Dissolved Lines">
+      <param name="outputType_DISSOLVED" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

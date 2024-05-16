@@ -20,8 +20,8 @@ transmissionMode_MAXIMUM $OutputSection_MAXIMUM.transmissionMode_MAXIMUM
 outputType_QUANTILE $OutputSection_QUANTILE.outputType_QUANTILE
 transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="QUANT_VAL" type="float" value="50" optional="true" label="Value" help="Value"/>
     <param name="TIME" type="select" optional="true" label="Time" help="Time">
       <option value="April_-_June">April - June</option>
@@ -55,7 +55,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_DAYS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DAYS" type="select" label="Snow Cover Days" help="Snow Cover Days">
+      <param name="outputType_DAYS" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -67,7 +67,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
       </param>
     </section>
     <section name="OutputSection_MEAN" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MEAN" type="select" label="Average" help="Average">
+      <param name="outputType_MEAN" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -79,7 +79,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
       </param>
     </section>
     <section name="OutputSection_MAXIMUM" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_MAXIMUM" type="select" label="Maximum" help="Maximum">
+      <param name="outputType_MAXIMUM" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -91,7 +91,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
       </param>
     </section>
     <section name="OutputSection_QUANTILE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_QUANTILE" type="select" label="Quantile" help="Quantile">
+      <param name="outputType_QUANTILE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

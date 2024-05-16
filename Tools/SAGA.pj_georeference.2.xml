@@ -16,8 +16,8 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="REF_SOURCE" type="data" optional="false" label="Reference Points (Origin)" help="Reference Points (Origin) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
-    <param name="REF_TARGET" type="data" optional="false" label="Reference Points (Projection)" help="Reference Points (Projection) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="REF_SOURCE" type="data" optional="false" label="Reference Points (Origin)" help="Reference Points (Origin) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="REF_TARGET" type="data" optional="false" label="Reference Points (Projection)" help="Reference Points (Projection) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="XFIELD" type="data" optional="false" label="x Position" help="x Position The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="YFIELD" type="data" optional="false" label="y Position" help="y Position The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
@@ -31,7 +31,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option value="Triangulation">Triangulation</option>
     </param>
     <param name="ORDER" type="integer" value="3" optional="true" label="Polynomial Order" help="Polynomial Order"/>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -42,7 +42,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_OUTPUT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_OUTPUT" type="select" label="Output" help="Output">
+      <param name="outputType_OUTPUT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

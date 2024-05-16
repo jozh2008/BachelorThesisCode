@@ -19,7 +19,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CLASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CLASSES" type="select" label="Decision Tree" help="Decision Tree">
+      <param name="outputType_CLASSES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

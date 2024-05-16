@@ -40,7 +40,7 @@ transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTIC
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_RESULT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_RESULT" type="select" label="Result" help="Result">
+      <param name="outputType_RESULT" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_RESULT" type="select" label="Choose the transmission mode">
@@ -49,7 +49,7 @@ transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTIC
       </param>
     </section>
     <section name="OutputSection_STATISTICS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_STATISTICS" type="select" label="Statistics" help="Statistics">
+      <param name="outputType_STATISTICS" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_STATISTICS" type="select" label="Choose the transmission mode">

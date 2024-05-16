@@ -13,7 +13,7 @@ transmissionMode_ORTHODROME $OutputSection_ORTHODROME.transmissionMode_ORTHODROM
 outputType_LOXODROME $OutputSection_LOXODROME.outputType_LOXODROME
 transmissionMode_LOXODROME $OutputSection_LOXODROME.transmissionMode_LOXODROME]]></command>
   <inputs>
-    <param name="PLANAR" type="data" optional="false" label="Segments" help="Segments The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="PLANAR" type="data" optional="false" label="Segments" help="Segments The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="EPSILON" type="float" value="100" optional="true" label="Epsilon" help="defines the maximum resolution [km] for the re-projected distance segments"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -25,7 +25,7 @@ transmissionMode_LOXODROME $OutputSection_LOXODROME.transmissionMode_LOXODROME]]
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_ORTHODROME" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_ORTHODROME" type="select" label="Great Elliptic" help="Great Elliptic">
+      <param name="outputType_ORTHODROME" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>
@@ -36,7 +36,7 @@ transmissionMode_LOXODROME $OutputSection_LOXODROME.transmissionMode_LOXODROME]]
       </param>
     </section>
     <section name="OutputSection_LOXODROME" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_LOXODROME" type="select" label="Loxodrome" help="Loxodrome">
+      <param name="outputType_LOXODROME" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

@@ -13,7 +13,7 @@ response $response
 outputType_FLOW $OutputSection_FLOW.outputType_FLOW
 transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="ITERATIONS" type="integer" value="100" optional="true" label="Iterations" help="Iterations"/>
     <param name="RUNOFF" type="float" value="1" optional="true" label="Runoff" help="Runoff"/>
     <param name="MANNING" type="float" value="0.2" optional="true" label="Manning's Roughness" help="Manning's Roughness"/>
@@ -27,7 +27,7 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_FLOW" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_FLOW" type="select" label="Flow" help="Flow">
+      <param name="outputType_FLOW" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

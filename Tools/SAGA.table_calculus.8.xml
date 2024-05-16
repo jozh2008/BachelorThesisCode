@@ -29,7 +29,7 @@ transmissionMode_NOGAPS $OutputSection_NOGAPS.transmissionMode_NOGAPS]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_NOGAPS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_NOGAPS" type="select" label="Table without Gaps" help="Table without Gaps">
+      <param name="outputType_NOGAPS" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_NOGAPS" type="select" label="Choose the transmission mode">

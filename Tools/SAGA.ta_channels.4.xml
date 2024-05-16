@@ -30,10 +30,10 @@ transmissionMode_SDR $OutputSection_SDR.transmissionMode_SDR
 outputType_PASSES $OutputSection_PASSES.outputType_PASSES
 transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="A grid that contains elevation data. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="CHANNELS" type="data" optional="false" label="Channel Network" help="A grid providing information about the channel network. It is assumed that no-data cells are not part of the channel network. Vice versa all others cells are recognised as channel network members. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="ROUTE" type="data" optional="false" label="Preferred Routing" help="Downhill flow is bound to preferred routing cells, where these are not no-data. Helps to model e.g. small ditches, that are not well represented in the elevation data. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="FIELDS" type="data" optional="false" label="Fields" help="If set, output is given about the number of fields a flow path visits downhill. For D8 only. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="A grid that contains elevation data. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="CHANNELS" type="data" optional="false" label="Channel Network" help="A grid providing information about the channel network. It is assumed that no-data cells are not part of the channel network. Vice versa all others cells are recognised as channel network members. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="ROUTE" type="data" optional="false" label="Preferred Routing" help="Downhill flow is bound to preferred routing cells, where these are not no-data. Helps to model e.g. small ditches, that are not well represented in the elevation data. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Fields" help="If set, output is given about the number of fields a flow path visits downhill. For D8 only. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Flow Algorithm" help="Choose a flow routing algorithm that shall be used for the overland flow distance calculation:&amp;lt;br/&amp;gt;- D8&amp;lt;br/&amp;gt;- MFD">
       <option value="D8">D8</option>
       <option selected="true" value="MFD">MFD</option>
@@ -43,9 +43,9 @@ transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></comman
       <option value="true">true</option>
     </param>
     <param name="FLOW_B" type="float" value="1" optional="true" label="Beta" help="catchment specific parameter for sediment delivery ratio calculation"/>
-    <param name="FLOW_K" type="data" optional="false" label="Manning-Strickler Coefficient" help="Manning-Strickler coefficient for flow travel time estimation (reciprocal of Manning's Roughness Coefficient) The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="FLOW_K" type="data" optional="false" label="Manning-Strickler Coefficient" help="Manning-Strickler coefficient for flow travel time estimation (reciprocal of Manning's Roughness Coefficient) The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="FLOW_K_DEFAULT" type="float" value="20" optional="true" label="Default" help="default value if no grid has been selected"/>
-    <param name="FLOW_R" type="data" optional="false" label="Flow Depth" help="flow depth [m] for flow travel time estimation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="FLOW_R" type="data" optional="false" label="Flow Depth" help="flow depth [m] for flow travel time estimation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="FLOW_R_DEFAULT" type="float" value="0.05" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -57,7 +57,7 @@ transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_DISTANCE" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DISTANCE" type="select" label="Overland Flow Distance" help="The overland flow distance in map units. It is assumed that the (vertical) elevation data use the same units as the (horizontal) grid coordinates.">
+      <param name="outputType_DISTANCE" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -69,7 +69,7 @@ transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></comman
       </param>
     </section>
     <section name="OutputSection_DISTVERT" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DISTVERT" type="select" label="Vertical Overland Flow Distance" help="This is the vertical component of the overland flow">
+      <param name="outputType_DISTVERT" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -81,7 +81,7 @@ transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></comman
       </param>
     </section>
     <section name="OutputSection_DISTHORZ" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_DISTHORZ" type="select" label="Horizontal Overland Flow Distance" help="This is the horizontal component of the overland flow">
+      <param name="outputType_DISTHORZ" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -93,7 +93,7 @@ transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></comman
       </param>
     </section>
     <section name="OutputSection_TIME" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_TIME" type="select" label="Flow Travel Time" help="flow travel time to channel expressed in hours based on Manning's Equation">
+      <param name="outputType_TIME" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -105,7 +105,7 @@ transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></comman
       </param>
     </section>
     <section name="OutputSection_SDR" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_SDR" type="select" label="Sediment Yield Delivery Ratio" help="This is the horizontal component of the overland flow">
+      <param name="outputType_SDR" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>
@@ -117,7 +117,7 @@ transmissionMode_PASSES $OutputSection_PASSES.transmissionMode_PASSES]]></comman
       </param>
     </section>
     <section name="OutputSection_PASSES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_PASSES" type="select" label="Fields Visited" help="Number of fields a flow path visits downhill starting at a cell. For D8 only.">
+      <param name="outputType_PASSES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/x-ogc-aaigrid">x-ogc-aaigrid</option>
         <option value="application/x-ogc-envi">x-ogc-envi</option>
         <option value="image/png">png</option>

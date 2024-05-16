@@ -14,7 +14,7 @@ response $response
 outputType_CARTES $OutputSection_CARTES.outputType_CARTES
 transmissionMode_CARTES $OutputSection_CARTES.transmissionMode_CARTES]]></command>
   <inputs>
-    <param name="POLAR" type="data" optional="false" label="Polar Coordinates" help="Polar Coordinates The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POLAR" type="data" optional="false" label="Polar Coordinates" help="Polar Coordinates The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="F_EXAGG" type="data" optional="false" label="Exaggeration" help="Exaggeration The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="D_EXAGG" type="float" value="1" optional="true" label="Exaggeration Factor" help="Exaggeration Factor"/>
     <param name="RADIUS" type="float" value="6371000" optional="true" label="Radius" help="Radius"/>
@@ -32,7 +32,7 @@ transmissionMode_CARTES $OutputSection_CARTES.transmissionMode_CARTES]]></comman
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CARTES" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CARTES" type="select" label="Cartesion Coordinates" help="Cartesion Coordinates">
+      <param name="outputType_CARTES" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="text/xml">xml</option>

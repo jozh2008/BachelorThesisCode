@@ -19,7 +19,7 @@ transmissionMode_CONNECTIONS $OutputSection_CONNECTIONS.transmissionMode_CONNECT
       <option value="raw">raw</option>
     </param>
     <section name="OutputSection_CONNECTIONS" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_CONNECTIONS" type="select" label="Connections" help="Connections">
+      <param name="outputType_CONNECTIONS" type="select" label="Author did not provide help for this parameter... ">
         <option value="text/csv">csv</option>
       </param>
       <param name="transmissionMode_CONNECTIONS" type="select" label="Choose the transmission mode">
