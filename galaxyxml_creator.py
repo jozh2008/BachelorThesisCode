@@ -5,6 +5,7 @@ from pprint import pprint
 from typing import Dict, List, Union
 import re
 import copy
+import math
 
 
 class Galaxyxmltool:
@@ -19,7 +20,14 @@ class Galaxyxmltool:
     def get_tool(self):
         return self.gxt
 
-    def create_text_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
+    def create_text_param(
+        self,
+        param_name: str,
+        param_schema: Union[Dict, None],
+        is_nullable: bool,
+        title: Union[str, None],
+        description: Union[str, None]
+    ):
         """
         Create a text parameter for the Galaxy interface.
 
@@ -31,7 +39,8 @@ class Galaxyxmltool:
         Returns:
             TextParam: The created text parameter.
         """
-        default_value = param_schema.get("default")
+        if param_schema is not None:
+            default_value = param_schema.get("default")
         return self.gxtp.TextParam(
             name=param_name,
             label=title,
@@ -90,7 +99,14 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    def create_integer_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
+    def create_integer_param(
+        self,
+        param_name: str,
+        param_schema: Union[Dict, None],
+        is_nullable: bool,
+        title: Union[str, None],
+        description: Union[str, None]
+    ):
         """
         Create an integer parameter.
 
@@ -102,7 +118,9 @@ class Galaxyxmltool:
         Returns:
             IntegerParam: The created integer parameter.
         """
-        default_value = param_schema.get("default")
+        default_value = None
+        if param_schema is not None:
+            default_value = param_schema.get("default")
         return self.gxtp.IntegerParam(
             name=param_name,
             label=title,
@@ -111,7 +129,14 @@ class Galaxyxmltool:
             optional=is_nullable
         )
 
-    def create_float_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
+    def create_float_param(
+        self,
+        param_name: str,
+        param_schema: Union[Dict, None],
+        is_nullable: bool,
+        title: Union[str, None],
+        description: Union[str, None]
+    ):
         """
         Create a float parameter.
 
@@ -123,7 +148,9 @@ class Galaxyxmltool:
         Returns:
             FloatParam: The created float parameter.
         """
-        default_value = param_schema.get("default")
+        default_value = None
+        if param_schema is not None:
+            default_value = param_schema.get("default")
         return self.gxtp.FloatParam(
             name=param_name,
             label=title,
@@ -163,23 +190,71 @@ class Galaxyxmltool:
     # To do:
     def create_object_param(self, param_name: str, param_schema: Dict, is_nullable: bool, title: str, description: str):
         required = param_schema.get("required", [])
-        print(required)
         enum_values = []
         section = self.create_section(name=param_name, title=title, description=description)
         for req in required:
-            print(req)
             schema = param_schema["properties"][req]
-            schema_type = param_schema["properties"][req].get("type")
-            print(schema_type)
+            schema_type = schema.get("type")
             if schema_type == "string":
                 enum_values = schema.get("enum")
                 options = {value: value for value in enum_values}
                 param = self.gxtp.SelectParam(name=req, optional=is_nullable, options=options)
-                section.append(param)
             elif schema_type == "array":
-                # To do: Check best param for array
-                param = self.gxtp.DataParam(name=req, optional=is_nullable)
+                # To do: Check best param for array with min and max Items
+                array_items = schema.get("items")
+                min_items, max_items = self.get_array_length(schema)
+                array_type = array_items.get("type")
+                param = self.create_array_param(req, array_type, min_items, max_items)
+            section.append(param)
         return section
+
+    def get_array_length(self, schema: Dict):
+        """
+        Get array length
+        """
+        array_length = schema.get("oneOf")
+        min_items = math.inf
+        max_items = -math.inf
+
+        for dictionary in array_length:
+            max_items = max(max_items, dictionary.get("maxItems", -math.inf))
+            min_items = min(min_items, dictionary.get("minItems", math.inf))
+
+        return min_items, max_items
+
+    def create_array_param(self, name: str, array_type: str, min_items: int, max_items: int):
+        param = self.gxtp.Repeat(name=name, title="Array item", min=min_items, max=max_items)
+
+        if array_type == "number":
+            data = self.create_float_param(
+                param_name="floatData",
+                param_schema=None,
+                is_nullable=False,
+                title=None,
+                description=None
+            )
+        elif array_type == "integer":
+            data = self.create_integer_param(
+                param_name="integerData",
+                param_schema=None,
+                is_nullable=False,
+                title=None,
+                description=None
+            )
+        elif array_type == "string":
+            data = self.create_text_param(
+                param_name="textData",
+                param_schema=None,
+                is_nullable=False,
+                title=None,
+                description=None
+            )
+        else:
+            print("Array type not supported yet")
+            data = None
+
+        param.append(data)
+        return param
 
     def create_section(self, name: str, title: str, description=None):
         return self.gxtp.Section(
