@@ -16,7 +16,7 @@ transmissionMode_POS $OutputSection_POS.transmissionMode_POS
 outputType_NEG $OutputSection_NEG.outputType_NEG
 transmissionMode_NEG $OutputSection_NEG.transmissionMode_NEG]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="RADIUS" type="float" value="10000" optional="true" label="Radial Limit" help="Radial Limit"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option selected="true" value="line_tracing">line tracing</option>
@@ -78,7 +78,7 @@ transmissionMode_NEG $OutputSection_NEG.transmissionMode_NEG]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

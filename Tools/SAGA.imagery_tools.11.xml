@@ -38,7 +38,7 @@ transmissionMode_MOC_1 $OutputSection_MOC_1.transmissionMode_MOC_1
 outputType_MOC_2 $OutputSection_MOC_2.outputType_MOC_2
 transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="DIRECTION" type="select" optional="true" label="Direction" help="Direction">
       <option value="E-W">E-W</option>
       <option value="N-S">N-S</option>
@@ -323,7 +323,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

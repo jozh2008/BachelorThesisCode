@@ -14,8 +14,8 @@ response $response
 outputType_MBI $OutputSection_MBI.outputType_MBI
 transmissionMode_MBI $OutputSection_MBI.transmissionMode_MBI]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="HREL" type="data" optional="false" label="Vertical Distance to Channel Network" help="Vertical Distance to Channel Network The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="HREL" type="data" optional="false" label="Vertical Distance to Channel Network" help="Vertical Distance to Channel Network The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="TSLOPE" type="float" value="15" optional="true" label="T Slope" help="T Slope"/>
     <param name="TCURVE" type="float" value="0.01" optional="true" label="T Curvature" help="T Curvature"/>
     <param name="THREL" type="float" value="15" optional="true" label="T Vertical Distance to Channel Network" help="T Vertical Distance to Channel Network"/>
@@ -53,7 +53,7 @@ transmissionMode_MBI $OutputSection_MBI.transmissionMode_MBI]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

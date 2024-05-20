@@ -19,7 +19,7 @@ response $response
 outputType_PLOTS $OutputSection_PLOTS.outputType_PLOTS
 transmissionMode_PLOTS $OutputSection_PLOTS.transmissionMode_PLOTS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="STRIKE" type="data" optional="false" label="Strike" help="Strike The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DIP" type="data" optional="false" label="Dip" help="Dip The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RAKE" type="data" optional="false" label="Rake" help="Rake The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -64,7 +64,7 @@ transmissionMode_PLOTS $OutputSection_PLOTS.transmissionMode_PLOTS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

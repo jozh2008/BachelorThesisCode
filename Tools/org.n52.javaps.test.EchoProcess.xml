@@ -18,7 +18,7 @@ transmissionMode_complexOutput $OutputSection_complexOutput.transmissionMode_com
 transmissionMode_c $OutputSection_c.transmissionMode_c]]></command>
   <inputs>
     <param name="literalInput" type="text" optional="true" label="Literal Input (string)" help="An input string"/>
-    <param name="complexInput" type="data" optional="false" label="Complex Input" help="A complex input  The following data types are allowed in the txt file:  json, xml" format="txt"/>
+    <param name="complexInput" type="data" optional="false" label="Complex Input" help="A complex input  The following data types are allowed in the txt file:  xml, json" format="txt"/>
     <section name="c" title="BoundingBox Input " expanded="true" help="A boundingbox input ">
       <repeat name="bbox" title="Array item" min="4" max="6">
         <param name="floatData" type="float" optional="false" label="Author did not provide help for this parameter... "/>
@@ -72,7 +72,7 @@ transmissionMode_c $OutputSection_c.transmissionMode_c]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -29,8 +29,8 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
       <option value="shapes_extent">shapes extent</option>
       <option selected="true" value="user_defined">user defined</option>
     </param>
-    <param name="SHAPES" type="data" optional="false" label="Shapes Extent" help="Shapes Extent The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes Extent" help="Shapes Extent The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="XMIN" type="float" value="0" optional="true" label="Left" help="Left"/>
     <param name="XMAX" type="float" value="0" optional="true" label="Right" help="Right"/>
     <param name="YMIN" type="float" value="0" optional="true" label="Bottom" help="Bottom"/>
@@ -77,7 +77,7 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

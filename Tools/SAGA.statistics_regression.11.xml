@@ -14,7 +14,7 @@ response $response
 outputType_TREND $OutputSection_TREND.outputType_TREND
 transmissionMode_TREND $OutputSection_TREND.transmissionMode_TREND]]></command>
   <inputs>
-    <param name="TABLE" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="TABLE" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="FIELD_X" type="data" optional="false" label="X Values" help="X Values The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="FIELD_Y" type="data" optional="false" label="Y Values" help="Y Values The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="FORMULA" type="text" value="m * x + b" optional="true" label="Formula" help="Formula"/>
@@ -52,7 +52,7 @@ transmissionMode_TREND $OutputSection_TREND.transmissionMode_TREND]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

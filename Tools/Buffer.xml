@@ -43,8 +43,22 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
-      <param name="response" value="document"/>
+      <param name="response" value=""/>
+      <param name="InputPolygon"/>
+      <param name="bufferDistance" value="0.001"/>
+      <output name="output_data_Result" ftype="txt"/>
+    </test>
+    <test>
+      <param name="response" value=""/>
+      <param name="InputPolygon"/>
+      <param name="bufferDistance" value="0.001"/>
+      <output name="output_data_Result" ftype="txt"/>
+    </test>
+    <test>
+      <param name="response" value=""/>
+      <param name="InputPolygon"/>
+      <param name="bufferDistance" value="0.001"/>
+      <output name="output_data_Result" ftype="txt"/>
     </test>
   </tests>
   <help><![CDATA[This service shall return a feature collection representing the buffer of geometry InputPolygon at distance BufferDistance. The buffer of a geometry at distance d is the Polygon or MultiPolygon which contains all points within a distance d of the geometry.]]></help>

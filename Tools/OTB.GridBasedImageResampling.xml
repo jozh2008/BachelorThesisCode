@@ -22,7 +22,7 @@ response $response
 outputType_io.out $OutputSection_io.out.outputType_io.out
 transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
   <inputs>
-    <param name="io.in" type="data" optional="false" label="The input image to resample" help="The input image to resample The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="io.in" type="data" optional="false" label="The input image to resample" help="The input image to resample The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="io.out" type="select" optional="false" label="The resampled output image" help="The resampled output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -31,7 +31,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="grid.in" type="data" optional="false" label="The resampling grid" help="The resampling grid The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="grid.in" type="data" optional="false" label="The resampling grid" help="The resampling grid The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="grid.type" type="select" optional="false" label="allows one to choose between two grid types" help="allows one to choose between two grid types">
       <option selected="true" value="def">def</option>
       <option value="loc">loc</option>
@@ -81,7 +81,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -13,7 +13,7 @@ response $response
 outputType_insvm $OutputSection_insvm.outputType_insvm
 transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
   <inputs>
-    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, zip, json" format="txt"/>
+    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  xml, zip, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="instats" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="feat" type="text" optional="false" label="Features to be calculated" help="Features to be calculated"/>
     <param name="cfield" type="text" value="predicted" optional="false" label="Field containing the predicted class" help="Field containing the predicted class"/>
@@ -47,7 +47,7 @@ transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

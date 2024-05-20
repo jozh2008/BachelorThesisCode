@@ -15,7 +15,7 @@ response $response
 outputType_EXPOSITION $OutputSection_EXPOSITION.outputType_EXPOSITION
 transmissionMode_EXPOSITION $OutputSection_EXPOSITION.transmissionMode_EXPOSITION]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="MAXDIST" type="float" value="300" optional="true" label="Search Distance [km]" help="Search Distance [km]"/>
     <param name="STEP" type="float" value="15" optional="true" label="Angular Step Size (Degree)" help="Angular Step Size (Degree)"/>
     <param name="OLDVER" type="select" optional="true" label="Old Version" help="use old version for constant wind direction (no acceleration and averaging option)">
@@ -61,7 +61,7 @@ transmissionMode_EXPOSITION $OutputSection_EXPOSITION.transmissionMode_EXPOSITIO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

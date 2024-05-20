@@ -32,17 +32,17 @@ transmissionMode_FLOW_LENGTH $OutputSection_FLOW_LENGTH.transmissionMode_FLOW_LE
 outputType_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.outputType_WEIGHT_LOSS
 transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_LOSS]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="SINKROUTE" type="data" optional="false" label="Sink Routes" help="Sink Routes The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="VAL_INPUT" type="data" optional="false" label="Input for Mean over Catchment" help="Input for Mean over Catchment The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="ACCU_MATERIAL" type="data" optional="false" label="Material for Accumulation" help="Material for Accumulation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="ACCU_TARGET" type="data" optional="false" label="Accumulation Target" help="Accumulation Target The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Sink Routes" help="Sink Routes The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="VAL_INPUT" type="data" optional="false" label="Input for Mean over Catchment" help="Input for Mean over Catchment The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="ACCU_MATERIAL" type="data" optional="false" label="Material for Accumulation" help="Material for Accumulation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="ACCU_TARGET" type="data" optional="false" label="Accumulation Target" help="Accumulation Target The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="FLOW_UNIT" type="select" optional="true" label="Flow Accumulation Unit" help="Flow Accumulation Unit">
       <option selected="true" value="cell_area">cell area</option>
       <option value="number_of_cells">number of cells</option>
     </param>
-    <param name="TARGETS" type="data" optional="false" label="Target Areas" help="Target Areas The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="TARGETS" type="data" optional="false" label="Target Areas" help="Target Areas The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Deterministic_8">Deterministic 8</option>
       <option value="Deterministic_Infinity">Deterministic Infinity</option>
@@ -208,7 +208,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

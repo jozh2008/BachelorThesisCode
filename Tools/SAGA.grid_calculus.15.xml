@@ -17,8 +17,8 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR
 outputType_LEN $OutputSection_LEN.outputType_LEN
 transmissionMode_LEN $OutputSection_LEN.transmissionMode_LEN]]></command>
   <inputs>
-    <param name="DX" type="data" optional="false" label="X Component" help="X Component The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="DY" type="data" optional="false" label="Y Component" help="Y Component The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DX" type="data" optional="false" label="X Component" help="X Component The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DY" type="data" optional="false" label="Y Component" help="Y Component The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="UNITS" type="select" optional="true" label="Polar Angle Units" help="Polar Angle Units">
       <option value="degree">degree</option>
       <option selected="true" value="radians">radians</option>
@@ -87,7 +87,7 @@ transmissionMode_LEN $OutputSection_LEN.transmissionMode_LEN]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

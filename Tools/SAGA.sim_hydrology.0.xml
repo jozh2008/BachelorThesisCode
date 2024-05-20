@@ -17,11 +17,11 @@ response $response
 outputType_DYN_W $OutputSection_DYN_W.outputType_DYN_W
 transmissionMode_DYN_W $OutputSection_DYN_W.transmissionMode_DYN_W]]></command>
   <inputs>
-    <param name="STA_FC" type="data" optional="false" label="Field Capacity [mm]" help="Field Capacity [mm] The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="STA_FC" type="data" optional="false" label="Field Capacity [mm]" help="Field Capacity [mm] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="STA_FC_DEF" type="float" value="20" optional="true" label="Default" help="Default"/>
-    <param name="STA_PWP" type="data" optional="false" label="Permanent Wilting Point [mm]" help="Permanent Wilting Point [mm] The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="STA_PWP" type="data" optional="false" label="Permanent Wilting Point [mm]" help="Permanent Wilting Point [mm] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="STA_PWP_DEF" type="float" value="2" optional="true" label="Default" help="Default"/>
-    <param name="LANDUSE" type="data" optional="false" label="Land Use" help="Land Use The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="LANDUSE" type="data" optional="false" label="Land Use" help="Land Use The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="LANDUSE_DEF" type="integer" value="-1" optional="true" label="Default" help="Default"/>
     <param name="DYN_CLIMATE" type="data" optional="false" label="Climate Data" help="Climate Data The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STA_KC" type="data" optional="false" label="Crop Coefficients" help="Crop Coefficients The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -59,7 +59,7 @@ transmissionMode_DYN_W $OutputSection_DYN_W.transmissionMode_DYN_W]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

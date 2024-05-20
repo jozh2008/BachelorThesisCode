@@ -19,12 +19,12 @@ transmissionMode_GREENNESS $OutputSection_GREENNESS.transmissionMode_GREENNESS
 outputType_WETNESS $OutputSection_WETNESS.outputType_WETNESS
 transmissionMode_WETNESS $OutputSection_WETNESS.transmissionMode_WETNESS]]></command>
   <inputs>
-    <param name="BLUE" type="data" optional="false" label="Blue (TM 1)" help="Blue (TM 1) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="GREEN" type="data" optional="false" label="Green (TM 2)" help="Green (TM 2) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="RED" type="data" optional="false" label="Red (TM 3)" help="Red (TM 3) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="NIR" type="data" optional="false" label="Near Infrared (TM 4)" help="Near Infrared (TM 4) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="MIR1" type="data" optional="false" label="Mid Infrared (TM 5)" help="Mid Infrared (TM 5) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="MIR2" type="data" optional="false" label="Mid Infrared (TM 7)" help="Mid Infrared (TM 7) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="BLUE" type="data" optional="false" label="Blue (TM 1)" help="Blue (TM 1) The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GREEN" type="data" optional="false" label="Green (TM 2)" help="Green (TM 2) The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="RED" type="data" optional="false" label="Red (TM 3)" help="Red (TM 3) The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="NIR" type="data" optional="false" label="Near Infrared (TM 4)" help="Near Infrared (TM 4) The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="MIR1" type="data" optional="false" label="Mid Infrared (TM 5)" help="Mid Infrared (TM 5) The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="MIR2" type="data" optional="false" label="Mid Infrared (TM 7)" help="Mid Infrared (TM 7) The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -99,7 +99,7 @@ transmissionMode_WETNESS $OutputSection_WETNESS.transmissionMode_WETNESS]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -17,7 +17,7 @@ response $response
 outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
 transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="DIST_FIELD" type="data" optional="false" label="Buffer Distance" help="Buffer Distance The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DIST_FIELD_DEFAULT" type="float" value="100" optional="true" label="Default" help="default value if no attribute has been selected"/>
     <param name="DIST_SCALE" type="float" value="1" optional="true" label="Scaling Factor for Attribute Value" help="Scaling Factor for Attribute Value"/>
@@ -63,7 +63,7 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

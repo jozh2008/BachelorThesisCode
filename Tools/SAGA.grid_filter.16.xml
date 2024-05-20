@@ -31,7 +31,7 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
       <option selected="true" value="Queen's_case">Queen's case</option>
       <option value="Rooke's_case">Rooke's case</option>
     </param>
-    <param name="FEATURE" type="data" optional="false" label="Feature" help="Feature The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURE" type="data" optional="false" label="Feature" help="Feature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="GRADIENTS_OUT" type="select" optional="true" label="Output of Gradients" help="Output of Gradients">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -106,7 +106,7 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

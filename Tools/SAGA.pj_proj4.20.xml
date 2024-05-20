@@ -13,7 +13,7 @@ transmissionMode_ORTHODROME $OutputSection_ORTHODROME.transmissionMode_ORTHODROM
 outputType_LOXODROME $OutputSection_LOXODROME.outputType_LOXODROME
 transmissionMode_LOXODROME $OutputSection_LOXODROME.transmissionMode_LOXODROME]]></command>
   <inputs>
-    <param name="PLANAR" type="data" optional="false" label="Segments" help="Segments The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="PLANAR" type="data" optional="false" label="Segments" help="Segments The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="EPSILON" type="float" value="100" optional="true" label="Epsilon" help="defines the maximum resolution [km] for the re-projected distance segments"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -65,7 +65,7 @@ transmissionMode_LOXODROME $OutputSection_LOXODROME.transmissionMode_LOXODROME]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

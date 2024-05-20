@@ -14,7 +14,7 @@ transmissionMode_output.idy $OutputSection_output.idy.transmissionMode_output.id
 transmissionMode_output.town $OutputSection_output.town.transmissionMode_output.town
 transmissionMode_output.country $OutputSection_output.country.transmissionMode_output.country]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input sensor image." help="Input sensor image. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input sensor image." help="Input sensor image. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="input.idx" type="float" value="0" optional="false" label="X coordinate of the point to transform." help="X coordinate of the point to transform."/>
     <param name="input.idy" type="float" value="0" optional="false" label="Y coordinate of the point to transform." help="Y coordinate of the point to transform."/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -59,7 +59,7 @@ transmissionMode_output.country $OutputSection_output.country.transmissionMode_o
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

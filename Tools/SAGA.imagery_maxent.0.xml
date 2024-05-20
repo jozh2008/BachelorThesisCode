@@ -29,10 +29,10 @@ transmissionMode_PROB $OutputSection_PROB.transmissionMode_PROB
 outputType_PROBS $OutputSection_PROBS.outputType_PROBS
 transmissionMode_PROBS $OutputSection_PROBS.transmissionMode_PROBS]]></command>
   <inputs>
-    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="TRAINING" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Class Name" help="Class Name The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="FEATURES_NUM" type="data" optional="false" label="Numerical Features" help="Numerical Features The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="FEATURES_CAT" type="data" optional="false" label="Categorical Features" help="Categorical Features The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="PROBS_CREATE" type="select" optional="true" label="Create Propabilities" help="Create Propabilities">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -132,7 +132,7 @@ transmissionMode_PROBS $OutputSection_PROBS.transmissionMode_PROBS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

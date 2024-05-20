@@ -20,7 +20,7 @@ transmissionMode_PCA $OutputSection_PCA.transmissionMode_PCA
 outputType_EIGEN $OutputSection_EIGEN.outputType_EIGEN
 transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="COMPONENTS" type="integer" value="7" optional="true" label="Number of Components" help="number of first components in the output; set to zero to get all"/>
     <param name="BASE_OUT" type="select" optional="true" label="Output of Base Topographies" help="Output of Base Topographies">
       <option selected="true" value="false">false</option>
@@ -104,7 +104,7 @@ transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

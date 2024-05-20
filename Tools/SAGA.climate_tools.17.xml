@@ -20,8 +20,8 @@ transmissionMode_MAXIMUM $OutputSection_MAXIMUM.transmissionMode_MAXIMUM
 outputType_QUANTILE $OutputSection_QUANTILE.outputType_QUANTILE
 transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="QUANT_VAL" type="float" value="50" optional="true" label="Value" help="Value"/>
     <param name="TIME" type="select" optional="true" label="Time" help="Time">
       <option value="April_-_June">April - June</option>
@@ -139,7 +139,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -21,7 +21,7 @@ response $response
 outputType_CUT $OutputSection_CUT.outputType_CUT
 transmissionMode_CUT $OutputSection_CUT.transmissionMode_CUT]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="center">center</option>
       <option value="completely_contained">completely contained</option>
@@ -39,8 +39,8 @@ transmissionMode_CUT $OutputSection_CUT.transmissionMode_CUT]]></command>
     <param name="BY" type="float" value="1" optional="true" label="Top" help="Top"/>
     <param name="DX" type="float" value="1" optional="true" label="Horizontal Range" help="Horizontal Range"/>
     <param name="DY" type="float" value="1" optional="true" label="Vertical Range" help="Vertical Range"/>
-    <param name="SHAPES_EXT" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES_EXT" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="OVERLAP" type="float" value="50" optional="true" label="Minimum Overlap" help="minimum overlapping area as percentage of the total size of the input shape. applies to polygon layers only."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -74,7 +74,7 @@ transmissionMode_CUT $OutputSection_CUT.transmissionMode_CUT]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

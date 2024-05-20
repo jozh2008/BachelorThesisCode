@@ -14,7 +14,7 @@ transmissionMode_GRADIENT $OutputSection_GRADIENT.transmissionMode_GRADIENT
 outputType_DIFFERENCE $OutputSection_DIFFERENCE.outputType_DIFFERENCE
 transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENCE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="DISTANCE" type="float" value="10" optional="true" label="Vertical Distance" help="Vertical Distance"/>
     <param name="OUTPUT" type="select" optional="true" label="Output" help="Output">
       <option value="distance">distance</option>
@@ -75,7 +75,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

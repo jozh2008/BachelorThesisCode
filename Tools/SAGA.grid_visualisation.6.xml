@@ -11,7 +11,7 @@ response $response
 outputType_HIST $OutputSection_HIST.outputType_HIST
 transmissionMode_HIST $OutputSection_HIST.transmissionMode_HIST]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="circle">circle</option>
       <option value="columns">columns</option>
@@ -51,7 +51,7 @@ transmissionMode_HIST $OutputSection_HIST.transmissionMode_HIST]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

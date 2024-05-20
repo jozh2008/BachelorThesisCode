@@ -28,7 +28,7 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID
 outputType_COUNT $OutputSection_COUNT.outputType_COUNT
 transmissionMode_COUNT $OutputSection_COUNT.transmissionMode_COUNT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output Values" help="Output Values">
       <option selected="true" value="attribute">attribute</option>
@@ -77,7 +77,7 @@ transmissionMode_COUNT $OutputSection_COUNT.transmissionMode_COUNT]]></command>
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -132,7 +132,7 @@ transmissionMode_COUNT $OutputSection_COUNT.transmissionMode_COUNT]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

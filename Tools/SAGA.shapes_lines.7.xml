@@ -15,7 +15,7 @@ response $response
 outputType_LINES_OUT $OutputSection_LINES_OUT.outputType_LINES_OUT
 transmissionMode_LINES_OUT $OutputSection_LINES_OUT.transmissionMode_LINES_OUT]]></command>
   <inputs>
-    <param name="LINES_IN" type="data" optional="false" label="Lines" help="The input line shapefile to smooth. The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="LINES_IN" type="data" optional="false" label="Lines" help="The input line shapefile to smooth. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose the method to apply.">
       <option selected="true" value="Gaussian_Filtering">Gaussian Filtering</option>
       <option value="basic_SIA_model">basic SIA model</option>
@@ -57,7 +57,7 @@ transmissionMode_LINES_OUT $OutputSection_LINES_OUT.transmissionMode_LINES_OUT]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

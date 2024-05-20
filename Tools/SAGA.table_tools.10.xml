@@ -59,7 +59,7 @@ transmissionMode_OUT_SHAPES $OutputSection_OUT_SHAPES.transmissionMode_OUT_SHAPE
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

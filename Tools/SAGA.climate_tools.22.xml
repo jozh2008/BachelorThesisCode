@@ -47,9 +47,9 @@ transmissionMode_STATE_FILIAL_3 $OutputSection_STATE_FILIAL_3.transmissionMode_S
 outputType_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.outputType_STATE_SISTER_3
 transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_STATE_SISTER_3]]></command>
   <inputs>
-    <param name="ATmean" type="data" optional="false" label="Mean Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="ATmax" type="data" optional="false" label="Maximum Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="SIrel" type="data" optional="false" label="Solar Irradiation" help="Wh/m^2 The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="ATmean" type="data" optional="false" label="Mean Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="ATmax" type="data" optional="false" label="Maximum Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="SIrel" type="data" optional="false" label="Solar Irradiation" help="Wh/m^2 The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="LATITUDE" type="float" value="50" optional="true" label="Latitude" help="Latitude"/>
     <param name="DToptimum" type="float" value="30.4" optional="true" label="Developmental Optimum Temperature" help="Degree Celsius"/>
     <param name="DTminimum" type="float" value="8.3" optional="true" label="Developmental Minimum Temperature" help="Degree Celsius"/>
@@ -353,7 +353,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

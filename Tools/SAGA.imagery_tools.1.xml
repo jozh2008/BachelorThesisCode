@@ -26,8 +26,8 @@ transmissionMode_TTVI $OutputSection_TTVI.transmissionMode_TTVI
 outputType_SAVI $OutputSection_SAVI.outputType_SAVI
 transmissionMode_SAVI $OutputSection_SAVI.transmissionMode_SAVI]]></command>
   <inputs>
-    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="RED" type="data" optional="false" label="Red Reflectance" help="Red Reflectance The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="NIR" type="data" optional="false" label="Near Infrared Reflectance" help="Near Infrared Reflectance The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="SOIL" type="float" value="0.5" optional="true" label="Soil Adjustment Factor" help="For SAVI, suggested values (after Silleos et al. 2006): 1.0 = very low, 0.5 = intermediate, 0.25 = high densitity vegetation."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -203,7 +203,7 @@ transmissionMode_SAVI $OutputSection_SAVI.transmissionMode_SAVI]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

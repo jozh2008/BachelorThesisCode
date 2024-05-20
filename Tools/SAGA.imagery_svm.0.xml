@@ -30,7 +30,7 @@ response $response
 outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
 transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="SCALING" type="select" optional="true" label="Scaling" help="Scaling">
       <option value="none">none</option>
       <option value="normalize_(0-1)">normalize (0-1)</option>
@@ -45,7 +45,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
       <option value="restore_from_file">restore from file</option>
     </param>
     <param name="MODEL_LOAD" type="data" optional="false" label="Restore Model from File" help="Restore Model from File The following data types are allowed in the txt file:  plain" format="txt"/>
-    <param name="ROI" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="ROI" type="data" optional="false" label="Training Areas" help="Training Areas The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ROI_ID" type="data" optional="false" label="Class Identifier" help="Class Identifier The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="MODEL_SAVE" type="data" optional="false" label="Store Model to File" help="Store Model to File The following data types are allowed in the txt file:  plain" format="txt"/>
     <param name="SVM_TYPE" type="select" optional="true" label="SVM Type" help="SVM Type">
@@ -112,7 +112,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -12,8 +12,8 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="The grid to clip. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="SHAPES" type="data" optional="false" label="Extent" help="The shapefile to use for clipping. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="The grid to clip. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Extent" help="The shapefile to use for clipping. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="BORDER" type="select" optional="true" label="Border" help="Set grid extent to grid cells (pixel as area), to grid nodes (pixel as point) or align to grid system.">
       <option value="align_to_grid_system">align to grid system</option>
       <option selected="true" value="grid_cells">grid cells</option>
@@ -53,7 +53,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

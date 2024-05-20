@@ -20,7 +20,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS
 outputType_BORDERS $OutputSection_BORDERS.outputType_BORDERS
 transmissionMode_BORDERS $OutputSection_BORDERS.transmissionMode_BORDERS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output" help="The values of the resultant grid can be either the seed value (e.g. the local maximum) or the enumerated segment id.">
       <option value="Seed_Value">Seed Value</option>
       <option selected="true" value="Segment_ID">Segment ID</option>
@@ -115,7 +115,7 @@ transmissionMode_BORDERS $OutputSection_BORDERS.transmissionMode_BORDERS]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

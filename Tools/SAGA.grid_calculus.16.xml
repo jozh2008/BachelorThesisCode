@@ -17,8 +17,8 @@ transmissionMode_DX $OutputSection_DX.transmissionMode_DX
 outputType_DY $OutputSection_DY.outputType_DY
 transmissionMode_DY $OutputSection_DY.transmissionMode_DY]]></command>
   <inputs>
-    <param name="DIR" type="data" optional="false" label="Direction" help="Direction The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="LEN" type="data" optional="false" label="Length" help="Length The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="DIR" type="data" optional="false" label="Direction" help="Direction The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="LEN" type="data" optional="false" label="Length" help="Length The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="UNITS" type="select" optional="true" label="Polar Angle Units" help="Polar Angle Units">
       <option value="degree">degree</option>
       <option selected="true" value="radians">radians</option>
@@ -87,7 +87,7 @@ transmissionMode_DY $OutputSection_DY.transmissionMode_DY]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

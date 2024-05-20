@@ -18,9 +18,9 @@ transmissionMode_F $OutputSection_F.transmissionMode_F
 outputType_G $OutputSection_G.outputType_G
 transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="A Digital Elvation Model (DEM) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="C" type="data" optional="false" label="Dip grid (degrees) " help="A grid representing the dip of the structure plane (in degrees) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="D" type="data" optional="false" label="Dip direction grid (degrees) " help="A grid representing the dip direction of the structure plane (in degrees) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="A Digital Elvation Model (DEM) The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="C" type="data" optional="false" label="Dip grid (degrees) " help="A grid representing the dip of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="D" type="data" optional="false" label="Dip direction grid (degrees) " help="A grid representing the dip direction of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="fB" type="float" value="45" optional="true" label="Global structure dip (degrees)" help="Constant value if no raster set"/>
     <param name="fC" type="float" value="90" optional="true" label="Global structure dip direction (degrees)" help="Constant value if no raster set"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -97,7 +97,7 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

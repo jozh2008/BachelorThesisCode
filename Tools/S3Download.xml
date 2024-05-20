@@ -76,8 +76,16 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
-      <param name="response" value="document"/>
+      <param name="response" value=""/>
+      <param name="endpoint_url" value="https://eodata.dataspace.copernicus.eu"/>
+      <param name="access_key_id" value=""/>
+      <param name="secret_access_key" value=""/>
+      <param name="region" value="default"/>
+      <param name="s3_bucket" value="eodata"/>
+      <param name="s3_path" value="Sentinel-2/MSI/L2A/2019/07/01/S2A_MSIL2A_20190701T110621_N0212_R137_T29SPC_20190701T120906.SAFE"/>
+      <param name="band" value="B03"/>
+      <param name="resolution" value="10m"/>
+      <output name="output_data_Result" ftype="txt"/>
     </test>
   </tests>
   <help><![CDATA[Simply echo the value provided as input]]></help>

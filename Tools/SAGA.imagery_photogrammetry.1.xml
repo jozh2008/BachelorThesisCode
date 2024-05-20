@@ -28,7 +28,7 @@ response $response
 outputType_PC_OUT $OutputSection_PC_OUT.outputType_PC_OUT
 transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></command>
   <inputs>
-    <param name="rgbImage" type="data" optional="false" label="RGB Image" help="RGB Image The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="rgbImage" type="data" optional="false" label="RGB Image" help="RGB Image The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="PC_IN" type="data" optional="false" label="Points to be Colorised" help="Points to be Colorised The following data types are allowed in the txt file:  x-ogc-lasf" format="txt"/>
     <param name="GIVE_TIME" type="select" optional="true" label="Provide Time stamp of Image?" help="Do you wish to provide the time stamp of Image?">
       <option selected="true" value="false">false</option>
@@ -77,7 +77,7 @@ transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -14,9 +14,9 @@ response $response
 outputType_ATB $OutputSection_ATB.outputType_ATB
 transmissionMode_ATB $OutputSection_ATB.transmissionMode_ATB]]></command>
   <inputs>
-    <param name="GSL" type="data" optional="false" label="Growing Season Length" help="Growing season length given as number of days of a year. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="GST" type="data" optional="false" label="Mean Temperature" help="Mean temperature of the growing season. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="FROST" type="data" optional="false" label="Frost occurence" help="Frost occurence as binary factor. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="GSL" type="data" optional="false" label="Growing Season Length" help="Growing season length given as number of days of a year. The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="GST" type="data" optional="false" label="Mean Temperature" help="Mean temperature of the growing season. The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="FROST" type="data" optional="false" label="Frost occurence" help="Frost occurence as binary factor. The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="NIVAL_TEMP" type="float" value="3.5" optional="true" label="Minimum Temperature Nival" help="Minimum Temperature for nival belt."/>
     <param name="TREE_TEMP" type="float" value="6.4" optional="true" label="Minimum Temperature Treeline" help="Minimum Temperature for treeline."/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -53,7 +53,7 @@ transmissionMode_ATB $OutputSection_ATB.transmissionMode_ATB]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

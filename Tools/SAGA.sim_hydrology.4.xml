@@ -21,11 +21,11 @@ transmissionMode_RISK_POINT $OutputSection_RISK_POINT.transmissionMode_RISK_POIN
 outputType_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.outputType_RISK_DIFFUSE
 transmissionMode_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.transmissionMode_RISK_DIFFUSE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="CHANNEL" type="data" optional="false" label="Channel Network" help="Channel Network The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="WEIGHT" type="data" optional="false" label="Land Cover Weights" help="Land Cover Weights The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="CHANNEL" type="data" optional="false" label="Channel Network" help="Channel Network The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="WEIGHT" type="data" optional="false" label="Land Cover Weights" help="Land Cover Weights The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="WEIGHT_DEFAULT" type="float" value="1" optional="true" label="Default" help="default value if no grid has been selected"/>
-    <param name="RAIN" type="data" optional="false" label="Rainfall" help="Rainfall The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="RAIN" type="data" optional="false" label="Rainfall" help="Rainfall The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="RAIN_DEFAULT" type="float" value="500" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="METHOD" type="select" optional="true" label="Flow Direction Algorithm" help="Flow Direction Algorithm">
       <option selected="true" value="multiple">multiple</option>
@@ -106,7 +106,7 @@ transmissionMode_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.transmissionMode_RISK_
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -15,7 +15,7 @@ transmissionMode_CUTS $OutputSection_CUTS.transmissionMode_CUTS
 outputType_EXTENT $OutputSection_EXTENT.outputType_EXTENT
 transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="NX" type="integer" value="2" optional="true" label="Number of horizontal tiles" help="Number of horizontal tiles"/>
     <param name="NY" type="integer" value="2" optional="true" label="Number of vertical tiles" help="Number of vertical tiles"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
@@ -73,7 +73,7 @@ transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

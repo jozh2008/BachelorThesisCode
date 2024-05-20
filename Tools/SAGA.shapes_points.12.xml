@@ -74,8 +74,16 @@ transmissionMode_BOXES $OutputSection_BOXES.transmissionMode_BOXES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
       <param name="response" value="document"/>
+      <param name="SHAPES" value="http://zoo-project.org:8080/geoserver/wfs?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;srsName=EPSG:4326&amp;typename=sf:bugsites"/>
+      <output name="output_data_HULLS" ftype="txt"/>
+      <output name="output_data_BOXES" ftype="txt"/>
+    </test>
+    <test>
+      <param name="response" value="document"/>
+      <param name="SHAPES" value="http://zoo-project.org:8080/geoserver/wfs?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;srsName=EPSG:4326&amp;typename=sf:bugsites"/>
+      <output name="output_data_HULLS" ftype="txt"/>
+      <output name="output_data_BOXES" ftype="txt"/>
     </test>
   </tests>
   <help><![CDATA[Implementation of 'Andrew's Monotone Chain Algorithm' for convex hull construction. ]]></help>

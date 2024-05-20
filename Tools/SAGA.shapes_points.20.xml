@@ -16,8 +16,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT
 outputType_MOVES $OutputSection_MOVES.outputType_MOVES
 transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="DISTANCE" type="float" value="0" optional="true" label="Search Distance (Map Units)" help="Search Distance (Map Units)"/>
     <param name="SHAPE" type="select" optional="true" label="Search Shape" help="Search Shape">
       <option selected="true" value="circle">circle</option>
@@ -77,7 +77,7 @@ transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -12,7 +12,7 @@ response $response
 outputType_LIST $OutputSection_LIST.outputType_LIST
 transmissionMode_LIST $OutputSection_LIST.transmissionMode_LIST]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NAMING" type="select" optional="true" label="Name by..." help="Name by...">
       <option value="attribute">attribute</option>
@@ -50,7 +50,7 @@ transmissionMode_LIST $OutputSection_LIST.transmissionMode_LIST]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -13,7 +13,7 @@ transmissionMode_REAL $OutputSection_REAL.transmissionMode_REAL
 outputType_IMAG $OutputSection_IMAG.outputType_IMAG
 transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="CENTER" type="select" optional="true" label="Centered" help="Centered">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -72,7 +72,7 @@ transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

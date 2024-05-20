@@ -26,10 +26,10 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW
 outputType_GAUGES_FLOW $OutputSection_GAUGES_FLOW.outputType_GAUGES_FLOW
 transmissionMode_GAUGES_FLOW $OutputSection_GAUGES_FLOW.transmissionMode_GAUGES_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
-    <param name="ROUGHNESS" type="data" optional="false" label="Manning Roughness" help="Manning Roughness The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="ROUGHNESS" type="data" optional="false" label="Manning Roughness" help="Manning Roughness The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="ROUGHNESS_DEFAULT" type="float" value="0.03" optional="true" label="Default" help="default value if no grid has been selected"/>
-    <param name="GAUGES" type="data" optional="false" label="Gauges" help="Gauges The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="GAUGES" type="data" optional="false" label="Gauges" help="Gauges The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="TIME_SPAN" type="float" value="1" optional="true" label="Simulation Time [h]" help="Simulation Time [h]"/>
     <param name="TIME_STEP" type="float" value="1" optional="true" label="Simulation Time Step [min]" help="Simulation Time Step [min]"/>
     <param name="TIME_UPDATE" type="float" value="1" optional="true" label="Map Update Frequency [min]" help="If zero each simulation time step will update the flow map."/>
@@ -98,7 +98,7 @@ transmissionMode_GAUGES_FLOW $OutputSection_GAUGES_FLOW.transmissionMode_GAUGES_
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

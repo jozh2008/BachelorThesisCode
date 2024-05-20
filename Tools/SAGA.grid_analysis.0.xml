@@ -23,10 +23,10 @@ transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATIO
       <option value="Grid">Grid</option>
       <option selected="true" value="Point">Point</option>
     </param>
-    <param name="DEST_POINTS" type="data" optional="false" label="Destinations" help="Destinations The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
-    <param name="DEST_GRID" type="data" optional="false" label="Destinations" help="Destinations The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="COST" type="data" optional="false" label="Local Cost" help="Local Cost The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="DIR_MAXCOST" type="data" optional="false" label="Direction of Maximum Cost" help="Direction of Maximum Cost The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="DEST_POINTS" type="data" optional="false" label="Destinations" help="Destinations The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="DEST_GRID" type="data" optional="false" label="Destinations" help="Destinations The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="COST" type="data" optional="false" label="Local Cost" help="Local Cost The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="DIR_MAXCOST" type="data" optional="false" label="Direction of Maximum Cost" help="Direction of Maximum Cost The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="DIR_UNIT" type="select" optional="true" label="Units of Direction" help="Units of Direction">
       <option value="degree">degree</option>
       <option selected="true" value="radians">radians</option>
@@ -87,7 +87,7 @@ transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATIO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -19,7 +19,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input classification image." help="The input classification image. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input classification image." help="The input classification image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="format" type="select" optional="false" label="Choice of the output format as a contingency table for unsupervised algorithmsor confusion matrix for supervised ones." help="Choice of the output format as a contingency table for unsupervised algorithmsor confusion matrix for supervised ones.">
       <option selected="true" value="confusionmatrix">confusionmatrix</option>
       <option value="contingencytable">contingencytable</option>
@@ -28,9 +28,9 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="raster">raster</option>
       <option value="vector">vector</option>
     </param>
-    <param name="ref.raster.in" type="data" optional="false" label="Input image containing the ground truth labels" help="Input image containing the ground truth labels The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="ref.raster.in" type="data" optional="false" label="Input image containing the ground truth labels" help="Input image containing the ground truth labels The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="ref.raster.nodata" type="integer" value="0" optional="true" label="Label to be treated as no data in ref raster." help="Label to be treated as no data in ref raster."/>
-    <param name="ref.vector.in" type="data" optional="false" label="Input vector data of the ground truth" help="Input vector data of the ground truth The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, zip, xml, json" format="txt"/>
+    <param name="ref.vector.in" type="data" optional="false" label="Input vector data of the ground truth" help="Input vector data of the ground truth The following data types are allowed in the txt file:  xml, zip, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="ref.vector.field" type="text" optional="false" label="Field name containing the label values" help="Field name containing the label values"/>
     <param name="ref.vector.nodata" type="integer" value="0" optional="true" label="Label to be treated as no data in ref vector. Please note that this value is always used in vector mode, to generate default values. Please set it to a value that does not correspond to a class label." help="Label to be treated as no data in ref vector. Please note that this value is always used in vector mode, to generate default values. Please set it to a value that does not correspond to a class label."/>
     <param name="nodatalabel" type="integer" value="0" optional="true" label="Label to be treated as no data in input image" help="Label to be treated as no data in input image"/>
@@ -59,7 +59,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

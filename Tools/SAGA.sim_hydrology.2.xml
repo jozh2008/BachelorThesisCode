@@ -30,7 +30,7 @@ transmissionMode_MOIST $OutputSection_MOIST.transmissionMode_MOIST
 outputType_TABLE $OutputSection_TABLE.outputType_TABLE
 transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
   <inputs>
-    <param name="ATANB" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="ATANB" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="WEATHER" type="data" optional="false" label="Weather Records" help="Weather Records The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RECORD_P" type="data" optional="false" label="Precipitation [m / dt]" help="Precipitation [m / dt] The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RECORD_ET" type="data" optional="false" label="Evapotranspiration [m / dt]" help="Evapotranspiration [m / dt] The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -96,7 +96,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

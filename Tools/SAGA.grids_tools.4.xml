@@ -12,7 +12,7 @@ response $response
 outputType_GRIDS $OutputSection_GRIDS.outputType_GRIDS
 transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="Z_LEVEL" type="float" value="0" optional="true" label="Z" help="Z"/>
     <param name="DELETE" type="select" optional="true" label="Delete" help="Delete">
       <option selected="true" value="false">false</option>
@@ -52,7 +52,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

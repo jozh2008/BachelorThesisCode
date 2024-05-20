@@ -11,7 +11,7 @@ response $response
 outputType_OUTPUT_GRID $OutputSection_OUTPUT_GRID.outputType_OUTPUT_GRID
 transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_GRID]]></command>
   <inputs>
-    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Grid to be filtered The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Grid to be filtered The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="RADIUS" type="integer" value="3" optional="true" label="Filter Size (Radius)" help="Filter size (radius in grid cells)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -47,7 +47,7 @@ transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -33,7 +33,7 @@ transmissionMode_Distance $OutputSection_Distance.transmissionMode_Distance]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

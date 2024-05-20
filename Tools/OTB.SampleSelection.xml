@@ -29,9 +29,9 @@ transmissionMode_out $OutputSection_out.transmissionMode_out
 outputType_outrates $OutputSection_outrates.outputType_outrates
 transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Support image that will be classified" help="Support image that will be classified The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="mask" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="vec" type="data" optional="false" label="Input geometries to analyse" help="Input geometries to analyse The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Support image that will be classified" help="Support image that will be classified The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="mask" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics) The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="vec" type="data" optional="false" label="Input geometries to analyse" help="Input geometries to analyse The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="instats" type="data" optional="false" label="Input file storing statistics (XML format)" help="Input file storing statistics (XML format) The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="sampler" type="select" optional="false" label="Type of sampling (periodic, pattern based, random)" help="Type of sampling (periodic, pattern based, random)">
       <option selected="true" value="periodic">periodic</option>
@@ -46,7 +46,7 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
       <option selected="true" value="smallest">smallest</option>
       <option value="total">total</option>
     </param>
-    <param name="strategy.byclass.in" type="data" optional="false" label="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd." help="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="strategy.byclass.in" type="data" optional="false" label="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd." help="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="strategy.constant.nb" type="integer" optional="false" label="Number of samples for all classes" help="Number of samples for all classes"/>
     <param name="strategy.percent.p" type="float" value="0.5" optional="false" label="The percentage to use" help="The percentage to use"/>
     <param name="strategy.total.v" type="integer" value="1000" optional="false" label="The number of samples to generate" help="The number of samples to generate"/>
@@ -97,7 +97,7 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

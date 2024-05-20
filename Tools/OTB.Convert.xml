@@ -82,11 +82,11 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>
-  <help><![CDATA[This application performs an image pixel type conversion (short, ushort, uchar, int, uint, float and double types are handled). The output image is written in the specified format (ie. that corresponds to the given extension). The conversion can include a rescale of the data range, by default it's set from 22542024031721775 9837100616300f the data values. The rescale can be linear or log2.  The choice of the output channels can be done with the extended filename, but less easy to handle. To do this, a 'channels' parameter allows you to select the desired bands at the output. There are 3 modes, the available choices are:  * grayscale :  to display mono image as standard color image  * rgb : select 3 bands in the input image (multi-bands)  * all : keep all bands.]]></help>
+  <help><![CDATA[This application performs an image pixel type conversion (short, ushort, uchar, int, uint, float and double types are handled). The output image is written in the specified format (ie. that corresponds to the given extension). The conversion can include a rescale of the data range, by default it's set from 22535503751721775 9836676706300f the data values. The rescale can be linear or log2.  The choice of the output channels can be done with the extended filename, but less easy to handle. To do this, a 'channels' parameter allows you to select the desired bands at the output. There are 3 modes, the available choices are:  * grayscale :  to display mono image as standard color image  * rgb : select 3 bands in the input image (multi-bands)  * all : keep all bands.]]></help>
   <citations>
     <citation type="bibtex">Josh</citation>
   </citations>

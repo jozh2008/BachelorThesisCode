@@ -34,8 +34,8 @@ transmissionMode_inverse.outleft $OutputSection_inverse.outleft.transmissionMode
 outputType_inverse.outright $OutputSection_inverse.outright.outputType_inverse.outright
 transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMode_inverse.outright]]></command>
   <inputs>
-    <param name="io.inleft" type="data" optional="false" label="The left image from the stereo pair, in sensor geometry." help="The left image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
-    <param name="io.inright" type="data" optional="false" label="The right image from the stereo pair, in sensor geometry." help="The right image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="io.inleft" type="data" optional="false" label="The left image from the stereo pair, in sensor geometry." help="The left image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="io.inright" type="data" optional="false" label="The right image from the stereo pair, in sensor geometry." help="The right image from the stereo pair, in sensor geometry. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="io.outleft" type="select" optional="false" label="The deformation grid to resample the left image from sensor geometry to epipolar geometry." help="The deformation grid to resample the left image from sensor geometry to epipolar geometry.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -203,7 +203,7 @@ transmissionMode_inverse.outright $OutputSection_inverse.outright.transmissionMo
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

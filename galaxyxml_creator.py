@@ -516,7 +516,7 @@ class Galaxyxmltool:
         title: str,
         description: str
     ):
-         # To Do: check string
+        # To Do: check string
         if param_type == "string":
             if param_schema.get("enum"):
                 param = self.create_select_param(
@@ -729,16 +729,87 @@ class Galaxyxmltool:
         return requirements
 
     # To do add tests
-    def define_tests(self):
+    def define_tests(self, api_dict, process):
+        test_dictionary = self.get_test_dictionary(api_dict=api_dict, process=process)
+        if test_dictionary is not None:
+            example_list = self.get_test_examples(data=test_dictionary)
+            return self.create_tests(examples=example_list)
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
         param = self.gxtp.TestParam(name="response", value="document")
-        output = self.gxtp.TestOutput(name="output_data", value="txt")
+        output = self.gxtp.TestOutput(name="output_data", ftype="txt")
         test_a.append(output)
         test_a.append(param)
 
         tests.append(test_a)
         return tests
+
+    # To do refactor code after discussion
+    def create_tests(self, examples):
+        tests = self.gxtp.Tests()
+
+        for ex in examples:
+            test = self.gxtp.Test()
+            inputs = ex.get("inputs", {})
+            outputs = ex.get("outputs", {})
+            response = ex.get("response", "")
+
+            # Add response parameter
+            test.append(self.gxtp.TestParam(name="response", value=response))
+
+            # Process input parameters
+            for key, value in inputs.items():
+                if isinstance(value, list):
+                    lst = [i.get("href") for i in value]
+                    param = self.gxtp.TestParam(name=key, value=lst)
+                elif isinstance(value, dict):
+                    param = self.gxtp.TestParam(name=key, value=value.get("href"))
+                else:
+                    param = self.gxtp.TestParam(name=key, value=value)
+                test.append(param)
+
+            # Process output parameters
+            for key, value in outputs.items():
+                name = f"output_data_{key}"
+                if response == "raw":
+                    media_type = value["format"]["mediaType"].split('/')[-1]
+                    param = self.gxtp.TestOutput(name=name, ftype=media_type)
+                else:
+                    param = self.gxtp.TestOutput(name=name, ftype="txt")
+                test.append(param)
+
+            tests.append(test)
+
+        return tests
+
+    def get_test_examples(self, data):
+        """
+        Get all example values of the nested dictionary
+        """
+        examples = []
+
+        post_data = data.get("post", {})
+        request_body = post_data.get("requestBody", {})
+        content = request_body.get("content", {})
+        json_content = content.get("application/json", {})
+        examples_dict = json_content.get("examples", {})
+
+        for example in examples_dict.values():
+            examples.append(example.get("value"))
+
+        return examples
+
+    def get_test_dictionary(self, api_dict, process):
+        """
+        Extracts and returns the relevant part of the API request
+        "https://ospd.geolabs.fr:8300/ogc-api/api",
+        when the process has examples. This examples we want to use as test cases.
+        """
+        for pro in api_dict.keys():
+            parts = pro.split('/')
+            if len(parts) > 2 and process.__eq__(parts[2]):
+                return (api_dict[pro])
+        return None
 
     # To do: What should I citate
     def create_citations(self):

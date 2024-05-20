@@ -14,9 +14,9 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS
 outputType_LINE $OutputSection_LINE.outputType_LINE
 transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
   <inputs>
-    <param name="SOURCE" type="data" optional="false" label="Source Point(s)" help="Point shapefile with source point(s) The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
-    <param name="DEM" type="data" optional="false" label="Accumulated Cost Surface" help="Accumulated Cost Surface The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Allows writing cell values from additional grids to the output The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source Point(s)" help="Point shapefile with source point(s) The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Accumulated Cost Surface" help="Accumulated Cost Surface The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Allows writing cell values from additional grids to the output The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -67,7 +67,7 @@ transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

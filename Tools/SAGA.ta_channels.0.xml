@@ -22,18 +22,18 @@ transmissionMode_CHNLROUTE $OutputSection_CHNLROUTE.transmissionMode_CHNLROUTE
 outputType_SHAPES $OutputSection_SHAPES.outputType_SHAPES
 transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="A grid that contains elevation data. The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="SINKROUTE" type="data" optional="false" label="Flow Direction" help="An optional grid that provides information about flow directions. &amp;lt;br/&amp;gt;Values between 1 to 8 force the flow of a cell to be given to one its adjacent neighbor cells (1-&amp;gt;NE, 2-&amp;gt;E, 3-&amp;gt;SE, 4-&amp;gt;S, 5-&amp;gt;SW, 6-&amp;gt;W, 7-&amp;gt;NW, 8-&amp;gt;N). In case of other values the algorithm will use its own routing scheme. &amp;lt;br/&amp;gt;This option is in particular useful to supply the algorithm with routes that lead the flow through closed depression.  The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="INIT_GRID" type="data" optional="false" label="Initiation Grid" help="Dependent on the chosen 'Initiation Type' and 'Initiation Threshold' the values of this grid control where a channel is initiated. The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="A grid that contains elevation data. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Flow Direction" help="An optional grid that provides information about flow directions. &amp;lt;br/&amp;gt;Values between 1 to 8 force the flow of a cell to be given to one its adjacent neighbor cells (1-&amp;gt;NE, 2-&amp;gt;E, 3-&amp;gt;SE, 4-&amp;gt;S, 5-&amp;gt;SW, 6-&amp;gt;W, 7-&amp;gt;NW, 8-&amp;gt;N). In case of other values the algorithm will use its own routing scheme. &amp;lt;br/&amp;gt;This option is in particular useful to supply the algorithm with routes that lead the flow through closed depression.  The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="INIT_GRID" type="data" optional="false" label="Initiation Grid" help="Dependent on the chosen 'Initiation Type' and 'Initiation Threshold' the values of this grid control where a channel is initiated. The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="INIT_METHOD" type="select" optional="true" label="Initiation Type" help="Options:&amp;lt;br/&amp;gt; - Less than&amp;lt;br/&amp;gt; - Equals&amp;lt;br/&amp;gt; - Greater than&amp;lt;br/&amp;gt;Controls under which condition a channel is initiated.">
       <option value="Equals">Equals</option>
       <option selected="true" value="Greater_than">Greater than</option>
       <option value="Less_than">Less than</option>
     </param>
     <param name="INIT_VALUE" type="float" value="0" optional="true" label="Initiation Threshold" help="Dependent on the chosen 'Initiation Grid' and 'Initiation Type' this value controls under which condition a channel is initiated."/>
-    <param name="DIV_GRID" type="data" optional="false" label="Divergence" help="Tracing: Convergence The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DIV_GRID" type="data" optional="false" label="Divergence" help="Tracing: Convergence The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="DIV_CELLS" type="integer" value="5" optional="true" label="Tracing: Max. Divergence" help="Tracing: Stop after x cells with divergent flow"/>
-    <param name="TRACE_WEIGHT" type="data" optional="false" label="Tracing: Weight" help="Tracing: Weight The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="TRACE_WEIGHT" type="data" optional="false" label="Tracing: Weight" help="Tracing: Weight The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="MINLEN" type="integer" value="10" optional="true" label="Min. Segment Length" help="Minimum Segment Length (Cells)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -107,7 +107,7 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

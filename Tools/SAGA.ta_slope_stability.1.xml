@@ -17,10 +17,10 @@ transmissionMode_E $OutputSection_E.transmissionMode_E
 outputType_F $OutputSection_F.outputType_F
 transmissionMode_F $OutputSection_F.transmissionMode_F]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="Slope grid (rad)" help="Slope grid (rad) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="B" type="data" optional="false" label="Aspect grid (rad)" help="Aspect grid (rad) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="C" type="data" optional="false" label="Dip grid (degrees) " help="A grid representing the dip of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="D" type="data" optional="false" label="Dip direction grid (degrees) " help="A grid representing the dip direction of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="A" type="data" optional="false" label="Slope grid (rad)" help="Slope grid (rad) The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="B" type="data" optional="false" label="Aspect grid (rad)" help="Aspect grid (rad) The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="C" type="data" optional="false" label="Dip grid (degrees) " help="A grid representing the dip of the structure plane (in degrees) The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="D" type="data" optional="false" label="Dip direction grid (degrees) " help="A grid representing the dip direction of the structure plane (in degrees) The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="fB" type="float" value="45" optional="true" label="Global structure dip (degrees)" help="Constant value if no raster set"/>
     <param name="fC" type="float" value="90" optional="true" label="Global structure dip direction (degrees)" help="Constant value if no raster set"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -77,7 +77,7 @@ transmissionMode_F $OutputSection_F.transmissionMode_F]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

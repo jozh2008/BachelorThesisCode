@@ -14,8 +14,8 @@ transmissionMode_RESULTGRID $OutputSection_RESULTGRID.transmissionMode_RESULTGRI
 outputType_RESULTTABLE $OutputSection_RESULTTABLE.outputType_RESULTTABLE
 transmissionMode_RESULTTABLE $OutputSection_RESULTTABLE.transmissionMode_RESULTTABLE]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input Grid 1" help="Input Grid 1 The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="INPUT2" type="data" optional="false" label="Input Grid 2" help="Input Grid 2 The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input Grid 1" help="Input Grid 1 The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT2" type="data" optional="false" label="Input Grid 2" help="Input Grid 2 The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="MAXNUMCLASS" type="integer" value="10" optional="true" label="Max. Number of Classes" help="Maximum number of classes in the entire grid."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -61,7 +61,7 @@ transmissionMode_RESULTTABLE $OutputSection_RESULTTABLE.transmissionMode_RESULTT
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

@@ -24,12 +24,12 @@ transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
 outputType_QUANTILES $OutputSection_QUANTILES.outputType_QUANTILES
 transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]></command>
   <inputs>
-    <param name="COUNT" type="data" optional="false" label="Number of Values" help="Number of Values The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="SUM" type="data" optional="false" label="Sum" help="Sum The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="SUM2" type="data" optional="false" label="Sum of Squares" help="Sum of Squares The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="MIN" type="data" optional="false" label="Minimum" help="Minimum The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="MAX" type="data" optional="false" label="Maximum" help="Maximum The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="HISTOGRAM" type="data" optional="false" label="Histogram" help="Histogram The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="COUNT" type="data" optional="false" label="Number of Values" help="Number of Values The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="SUM" type="data" optional="false" label="Sum" help="Sum The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="SUM2" type="data" optional="false" label="Sum of Squares" help="Sum of Squares The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="MIN" type="data" optional="false" label="Minimum" help="Minimum The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="MAX" type="data" optional="false" label="Maximum" help="Maximum The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="HISTOGRAM" type="data" optional="false" label="Histogram" help="Histogram The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="QUANTVALS" type="text" value="5; 25; 50; 75; 95" optional="true" label="Percentiles" help="Separate the desired percentiles by semicolon"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -145,7 +145,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

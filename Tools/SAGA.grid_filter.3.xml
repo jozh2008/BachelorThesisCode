@@ -18,7 +18,7 @@ transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
 outputType_DIR $OutputSection_DIR.outputType_DIR
 transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="NOISE_ABS" type="float" value="1" optional="true" label="Estimated Noise (absolute)" help="Estimated noise in units of input data"/>
     <param name="NOISE_REL" type="float" value="1" optional="true" label="Estimated Noise (relative)" help="Estimated noise relative to mean standard deviation"/>
     <param name="WEIGHTED" type="select" optional="true" label="Weighted" help="Weighted">
@@ -104,7 +104,7 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

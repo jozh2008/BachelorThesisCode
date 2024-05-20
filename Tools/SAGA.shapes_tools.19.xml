@@ -11,7 +11,7 @@ response $response
 outputType_EXTENTS $OutputSection_EXTENTS.outputType_EXTENTS
 transmissionMode_EXTENTS $OutputSection_EXTENTS.transmissionMode_EXTENTS]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Get Extent for ..." help="Get Extent for ...">
       <option value="all_shapes">all shapes</option>
       <option selected="true" value="each_shape">each shape</option>
@@ -49,7 +49,7 @@ transmissionMode_EXTENTS $OutputSection_EXTENTS.transmissionMode_EXTENTS]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

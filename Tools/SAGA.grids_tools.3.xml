@@ -13,8 +13,8 @@ response $response
 outputType_GRID $OutputSection_GRID.outputType_GRID
 transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grid Collection" help="Grid Collection The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
-    <param name="Z_LEVEL" type="data" optional="false" label="Z" help="Z The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grid Collection" help="Grid Collection The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="Z_LEVEL" type="data" optional="false" label="Z" help="Z The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="Z_LEVEL_DEFAULT" type="float" value="0" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="Linear_Interpolation">Linear Interpolation</option>
@@ -55,7 +55,7 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

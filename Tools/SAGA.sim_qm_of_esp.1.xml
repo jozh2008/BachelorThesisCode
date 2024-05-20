@@ -13,7 +13,7 @@ transmissionMode_FILLED $OutputSection_FILLED.transmissionMode_FILLED
 outputType_SINKS $OutputSection_SINKS.outputType_SINKS
 transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="DZFILL" type="float" value="0.01" optional="true" label="Fill Increment" help="Fill Increment"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -69,7 +69,7 @@ transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

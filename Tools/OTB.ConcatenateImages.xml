@@ -12,7 +12,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="The list of images to concatenate, must have the same size." help="The list of images to concatenate, must have the same size. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="il" type="data" optional="false" label="The list of images to concatenate, must have the same size." help="The list of images to concatenate, must have the same size. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="out" type="select" optional="false" label="The concatenated output image." help="The concatenated output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -54,7 +54,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

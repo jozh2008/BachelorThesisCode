@@ -19,11 +19,11 @@ transmissionMode_FLUX $OutputSection_FLUX.transmissionMode_FLUX
 outputType_STATE_OUT $OutputSection_STATE_OUT.outputType_STATE_OUT
 transmissionMode_STATE_OUT $OutputSection_STATE_OUT.transmissionMode_STATE_OUT]]></command>
   <inputs>
-    <param name="SURFACE" type="data" optional="false" label="Surface" help="Surface used to derive the LDD network, e.g. a DTM. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Grid with the input values to accumulate. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="STATE_IN" type="data" optional="false" label="State t" help="Grid describing the state of each cell at timestep t. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="CONTROL" type="data" optional="false" label="Operation Control" help="Depending on mode of operation either transport capacity, transport fraction, threshold value or trigger value. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="CTRL_LINEAR" type="data" optional="false" label="Linear Flow Control Grid" help="The values of this grid are checked against the linear flow threshold to decide on the flow-routing algorithm. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="SURFACE" type="data" optional="false" label="Surface" help="Surface used to derive the LDD network, e.g. a DTM. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Grid with the input values to accumulate. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="STATE_IN" type="data" optional="false" label="State t" help="Grid describing the state of each cell at timestep t. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="CONTROL" type="data" optional="false" label="Operation Control" help="Depending on mode of operation either transport capacity, transport fraction, threshold value or trigger value. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="CTRL_LINEAR" type="data" optional="false" label="Linear Flow Control Grid" help="The values of this grid are checked against the linear flow threshold to decide on the flow-routing algorithm. The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="OPERATION" type="select" optional="true" label="Operation" help="Select a mode of operation">
       <option value="accucapacityflux_/_state">accucapacityflux / state</option>
       <option selected="true" value="accuflux">accuflux</option>
@@ -90,7 +90,7 @@ transmissionMode_STATE_OUT $OutputSection_STATE_OUT.transmissionMode_STATE_OUT]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

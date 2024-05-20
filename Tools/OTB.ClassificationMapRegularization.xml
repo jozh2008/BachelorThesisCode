@@ -18,7 +18,7 @@ response $response
 outputType_io.out $OutputSection_io.out.outputType_io.out
 transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
   <inputs>
-    <param name="io.in" type="data" optional="false" label="The input labeled image to regularize." help="The input labeled image to regularize. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="io.in" type="data" optional="false" label="The input labeled image to regularize." help="The input labeled image to regularize. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="io.out" type="select" optional="false" label="The output regularized labeled image." help="The output regularized labeled image.">
       <option value="double">double</option>
       <option value="float">float</option>
@@ -72,7 +72,7 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

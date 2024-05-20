@@ -21,7 +21,7 @@ response $response
 outputType_SHADE $OutputSection_SHADE.outputType_SHADE
 transmissionMode_SHADE $OutputSection_SHADE.transmissionMode_SHADE]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Shading Method" help="Shading Method">
       <option value="Ambient_Occlusion">Ambient Occlusion</option>
       <option value="Combined_Shading">Combined Shading</option>
@@ -83,7 +83,7 @@ transmissionMode_SHADE $OutputSection_SHADE.transmissionMode_SHADE]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

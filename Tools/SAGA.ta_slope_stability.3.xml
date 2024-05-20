@@ -27,13 +27,13 @@ transmissionMode_F $OutputSection_F.transmissionMode_F
 outputType_G $OutputSection_G.outputType_G
 transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="A DEM The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="Cmin" type="data" optional="false" label="Min hydraulic conductivity grid (m/hr) " help="A grid representing minimum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="Cmax" type="data" optional="false" label="Max hydraulic conductivity grid (m/hr) " help="A grid representing maximum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="Dmin" type="data" optional="false" label="Min groundwater recharge grid (m/hr) " help="A grid representing minimum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="Dmax" type="data" optional="false" label="Max groundwater recharge grid (m/hr) " help="A grid representing maximum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="Emin" type="data" optional="false" label="Min material depth grid (m)" help="A grid representing minimum depth to potential shear plane (in m) The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="Emax" type="data" optional="false" label="Max material depth grid (m)" help="A grid representing maximum depth to potential shear plane (in m) The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="A DEM The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Cmin" type="data" optional="false" label="Min hydraulic conductivity grid (m/hr) " help="A grid representing minimum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Cmax" type="data" optional="false" label="Max hydraulic conductivity grid (m/hr) " help="A grid representing maximum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Dmin" type="data" optional="false" label="Min groundwater recharge grid (m/hr) " help="A grid representing minimum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Dmax" type="data" optional="false" label="Max groundwater recharge grid (m/hr) " help="A grid representing maximum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Emin" type="data" optional="false" label="Min material depth grid (m)" help="A grid representing minimum depth to potential shear plane (in m) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="Emax" type="data" optional="false" label="Max material depth grid (m)" help="A grid representing maximum depth to potential shear plane (in m) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="fCmin" type="float" value="2.7" optional="true" label="Min global material conductivity (m/hr)" help="Constant value if no raster set"/>
     <param name="fCmax" type="float" value="2.7" optional="true" label="Max global material conductivity (m/hr)" help="Constant value if no raster set"/>
     <param name="fDmin" type="float" value="0.001" optional="true" label="Min global groundwater recharge (m/hr)" help="Constant value if no raster set"/>
@@ -107,7 +107,7 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

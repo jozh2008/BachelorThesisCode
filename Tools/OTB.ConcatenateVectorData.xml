@@ -10,7 +10,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="vd" type="data" optional="false" label="Vector data files to be concatenated." help="Vector data files to be concatenated. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml, zip" format="txt"/>
+    <param name="vd" type="data" optional="false" label="Vector data files to be concatenated." help="Vector data files to be concatenated. The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, zip, json" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -45,7 +45,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

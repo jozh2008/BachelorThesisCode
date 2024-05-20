@@ -35,7 +35,7 @@ transmissionMode_C_TOTA $OutputSection_C_TOTA.transmissionMode_C_TOTA
 outputType_C_ROTO $OutputSection_C_ROTO.outputType_C_ROTO
 transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="10_parameter_3rd_order_polynom_(Haralick_1983)">10 parameter 3rd order polynom (Haralick 1983)</option>
       <option value="6_parameter_2nd_order_polynom_(Bauer,_Rohdenburg">6 parameter 2nd order polynom (Bauer, Rohdenburg</option>
@@ -309,7 +309,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

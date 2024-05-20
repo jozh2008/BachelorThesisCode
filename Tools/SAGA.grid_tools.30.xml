@@ -12,7 +12,7 @@ response $response
 outputType_TRANSPOSED $OutputSection_TRANSPOSED.outputType_TRANSPOSED
 transmissionMode_TRANSPOSED $OutputSection_TRANSPOSED.transmissionMode_TRANSPOSED]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="MIRROR_X" type="select" optional="true" label="Mirror Horizontally" help="Mirror Horizontally">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -55,7 +55,7 @@ transmissionMode_TRANSPOSED $OutputSection_TRANSPOSED.transmissionMode_TRANSPOSE
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

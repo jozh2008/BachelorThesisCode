@@ -18,7 +18,7 @@ transmissionMode_SYMBOLIC_IMAGE $OutputSection_SYMBOLIC_IMAGE.transmissionMode_S
 outputType_OUTLINES $OutputSection_OUTLINES.outputType_OUTLINES
 transmissionMode_OUTLINES $OutputSection_OUTLINES.transmissionMode_OUTLINES]]></command>
   <inputs>
-    <param name="INPUT_GRID" type="data" optional="false" label="Input Binary Grid" help="Binary input image for the connectivity analysis The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="INPUT_GRID" type="data" optional="false" label="Input Binary Grid" help="Binary input image for the connectivity analysis The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="FILTER" type="select" optional="true" label="Apply Filter?" help="Apply a filter (erosion - binary reconstruction) to the input image ">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -104,7 +104,7 @@ transmissionMode_OUTLINES $OutputSection_OUTLINES.transmissionMode_OUTLINES]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

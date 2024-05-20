@@ -23,7 +23,7 @@ transmissionMode_G_AREA $OutputSection_G_AREA.transmissionMode_G_AREA
 outputType_G_FLOW $OutputSection_G_FLOW.outputType_G_FLOW
 transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Flow Split Method" help="Flow Split Method">
       <option value="cell_area">cell area</option>
       <option selected="true" value="flow_width_(original)">flow width (original)</option>
@@ -158,7 +158,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

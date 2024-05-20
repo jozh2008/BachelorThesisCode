@@ -16,7 +16,7 @@ transmissionMode_STDDIST $OutputSection_STDDIST.transmissionMode_STDDIST
 outputType_BBOX $OutputSection_BBOX.outputType_BBOX
 transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STEP" type="float" value="5" optional="true" label="Vertex Distance [Degree]" help="Vertex Distance [Degree]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -87,7 +87,7 @@ transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

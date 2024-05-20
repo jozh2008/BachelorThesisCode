@@ -15,7 +15,7 @@ response $response
 outputType_NSTORE $OutputSection_NSTORE.outputType_NSTORE
 transmissionMode_NSTORE $OutputSection_NSTORE.transmissionMode_NSTORE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="TIME_SPAN" type="float" value="100" optional="true" label="Time Span [a]" help="Time Span [a]"/>
     <param name="TIME_STEP" type="float" value="0.1" optional="true" label="Time Interval [a]" help="Time Interval [a]"/>
     <param name="UPDATE" type="select" optional="true" label="Update View" help="Update View">
@@ -58,7 +58,7 @@ transmissionMode_NSTORE $OutputSection_NSTORE.transmissionMode_NSTORE]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

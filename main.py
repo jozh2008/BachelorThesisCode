@@ -35,7 +35,7 @@ class Initialize:
             print("Failed to retrieve collections:", e)
             return None
 
-    def json_to_galaxyxml(self, json_data):
+    def json_to_galaxyxml(self, process_data, api_data):
         """
         Generate a Galaxy XML file based on the received JSON data and store it as an XML file.
 
@@ -43,27 +43,27 @@ class Initialize:
             json_data (dict): The JSON data representing the tool information.
 
         """
-        name_id = self.rename_tool(tool_name=json_data["id"])
-        name = json_data["id"]
+        name_id = self.rename_tool(tool_name=process_data["id"])
+        name = process_data["id"]
         # Create a Galaxy XML tool object
-        gxt = Galaxyxmltool(name=name, id=name_id, version=json_data["version"], description=json_data["title"])
+        gxt = Galaxyxmltool(name=name, id=name_id, version=process_data["version"], description=process_data["title"])
 
         # Generate XML content
         tool = gxt.get_tool()
         tool.requirements = gxt.define_requirements()
-        tool.help = (json_data["description"])
+        tool.help = (process_data["description"])
         tool.inputs = gxt.create_params(
-            input_schema=json_data["inputs"],
-            output_schema=json_data["outputs"],
-            transmission_schema=json_data["outputTransmission"]
+            input_schema=process_data["inputs"],
+            output_schema=process_data["outputs"],
+            transmission_schema=process_data["outputTransmission"]
         )
 
         # two options for tool.outpus need to be discussed
         tool.outputs = gxt.define_output_options()
         # tool.outputs = gxt.define_output_collections()
 
-        tool.executable = gxt.define_command(json_data["id"])
-        tool.tests = gxt.define_tests()
+        tool.executable = gxt.define_command(process_data["id"])
+        tool.tests = gxt.define_tests(api_dict=api_data["paths"], process=process_data["id"])
         tool.citations = gxt.create_citations()
 
         file_path = f"Tools/{name}.xml"
@@ -95,17 +95,19 @@ def main(base_url, process):
         base_url (str): The base URL.
         process (str): The process to be appended to the base URL.
     """
-    url = f"{base_url}{process}"
+    url = f"{base_url}processes/{process}"
     pprint(url)
-
+    url_api = f"{base_url}api"
+    print(url_api)
     # Get collections information
     workflow = Initialize()
 
     # Get collections information
     collections_data = workflow.get_collections(url)
+    api_data = workflow.get_collections(url=url_api)
 
     # Convert JSON to GalaxyXML
-    workflow.json_to_galaxyxml(collections_data)
+    workflow.json_to_galaxyxml(process_data=collections_data, api_data=api_data)
 
 
 if __name__ == "__main__":
@@ -114,5 +116,5 @@ if __name__ == "__main__":
         print("Error: API key not provided. Use python3 main.py --process {process}")
         sys.exit(1)
     process = sys.argv[2]
-    base_url = "https://ospd.geolabs.fr:8300/ogc-api/processes/"
+    base_url = "https://ospd.geolabs.fr:8300/ogc-api/"
     main(base_url, process)

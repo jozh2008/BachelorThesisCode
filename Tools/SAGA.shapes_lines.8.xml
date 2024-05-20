@@ -13,8 +13,8 @@ response $response
 outputType_INTERSECT $OutputSection_INTERSECT.outputType_INTERSECT
 transmissionMode_INTERSECT $OutputSection_INTERSECT.transmissionMode_INTERSECT]]></command>
   <inputs>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="SPLIT" type="data" optional="false" label="Split Features" help="Split Features The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="SPLIT" type="data" optional="false" label="Split Features" help="Split Features The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output" help="Output">
       <option value="polylines">polylines</option>
       <option selected="true" value="separate_lines">separate lines</option>
@@ -52,7 +52,7 @@ transmissionMode_INTERSECT $OutputSection_INTERSECT.transmissionMode_INTERSECT]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

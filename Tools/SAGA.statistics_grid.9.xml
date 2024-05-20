@@ -19,7 +19,7 @@ transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
 outputType_DIFF $OutputSection_DIFF.outputType_DIFF
 transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   <inputs>
-    <param name="BANDS" type="data" optional="false" label="Bands" help="Bands The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="BANDS" type="data" optional="false" label="Bands" help="Bands The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="RADIUS" type="integer" value="1" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
     <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
       <option value="exponential">exponential</option>
@@ -107,7 +107,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

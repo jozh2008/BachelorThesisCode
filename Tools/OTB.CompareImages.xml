@@ -20,9 +20,9 @@ transmissionMode_mae $OutputSection_mae.transmissionMode_mae
 transmissionMode_psnr $OutputSection_psnr.transmissionMode_psnr
 transmissionMode_count $OutputSection_count.transmissionMode_count]]></command>
   <inputs>
-    <param name="ref.in" type="data" optional="false" label="Image used as reference in the comparison" help="Image used as reference in the comparison The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="ref.in" type="data" optional="false" label="Image used as reference in the comparison" help="Image used as reference in the comparison The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="ref.channel" type="integer" value="1" optional="false" label="Used channel for the reference image" help="Used channel for the reference image"/>
-    <param name="meas.in" type="data" optional="false" label="Image used as measured in the comparison" help="Image used as measured in the comparison The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="meas.in" type="data" optional="false" label="Image used as measured in the comparison" help="Image used as measured in the comparison The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="meas.channel" type="integer" value="1" optional="false" label="Used channel for the measured image" help="Used channel for the measured image"/>
     <param name="roi.startx" type="integer" value="0" optional="false" label="ROI start x position." help="ROI start x position."/>
     <param name="roi.starty" type="integer" value="0" optional="false" label="ROI start y position." help="ROI start y position."/>
@@ -71,7 +71,7 @@ transmissionMode_count $OutputSection_count.transmissionMode_count]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

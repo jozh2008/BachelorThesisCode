@@ -16,9 +16,9 @@ transmissionMode_S_OUTPUT $OutputSection_S_OUTPUT.transmissionMode_S_OUTPUT
 outputType_M_OUTPUT $OutputSection_M_OUTPUT.outputType_M_OUTPUT
 transmissionMode_M_OUTPUT $OutputSection_M_OUTPUT.transmissionMode_M_OUTPUT]]></command>
   <inputs>
-    <param name="CLIP" type="data" optional="false" label="Clip Features" help="Clip Features The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="S_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="M_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="CLIP" type="data" optional="false" label="Clip Features" help="Clip Features The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="S_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="M_INPUT" type="data" optional="false" label="Input Features" help="Input Features The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="DISSOLVE" type="select" optional="true" label="Dissolve Clip Features" help="Dissolve Clip Features">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -77,7 +77,7 @@ transmissionMode_M_OUTPUT $OutputSection_M_OUTPUT.transmissionMode_M_OUTPUT]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

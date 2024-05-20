@@ -14,7 +14,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input complex image" help="Input complex image The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input complex image" help="Input complex image The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="Output calibrated image. This image contains the backscatter (sigmaNought) of the input image." help="Output calibrated image. This image contains the backscatter (sigmaNought) of the input image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -66,7 +66,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

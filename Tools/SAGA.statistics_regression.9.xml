@@ -16,7 +16,7 @@ transmissionMode_COEFF $OutputSection_COEFF.transmissionMode_COEFF
 outputType_R2 $OutputSection_R2.outputType_R2
 transmissionMode_R2 $OutputSection_R2.transmissionMode_R2]]></command>
   <inputs>
-    <param name="Y_GRIDS" type="data" optional="false" label="Dependent Variables" help="Dependent Variables The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="Y_GRIDS" type="data" optional="false" label="Dependent Variables" help="Dependent Variables The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="ORDER" type="integer" value="1" optional="true" label="Polynomial Order" help="Polynomial Order"/>
     <param name="XSOURCE" type="select" optional="true" label="Get Independent Variable from ..." help="Get Independent Variable from ...">
       <option value="grid_list">grid list</option>
@@ -24,7 +24,7 @@ transmissionMode_R2 $OutputSection_R2.transmissionMode_R2]]></command>
       <option value="table">table</option>
     </param>
     <param name="X_TABLE" type="data" optional="false" label="Independent Variable (per Grid)" help="Independent Variable (per Grid) The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="X_GRIDS" type="data" optional="false" label="Independent Variable (per Grid and Cell)" help="Independent Variable (per Grid and Cell) The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="X_GRIDS" type="data" optional="false" label="Independent Variable (per Grid and Cell)" help="Independent Variable (per Grid and Cell) The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -79,7 +79,7 @@ transmissionMode_R2 $OutputSection_R2.transmissionMode_R2]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>

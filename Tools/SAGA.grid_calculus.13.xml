@@ -11,7 +11,7 @@ response $response
 outputType_OR $OutputSection_OR.outputType_OR
 transmissionMode_OR $OutputSection_OR.transmissionMode_OR]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Operator Type" help="Operator Type">
       <option value="a_+_b_-_a_*_b">a + b - a * b</option>
       <option selected="true" value="max(a,_b)_(non-interactive)">max(a, b) (non-interactive)</option>
@@ -51,7 +51,7 @@ transmissionMode_OR $OutputSection_OR.transmissionMode_OR]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" value="txt"/>
+      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
     </test>
   </tests>
