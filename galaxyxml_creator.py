@@ -18,6 +18,7 @@ class Galaxyxmltool:
         self.output_type = "outputType"
         self.output_name_list =[]
         self.output_data = "output_data"
+        self.optional_numbers =[]
 
     def get_tool(self):
         return self.gxt
@@ -120,9 +121,13 @@ class Galaxyxmltool:
         Returns:
             IntegerParam: The created integer parameter.
         """
+        
         default_value = None
         if param_schema is not None:
             default_value = param_schema.get("default")
+        
+        if is_nullable and default_value is None:
+            self.optional_numbers.append(param_name)
         return self.gxtp.IntegerParam(
             name=param_name,
             label=title,
@@ -676,6 +681,8 @@ class Galaxyxmltool:
             str: The formatted command.
         """
         self.executable_dict["name"] = title
+        self.executable_dict["optional"] = self.optional_numbers
+        pprint(self.executable_dict)
         return self.executable + self.dict_to_string(self.executable_dict)
 
     # possible output options need to be discussed, which is better

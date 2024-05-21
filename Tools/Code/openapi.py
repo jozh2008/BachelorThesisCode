@@ -3,6 +3,8 @@
 # float ram 128 exp 'im1b3,im1b2,im1b1' response raw outputType1_out image/png transmissionMode_1 reference
 import sys
 import re
+import ast
+import copy
 from pprint import pprint
 from api_request import *
 
@@ -355,16 +357,55 @@ class ApiJson:
         Raises:
         - ValueError: If the number of elements in the input list is not even, indicating missing values.
 
+        Explanation:
+        This function takes a list of arguments and converts them into a dictionary where every two consecutive elements
+        in the input list represent a key-value pair in the resulting dictionary.
+
+        If an argument in the list is marked as 'optional', it's expected that it's followed by its corresponding value. 
+        However, if no value follows an 'optional' argument, the function will remove that argument from the list to avoid
+        an odd number of elements, which would cause a ValueError.
+
+        The 'optional' argument is identified by its presence in the input list. Once found, the function checks if the
+        next element in the list is a number, indicating the presence of the value for the optional argument. If not, 
+        it removes the optional argument from the list.
+
         """
-        #print(len(args))
-        #pprint(args)
-        if len(args) % 2 != 0:
+        for i in range(len(args)):
+            if args[i] == "optional":
+                string = self.add_quotes_around_unquoted_words(args[i+1])
+
+                try:
+                    converted_list = ast.literal_eval(string)
+                    
+                except (ValueError, SyntaxError) as e:
+                    print(f"Error parsing string: {e}")
+                break
+        
+        args2 = copy.deepcopy(args)
+        for optional in converted_list:
+            ind = args.index(optional)
+            value = args[ind+1]
+            if not self.is_number(value):
+                args2.pop(i)
+
+        if len(args2) % 2 != 0:
             raise ValueError("The number of arguments must be even.")
 
-        it = iter(args)
-        #print(it)
+        it = iter(args2)
         res_dict = dict(zip(it, it))
         return res_dict
+    
+
+    def is_number(self, s):
+        try:
+            float(s)  # Try to convert to float
+            return True
+        except ValueError:
+            return False
+    
+    def add_quotes_around_unquoted_words(self, s):
+        # Regular expression to find unquoted words
+        return re.sub(r"(\b[a-zA-Z_]\w*\b)", r'"\1"', s)
 
     def output_json(self, outputName, mediaType, transmissionMode):
         """

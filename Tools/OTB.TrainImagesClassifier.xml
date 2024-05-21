@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio_il True  isArrayio_vd True  isArrayio_valid True  isArrayio_imstat False  isArrayelev_geoid False  output_data_io_out $output_data_io_out  output_data_io_confmatout $output_data_io_confmatout  name OTB.TrainImagesClassifier io_il $io_il
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio_il True  isArrayio_vd True  isArrayio_valid True  isArrayio_imstat False  isArrayelev_geoid False  output_data_io_out $output_data_io_out  output_data_io_confmatout $output_data_io_confmatout  name OTB.TrainImagesClassifier  optional ['rand'] io_il $io_il
 io_vd $io_vd
 io_valid $io_valid
 io_imstat $io_imstat
@@ -65,8 +65,8 @@ outputType_io_confmatout $OutputSection_io_confmatout.outputType_io_confmatout
 transmissionMode_io_confmatout $OutputSection_io_confmatout.transmissionMode_io_confmatout]]></command>
   <inputs>
     <param name="io_il" type="data" optional="false" label="A list of input images." help="A list of input images. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="io_vd" type="data" optional="false" label="A list of vector data to select the training samples." help="A list of vector data to select the training samples. The following data types are allowed in the txt file:  xml, zip, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="io_valid" type="data" optional="false" label="A list of vector data to select the validation samples." help="A list of vector data to select the validation samples. The following data types are allowed in the txt file:  xml, zip, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="io_vd" type="data" optional="false" label="A list of vector data to select the training samples." help="A list of vector data to select the training samples. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, zip, xml" format="txt"/>
+    <param name="io_valid" type="data" optional="false" label="A list of vector data to select the validation samples." help="A list of vector data to select the validation samples. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, zip, xml" format="txt"/>
     <param name="io_imstat" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="cleanup" type="select" optional="false" label="If activated, the application will try to clean all temporary files it created" help="If activated, the application will try to clean all temporary files it created">
       <option selected="true" value="false">false</option>
