@@ -30,7 +30,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
       <option selected="true" value="Queen's_case">Queen's case</option>
       <option value="Rooke's_case">Rooke's case</option>
     </param>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="OUTPUT_ADD" type="select" optional="true" label="Additional Output" help="Additional Output">
       <option value="edge_cells">edge cells</option>
       <option value="gradients">gradients</option>
@@ -75,7 +75,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_EDGE_CELLS" format="tiff" hidden="false">
+    <data name="output_data_EDGE_CELLS" format="tiff" label="output_data_EDGE_CELLS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_EDGE_CELLS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -83,7 +83,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
         <when input="outputType_EDGE_CELLS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT" format="tiff" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -94,8 +94,9 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_EDGE_CELLS" ftype="txt" value="output_data_EDGE_CELLS.txt"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Continuous Wombling for edge detection. Uses magnitude of gradient to detect edges between adjacent cells. Edge segments connect such edges, when the difference of their gradient directions is below given threshold.]]></help>

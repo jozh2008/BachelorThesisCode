@@ -84,7 +84,7 @@ transmissionMode_BAND_INFO $OutputSection_BAND_INFO.transmissionMode_BAND_INFO]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_BANDS" format="tiff" hidden="false">
+    <data name="output_data_BANDS" format="tiff" label="output_data_BANDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BANDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -92,12 +92,13 @@ transmissionMode_BAND_INFO $OutputSection_BAND_INFO.transmissionMode_BAND_INFO]]
         <when input="outputType_BANDS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_BAND_INFO" format="csv" hidden="false"/>
+    <data name="output_data_BAND_INFO" format="csv" label="output_data_BAND_INFO" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_BANDS" ftype="txt" value="output_data_BANDS.txt"/>
+      <output name="output_data_BAND_INFO" ftype="txt" value="output_data_BAND_INFO.txt"/>
     </test>
   </tests>
   <help><![CDATA[Import Landsat scenes including metadata from Landsat metadata files. Band data have to be stored in the same folder as the chosen metadata file in uncompressed GeoTIFF format. ]]></help>

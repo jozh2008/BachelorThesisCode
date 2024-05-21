@@ -20,7 +20,7 @@ transmissionMode_FLOW_TRIANGLES $OutputSection_FLOW_TRIANGLES.transmissionMode_F
 outputType_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.outputType_FLOW_POLYGONS
 transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLOW_POLYGONS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="TIN" help="TIN The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="ZFIELD" type="data" optional="false" label="Z Values" help="Z Values The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Multiple_Flow_Direction">Multiple Flow Direction</option>
@@ -92,35 +92,35 @@ transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLO
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FLOW_POINTS" format="xml" hidden="false">
+    <data name="output_data_FLOW_POINTS" format="xml" label="output_data_FLOW_POINTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_FLOW_POINTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_FLOW_CENTER" format="xml" hidden="false">
+    <data name="output_data_FLOW_CENTER" format="xml" label="output_data_FLOW_CENTER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW_CENTER" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_FLOW_CENTER" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_FLOW_EDGES" format="xml" hidden="false">
+    <data name="output_data_FLOW_EDGES" format="xml" label="output_data_FLOW_EDGES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW_EDGES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_FLOW_EDGES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_FLOW_TRIANGLES" format="xml" hidden="false">
+    <data name="output_data_FLOW_TRIANGLES" format="xml" label="output_data_FLOW_TRIANGLES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW_TRIANGLES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_FLOW_TRIANGLES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_FLOW_POLYGONS" format="xml" hidden="false">
+    <data name="output_data_FLOW_POLYGONS" format="xml" label="output_data_FLOW_POLYGONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -130,8 +130,12 @@ transmissionMode_FLOW_POLYGONS $OutputSection_FLOW_POLYGONS.transmissionMode_FLO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FLOW_POINTS" ftype="txt" value="output_data_FLOW_POINTS.txt"/>
+      <output name="output_data_FLOW_CENTER" ftype="txt" value="output_data_FLOW_CENTER.txt"/>
+      <output name="output_data_FLOW_EDGES" ftype="txt" value="output_data_FLOW_EDGES.txt"/>
+      <output name="output_data_FLOW_TRIANGLES" ftype="txt" value="output_data_FLOW_TRIANGLES.txt"/>
+      <output name="output_data_FLOW_POLYGONS" ftype="txt" value="output_data_FLOW_POLYGONS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates the catchment area based on the selected elevation values.&lt;br/&gt;&lt;br/&gt;]]></help>

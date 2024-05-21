@@ -14,7 +14,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DISTCOUNT" type="integer" value="100" optional="true" label="Initial Number of Distance Classes" help="Initial Number of Distance Classes"/>
     <param name="DISTMAX" type="float" value="0" optional="true" label="Maximum Distance" help="Maximum Distance"/>
@@ -39,12 +39,12 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="csv" hidden="false"/>
+    <data name="output_data_RESULT" format="csv" label="output_data_RESULT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Variogram]]></help>

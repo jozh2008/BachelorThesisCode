@@ -43,12 +43,12 @@ transmissionMode_PC_OUT $OutputSection_PC_OUT.transmissionMode_PC_OUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PC_OUT" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_PC_OUT" format="x-ogc-lasf" label="output_data_PC_OUT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PC_OUT" ftype="txt" value="output_data_PC_OUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool can be used to merge point clouds. The attribute fields of the merged point cloud resemble those of the first point cloud in the input list. In order to merge the attributes of the additional point cloud layers, these must be consistent (field name and type) with the first point cloud in the input list. Missing attribute values are set to no-data. ]]></help>

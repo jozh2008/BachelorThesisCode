@@ -21,9 +21,9 @@ transmissionMode_RESIDUALS $OutputSection_RESIDUALS.transmissionMode_RESIDUALS
 outputType_REGRESSION $OutputSection_REGRESSION.outputType_REGRESSION
 transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSION]]></command>
   <inputs>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="ZONES" type="data" optional="false" label="Zones" help="Zones The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ZONES" type="data" optional="false" label="Zones" help="Zones The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="ATTRIBUTE" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
@@ -84,14 +84,14 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESIDUALS" format="xml" hidden="false">
+    <data name="output_data_RESIDUALS" format="xml" label="output_data_RESIDUALS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESIDUALS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_RESIDUALS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+    <data name="output_data_REGRESSION" format="tiff" label="output_data_REGRESSION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -102,8 +102,9 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESIDUALS" ftype="txt" value="output_data_RESIDUALS.txt"/>
+      <output name="output_data_REGRESSION" ftype="txt" value="output_data_REGRESSION.txt"/>
     </test>
   </tests>
   <help><![CDATA[Linear regression analysis of point attributes using multiple predictor grids. Details of the regression/correlation analysis will be saved to a table. The regression function is used to create a new grid with regression based values. The multiple regression analysis uses a forward selection procedure. Each polygon in the zones layer is processed as individual zone. &lt;br/&gt;Reference:&lt;br/&gt;- Bahrenberg, G., Giese, E., Nipper, J. (1992): 'Statistische Methoden in der Geographie 2 - Multivariate Statistik', Stuttgart, 415p.&lt;br/&gt;]]></help>

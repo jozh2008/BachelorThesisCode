@@ -8,8 +8,8 @@
 channel $channel
 ram $ram
 filter $filter
-filter.touzi.xradius $filter.touzi.xradius
-filter.touzi.yradius $filter.touzi.yradius
+filter_touzi_xradius $filter_touzi_xradius
+filter_touzi_yradius $filter_touzi_yradius
 out $out
 prefer $prefer
 response $response
@@ -24,8 +24,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="sobel">sobel</option>
       <option value="touzi">touzi</option>
     </param>
-    <param name="filter.touzi.xradius" type="integer" value="1" optional="false" label="filter.touzi.xradius" help="filter.touzi.xradius"/>
-    <param name="filter.touzi.yradius" type="integer" value="1" optional="false" label="filter.touzi.yradius" help="filter.touzi.yradius"/>
+    <param name="filter_touzi_xradius" type="integer" value="1" optional="false" label="filter.touzi.xradius" help="filter.touzi.xradius"/>
+    <param name="filter_touzi_yradius" type="integer" value="1" optional="false" label="filter.touzi.yradius" help="filter.touzi.yradius"/>
     <param name="out" type="select" optional="false" label="Output image containing the edge features." help="Output image containing the edge features.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -56,7 +56,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -66,8 +66,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application computes edge features on a selected channel of the input.It uses different filter such as gradient, Sobel and Touzi]]></help>

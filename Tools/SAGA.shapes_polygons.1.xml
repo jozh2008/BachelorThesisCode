@@ -11,7 +11,7 @@ response $response
 outputType_CENTROIDS $OutputSection_CENTROIDS.outputType_CENTROIDS
 transmissionMode_CENTROIDS $OutputSection_CENTROIDS.transmissionMode_CENTROIDS]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Centroids for each part" help="Centroids for each part">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -38,7 +38,7 @@ transmissionMode_CENTROIDS $OutputSection_CENTROIDS.transmissionMode_CENTROIDS]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CENTROIDS" format="xml" hidden="false">
+    <data name="output_data_CENTROIDS" format="xml" label="output_data_CENTROIDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CENTROIDS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -48,8 +48,8 @@ transmissionMode_CENTROIDS $OutputSection_CENTROIDS.transmissionMode_CENTROIDS]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CENTROIDS" ftype="txt" value="output_data_CENTROIDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a points layer containing the centroids of the input polygon layer.]]></help>

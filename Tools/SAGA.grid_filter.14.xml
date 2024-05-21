@@ -78,7 +78,7 @@ transmissionMode_OUTLINES $OutputSection_OUTLINES.transmissionMode_OUTLINES]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FILTERED_MASK" format="tiff" hidden="false">
+    <data name="output_data_FILTERED_MASK" format="tiff" label="output_data_FILTERED_MASK" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FILTERED_MASK" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -86,7 +86,7 @@ transmissionMode_OUTLINES $OutputSection_OUTLINES.transmissionMode_OUTLINES]]></
         <when input="outputType_FILTERED_MASK" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SYMBOLIC_IMAGE" format="tiff" hidden="false">
+    <data name="output_data_SYMBOLIC_IMAGE" format="tiff" label="output_data_SYMBOLIC_IMAGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SYMBOLIC_IMAGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -94,7 +94,7 @@ transmissionMode_OUTLINES $OutputSection_OUTLINES.transmissionMode_OUTLINES]]></
         <when input="outputType_SYMBOLIC_IMAGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTLINES" format="xml" hidden="false">
+    <data name="output_data_OUTLINES" format="xml" label="output_data_OUTLINES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTLINES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -104,8 +104,10 @@ transmissionMode_OUTLINES $OutputSection_OUTLINES.transmissionMode_OUTLINES]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FILTERED_MASK" ftype="txt" value="output_data_FILTERED_MASK.txt"/>
+      <output name="output_data_SYMBOLIC_IMAGE" ftype="txt" value="output_data_SYMBOLIC_IMAGE.txt"/>
+      <output name="output_data_OUTLINES" ftype="txt" value="output_data_OUTLINES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Connectivity analysis of a binary input image according to &lt;br/&gt;Burger, W., Burge, M.: Digitale Bildverarbeitung. Springer Verlag 2006, p.208.&lt;br/&gt;Output consists in a symbolic image of the connected foreground regions and a shape of the borders of the foreground regions (outer and inner borders). The shape may contain alternatively the centers or the corners of the border pixels. Optionally, the regions which have contact with the image borders can be removed together with their border shapes. &lt;br/&gt;In addition, an optional morphological filter (erosion-binary reconstruction) can be applied to the input image first. &lt;br/&gt;&lt;br/&gt;]]></help>

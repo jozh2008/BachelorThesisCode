@@ -64,7 +64,7 @@ transmissionMode_BANDS $OutputSection_BANDS.transmissionMode_BANDS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_BANDS" format="tiff" hidden="false">
+    <data name="output_data_BANDS" format="tiff" label="output_data_BANDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BANDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -75,8 +75,8 @@ transmissionMode_BANDS $OutputSection_BANDS.transmissionMode_BANDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_BANDS" ftype="txt" value="output_data_BANDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool facilitates the import and display of Landsat scenes, which have each band given as a single GeoTIFF file.&lt;br/&gt;&lt;br/&gt;The development of this tool has been requested and sponsored by Rohan Fisher, Charles Darwin University, Australia. ]]></help>

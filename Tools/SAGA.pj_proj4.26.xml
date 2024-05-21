@@ -39,7 +39,7 @@ transmissionMode_TARGET_PC $OutputSection_TARGET_PC.transmissionMode_TARGET_PC]]
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="TRANSFORM_Z" type="select" optional="true" label="Z Transformation" help="Transform elevation (z) values, if appropriate.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -84,19 +84,20 @@ transmissionMode_TARGET_PC $OutputSection_TARGET_PC.transmissionMode_TARGET_PC]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TARGET" format="xml" hidden="false">
+    <data name="output_data_TARGET" format="xml" label="output_data_TARGET" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TARGET" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TARGET" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TARGET_PC" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_TARGET_PC" format="x-ogc-lasf" label="output_data_TARGET_PC" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TARGET" ftype="txt" value="output_data_TARGET.txt"/>
+      <output name="output_data_TARGET_PC" ftype="txt" value="output_data_TARGET_PC.txt"/>
     </test>
   </tests>
   <help><![CDATA[Project shapes into UTM coordinates.&lt;br/&gt;Projection routines make use of the Proj.4 Cartographic Projections library.&lt;br/&gt;Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).&lt;br/&gt;Proj.4 Version is Rel. 5.2.0, September 15th, 2018&lt;br/&gt;&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;]]></help>

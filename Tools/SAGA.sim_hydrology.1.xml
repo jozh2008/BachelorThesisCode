@@ -26,10 +26,10 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW
 outputType_GAUGES_FLOW $OutputSection_GAUGES_FLOW.outputType_GAUGES_FLOW
 transmissionMode_GAUGES_FLOW $OutputSection_GAUGES_FLOW.transmissionMode_GAUGES_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="ROUGHNESS" type="data" optional="false" label="Manning Roughness" help="Manning Roughness The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="ROUGHNESS" type="data" optional="false" label="Manning Roughness" help="Manning Roughness The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="ROUGHNESS_DEFAULT" type="float" value="0.03" optional="true" label="Default" help="default value if no grid has been selected"/>
-    <param name="GAUGES" type="data" optional="false" label="Gauges" help="Gauges The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="GAUGES" type="data" optional="false" label="Gauges" help="Gauges The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="TIME_SPAN" type="float" value="1" optional="true" label="Simulation Time [h]" help="Simulation Time [h]"/>
     <param name="TIME_STEP" type="float" value="1" optional="true" label="Simulation Time Step [min]" help="Simulation Time Step [min]"/>
     <param name="TIME_UPDATE" type="float" value="1" optional="true" label="Map Update Frequency [min]" help="If zero each simulation time step will update the flow map."/>
@@ -86,7 +86,7 @@ transmissionMode_GAUGES_FLOW $OutputSection_GAUGES_FLOW.transmissionMode_GAUGES_
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FLOW" format="tiff" hidden="false">
+    <data name="output_data_FLOW" format="tiff" label="output_data_FLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -94,12 +94,13 @@ transmissionMode_GAUGES_FLOW $OutputSection_GAUGES_FLOW.transmissionMode_GAUGES_
         <when input="outputType_FLOW" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_GAUGES_FLOW" format="csv" hidden="false"/>
+    <data name="output_data_GAUGES_FLOW" format="csv" label="output_data_GAUGES_FLOW" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FLOW" ftype="txt" value="output_data_FLOW.txt"/>
+      <output name="output_data_GAUGES_FLOW" ftype="txt" value="output_data_GAUGES_FLOW.txt"/>
     </test>
   </tests>
   <help><![CDATA[This is a simple tool that simulates overland flow with a kinematic wave approach. It is not designed for operational usage. Rather it should give an idea about some principles of dynamic simulation techniques and thus it might become a starting point for more sophisticated and applicable simulation tools. ]]></help>

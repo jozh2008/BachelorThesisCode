@@ -14,9 +14,9 @@ response $response
 outputType_BURN $OutputSection_BURN.outputType_BURN
 transmissionMode_BURN $OutputSection_BURN.transmissionMode_BURN]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="STREAM" type="data" optional="false" label="Streams" help="Streams The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="FLOWDIR" type="data" optional="false" label="Flow Direction" help="Flow Direction The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="STREAM" type="data" optional="false" label="Streams" help="Streams The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="FLOWDIR" type="data" optional="false" label="Flow Direction" help="Flow Direction The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="lower_cell's_value_to_neighbours_minimum_value_minus_epsilon">lower cell's value to neighbours minimum value minus epsilon</option>
       <option selected="true" value="simply_decrease_cell's_value_by_epsilon">simply decrease cell's value by epsilon</option>
@@ -46,7 +46,7 @@ transmissionMode_BURN $OutputSection_BURN.transmissionMode_BURN]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_BURN" format="tiff" hidden="false">
+    <data name="output_data_BURN" format="tiff" label="output_data_BURN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BURN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -57,8 +57,8 @@ transmissionMode_BURN $OutputSection_BURN.transmissionMode_BURN]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_BURN" ftype="txt" value="output_data_BURN.txt"/>
     </test>
   </tests>
   <help><![CDATA[Burns a stream network into a Digital Elevation Model (DEM). Stream cells have to be coded with valid data values, all other cells should be set to no data value. First two methods decrease . The third method ensures a steady downstream gradient. An elevation decrease is only applied, if a downstream cell is equally high or higher. You should provide a grid with flow directions for determination of downstream cells. The 'Sink Drainage Route Detection' tool offers such flow directions. ]]></help>

@@ -22,7 +22,7 @@ transmissionMode_TERRAIN $OutputSection_TERRAIN.transmissionMode_TERRAIN
 outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
 transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="RADIUS" type="float" value="10000" optional="true" label="Maximum Search Radius" help="The maximum search radius [map units]. This value is ignored if set to zero."/>
     <param name="NDIRS" type="integer" value="8" optional="true" label="Number of Sectors" help="Number of Sectors"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
@@ -101,7 +101,7 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_VISIBLE" format="tiff" hidden="false">
+    <data name="output_data_VISIBLE" format="tiff" label="output_data_VISIBLE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VISIBLE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -109,7 +109,7 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
         <when input="outputType_VISIBLE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SVF" format="tiff" hidden="false">
+    <data name="output_data_SVF" format="tiff" label="output_data_SVF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SVF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -117,7 +117,7 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
         <when input="outputType_SVF" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SIMPLE" format="tiff" hidden="false">
+    <data name="output_data_SIMPLE" format="tiff" label="output_data_SIMPLE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SIMPLE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -125,7 +125,7 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
         <when input="outputType_SIMPLE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TERRAIN" format="tiff" hidden="false">
+    <data name="output_data_TERRAIN" format="tiff" label="output_data_TERRAIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TERRAIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -133,7 +133,7 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
         <when input="outputType_TERRAIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+    <data name="output_data_DISTANCE" format="tiff" label="output_data_DISTANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -144,8 +144,12 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_VISIBLE" ftype="txt" value="output_data_VISIBLE.txt"/>
+      <output name="output_data_SVF" ftype="txt" value="output_data_SVF.txt"/>
+      <output name="output_data_SIMPLE" ftype="txt" value="output_data_SIMPLE.txt"/>
+      <output name="output_data_TERRAIN" ftype="txt" value="output_data_TERRAIN.txt"/>
+      <output name="output_data_DISTANCE" ftype="txt" value="output_data_DISTANCE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculation of visible sky, sky view factor (SVF) and related parameters.]]></help>

@@ -33,12 +33,12 @@ transmissionMode_Profile $OutputSection_Profile.transmissionMode_Profile]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Profile" format="json" hidden="false"/>
+    <data name="output_data_Profile" format="json" label="output_data_Profile" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_Profile" ftype="txt" value="output_data_Profile.txt"/>
     </test>
   </tests>
   <help><![CDATA[Fetch the x,y,z values of a DEM raster file along a linestring]]></help>

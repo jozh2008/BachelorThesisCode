@@ -21,13 +21,13 @@ transmissionMode_EFFECT $OutputSection_EFFECT.transmissionMode_EFFECT
 outputType_AFH $OutputSection_AFH.outputType_AFH
 transmissionMode_AFH $OutputSection_AFH.transmissionMode_AFH]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="DIR" type="data" optional="false" label="Wind Direction" help="Direction into which the wind blows, starting with 0 for North and increasing clockwise. The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="DIR" type="data" optional="false" label="Wind Direction" help="Direction into which the wind blows, starting with 0 for North and increasing clockwise. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="DIR_UNITS" type="select" optional="true" label="Wind Direction Units" help="Wind Direction Units">
       <option value="degree">degree</option>
       <option selected="true" value="radians">radians</option>
     </param>
-    <param name="LEN" type="data" optional="false" label="Wind Speed" help="Wind Speed The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="LEN" type="data" optional="false" label="Wind Speed" help="Wind Speed The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="LEN_SCALE" type="float" value="1" optional="true" label="Scaling" help="Scaling"/>
     <param name="MAXDIST" type="float" value="300" optional="true" label="Search Distance [km]" help="Search Distance [km]"/>
     <param name="DIR_CONST" type="float" value="135" optional="true" label="Constant Wind Direction" help="constant direction into the wind blows, given as degree"/>
@@ -75,7 +75,7 @@ transmissionMode_AFH $OutputSection_AFH.transmissionMode_AFH]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_EFFECT" format="tiff" hidden="false">
+    <data name="output_data_EFFECT" format="tiff" label="output_data_EFFECT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_EFFECT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -83,7 +83,7 @@ transmissionMode_AFH $OutputSection_AFH.transmissionMode_AFH]]></command>
         <when input="outputType_EFFECT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_AFH" format="tiff" hidden="false">
+    <data name="output_data_AFH" format="tiff" label="output_data_AFH" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_AFH" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -94,8 +94,9 @@ transmissionMode_AFH $OutputSection_AFH.transmissionMode_AFH]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_EFFECT" ftype="txt" value="output_data_EFFECT.txt"/>
+      <output name="output_data_AFH" ftype="txt" value="output_data_AFH.txt"/>
     </test>
   </tests>
   <help><![CDATA[The 'Wind Effect' is a dimensionless index. Values below 1 indicate wind shadowed areas whereas values above 1 indicate areas exposed to wind, all with regard to the specified wind direction. Wind direction, i.e. the direction into which the wind blows, might be either constant or variying in space, if a wind direction grid is supplied.]]></help>

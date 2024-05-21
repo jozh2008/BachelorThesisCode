@@ -45,7 +45,7 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRID" format="tiff" hidden="false">
+    <data name="output_data_GRID" format="tiff" label="output_data_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -56,8 +56,8 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRID" ftype="txt" value="output_data_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[Generates Gaussian landscapes.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;- Halling, H., Moeller, R. (1995): 'Mathematik fuers Auge', Heidelberg, 144p.&lt;br/&gt;- Mandelbrot, B.B. (1983): 'The Fractal Geometry of Nature', New York, 490p.&lt;br/&gt;]]></help>

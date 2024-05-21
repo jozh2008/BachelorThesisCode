@@ -20,7 +20,7 @@ transmissionMode_MRVBF $OutputSection_MRVBF.transmissionMode_MRVBF
 outputType_MRRTF $OutputSection_MRRTF.outputType_MRRTF
 transmissionMode_MRRTF $OutputSection_MRRTF.transmissionMode_MRRTF]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="T_SLOPE" type="float" value="16" optional="true" label="Initial Threshold for Slope" help="Initial Threshold for Slope"/>
     <param name="T_PCTL_V" type="float" value="0.4" optional="true" label="Threshold for Elevation Percentile (Lowness)" help="Threshold for Elevation Percentile (Lowness)"/>
     <param name="T_PCTL_R" type="float" value="0.35" optional="true" label="Threshold for Elevation Percentile (Upness)" help="Threshold for Elevation Percentile (Upness)"/>
@@ -70,7 +70,7 @@ transmissionMode_MRRTF $OutputSection_MRRTF.transmissionMode_MRRTF]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MRVBF" format="tiff" hidden="false">
+    <data name="output_data_MRVBF" format="tiff" label="output_data_MRVBF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MRVBF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -78,7 +78,7 @@ transmissionMode_MRRTF $OutputSection_MRRTF.transmissionMode_MRRTF]]></command>
         <when input="outputType_MRVBF" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MRRTF" format="tiff" hidden="false">
+    <data name="output_data_MRRTF" format="tiff" label="output_data_MRRTF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MRRTF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -89,8 +89,9 @@ transmissionMode_MRRTF $OutputSection_MRRTF.transmissionMode_MRRTF]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MRVBF" ftype="txt" value="output_data_MRVBF.txt"/>
+      <output name="output_data_MRRTF" ftype="txt" value="output_data_MRRTF.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculation of the 'multiresolution index of valley bottom flatness' (MRVBF) and the complementary 'multiresolution index of the ridge top flatness' (MRRTF). ]]></help>

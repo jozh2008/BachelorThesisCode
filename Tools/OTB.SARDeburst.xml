@@ -12,7 +12,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Raw Sentinel1 IW SLC image, or any extract of such made by OTB (geom file needed)" help="Raw Sentinel1 IW SLC image, or any extract of such made by OTB (geom file needed) The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Raw Sentinel1 IW SLC image, or any extract of such made by OTB (geom file needed)" help="Raw Sentinel1 IW SLC image, or any extract of such made by OTB (geom file needed) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="Deburst image, with updated geom file that can be further used by Orthorectification application. If the input image is a raw Sentinel1 product, uint16 output type should be used (encoding of S1 product). Otherwise, output type should match type of input image." help="Deburst image, with updated geom file that can be further used by Orthorectification application. If the input image is a raw Sentinel1 product, uint16 output type should be used (encoding of S1 product). Otherwise, output type should match type of input image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -44,7 +44,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -54,8 +54,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Sentinel1 IW SLC products are composed of several burst overlapping in azimuth time for each subswath, separated by black lines [1]. The deburst operation consist in generating a continuous image in terms of azimuth time, by removing black separation lines as well as redundant lines between bursts.Note that the output sensor model is updated accordingly. This deburst operation is the perfect preprocessing step to orthorectify S1 IW SLC product with OTB [2] without suffering from artifacts caused by bursts separation.]]></help>

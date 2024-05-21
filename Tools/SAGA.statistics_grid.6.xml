@@ -40,8 +40,8 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT
 outputType_POINTS_OUT $OutputSection_POINTS_OUT.outputType_POINTS_OUT
 transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OUT]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="DIRECTION" type="float" value="0" optional="true" label="Direction [Degree]" help="Direction [Degree]"/>
     <param name="TOLERANCE" type="float" value="0" optional="true" label="Tolerance [Degree]" help="Tolerance [Degree]"/>
     <param name="MAXDISTANCE" type="integer" value="0" optional="true" label="Maximum Distance [Cells]" help="Maximum distance parameter is ignored if set to zero (default)."/>
@@ -211,7 +211,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MEAN" format="tiff" hidden="false">
+    <data name="output_data_MEAN" format="tiff" label="output_data_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -219,7 +219,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIFMEAN" format="tiff" hidden="false">
+    <data name="output_data_DIFMEAN" format="tiff" label="output_data_DIFMEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIFMEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -227,7 +227,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_DIFMEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MIN" format="tiff" hidden="false">
+    <data name="output_data_MIN" format="tiff" label="output_data_MIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -235,7 +235,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_MIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAX" format="tiff" hidden="false">
+    <data name="output_data_MAX" format="tiff" label="output_data_MAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -243,7 +243,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_MAX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RANGE" format="tiff" hidden="false">
+    <data name="output_data_RANGE" format="tiff" label="output_data_RANGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RANGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -251,7 +251,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_RANGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VAR" format="tiff" hidden="false">
+    <data name="output_data_VAR" format="tiff" label="output_data_VAR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VAR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -259,7 +259,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_VAR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEV" format="tiff" hidden="false">
+    <data name="output_data_STDDEV" format="tiff" label="output_data_STDDEV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -267,7 +267,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_STDDEV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEVLO" format="tiff" hidden="false">
+    <data name="output_data_STDDEVLO" format="tiff" label="output_data_STDDEVLO" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEVLO" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -275,7 +275,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_STDDEVLO" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEVHI" format="tiff" hidden="false">
+    <data name="output_data_STDDEVHI" format="tiff" label="output_data_STDDEVHI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEVHI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -283,7 +283,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_STDDEVHI" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DEVMEAN" format="tiff" hidden="false">
+    <data name="output_data_DEVMEAN" format="tiff" label="output_data_DEVMEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DEVMEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -291,7 +291,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_DEVMEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PERCENT" format="tiff" hidden="false">
+    <data name="output_data_PERCENT" format="tiff" label="output_data_PERCENT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PERCENT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -299,7 +299,7 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
         <when input="outputType_PERCENT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_POINTS_OUT" format="xml" hidden="false">
+    <data name="output_data_POINTS_OUT" format="xml" label="output_data_POINTS_OUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_POINTS_OUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -309,8 +309,19 @@ transmissionMode_POINTS_OUT $OutputSection_POINTS_OUT.transmissionMode_POINTS_OU
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MEAN" ftype="txt" value="output_data_MEAN.txt"/>
+      <output name="output_data_DIFMEAN" ftype="txt" value="output_data_DIFMEAN.txt"/>
+      <output name="output_data_MIN" ftype="txt" value="output_data_MIN.txt"/>
+      <output name="output_data_MAX" ftype="txt" value="output_data_MAX.txt"/>
+      <output name="output_data_RANGE" ftype="txt" value="output_data_RANGE.txt"/>
+      <output name="output_data_VAR" ftype="txt" value="output_data_VAR.txt"/>
+      <output name="output_data_STDDEV" ftype="txt" value="output_data_STDDEV.txt"/>
+      <output name="output_data_STDDEVLO" ftype="txt" value="output_data_STDDEVLO.txt"/>
+      <output name="output_data_STDDEVHI" ftype="txt" value="output_data_STDDEVHI.txt"/>
+      <output name="output_data_DEVMEAN" ftype="txt" value="output_data_DEVMEAN.txt"/>
+      <output name="output_data_PERCENT" ftype="txt" value="output_data_PERCENT.txt"/>
+      <output name="output_data_POINTS_OUT" ftype="txt" value="output_data_POINTS_OUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates for each cell statistical properties (arithmetic mean, minimum, maximum, variance, standard deviation) of all cells lying in given direction based on the input grid. ]]></help>

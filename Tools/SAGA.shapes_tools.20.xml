@@ -61,21 +61,21 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_POLYGONS" format="xml" hidden="false">
+    <data name="output_data_POLYGONS" format="xml" label="output_data_POLYGONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_POLYGONS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_LINES" format="xml" hidden="false">
+    <data name="output_data_LINES" format="xml" label="output_data_LINES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LINES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_LINES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_POINTS" format="xml" hidden="false">
+    <data name="output_data_POINTS" format="xml" label="output_data_POINTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -85,8 +85,10 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_POLYGONS" ftype="txt" value="output_data_POLYGONS.txt"/>
+      <output name="output_data_LINES" ftype="txt" value="output_data_LINES.txt"/>
+      <output name="output_data_POINTS" ftype="txt" value="output_data_POINTS.txt"/>
     </test>
   </tests>
   <help><![CDATA[QuadTree Structure to Shapes]]></help>

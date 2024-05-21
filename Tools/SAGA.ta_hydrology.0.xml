@@ -163,7 +163,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FLOW" format="tiff" hidden="false">
+    <data name="output_data_FLOW" format="tiff" label="output_data_FLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -171,7 +171,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <when input="outputType_FLOW" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VAL_MEAN" format="tiff" hidden="false">
+    <data name="output_data_VAL_MEAN" format="tiff" label="output_data_VAL_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VAL_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -179,7 +179,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <when input="outputType_VAL_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ACCU_TOTAL" format="tiff" hidden="false">
+    <data name="output_data_ACCU_TOTAL" format="tiff" label="output_data_ACCU_TOTAL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ACCU_TOTAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -187,7 +187,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <when input="outputType_ACCU_TOTAL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ACCU_LEFT" format="tiff" hidden="false">
+    <data name="output_data_ACCU_LEFT" format="tiff" label="output_data_ACCU_LEFT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ACCU_LEFT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -195,7 +195,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <when input="outputType_ACCU_LEFT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ACCU_RIGHT" format="tiff" hidden="false">
+    <data name="output_data_ACCU_RIGHT" format="tiff" label="output_data_ACCU_RIGHT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ACCU_RIGHT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -203,7 +203,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <when input="outputType_ACCU_RIGHT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FLOW_LENGTH" format="tiff" hidden="false">
+    <data name="output_data_FLOW_LENGTH" format="tiff" label="output_data_FLOW_LENGTH" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW_LENGTH" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -211,7 +211,7 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
         <when input="outputType_FLOW_LENGTH" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_WEIGHT_LOSS" format="tiff" hidden="false">
+    <data name="output_data_WEIGHT_LOSS" format="tiff" label="output_data_WEIGHT_LOSS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_WEIGHT_LOSS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -222,8 +222,14 @@ transmissionMode_WEIGHT_LOSS $OutputSection_WEIGHT_LOSS.transmissionMode_WEIGHT_
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FLOW" ftype="txt" value="output_data_FLOW.txt"/>
+      <output name="output_data_VAL_MEAN" ftype="txt" value="output_data_VAL_MEAN.txt"/>
+      <output name="output_data_ACCU_TOTAL" ftype="txt" value="output_data_ACCU_TOTAL.txt"/>
+      <output name="output_data_ACCU_LEFT" ftype="txt" value="output_data_ACCU_LEFT.txt"/>
+      <output name="output_data_ACCU_RIGHT" ftype="txt" value="output_data_ACCU_RIGHT.txt"/>
+      <output name="output_data_FLOW_LENGTH" ftype="txt" value="output_data_FLOW_LENGTH.txt"/>
+      <output name="output_data_WEIGHT_LOSS" ftype="txt" value="output_data_WEIGHT_LOSS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Top-down processing of cells for calculation of flow accumulation and related parameters. This set of algorithms processes a DEM downwards from the highest to the lowest cell.&lt;br/&gt;&lt;br/&gt;Flow routing methods provided by this tool:&lt;ul&gt;&lt;li&gt;Deterministic 8 (aka D8, O'Callaghan & Mark 1984)&lt;/li&gt;&lt;li&gt;Braunschweiger Reliefmodell (Bauer et al. 1985)&lt;/li&gt;&lt;li&gt;Rho 8 (Fairfield & Leymarie 1991)&lt;/li&gt;&lt;li&gt;Multiple Flow Direction (Freeman 1991, Quinn et al. 1991)&lt;/li&gt;&lt;li&gt;Deterministic Infinity (Tarboton 1997)&lt;/li&gt;&lt;li&gt;Triangular Multiple Flow Direction (Seibert & McGlynn 2007&lt;/li&gt;&lt;li&gt;Multiple Flow Direction based on Maximum Downslope Gradient (Qin et al. 2011)&lt;/li&gt;&lt;/ul&gt;]]></help>

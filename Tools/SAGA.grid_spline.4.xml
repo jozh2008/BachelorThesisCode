@@ -25,7 +25,7 @@ response $response
 outputType_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.outputType_TARGET_OUT_GRID
 transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode_TARGET_OUT_GRID]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
       <option value="grid_or_grid_system">grid or grid system</option>
@@ -42,7 +42,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Refinement" help="Refinement">
       <option selected="true" value="no">no</option>
       <option value="yes">yes</option>
@@ -76,7 +76,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TARGET_OUT_GRID" format="tiff" hidden="false">
+    <data name="output_data_TARGET_OUT_GRID" format="tiff" label="output_data_TARGET_OUT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TARGET_OUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -87,8 +87,8 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TARGET_OUT_GRID" ftype="txt" value="output_data_TARGET_OUT_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[Multilevel B-spline algorithm for spatial interpolation of scattered data as proposed by Lee, Wolberg and Shin (1997).&lt;br/&gt;The algorithm makes use of a coarse-to-fine hierarchy of control lattices to generate a sequence of bicubic B-spline functions, whose sum approaches the desired interpolation function. Performance gains are realized by using B-spline refinement to reduce the sum of these functions into one equivalent B-spline function. &lt;br/&gt;&lt;br/&gt;The 'Maximum Level' determines the maximum size of the final B-spline matrix and increases exponential with each level. Where level=10 requires about 1mb level=12 needs about 16mb and level=14 about 256mb(!) of additional memory. ]]></help>

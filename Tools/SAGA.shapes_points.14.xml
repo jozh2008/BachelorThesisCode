@@ -12,7 +12,7 @@ response $response
 outputType_THINNED $OutputSection_THINNED.outputType_THINNED
 transmissionMode_THINNED $OutputSection_THINNED.transmissionMode_THINNED]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RESOLUTION" type="float" value="1" optional="true" label="Resolution" help="Resolution"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -37,7 +37,7 @@ transmissionMode_THINNED $OutputSection_THINNED.transmissionMode_THINNED]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_THINNED" format="xml" hidden="false">
+    <data name="output_data_THINNED" format="xml" label="output_data_THINNED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_THINNED" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -47,8 +47,8 @@ transmissionMode_THINNED $OutputSection_THINNED.transmissionMode_THINNED]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_THINNED" ftype="txt" value="output_data_THINNED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Points Thinning.]]></help>

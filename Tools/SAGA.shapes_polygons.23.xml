@@ -11,7 +11,7 @@ response $response
 outputType_GENERALIZED $OutputSection_GENERALIZED.outputType_GENERALIZED
 transmissionMode_GENERALIZED $OutputSection_GENERALIZED.transmissionMode_GENERALIZED]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="THRESHOLD" type="float" value="100" optional="true" label="Threshold" help="Threshold"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -35,7 +35,7 @@ transmissionMode_GENERALIZED $OutputSection_GENERALIZED.transmissionMode_GENERAL
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GENERALIZED" format="xml" hidden="false">
+    <data name="output_data_GENERALIZED" format="xml" label="output_data_GENERALIZED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GENERALIZED" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -45,8 +45,8 @@ transmissionMode_GENERALIZED $OutputSection_GENERALIZED.transmissionMode_GENERAL
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GENERALIZED" ftype="txt" value="output_data_GENERALIZED.txt"/>
     </test>
   </tests>
   <help><![CDATA[A simple generalization tool for polygons. The tool joins polygons with an area size smaller than the specified threshold to their largest neighbouring polygon. ]]></help>

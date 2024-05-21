@@ -29,12 +29,12 @@ transmissionMode_utm $OutputSection_utm.transmissionMode_utm]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_utm" format="txt" hidden="false"/>
+    <data name="output_data_utm" format="txt" label="output_data_utm" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_utm" ftype="txt" value="output_data_utm.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application returns the UTM zone of an input geographic point.]]></help>

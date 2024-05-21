@@ -14,9 +14,9 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS
 outputType_LINE $OutputSection_LINE.outputType_LINE
 transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
   <inputs>
-    <param name="SOURCE" type="data" optional="false" label="Source Point(s)" help="Point shapefile with source point(s) The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="DEM" type="data" optional="false" label="Accumulated Cost Surface" help="Accumulated Cost Surface The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Allows writing cell values from additional grids to the output The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source Point(s)" help="Point shapefile with source point(s) The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Accumulated Cost Surface" help="Accumulated Cost Surface The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Allows writing cell values from additional grids to the output The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -50,14 +50,14 @@ transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_POINTS" format="xml" hidden="false">
+    <data name="output_data_POINTS" format="xml" label="output_data_POINTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_POINTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_LINE" format="xml" hidden="false">
+    <data name="output_data_LINE" format="xml" label="output_data_LINE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LINE" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -67,8 +67,9 @@ transmissionMode_LINE $OutputSection_LINE.transmissionMode_LINE]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_POINTS" ftype="txt" value="output_data_POINTS.txt"/>
+      <output name="output_data_LINE" ftype="txt" value="output_data_LINE.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool allows one to compute least cost path profile(s). It takes an accumulated cost surface grid and a point shapefile as input. Each point in the shapefile represents a source for which the least cost path is calculated.&lt;br/&gt;In case the point shapefile has more than one source point defined, a separate least cost path is calculated for each point. The tool outputs a point and a line shapefile for each least cost path.&lt;br/&gt; The tool allows for optional input grids. The cell values of these grids along the least cost path are written to the outputs as additional table fields.&lt;br/&gt;]]></help>

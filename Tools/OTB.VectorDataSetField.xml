@@ -12,7 +12,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input Vector Data" help="Input Vector Data The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml, zip" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input Vector Data" help="Input Vector Data The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, zip, json, xml" format="txt"/>
     <param name="fn" type="text" optional="false" label="Field name" help="Field name"/>
     <param name="fv" type="text" optional="false" label="Field value" help="Field value"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -38,7 +38,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="xml" hidden="false">
+    <data name="output_data_out" format="xml" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -49,8 +49,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Set a specified field to a specified value on all features of a vector data.]]></help>

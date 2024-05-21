@@ -20,7 +20,7 @@ transmissionMode_PCA $OutputSection_PCA.transmissionMode_PCA
 outputType_EIGEN $OutputSection_EIGEN.outputType_EIGEN
 transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="COMPONENTS" type="integer" value="7" optional="true" label="Number of Components" help="number of first components in the output; set to zero to get all"/>
     <param name="BASE_OUT" type="select" optional="true" label="Output of Base Topographies" help="Output of Base Topographies">
       <option selected="true" value="false">false</option>
@@ -84,7 +84,7 @@ transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_BASE" format="tiff" hidden="false">
+    <data name="output_data_BASE" format="tiff" label="output_data_BASE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BASE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -92,7 +92,7 @@ transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
         <when input="outputType_BASE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PCA" format="tiff" hidden="false">
+    <data name="output_data_PCA" format="tiff" label="output_data_PCA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PCA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -100,12 +100,14 @@ transmissionMode_EIGEN $OutputSection_EIGEN.transmissionMode_EIGEN]]></command>
         <when input="outputType_PCA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_EIGEN" format="csv" hidden="false"/>
+    <data name="output_data_EIGEN" format="csv" label="output_data_EIGEN" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_BASE" ftype="txt" value="output_data_BASE.txt"/>
+      <output name="output_data_PCA" ftype="txt" value="output_data_PCA.txt"/>
+      <output name="output_data_EIGEN" ftype="txt" value="output_data_EIGEN.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool uses the difference in cell values of a center cell and its neighbours (as specified by the kernel) as features for a Principal Component Analysis (PCA). This method has been used by Thomas and Herzfeld (2004) to parameterize the topography for a subsequent regionalization of climate variables with the principal components as predictors in a regression model. ]]></help>

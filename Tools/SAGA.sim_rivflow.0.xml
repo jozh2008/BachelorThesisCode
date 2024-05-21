@@ -32,9 +32,9 @@ transmissionMode_OUTPUT8 $OutputSection_OUTPUT8.transmissionMode_OUTPUT8
 outputType_OUTPUT9 $OutputSection_OUTPUT9.outputType_OUTPUT9
 transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="DTM" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="INPUT2" type="data" optional="false" label="HGGrid" help="Eingaberaster der Hauptgerinnerasterzellen des Flussnetzwerkes The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
-    <param name="INPUT3" type="data" optional="false" label="statisches Entnahmeraster" help="Eingaberaster mit Angaben zur statischen Flaechenwasserentnahme. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="DTM" help="Digitales Gelaendemodell des Flusseinzugsgebietes The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT2" type="data" optional="false" label="HGGrid" help="Eingaberaster der Hauptgerinnerasterzellen des Flussnetzwerkes The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT3" type="data" optional="false" label="statisches Entnahmeraster" help="Eingaberaster mit Angaben zur statischen Flaechenwasserentnahme. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="WCons" type="select" optional="true" label="Anteilige Flaechenwasserentnahme" help="Wenn gesetzt, werden die Werte des statischen Entahmerasters anteilig entnommen und als Raster statWUse ausgegeben">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -157,7 +157,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT2" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT2" format="tiff" label="output_data_OUTPUT2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -165,7 +165,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
         <when input="outputType_OUTPUT2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT3" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT3" format="tiff" label="output_data_OUTPUT3" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT3" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -173,7 +173,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
         <when input="outputType_OUTPUT3" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT4" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT4" format="tiff" label="output_data_OUTPUT4" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT4" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -181,7 +181,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
         <when input="outputType_OUTPUT4" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT5" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT5" format="tiff" label="output_data_OUTPUT5" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT5" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -189,7 +189,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
         <when input="outputType_OUTPUT5" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT6" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT6" format="tiff" label="output_data_OUTPUT6" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT6" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -197,7 +197,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
         <when input="outputType_OUTPUT6" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT7" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT7" format="tiff" label="output_data_OUTPUT7" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT7" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -205,7 +205,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
         <when input="outputType_OUTPUT7" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT8" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT8" format="tiff" label="output_data_OUTPUT8" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT8" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -213,7 +213,7 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
         <when input="outputType_OUTPUT8" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUTPUT9" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT9" format="tiff" label="output_data_OUTPUT9" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT9" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -224,8 +224,15 @@ transmissionMode_OUTPUT9 $OutputSection_OUTPUT9.transmissionMode_OUTPUT9]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT2" ftype="txt" value="output_data_OUTPUT2.txt"/>
+      <output name="output_data_OUTPUT3" ftype="txt" value="output_data_OUTPUT3.txt"/>
+      <output name="output_data_OUTPUT4" ftype="txt" value="output_data_OUTPUT4.txt"/>
+      <output name="output_data_OUTPUT5" ftype="txt" value="output_data_OUTPUT5.txt"/>
+      <output name="output_data_OUTPUT6" ftype="txt" value="output_data_OUTPUT6.txt"/>
+      <output name="output_data_OUTPUT7" ftype="txt" value="output_data_OUTPUT7.txt"/>
+      <output name="output_data_OUTPUT8" ftype="txt" value="output_data_OUTPUT8.txt"/>
+      <output name="output_data_OUTPUT9" ftype="txt" value="output_data_OUTPUT9.txt"/>
     </test>
   </tests>
   <help><![CDATA[Parameters of RiverBasin]]></help>

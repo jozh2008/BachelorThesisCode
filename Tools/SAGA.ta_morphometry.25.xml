@@ -58,12 +58,12 @@ transmissionMode_FSPUR $OutputSection_FSPUR.transmissionMode_FSPUR
 outputType_SSPUR $OutputSection_SSPUR.outputType_SSPUR
 transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="MINCURV" type="data" optional="false" label="Minimum Curvature" help="Minimum Curvature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="MAXCURV" type="data" optional="false" label="Maximum Curvature" help="Maximum Curvature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="PCURV" type="data" optional="false" label="Profile Curvature" help="Profile Curvature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="TCURV" type="data" optional="false" label="Tangential Curvature" help="Tangential Curvature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="MINCURV" type="data" optional="false" label="Minimum Curvature" help="Minimum Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="MAXCURV" type="data" optional="false" label="Maximum Curvature" help="Maximum Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="PCURV" type="data" optional="false" label="Profile Curvature" help="Profile Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="TCURV" type="data" optional="false" label="Tangential Curvature" help="Tangential Curvature The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="INPUT" type="select" optional="true" label="Input" help="if elevation is selected, slopes and curvatures will be calculated internally">
       <option selected="true" value="elevation">elevation</option>
       <option value="slope_and_curvatures">slope and curvatures</option>
@@ -319,7 +319,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FORM" format="tiff" hidden="false">
+    <data name="output_data_FORM" format="tiff" label="output_data_FORM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FORM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -327,7 +327,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_FORM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MEM" format="tiff" hidden="false">
+    <data name="output_data_MEM" format="tiff" label="output_data_MEM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -335,7 +335,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_MEM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ENTROPY" format="tiff" hidden="false">
+    <data name="output_data_ENTROPY" format="tiff" label="output_data_ENTROPY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ENTROPY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -343,7 +343,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_ENTROPY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CI" format="tiff" hidden="false">
+    <data name="output_data_CI" format="tiff" label="output_data_CI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -351,7 +351,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_CI" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PLAIN" format="tiff" hidden="false">
+    <data name="output_data_PLAIN" format="tiff" label="output_data_PLAIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PLAIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -359,7 +359,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_PLAIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PIT" format="tiff" hidden="false">
+    <data name="output_data_PIT" format="tiff" label="output_data_PIT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PIT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -367,7 +367,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_PIT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PEAK" format="tiff" hidden="false">
+    <data name="output_data_PEAK" format="tiff" label="output_data_PEAK" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PEAK" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -375,7 +375,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_PEAK" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RIDGE" format="tiff" hidden="false">
+    <data name="output_data_RIDGE" format="tiff" label="output_data_RIDGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RIDGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -383,7 +383,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_RIDGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CHANNEL" format="tiff" hidden="false">
+    <data name="output_data_CHANNEL" format="tiff" label="output_data_CHANNEL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CHANNEL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -391,7 +391,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_CHANNEL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SADDLE" format="tiff" hidden="false">
+    <data name="output_data_SADDLE" format="tiff" label="output_data_SADDLE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SADDLE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -399,7 +399,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_SADDLE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_BSLOPE" format="tiff" hidden="false">
+    <data name="output_data_BSLOPE" format="tiff" label="output_data_BSLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BSLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -407,7 +407,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_BSLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FSLOPE" format="tiff" hidden="false">
+    <data name="output_data_FSLOPE" format="tiff" label="output_data_FSLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FSLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -415,7 +415,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_FSLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SSLOPE" format="tiff" hidden="false">
+    <data name="output_data_SSLOPE" format="tiff" label="output_data_SSLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SSLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -423,7 +423,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_SSLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_HOLLOW" format="tiff" hidden="false">
+    <data name="output_data_HOLLOW" format="tiff" label="output_data_HOLLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_HOLLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -431,7 +431,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_HOLLOW" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FHOLLOW" format="tiff" hidden="false">
+    <data name="output_data_FHOLLOW" format="tiff" label="output_data_FHOLLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FHOLLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -439,7 +439,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_FHOLLOW" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SHOLLOW" format="tiff" hidden="false">
+    <data name="output_data_SHOLLOW" format="tiff" label="output_data_SHOLLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHOLLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -447,7 +447,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_SHOLLOW" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SPUR" format="tiff" hidden="false">
+    <data name="output_data_SPUR" format="tiff" label="output_data_SPUR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SPUR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -455,7 +455,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_SPUR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FSPUR" format="tiff" hidden="false">
+    <data name="output_data_FSPUR" format="tiff" label="output_data_FSPUR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FSPUR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -463,7 +463,7 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
         <when input="outputType_FSPUR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SSPUR" format="tiff" hidden="false">
+    <data name="output_data_SSPUR" format="tiff" label="output_data_SSPUR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SSPUR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -474,8 +474,26 @@ transmissionMode_SSPUR $OutputSection_SSPUR.transmissionMode_SSPUR]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FORM" ftype="txt" value="output_data_FORM.txt"/>
+      <output name="output_data_MEM" ftype="txt" value="output_data_MEM.txt"/>
+      <output name="output_data_ENTROPY" ftype="txt" value="output_data_ENTROPY.txt"/>
+      <output name="output_data_CI" ftype="txt" value="output_data_CI.txt"/>
+      <output name="output_data_PLAIN" ftype="txt" value="output_data_PLAIN.txt"/>
+      <output name="output_data_PIT" ftype="txt" value="output_data_PIT.txt"/>
+      <output name="output_data_PEAK" ftype="txt" value="output_data_PEAK.txt"/>
+      <output name="output_data_RIDGE" ftype="txt" value="output_data_RIDGE.txt"/>
+      <output name="output_data_CHANNEL" ftype="txt" value="output_data_CHANNEL.txt"/>
+      <output name="output_data_SADDLE" ftype="txt" value="output_data_SADDLE.txt"/>
+      <output name="output_data_BSLOPE" ftype="txt" value="output_data_BSLOPE.txt"/>
+      <output name="output_data_FSLOPE" ftype="txt" value="output_data_FSLOPE.txt"/>
+      <output name="output_data_SSLOPE" ftype="txt" value="output_data_SSLOPE.txt"/>
+      <output name="output_data_HOLLOW" ftype="txt" value="output_data_HOLLOW.txt"/>
+      <output name="output_data_FHOLLOW" ftype="txt" value="output_data_FHOLLOW.txt"/>
+      <output name="output_data_SHOLLOW" ftype="txt" value="output_data_SHOLLOW.txt"/>
+      <output name="output_data_SPUR" ftype="txt" value="output_data_SPUR.txt"/>
+      <output name="output_data_FSPUR" ftype="txt" value="output_data_FSPUR.txt"/>
+      <output name="output_data_SSPUR" ftype="txt" value="output_data_SSPUR.txt"/>
     </test>
   </tests>
   <help><![CDATA[Algorithm for derivation of form elements according to slope, maximum curvature, minimum curvature, profile curvature, tangential curvature, based on a linear semantic import model for slope and curvature and a fuzzy classification Based on the AML script 'felementf' by Jochen Schmidt, Landcare Research. ]]></help>

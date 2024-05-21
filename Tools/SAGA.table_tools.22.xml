@@ -31,12 +31,12 @@ transmissionMode_COPY $OutputSection_COPY.transmissionMode_COPY]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_COPY" format="csv" hidden="false"/>
+    <data name="output_data_COPY" format="csv" label="output_data_COPY" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_COPY" ftype="txt" value="output_data_COPY.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a copy of a table.]]></help>

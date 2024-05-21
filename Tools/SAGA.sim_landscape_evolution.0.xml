@@ -23,10 +23,10 @@ transmissionMode_REGOLITH $OutputSection_REGOLITH.transmissionMode_REGOLITH
 outputType_DIFFERENCE $OutputSection_DIFFERENCE.outputType_DIFFERENCE
 transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENCE]]></command>
   <inputs>
-    <param name="SURFACE_T0" type="data" optional="false" label="Initial Surface Elevation" help="Initial Surface Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="REGOLITH_T0" type="data" optional="false" label="Initial Regolith Thickness" help="Initial sediment cover (m) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="SURFACE_T0" type="data" optional="false" label="Initial Surface Elevation" help="Initial Surface Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="REGOLITH_T0" type="data" optional="false" label="Initial Regolith Thickness" help="Initial sediment cover (m) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="REGOLITH_T0_DEFAULT" type="float" value="0" optional="true" label="Default" help="default value if no grid has been selected"/>
-    <param name="ALLOCHTHONE" type="data" optional="false" label="Allochthone Input" help="Allochthone input in meter per year (e.g. of aeolian origin, 'Loess'). The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="ALLOCHTHONE" type="data" optional="false" label="Allochthone Input" help="Allochthone input in meter per year (e.g. of aeolian origin, 'Loess'). The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="ALLOCHTHONE_DEFAULT" type="float" value="0" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="TIME_START" type="integer" value="50000" optional="true" label="Start [Years BP]" help="Start [Years BP]"/>
     <param name="TIME_STOP" type="integer" value="10000" optional="true" label="Stop [Years BP]" help="Stop [Years BP]"/>
@@ -83,7 +83,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SURFACE" format="tiff" hidden="false">
+    <data name="output_data_SURFACE" format="tiff" label="output_data_SURFACE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SURFACE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -91,7 +91,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
         <when input="outputType_SURFACE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_REGOLITH" format="tiff" hidden="false">
+    <data name="output_data_REGOLITH" format="tiff" label="output_data_REGOLITH" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGOLITH" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -99,7 +99,7 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
         <when input="outputType_REGOLITH" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIFFERENCE" format="tiff" hidden="false">
+    <data name="output_data_DIFFERENCE" format="tiff" label="output_data_DIFFERENCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIFFERENCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -110,8 +110,10 @@ transmissionMode_DIFFERENCE $OutputSection_DIFFERENCE.transmissionMode_DIFFERENC
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SURFACE" ftype="txt" value="output_data_SURFACE.txt"/>
+      <output name="output_data_REGOLITH" ftype="txt" value="output_data_REGOLITH.txt"/>
+      <output name="output_data_DIFFERENCE" ftype="txt" value="output_data_DIFFERENCE.txt"/>
     </test>
   </tests>
   <help><![CDATA[This is the implementation of a Soil and Landscape Evolution Model (SaLEM) for the spatiotemporal investigation of soil parent material evolution following a lithologically differentiated approach. The model needs a digital elevation model and (paleo-)climatic data for the simulation of weathering, erosion and transport processes. Weathering is controlled by user defined functions in dependence of climate conditions, local slope, regolith cover and outcropping bedrock lithology. Lithology can be supplied as a set of grids, of which each grid represents the top elevation of the underlying bedrock type. ]]></help>

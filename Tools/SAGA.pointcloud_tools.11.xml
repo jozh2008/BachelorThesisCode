@@ -57,13 +57,14 @@ transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTIC
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PC_OUT" format="x-ogc-lasf" hidden="false"/>
-    <data name="output_data_STATISTICS" format="csv" hidden="false"/>
+    <data name="output_data_PC_OUT" format="x-ogc-lasf" label="output_data_PC_OUT" hidden="false"/>
+    <data name="output_data_STATISTICS" format="csv" label="output_data_STATISTICS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PC_OUT" ftype="txt" value="output_data_PC_OUT.txt"/>
+      <output name="output_data_STATISTICS" ftype="txt" value="output_data_STATISTICS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Cluster analysis for point clouds.&lt;br/&gt;This tool is a port of the 'Cluster Analysis for Grids' tool from the 'Imagery - Classification' tool library. ]]></help>

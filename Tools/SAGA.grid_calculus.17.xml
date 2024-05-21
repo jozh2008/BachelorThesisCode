@@ -71,7 +71,7 @@ transmissionMode_OUT_GRID $OutputSection_OUT_GRID.transmissionMode_OUT_GRID]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUT_GRID" format="tiff" hidden="false">
+    <data name="output_data_OUT_GRID" format="tiff" label="output_data_OUT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -82,8 +82,8 @@ transmissionMode_OUT_GRID $OutputSection_OUT_GRID.transmissionMode_OUT_GRID]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUT_GRID" ftype="txt" value="output_data_OUT_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool uses uniform random to create a grid that resembles fractal Brownian noise (FBN). The advantage of FBN noise is that it appears to have texture to the human eye, that resembles the types of textures that are observed in nature; terrains, algae growth, clouds, etc. The degree of texture observed in the FBN grid is dependent upon the sizes of the wavelengths chosen. The wavelengths should be chosen so they increase in size (a doubling of successive wavelengths is a good point to start). The greater the magnitude of the "ramp" of successive wavelengths the greater the texture in the FBN grid. ]]></help>

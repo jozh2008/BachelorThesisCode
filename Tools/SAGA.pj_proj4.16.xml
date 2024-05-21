@@ -60,7 +60,7 @@ transmissionMode_TARGET $OutputSection_TARGET.transmissionMode_TARGET]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TARGET" format="xml" hidden="false">
+    <data name="output_data_TARGET" format="xml" label="output_data_TARGET" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TARGET" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -70,8 +70,8 @@ transmissionMode_TARGET $OutputSection_TARGET.transmissionMode_TARGET]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TARGET" ftype="txt" value="output_data_TARGET.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a shapes layer with Tissot's indicatrices for chosen projection.&lt;br/&gt;Projection routines make use of the Proj.4 Cartographic Projections library.&lt;br/&gt;Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).&lt;br/&gt;Proj.4 Version is Rel. 5.2.0, September 15th, 2018&lt;br/&gt;&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;]]></help>

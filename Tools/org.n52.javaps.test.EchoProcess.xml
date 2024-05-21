@@ -61,19 +61,21 @@ transmissionMode_c $OutputSection_c.transmissionMode_c]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_literalOutput" format="txt" hidden="false"/>
-    <data name="output_data_complexOutput" format="xml" hidden="false">
+    <data name="output_data_literalOutput" format="txt" label="output_data_literalOutput" hidden="false"/>
+    <data name="output_data_complexOutput" format="xml" label="output_data_complexOutput" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_complexOutput" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_c" format="txt" hidden="false"/>
+    <data name="output_data_c" format="txt" label="output_data_c" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_literalOutput" ftype="txt" value="output_data_literalOutput.txt"/>
+      <output name="output_data_complexOutput" ftype="txt" value="output_data_complexOutput.txt"/>
+      <output name="output_data_c" ftype="txt" value="output_data_c.txt"/>
     </test>
   </tests>
   <help><![CDATA[Simply echo the value provided as input]]></help>

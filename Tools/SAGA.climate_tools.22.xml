@@ -47,9 +47,9 @@ transmissionMode_STATE_FILIAL_3 $OutputSection_STATE_FILIAL_3.transmissionMode_S
 outputType_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.outputType_STATE_SISTER_3
 transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_STATE_SISTER_3]]></command>
   <inputs>
-    <param name="ATmean" type="data" optional="false" label="Mean Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="ATmax" type="data" optional="false" label="Maximum Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="SIrel" type="data" optional="false" label="Solar Irradiation" help="Wh/m^2 The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="ATmean" type="data" optional="false" label="Mean Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="ATmax" type="data" optional="false" label="Maximum Temperature" help="Degree Celsius The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="SIrel" type="data" optional="false" label="Solar Irradiation" help="Wh/m^2 The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="LATITUDE" type="float" value="50" optional="true" label="Latitude" help="Latitude"/>
     <param name="DToptimum" type="float" value="30.4" optional="true" label="Developmental Optimum Temperature" help="Degree Celsius"/>
     <param name="DTminimum" type="float" value="8.3" optional="true" label="Developmental Minimum Temperature" help="Degree Celsius"/>
@@ -238,7 +238,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_ONSET" format="tiff" hidden="false">
+    <data name="output_data_ONSET" format="tiff" label="output_data_ONSET" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ONSET" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -246,7 +246,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_ONSET" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_NUMBER" format="tiff" hidden="false">
+    <data name="output_data_NUMBER" format="tiff" label="output_data_NUMBER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_NUMBER" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -254,7 +254,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_NUMBER" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ONSET_FILIAL_1" format="tiff" hidden="false">
+    <data name="output_data_ONSET_FILIAL_1" format="tiff" label="output_data_ONSET_FILIAL_1" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ONSET_FILIAL_1" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -262,7 +262,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_ONSET_FILIAL_1" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ONSET_SISTER_1" format="tiff" hidden="false">
+    <data name="output_data_ONSET_SISTER_1" format="tiff" label="output_data_ONSET_SISTER_1" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ONSET_SISTER_1" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -270,7 +270,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_ONSET_SISTER_1" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ONSET_FILIAL_2" format="tiff" hidden="false">
+    <data name="output_data_ONSET_FILIAL_2" format="tiff" label="output_data_ONSET_FILIAL_2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ONSET_FILIAL_2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -278,7 +278,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_ONSET_FILIAL_2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ONSET_SISTER_2" format="tiff" hidden="false">
+    <data name="output_data_ONSET_SISTER_2" format="tiff" label="output_data_ONSET_SISTER_2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ONSET_SISTER_2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -286,7 +286,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_ONSET_SISTER_2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ONSET_FILIAL_3" format="tiff" hidden="false">
+    <data name="output_data_ONSET_FILIAL_3" format="tiff" label="output_data_ONSET_FILIAL_3" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ONSET_FILIAL_3" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -294,7 +294,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_ONSET_FILIAL_3" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ONSET_SISTER_3" format="tiff" hidden="false">
+    <data name="output_data_ONSET_SISTER_3" format="tiff" label="output_data_ONSET_SISTER_3" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ONSET_SISTER_3" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -302,7 +302,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_ONSET_SISTER_3" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STATE_FILIAL_1" format="tiff" hidden="false">
+    <data name="output_data_STATE_FILIAL_1" format="tiff" label="output_data_STATE_FILIAL_1" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATE_FILIAL_1" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -310,7 +310,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_STATE_FILIAL_1" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STATE_SISTER_1" format="tiff" hidden="false">
+    <data name="output_data_STATE_SISTER_1" format="tiff" label="output_data_STATE_SISTER_1" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATE_SISTER_1" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -318,7 +318,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_STATE_SISTER_1" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STATE_FILIAL_2" format="tiff" hidden="false">
+    <data name="output_data_STATE_FILIAL_2" format="tiff" label="output_data_STATE_FILIAL_2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATE_FILIAL_2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -326,7 +326,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_STATE_FILIAL_2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STATE_SISTER_2" format="tiff" hidden="false">
+    <data name="output_data_STATE_SISTER_2" format="tiff" label="output_data_STATE_SISTER_2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATE_SISTER_2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -334,7 +334,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_STATE_SISTER_2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STATE_FILIAL_3" format="tiff" hidden="false">
+    <data name="output_data_STATE_FILIAL_3" format="tiff" label="output_data_STATE_FILIAL_3" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATE_FILIAL_3" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -342,7 +342,7 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
         <when input="outputType_STATE_FILIAL_3" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STATE_SISTER_3" format="tiff" hidden="false">
+    <data name="output_data_STATE_SISTER_3" format="tiff" label="output_data_STATE_SISTER_3" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATE_SISTER_3" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -353,8 +353,21 @@ transmissionMode_STATE_SISTER_3 $OutputSection_STATE_SISTER_3.transmissionMode_S
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_ONSET" ftype="txt" value="output_data_ONSET.txt"/>
+      <output name="output_data_NUMBER" ftype="txt" value="output_data_NUMBER.txt"/>
+      <output name="output_data_ONSET_FILIAL_1" ftype="txt" value="output_data_ONSET_FILIAL_1.txt"/>
+      <output name="output_data_ONSET_SISTER_1" ftype="txt" value="output_data_ONSET_SISTER_1.txt"/>
+      <output name="output_data_ONSET_FILIAL_2" ftype="txt" value="output_data_ONSET_FILIAL_2.txt"/>
+      <output name="output_data_ONSET_SISTER_2" ftype="txt" value="output_data_ONSET_SISTER_2.txt"/>
+      <output name="output_data_ONSET_FILIAL_3" ftype="txt" value="output_data_ONSET_FILIAL_3.txt"/>
+      <output name="output_data_ONSET_SISTER_3" ftype="txt" value="output_data_ONSET_SISTER_3.txt"/>
+      <output name="output_data_STATE_FILIAL_1" ftype="txt" value="output_data_STATE_FILIAL_1.txt"/>
+      <output name="output_data_STATE_SISTER_1" ftype="txt" value="output_data_STATE_SISTER_1.txt"/>
+      <output name="output_data_STATE_FILIAL_2" ftype="txt" value="output_data_STATE_FILIAL_2.txt"/>
+      <output name="output_data_STATE_SISTER_2" ftype="txt" value="output_data_STATE_SISTER_2.txt"/>
+      <output name="output_data_STATE_FILIAL_3" ftype="txt" value="output_data_STATE_FILIAL_3.txt"/>
+      <output name="output_data_STATE_SISTER_3" ftype="txt" value="output_data_STATE_SISTER_3.txt"/>
     </test>
   </tests>
   <help><![CDATA[A comprehensive phenology model of Ips typographus (L.) (Col., Scolytinae) as a tool for hazard rating of bark beetle infestation.]]></help>

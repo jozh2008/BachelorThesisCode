@@ -39,7 +39,7 @@ transmissionMode_INTERCEPT $OutputSection_INTERCEPT.transmissionMode_INTERCEPT
 outputType_SLOPES $OutputSection_SLOPES.outputType_SLOPES
 transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
@@ -61,7 +61,7 @@ transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></comman
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
       <option value="exponential">exponential</option>
       <option selected="true" value="gaussian_weighting">gaussian weighting</option>
@@ -147,14 +147,14 @@ transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_REGRESSION" format="xml" hidden="false">
+    <data name="output_data_REGRESSION" format="xml" label="output_data_REGRESSION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGRESSION" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_REGRESSION" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_QUALITY" format="tiff" hidden="false">
+    <data name="output_data_QUALITY" format="tiff" label="output_data_QUALITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_QUALITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -162,7 +162,7 @@ transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></comman
         <when input="outputType_QUALITY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_INTERCEPT" format="tiff" hidden="false">
+    <data name="output_data_INTERCEPT" format="tiff" label="output_data_INTERCEPT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_INTERCEPT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -170,7 +170,7 @@ transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></comman
         <when input="outputType_INTERCEPT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SLOPES" format="tiff" hidden="false">
+    <data name="output_data_SLOPES" format="tiff" label="output_data_SLOPES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SLOPES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -181,8 +181,11 @@ transmissionMode_SLOPES $OutputSection_SLOPES.transmissionMode_SLOPES]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_REGRESSION" ftype="txt" value="output_data_REGRESSION.txt"/>
+      <output name="output_data_QUALITY" ftype="txt" value="output_data_QUALITY.txt"/>
+      <output name="output_data_INTERCEPT" ftype="txt" value="output_data_INTERCEPT.txt"/>
+      <output name="output_data_SLOPES" ftype="txt" value="output_data_SLOPES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Geographically Weighted Regression for multiple predictors. Predictors have to be supplied as attributes of ingoing points data. Regression model parameters are generated as continuous fields, i.e. as grids. ]]></help>

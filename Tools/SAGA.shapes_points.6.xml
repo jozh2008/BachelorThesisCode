@@ -16,7 +16,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="X" type="select" optional="true" label="X" help="X">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -63,7 +63,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="xml" hidden="false">
+    <data name="output_data_OUTPUT" format="xml" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -73,8 +73,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool attaches the x- and y-coordinates of each point to the attribute table. For 3D shapefiles, also the z/m-coordinates are reported.]]></help>

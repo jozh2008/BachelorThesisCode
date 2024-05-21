@@ -15,7 +15,7 @@ transmissionMode_MINIMA $OutputSection_MINIMA.transmissionMode_MINIMA
 outputType_MAXIMA $OutputSection_MAXIMA.outputType_MAXIMA
 transmissionMode_MAXIMA $OutputSection_MAXIMA.transmissionMode_MAXIMA]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="IDENTITY" type="select" optional="true" label="Identical Values" help="If set, neighbour cells with the same value as the center cell are interpreted to be lower for minima and higher for maxima identification.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -61,14 +61,14 @@ transmissionMode_MAXIMA $OutputSection_MAXIMA.transmissionMode_MAXIMA]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MINIMA" format="xml" hidden="false">
+    <data name="output_data_MINIMA" format="xml" label="output_data_MINIMA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MINIMA" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_MINIMA" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_MAXIMA" format="xml" hidden="false">
+    <data name="output_data_MAXIMA" format="xml" label="output_data_MAXIMA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAXIMA" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -78,8 +78,9 @@ transmissionMode_MAXIMA $OutputSection_MAXIMA.transmissionMode_MAXIMA]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MINIMA" ftype="txt" value="output_data_MINIMA.txt"/>
+      <output name="output_data_MAXIMA" ftype="txt" value="output_data_MAXIMA.txt"/>
     </test>
   </tests>
   <help><![CDATA[Extracts local grid value minima and maxima of to vector points.]]></help>

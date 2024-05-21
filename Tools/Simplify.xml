@@ -11,7 +11,7 @@ response $response
 outputType_Result $OutputSection_Result.outputType_Result
 transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
   <inputs>
-    <param name="InputPolygon" type="data" optional="false" label="Polygon to be simplified" help="URI to a set of GML that describes the polygon. The following data types are allowed in the txt file:  json, xml" format="txt"/>
+    <param name="InputPolygon" type="data" optional="false" label="Polygon to be simplified" help="URI to a set of GML that describes the polygon. The following data types are allowed in the txt file:  xml, json" format="txt"/>
     <param name="Tolerance" type="float" value="2" optional="true" label="Buffer Distance" help="Distance tolerance for the simplification."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -34,7 +34,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="xml" hidden="false">
+    <data name="output_data_Result" format="xml" label="output_data_Result" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Result" format="json" value="application/json"/>
@@ -43,8 +43,8 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
   </tests>
   <help><![CDATA[This service shall return a feature collection representing all simplified geometries with all their vertices within the distance of the original geometry defined by the given tolerance.]]></help>

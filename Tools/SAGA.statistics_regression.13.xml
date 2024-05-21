@@ -86,21 +86,24 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULTS" format="xml" hidden="false">
+    <data name="output_data_RESULTS" format="xml" label="output_data_RESULTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_RESULTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_INFO_COEFF" format="csv" hidden="false"/>
-    <data name="output_data_INFO_MODEL" format="csv" hidden="false"/>
-    <data name="output_data_INFO_STEPS" format="csv" hidden="false"/>
+    <data name="output_data_INFO_COEFF" format="csv" label="output_data_INFO_COEFF" hidden="false"/>
+    <data name="output_data_INFO_MODEL" format="csv" label="output_data_INFO_MODEL" hidden="false"/>
+    <data name="output_data_INFO_STEPS" format="csv" label="output_data_INFO_STEPS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULTS" ftype="txt" value="output_data_RESULTS.txt"/>
+      <output name="output_data_INFO_COEFF" ftype="txt" value="output_data_INFO_COEFF.txt"/>
+      <output name="output_data_INFO_MODEL" ftype="txt" value="output_data_INFO_MODEL.txt"/>
+      <output name="output_data_INFO_STEPS" ftype="txt" value="output_data_INFO_STEPS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Multiple linear regression analysis using ordinary least squares.]]></help>

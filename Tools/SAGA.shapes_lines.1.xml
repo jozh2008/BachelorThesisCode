@@ -13,7 +13,7 @@ response $response
 outputType_LINES $OutputSection_LINES.outputType_LINES
 transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="ORDER" type="data" optional="false" label="Order by..." help="Order by... The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="SEPARATE" type="data" optional="false" label="Separate by..." help="Separate by... The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -39,7 +39,7 @@ transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_LINES" format="xml" hidden="false">
+    <data name="output_data_LINES" format="xml" label="output_data_LINES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LINES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -49,8 +49,8 @@ transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_LINES" ftype="txt" value="output_data_LINES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Converts points to line(s).]]></help>

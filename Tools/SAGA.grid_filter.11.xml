@@ -13,7 +13,7 @@ transmissionMode_LOPASS $OutputSection_LOPASS.transmissionMode_LOPASS
 outputType_HIPASS $OutputSection_HIPASS.outputType_HIPASS
 transmissionMode_HIPASS $OutputSection_HIPASS.transmissionMode_HIPASS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="SCALE" type="float" value="10" optional="true" label="Scale Factor" help="Scale Factor"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -50,7 +50,7 @@ transmissionMode_HIPASS $OutputSection_HIPASS.transmissionMode_HIPASS]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_LOPASS" format="tiff" hidden="false">
+    <data name="output_data_LOPASS" format="tiff" label="output_data_LOPASS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LOPASS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -58,7 +58,7 @@ transmissionMode_HIPASS $OutputSection_HIPASS.transmissionMode_HIPASS]]></comman
         <when input="outputType_LOPASS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_HIPASS" format="tiff" hidden="false">
+    <data name="output_data_HIPASS" format="tiff" label="output_data_HIPASS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_HIPASS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -69,8 +69,9 @@ transmissionMode_HIPASS $OutputSection_HIPASS.transmissionMode_HIPASS]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_LOPASS" ftype="txt" value="output_data_LOPASS.txt"/>
+      <output name="output_data_HIPASS" ftype="txt" value="output_data_HIPASS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Resampling filter for grids. Resamples in a first step the given grid to desired resampling cell size, expressed as multiple of the original cell size (scale factor). This is an up-scaling through which cell values are aggregated as cell area weighted means. Second step is the down-scaling to original cell size using spline interpolation. Specially for larger search distances this is a comparably fast alternative for simple low and high pass filter operations. ]]></help>

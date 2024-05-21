@@ -8,10 +8,10 @@
 out $out
 ram $ram
 type $type
-type.mean.radius $type.mean.radius
-type.anidif.timestep $type.anidif.timestep
-type.anidif.nbiter $type.anidif.nbiter
-type.anidif.conductance $type.anidif.conductance
+type_mean_radius $type_mean_radius
+type_anidif_timestep $type_anidif_timestep
+type_anidif_nbiter $type_anidif_nbiter
+type_anidif_conductance $type_anidif_conductance
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
@@ -32,10 +32,10 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="gaussian">gaussian</option>
       <option value="mean">mean</option>
     </param>
-    <param name="type.mean.radius" type="float" value="2" optional="false" label="Standard deviation of the gaussian kernel used to filter the image" help="Standard deviation of the gaussian kernel used to filter the image"/>
-    <param name="type.anidif.timestep" type="float" value="0.125" optional="false" label="Time step that will be used to discretize the diffusion equation" help="Time step that will be used to discretize the diffusion equation"/>
-    <param name="type.anidif.nbiter" type="integer" value="10" optional="false" label="Number of iterations needed to get the result" help="Number of iterations needed to get the result"/>
-    <param name="type.anidif.conductance" type="float" value="1" optional="false" label="Controls the sensitivity of the conductance term in the diffusion equation. The lower it is the stronger the features will be preserved" help="Controls the sensitivity of the conductance term in the diffusion equation. The lower it is the stronger the features will be preserved"/>
+    <param name="type_mean_radius" type="float" value="2" optional="false" label="Standard deviation of the gaussian kernel used to filter the image" help="Standard deviation of the gaussian kernel used to filter the image"/>
+    <param name="type_anidif_timestep" type="float" value="0.125" optional="false" label="Time step that will be used to discretize the diffusion equation" help="Time step that will be used to discretize the diffusion equation"/>
+    <param name="type_anidif_nbiter" type="integer" value="10" optional="false" label="Number of iterations needed to get the result" help="Number of iterations needed to get the result"/>
+    <param name="type_anidif_conductance" type="float" value="1" optional="false" label="Controls the sensitivity of the conductance term in the diffusion equation. The lower it is the stronger the features will be preserved" help="Controls the sensitivity of the conductance term in the diffusion equation. The lower it is the stronger the features will be preserved"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -58,7 +58,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -68,8 +68,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application applies a smoothing filter to an image. Three methodes can be used : a gaussian filter , a mean filter , or an anisotropic diffusion using the Perona-Malik algorithm.]]></help>

@@ -17,7 +17,7 @@ response $response
 outputType_TPI $OutputSection_TPI.outputType_TPI
 transmissionMode_TPI $OutputSection_TPI.transmissionMode_TPI]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="STANDARD" type="select" optional="true" label="Standardize" help="Standardize">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -59,7 +59,7 @@ transmissionMode_TPI $OutputSection_TPI.transmissionMode_TPI]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TPI" format="tiff" hidden="false">
+    <data name="output_data_TPI" format="tiff" label="output_data_TPI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TPI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -70,8 +70,8 @@ transmissionMode_TPI $OutputSection_TPI.transmissionMode_TPI]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TPI" ftype="txt" value="output_data_TPI.txt"/>
     </test>
   </tests>
   <help><![CDATA[Topographic Position Index (TPI) calculation as proposed by Guisan et al. (1999). This is literally the same as the difference to the mean calculation (residual analysis) proposed by Wilson & Gallant (2000). The bandwidth parameter for distance weighting is given as percentage of the (outer) radius.]]></help>

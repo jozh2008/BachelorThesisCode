@@ -16,15 +16,15 @@ spx $spx
 spy $spy
 background $background
 mode $mode
-mode.binary.foreground $mode.binary.foreground
-mode.attribute.field '$mode.attribute.field'
+mode_binary_foreground $mode_binary_foreground
+mode_attribute_field '$mode_attribute_field'
 ram $ram
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input vector dataset to be rasterized" help="The input vector dataset to be rasterized The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json, zip" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input vector dataset to be rasterized" help="The input vector dataset to be rasterized The following data types are allowed in the txt file:  zip, xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="out" type="select" optional="false" label="An output image containing the rasterized vector dataset" help="An output image containing the rasterized vector dataset">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -33,7 +33,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="im" type="data" optional="false" label="A reference image from which to import output grid and projection reference system information." help="A reference image from which to import output grid and projection reference system information. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="im" type="data" optional="false" label="A reference image from which to import output grid and projection reference system information." help="A reference image from which to import output grid and projection reference system information. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="szx" type="integer" optional="true" label="Output size along x axis (useless if support image is given)" help="Output size along x axis (useless if support image is given)"/>
     <param name="szy" type="integer" optional="true" label="Output size along y axis (useless if support image is given)" help="Output size along y axis (useless if support image is given)"/>
     <param name="epsg" type="integer" optional="true" label="EPSG code for the output projection reference system (EPSG 4326 for WGS84, 32631 for UTM31N...,useless if support image is given)" help="EPSG code for the output projection reference system (EPSG 4326 for WGS84, 32631 for UTM31N...,useless if support image is given)"/>
@@ -46,8 +46,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="attribute">attribute</option>
       <option selected="true" value="binary">binary</option>
     </param>
-    <param name="mode.binary.foreground" type="float" value="255" optional="false" label="Value for pixels inside a geometry" help="Value for pixels inside a geometry"/>
-    <param name="mode.attribute.field" type="text" value="DN" optional="false" label="Name of the attribute field to burn" help="Name of the attribute field to burn"/>
+    <param name="mode_binary_foreground" type="float" value="255" optional="false" label="Value for pixels inside a geometry" help="Value for pixels inside a geometry"/>
+    <param name="mode_attribute_field" type="text" value="DN" optional="false" label="Name of the attribute field to burn" help="Name of the attribute field to burn"/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -71,7 +71,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -81,8 +81,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application allows reprojecting and rasterize a vector dataset. The grid of the rasterized output can be set by using a reference image, or by setting all parmeters (origin, size, spacing) by hand. In the latter case, at least the spacing (ground sampling distance) is needed (other parameters are computed automatically). The rasterized output can also be in a different projection reference system than the input dataset. There are two rasterize mode available in the application. The first is the binary mode: it allows rendering all pixels belonging to a geometry of the input dataset in the foreground color, while rendering the other in background color. The second one allows rendering pixels belonging to a geometry woth respect to an attribute of this geometry. The field of the attribute to render can be set by the user. In the second mode, the background value is still used for unassociated pixels.]]></help>

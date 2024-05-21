@@ -25,7 +25,7 @@ response $response
 outputType_TILES $OutputSection_TILES.outputType_TILES
 transmissionMode_TILES $OutputSection_TILES.transmissionMode_TILES]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="TILES_SAVE" type="select" optional="true" label="Save Tiles to Disk" help="Save tiles to disk individually">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -74,7 +74,7 @@ transmissionMode_TILES $OutputSection_TILES.transmissionMode_TILES]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TILES" format="tiff" hidden="false">
+    <data name="output_data_TILES" format="tiff" label="output_data_TILES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TILES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -85,8 +85,8 @@ transmissionMode_TILES $OutputSection_TILES.transmissionMode_TILES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TILES" ftype="txt" value="output_data_TILES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Tiling]]></help>

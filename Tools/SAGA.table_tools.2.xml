@@ -35,12 +35,12 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="csv" hidden="false"/>
+    <data name="output_data_OUTPUT" format="csv" label="output_data_OUTPUT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Enumeration of a table attribute, i.e. a unique identifier is assigned to identical values of the chosen attribute field. If no attribute is chosen, a simple enumeration is done for all records, and this with respect to the sorting order if the dataset has been indexed.&lt;br/&gt;]]></help>

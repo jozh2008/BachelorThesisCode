@@ -16,7 +16,7 @@ transmissionMode_OBJECT_GRID $OutputSection_OBJECT_GRID.transmissionMode_OBJECT_
 outputType_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.outputType_DIFFERENCE_GRID
 transmissionMode_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.transmissionMode_DIFFERENCE_GRID]]></command>
   <inputs>
-    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Input for the morphological reconstruction The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="INPUT_GRID" type="data" optional="false" label="Input Grid" help="Input for the morphological reconstruction The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="SHIFT_VALUE" type="float" value="5" optional="true" label="Shift value" help="Shift value"/>
     <param name="BORDER_YES_NO" type="select" optional="true" label="Preserve 1px border Yes/No" help="Preserve 1px border Yes/No">
       <option selected="true" value="false">false</option>
@@ -62,7 +62,7 @@ transmissionMode_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.transmissionMode
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OBJECT_GRID" format="tiff" hidden="false">
+    <data name="output_data_OBJECT_GRID" format="tiff" label="output_data_OBJECT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OBJECT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -70,7 +70,7 @@ transmissionMode_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.transmissionMode
         <when input="outputType_OBJECT_GRID" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIFFERENCE_GRID" format="tiff" hidden="false">
+    <data name="output_data_DIFFERENCE_GRID" format="tiff" label="output_data_DIFFERENCE_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIFFERENCE_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -81,8 +81,9 @@ transmissionMode_DIFFERENCE_GRID $OutputSection_DIFFERENCE_GRID.transmissionMode
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OBJECT_GRID" ftype="txt" value="output_data_OBJECT_GRID.txt"/>
+      <output name="output_data_DIFFERENCE_GRID" ftype="txt" value="output_data_DIFFERENCE_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[Geodesic morphological reconstruction according to &lt;br/&gt;L. Vincent (1993): Morphological Grayscale Reconstruction in Image Analysis: Applications and Efficient Algorithms. IEEE Transactions on Image Processing, Vol. 2, No 2&lt;br/&gt;Here we use the algorithm on p. 194: Computing of Regional Maxima and Breadth-first Scanning.&lt;br/&gt;&lt;br/&gt;A marker is derived from the input image INPUT_GRID by subtracting a constant SHIFT_VALUE. Optionally the SHIFT_VALUE can be set to zero at the border of the grid ("Preserve 1px border Yes/No"). OUTPUT_GRID is the difference between the input image and the morphological reconstruction of the marker under the input image as mask. If the Option "Create a binary mask" is selected, the OUTPUT_GRID is thresholded with THRESHOLD, creating a binary image of maxima regions.&lt;br/&gt;]]></help>

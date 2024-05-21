@@ -10,26 +10,26 @@ bins $bins
 hfact $hfact
 nodata $nodata
 spatial $spatial
-spatial.local.h $spatial.local.h
-spatial.local.w $spatial.local.w
+spatial_local_h $spatial_local_h
+spatial_local_w $spatial_local_w
 minmax $minmax
-minmax.auto.global $minmax.auto.global
-minmax.manual.min $minmax.manual.min
-minmax.manual.max $minmax.manual.max
+minmax_auto_global $minmax_auto_global
+minmax_manual_min $minmax_manual_min
+minmax_manual_max $minmax_manual_max
 mode $mode
-mode.lum.red.ch $mode.lum.red.ch
-mode.lum.red.coef $mode.lum.red.coef
-mode.lum.green.ch $mode.lum.green.ch
-mode.lum.green.coef $mode.lum.green.coef
-mode.lum.blue.ch $mode.lum.blue.ch
-mode.lum.blue.coef $mode.lum.blue.coef
+mode_lum_red_ch $mode_lum_red_ch
+mode_lum_red_coef $mode_lum_red_coef
+mode_lum_green_ch $mode_lum_green_ch
+mode_lum_green_coef $mode_lum_green_coef
+mode_lum_blue_ch $mode_lum_blue_ch
+mode_lum_blue_coef $mode_lum_blue_coef
 ram $ram
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image." help="Input image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image." help="Input image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image." help="Output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -45,28 +45,28 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="global">global</option>
       <option selected="true" value="local">local</option>
     </param>
-    <param name="spatial.local.h" type="integer" value="256" optional="false" label="Height of the thumbnail over which the histogram will be computed. The value is in pixels." help="Height of the thumbnail over which the histogram will be computed. The value is in pixels."/>
-    <param name="spatial.local.w" type="integer" value="256" optional="false" label="Width of the thumbnail over which the histogram will be computed. The value is in pixels." help="Width of the thumbnail over which the histogram will be computed. The value is in pixels."/>
+    <param name="spatial_local_h" type="integer" value="256" optional="false" label="Height of the thumbnail over which the histogram will be computed. The value is in pixels." help="Height of the thumbnail over which the histogram will be computed. The value is in pixels."/>
+    <param name="spatial_local_w" type="integer" value="256" optional="false" label="Width of the thumbnail over which the histogram will be computed. The value is in pixels." help="Width of the thumbnail over which the histogram will be computed. The value is in pixels."/>
     <param name="minmax" type="select" optional="false" label="Minimum and maximum value that will bound the histogram and thus the dynamic of the resulting image. Values over those boundaries will be clipped." help="Minimum and maximum value that will bound the histogram and thus the dynamic of the resulting image. Values over those boundaries will be clipped.">
       <option selected="true" value="auto">auto</option>
       <option value="manual">manual</option>
     </param>
-    <param name="minmax.auto.global" type="select" optional="false" label="Min/max computation will result in the same minimum and maximum for all the bands." help="Min/max computation will result in the same minimum and maximum for all the bands.">
+    <param name="minmax_auto_global" type="select" optional="false" label="Min/max computation will result in the same minimum and maximum for all the bands." help="Min/max computation will result in the same minimum and maximum for all the bands.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="minmax.manual.min" type="float" optional="true" label="minmax.manual.min" help="minmax.manual.min"/>
-    <param name="minmax.manual.max" type="float" optional="true" label="minmax.manual.max" help="minmax.manual.max"/>
+    <param name="minmax_manual_min" type="float" optional="true" label="minmax.manual.min" help="minmax.manual.min"/>
+    <param name="minmax_manual_max" type="float" optional="true" label="minmax.manual.max" help="minmax.manual.max"/>
     <param name="mode" type="select" optional="false" label="mode" help="mode">
       <option selected="true" value="each">each</option>
       <option value="lum">lum</option>
     </param>
-    <param name="mode.lum.red.ch" type="integer" value="0" optional="false" label="mode.lum.red.ch" help="mode.lum.red.ch"/>
-    <param name="mode.lum.red.coef" type="float" value="0.21" optional="false" label="mode.lum.red.coef" help="mode.lum.red.coef"/>
-    <param name="mode.lum.green.ch" type="integer" value="1" optional="false" label="mode.lum.green.ch" help="mode.lum.green.ch"/>
-    <param name="mode.lum.green.coef" type="float" value="0.71" optional="false" label="mode.lum.green.coef" help="mode.lum.green.coef"/>
-    <param name="mode.lum.blue.ch" type="integer" value="2" optional="false" label="mode.lum.blue.ch" help="mode.lum.blue.ch"/>
-    <param name="mode.lum.blue.coef" type="float" value="0.08" optional="false" label="mode.lum.blue.coef" help="mode.lum.blue.coef"/>
+    <param name="mode_lum_red_ch" type="integer" value="0" optional="false" label="mode.lum.red.ch" help="mode.lum.red.ch"/>
+    <param name="mode_lum_red_coef" type="float" value="0.21" optional="false" label="mode.lum.red.coef" help="mode.lum.red.coef"/>
+    <param name="mode_lum_green_ch" type="integer" value="1" optional="false" label="mode.lum.green.ch" help="mode.lum.green.ch"/>
+    <param name="mode_lum_green_coef" type="float" value="0.71" optional="false" label="mode.lum.green.coef" help="mode.lum.green.coef"/>
+    <param name="mode_lum_blue_ch" type="integer" value="2" optional="false" label="mode.lum.blue.ch" help="mode.lum.blue.ch"/>
+    <param name="mode_lum_blue_coef" type="float" value="0.08" optional="false" label="mode.lum.blue.coef" help="mode.lum.blue.coef"/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -90,7 +90,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -100,8 +100,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application is the implementation of the histogram equalization algorithm. The idea of the algorithm is to use the whole available dynamic. In order to do so it computes a histogram over the image and then use the whole dynamic: meaning flattening the histogram. That gives us gain for each bin that transform the original histogram into the flat one. This gain is then apply on the original image.The application proposes several options to allow a finer result: - There is an option to limit contrast. We choose to limit the contrast by modifying the original histogram. To do so we clip the histogram at a given height and redistribute equally among the bins the clipped population. Then we add a local version of the algorithm. - It is possible to apply the algorithm on tiles of the image, instead of on the whole image. That gives us gain depending on the value of the pixel and its position in the image. In order to smoothen the result we interpolate the gain between tiles.]]></help>

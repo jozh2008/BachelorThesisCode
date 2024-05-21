@@ -34,12 +34,12 @@ transmissionMode_SERVERS $OutputSection_SERVERS.transmissionMode_SERVERS]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SERVERS" format="csv" hidden="false"/>
+    <data name="output_data_SERVERS" format="csv" label="output_data_SERVERS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SERVERS" ftype="txt" value="output_data_SERVERS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Lists all ODBC sources.]]></help>

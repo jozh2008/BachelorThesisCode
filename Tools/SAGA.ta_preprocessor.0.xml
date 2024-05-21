@@ -13,7 +13,7 @@ transmissionMode_NOFLATS $OutputSection_NOFLATS.transmissionMode_NOFLATS
 outputType_FLATS $OutputSection_FLATS.outputType_FLATS
 transmissionMode_FLATS $OutputSection_FLATS.transmissionMode_FLATS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="FLAT_OUTPUT" type="select" optional="true" label="Flat Area Values" help="Flat Area Values">
       <option selected="true" value="elevation">elevation</option>
       <option value="enumeration">enumeration</option>
@@ -53,7 +53,7 @@ transmissionMode_FLATS $OutputSection_FLATS.transmissionMode_FLATS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_NOFLATS" format="tiff" hidden="false">
+    <data name="output_data_NOFLATS" format="tiff" label="output_data_NOFLATS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_NOFLATS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -61,7 +61,7 @@ transmissionMode_FLATS $OutputSection_FLATS.transmissionMode_FLATS]]></command>
         <when input="outputType_NOFLATS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FLATS" format="tiff" hidden="false">
+    <data name="output_data_FLATS" format="tiff" label="output_data_FLATS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLATS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -72,8 +72,9 @@ transmissionMode_FLATS $OutputSection_FLATS.transmissionMode_FLATS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_NOFLATS" ftype="txt" value="output_data_NOFLATS.txt"/>
+      <output name="output_data_FLATS" ftype="txt" value="output_data_FLATS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Flat Detection]]></help>

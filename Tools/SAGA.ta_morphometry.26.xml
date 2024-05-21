@@ -19,7 +19,7 @@ transmissionMode_C_DOWN $OutputSection_C_DOWN.transmissionMode_C_DOWN
 outputType_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.outputType_C_DOWN_LOCAL
 transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOWN_LOCAL]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="WEIGHTING" type="float" value="0.5" optional="true" label="Upslope Weighting" help="Upslope Weighting"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -92,7 +92,7 @@ transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOW
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_C_LOCAL" format="tiff" hidden="false">
+    <data name="output_data_C_LOCAL" format="tiff" label="output_data_C_LOCAL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_LOCAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -100,7 +100,7 @@ transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOW
         <when input="outputType_C_LOCAL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_UP" format="tiff" hidden="false">
+    <data name="output_data_C_UP" format="tiff" label="output_data_C_UP" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_UP" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -108,7 +108,7 @@ transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOW
         <when input="outputType_C_UP" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_UP_LOCAL" format="tiff" hidden="false">
+    <data name="output_data_C_UP_LOCAL" format="tiff" label="output_data_C_UP_LOCAL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_UP_LOCAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -116,7 +116,7 @@ transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOW
         <when input="outputType_C_UP_LOCAL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_DOWN" format="tiff" hidden="false">
+    <data name="output_data_C_DOWN" format="tiff" label="output_data_C_DOWN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_DOWN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -124,7 +124,7 @@ transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOW
         <when input="outputType_C_DOWN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_DOWN_LOCAL" format="tiff" hidden="false">
+    <data name="output_data_C_DOWN_LOCAL" format="tiff" label="output_data_C_DOWN_LOCAL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_DOWN_LOCAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -135,8 +135,12 @@ transmissionMode_C_DOWN_LOCAL $OutputSection_C_DOWN_LOCAL.transmissionMode_C_DOW
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_C_LOCAL" ftype="txt" value="output_data_C_LOCAL.txt"/>
+      <output name="output_data_C_UP" ftype="txt" value="output_data_C_UP.txt"/>
+      <output name="output_data_C_UP_LOCAL" ftype="txt" value="output_data_C_UP_LOCAL.txt"/>
+      <output name="output_data_C_DOWN" ftype="txt" value="output_data_C_DOWN.txt"/>
+      <output name="output_data_C_DOWN_LOCAL" ftype="txt" value="output_data_C_DOWN_LOCAL.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool first calculates the local curvature of a cell as sum of the gradients (i.e. tangens of slope) to its neighbour cells. This is a simple estimation of the general curvature and is strongly correlated with general curvatures calculated with other methods (e.g. Zevenbergen & Thorne 1987). Then upslope curvature is calculated as the distance and flow proportional weighted average local curvature over a cell's upslope contributing area following the multiple flow direction algorithm after Freeman (1991). In a similar way the downslope curvature is calculated by summarizing the curvatures of all hydrologically downslope connected cells. The local upslope/downslope curvatures just take the immediately neighboured cells into account. ]]></help>

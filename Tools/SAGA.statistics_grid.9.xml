@@ -19,7 +19,7 @@ transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
 outputType_DIFF $OutputSection_DIFF.outputType_DIFF
 transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   <inputs>
-    <param name="BANDS" type="data" optional="false" label="Bands" help="Bands The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="BANDS" type="data" optional="false" label="Bands" help="Bands The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="RADIUS" type="integer" value="1" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
     <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
       <option value="exponential">exponential</option>
@@ -80,7 +80,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MEAN" format="tiff" hidden="false">
+    <data name="output_data_MEAN" format="tiff" label="output_data_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -88,7 +88,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
         <when input="outputType_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEV" format="tiff" hidden="false">
+    <data name="output_data_STDDEV" format="tiff" label="output_data_STDDEV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -96,7 +96,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
         <when input="outputType_STDDEV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIFF" format="tiff" hidden="false">
+    <data name="output_data_DIFF" format="tiff" label="output_data_DIFF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIFF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -107,8 +107,10 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MEAN" ftype="txt" value="output_data_MEAN.txt"/>
+      <output name="output_data_STDDEV" ftype="txt" value="output_data_STDDEV.txt"/>
+      <output name="output_data_DIFF" ftype="txt" value="output_data_DIFF.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates for each cell the spectral variation based on feature space distances to the centroid for all cells in specified neighbourhood. The average distance has been used for Spectral Variation Hypothesis (SVH).]]></help>

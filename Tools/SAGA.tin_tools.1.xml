@@ -24,8 +24,8 @@ transmissionMode_TIN_TRIANGLES $OutputSection_TIN_TRIANGLES.transmissionMode_TIN
 outputType_TIN_POLYGONS $OutputSection_TIN_POLYGONS.outputType_TIN_POLYGONS
 transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_POLYGONS]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="The method used to identify surface specific points.">
       <option value="Flow_Direction">Flow Direction</option>
       <option value="Flow_Direction_(up_and_down)">Flow Direction (up and down)</option>
@@ -103,35 +103,35 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TIN_POINTS" format="xml" hidden="false">
+    <data name="output_data_TIN_POINTS" format="xml" label="output_data_TIN_POINTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_POINTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_CENTER" format="xml" hidden="false">
+    <data name="output_data_TIN_CENTER" format="xml" label="output_data_TIN_CENTER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_CENTER" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_CENTER" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_EDGES" format="xml" hidden="false">
+    <data name="output_data_TIN_EDGES" format="xml" label="output_data_TIN_EDGES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_EDGES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_EDGES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_TRIANGLES" format="xml" hidden="false">
+    <data name="output_data_TIN_TRIANGLES" format="xml" label="output_data_TIN_TRIANGLES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_TRIANGLES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_TRIANGLES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_POLYGONS" format="xml" hidden="false">
+    <data name="output_data_TIN_POLYGONS" format="xml" label="output_data_TIN_POLYGONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -141,8 +141,12 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TIN_POINTS" ftype="txt" value="output_data_TIN_POINTS.txt"/>
+      <output name="output_data_TIN_CENTER" ftype="txt" value="output_data_TIN_CENTER.txt"/>
+      <output name="output_data_TIN_EDGES" ftype="txt" value="output_data_TIN_EDGES.txt"/>
+      <output name="output_data_TIN_TRIANGLES" ftype="txt" value="output_data_TIN_TRIANGLES.txt"/>
+      <output name="output_data_TIN_POLYGONS" ftype="txt" value="output_data_TIN_POLYGONS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a TIN by identifying (surface) specific points of a grid.]]></help>

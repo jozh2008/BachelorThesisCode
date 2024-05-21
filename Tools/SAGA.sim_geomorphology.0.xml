@@ -45,13 +45,13 @@ transmissionMode_MAX_VELOCITY $OutputSection_MAX_VELOCITY.transmissionMode_MAX_V
 outputType_STOP_POSITIONS $OutputSection_STOP_POSITIONS.outputType_STOP_POSITIONS
 transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_STOP_POSITIONS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model [m]. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="RELEASE_AREAS" type="data" optional="false" label="Release Areas" help="Release areas encoded by unique integer IDs, all other cells NoData [-]. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="MATERIAL" type="data" optional="false" label="Material" help="Height of material available in each start cell [m]. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="FRICTION_ANGLE_GRID" type="data" optional="false" label="Friction Angle" help="Spatially distributed friction angles [degree]. Optionally used with the Geometric Gradient, Fahrboeschung's angle or Shadow Angle friction model. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="SLOPE_IMPACT_GRID" type="data" optional="false" label="Slope Impact Areas" help="Slope impact grid, impact areas encoded with valid values, all other NoData. Optionally used with the Shadow Angle or the 1-parameter friction model. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="FRICTION_MU_GRID" type="data" optional="false" label="Friction Parameter Mu" help="Spatially distributed friction parameter mu [-], optionally used with the 1-parameter friction model or the PCM Model. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="FRICTION_MASS_TO_DRAG_GRID" type="data" optional="false" label="Mass to Drag Ratio" help="Spatially distributed mass to drag ratio [m], optionally used with the PCM Model. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital elevation model [m]. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="RELEASE_AREAS" type="data" optional="false" label="Release Areas" help="Release areas encoded by unique integer IDs, all other cells NoData [-]. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="MATERIAL" type="data" optional="false" label="Material" help="Height of material available in each start cell [m]. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FRICTION_ANGLE_GRID" type="data" optional="false" label="Friction Angle" help="Spatially distributed friction angles [degree]. Optionally used with the Geometric Gradient, Fahrboeschung's angle or Shadow Angle friction model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="SLOPE_IMPACT_GRID" type="data" optional="false" label="Slope Impact Areas" help="Slope impact grid, impact areas encoded with valid values, all other NoData. Optionally used with the Shadow Angle or the 1-parameter friction model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FRICTION_MU_GRID" type="data" optional="false" label="Friction Parameter Mu" help="Spatially distributed friction parameter mu [-], optionally used with the 1-parameter friction model or the PCM Model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FRICTION_MASS_TO_DRAG_GRID" type="data" optional="false" label="Mass to Drag Ratio" help="Spatially distributed mass to drag ratio [m], optionally used with the PCM Model. The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="PROCESS_PATH_MODEL" type="select" optional="true" label="Model" help="Choose a process path model.">
       <option value="Maximum_Slope">Maximum Slope</option>
       <option selected="true" value="Random_Walk">Random Walk</option>
@@ -161,7 +161,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PROCESS_AREA" format="tiff" hidden="false">
+    <data name="output_data_PROCESS_AREA" format="tiff" label="output_data_PROCESS_AREA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PROCESS_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -169,7 +169,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
         <when input="outputType_PROCESS_AREA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DEPOSITION" format="tiff" hidden="false">
+    <data name="output_data_DEPOSITION" format="tiff" label="output_data_DEPOSITION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DEPOSITION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -177,7 +177,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
         <when input="outputType_DEPOSITION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAX_VELOCITY" format="tiff" hidden="false">
+    <data name="output_data_MAX_VELOCITY" format="tiff" label="output_data_MAX_VELOCITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAX_VELOCITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -185,7 +185,7 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
         <when input="outputType_MAX_VELOCITY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STOP_POSITIONS" format="tiff" hidden="false">
+    <data name="output_data_STOP_POSITIONS" format="tiff" label="output_data_STOP_POSITIONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STOP_POSITIONS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -196,8 +196,11 @@ transmissionMode_STOP_POSITIONS $OutputSection_STOP_POSITIONS.transmissionMode_S
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PROCESS_AREA" ftype="txt" value="output_data_PROCESS_AREA.txt"/>
+      <output name="output_data_DEPOSITION" ftype="txt" value="output_data_DEPOSITION.txt"/>
+      <output name="output_data_MAX_VELOCITY" ftype="txt" value="output_data_MAX_VELOCITY.txt"/>
+      <output name="output_data_STOP_POSITIONS" ftype="txt" value="output_data_STOP_POSITIONS.txt"/>
     </test>
   </tests>
   <help><![CDATA[The Gravitational Process Path (GPP) model can be used to simulate the process path and run-out area of gravitational processes based on a digital terrain model (DTM). The conceptual model combines several components (process path, run-out length, sink filling and material deposition) to simulate the movement of a mass point from an initiation site to the deposition area. For each component several modeling approaches are provided, which makes the tool configurable for different processes such as rockfall, debris flows or snow avalanches.&lt;br/&gt;&lt;br/&gt;The tool can be applied to regional-scale studies such as natural hazard susceptibility mapping but also contains components for scenario-based modeling of single events. Both the modeling approaches and precursor implementations of the tool have proven their applicability in numerous studies, also including geomorphological research questions such as the delineation of sediment cascades or the study of process connectivity.&lt;br/&gt;&lt;br/&gt;Please provide the following reference in your work if you are using the GPP model:]]></help>

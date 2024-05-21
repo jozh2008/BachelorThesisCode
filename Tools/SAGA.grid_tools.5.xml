@@ -12,8 +12,8 @@ response $response
 outputType_COMPLETED $OutputSection_COMPLETED.outputType_COMPLETED
 transmissionMode_COMPLETED $OutputSection_COMPLETED.transmissionMode_COMPLETED]]></command>
   <inputs>
-    <param name="ORIGINAL" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="ADDITIONAL" type="data" optional="false" label="Patch Grid" help="Patch Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="ORIGINAL" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="ADDITIONAL" type="data" optional="false" label="Patch Grid" help="Patch Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
@@ -43,7 +43,7 @@ transmissionMode_COMPLETED $OutputSection_COMPLETED.transmissionMode_COMPLETED]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_COMPLETED" format="tiff" hidden="false">
+    <data name="output_data_COMPLETED" format="tiff" label="output_data_COMPLETED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COMPLETED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -54,8 +54,8 @@ transmissionMode_COMPLETED $OutputSection_COMPLETED.transmissionMode_COMPLETED]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_COMPLETED" ftype="txt" value="output_data_COMPLETED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Fill gaps of a grid with data from another grid. ]]></help>

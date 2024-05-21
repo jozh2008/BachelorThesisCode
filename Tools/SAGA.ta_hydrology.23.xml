@@ -14,7 +14,7 @@ transmissionMode_ZMAX $OutputSection_ZMAX.transmissionMode_ZMAX
 outputType_MRN $OutputSection_MRN.outputType_MRN
 transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -62,7 +62,7 @@ transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_AREA" format="tiff" hidden="false">
+    <data name="output_data_AREA" format="tiff" label="output_data_AREA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -70,7 +70,7 @@ transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
         <when input="outputType_AREA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ZMAX" format="tiff" hidden="false">
+    <data name="output_data_ZMAX" format="tiff" label="output_data_ZMAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ZMAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -78,7 +78,7 @@ transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
         <when input="outputType_ZMAX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MRN" format="tiff" hidden="false">
+    <data name="output_data_MRN" format="tiff" label="output_data_MRN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MRN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -89,8 +89,10 @@ transmissionMode_MRN $OutputSection_MRN.transmissionMode_MRN]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_AREA" ftype="txt" value="output_data_AREA.txt"/>
+      <output name="output_data_ZMAX" ftype="txt" value="output_data_ZMAX.txt"/>
+      <output name="output_data_MRN" ftype="txt" value="output_data_MRN.txt"/>
     </test>
   </tests>
   <help><![CDATA[Melton ruggedness number (MNR) is a simple flow accumulation related index, calculated as difference between maximum and minimum elevation in catchment area divided by square root of catchment area size. The calculation is performed for each grid cell, therefore minimum elevation is same as elevation at cell's position. Due to the discrete character of a single maximum elevation, flow calculation is simply done with Deterministic 8.]]></help>

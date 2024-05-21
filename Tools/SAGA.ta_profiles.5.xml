@@ -13,7 +13,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="TABLE" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="X" type="data" optional="false" label="X" help="X The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="Y" type="data" optional="false" label="Y" help="Y The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -37,12 +37,12 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="csv" hidden="false"/>
+    <data name="output_data_RESULT" format="csv" label="output_data_RESULT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[(c) 2004 by Victor Olaya. Creates a profile from coordinates stored in a table]]></help>

@@ -4,11 +4,11 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArrayelev.geoid False  output_data_out $output_data_out  name OTB.ImageEnvelope in $in
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArrayelev_geoid False  output_data_out $output_data_out  name OTB.ImageEnvelope in $in
 sr $sr
-elev.dem '$elev.dem'
-elev.geoid $elev.geoid
-elev.default $elev.default
+elev_dem '$elev_dem'
+elev_geoid $elev_geoid
+elev_default $elev_default
 proj '$proj'
 prefer $prefer
 response $response
@@ -17,9 +17,9 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
     <param name="in" type="data" optional="false" label="Input image filename." help="Input image filename. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="sr" type="integer" value="0" optional="true" label="Sampling rate for image edges (in pixel)." help="Sampling rate for image edges (in pixel)."/>
-    <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
-    <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
-    <param name="elev.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
+    <param name="elev_dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
+    <param name="elev_geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
+    <param name="elev_default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
     <param name="proj" type="text" optional="true" label="Projection to be used to compute the envelope (default is WGS84)" help="Projection to be used to compute the envelope (default is WGS84)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -44,7 +44,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="xml" hidden="false">
+    <data name="output_data_out" format="xml" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -55,8 +55,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Build a vector data containing the image envelope polygon. Useful for some projection, you can set the polygon with more points with the sr parameter. This filter supports user-specified output projection. If no projection is defined, the standard WGS84 projection will be used.]]></help>

@@ -13,7 +13,7 @@ response $response
 outputType_VISIBILITY $OutputSection_VISIBILITY.outputType_VISIBILITY
 transmissionMode_VISIBILITY $OutputSection_VISIBILITY.transmissionMode_VISIBILITY]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="POINTS" type="data" optional="false" label="Points" help="Observer points. The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="FIELD_HEIGHT" type="data" optional="false" label="Height" help="Height of the light source above ground. The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Unit" help="Unit">
@@ -45,7 +45,7 @@ transmissionMode_VISIBILITY $OutputSection_VISIBILITY.transmissionMode_VISIBILIT
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_VISIBILITY" format="tiff" hidden="false">
+    <data name="output_data_VISIBILITY" format="tiff" label="output_data_VISIBILITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VISIBILITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -56,8 +56,8 @@ transmissionMode_VISIBILITY $OutputSection_VISIBILITY.transmissionMode_VISIBILIT
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_VISIBILITY" ftype="txt" value="output_data_VISIBILITY.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool computes a visibility analysis using observer points from a point shapefile.&lt;br/&gt;&lt;br/&gt;]]></help>

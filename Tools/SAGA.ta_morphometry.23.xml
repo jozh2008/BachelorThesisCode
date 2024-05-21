@@ -34,7 +34,7 @@ transmissionMode_MAXIC $OutputSection_MAXIC.transmissionMode_MAXIC
 outputType_MINIC $OutputSection_MINIC.outputType_MINIC
 transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="SIZE" type="integer" value="5" optional="true" label="Scale Radius (Cells)" help="Size of processing window (= 1 + 2 * radius) given as number of cells"/>
     <param name="TOL_SLOPE" type="float" value="1" optional="true" label="Slope Tolerance" help="Slope tolerance that defines a 'flat' surface (degrees)"/>
     <param name="TOL_CURVE" type="float" value="0.0001" optional="true" label="Curvature Tolerance" help="Curvature tolerance that defines 'planar' surface"/>
@@ -175,7 +175,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FEATURES" format="tiff" hidden="false">
+    <data name="output_data_FEATURES" format="tiff" label="output_data_FEATURES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FEATURES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -183,7 +183,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_FEATURES" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ELEVATION" format="tiff" hidden="false">
+    <data name="output_data_ELEVATION" format="tiff" label="output_data_ELEVATION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ELEVATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -191,7 +191,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_ELEVATION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SLOPE" format="tiff" hidden="false">
+    <data name="output_data_SLOPE" format="tiff" label="output_data_SLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -199,7 +199,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_SLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ASPECT" format="tiff" hidden="false">
+    <data name="output_data_ASPECT" format="tiff" label="output_data_ASPECT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ASPECT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -207,7 +207,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_ASPECT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PROFC" format="tiff" hidden="false">
+    <data name="output_data_PROFC" format="tiff" label="output_data_PROFC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PROFC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -215,7 +215,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_PROFC" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PLANC" format="tiff" hidden="false">
+    <data name="output_data_PLANC" format="tiff" label="output_data_PLANC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PLANC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -223,7 +223,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_PLANC" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_LONGC" format="tiff" hidden="false">
+    <data name="output_data_LONGC" format="tiff" label="output_data_LONGC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LONGC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -231,7 +231,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_LONGC" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CROSC" format="tiff" hidden="false">
+    <data name="output_data_CROSC" format="tiff" label="output_data_CROSC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CROSC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -239,7 +239,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_CROSC" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAXIC" format="tiff" hidden="false">
+    <data name="output_data_MAXIC" format="tiff" label="output_data_MAXIC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAXIC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -247,7 +247,7 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
         <when input="outputType_MAXIC" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MINIC" format="tiff" hidden="false">
+    <data name="output_data_MINIC" format="tiff" label="output_data_MINIC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MINIC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -258,8 +258,17 @@ transmissionMode_MINIC $OutputSection_MINIC.transmissionMode_MINIC]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FEATURES" ftype="txt" value="output_data_FEATURES.txt"/>
+      <output name="output_data_ELEVATION" ftype="txt" value="output_data_ELEVATION.txt"/>
+      <output name="output_data_SLOPE" ftype="txt" value="output_data_SLOPE.txt"/>
+      <output name="output_data_ASPECT" ftype="txt" value="output_data_ASPECT.txt"/>
+      <output name="output_data_PROFC" ftype="txt" value="output_data_PROFC.txt"/>
+      <output name="output_data_PLANC" ftype="txt" value="output_data_PLANC.txt"/>
+      <output name="output_data_LONGC" ftype="txt" value="output_data_LONGC.txt"/>
+      <output name="output_data_CROSC" ftype="txt" value="output_data_CROSC.txt"/>
+      <output name="output_data_MAXIC" ftype="txt" value="output_data_MAXIC.txt"/>
+      <output name="output_data_MINIC" ftype="txt" value="output_data_MINIC.txt"/>
     </test>
   </tests>
   <help><![CDATA[Uses a multi-scale approach by fitting quadratic parameters to any size window (via least squares) to derive slope, aspect and curvatures (optional output) for subsequent classification of morphometric features (peaks, ridges, passes, channels, pits and planes). This is the method as proposed and implemented by Jo Wood (1996) in LandSerf and GRASS GIS (r.param.scale). &lt;br/&gt;&lt;br/&gt;Optional output is described in the following. Generalised elevation is the smoothed input DEM. Slope is the magnitude of maximum gradient. It is given for steepest slope angle and measured in degrees. Aspect is the direction of maximum gradient. Profile curvature is the curvature intersecting with the plane defined by the Z axis and maximum gradient direction. Positive values describe convex profile curvature, negative values concave profile. Plan curvature is the horizontal curvature, intersecting with the XY plane. Longitudinal curvature is the profile curvature intersecting with the plane defined by the surface normal and maximum gradient direction. Cross-sectional curvature is the tangential curvature intersecting with the plane defined by the surface normal and a tangent to the contour - perpendicular to maximum gradient direction. Minimum curvature is measured in direction perpendicular to the direction of of maximum curvature. The maximum curvature is measured in any direction. &lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;&lt;br/&gt;Wood, J. (1996): The Geomorphological characterisation of Digital Elevation Models. Diss., Department of Geography, University of Leicester, U.K. &lt;a target="_blank" href="http://www.soi.city.ac.uk/~jwo/phd/"&gt;online&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Wood, J. (2009): Geomorphometry in LandSerf. In: Hengl, T. and Reuter, H.I. [Eds.]: Geomorphometry: Concepts, Software, Applications. Developments in Soil Science, Elsevier, Vol.33, 333-349.&lt;br/&gt;&lt;br/&gt;&lt;a target="_blank" href="http://www.landserf.org/"&gt;LandSerf Homepage&lt;/a&gt;.]]></help>

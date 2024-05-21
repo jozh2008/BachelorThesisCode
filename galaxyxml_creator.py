@@ -16,6 +16,8 @@ class Galaxyxmltool:
         self.executable_dict = {}
         self.output_type_dictionary = {}
         self.output_type = "outputType"
+        self.output_name_list =[]
+        self.output_data = "output_data"
 
     def get_tool(self):
         return self.gxt
@@ -286,7 +288,7 @@ class Galaxyxmltool:
         """
         inputs = self.gxtp.Inputs()
         for param_name, param_dict in input_schema.items():
-
+            param_name = self.replace_dot(param_name)
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
@@ -474,7 +476,7 @@ class Galaxyxmltool:
         """
 
         for param_name, param_dict in output_schema.items():
-
+            param_name = self.replace_dot(param_name)
             param_schema = param_dict.get("schema")
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
@@ -493,6 +495,7 @@ class Galaxyxmltool:
                 description=description
             )
             self.output_type_dictionary[output_param_name] = enum_values
+            self.output_name_list.append(param_name) # just name of output
 
             output_param_section_name = f"OutputSection_{param_name}"
             title = "Select the appropriate transmission mode for the output format"
@@ -579,6 +582,9 @@ class Galaxyxmltool:
         normalized_name = name.replace(" ", "_")
 
         return normalized_name
+    
+    def replace_dot(self, name):
+        return name.replace(".", "_")
 
     def extract_enum(self, schema_item: Dict, enum_values: List):
         """
@@ -675,7 +681,7 @@ class Galaxyxmltool:
     # possible output options need to be discussed, which is better
     def define_output_collections(self):
         outputs = self.gxtp.Outputs()
-        name = "output_data"
+        name = self.output_data
         collection = self.gxtp.OutputCollection(name=name, type="list")
         discover = self.gxtp.DiscoverDatasets(pattern="__name_and_ext__")
         collection.append(discover)
@@ -696,19 +702,18 @@ class Galaxyxmltool:
             gxtp.Outputs: An instance of gxtp.Outputs containing the defined output options.
         """
         outputs = self.gxtp.Outputs()
-        # (self.output_type_dictionary)
         for key, values in self.output_type_dictionary.items():
             index = self.find_index(string=key, pattern=f"{self.output_type}_")
-            name = f"output_data_{key[index:]}"
+            name = f"{self.output_data}_{key[index:]}"
             self.executable_dict[name] = f"${name}"
 
             if not values:
-                param = self.gxtp.OutputData(name=name, format="txt")
+                param = self.gxtp.OutputData(name=name, format="txt", label=name)
                 outputs.append(param)
                 continue
 
             form = values[0].split('/')[-1]
-            param = self.gxtp.OutputData(name=name, format=form)
+            param = self.gxtp.OutputData(name=name, format=form, label=name)
 
             change = self.gxtp.ChangeFormat()
             change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
@@ -737,9 +742,12 @@ class Galaxyxmltool:
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
         param = self.gxtp.TestParam(name="response", value="document")
-        output = self.gxtp.TestOutput(name="output_data", ftype="txt")
-        test_a.append(output)
         test_a.append(param)
+        for output_name in self.output_name_list:
+            name=f"{self.output_data}_{output_name}"
+            output = self.gxtp.TestOutput(name=name, ftype="txt", value=f"{name}.txt")
+            test_a.append(output)
+        
 
         tests.append(test_a)
         return tests
@@ -770,12 +778,12 @@ class Galaxyxmltool:
 
             # Process output parameters
             for key, value in outputs.items():
-                name = f"output_data_{key}"
+                name = f"{self.output_data}_{key}"
                 if response == "raw":
                     media_type = value["format"]["mediaType"].split('/')[-1]
-                    param = self.gxtp.TestOutput(name=name, ftype=media_type)
+                    param = self.gxtp.TestOutput(name=name, ftype=media_type,value=f"{name}.{media_type}")
                 else:
-                    param = self.gxtp.TestOutput(name=name, ftype="txt")
+                    param = self.gxtp.TestOutput(name=name, ftype="txt",value=f"{name}.txt")
                 test.append(param)
 
             tests.append(test)

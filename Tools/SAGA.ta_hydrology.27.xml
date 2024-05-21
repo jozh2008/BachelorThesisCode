@@ -12,8 +12,8 @@ response $response
 outputType_DISTANCE $OutputSection_DISTANCE.outputType_DISTANCE
 transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="DIRECTION" type="select" optional="true" label="Direction of Measurement" help="Direction of Measurement">
       <option selected="true" value="downstream">downstream</option>
       <option value="upstream">upstream</option>
@@ -41,7 +41,7 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+    <data name="output_data_DISTANCE" format="tiff" label="output_data_DISTANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -52,8 +52,8 @@ transmissionMode_DISTANCE $OutputSection_DISTANCE.transmissionMode_DISTANCE]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DISTANCE" ftype="txt" value="output_data_DISTANCE.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool calculates the maximum upstream or downstream distance or weighted distance along the flow path for each cell based on 'Deterministic 8 (D8)' (O'Callaghan and Mark 1984) flow directions.]]></help>

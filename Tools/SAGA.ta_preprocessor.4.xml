@@ -15,7 +15,7 @@ transmissionMode_FDIR $OutputSection_FDIR.transmissionMode_FDIR
 outputType_WSHED $OutputSection_WSHED.outputType_WSHED
 transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
   <inputs>
-    <param name="ELEV" type="data" optional="false" label="DEM" help="Digital elevation model The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="ELEV" type="data" optional="false" label="DEM" help="Digital elevation model The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="MINSLOPE" type="float" value="0.1" optional="true" label="Minimum Slope [Degree]" help="Minimum slope gradient to preserve from cell to cell; with a value of zero sinks are filled up to the spill elevation (which results in flat areas). Unit [Degree]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -64,7 +64,7 @@ transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FILLED" format="tiff" hidden="false">
+    <data name="output_data_FILLED" format="tiff" label="output_data_FILLED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FILLED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -72,7 +72,7 @@ transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
         <when input="outputType_FILLED" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FDIR" format="tiff" hidden="false">
+    <data name="output_data_FDIR" format="tiff" label="output_data_FDIR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FDIR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -80,7 +80,7 @@ transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
         <when input="outputType_FDIR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_WSHED" format="tiff" hidden="false">
+    <data name="output_data_WSHED" format="tiff" label="output_data_WSHED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_WSHED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -91,8 +91,10 @@ transmissionMode_WSHED $OutputSection_WSHED.transmissionMode_WSHED]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FILLED" ftype="txt" value="output_data_FILLED.txt"/>
+      <output name="output_data_FDIR" ftype="txt" value="output_data_FDIR.txt"/>
+      <output name="output_data_WSHED" ftype="txt" value="output_data_WSHED.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool uses an algorithm proposed by Wang & Liu to identify and fill surface depressions in digital elevation models.&lt;br/&gt;The method was enhanced to allow the creation of hydrologic sound elevation models, i.e. not only to fill the depression(s) but also to preserve a downward slope along the flow path. If desired, this is accomplished by preserving a minimum slope gradient (and thus elevation difference) between cells.&lt;br/&gt;This is the fully featured version of the tool creating a depression less DEM, a flow path grid and a grid with watershed basins. If you encounter problems processing large data sets (e.g. LIDAR data) with this tool try the basic version (Fill Sinks XXL).&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;Wang, L. & H. Liu (2006): An efficient method for identifying and filling surface depressions in digital elevation models for hydrologic analysis and modelling. International Journal of Geographical Information Science, Vol. 20, No. 2: 193-213.&lt;br/&gt;]]></help>

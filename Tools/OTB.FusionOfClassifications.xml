@@ -6,7 +6,7 @@
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
   <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayil True  output_data_out $output_data_out  name OTB.FusionOfClassifications il $il
 method $method
-method.dempstershafer.cmfl $method.dempstershafer.cmfl
+method_dempstershafer_cmfl $method_dempstershafer_cmfl
 nodatalabel $nodatalabel
 undecidedlabel $undecidedlabel
 out $out
@@ -15,12 +15,12 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="List of input classification maps to fuse. Labels in each classification image must represent the same class." help="List of input classification maps to fuse. Labels in each classification image must represent the same class. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="il" type="data" optional="false" label="List of input classification maps to fuse. Labels in each classification image must represent the same class." help="List of input classification maps to fuse. Labels in each classification image must represent the same class. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="method" type="select" optional="false" label="Selection of the fusion method and its parameters." help="Selection of the fusion method and its parameters.">
       <option value="dempstershafer">dempstershafer</option>
       <option selected="true" value="majorityvoting">majorityvoting</option>
     </param>
-    <param name="method.dempstershafer.cmfl" type="select" optional="false" label="Type of confusion matrix measurement used to compute the masses of belief of each classifier." help="Type of confusion matrix measurement used to compute the masses of belief of each classifier.">
+    <param name="method_dempstershafer_cmfl" type="select" optional="false" label="Type of confusion matrix measurement used to compute the masses of belief of each classifier." help="Type of confusion matrix measurement used to compute the masses of belief of each classifier.">
       <option value="accuracy">accuracy</option>
       <option value="kappa">kappa</option>
       <option selected="true" value="precision">precision</option>
@@ -58,7 +58,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -68,8 +68,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application allows you to fuse several classification maps and produces a single more robust classification map. Fusion is done either by mean of Majority Voting, or with the Dempster Shafer combination method on class labels.  - MAJORITY VOTING: for each pixel, the class with the highest number of votes is selected.  - DEMPSTER SHAFER: for each pixel, the class label for which the Belief Function is maximal is selected. This Belief Function is calculated by mean of the Dempster Shafer combination of Masses of Belief, and indicates the belief that each input classification map presents for each label value. Moreover, the Masses of Belief are based on the input confusion matrices of each classification map, either by using the PRECISION or RECALL rates, or the OVERALL ACCURACY, or the KAPPA coefficient. Thus, each input classification map needs to be associated with its corresponding input confusion matrix file for the Dempster Shafer fusion.  - Input pixels with the NODATA label are not handled in the fusion of classification maps. Moreover, pixels for which all the input classifiers are set to NODATA keep this value in the output fused image.  - In case of number of votes equality, the UNDECIDED label is attributed to the pixel.]]></help>

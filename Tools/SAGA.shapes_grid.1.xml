@@ -12,8 +12,8 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
@@ -42,7 +42,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="xml" hidden="false">
+    <data name="output_data_RESULT" format="xml" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -52,8 +52,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Spatial Join: Retrieves information from the selected grids at the positions of the shapes of the selected shapes layer and adds it to the resulting shapes layer. For points this is similar to 'Add Grid Values to Points' tool. For lines and polygons average values will be calculated from interfering grid cells. For polygons the 'Grid Statistics for Polygons' tool offers more advanced options. ]]></help>

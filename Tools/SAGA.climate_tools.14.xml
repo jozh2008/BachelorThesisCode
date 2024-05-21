@@ -21,8 +21,8 @@ transmissionMode_TMIN_MEAN $OutputSection_TMIN_MEAN.transmissionMode_TMIN_MEAN
 outputType_TMIN_MIN $OutputSection_TMIN_MIN.outputType_TMIN_MIN
 transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></command>
   <inputs>
-    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Monthly (12) or daily (365) temperature observations. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -106,7 +106,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FREQUENCY" format="tiff" hidden="false">
+    <data name="output_data_FREQUENCY" format="tiff" label="output_data_FREQUENCY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FREQUENCY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -114,7 +114,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <when input="outputType_FREQUENCY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DT_MEAN" format="tiff" hidden="false">
+    <data name="output_data_DT_MEAN" format="tiff" label="output_data_DT_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DT_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -122,7 +122,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <when input="outputType_DT_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DT_MAX" format="tiff" hidden="false">
+    <data name="output_data_DT_MAX" format="tiff" label="output_data_DT_MAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DT_MAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -130,7 +130,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <when input="outputType_DT_MAX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DT_STDV" format="tiff" hidden="false">
+    <data name="output_data_DT_STDV" format="tiff" label="output_data_DT_STDV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DT_STDV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -138,7 +138,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <when input="outputType_DT_STDV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TMIN_MEAN" format="tiff" hidden="false">
+    <data name="output_data_TMIN_MEAN" format="tiff" label="output_data_TMIN_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TMIN_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -146,7 +146,7 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
         <when input="outputType_TMIN_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TMIN_MIN" format="tiff" hidden="false">
+    <data name="output_data_TMIN_MIN" format="tiff" label="output_data_TMIN_MIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TMIN_MIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -157,8 +157,13 @@ transmissionMode_TMIN_MIN $OutputSection_TMIN_MIN.transmissionMode_TMIN_MIN]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FREQUENCY" ftype="txt" value="output_data_FREQUENCY.txt"/>
+      <output name="output_data_DT_MEAN" ftype="txt" value="output_data_DT_MEAN.txt"/>
+      <output name="output_data_DT_MAX" ftype="txt" value="output_data_DT_MAX.txt"/>
+      <output name="output_data_DT_STDV" ftype="txt" value="output_data_DT_STDV.txt"/>
+      <output name="output_data_TMIN_MEAN" ftype="txt" value="output_data_TMIN_MEAN.txt"/>
+      <output name="output_data_TMIN_MIN" ftype="txt" value="output_data_TMIN_MIN.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool calculates statistics about the frost change frequency either from monthly or daily minimum and maximum temperatures. In case of monthly observations these will be spline interpolated to gain a daily resolution. ]]></help>

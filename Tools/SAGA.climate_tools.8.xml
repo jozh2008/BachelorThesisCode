@@ -16,9 +16,9 @@ response $response
 outputType_PET $OutputSection_PET.outputType_PET
 transmissionMode_PET $OutputSection_PET.transmissionMode_PET]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="T_MIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="T_MAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="T_MIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="T_MAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="LAT" type="float" value="53" optional="true" label="Latitude [Degree]" help="Latitude [Degree]"/>
     <param name="TIME" type="select" optional="true" label="Time" help="Time">
       <option selected="true" value="day">day</option>
@@ -62,7 +62,7 @@ transmissionMode_PET $OutputSection_PET.transmissionMode_PET]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PET" format="tiff" hidden="false">
+    <data name="output_data_PET" format="tiff" label="output_data_PET" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PET" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -73,8 +73,8 @@ transmissionMode_PET $OutputSection_PET.transmissionMode_PET]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PET" ftype="txt" value="output_data_PET.txt"/>
     </test>
   </tests>
   <help><![CDATA[Estimation of daily potential evapotranspiration from daily average, minimum and maximum temperatures using Hargreave's empirical equation. In order to estimate extraterrestrial net radiation geographic latitude of observation and Julian day have to be supplied too. ]]></help>

@@ -16,8 +16,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT
 outputType_MOVES $OutputSection_MOVES.outputType_MOVES
 transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="DISTANCE" type="float" value="0" optional="true" label="Search Distance (Map Units)" help="Search Distance (Map Units)"/>
     <param name="SHAPE" type="select" optional="true" label="Search Shape" help="Search Shape">
       <option selected="true" value="circle">circle</option>
@@ -60,14 +60,14 @@ transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="xml" hidden="false">
+    <data name="output_data_OUTPUT" format="xml" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_OUTPUT" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_MOVES" format="xml" hidden="false">
+    <data name="output_data_MOVES" format="xml" label="output_data_MOVES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MOVES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -77,8 +77,9 @@ transmissionMode_MOVES $OutputSection_MOVES.transmissionMode_MOVES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
+      <output name="output_data_MOVES" ftype="txt" value="output_data_MOVES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Moves all points to grid cell positions that have the highest orlowest value respectively within the given search distance around each point.]]></help>

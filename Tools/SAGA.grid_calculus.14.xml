@@ -11,7 +11,7 @@ response $response
 outputType_CONV $OutputSection_CONV.outputType_CONV
 transmissionMode_CONV $OutputSection_CONV.transmissionMode_CONV]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="CONVERSION" type="select" optional="true" label="Conversion" help="Conversion">
       <option value="Celsius_to_Fahrenheit">Celsius to Fahrenheit</option>
       <option value="Fahrenheit_to_Celsius">Fahrenheit to Celsius</option>
@@ -41,7 +41,7 @@ transmissionMode_CONV $OutputSection_CONV.transmissionMode_CONV]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CONV" format="tiff" hidden="false">
+    <data name="output_data_CONV" format="tiff" label="output_data_CONV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CONV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -52,8 +52,8 @@ transmissionMode_CONV $OutputSection_CONV.transmissionMode_CONV]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CONV" ftype="txt" value="output_data_CONV.txt"/>
     </test>
   </tests>
   <help><![CDATA[Metric Conversions]]></help>

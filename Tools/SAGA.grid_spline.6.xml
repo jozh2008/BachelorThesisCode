@@ -25,7 +25,7 @@ response $response
 outputType_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.outputType_TARGET_OUT_GRID
 transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode_TARGET_OUT_GRID]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
       <option value="grid_or_grid_system">grid or grid system</option>
@@ -42,7 +42,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="NPMIN" type="integer" value="3" optional="true" label="Minimal Number of Points" help="Minimal Number of Points"/>
     <param name="NPMAX" type="integer" value="20" optional="true" label="Maximal Number of Points" help="Maximal Number of Points"/>
     <param name="NPPC" type="float" value="5" optional="true" label="Points per Square" help="Points per Square"/>
@@ -70,7 +70,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TARGET_OUT_GRID" format="tiff" hidden="false">
+    <data name="output_data_TARGET_OUT_GRID" format="tiff" label="output_data_TARGET_OUT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TARGET_OUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -81,8 +81,8 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TARGET_OUT_GRID" ftype="txt" value="output_data_TARGET_OUT_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool approximates irregular scalar 2D data in specified points using C1-continuous bivariate cubic spline.&lt;br/&gt;Minimal Number of Points:                minimal number of points locally involved                in spline calculation (normally = 3)&lt;br/&gt;&lt;br/&gt;Maximal Number of Points:npmax:          maximal number of points locally involved                in spline calculation (required &gt; 10,                recommended 20 &lt; npmax &lt; 60)&lt;br/&gt;Tolerance:                relative tolerance multiple in fitting                spline coefficients: the higher this                value, the higher degree of the locally                fitted spline (recommended 80 &lt; k &lt; 200)&lt;br/&gt;&lt;br/&gt;Points per square:                average number of points per square                (increase if the point distribution is strongly non-uniform                to get larger cells)&lt;br/&gt;&lt;br/&gt;Author:         Pavel Sakov,                CSIRO Marine Research&lt;br/&gt;&lt;br/&gt;Purpose:        2D data approximation with bivariate C1 cubic spline.                A set of library functions + standalone utility.&lt;br/&gt;]]></help>

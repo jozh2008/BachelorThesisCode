@@ -18,7 +18,7 @@ transmissionMode_TIN_TRIANGLES $OutputSection_TIN_TRIANGLES.transmissionMode_TIN
 outputType_TIN_POLYGONS $OutputSection_TIN_POLYGONS.outputType_TIN_POLYGONS
 transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_POLYGONS]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -85,35 +85,35 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TIN_POINTS" format="xml" hidden="false">
+    <data name="output_data_TIN_POINTS" format="xml" label="output_data_TIN_POINTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_POINTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_CENTER" format="xml" hidden="false">
+    <data name="output_data_TIN_CENTER" format="xml" label="output_data_TIN_CENTER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_CENTER" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_CENTER" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_EDGES" format="xml" hidden="false">
+    <data name="output_data_TIN_EDGES" format="xml" label="output_data_TIN_EDGES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_EDGES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_EDGES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_TRIANGLES" format="xml" hidden="false">
+    <data name="output_data_TIN_TRIANGLES" format="xml" label="output_data_TIN_TRIANGLES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_TRIANGLES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_TIN_TRIANGLES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_TIN_POLYGONS" format="xml" hidden="false">
+    <data name="output_data_TIN_POLYGONS" format="xml" label="output_data_TIN_POLYGONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TIN_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -123,8 +123,12 @@ transmissionMode_TIN_POLYGONS $OutputSection_TIN_POLYGONS.transmissionMode_TIN_P
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TIN_POINTS" ftype="txt" value="output_data_TIN_POINTS.txt"/>
+      <output name="output_data_TIN_CENTER" ftype="txt" value="output_data_TIN_CENTER.txt"/>
+      <output name="output_data_TIN_EDGES" ftype="txt" value="output_data_TIN_EDGES.txt"/>
+      <output name="output_data_TIN_TRIANGLES" ftype="txt" value="output_data_TIN_TRIANGLES.txt"/>
+      <output name="output_data_TIN_POLYGONS" ftype="txt" value="output_data_TIN_POLYGONS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Convert a shapes layer to a TIN&lt;br/&gt;&lt;br/&gt;]]></help>

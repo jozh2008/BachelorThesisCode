@@ -7,9 +7,9 @@
   <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.DomainTransform in $in
 out $out
 mode $mode
-mode.fft.shift $mode.fft.shift
-mode.wavelet.form $mode.wavelet.form
-mode.wavelet.nlevels $mode.wavelet.nlevels
+mode_fft_shift $mode_fft_shift
+mode_wavelet_form $mode_wavelet_form
+mode_wavelet_nlevels $mode_wavelet_nlevels
 direction $direction
 ram $ram
 prefer $prefer
@@ -17,7 +17,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="This will take an input image to be transformed image. For FFT inverse transform, it expects a complex image as two-band image in which first band represent real part and second band represent imaginary part." help="This will take an input image to be transformed image. For FFT inverse transform, it expects a complex image as two-band image in which first band represent real part and second band represent imaginary part. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="This will take an input image to be transformed image. For FFT inverse transform, it expects a complex image as two-band image in which first band represent real part and second band represent imaginary part." help="This will take an input image to be transformed image. For FFT inverse transform, it expects a complex image as two-band image in which first band represent real part and second band represent imaginary part. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="This parameter holds the output file name to which transformed image will be written. This has a slightly different behaviour depending on transform type.  For Wavelet, output is a single band image for both forward and inverse transform.  For FFT forward transform, output is two band image where first band represents real part and second band represents imaginary part of a complex image." help="This parameter holds the output file name to which transformed image will be written. This has a slightly different behaviour depending on transform type.  For Wavelet, output is a single band image for both forward and inverse transform.  For FFT forward transform, output is two band image where first band represents real part and second band represents imaginary part of a complex image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -30,11 +30,11 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="fft">fft</option>
       <option selected="true" value="wavelet">wavelet</option>
     </param>
-    <param name="mode.fft.shift" type="select" optional="false" label="Shift transform of fft filter" help="Shift transform of fft filter">
+    <param name="mode_fft_shift" type="select" optional="false" label="Shift transform of fft filter" help="Shift transform of fft filter">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="mode.wavelet.form" type="select" optional="false" label="mode.wavelet.form" help="mode.wavelet.form">
+    <param name="mode_wavelet_form" type="select" optional="false" label="mode.wavelet.form" help="mode.wavelet.form">
       <option value="db12">db12</option>
       <option value="db20">db20</option>
       <option value="db4">db4</option>
@@ -45,7 +45,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="sb44">sb44</option>
       <option value="sym8">sym8</option>
     </param>
-    <param name="mode.wavelet.nlevels" type="integer" value="2" optional="false" label="Number of decomposition levels" help="Number of decomposition levels"/>
+    <param name="mode_wavelet_nlevels" type="integer" value="2" optional="false" label="Number of decomposition levels" help="Number of decomposition levels"/>
     <param name="direction" type="select" optional="false" label="direction" help="direction">
       <option selected="true" value="forward">forward</option>
       <option value="inverse">inverse</option>
@@ -73,7 +73,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -83,8 +83,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Domain Transform application for wavelet and fourier]]></help>

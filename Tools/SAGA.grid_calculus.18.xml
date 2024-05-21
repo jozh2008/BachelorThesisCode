@@ -11,8 +11,8 @@ response $response
 outputType_C $OutputSection_C.outputType_C
 transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="Dividend" help="Dividend The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
-    <param name="B" type="data" optional="false" label="Divisor" help="Divisor The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="A" type="data" optional="false" label="Dividend" help="Dividend The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="B" type="data" optional="false" label="Divisor" help="Divisor The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -36,7 +36,7 @@ transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_C" format="tiff" hidden="false">
+    <data name="output_data_C" format="tiff" label="output_data_C" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -47,8 +47,8 @@ transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_C" ftype="txt" value="output_data_C.txt"/>
     </test>
   </tests>
   <help><![CDATA[Grid Division]]></help>

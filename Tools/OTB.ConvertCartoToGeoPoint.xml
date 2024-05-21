@@ -4,19 +4,19 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_long $output_data_long  output_data_lat $output_data_lat  name OTB.ConvertCartoToGeoPoint carto.x $carto.x
-carto.y $carto.y
+  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_long $output_data_long  output_data_lat $output_data_lat  name OTB.ConvertCartoToGeoPoint carto_x $carto_x
+carto_y $carto_y
 mapproj $mapproj
-mapproj.utm.zone $mapproj.utm.zone
-mapproj.utm.northhem $mapproj.utm.northhem
-mapproj.epsg.code $mapproj.epsg.code
+mapproj_utm_zone $mapproj_utm_zone
+mapproj_utm_northhem $mapproj_utm_northhem
+mapproj_epsg_code $mapproj_epsg_code
 prefer $prefer
 response $response
 transmissionMode_long $OutputSection_long.transmissionMode_long
 transmissionMode_lat $OutputSection_lat.transmissionMode_lat]]></command>
   <inputs>
-    <param name="carto.x" type="float" optional="false" label="X cartographic coordinates in the projection defined by mapproj parameter" help="X cartographic coordinates in the projection defined by mapproj parameter"/>
-    <param name="carto.y" type="float" optional="false" label="Y cartographic coordinates in the projection defined by mapproj parameter" help="Y cartographic coordinates in the projection defined by mapproj parameter"/>
+    <param name="carto_x" type="float" optional="false" label="X cartographic coordinates in the projection defined by mapproj parameter" help="X cartographic coordinates in the projection defined by mapproj parameter"/>
+    <param name="carto_y" type="float" optional="false" label="Y cartographic coordinates in the projection defined by mapproj parameter" help="Y cartographic coordinates in the projection defined by mapproj parameter"/>
     <param name="mapproj" type="select" optional="false" label="Defines the map projection to be used." help="Defines the map projection to be used.">
       <option value="epsg">epsg</option>
       <option value="lambert2">lambert2</option>
@@ -24,12 +24,12 @@ transmissionMode_lat $OutputSection_lat.transmissionMode_lat]]></command>
       <option selected="true" value="utm">utm</option>
       <option value="wgs">wgs</option>
     </param>
-    <param name="mapproj.utm.zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
-    <param name="mapproj.utm.northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
+    <param name="mapproj_utm_zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
+    <param name="mapproj_utm_northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="mapproj.epsg.code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
+    <param name="mapproj_epsg_code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -53,13 +53,14 @@ transmissionMode_lat $OutputSection_lat.transmissionMode_lat]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_long" format="txt" hidden="false"/>
-    <data name="output_data_lat" format="txt" hidden="false"/>
+    <data name="output_data_long" format="txt" label="output_data_long" hidden="false"/>
+    <data name="output_data_lat" format="txt" label="output_data_lat" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_long" ftype="txt" value="output_data_long.txt"/>
+      <output name="output_data_lat" ftype="txt" value="output_data_lat.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application computes the geographic coordinates from cartographic ones. User has to give the X and Y coordinate and the cartographic projection (see mapproj parameter for details).]]></help>

@@ -66,14 +66,14 @@ transmissionMode_phase $OutputSection_phase.transmissionMode_phase]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_modulus" format="tiff" hidden="false">
+    <data name="output_data_modulus" format="tiff" label="output_data_modulus" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_modulus" format="jpeg" value="image/jpeg"/>
         <when input="outputType_modulus" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_phase" format="tiff" hidden="false">
+    <data name="output_data_phase" format="tiff" label="output_data_phase" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_phase" format="jpeg" value="image/jpeg"/>
@@ -83,8 +83,9 @@ transmissionMode_phase $OutputSection_phase.transmissionMode_phase]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_modulus" ftype="txt" value="output_data_modulus.txt"/>
+      <output name="output_data_phase" ftype="txt" value="output_data_phase.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application computes the modulus and the phase of a complex SAR image. The input should be a single band image with complex pixels.]]></help>

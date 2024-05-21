@@ -14,10 +14,10 @@ response $response
 outputType_OUTTAB $OutputSection_OUTTAB.outputType_OUTTAB
 transmissionMode_OUTTAB $OutputSection_OUTTAB.transmissionMode_OUTTAB]]></command>
   <inputs>
-    <param name="ZONES" type="data" optional="false" label="Zone Grid" help="Grid defining the zones to analyse. This grid also acts as a mask. Coding: NoData / categorial values. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="CATLIST" type="data" optional="false" label="Categorical Grids" help="Grids used to delineate the UCUs. Coding: NoData / categorical values. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="STATLIST" type="data" optional="false" label="Grids to analyse" help="Grids with continuous data, statistics are calculated for each grid. Coding: NoData / continuous values. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="ASPECT" type="data" optional="false" label="Aspect" help="Aspect grid, in radians. The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="ZONES" type="data" optional="false" label="Zone Grid" help="Grid defining the zones to analyse. This grid also acts as a mask. Coding: NoData / categorial values. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="CATLIST" type="data" optional="false" label="Categorical Grids" help="Grids used to delineate the UCUs. Coding: NoData / categorical values. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="STATLIST" type="data" optional="false" label="Grids to analyse" help="Grids with continuous data, statistics are calculated for each grid. Coding: NoData / continuous values. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ASPECT" type="data" optional="false" label="Aspect" help="Aspect grid, in radians. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="SHORTNAMES" type="select" optional="true" label="Short Field Names" help="Short Field Names">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -42,12 +42,12 @@ transmissionMode_OUTTAB $OutputSection_OUTTAB.transmissionMode_OUTTAB]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTTAB" format="csv" hidden="false"/>
+    <data name="output_data_OUTTAB" format="csv" label="output_data_OUTTAB" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTTAB" ftype="txt" value="output_data_OUTTAB.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool calculates zonal statistics and reports these in a table. The tool can be used to create a contingency table of unique condition units (UCUs). These units are delineated from a zonal grid (e.g. sub catchments) and optional categorical grids (e.g. landcover, soil, ...). It is possible to calculate descriptive statistics (n, min, max, mean, standard deviation and sum) for each UCU from optional grids with continious data (e.g. slope; aspect must be handled specially, please use the "Aspect" input parameter for such a grid). The number of input grids is only limited by available memory.&lt;br/&gt;&lt;br/&gt;The tool has four different modes of operation:&lt;br/&gt;(1) only a zonal grid is used as input. This results in a simple contingency table with the number of grid cells in each zone.&lt;br/&gt;(2) a zonal grid and additional categorical grids are used as input. This results in a contingency table with the number of cells in each UCU.&lt;br/&gt;(3) a zonal grid and additional grids with continuous data are used as input. This results in a contingency table with the number of cells in each zone and some simple statistics for each zone. The statistics are calculated for each continuous grid.&lt;br/&gt;(4) a zonal grid, additional categorical grids and additional grids with continuous data are used as input. This results in a contingency table with the number of cells in each UCU and the corresponding statistics for each continuous grid.&lt;br/&gt;&lt;br/&gt;Depending on the mode of operation, the output table contains information about the categorical combination of each UCU, the number of cells in each UCU and the statistics for each UCU. A typical output table may look like this:&lt;br/&gt;&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;ID Zone&lt;/td&gt;&lt;td&gt;ID 1stCat&lt;/td&gt;&lt;td&gt;ID 2ndCat&lt;/td&gt;&lt;td&gt;Count UCU&lt;/td&gt;&lt;td&gt;N 1stCont&lt;/td&gt;&lt;td&gt;MIN 1stCont&lt;/td&gt;&lt;td&gt;MAX 1stCont&lt;/td&gt;&lt;td&gt;MEAN 1stCont&lt;/td&gt;&lt;td&gt;STDDEV 1stCont&lt;/td&gt;&lt;td&gt;SUM 1stCont&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;0      &lt;/td&gt;&lt;td&gt;2        &lt;/td&gt;&lt;td&gt;6        &lt;/td&gt;&lt;td&gt;6        &lt;/td&gt;&lt;td&gt;6        &lt;/td&gt;&lt;td&gt;708.5      &lt;/td&gt;&lt;td&gt;862.0      &lt;/td&gt;&lt;td&gt;734.5       &lt;/td&gt;&lt;td&gt;62.5          &lt;/td&gt;&lt;td&gt;4406.8     &lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;0      &lt;/td&gt;&lt;td&gt;3        &lt;/td&gt;&lt;td&gt;4        &lt;/td&gt;&lt;td&gt;106      &lt;/td&gt;&lt;td&gt;106      &lt;/td&gt;&lt;td&gt;829.1      &lt;/td&gt;&lt;td&gt;910.1      &lt;/td&gt;&lt;td&gt;848.8       &lt;/td&gt;&lt;td&gt;28.5          &lt;/td&gt;&lt;td&gt;89969.0    &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;]]></help>

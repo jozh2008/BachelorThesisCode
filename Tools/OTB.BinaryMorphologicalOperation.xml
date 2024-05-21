@@ -9,22 +9,22 @@ out $out
 channel $channel
 ram $ram
 structype $structype
-structype.ball.xradius $structype.ball.xradius
-structype.ball.yradius $structype.ball.yradius
+structype_ball_xradius $structype_ball_xradius
+structype_ball_yradius $structype_ball_yradius
 filter $filter
-filter.dilate.foreval $filter.dilate.foreval
-filter.dilate.backval $filter.dilate.backval
-filter.erode.foreval $filter.erode.foreval
-filter.erode.backval $filter.erode.backval
-filter.opening.foreval $filter.opening.foreval
-filter.opening.backval $filter.opening.backval
-filter.closing.foreval $filter.closing.foreval
+filter_dilate_foreval $filter_dilate_foreval
+filter_dilate_backval $filter_dilate_backval
+filter_erode_foreval $filter_erode_foreval
+filter_erode_backval $filter_erode_backval
+filter_opening_foreval $filter_opening_foreval
+filter_opening_backval $filter_opening_backval
+filter_closing_foreval $filter_closing_foreval
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to be filtered." help="The input image to be filtered. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to be filtered." help="The input image to be filtered. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image" help="Output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -39,21 +39,21 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="ball">ball</option>
       <option value="cross">cross</option>
     </param>
-    <param name="structype.ball.xradius" type="integer" value="5" optional="false" label="The structuring element radius along the X axis." help="The structuring element radius along the X axis."/>
-    <param name="structype.ball.yradius" type="integer" value="5" optional="false" label="The structuring element radius along the y axis." help="The structuring element radius along the y axis."/>
+    <param name="structype_ball_xradius" type="integer" value="5" optional="false" label="The structuring element radius along the X axis." help="The structuring element radius along the X axis."/>
+    <param name="structype_ball_yradius" type="integer" value="5" optional="false" label="The structuring element radius along the y axis." help="The structuring element radius along the y axis."/>
     <param name="filter" type="select" optional="false" label="Choice of the morphological operation" help="Choice of the morphological operation">
       <option value="closing">closing</option>
       <option selected="true" value="dilate">dilate</option>
       <option value="erode">erode</option>
       <option value="opening">opening</option>
     </param>
-    <param name="filter.dilate.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
-    <param name="filter.dilate.backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
-    <param name="filter.erode.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
-    <param name="filter.erode.backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
-    <param name="filter.opening.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
-    <param name="filter.opening.backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
-    <param name="filter.closing.foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="filter_dilate_foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="filter_dilate_backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
+    <param name="filter_erode_foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="filter_erode_backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
+    <param name="filter_opening_foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
+    <param name="filter_opening_backval" type="float" value="0" optional="false" label="Set the background value, default is 0.0." help="Set the background value, default is 0.0."/>
+    <param name="filter_closing_foreval" type="float" value="1" optional="false" label="Set the foreground value, default is 1.0." help="Set the foreground value, default is 1.0."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -76,7 +76,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -86,8 +86,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application performs binary morphological operations on a mono band image or a channel of the input.]]></help>

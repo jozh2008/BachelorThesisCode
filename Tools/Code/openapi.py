@@ -146,23 +146,35 @@ class ApiJson:
             list: List of input file JSON representations.
         """
         input_file_json_list = []
-
+        pprint(input_files)
+        pprint(input_schema)
         for key, value in input_files.items():
             if "output_data" not in key:
+                # To do: check if correct for key
+                key = key.replace("_", ".") # change back because of Cheetah
                 file_contents = self.open_and_read_file(value)
                 exclueded = self.isArray + key
                 self.isexcluededList.append(exclueded)
 
-                # Determine if the input is an array based on the schema
+                # Determine if the input is an array based on the arguments from the command line,
+                # For every input_file there is an argument f"{isArray}nameofinput"
                 if input_schema.get(exclueded) == "False":
                     input_file_json_list.append(self.generate_input_file_json(input_name=key, input_list=file_contents))
                 else:
                     input_file_json_list.append(self.generate_input_file_list_json(input_name=key, input_list=file_contents))
             else:
+                helper_key = self.get_output_data_key(key)
+                key_2 = helper_key.replace("_", ".")
+                key = f"output_data_{key_2}" # check for improvement because of Cheetah
                 self.isexcluededList.append(key)
                 self.working_directory[key] = value
 
         return input_file_json_list
+    
+    # to do: check for improvements
+    def get_output_data_key(self, key):
+        index = re.match("output_data", key).end()
+        return key[index + 1:]
 
     def extract_non_data_inputs(self, data_inputs, all_input_values):
         """
@@ -250,7 +262,7 @@ class ApiJson:
         excluded_prefixes = {"response", "outputType", "transmissionMode", "name", "prefer"}
         self.prefer = dictionary["prefer"]
         return {
-            key: value
+            key: value # check if correct
             for key, value in dictionary.items()
             if not any(key.startswith(prefix) for prefix in excluded_prefixes)
         }
@@ -270,7 +282,7 @@ class ApiJson:
         for key, value in dictionary.items():
             if keyword in key:
                 index = self.find_index_of_character(key, "_")
-                modified_key = key[index + 1:]
+                modified_key = key[index + 1:].replace("_", ".") # check if correct
                 extracted_values[modified_key] = value
         return extracted_values
 
@@ -344,10 +356,13 @@ class ApiJson:
         - ValueError: If the number of elements in the input list is not even, indicating missing values.
 
         """
+        #print(len(args))
+        #pprint(args)
         if len(args) % 2 != 0:
             raise ValueError("The number of arguments must be even.")
 
         it = iter(args)
+        #print(it)
         res_dict = dict(zip(it, it))
         return res_dict
 

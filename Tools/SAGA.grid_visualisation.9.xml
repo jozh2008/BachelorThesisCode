@@ -17,7 +17,7 @@ transmissionMode_B $OutputSection_B.transmissionMode_B
 outputType_A $OutputSection_A.outputType_A
 transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
   <inputs>
-    <param name="RGB" type="data" optional="false" label="RGB Composite" help="RGB Composite The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="RGB" type="data" optional="false" label="RGB Composite" help="RGB Composite The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="NODATA" type="select" optional="true" label="Ignore No Data" help="Ignore No Data">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -81,7 +81,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_R" format="tiff" hidden="false">
+    <data name="output_data_R" format="tiff" label="output_data_R" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_R" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -89,7 +89,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
         <when input="outputType_R" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G" format="tiff" hidden="false">
+    <data name="output_data_G" format="tiff" label="output_data_G" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -97,7 +97,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
         <when input="outputType_G" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_B" format="tiff" hidden="false">
+    <data name="output_data_B" format="tiff" label="output_data_B" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_B" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -105,7 +105,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
         <when input="outputType_B" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_A" format="tiff" hidden="false">
+    <data name="output_data_A" format="tiff" label="output_data_A" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_A" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -116,8 +116,11 @@ transmissionMode_A $OutputSection_A.transmissionMode_A]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_R" ftype="txt" value="output_data_R.txt"/>
+      <output name="output_data_G" ftype="txt" value="output_data_G.txt"/>
+      <output name="output_data_B" ftype="txt" value="output_data_B.txt"/>
+      <output name="output_data_A" ftype="txt" value="output_data_A.txt"/>
     </test>
   </tests>
   <help><![CDATA[Split red-green-blue channels of an rgb coded grid. ]]></help>

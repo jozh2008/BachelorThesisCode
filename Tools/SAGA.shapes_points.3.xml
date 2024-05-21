@@ -44,12 +44,12 @@ transmissionMode_DISTANCES $OutputSection_DISTANCES.transmissionMode_DISTANCES]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DISTANCES" format="csv" hidden="false"/>
+    <data name="output_data_DISTANCES" format="csv" label="output_data_DISTANCES" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DISTANCES" ftype="txt" value="output_data_DISTANCES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Computes distances between pairs of points.]]></help>

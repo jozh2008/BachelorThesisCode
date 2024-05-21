@@ -24,8 +24,8 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="NAMING" type="select" optional="true" label="Field Naming" help="Field Naming">
       <option selected="true" value="grid_name">grid name</option>
       <option value="grid_number">grid number</option>
@@ -99,7 +99,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="xml" hidden="false">
+    <data name="output_data_RESULT" format="xml" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -109,8 +109,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Zonal grid statistics. For each polygon statistics based on all covered grid cells will be calculated.]]></help>

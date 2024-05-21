@@ -26,7 +26,7 @@ transmissionMode_FRAGMENTATION $OutputSection_FRAGMENTATION.transmissionMode_FRA
 outputType_FRAGSTATS $OutputSection_FRAGSTATS.outputType_FRAGSTATS
 transmissionMode_FRAGSTATS $OutputSection_FRAGSTATS.transmissionMode_FRAGSTATS]]></command>
   <inputs>
-    <param name="CLASSES" type="data" optional="false" label="Classification" help="Classification The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="CLASSES" type="data" optional="false" label="Classification" help="Classification The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="CLASS" type="integer" value="1" optional="true" label="Class Identifier" help="Class Identifier"/>
     <param name="NEIGHBORHOOD_MIN" type="float" optional="true" label="Neighborhood (min value)" help="Moving window size = 1 + 2 * Neighborhood."/>
     <param name="NEIGHBORHOOD_MAX" type="float" optional="true" label="Neighborhood (max value)" help="Moving window size = 1 + 2 * Neighborhood."/>
@@ -105,7 +105,7 @@ transmissionMode_FRAGSTATS $OutputSection_FRAGSTATS.transmissionMode_FRAGSTATS]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DENSITY" format="tiff" hidden="false">
+    <data name="output_data_DENSITY" format="tiff" label="output_data_DENSITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DENSITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -113,7 +113,7 @@ transmissionMode_FRAGSTATS $OutputSection_FRAGSTATS.transmissionMode_FRAGSTATS]]
         <when input="outputType_DENSITY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CONNECTIVITY" format="tiff" hidden="false">
+    <data name="output_data_CONNECTIVITY" format="tiff" label="output_data_CONNECTIVITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CONNECTIVITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -121,7 +121,7 @@ transmissionMode_FRAGSTATS $OutputSection_FRAGSTATS.transmissionMode_FRAGSTATS]]
         <when input="outputType_CONNECTIVITY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FRAGMENTATION" format="tiff" hidden="false">
+    <data name="output_data_FRAGMENTATION" format="tiff" label="output_data_FRAGMENTATION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FRAGMENTATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -129,12 +129,15 @@ transmissionMode_FRAGSTATS $OutputSection_FRAGSTATS.transmissionMode_FRAGSTATS]]
         <when input="outputType_FRAGMENTATION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FRAGSTATS" format="csv" hidden="false"/>
+    <data name="output_data_FRAGSTATS" format="csv" label="output_data_FRAGSTATS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DENSITY" ftype="txt" value="output_data_DENSITY.txt"/>
+      <output name="output_data_CONNECTIVITY" ftype="txt" value="output_data_CONNECTIVITY.txt"/>
+      <output name="output_data_FRAGMENTATION" ftype="txt" value="output_data_FRAGMENTATION.txt"/>
+      <output name="output_data_FRAGSTATS" ftype="txt" value="output_data_FRAGSTATS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Grid based fragmentation analysis after Riitters et al. (2000).&lt;br/&gt;&lt;br/&gt;(1) interior, if Density = 1.0&lt;br/&gt;(2) undetermined, if Density &gt; 0.6 and Density = Connectivity&lt;br/&gt;(3) perforated, if Density &gt; 0.6 and Density - Connectivity &gt; 0&lt;br/&gt;(4) edge, if Density &gt; 0.6 and Density - Connectivity &lt; 0&lt;br/&gt;(5) transitional, if 0.4 &lt; Density &lt; 0.6&lt;br/&gt;(6) patch, if Density &lt; 0.4&lt;br/&gt;]]></help>

@@ -15,9 +15,9 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to predict." help="The input image to predict. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="mask" type="data" optional="false" label="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0." help="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="model" type="data" optional="false" label="A regression model file (produced by TrainRegression application)." help="A regression model file (produced by TrainRegression application). The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to predict." help="The input image to predict. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="mask" type="data" optional="false" label="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0." help="The mask allow restricting classification of the input image to the area where mask pixel values are greater than 0. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="model" type="data" optional="false" label="A regression model file (produced by TrainRegression application)." help="A regression model file (produced by TrainRegression application). The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="imstat" type="data" optional="false" label="A XML file containing mean and standard deviation to center and reduce samples before prediction (produced by ComputeImagesStatistics application). If this file containsone more band than the sample size, the last stat of last band will beapplied to expand the output predicted value" help="A XML file containing mean and standard deviation to center and reduce samples before prediction (produced by ComputeImagesStatistics application). If this file containsone more band than the sample size, the last stat of last band will beapplied to expand the output predicted value The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image containing predicted values" help="Output image containing predicted values">
       <option value="double">double</option>
@@ -50,7 +50,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -60,8 +60,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application predict output values from an input image, based on a regression model file produced by the TrainRegression application. Pixels of the output image will contain the predicted values fromthe regression model (single band). The input pixels can be optionally centered and reduced according to the statistics file produced by the ComputeImagesStatistics application. An optional input mask can be provided, in which case only input image pixels whose corresponding mask value is greater than 0 will be processed. The remaining of pixels will be given the value 0 in the output image.]]></help>

@@ -15,7 +15,7 @@ response $response
 outputType_NSTORE $OutputSection_NSTORE.outputType_NSTORE
 transmissionMode_NSTORE $OutputSection_NSTORE.transmissionMode_NSTORE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="TIME_SPAN" type="float" value="100" optional="true" label="Time Span [a]" help="Time Span [a]"/>
     <param name="TIME_STEP" type="float" value="0.1" optional="true" label="Time Interval [a]" help="Time Interval [a]"/>
     <param name="UPDATE" type="select" optional="true" label="Update View" help="Update View">
@@ -47,7 +47,7 @@ transmissionMode_NSTORE $OutputSection_NSTORE.transmissionMode_NSTORE]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_NSTORE" format="tiff" hidden="false">
+    <data name="output_data_NSTORE" format="tiff" label="output_data_NSTORE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_NSTORE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -58,8 +58,8 @@ transmissionMode_NSTORE $OutputSection_NSTORE.transmissionMode_NSTORE]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_NSTORE" ftype="txt" value="output_data_NSTORE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Spatially Distributed Simulation of Soil Nitrogen Dynamics. &lt;br/&gt;Reference:&lt;br/&gt;Hugget, R.J. (1993): 'Modelling the Human Impact on Nature', Oxford University Press.&lt;br/&gt;&lt;br/&gt;(c) 2003 by Olaf Conrad, Goettingen&lt;br/&gt;email: oconrad@gwdg.de]]></help>

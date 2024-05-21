@@ -21,11 +21,11 @@ transmissionMode_RISK_POINT $OutputSection_RISK_POINT.transmissionMode_RISK_POIN
 outputType_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.outputType_RISK_DIFFUSE
 transmissionMode_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.transmissionMode_RISK_DIFFUSE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="CHANNEL" type="data" optional="false" label="Channel Network" help="Channel Network The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="WEIGHT" type="data" optional="false" label="Land Cover Weights" help="Land Cover Weights The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="CHANNEL" type="data" optional="false" label="Channel Network" help="Channel Network The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="WEIGHT" type="data" optional="false" label="Land Cover Weights" help="Land Cover Weights The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="WEIGHT_DEFAULT" type="float" value="1" optional="true" label="Default" help="default value if no grid has been selected"/>
-    <param name="RAIN" type="data" optional="false" label="Rainfall" help="Rainfall The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="RAIN" type="data" optional="false" label="Rainfall" help="Rainfall The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="RAIN_DEFAULT" type="float" value="500" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="METHOD" type="select" optional="true" label="Flow Direction Algorithm" help="Flow Direction Algorithm">
       <option selected="true" value="multiple">multiple</option>
@@ -79,7 +79,7 @@ transmissionMode_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.transmissionMode_RISK_
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DELIVERY" format="tiff" hidden="false">
+    <data name="output_data_DELIVERY" format="tiff" label="output_data_DELIVERY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DELIVERY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -87,7 +87,7 @@ transmissionMode_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.transmissionMode_RISK_
         <when input="outputType_DELIVERY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RISK_POINT" format="tiff" hidden="false">
+    <data name="output_data_RISK_POINT" format="tiff" label="output_data_RISK_POINT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RISK_POINT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -95,7 +95,7 @@ transmissionMode_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.transmissionMode_RISK_
         <when input="outputType_RISK_POINT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RISK_DIFFUSE" format="tiff" hidden="false">
+    <data name="output_data_RISK_DIFFUSE" format="tiff" label="output_data_RISK_DIFFUSE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RISK_DIFFUSE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -106,8 +106,10 @@ transmissionMode_RISK_DIFFUSE $OutputSection_RISK_DIFFUSE.transmissionMode_RISK_
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DELIVERY" ftype="txt" value="output_data_DELIVERY.txt"/>
+      <output name="output_data_RISK_POINT" ftype="txt" value="output_data_RISK_POINT.txt"/>
+      <output name="output_data_RISK_DIFFUSE" ftype="txt" value="output_data_RISK_DIFFUSE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Diffuse Pollution Risk Mapping.&lt;br/&gt;This tool tries to reproduce in parts the methodology of the &lt;a target="_blank" href="http://www.scimap.org.uk/"&gt;SCIMAP - Diffuse Pollution Risk Mapping - Framework&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;Lane, S.N.; Brookes, C.J.; Kirkby, M.J.; Holden, J. (2004): A network-index-based version of TOPMODEL for use with high-resolution digital topographic data. In: Hydrological processes. Vol. 18, S. 191-201.&lt;br/&gt;&lt;br/&gt;Milledge, D.G.; Lane, N.S.; Heathwait, A.L.; Reaney, S.M. (2012): A monte carlo approach to the invers problem of diffuse pollution risk in agricultural catchments. In: Science of the Total Environment. Vol. 433, S. 434-449.&lt;br/&gt;]]></help>

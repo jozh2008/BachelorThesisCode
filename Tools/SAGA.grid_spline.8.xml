@@ -29,7 +29,7 @@ response $response
 outputType_GRIDS $OutputSection_GRIDS.outputType_GRIDS
 transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="Z_FIELD" type="data" optional="false" label="Z" help="Z The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="Z_SCALE" type="float" value="1" optional="true" label="Z Factor" help="Z Factor"/>
     <param name="V_FIELD" type="data" optional="false" label="Value" help="Value The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -48,7 +48,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="TARGET_USER_ZSIZE" type="float" value="1" optional="true" label="Cellsize" help="Cellsize"/>
     <param name="TARGET_USER_ZMIN" type="float" value="0" optional="true" label="Bottom" help="Bottom"/>
     <param name="TARGET_USER_ZMAX" type="float" value="100" optional="true" label="Top" help="Top"/>
@@ -78,7 +78,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRIDS" format="tiff" hidden="false">
+    <data name="output_data_GRIDS" format="tiff" label="output_data_GRIDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRIDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -89,8 +89,8 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRIDS" ftype="txt" value="output_data_GRIDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Multilevel B-spline algorithm for spatial interpolation of scattered data as proposed by Lee, Wolberg and Shin (1997) modified for 3D data.&lt;br/&gt;The algorithm makes use of a coarse-to-fine hierarchy of control lattices to generate a sequence of bicubic B-spline functions, whose sum approaches the desired interpolation function. Performance gains are realized by using B-spline refinement to reduce the sum of these functions into one equivalent B-spline function. &lt;br/&gt;&lt;br/&gt;The 'Maximum Level' determines the maximum size of the final B-spline matrix and increases exponential with each level. Where level=10 requires about 1mb level=12 needs about 16mb and level=14 about 256mb(!) of additional memory. ]]></help>

@@ -4,14 +4,14 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayinpoints False  isArrayelev.geoid False  output_data_outgeom $output_data_outgeom  output_data_outstat $output_data_outstat  output_data_outvector $output_data_outvector  name OTB.GenerateRPCSensorModel inpoints $inpoints
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayinpoints False  isArrayelev_geoid False  output_data_outgeom $output_data_outgeom  output_data_outstat $output_data_outstat  output_data_outvector $output_data_outvector  name OTB.GenerateRPCSensorModel inpoints $inpoints
 map $map
-map.utm.zone $map.utm.zone
-map.utm.northhem $map.utm.northhem
-map.epsg.code $map.epsg.code
-elev.dem '$elev.dem'
-elev.geoid $elev.geoid
-elev.default $elev.default
+map_utm_zone $map_utm_zone
+map_utm_northhem $map_utm_northhem
+map_epsg_code $map_epsg_code
+elev_dem '$elev_dem'
+elev_geoid $elev_geoid
+elev_default $elev_default
 prefer $prefer
 response $response
 outputType_outgeom $OutputSection_outgeom.outputType_outgeom
@@ -21,7 +21,7 @@ transmissionMode_outstat $OutputSection_outstat.transmissionMode_outstat
 outputType_outvector $OutputSection_outvector.outputType_outvector
 transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]></command>
   <inputs>
-    <param name="inpoints" type="data" optional="false" label="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored." help="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="inpoints" type="data" optional="false" label="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored." help="Input file containing tie points. Points are stored in following format: col row lon lat. Spaced by a space or tab character. Line beginning with # are ignored. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="map" type="select" optional="false" label="Defines the map projection to be used." help="Defines the map projection to be used.">
       <option value="epsg">epsg</option>
       <option value="lambert2">lambert2</option>
@@ -29,15 +29,15 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
       <option selected="true" value="utm">utm</option>
       <option value="wgs">wgs</option>
     </param>
-    <param name="map.utm.zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
-    <param name="map.utm.northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
+    <param name="map_utm_zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
+    <param name="map_utm_northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="map.epsg.code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
-    <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
-    <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
-    <param name="elev.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
+    <param name="map_epsg_code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
+    <param name="elev_dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
+    <param name="elev_geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
+    <param name="elev_default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -79,19 +79,19 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_outgeom" format="xml" hidden="false">
+    <data name="output_data_outgeom" format="xml" label="output_data_outgeom" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_outgeom" format="plain" value="text/plain"/>
       </change_format>
     </data>
-    <data name="output_data_outstat" format="xml" hidden="false">
+    <data name="output_data_outstat" format="xml" label="output_data_outstat" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_outstat" format="plain" value="text/plain"/>
       </change_format>
     </data>
-    <data name="output_data_outvector" format="xml" hidden="false">
+    <data name="output_data_outvector" format="xml" label="output_data_outvector" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_outvector" format="plain" value="text/plain"/>
@@ -100,8 +100,10 @@ transmissionMode_outvector $OutputSection_outvector.transmissionMode_outvector]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_outgeom" ftype="txt" value="output_data_outgeom.txt"/>
+      <output name="output_data_outstat" ftype="txt" value="output_data_outstat.txt"/>
+      <output name="output_data_outvector" ftype="txt" value="output_data_outvector.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application generates a RPC sensor model from a list of Ground Control Points. At least 20 points are required for estimation without elevation support, and 40 points for estimation with elevation support. Elevation support will be automatically deactivated if an insufficient amount of points is provided. The application can optionally output a file containing accuracy statistics for each point, and a vector file containing segments representing points residues. The map projection parameter allows defining a map projection in which the accuracy is evaluated.]]></help>

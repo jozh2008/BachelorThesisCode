@@ -87,12 +87,12 @@ transmissionMode_AGGREGATED $OutputSection_AGGREGATED.transmissionMode_AGGREGATE
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_AGGREGATED" format="csv" hidden="false"/>
+    <data name="output_data_AGGREGATED" format="csv" label="output_data_AGGREGATED" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_AGGREGATED" ftype="txt" value="output_data_AGGREGATED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Aggregate Values by Attributes]]></help>

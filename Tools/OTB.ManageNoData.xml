@@ -4,22 +4,22 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymode.apply.mask False  output_data_out $output_data_out  name OTB.ManageNoData in $in
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymode_apply_mask False  output_data_out $output_data_out  name OTB.ManageNoData in $in
 out $out
 usenan $usenan
 mode $mode
-mode.buildmask.inv $mode.buildmask.inv
-mode.buildmask.outv $mode.buildmask.outv
-mode.changevalue.newv $mode.changevalue.newv
-mode.apply.mask $mode.apply.mask
-mode.apply.ndval $mode.apply.ndval
+mode_buildmask_inv $mode_buildmask_inv
+mode_buildmask_outv $mode_buildmask_outv
+mode_changevalue_newv $mode_changevalue_newv
+mode_apply_mask $mode_apply_mask
+mode_apply_ndval $mode_apply_ndval
 ram $ram
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image" help="Output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -37,11 +37,11 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="buildmask">buildmask</option>
       <option value="changevalue">changevalue</option>
     </param>
-    <param name="mode.buildmask.inv" type="float" value="1" optional="false" label="Value given in the output mask to pixels that are not no data pixels" help="Value given in the output mask to pixels that are not no data pixels"/>
-    <param name="mode.buildmask.outv" type="float" value="0" optional="false" label="Value given in the output mask to pixels that are no data pixels" help="Value given in the output mask to pixels that are no data pixels"/>
-    <param name="mode.changevalue.newv" type="float" value="0" optional="false" label="The new no-data value" help="The new no-data value"/>
-    <param name="mode.apply.mask" type="data" optional="false" label="Mask to be applied on input image (valid pixels have non null values)" help="Mask to be applied on input image (valid pixels have non null values) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="mode.apply.ndval" type="float" value="0" optional="false" label="No Data value used according to the mask image" help="No Data value used according to the mask image"/>
+    <param name="mode_buildmask_inv" type="float" value="1" optional="false" label="Value given in the output mask to pixels that are not no data pixels" help="Value given in the output mask to pixels that are not no data pixels"/>
+    <param name="mode_buildmask_outv" type="float" value="0" optional="false" label="Value given in the output mask to pixels that are no data pixels" help="Value given in the output mask to pixels that are no data pixels"/>
+    <param name="mode_changevalue_newv" type="float" value="0" optional="false" label="The new no-data value" help="The new no-data value"/>
+    <param name="mode_apply_mask" type="data" optional="false" label="Mask to be applied on input image (valid pixels have non null values)" help="Mask to be applied on input image (valid pixels have non null values) The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="mode_apply_ndval" type="float" value="0" optional="false" label="No Data value used according to the mask image" help="No Data value used according to the mask image"/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -65,7 +65,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -75,8 +75,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application has two modes. The first allows building a mask of no-data pixels from the no-data flags read from the image file. The second allows updating the change the no-data value of an image (pixels value and metadata). This last mode also allows replacing NaN in images with a proper no-data value. To do so, one should activate the NaN is no-data option.]]></help>

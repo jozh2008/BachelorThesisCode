@@ -35,12 +35,12 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_RESULT" format="x-ogc-lasf" label="output_data_RESULT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[This simple thinning tool reduces the number of points in a point cloud by sequential point removal. It is therefore most suited for points stored in chronological order. ]]></help>

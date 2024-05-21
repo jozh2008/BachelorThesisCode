@@ -39,12 +39,12 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TABLE" format="csv" hidden="false"/>
+    <data name="output_data_TABLE" format="csv" label="output_data_TABLE" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TABLE" ftype="txt" value="output_data_TABLE.txt"/>
     </test>
   </tests>
   <help><![CDATA[A simple litter system model using the euler method. Carbon storage C is calculated in dependency of litter fall rate (Cinput) and rate constant for litter loss (Closs) as:&lt;br/&gt;C(t + 1) = C(t) + (Cinput - Closs * C(t)) * dt&lt;br/&gt;&lt;br/&gt;Typical values:&lt;br/&gt;&lt;br/&gt;- Tropical Rainforest:&lt;br/&gt;-- Litter fall rate: 500 [g/m&lt;sup&gt;2&lt;/sup&gt;/a]&lt;br/&gt;-- Litter loss rate: 2.0 [1/a]&lt;br/&gt;&lt;br/&gt;- Temperate forest:&lt;br/&gt;-- Litter fall rate: 240 [g/m&lt;sup&gt;2&lt;/sup&gt;/a]&lt;br/&gt;-- Litter loss rate: 0.4 [1/a]&lt;br/&gt;&lt;br/&gt;- Boreal forest:&lt;br/&gt;-- Litter fall rate: 50 [g/m&lt;sup&gt;2&lt;/sup&gt;/a]&lt;br/&gt;-- Litter loss rate: 0.05 [1/a]&lt;br/&gt;&lt;br/&gt;Reference:&lt;br/&gt;Hugget, R.J. (1993): 'Modelling the Human Impact on Nature', Oxford University Press.&lt;br/&gt;]]></help>

@@ -14,8 +14,8 @@ response $response
 outputType_DEM_PREPROC $OutputSection_DEM_PREPROC.outputType_DEM_PREPROC
 transmissionMode_DEM_PREPROC $OutputSection_DEM_PREPROC.transmissionMode_DEM_PREPROC]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="Digital Elevation Model that has to be processed The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="SINKROUTE" type="data" optional="false" label="Sink Route" help="Sink Route The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="Digital Elevation Model that has to be processed The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Sink Route" help="Sink Route The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="Deepen_Drainage_Routes">Deepen Drainage Routes</option>
       <option selected="true" value="Fill_Sinks">Fill Sinks</option>
@@ -48,7 +48,7 @@ transmissionMode_DEM_PREPROC $OutputSection_DEM_PREPROC.transmissionMode_DEM_PRE
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DEM_PREPROC" format="tiff" hidden="false">
+    <data name="output_data_DEM_PREPROC" format="tiff" label="output_data_DEM_PREPROC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DEM_PREPROC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -59,8 +59,8 @@ transmissionMode_DEM_PREPROC $OutputSection_DEM_PREPROC.transmissionMode_DEM_PRE
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DEM_PREPROC" ftype="txt" value="output_data_DEM_PREPROC.txt"/>
     </test>
   </tests>
   <help><![CDATA[Sink Removal]]></help>

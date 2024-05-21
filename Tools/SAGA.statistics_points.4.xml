@@ -16,7 +16,7 @@ transmissionMode_STDDIST $OutputSection_STDDIST.transmissionMode_STDDIST
 outputType_BBOX $OutputSection_BBOX.outputType_BBOX
 transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STEP" type="float" value="5" optional="true" label="Vertex Distance [Degree]" help="Vertex Distance [Degree]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -63,21 +63,21 @@ transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CENTRE" format="xml" hidden="false">
+    <data name="output_data_CENTRE" format="xml" label="output_data_CENTRE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CENTRE" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_CENTRE" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_STDDIST" format="xml" hidden="false">
+    <data name="output_data_STDDIST" format="xml" label="output_data_STDDIST" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDIST" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_STDDIST" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_BBOX" format="xml" hidden="false">
+    <data name="output_data_BBOX" format="xml" label="output_data_BBOX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BBOX" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -87,8 +87,10 @@ transmissionMode_BBOX $OutputSection_BBOX.transmissionMode_BBOX]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CENTRE" ftype="txt" value="output_data_CENTRE.txt"/>
+      <output name="output_data_STDDIST" ftype="txt" value="output_data_STDDIST.txt"/>
+      <output name="output_data_BBOX" ftype="txt" value="output_data_BBOX.txt"/>
     </test>
   </tests>
   <help><![CDATA[Basic measures for spatial point patterns.]]></help>

@@ -35,7 +35,7 @@ transmissionMode_C_TOTA $OutputSection_C_TOTA.transmissionMode_C_TOTA
 outputType_C_ROTO $OutputSection_C_ROTO.outputType_C_ROTO
 transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="10_parameter_3rd_order_polynom_(Haralick_1983)">10 parameter 3rd order polynom (Haralick 1983)</option>
       <option value="6_parameter_2nd_order_polynom_(Bauer,_Rohdenburg">6 parameter 2nd order polynom (Bauer, Rohdenburg</option>
@@ -210,7 +210,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SLOPE" format="tiff" hidden="false">
+    <data name="output_data_SLOPE" format="tiff" label="output_data_SLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -218,7 +218,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_SLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ASPECT" format="tiff" hidden="false">
+    <data name="output_data_ASPECT" format="tiff" label="output_data_ASPECT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ASPECT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -226,7 +226,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_ASPECT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_GENE" format="tiff" hidden="false">
+    <data name="output_data_C_GENE" format="tiff" label="output_data_C_GENE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_GENE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -234,7 +234,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_GENE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_PROF" format="tiff" hidden="false">
+    <data name="output_data_C_PROF" format="tiff" label="output_data_C_PROF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_PROF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -242,7 +242,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_PROF" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_PLAN" format="tiff" hidden="false">
+    <data name="output_data_C_PLAN" format="tiff" label="output_data_C_PLAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_PLAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -250,7 +250,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_PLAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_TANG" format="tiff" hidden="false">
+    <data name="output_data_C_TANG" format="tiff" label="output_data_C_TANG" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_TANG" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -258,7 +258,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_TANG" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_LONG" format="tiff" hidden="false">
+    <data name="output_data_C_LONG" format="tiff" label="output_data_C_LONG" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_LONG" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -266,7 +266,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_LONG" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_CROS" format="tiff" hidden="false">
+    <data name="output_data_C_CROS" format="tiff" label="output_data_C_CROS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_CROS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -274,7 +274,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_CROS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_MINI" format="tiff" hidden="false">
+    <data name="output_data_C_MINI" format="tiff" label="output_data_C_MINI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_MINI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -282,7 +282,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_MINI" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_MAXI" format="tiff" hidden="false">
+    <data name="output_data_C_MAXI" format="tiff" label="output_data_C_MAXI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_MAXI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -290,7 +290,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_MAXI" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_TOTA" format="tiff" hidden="false">
+    <data name="output_data_C_TOTA" format="tiff" label="output_data_C_TOTA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_TOTA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -298,7 +298,7 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
         <when input="outputType_C_TOTA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C_ROTO" format="tiff" hidden="false">
+    <data name="output_data_C_ROTO" format="tiff" label="output_data_C_ROTO" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C_ROTO" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -309,8 +309,19 @@ transmissionMode_C_ROTO $OutputSection_C_ROTO.transmissionMode_C_ROTO]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SLOPE" ftype="txt" value="output_data_SLOPE.txt"/>
+      <output name="output_data_ASPECT" ftype="txt" value="output_data_ASPECT.txt"/>
+      <output name="output_data_C_GENE" ftype="txt" value="output_data_C_GENE.txt"/>
+      <output name="output_data_C_PROF" ftype="txt" value="output_data_C_PROF.txt"/>
+      <output name="output_data_C_PLAN" ftype="txt" value="output_data_C_PLAN.txt"/>
+      <output name="output_data_C_TANG" ftype="txt" value="output_data_C_TANG.txt"/>
+      <output name="output_data_C_LONG" ftype="txt" value="output_data_C_LONG.txt"/>
+      <output name="output_data_C_CROS" ftype="txt" value="output_data_C_CROS.txt"/>
+      <output name="output_data_C_MINI" ftype="txt" value="output_data_C_MINI.txt"/>
+      <output name="output_data_C_MAXI" ftype="txt" value="output_data_C_MAXI.txt"/>
+      <output name="output_data_C_TOTA" ftype="txt" value="output_data_C_TOTA.txt"/>
+      <output name="output_data_C_ROTO" ftype="txt" value="output_data_C_ROTO.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates the local morphometric terrain parameters slope, aspect and if supported by the chosen method also the curvature. Besides tangential curvature also its horizontal and vertical components (i.e. plan and profile curvature) can be calculated.]]></help>

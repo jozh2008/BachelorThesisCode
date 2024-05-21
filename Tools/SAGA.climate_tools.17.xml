@@ -20,8 +20,8 @@ transmissionMode_MAXIMUM $OutputSection_MAXIMUM.transmissionMode_MAXIMUM
 outputType_QUANTILE $OutputSection_QUANTILE.outputType_QUANTILE
 transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="QUANT_VAL" type="float" value="50" optional="true" label="Value" help="Value"/>
     <param name="TIME" type="select" optional="true" label="Time" help="Time">
       <option value="April_-_June">April - June</option>
@@ -104,7 +104,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DAYS" format="tiff" hidden="false">
+    <data name="output_data_DAYS" format="tiff" label="output_data_DAYS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DAYS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -112,7 +112,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
         <when input="outputType_DAYS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MEAN" format="tiff" hidden="false">
+    <data name="output_data_MEAN" format="tiff" label="output_data_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -120,7 +120,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
         <when input="outputType_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAXIMUM" format="tiff" hidden="false">
+    <data name="output_data_MAXIMUM" format="tiff" label="output_data_MAXIMUM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAXIMUM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -128,7 +128,7 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
         <when input="outputType_MAXIMUM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_QUANTILE" format="tiff" hidden="false">
+    <data name="output_data_QUANTILE" format="tiff" label="output_data_QUANTILE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_QUANTILE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -139,8 +139,11 @@ transmissionMode_QUANTILE $OutputSection_QUANTILE.transmissionMode_QUANTILE]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DAYS" ftype="txt" value="output_data_DAYS.txt"/>
+      <output name="output_data_MEAN" ftype="txt" value="output_data_MEAN.txt"/>
+      <output name="output_data_MAXIMUM" ftype="txt" value="output_data_MAXIMUM.txt"/>
+      <output name="output_data_QUANTILE" ftype="txt" value="output_data_QUANTILE.txt"/>
     </test>
   </tests>
   <help><![CDATA[The 'Snow Cover' tool uses a simple model to estimate snow cover statistics from climate data. When temperature falls below zero any precipitation is accumulated as snow. Temperatures above zero will diminish accumulated snow successively until it is gone completely. Simulation is done on a daily basis. If you supply the tool with monthly averages, temperatures will be interpolated using a spline and precipitation will be splitted into separate events. The latter is done with respect to the monthly mean temperature, i.e. the higher the temperature the more concentrated are precipitation events and vice versa. ]]></help>

@@ -14,7 +14,7 @@ response $response
 outputType_INSOLATION $OutputSection_INSOLATION.outputType_INSOLATION
 transmissionMode_INSOLATION $OutputSection_INSOLATION.transmissionMode_INSOLATION]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="STEPS" type="integer" value="14" optional="true" label="Number of Steps" help="Number of time steps per year."/>
     <param name="UNITS" type="select" optional="true" label="Units" help="Units for output radiation values.">
       <option value="J_/_cm2">J / cm2</option>
@@ -46,7 +46,7 @@ transmissionMode_INSOLATION $OutputSection_INSOLATION.transmissionMode_INSOLATIO
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_INSOLATION" format="tiff" hidden="false">
+    <data name="output_data_INSOLATION" format="tiff" label="output_data_INSOLATION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_INSOLATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -57,8 +57,8 @@ transmissionMode_INSOLATION $OutputSection_INSOLATION.transmissionMode_INSOLATIO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_INSOLATION" ftype="txt" value="output_data_INSOLATION.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates the annual potential total insolation for given time steps and stores resulting time series in a grid collection. ]]></help>

@@ -39,12 +39,12 @@ transmissionMode_NOGAPS $OutputSection_NOGAPS.transmissionMode_NOGAPS]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_NOGAPS" format="csv" hidden="false"/>
+    <data name="output_data_NOGAPS" format="csv" label="output_data_NOGAPS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_NOGAPS" ftype="txt" value="output_data_NOGAPS.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool inserts records where the chosen order field has gaps expecting an increment of one. It is assumed that the order field represents integers.]]></help>

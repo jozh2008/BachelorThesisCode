@@ -15,8 +15,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT
 outputType_RETENTION $OutputSection_RETENTION.outputType_RETENTION
 transmissionMode_RETENTION $OutputSection_RETENTION.transmissionMode_RETENTION]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Plot Holes" help="Plot Holes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Plot Holes" help="Plot Holes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="INTERPOL" type="select" optional="true" label="Interpolation" help="Interpolation">
       <option value="Inverse_Distance_Weighted">Inverse Distance Weighted</option>
       <option selected="true" value="Multilevel_B-Spline_Interpolation">Multilevel B-Spline Interpolation</option>
@@ -59,14 +59,14 @@ transmissionMode_RETENTION $OutputSection_RETENTION.transmissionMode_RETENTION]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="xml" hidden="false">
+    <data name="output_data_OUTPUT" format="xml" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_OUTPUT" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_RETENTION" format="tiff" hidden="false">
+    <data name="output_data_RETENTION" format="tiff" label="output_data_RETENTION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RETENTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -77,8 +77,9 @@ transmissionMode_RETENTION $OutputSection_RETENTION.transmissionMode_RETENTION]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
+      <output name="output_data_RETENTION" ftype="txt" value="output_data_RETENTION.txt"/>
     </test>
   </tests>
   <help><![CDATA[Water Retention Capacity. Plot hole input data must provide five attributes for each soil horizon in the following order and meaning:&lt;br/&gt;horizon depth, TF, L, Ar, Mo.]]></help>

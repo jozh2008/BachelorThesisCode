@@ -15,8 +15,8 @@ response $response
 outputType_FRAGMENTATION $OutputSection_FRAGMENTATION.outputType_FRAGMENTATION
 transmissionMode_FRAGMENTATION $OutputSection_FRAGMENTATION.transmissionMode_FRAGMENTATION]]></command>
   <inputs>
-    <param name="DENSITY" type="data" optional="false" label="Density [Percent]" help="Density Index (Pf). The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="CONNECTIVITY" type="data" optional="false" label="Connectivity [Percent]" help="Connectivity Index (Pff). The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="DENSITY" type="data" optional="false" label="Density [Percent]" help="Density Index (Pf). The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="CONNECTIVITY" type="data" optional="false" label="Connectivity [Percent]" help="Connectivity Index (Pff). The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="BORDER" type="select" optional="true" label="Add Border" help="Add Border">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -47,7 +47,7 @@ transmissionMode_FRAGMENTATION $OutputSection_FRAGMENTATION.transmissionMode_FRA
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FRAGMENTATION" format="tiff" hidden="false">
+    <data name="output_data_FRAGMENTATION" format="tiff" label="output_data_FRAGMENTATION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FRAGMENTATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -58,8 +58,8 @@ transmissionMode_FRAGMENTATION $OutputSection_FRAGMENTATION.transmissionMode_FRA
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FRAGMENTATION" ftype="txt" value="output_data_FRAGMENTATION.txt"/>
     </test>
   </tests>
   <help><![CDATA[Fragmentation classes:&lt;br/&gt;(1) interior, if Density = 1.0&lt;br/&gt;(2) undetermined, if Density &gt; 0.6 and Density = Connectivity&lt;br/&gt;(3) perforated, if Density &gt; 0.6 and Density - Connectivity &gt; 0&lt;br/&gt;(4) edge, if Density &gt; 0.6 and Density - Connectivity &lt; 0&lt;br/&gt;(5) transitional, if 0.4 &lt; Density &lt; 0.6&lt;br/&gt;(6) patch, if Density &lt; 0.4&lt;br/&gt;]]></help>

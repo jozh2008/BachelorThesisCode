@@ -39,7 +39,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT" format="tiff" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -50,8 +50,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[BSL from File]]></help>

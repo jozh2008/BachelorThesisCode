@@ -12,7 +12,7 @@ response $response
 outputType_POINTS $OutputSection_POINTS.outputType_POINTS
 transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="ZFIELD" type="data" optional="false" label="Z Value" help="Z Value The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output" help="Output">
       <option value="all_attributes">all attributes</option>
@@ -38,12 +38,12 @@ transmissionMode_POINTS $OutputSection_POINTS.transmissionMode_POINTS]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_POINTS" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_POINTS" format="x-ogc-lasf" label="output_data_POINTS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_POINTS" ftype="txt" value="output_data_POINTS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Point Cloud from Shapes]]></help>

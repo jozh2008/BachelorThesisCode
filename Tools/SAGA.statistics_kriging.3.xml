@@ -45,9 +45,9 @@ transmissionMode_INFO_MODEL $OutputSection_INFO_MODEL.transmissionMode_INFO_MODE
 outputType_INFO_STEPS $OutputSection_INFO_STEPS.outputType_INFO_STEPS
 transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEPS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="COORD_X" type="select" optional="true" label="Include X Coordinate" help="Include X Coordinate">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -195,7 +195,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+    <data name="output_data_REGRESSION" format="tiff" label="output_data_REGRESSION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -203,7 +203,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <when input="outputType_REGRESSION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PREDICTION" format="tiff" hidden="false">
+    <data name="output_data_PREDICTION" format="tiff" label="output_data_PREDICTION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PREDICTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -211,7 +211,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <when input="outputType_PREDICTION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RESIDUALS" format="tiff" hidden="false">
+    <data name="output_data_RESIDUALS" format="tiff" label="output_data_RESIDUALS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESIDUALS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -219,7 +219,7 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <when input="outputType_RESIDUALS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+    <data name="output_data_VARIANCE" format="tiff" label="output_data_VARIANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -227,14 +227,20 @@ transmissionMode_INFO_STEPS $OutputSection_INFO_STEPS.transmissionMode_INFO_STEP
         <when input="outputType_VARIANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_INFO_COEFF" format="csv" hidden="false"/>
-    <data name="output_data_INFO_MODEL" format="csv" hidden="false"/>
-    <data name="output_data_INFO_STEPS" format="csv" hidden="false"/>
+    <data name="output_data_INFO_COEFF" format="csv" label="output_data_INFO_COEFF" hidden="false"/>
+    <data name="output_data_INFO_MODEL" format="csv" label="output_data_INFO_MODEL" hidden="false"/>
+    <data name="output_data_INFO_STEPS" format="csv" label="output_data_INFO_STEPS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_REGRESSION" ftype="txt" value="output_data_REGRESSION.txt"/>
+      <output name="output_data_PREDICTION" ftype="txt" value="output_data_PREDICTION.txt"/>
+      <output name="output_data_RESIDUALS" ftype="txt" value="output_data_RESIDUALS.txt"/>
+      <output name="output_data_VARIANCE" ftype="txt" value="output_data_VARIANCE.txt"/>
+      <output name="output_data_INFO_COEFF" ftype="txt" value="output_data_INFO_COEFF.txt"/>
+      <output name="output_data_INFO_MODEL" ftype="txt" value="output_data_INFO_MODEL.txt"/>
+      <output name="output_data_INFO_STEPS" ftype="txt" value="output_data_INFO_STEPS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Regression Kriging for grid interpolation from irregular sample points.]]></help>

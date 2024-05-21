@@ -4,19 +4,19 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_output.idx $output_data_output.idx  output_data_output.idy $output_data_output.idy  output_data_output.town $output_data_output.town  output_data_output.country $output_data_output.country  name OTB.ConvertSensorToGeoPoint in $in
-input.idx $input.idx
-input.idy $input.idy
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_output_idx $output_data_output_idx  output_data_output_idy $output_data_output_idy  output_data_output_town $output_data_output_town  output_data_output_country $output_data_output_country  name OTB.ConvertSensorToGeoPoint in $in
+input_idx $input_idx
+input_idy $input_idy
 prefer $prefer
 response $response
-transmissionMode_output.idx $OutputSection_output.idx.transmissionMode_output.idx
-transmissionMode_output.idy $OutputSection_output.idy.transmissionMode_output.idy
-transmissionMode_output.town $OutputSection_output.town.transmissionMode_output.town
-transmissionMode_output.country $OutputSection_output.country.transmissionMode_output.country]]></command>
+transmissionMode_output_idx $OutputSection_output_idx.transmissionMode_output_idx
+transmissionMode_output_idy $OutputSection_output_idy.transmissionMode_output_idy
+transmissionMode_output_town $OutputSection_output_town.transmissionMode_output_town
+transmissionMode_output_country $OutputSection_output_country.transmissionMode_output_country]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input sensor image." help="Input sensor image. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="input.idx" type="float" value="0" optional="false" label="X coordinate of the point to transform." help="X coordinate of the point to transform."/>
-    <param name="input.idy" type="float" value="0" optional="false" label="Y coordinate of the point to transform." help="Y coordinate of the point to transform."/>
+    <param name="in" type="data" optional="false" label="Input sensor image." help="Input sensor image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="input_idx" type="float" value="0" optional="false" label="X coordinate of the point to transform." help="X coordinate of the point to transform."/>
+    <param name="input_idy" type="float" value="0" optional="false" label="Y coordinate of the point to transform." help="Y coordinate of the point to transform."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -26,41 +26,44 @@ transmissionMode_output.country $OutputSection_output.country.transmissionMode_o
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_output.idx" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_output.idx" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_output_idx" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_output_idx" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_output.idy" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_output.idy" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_output_idy" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_output_idy" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_output.town" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_output.town" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_output_town" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_output_town" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_output.country" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_output.country" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_output_country" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_output_country" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_output.idx" format="txt" hidden="false"/>
-    <data name="output_data_output.idy" format="txt" hidden="false"/>
-    <data name="output_data_output.town" format="txt" hidden="false"/>
-    <data name="output_data_output.country" format="txt" hidden="false"/>
+    <data name="output_data_output_idx" format="txt" label="output_data_output_idx" hidden="false"/>
+    <data name="output_data_output_idy" format="txt" label="output_data_output_idy" hidden="false"/>
+    <data name="output_data_output_town" format="txt" label="output_data_output_town" hidden="false"/>
+    <data name="output_data_output_country" format="txt" label="output_data_output_country" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_output_idx" ftype="txt" value="output_data_output_idx.txt"/>
+      <output name="output_data_output_idy" ftype="txt" value="output_data_output_idy.txt"/>
+      <output name="output_data_output_town" ftype="txt" value="output_data_output_town.txt"/>
+      <output name="output_data_output_country" ftype="txt" value="output_data_output_country.txt"/>
     </test>
   </tests>
   <help><![CDATA[This Application converts a sensor point of an input image to a geographic point using the Forward Sensor Model of the input image.]]></help>

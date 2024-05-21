@@ -11,7 +11,7 @@ response $response
 outputType_GRID $OutputSection_GRID.outputType_GRID
 transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grid List" help="Grid List The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grid List" help="Grid List The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="INDEX" type="integer" value="0" optional="true" label="Index" help="Index"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -36,7 +36,7 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRID" format="tiff" hidden="false">
+    <data name="output_data_GRID" format="tiff" label="output_data_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -47,8 +47,8 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRID" ftype="txt" value="output_data_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[Main use of this tool is to support tool chain development, allowing to pick a single grid from a grid list. ]]></help>

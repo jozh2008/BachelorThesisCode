@@ -12,8 +12,8 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="Layer A" help="Layer A The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
-    <param name="B" type="data" optional="false" label="Layer B" help="Layer B The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="A" type="data" optional="false" label="Layer A" help="Layer A The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="B" type="data" optional="false" label="Layer B" help="Layer B The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="SPLIT" type="select" optional="true" label="Split Parts" help="Set true if you want multipart polygons to become separate polygons.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -40,7 +40,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="xml" hidden="false">
+    <data name="output_data_RESULT" format="xml" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -50,8 +50,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates the geometric intersection of the overlayed polygon layers, i.e. layer A and layer B.&lt;br/&gt;Uses the free and open source software library &lt;b&gt;Clipper&lt;/b&gt; created by Angus Johnson.&lt;br/&gt;&lt;a target="_blank" href="http://www.angusj.com/delphi/clipper.php"&gt;Clipper Homepage&lt;/a&gt;&lt;br/&gt;&lt;a target="_blank" href="http://sourceforge.net/projects/polyclipping/"&gt;Clipper at SourceForge&lt;/a&gt;&lt;br/&gt;]]></help>

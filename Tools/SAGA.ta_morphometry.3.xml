@@ -12,7 +12,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Algorithm for the detection of Surface Specific Points">
       <option value="Flow_Direction">Flow Direction</option>
       <option value="Flow_Direction_(up_and_down)">Flow Direction (up and down)</option>
@@ -44,7 +44,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="tiff" hidden="false">
+    <data name="output_data_RESULT" format="tiff" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -55,8 +55,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[References:&lt;br/&gt;Peucker, T.K. and Douglas, D.H., 1975:&lt;br/&gt;'Detection of surface-specific points by local parallel processing of discrete terrain elevation data',&lt;br/&gt;Computer Graphics and Image Processing, 4, 375-387&lt;br/&gt;]]></help>

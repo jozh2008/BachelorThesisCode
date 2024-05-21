@@ -33,12 +33,12 @@ transmissionMode_PC $OutputSection_PC.transmissionMode_PC]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PC" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_PC" format="x-ogc-lasf" label="output_data_PC" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PC" ftype="txt" value="output_data_PC.txt"/>
     </test>
   </tests>
   <help><![CDATA[Main use of this tool is to support tool chain development, allowing to pick a single point cloud from a point cloud list.&lt;br/&gt;]]></help>

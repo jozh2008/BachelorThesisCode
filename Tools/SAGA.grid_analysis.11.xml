@@ -12,7 +12,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Input Grids" help="Input Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Input Grids" help="Input Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="ORDERED" type="select" optional="true" label="Ordered" help="Ordered">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -41,7 +41,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT" format="tiff" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -52,8 +52,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[The ordered weighted averaging (OWA) tool calculates for each cell the weighted average from the values of the supplied grids. The weighting factor for each grid value is defined with the 'Weights' table. If the 'Ordered' flag is unchecked, the order of the weights correspond to the order of the grids in the input list. If the 'Ordered' flag is checked, the grid values will be sorted and the weights will be assigned to the values in their ascending order, i.e. from the lowest to the highest value. ]]></help>

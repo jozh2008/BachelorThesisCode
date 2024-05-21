@@ -12,7 +12,7 @@ transmissionMode_LON $OutputSection_LON.transmissionMode_LON
 outputType_LAT $OutputSection_LAT.outputType_LAT
 transmissionMode_LAT $OutputSection_LAT.transmissionMode_LAT]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -48,7 +48,7 @@ transmissionMode_LAT $OutputSection_LAT.transmissionMode_LAT]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_LON" format="tiff" hidden="false">
+    <data name="output_data_LON" format="tiff" label="output_data_LON" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LON" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -56,7 +56,7 @@ transmissionMode_LAT $OutputSection_LAT.transmissionMode_LAT]]></command>
         <when input="outputType_LON" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_LAT" format="tiff" hidden="false">
+    <data name="output_data_LAT" format="tiff" label="output_data_LAT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LAT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -67,8 +67,9 @@ transmissionMode_LAT $OutputSection_LAT.transmissionMode_LAT]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_LON" ftype="txt" value="output_data_LON.txt"/>
+      <output name="output_data_LAT" ftype="txt" value="output_data_LAT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates for a given grid geographic coordinate information, i.e. two grids specifying the longitude and latitude for each cell. The coordinate system of the input grid has to be defined. &lt;br/&gt;Projection routines make use of the Proj.4 Cartographic Projections library.&lt;br/&gt;Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).&lt;br/&gt;Proj.4 Version is Rel. 5.2.0, September 15th, 2018&lt;br/&gt;&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;]]></help>

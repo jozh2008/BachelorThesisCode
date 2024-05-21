@@ -27,7 +27,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out
 outputType_som $OutputSection_som.outputType_som
 transmissionMode_som $OutputSection_som.transmissionMode_som]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image to classify." help="Input image to classify. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image to classify." help="Input image to classify. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output classified image (each pixel contains the index of its corresponding vector in the SOM)." help="Output classified image (each pixel contains the index of its corresponding vector in the SOM).">
       <option value="double">double</option>
       <option value="float">float</option>
@@ -36,7 +36,7 @@ transmissionMode_som $OutputSection_som.transmissionMode_som]]></command>
       <option value="uint16">uint16</option>
       <option selected="true" value="uint8">uint8</option>
     </param>
-    <param name="vm" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for learning)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for learning) The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="vm" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for learning)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for learning) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="tp" type="float" value="1" optional="true" label="Probability for a sample to be selected in the training set" help="Probability for a sample to be selected in the training set"/>
     <param name="ts" type="integer" optional="true" label="Maximum training set size (in pixels)" help="Maximum training set size (in pixels)"/>
     <param name="som" type="select" optional="true" label="Output image containing the Self-Organizing Map" help="Output image containing the Self-Organizing Map">
@@ -90,14 +90,14 @@ transmissionMode_som $OutputSection_som.transmissionMode_som]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
         <when input="outputType_out" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_som" format="tiff" hidden="false">
+    <data name="output_data_som" format="tiff" label="output_data_som" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_som" format="jpeg" value="image/jpeg"/>
@@ -107,8 +107,9 @@ transmissionMode_som $OutputSection_som.transmissionMode_som]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
+      <output name="output_data_som" ftype="txt" value="output_data_som.txt"/>
     </test>
   </tests>
   <help><![CDATA[Unsupervised Self Organizing Map image classification.]]></help>

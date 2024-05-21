@@ -16,8 +16,8 @@ response $response
 outputType_CONC $OutputSection_CONC.outputType_CONC
 transmissionMode_CONC $OutputSection_CONC.transmissionMode_CONC]]></command>
   <inputs>
-    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
-    <param name="GRAD" type="data" optional="false" label="Gradient" help="Gradient The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GRAD" type="data" optional="false" label="Gradient" help="Gradient The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="CONC_IN" type="float" value="5" optional="true" label="Inlet Concentration" help="Inlet Concentration"/>
     <param name="CONC_OUT" type="float" value="3" optional="true" label="Outlet Concentration" help="Outlet Concentration"/>
     <param name="CONC_E" type="float" value="0.001" optional="true" label="Concentration Approximation Threshold" help="Concentration Approximation Threshold"/>
@@ -50,7 +50,7 @@ transmissionMode_CONC $OutputSection_CONC.transmissionMode_CONC]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CONC" format="tiff" hidden="false">
+    <data name="output_data_CONC" format="tiff" label="output_data_CONC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CONC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -61,8 +61,8 @@ transmissionMode_CONC $OutputSection_CONC.transmissionMode_CONC]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CONC" ftype="txt" value="output_data_CONC.txt"/>
     </test>
   </tests>
   <help><![CDATA[Cellular automata are simple computational operators, but despite their simplicity, they allow the simulation of highly complex processes. This tool has been created to apply the concept of cellular automata to simulate diffusion and flow processes in shallow water bodies with in- and outflow, where monitoring data show concentration growth or decrease between the inflow and the outflow points. Parameters are for example nutrients like nitrate, which is reduced by denitrification process inside the water body.&lt;br/&gt;Values of mask grid are expected to be 1 for water area, 2 for inlet, 3 for outlet and 0 for non water.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Heinrich, R. / Conrad, O. (2008): Diffusion, Flow and Concentration Gradient Simulation with SAGA GIS using Cellular Automata Methods. In: Boehner, J. / Blaschke, T. / Montanarella, L. [Eds.]: SAGA - Seconds Out. Hamburger Beitraege zur Physischen Geographie und Landschaftsoekologie, Vol.19, p59-70, &lt;a href="http://downloads.sourceforge.net/saga-gis/hbpl19_07.pdf"&gt;online&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;br/&gt;]]></help>

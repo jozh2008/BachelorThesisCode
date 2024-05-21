@@ -48,8 +48,8 @@ transmissionMode_OUT_SHAPES $OutputSection_OUT_SHAPES.transmissionMode_OUT_SHAPE
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUT_TABLE" format="csv" hidden="false"/>
-    <data name="output_data_OUT_SHAPES" format="xml" hidden="false">
+    <data name="output_data_OUT_TABLE" format="csv" label="output_data_OUT_TABLE" hidden="false"/>
+    <data name="output_data_OUT_SHAPES" format="xml" label="output_data_OUT_SHAPES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUT_SHAPES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -59,8 +59,9 @@ transmissionMode_OUT_SHAPES $OutputSection_OUT_SHAPES.transmissionMode_OUT_SHAPE
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUT_TABLE" ftype="txt" value="output_data_OUT_TABLE.txt"/>
+      <output name="output_data_OUT_SHAPES" ftype="txt" value="output_data_OUT_SHAPES.txt"/>
     </test>
   </tests>
   <help><![CDATA[For the selected attribute or, if not specified, for all text attributes this tool replaces text strings with replacements as defined in table 'Text Replacements'.]]></help>

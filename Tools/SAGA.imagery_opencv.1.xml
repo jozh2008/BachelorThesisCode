@@ -12,7 +12,7 @@ transmissionMode_REAL $OutputSection_REAL.transmissionMode_REAL
 outputType_IMAG $OutputSection_IMAG.outputType_IMAG
 transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -48,7 +48,7 @@ transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_REAL" format="tiff" hidden="false">
+    <data name="output_data_REAL" format="tiff" label="output_data_REAL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -56,7 +56,7 @@ transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
         <when input="outputType_REAL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_IMAG" format="tiff" hidden="false">
+    <data name="output_data_IMAG" format="tiff" label="output_data_IMAG" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_IMAG" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -67,8 +67,9 @@ transmissionMode_IMAG $OutputSection_IMAG.transmissionMode_IMAG]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_REAL" ftype="txt" value="output_data_REAL.txt"/>
+      <output name="output_data_IMAG" ftype="txt" value="output_data_IMAG.txt"/>
     </test>
   </tests>
   <help><![CDATA[References:&lt;br/&gt;OpenCV - Open Source Computer Vision&lt;br/&gt;&lt;a target="_blank" href="http://opencv.willowgarage.com"&gt;http://opencv.willowgarage.com&lt;/a&gt;]]></help>

@@ -19,7 +19,7 @@ response $response
 outputType_PLOTS $OutputSection_PLOTS.outputType_PLOTS
 transmissionMode_PLOTS $OutputSection_PLOTS.transmissionMode_PLOTS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="STRIKE" type="data" optional="false" label="Strike" help="Strike The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DIP" type="data" optional="false" label="Dip" help="Dip The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RAKE" type="data" optional="false" label="Rake" help="Rake The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -54,7 +54,7 @@ transmissionMode_PLOTS $OutputSection_PLOTS.transmissionMode_PLOTS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PLOTS" format="xml" hidden="false">
+    <data name="output_data_PLOTS" format="xml" label="output_data_PLOTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PLOTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -64,8 +64,8 @@ transmissionMode_PLOTS $OutputSection_PLOTS.transmissionMode_PLOTS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PLOTS" ftype="txt" value="output_data_PLOTS.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool creates a new polygon layer with beachball plots as representation of focal mechanism solution data. Focal mechanism data of earthquakes have to be supplied as strike and dip angles of the fault plane and rake angle (slip vector) as deviation from the strike angle. ]]></help>

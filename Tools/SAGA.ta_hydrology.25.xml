@@ -28,7 +28,7 @@ outputType_BALANCE $OutputSection_BALANCE.outputType_BALANCE
 transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></command>
   <inputs>
     <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="FIELDS" type="data" optional="false" label="Fields" help="Fields The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="LS Calculation" help="LS Calculation">
       <option value="Desmet_&amp;_Govers_1996">Desmet &amp; Govers 1996</option>
       <option selected="true" value="Moore_&amp;_Nieber_1989">Moore &amp; Nieber 1989</option>
@@ -135,14 +135,14 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_STATISTICS" format="xml" hidden="false">
+    <data name="output_data_STATISTICS" format="xml" label="output_data_STATISTICS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATISTICS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_STATISTICS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_UPSLOPE_AREA" format="tiff" hidden="false">
+    <data name="output_data_UPSLOPE_AREA" format="tiff" label="output_data_UPSLOPE_AREA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_UPSLOPE_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -150,7 +150,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
         <when input="outputType_UPSLOPE_AREA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_UPSLOPE_LENGTH" format="tiff" hidden="false">
+    <data name="output_data_UPSLOPE_LENGTH" format="tiff" label="output_data_UPSLOPE_LENGTH" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_UPSLOPE_LENGTH" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -158,7 +158,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
         <when input="outputType_UPSLOPE_LENGTH" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_UPSLOPE_SLOPE" format="tiff" hidden="false">
+    <data name="output_data_UPSLOPE_SLOPE" format="tiff" label="output_data_UPSLOPE_SLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_UPSLOPE_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -166,7 +166,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
         <when input="outputType_UPSLOPE_SLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_LS_FACTOR" format="tiff" hidden="false">
+    <data name="output_data_LS_FACTOR" format="tiff" label="output_data_LS_FACTOR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LS_FACTOR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -174,7 +174,7 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
         <when input="outputType_LS_FACTOR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_BALANCE" format="tiff" hidden="false">
+    <data name="output_data_BALANCE" format="tiff" label="output_data_BALANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BALANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -185,8 +185,13 @@ transmissionMode_BALANCE $OutputSection_BALANCE.transmissionMode_BALANCE]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_STATISTICS" ftype="txt" value="output_data_STATISTICS.txt"/>
+      <output name="output_data_UPSLOPE_AREA" ftype="txt" value="output_data_UPSLOPE_AREA.txt"/>
+      <output name="output_data_UPSLOPE_LENGTH" ftype="txt" value="output_data_UPSLOPE_LENGTH.txt"/>
+      <output name="output_data_UPSLOPE_SLOPE" ftype="txt" value="output_data_UPSLOPE_SLOPE.txt"/>
+      <output name="output_data_LS_FACTOR" ftype="txt" value="output_data_LS_FACTOR.txt"/>
+      <output name="output_data_BALANCE" ftype="txt" value="output_data_BALANCE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculation of slope length (LS) factor as used for the Universal Soil Loss Equation (USLE), based on slope and (specific) catchment area, latter as substitute for slope length. This tool takes only a Digital Elevation Model (DEM) as input and derives catchment areas according to Freeman (1991). Optionally field polygons can be supplied. Is this the case, calculations will be performed field by field, i.e. catchment area calculation is restricted to each field's area.]]></help>

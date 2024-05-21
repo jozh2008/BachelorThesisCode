@@ -18,7 +18,7 @@ response $response
 outputType_FILTER $OutputSection_FILTER.outputType_FILTER
 transmissionMode_FILTER $OutputSection_FILTER.transmissionMode_FILTER]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RADIUS" type="float" value="1" optional="true" label="Radius" help="Radius"/>
     <param name="MINNUM" type="integer" value="0" optional="true" label="Minimum Number of Points" help="only points with given minimum number of points in search radius will be processed"/>
@@ -59,7 +59,7 @@ transmissionMode_FILTER $OutputSection_FILTER.transmissionMode_FILTER]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FILTER" format="xml" hidden="false">
+    <data name="output_data_FILTER" format="xml" label="output_data_FILTER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FILTER" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -69,8 +69,8 @@ transmissionMode_FILTER $OutputSection_FILTER.transmissionMode_FILTER]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FILTER" ftype="txt" value="output_data_FILTER.txt"/>
     </test>
   </tests>
   <help><![CDATA[Points Filter]]></help>

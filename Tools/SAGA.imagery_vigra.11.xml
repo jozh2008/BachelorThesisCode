@@ -69,12 +69,12 @@ transmissionMode_IMPORTANCES $OutputSection_IMPORTANCES.transmissionMode_IMPORTA
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_IMPORTANCES" format="csv" hidden="false"/>
+    <data name="output_data_IMPORTANCES" format="csv" label="output_data_IMPORTANCES" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_IMPORTANCES" ftype="txt" value="output_data_IMPORTANCES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Random Forest Table Classification (ViGrA)]]></help>

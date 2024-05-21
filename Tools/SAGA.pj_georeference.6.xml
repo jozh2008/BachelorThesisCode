@@ -60,7 +60,7 @@ transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_EXTENT" format="xml" hidden="false">
+    <data name="output_data_EXTENT" format="xml" label="output_data_EXTENT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_EXTENT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -70,8 +70,8 @@ transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_EXTENT" ftype="txt" value="output_data_EXTENT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a world file (RST = rotation, scaling, translation) for georeferencing images by direct georeferencing. Direct georeferencing uses extrinsic (position, attitude) and intrinsic (focal length, physical pixel size) camera parameters.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;Baumker, M. / Heimes, F.J. (2001): New Calibration and Computing Method for Direct Georeferencing of Image and Scanner Data Using the Position and Angular Data of an Hybrid Inertial Navigation System. OEEPE Workshop, Integrated Sensor Orientation, Hannover 2001. &lt;a target="_blank" href="http://www.hochschule-bochum.de/fileadmin/media/fb_v/veroeffentlichungen/baeumker/baheimesoeepe.pdf"&gt;online&lt;/a&gt;.&lt;br/&gt;]]></help>

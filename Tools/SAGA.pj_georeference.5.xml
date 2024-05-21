@@ -17,7 +17,7 @@ response $response
 outputType_REFERENCED $OutputSection_REFERENCED.outputType_REFERENCED
 transmissionMode_REFERENCED $OutputSection_REFERENCED.transmissionMode_REFERENCED]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="DEFINITION" type="select" optional="true" label="Definition" help="Definition">
       <option selected="true" value="cellsize_and_lower_left_cell_coordinates">cellsize and lower left cell coordinates</option>
       <option value="cellsize_and_upper_left_cell_coordinates">cellsize and upper left cell coordinates</option>
@@ -56,7 +56,7 @@ transmissionMode_REFERENCED $OutputSection_REFERENCED.transmissionMode_REFERENCE
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_REFERENCED" format="tiff" hidden="false">
+    <data name="output_data_REFERENCED" format="tiff" label="output_data_REFERENCED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REFERENCED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -67,8 +67,8 @@ transmissionMode_REFERENCED $OutputSection_REFERENCED.transmissionMode_REFERENCE
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_REFERENCED" ftype="txt" value="output_data_REFERENCED.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool simply allows definition of grid's cellsize and position. It does not perform any kind of warping but might be helpful, if the grid has lost this information or is already aligned with the coordinate system. ]]></help>

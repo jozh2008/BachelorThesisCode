@@ -10,7 +10,7 @@ response $response
 outputType_INVERSE $OutputSection_INVERSE.outputType_INVERSE
 transmissionMode_INVERSE $OutputSection_INVERSE.transmissionMode_INVERSE]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -34,7 +34,7 @@ transmissionMode_INVERSE $OutputSection_INVERSE.transmissionMode_INVERSE]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_INVERSE" format="tiff" hidden="false">
+    <data name="output_data_INVERSE" format="tiff" label="output_data_INVERSE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_INVERSE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -45,8 +45,8 @@ transmissionMode_INVERSE $OutputSection_INVERSE.transmissionMode_INVERSE]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_INVERSE" ftype="txt" value="output_data_INVERSE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Invert a grid, i.e. the highest value becomes the lowest and vice versa. If the target is not set, the changes will be stored to the original grid. ]]></help>

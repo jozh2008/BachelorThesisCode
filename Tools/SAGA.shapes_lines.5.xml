@@ -22,7 +22,7 @@ response $response
 outputType_DISSOLVED $OutputSection_DISSOLVED.outputType_DISSOLVED
 transmissionMode_DISSOLVED $OutputSection_DISSOLVED.transmissionMode_DISSOLVED]]></command>
   <inputs>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELDS" type="data" optional="false" label="Dissolve Field(s)" help="Dissolve Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STATISTICS" type="data" optional="false" label="Statistics Field(s)" help="Statistics Field(s) The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STAT_SUM" type="select" optional="true" label="Sum" help="Sum">
@@ -89,7 +89,7 @@ transmissionMode_DISSOLVED $OutputSection_DISSOLVED.transmissionMode_DISSOLVED]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DISSOLVED" format="xml" hidden="false">
+    <data name="output_data_DISSOLVED" format="xml" label="output_data_DISSOLVED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DISSOLVED" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -99,8 +99,8 @@ transmissionMode_DISSOLVED $OutputSection_DISSOLVED.transmissionMode_DISSOLVED]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DISSOLVED" ftype="txt" value="output_data_DISSOLVED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Dissolves line shapes, which share the same attribute value(s).]]></help>

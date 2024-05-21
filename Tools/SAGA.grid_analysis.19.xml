@@ -18,10 +18,10 @@ transmissionMode_CORRPOINTS $OutputSection_CORRPOINTS.transmissionMode_CORRPOINT
 outputType_CORRLINES $OutputSection_CORRLINES.outputType_CORRLINES
 transmissionMode_CORRLINES $OutputSection_CORRLINES.transmissionMode_CORRLINES]]></command>
   <inputs>
-    <param name="GRID_1" type="data" optional="false" label="Grid 1" help="The first grid to correlate The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="GRID_2" type="data" optional="false" label="Grid 2" help="The second grid to correlate The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="DTM_1" type="data" optional="false" label="DTM 1" help="The first DTM used to assign height information to grid 1 The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="DTM_2" type="data" optional="false" label="DTM 2" help="The second DTM used to assign height information to grid 2 The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="GRID_1" type="data" optional="false" label="Grid 1" help="The first grid to correlate The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID_2" type="data" optional="false" label="Grid 2" help="The second grid to correlate The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="DTM_1" type="data" optional="false" label="DTM 1" help="The first DTM used to assign height information to grid 1 The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="DTM_2" type="data" optional="false" label="DTM 2" help="The second DTM used to assign height information to grid 2 The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="SEARCH_CHIPSIZE" type="select" optional="true" label="Search Chip Size (Cells)" help="Chip size of search chip, used to find correlating reference chip">
       <option value="128x128">128x128</option>
       <option value="16x16">16x16</option>
@@ -69,14 +69,14 @@ transmissionMode_CORRLINES $OutputSection_CORRLINES.transmissionMode_CORRLINES]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CORRPOINTS" format="xml" hidden="false">
+    <data name="output_data_CORRPOINTS" format="xml" label="output_data_CORRPOINTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CORRPOINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_CORRPOINTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_CORRLINES" format="xml" hidden="false">
+    <data name="output_data_CORRLINES" format="xml" label="output_data_CORRLINES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CORRLINES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -86,8 +86,9 @@ transmissionMode_CORRLINES $OutputSection_CORRLINES.transmissionMode_CORRLINES]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CORRPOINTS" ftype="txt" value="output_data_CORRPOINTS.txt"/>
+      <output name="output_data_CORRLINES" ftype="txt" value="output_data_CORRLINES.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool performs an image correlation based on two raster data sets. Additionally, two DTMs can be given and used to optain 3D displacement vectors.&lt;br/&gt;This is a SAGA implementation of the standalone IMCORR software provided by the National Snow and Ice Data Center in Boulder, Colorado / US.]]></help>

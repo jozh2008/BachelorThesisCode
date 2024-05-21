@@ -30,7 +30,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid to reclassify The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid to reclassify The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Select the desired method: 1. a single value or a range defined by a single value is reclassified, 2. a range of values is reclassified, 3. the lookup table is used to reclassify the grid.">
       <option value="range">range</option>
       <option value="simple_table">simple table</option>
@@ -94,7 +94,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="tiff" hidden="false">
+    <data name="output_data_RESULT" format="tiff" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -105,8 +105,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool can be used to reclassify the values of a grid. It provides three different options:&lt;br/&gt;(a) reclassification of single values&lt;br/&gt;(b) reclassification of a range of values&lt;br/&gt;(c) reclassification of value ranges specified in a lookup table&lt;br/&gt;&lt;br/&gt;In addition to these methods, two special cases (NoData values and values not included in the reclassification setup) are supported.&lt;br/&gt;With reclassification mode (a) and (b), the 'NoData option' is evaluated before the 'Method' settings. In reclassification mode (c) the option is evaluated only if the NoData value is not included in the lookup table.&lt;br/&gt;The 'other values' option is always evaluated after checking the 'Method' settings.&lt;br/&gt;&lt;br/&gt;The tool allows one to define the NoData value of the output grid (header): by default, the output grid gets assigned the NoData value of the input grid. But it is also possible to assign a user defined NoData value.&lt;br/&gt;&lt;br/&gt;]]></help>

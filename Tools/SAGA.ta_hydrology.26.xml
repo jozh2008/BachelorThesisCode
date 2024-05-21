@@ -16,8 +16,8 @@ response $response
 outputType_FLOW $OutputSection_FLOW.outputType_FLOW
 transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="WEIGHT" type="data" optional="false" label="Weight" help="Weight The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="SLOPE_MIN" type="float" value="0" optional="true" label="Slope Minimum" help="Assume a given minimum slope for each cell."/>
     <param name="SLOPE_MAX" type="float" value="5" optional="true" label="Slope Threshold" help="Slope threshold, given as degree, above which flow transport is unlimited."/>
     <param name="B_FLOW" type="select" optional="true" label="Use Flow Threshold" help="Use Flow Threshold">
@@ -49,7 +49,7 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FLOW" format="tiff" hidden="false">
+    <data name="output_data_FLOW" format="tiff" label="output_data_FLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -60,8 +60,8 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FLOW" ftype="txt" value="output_data_FLOW.txt"/>
     </test>
   </tests>
   <help><![CDATA[Flow accumulation is calculated as upslope contributing (catchment) area using the multiple flow direction approach of Freeman (1991). For this tool the approach has been modified to limit the flow portion routed through a cell depending on the local slope. If a cell is not inclined, no flow is routed through it at all. With increasing slopes the portion of flow routed through a cell becomes higher. Cells with slopes greater than a specified slope threshold route their entire accumulated flow downhill. ]]></help>

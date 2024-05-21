@@ -11,7 +11,7 @@ response $response
 outputType_MIRROR $OutputSection_MIRROR.outputType_MIRROR
 transmissionMode_MIRROR $OutputSection_MIRROR.transmissionMode_MIRROR]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="both">both</option>
       <option selected="true" value="horizontally">horizontally</option>
@@ -40,7 +40,7 @@ transmissionMode_MIRROR $OutputSection_MIRROR.transmissionMode_MIRROR]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MIRROR" format="tiff" hidden="false">
+    <data name="output_data_MIRROR" format="tiff" label="output_data_MIRROR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MIRROR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -51,8 +51,8 @@ transmissionMode_MIRROR $OutputSection_MIRROR.transmissionMode_MIRROR]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MIRROR" ftype="txt" value="output_data_MIRROR.txt"/>
     </test>
   </tests>
   <help><![CDATA[Mirror a grid at its center axes', either vertically, horizontally or both. If the target is not set, the changes will be stored to the original grid. ]]></help>

@@ -32,7 +32,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CLASSES" format="tiff" hidden="false">
+    <data name="output_data_CLASSES" format="tiff" label="output_data_CLASSES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CLASSES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -43,8 +43,8 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CLASSES" ftype="txt" value="output_data_CLASSES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Decision Tree]]></help>

@@ -24,7 +24,7 @@ response $response
 outputType_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.outputType_TARGET_OUT_GRID
 transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode_TARGET_OUT_GRID]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
       <option value="grid_or_grid_system">grid or grid system</option>
@@ -41,7 +41,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="REGULARISATION" type="float" value="0.0001" optional="true" label="Regularisation" help="Regularisation"/>
     <param name="LEVEL" type="select" optional="true" label="Neighbourhood" help="Neighbourhood">
       <option value="immediate">immediate</option>
@@ -75,7 +75,7 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TARGET_OUT_GRID" format="tiff" hidden="false">
+    <data name="output_data_TARGET_OUT_GRID" format="tiff" label="output_data_TARGET_OUT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TARGET_OUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -86,8 +86,8 @@ transmissionMode_TARGET_OUT_GRID $OutputSection_TARGET_OUT_GRID.transmissionMode
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TARGET_OUT_GRID" ftype="txt" value="output_data_TARGET_OUT_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a 'Thin Plate Spline' function for each triangle of a TIN and uses it for subsequent gridding. The TIN is internally created from the scattered data points input. The 'Neighbourhood' option determines the number of points used for the spline generation. 'Immediate neighbourhood' includes the points of the triangle as well as the immediate neighbour points. 'Level 1' adds the neighbours of the immediate neighbourhood and 'level 2' adds the neighbours of 'level 1' neighbours too. A higher neighbourhood degree reduces sharp breaks but also increases the computation time. ]]></help>

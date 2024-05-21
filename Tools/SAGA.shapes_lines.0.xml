@@ -10,7 +10,7 @@ response $response
 outputType_LINES $OutputSection_LINES.outputType_LINES
 transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -33,7 +33,7 @@ transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_LINES" format="xml" hidden="false">
+    <data name="output_data_LINES" format="xml" label="output_data_LINES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LINES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -43,8 +43,8 @@ transmissionMode_LINES $OutputSection_LINES.transmissionMode_LINES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_LINES" ftype="txt" value="output_data_LINES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Convert polygons to lines.]]></help>

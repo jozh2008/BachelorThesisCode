@@ -28,8 +28,8 @@ transmissionMode_CLIPPED $OutputSection_CLIPPED.transmissionMode_CLIPPED]]></com
       <option value="shapes_extent">shapes extent</option>
       <option selected="true" value="user_defined">user defined</option>
     </param>
-    <param name="SHAPES" type="data" optional="false" label="Shapes Extent" help="Shapes Extent The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes Extent" help="Shapes Extent The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="INTERIOR" type="select" optional="true" label="Interior" help="Clip those cells that are covered by the polygons instead of those that are not.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -64,7 +64,7 @@ transmissionMode_CLIPPED $OutputSection_CLIPPED.transmissionMode_CLIPPED]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CLIPPED" format="tiff" hidden="false">
+    <data name="output_data_CLIPPED" format="tiff" label="output_data_CLIPPED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CLIPPED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -75,8 +75,8 @@ transmissionMode_CLIPPED $OutputSection_CLIPPED.transmissionMode_CLIPPED]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CLIPPED" ftype="txt" value="output_data_CLIPPED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Clip selected grids to specified extent.]]></help>

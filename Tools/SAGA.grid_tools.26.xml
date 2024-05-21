@@ -14,7 +14,7 @@ transmissionMode_DIRECTION $OutputSection_DIRECTION.transmissionMode_DIRECTION
 outputType_ALLOCATION $OutputSection_ALLOCATION.outputType_ALLOCATION
 transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATION]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -62,7 +62,7 @@ transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATIO
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+    <data name="output_data_DISTANCE" format="tiff" label="output_data_DISTANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -70,7 +70,7 @@ transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATIO
         <when input="outputType_DISTANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIRECTION" format="tiff" hidden="false">
+    <data name="output_data_DIRECTION" format="tiff" label="output_data_DIRECTION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIRECTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -78,7 +78,7 @@ transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATIO
         <when input="outputType_DIRECTION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ALLOCATION" format="tiff" hidden="false">
+    <data name="output_data_ALLOCATION" format="tiff" label="output_data_ALLOCATION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ALLOCATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -89,8 +89,10 @@ transmissionMode_ALLOCATION $OutputSection_ALLOCATION.transmissionMode_ALLOCATIO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DISTANCE" ftype="txt" value="output_data_DISTANCE.txt"/>
+      <output name="output_data_DIRECTION" ftype="txt" value="output_data_DIRECTION.txt"/>
+      <output name="output_data_ALLOCATION" ftype="txt" value="output_data_ALLOCATION.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates a grid with euclidean distance to feature cells (not no-data cells).]]></help>

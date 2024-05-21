@@ -46,12 +46,12 @@ transmissionMode_VARIOGRAM $OutputSection_VARIOGRAM.transmissionMode_VARIOGRAM]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_VARIOGRAM" format="csv" hidden="false"/>
+    <data name="output_data_VARIOGRAM" format="csv" label="output_data_VARIOGRAM" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_VARIOGRAM" ftype="txt" value="output_data_VARIOGRAM.txt"/>
     </test>
   </tests>
   <help><![CDATA[Variogram (Dialog)]]></help>

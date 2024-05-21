@@ -41,12 +41,12 @@ transmissionMode_NOGAPS $OutputSection_NOGAPS.transmissionMode_NOGAPS]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_NOGAPS" format="csv" hidden="false"/>
+    <data name="output_data_NOGAPS" format="csv" label="output_data_NOGAPS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_NOGAPS" ftype="txt" value="output_data_NOGAPS.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool fills gaps in the table records. for the chosen attribute field it interpolates values for those records, which have no-data, using existing data from the surrounding records. If no order field is specified, simply the record index is taken as coordinate, for which the interpolation will be performed. Notice: extrapolation is not supported, i.e. only those gaps will be filled that have lower and higher values surrounding them following the record order. ]]></help>

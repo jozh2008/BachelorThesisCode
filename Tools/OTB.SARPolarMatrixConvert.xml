@@ -21,12 +21,12 @@ transmissionMode_outc $OutputSection_outc.transmissionMode_outc
 outputType_outf $OutputSection_outf.outputType_outf
 transmissionMode_outf $OutputSection_outf.transmissionMode_outf]]></command>
   <inputs>
-    <param name="inc" type="data" optional="false" label="Input : multi-band complex image" help="Input : multi-band complex image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="inf" type="data" optional="false" label="Input : multi-band real image" help="Input : multi-band real image The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="inhh" type="data" optional="false" label="Input : one-band complex image (HH)" help="Input : one-band complex image (HH) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="inhv" type="data" optional="false" label="Input : one-band complex image (HV)" help="Input : one-band complex image (HV) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="invh" type="data" optional="false" label="Input : one-band complex image (VH)" help="Input : one-band complex image (VH) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
-    <param name="invv" type="data" optional="false" label="Input : one-band complex image (VV)" help="Input : one-band complex image (VV) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="inc" type="data" optional="false" label="Input : multi-band complex image" help="Input : multi-band complex image The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inf" type="data" optional="false" label="Input : multi-band real image" help="Input : multi-band real image The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inhh" type="data" optional="false" label="Input : one-band complex image (HH)" help="Input : one-band complex image (HH) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inhv" type="data" optional="false" label="Input : one-band complex image (HV)" help="Input : one-band complex image (HV) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="invh" type="data" optional="false" label="Input : one-band complex image (VH)" help="Input : one-band complex image (VH) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="invv" type="data" optional="false" label="Input : one-band complex image (VV)" help="Input : one-band complex image (VV) The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="outc" type="select" optional="true" label="Output Complex image." help="Output Complex image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -92,14 +92,14 @@ transmissionMode_outf $OutputSection_outf.transmissionMode_outf]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_outc" format="tiff" hidden="false">
+    <data name="output_data_outc" format="tiff" label="output_data_outc" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_outc" format="jpeg" value="image/jpeg"/>
         <when input="outputType_outc" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_outf" format="tiff" hidden="false">
+    <data name="output_data_outf" format="tiff" label="output_data_outf" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_outf" format="jpeg" value="image/jpeg"/>
@@ -109,8 +109,9 @@ transmissionMode_outf $OutputSection_outf.transmissionMode_outf]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_outc" ftype="txt" value="output_data_outc.txt"/>
+      <output name="output_data_outf" ftype="txt" value="output_data_outf.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application allows converting classical polarimetric matrices to each other.For instance, it is possible to get the coherency matrix from the Sinclar one, or the Mueller matrix from the coherency one.The filters used in this application never handle matrices, but images where each band is related to their elements.As most of the time SAR polarimetry handles symmetric/hermitian matrices, only the relevant elements are stored, so that the images representing them have a minimal number of bands.For instance, the coherency matrix size is 3x3 in the monostatic case, and 4x4 in the bistatic case : it will thus be stored in a 6-band or a 10-band complex image (the diagonal and the upper elements of the matrix).The Sinclair matrix is a special case : it is always represented as 3 or 4 one-band complex images (for mono- or bistatic case).The available conversions are listed below:--- Monostatic case ---1 msinclairtocoherency --> Sinclair matrix to coherency matrix (input : 3 x 1 complex channel (HH, HV or VH, VV) | output :  6 complex channels)2 msinclairtocovariance --> Sinclair matrix to covariance matrix (input : 3 x 1 complex channel (HH, HV or VH, VV) | output :  6 complex channels)3 msinclairtocircovariance --> Sinclair matrix to circular covariance matrix (input : 3 x 1 complex channel (HH, HV or VH, VV) | output :  6 complex channels)4 mcoherencytomueller --> Coherency matrix to Mueller matrix (input : 6 complex channels | 16 real channels)5 mcovariancetocoherencydegree --> Covariance matrix to coherency degree (input : 6 complex channels | 3 complex channels)6 mcovariancetocoherency --> Covariance matrix to coherency matrix (input : 6 complex channels | 6 complex channels)7 mlinearcovariancetocircularcovariance --> Covariance matrix to circular covariance matrix (input : 6 complex channels | output : 6 complex channels)--- Bistatic case ---8 bsinclairtocoherency --> Sinclair matrix to coherency matrix (input : 4 x 1 complex channel (HH, HV, VH, VV) | 10 complex channels)9 bsinclairtocovariance --> Sinclair matrix to covariance matrix (input : 4 x 1 complex channel (HH, HV, VH, VV) | output : 10 complex channels)10 bsinclairtocircovariance --> Sinclair matrix to circular covariance matrix (input : 4 x 1 complex channel (HH, HV, VH, VV) | output : 10 complex channels)--- Both cases ---11 sinclairtomueller --> Sinclair matrix to Mueller matrix (input : 4 x 1 complex channel (HH, HV, VH, VV) | output : 16 real channels)12 muellertomcovariance --> Mueller matrix to covariance matrix (input : 16 real channels | output : 6 complex channels)13 muellertopoldegandpower --> Mueller matrix to polarization degree and power (input : 16 real channels | output : 4 real channels)]]></help>

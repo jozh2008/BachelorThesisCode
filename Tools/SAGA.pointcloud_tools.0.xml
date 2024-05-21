@@ -43,12 +43,12 @@ transmissionMode_CUT $OutputSection_CUT.transmissionMode_CUT]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CUT" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_CUT" format="x-ogc-lasf" label="output_data_CUT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CUT" ftype="txt" value="output_data_CUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool allows one to extract subsets from one or several point cloud datasets. The area-of-interest is defined either by bounding box coordinates, the extent of a grid system or a shapes layer, or by polygons of a shapes layer. Note that the latter does not support the inverse selection in case the shapes layer contains more than one polygon.&lt;br/&gt;In case a polygon shapes layer is used and one or more polygons are selected, only the selected polygons are processed.]]></help>

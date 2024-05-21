@@ -16,7 +16,7 @@ response $response
 outputType_TRI $OutputSection_TRI.outputType_TRI
 transmissionMode_TRI $OutputSection_TRI.transmissionMode_TRI]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
       <option selected="true" value="Circle">Circle</option>
       <option value="Square">Square</option>
@@ -57,7 +57,7 @@ transmissionMode_TRI $OutputSection_TRI.transmissionMode_TRI]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TRI" format="tiff" hidden="false">
+    <data name="output_data_TRI" format="tiff" label="output_data_TRI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TRI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -68,8 +68,8 @@ transmissionMode_TRI $OutputSection_TRI.transmissionMode_TRI]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TRI" ftype="txt" value="output_data_TRI.txt"/>
     </test>
   </tests>
   <help><![CDATA[References:&lt;br/&gt;Riley, S.J., De Gloria, S.D., Elliot, R. (1999): A Terrain Ruggedness that Quantifies Topographic Heterogeneity. Intermountain Journal of Science, Vol.5, No.1-4, pp.23-27. &lt;a href="http://www.fw.msu.edu/~rileysh2/Terrain%20Ruggedness%20Index.pdf"&gt;online&lt;/a&gt;.&lt;br/&gt;]]></help>

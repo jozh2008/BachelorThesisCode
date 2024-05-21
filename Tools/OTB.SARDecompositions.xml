@@ -10,17 +10,17 @@ invh $invh
 invv $invv
 out $out
 decomp $decomp
-inco.kernelsize $inco.kernelsize
+inco_kernelsize $inco_kernelsize
 ram $ram
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="inhh" type="data" optional="false" label="Input image (HH)" help="Input image (HH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="inhv" type="data" optional="false" label="Input image (HV)" help="Input image (HV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="invh" type="data" optional="false" label="Input image (VH)" help="Input image (VH) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="invv" type="data" optional="false" label="Input image (VV)" help="Input image (VV) The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="inhh" type="data" optional="false" label="Input image (HH)" help="Input image (HH) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="inhv" type="data" optional="false" label="Input image (HV)" help="Input image (HV) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="invh" type="data" optional="false" label="Input image (VH)" help="Input image (VH) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="invv" type="data" optional="false" label="Input image (VV)" help="Input image (VV) The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image" help="Output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -35,7 +35,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="huynen">huynen</option>
       <option value="pauli">pauli</option>
     </param>
-    <param name="inco.kernelsize" type="integer" value="3" optional="true" label="Minute (0-59)" help="Minute (0-59)"/>
+    <param name="inco_kernelsize" type="integer" value="3" optional="true" label="Minute (0-59)" help="Minute (0-59)"/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -59,7 +59,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -69,8 +69,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[From one-band complex images (HH, HV, VH, VV), returns the selected decomposition. All the decompositions implemented are intended for the mono-static case (transmitter and receiver are co-located).There are two kinds of decomposition : coherent ones and incoherent ones.In the coherent case, only the Pauli decomposition is available.In the incoherent case, there the decompositions available : Huynen, Barnes, and H-alpha-A.User must provide three one-band complex images HH, HV or VH, and VV (mono-static case ]]></help>

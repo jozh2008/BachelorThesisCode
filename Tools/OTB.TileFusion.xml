@@ -13,7 +13,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1))." help="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1)). The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="il" type="data" optional="false" label="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1))." help="Input images to concatenate (in lexicographic order, for instance : (0,0) (1,0) (0,1) (1,1)). The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="cols" type="integer" optional="false" label="Number of columns in the tile array" help="Number of columns in the tile array"/>
     <param name="rows" type="integer" optional="false" label="Number of rows in the tile array" help="Number of rows in the tile array"/>
     <param name="out" type="select" optional="false" label="Output entire image" help="Output entire image">
@@ -46,7 +46,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -56,8 +56,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Automatically mosaic a set of non overlapping tile files into a single image. Images must have a matching number of bands and they must be listed in lexicographic order.]]></help>

@@ -48,7 +48,7 @@ transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT_GRID" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT_GRID" format="tiff" label="output_data_OUTPUT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -59,8 +59,8 @@ transmissionMode_OUTPUT_GRID $OutputSection_OUTPUT_GRID.transmissionMode_OUTPUT_
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT_GRID" ftype="txt" value="output_data_OUTPUT_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[Synthesis of a completely normalized spherical harmonic expansion. The coefficients are read from the input file (ASCII file, columns separated by space).&lt;br/&gt;&lt;br/&gt;]]></help>

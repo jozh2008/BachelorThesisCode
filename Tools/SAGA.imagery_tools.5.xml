@@ -20,10 +20,10 @@ transmissionMode_B_SHARP $OutputSection_B_SHARP.transmissionMode_B_SHARP
 outputType_SHARPEN $OutputSection_SHARPEN.outputType_SHARPEN
 transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></command>
   <inputs>
-    <param name="R" type="data" optional="false" label="Red" help="Red The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="G" type="data" optional="false" label="Green" help="Green The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="B" type="data" optional="false" label="Blue" help="Blue The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
-    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="R" type="data" optional="false" label="Red" help="Red The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="G" type="data" optional="false" label="Green" help="Green The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="B" type="data" optional="false" label="Blue" help="Blue The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option value="bilinear">bilinear</option>
       <option selected="true" value="cubic_convolution">cubic convolution</option>
@@ -88,7 +88,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_R_SHARP" format="tiff" hidden="false">
+    <data name="output_data_R_SHARP" format="tiff" label="output_data_R_SHARP" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_R_SHARP" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -96,7 +96,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
         <when input="outputType_R_SHARP" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G_SHARP" format="tiff" hidden="false">
+    <data name="output_data_G_SHARP" format="tiff" label="output_data_G_SHARP" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G_SHARP" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -104,7 +104,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
         <when input="outputType_G_SHARP" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_B_SHARP" format="tiff" hidden="false">
+    <data name="output_data_B_SHARP" format="tiff" label="output_data_B_SHARP" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_B_SHARP" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -112,7 +112,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
         <when input="outputType_B_SHARP" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SHARPEN" format="tiff" hidden="false">
+    <data name="output_data_SHARPEN" format="tiff" label="output_data_SHARPEN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHARPEN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -123,8 +123,11 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_R_SHARP" ftype="txt" value="output_data_R_SHARP.txt"/>
+      <output name="output_data_G_SHARP" ftype="txt" value="output_data_G_SHARP.txt"/>
+      <output name="output_data_B_SHARP" ftype="txt" value="output_data_B_SHARP.txt"/>
+      <output name="output_data_SHARPEN" ftype="txt" value="output_data_SHARPEN.txt"/>
     </test>
   </tests>
   <help><![CDATA[Colour normalized (Brovey) sharpening.]]></help>

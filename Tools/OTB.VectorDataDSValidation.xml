@@ -15,7 +15,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input vector data to validate" help="Input vector data to validate The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, zip, xml" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input vector data to validate" help="Input vector data to validate The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml, zip" format="txt"/>
     <param name="descmod" type="data" optional="false" label="Fuzzy descriptors model (xml file)" help="Fuzzy descriptors model (xml file) The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="belsup" type="text" optional="false" label="Dempster Shafer study hypothesis to compute belief" help="Dempster Shafer study hypothesis to compute belief"/>
     <param name="plasup" type="text" optional="false" label="Dempster Shafer study hypothesis to compute plausibility" help="Dempster Shafer study hypothesis to compute plausibility"/>
@@ -44,7 +44,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="xml" hidden="false">
+    <data name="output_data_out" format="xml" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -55,8 +55,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application validates or unvalidate the studied samples using the Dempster-Shafer theory.]]></help>

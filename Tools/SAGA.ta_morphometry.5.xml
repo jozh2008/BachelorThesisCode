@@ -16,7 +16,7 @@ response $response
 outputType_TABLE $OutputSection_TABLE.outputType_TABLE
 transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="COUNT" type="integer" value="100" optional="true" label="Number of Classes" help="Number of discrete intervals (bins) used for sampling"/>
     <param name="SORTING" type="select" optional="true" label="Sort" help="Choose how to sort the elevation dataset before sampling">
       <option selected="true" value="down">down</option>
@@ -52,12 +52,12 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TABLE" format="csv" hidden="false"/>
+    <data name="output_data_TABLE" format="csv" label="output_data_TABLE" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TABLE" ftype="txt" value="output_data_TABLE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates the hypsometric curve for a given DEM.&lt;br/&gt;&lt;br/&gt;The hypsometric curve is an empirical cumulative distribution function of elevations in a catchment or of a whole planet. The tool calculates both the relative (scaled from 0 to 100 percent) and absolute (minimum to maximum values) distributions. The former scales elevation and area by the maximum values. Such a non-dimensional curve allows one to asses the similarity of watersheds as differences in hypsometric curves arise from different geomorphic processes shaping a landscape.&lt;br/&gt;&lt;br/&gt;In case the hypsometric curve should not be calculated for the whole elevation range of the input dataset, a user-specified elevation range can be specified with the classification constant area.&lt;br/&gt;&lt;br/&gt;The output table has two attribute columns with relative height and area values, and two columns with absolute height and area values. In order to plot the non-dimensional hypsometric curve as diagram, use the relative area as x-axis values and the relative height for the y-axis. For a diagram with absolute values, use the absolute area as x-axis values and the absolute height for the y-axis.]]></help>

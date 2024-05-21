@@ -12,8 +12,8 @@ response $response
 outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
 transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Temperature" help="Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="T" type="data" optional="false" label="Temperature" help="Temperature The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Classification" help="Classification">
       <option value="Koeppen-Geiger">Koeppen-Geiger</option>
       <option value="Koeppen-Geiger_after_Peel_et_al._(2007)">Koeppen-Geiger after Peel et al. (2007)</option>
@@ -45,7 +45,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CLASSES" format="tiff" hidden="false">
+    <data name="output_data_CLASSES" format="tiff" label="output_data_CLASSES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CLASSES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -56,8 +56,8 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CLASSES" ftype="txt" value="output_data_CLASSES.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool applies a climate classification scheme using monthly mean temperature and precipitation data. Currently implemented classification schemes are Koeppen-Geiger (1936), Thornthwaite (1931), and Troll-Paffen (1964). Because of some less precise definitions the Troll-Paffen scheme still needs some revisions. ]]></help>

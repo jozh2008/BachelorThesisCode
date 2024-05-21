@@ -11,7 +11,7 @@ response $response
 outputType_AREA $OutputSection_AREA.outputType_AREA
 transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation grid" help="This must be your input data of type grid. The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Choose a method">
       <option selected="true" value="D8">D8</option>
       <option value="MFD">MFD</option>
@@ -39,7 +39,7 @@ transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_AREA" format="tiff" hidden="false">
+    <data name="output_data_AREA" format="tiff" label="output_data_AREA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -50,8 +50,8 @@ transmissionMode_AREA $OutputSection_AREA.transmissionMode_AREA]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_AREA" ftype="txt" value="output_data_AREA.txt"/>
     </test>
   </tests>
   <help><![CDATA[Extended Neighbourhoods - Catchment areas.&lt;br/&gt;(c) 2003 by Olaf Conrad, Goettingen&lt;br/&gt;email: oconrad@gwdg.de]]></help>

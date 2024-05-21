@@ -8,13 +8,13 @@
 channel $channel
 step $step
 ram $ram
-parameters.xrad $parameters.xrad
-parameters.yrad $parameters.yrad
-parameters.xoff $parameters.xoff
-parameters.yoff $parameters.yoff
-parameters.min $parameters.min
-parameters.max $parameters.max
-parameters.nbbin $parameters.nbbin
+parameters_xrad $parameters_xrad
+parameters_yrad $parameters_yrad
+parameters_xoff $parameters_xoff
+parameters_yoff $parameters_yoff
+parameters_min $parameters_min
+parameters_max $parameters_max
+parameters_nbbin $parameters_nbbin
 texture $texture
 out $out
 prefer $prefer
@@ -22,17 +22,17 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to compute the features on." help="The input image to compute the features on. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to compute the features on." help="The input image to compute the features on. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="channel" type="integer" value="1" optional="false" label="The selected channel index" help="The selected channel index"/>
     <param name="step" type="integer" value="1" optional="true" label="Step (in pixels) to compute output texture values. The first computed pixel position is shifted by (step-1)/2 in both directions." help="Step (in pixels) to compute output texture values. The first computed pixel position is shifted by (step-1)/2 in both directions."/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
-    <param name="parameters.xrad" type="integer" value="2" optional="false" label="X Radius" help="X Radius"/>
-    <param name="parameters.yrad" type="integer" value="2" optional="false" label="Y Radius" help="Y Radius"/>
-    <param name="parameters.xoff" type="integer" value="1" optional="false" label="X Offset" help="X Offset"/>
-    <param name="parameters.yoff" type="integer" value="1" optional="false" label="Y Offset" help="Y Offset"/>
-    <param name="parameters.min" type="float" value="0" optional="false" label="Image Minimum" help="Image Minimum"/>
-    <param name="parameters.max" type="float" value="255" optional="false" label="Image Maximum" help="Image Maximum"/>
-    <param name="parameters.nbbin" type="integer" value="8" optional="false" label="Histogram number of bin" help="Histogram number of bin"/>
+    <param name="parameters_xrad" type="integer" value="2" optional="false" label="X Radius" help="X Radius"/>
+    <param name="parameters_yrad" type="integer" value="2" optional="false" label="Y Radius" help="Y Radius"/>
+    <param name="parameters_xoff" type="integer" value="1" optional="false" label="X Offset" help="X Offset"/>
+    <param name="parameters_yoff" type="integer" value="1" optional="false" label="Y Offset" help="Y Offset"/>
+    <param name="parameters_min" type="float" value="0" optional="false" label="Image Minimum" help="Image Minimum"/>
+    <param name="parameters_max" type="float" value="255" optional="false" label="Image Maximum" help="Image Maximum"/>
+    <param name="parameters_nbbin" type="integer" value="8" optional="false" label="Histogram number of bin" help="Histogram number of bin"/>
     <param name="texture" type="select" optional="false" label="Choice of The Texture Set" help="Choice of The Texture Set">
       <option value="advanced">advanced</option>
       <option value="higher">higher</option>
@@ -68,7 +68,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -78,8 +78,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application computes three sets of Haralick features [1][2].  * simple: a set of 8 local Haralick features: Energy (texture uniformity) , Entropy (measure of randomness of intensity image), Correlation (how correlated a pixel is to its neighborhood), Inverse Difference Moment (measures the texture homogeneity), Inertia (intensity contrast between a pixel and its neighborhood), Cluster Shade, Cluster Prominence, Haralick Correlation;  * advanced: a set of 10 advanced Haralick features : Mean, Variance (measures the texture heterogeneity), Dissimilarity, Sum Average, Sum Variance, Sum Entropy, Difference of Entropies, Difference of Variances, IC1, IC2;  * higher: a set of 11 higher Haralick features : Short Run Emphasis (measures the texture sharpness), Long Run Emphasis (measures the texture roughness), Grey-Level Nonuniformity, Run Length Nonuniformity, Run Percentage (measures the texture sharpness homogeneity), Low Grey-Level Run Emphasis, High Grey-Level Run Emphasis, Short Run Low Grey-Level Emphasis, Short Run High Grey-Level Emphasis, Long Run Low Grey-Level Emphasis and Long Run High Grey-Level Emphasis.]]></help>

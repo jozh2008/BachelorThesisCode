@@ -33,12 +33,12 @@ transmissionMode_CUTS $OutputSection_CUTS.transmissionMode_CUTS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CUTS" format="csv" hidden="false"/>
+    <data name="output_data_CUTS" format="csv" label="output_data_CUTS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CUTS" ftype="txt" value="output_data_CUTS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Split Table/Shapes by Attribute]]></help>

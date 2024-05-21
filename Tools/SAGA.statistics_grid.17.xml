@@ -24,7 +24,7 @@ transmissionMode_MAX $OutputSection_MAX.transmissionMode_MAX
 outputType_HISTOGRAM $OutputSection_HISTOGRAM.outputType_HISTOGRAM
 transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="HCLASSES" type="integer" value="20" optional="true" label="Number of Classes" help="Number of Classes"/>
     <param name="HMIN" type="float" value="0" optional="true" label="Minimum" help="Minimum"/>
     <param name="HMAX" type="float" value="0" optional="true" label="Minimum" help="Minimum"/>
@@ -115,7 +115,7 @@ transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_COUNT" format="tiff" hidden="false">
+    <data name="output_data_COUNT" format="tiff" label="output_data_COUNT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -123,7 +123,7 @@ transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]
         <when input="outputType_COUNT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM" format="tiff" hidden="false">
+    <data name="output_data_SUM" format="tiff" label="output_data_SUM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -131,7 +131,7 @@ transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]
         <when input="outputType_SUM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM2" format="tiff" hidden="false">
+    <data name="output_data_SUM2" format="tiff" label="output_data_SUM2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -139,7 +139,7 @@ transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]
         <when input="outputType_SUM2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MIN" format="tiff" hidden="false">
+    <data name="output_data_MIN" format="tiff" label="output_data_MIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -147,7 +147,7 @@ transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]
         <when input="outputType_MIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAX" format="tiff" hidden="false">
+    <data name="output_data_MAX" format="tiff" label="output_data_MAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -155,7 +155,7 @@ transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]
         <when input="outputType_MAX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_HISTOGRAM" format="tiff" hidden="false">
+    <data name="output_data_HISTOGRAM" format="tiff" label="output_data_HISTOGRAM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_HISTOGRAM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -166,8 +166,13 @@ transmissionMode_HISTOGRAM $OutputSection_HISTOGRAM.transmissionMode_HISTOGRAM]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_COUNT" ftype="txt" value="output_data_COUNT.txt"/>
+      <output name="output_data_SUM" ftype="txt" value="output_data_SUM.txt"/>
+      <output name="output_data_SUM2" ftype="txt" value="output_data_SUM2.txt"/>
+      <output name="output_data_MIN" ftype="txt" value="output_data_MIN.txt"/>
+      <output name="output_data_MAX" ftype="txt" value="output_data_MAX.txt"/>
+      <output name="output_data_HISTOGRAM" ftype="txt" value="output_data_HISTOGRAM.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool collects cell-wise basic statistical information from the given input grids. The collected statistics can be used as input for the 'Evaluate Statistics for Grids' tool. You can use this tool with the 'Reset' flag set to false (not available in command line mode) or the 'Add Statistics for Grids' tool to successively add statistical information from further grids by subsequent calls. These three tools (build, add, evaluate) have been designed to inspect a large number of grids that could otherwise not be evaluated simultaneously due to memory restrictions. ]]></help>

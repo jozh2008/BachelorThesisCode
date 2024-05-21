@@ -14,7 +14,7 @@ response $response
 outputType_EDGES $OutputSection_EDGES.outputType_EDGES
 transmissionMode_EDGES $OutputSection_EDGES.transmissionMode_EDGES]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
     <param name="ATTRIBUTE" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="EPSILON" type="float" value="0" optional="true" label="Tolerance" help="Tolerance"/>
     <param name="VERTICES" type="select" optional="true" label="Check Vertices" help="Check Vertices">
@@ -47,7 +47,7 @@ transmissionMode_EDGES $OutputSection_EDGES.transmissionMode_EDGES]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_EDGES" format="xml" hidden="false">
+    <data name="output_data_EDGES" format="xml" label="output_data_EDGES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_EDGES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -57,8 +57,8 @@ transmissionMode_EDGES $OutputSection_EDGES.transmissionMode_EDGES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_EDGES" ftype="txt" value="output_data_EDGES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Shared Polygon Edges]]></help>

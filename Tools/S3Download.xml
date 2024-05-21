@@ -67,7 +67,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="jp2" hidden="false">
+    <data name="output_data_Result" format="jp2" label="output_data_Result" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Result" format="ogc:geotiff" value="ogc:geotiff"/>
@@ -85,7 +85,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <param name="s3_path" value="Sentinel-2/MSI/L2A/2019/07/01/S2A_MSIL2A_20190701T110621_N0212_R137_T29SPC_20190701T120906.SAFE"/>
       <param name="band" value="B03"/>
       <param name="resolution" value="10m"/>
-      <output name="output_data_Result" ftype="txt"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
   </tests>
   <help><![CDATA[Simply echo the value provided as input]]></help>

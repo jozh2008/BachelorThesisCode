@@ -33,11 +33,11 @@ transmissionMode_LAST $OutputSection_LAST.transmissionMode_LAST
 outputType_TLH $OutputSection_TLH.outputType_TLH
 transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
   <inputs>
-    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="SWC" type="data" optional="false" label="Soil Water Capacity of Profile" help="Total soil water capacity (mm H2O). The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="T" type="data" optional="false" label="Mean Temperature" help="Mean Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="TMIN" type="data" optional="false" label="Minimum Temperature" help="Minimum Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="TMAX" type="data" optional="false" label="Maximum Temperature" help="Maximum Temperature The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="P" type="data" optional="false" label="Precipitation" help="Precipitation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="SWC" type="data" optional="false" label="Soil Water Capacity of Profile" help="Total soil water capacity (mm H2O). The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="SWC_DEFAULT" type="float" value="220" optional="true" label="Default" help="default value if no grid has been selected"/>
     <param name="SWC_SURFACE" type="float" value="30" optional="true" label="Top Soil Water Capacity" help="Top Soil Water Capacity"/>
     <param name="SW1_RESIST" type="float" value="0.5" optional="true" label="Transpiration Resistance" help="Transpiration Resistance"/>
@@ -130,7 +130,7 @@ transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SMT" format="tiff" hidden="false">
+    <data name="output_data_SMT" format="tiff" label="output_data_SMT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SMT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -138,7 +138,7 @@ transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
         <when input="outputType_SMT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SMP" format="tiff" hidden="false">
+    <data name="output_data_SMP" format="tiff" label="output_data_SMP" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SMP" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -146,7 +146,7 @@ transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
         <when input="outputType_SMP" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_LGS" format="tiff" hidden="false">
+    <data name="output_data_LGS" format="tiff" label="output_data_LGS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LGS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -154,7 +154,7 @@ transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
         <when input="outputType_LGS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FIRST" format="tiff" hidden="false">
+    <data name="output_data_FIRST" format="tiff" label="output_data_FIRST" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FIRST" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -162,7 +162,7 @@ transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
         <when input="outputType_FIRST" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_LAST" format="tiff" hidden="false">
+    <data name="output_data_LAST" format="tiff" label="output_data_LAST" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LAST" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -170,7 +170,7 @@ transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
         <when input="outputType_LAST" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TLH" format="tiff" hidden="false">
+    <data name="output_data_TLH" format="tiff" label="output_data_TLH" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TLH" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -181,8 +181,13 @@ transmissionMode_TLH $OutputSection_TLH.transmissionMode_TLH]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SMT" ftype="txt" value="output_data_SMT.txt"/>
+      <output name="output_data_SMP" ftype="txt" value="output_data_SMP.txt"/>
+      <output name="output_data_LGS" ftype="txt" value="output_data_LGS.txt"/>
+      <output name="output_data_FIRST" ftype="txt" value="output_data_FIRST.txt"/>
+      <output name="output_data_LAST" ftype="txt" value="output_data_LAST.txt"/>
+      <output name="output_data_TLH" ftype="txt" value="output_data_TLH.txt"/>
     </test>
   </tests>
   <help><![CDATA[The 'Tree Growth Season' tool estimates the potential number of days suitable for tree growth as well as the average temperature for these days. The estimation needs monthly data of mean, minimum, and maximum temperature and precipitation. Internally a soil water balance model is run on a daily basis. Using the given thresholds a relative tree line height can optionally be estimated.]]></help>

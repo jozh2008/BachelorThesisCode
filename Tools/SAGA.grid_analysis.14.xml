@@ -21,9 +21,9 @@ transmissionMode_SUM $OutputSection_SUM.transmissionMode_SUM
 outputType_POLYGONS $OutputSection_POLYGONS.outputType_POLYGONS
 transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></command>
   <inputs>
-    <param name="SAND" type="data" optional="false" label="Sand" help="sand content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="SILT" type="data" optional="false" label="Silt" help="silt content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="CLAY" type="data" optional="false" label="Clay" help="clay content given as percentage The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="SAND" type="data" optional="false" label="Sand" help="sand content given as percentage The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="SILT" type="data" optional="false" label="Silt" help="silt content given as percentage The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="CLAY" type="data" optional="false" label="Clay" help="clay content given as percentage The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
     <param name="SCHEME" type="select" optional="true" label="Classification" help="Classification">
       <option value="Belgium/France">Belgium/France</option>
       <option value="Germany_KA5">Germany KA5</option>
@@ -94,7 +94,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TEXTURE" format="tiff" hidden="false">
+    <data name="output_data_TEXTURE" format="tiff" label="output_data_TEXTURE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TEXTURE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -102,7 +102,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
         <when input="outputType_TEXTURE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM" format="tiff" hidden="false">
+    <data name="output_data_SUM" format="tiff" label="output_data_SUM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -110,7 +110,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
         <when input="outputType_SUM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_POLYGONS" format="xml" hidden="false">
+    <data name="output_data_POLYGONS" format="xml" label="output_data_POLYGONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -120,8 +120,10 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TEXTURE" ftype="txt" value="output_data_TEXTURE.txt"/>
+      <output name="output_data_SUM" ftype="txt" value="output_data_SUM.txt"/>
+      <output name="output_data_POLYGONS" ftype="txt" value="output_data_POLYGONS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Derive soil texture classes from sand, silt and clay contents. Currently supported schemes are USDA and German Kartieranleitung 5. ]]></help>

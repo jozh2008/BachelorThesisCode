@@ -16,9 +16,9 @@ transmissionMode_PROFILE $OutputSection_PROFILE.transmissionMode_PROFILE
 outputType_PROFILES $OutputSection_PROFILES.outputType_PROFILES
 transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="VALUES" type="data" optional="false" label="Values" help="Additional values that shall be saved to the output table. The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="VALUES" type="data" optional="false" label="Values" help="Additional values that shall be saved to the output table. The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="LINES" type="data" optional="false" label="Lines" help="Lines The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="NAME" type="data" optional="false" label="Name" help="Naming for split lines The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="SPLIT" type="select" optional="true" label="Each Line as new Profile" help="Each Line as new Profile">
       <option selected="true" value="false">false</option>
@@ -57,14 +57,14 @@ transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PROFILE" format="xml" hidden="false">
+    <data name="output_data_PROFILE" format="xml" label="output_data_PROFILE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PROFILE" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_PROFILE" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_PROFILES" format="xml" hidden="false">
+    <data name="output_data_PROFILES" format="xml" label="output_data_PROFILES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PROFILES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -74,8 +74,9 @@ transmissionMode_PROFILES $OutputSection_PROFILES.transmissionMode_PROFILES]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PROFILE" ftype="txt" value="output_data_PROFILE.txt"/>
+      <output name="output_data_PROFILES" ftype="txt" value="output_data_PROFILES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Create profiles from a grid based DEM for each line of a lines layer. ]]></help>

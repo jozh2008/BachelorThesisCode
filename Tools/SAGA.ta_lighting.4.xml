@@ -17,8 +17,8 @@ response $response
 outputType_CORRECTED $OutputSection_CORRECTED.outputType_CORRECTED
 transmissionMode_CORRECTED $OutputSection_CORRECTED.transmissionMode_CORRECTED]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="ORIGINAL" type="data" optional="false" label="Original Image" help="Original Image The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ORIGINAL" type="data" optional="false" label="Original Image" help="Original Image The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="AZI" type="float" value="180" optional="true" label="Azimuth" help="direction of sun (degree, clockwise from North)"/>
     <param name="HGT" type="float" value="45" optional="true" label="Height" help="height of sun above horizon (degree)"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
@@ -59,7 +59,7 @@ transmissionMode_CORRECTED $OutputSection_CORRECTED.transmissionMode_CORRECTED]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CORRECTED" format="tiff" hidden="false">
+    <data name="output_data_CORRECTED" format="tiff" label="output_data_CORRECTED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CORRECTED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -70,8 +70,8 @@ transmissionMode_CORRECTED $OutputSection_CORRECTED.transmissionMode_CORRECTED]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CORRECTED" ftype="txt" value="output_data_CORRECTED.txt"/>
     </test>
   </tests>
   <help><![CDATA[&lt;br/&gt;References:&lt;br/&gt;Civco, D. L. (1989): 'Topographic Normalization of Landsat Thematic Mapper Digital Imagery', Photogrammetric Engineering and Remote Sensing, 55(9), pp.1303-1309.&lt;br/&gt;&lt;br/&gt;Law, K.H., Nichol, J. (2004): 'Topographic Correction for Differential Illumination Effects on Ikonos Satellite Imagery', ISPRS 2004 International Society for Photogrammetry and Remote Sensing, &lt;a href="http://www.cartesia.org/geodoc/isprs2004/comm3/papers/347.pdf"&gt;pdf&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Phua, M.-H., Saito, H. (2003): 'Estimation of biomass of a mountainous tropical forest using Landsat TM data', Canadian Journal of Remote Sensing, 29(4), pp.429-440.&lt;br/&gt;&lt;br/&gt;Riano, D., Chuvieco, E. Salas, J., Aguado, I. (2003): 'Assessment of Different Topographic Corrections in Landsat-TM Data for Mapping Vegetation Types', IEEE Transactions on Geoscience and Remote Sensing, 41(5), pp.1056-1061, &lt;a href="http://www.geogra.uah.es/~emilio/pdf/Riano2003b.pdf"&gt;pdf&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Teillet, P.M., Guindon, B., Goodenough, D.G. (1982): 'On the slope-aspect correction of multispectral scanner data', Canadian Journal of Remote Sensing, 8(2), pp.1537-1540.&lt;br/&gt;&lt;br/&gt;]]></help>

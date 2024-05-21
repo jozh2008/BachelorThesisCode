@@ -33,12 +33,12 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_OUTPUT" format="x-ogc-lasf" label="output_data_OUTPUT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool can be used to drop attributes from a point cloud. In case the output dataset is not set, the attribute(s) will be dropped from the input dataset, i.e. the input dataset will be overwritten.&lt;br/&gt;&lt;br/&gt;]]></help>

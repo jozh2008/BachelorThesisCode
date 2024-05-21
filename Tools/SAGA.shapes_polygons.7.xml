@@ -15,7 +15,7 @@ transmissionMode_INDEX $OutputSection_INDEX.transmissionMode_INDEX
 outputType_DMAX $OutputSection_DMAX.outputType_DMAX
 transmissionMode_DMAX $OutputSection_DMAX.transmissionMode_DMAX]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="GYROS" type="select" optional="true" label="Diameter of Gyration" help="Diameter of Gyration">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -58,14 +58,14 @@ transmissionMode_DMAX $OutputSection_DMAX.transmissionMode_DMAX]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_INDEX" format="xml" hidden="false">
+    <data name="output_data_INDEX" format="xml" label="output_data_INDEX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_INDEX" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_INDEX" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_DMAX" format="xml" hidden="false">
+    <data name="output_data_DMAX" format="xml" label="output_data_DMAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DMAX" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -75,8 +75,9 @@ transmissionMode_DMAX $OutputSection_DMAX.transmissionMode_DMAX]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_INDEX" ftype="txt" value="output_data_INDEX.txt"/>
+      <output name="output_data_DMAX" ftype="txt" value="output_data_DMAX.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool calculates various indices describing the shape of polygons, mostly based on area, perimeter and maximum diameter. If the optional output 'Shape Indices' is not created, the tool attaches the attributes to the input dataset. Otherwise a new dataset is created and attributes existing in the input dataset are dropped.&lt;ul&gt;&lt;li&gt;&lt;b&gt;A&lt;/b&gt; area&lt;/li&gt;&lt;li&gt;&lt;b&gt;P&lt;/b&gt; perimeter&lt;/li&gt;&lt;li&gt;&lt;b&gt;P/A&lt;/b&gt; interior edge ratio&lt;/li&gt;&lt;li&gt;&lt;b&gt;P/sqrt(A)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Deqpc&lt;/b&gt; equivalent projected circle diameter (=2*sqrt(A/pi))&lt;/li&gt;&lt;li&gt;&lt;b&gt;Sphericity&lt;/b&gt; the ratio of the perimeter of the equivalent circle to the real perimeter (=P/(2*sqrt(A*pi)))&lt;/li&gt;&lt;li&gt;&lt;b&gt;Shape Index&lt;/b&gt; the inverse of the spericity&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax&lt;/b&gt; maximum diameter calculated as maximum distance between two polygon part's vertices&lt;/li&gt;&lt;li&gt;&lt;b&gt;DmaxDir&lt;/b&gt; direction of maximum diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax/A&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dmax/sqrt(A)&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;Dgyros&lt;/b&gt; diameter of gyration, calculated as twice the maximum vertex distance to its polygon part's centroid&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmax&lt;/b&gt; maximum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;FmaxDir&lt;/b&gt; direction of the maximum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmin&lt;/b&gt; minimum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;FminDir&lt;/b&gt; direction of the minimum Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmean&lt;/b&gt; mean Feret diameter&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmax90&lt;/b&gt; the Feret diameter measured at an angle of 90 degrees to that of the Fmax direction&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fmin90&lt;/b&gt; the Feret diameter measured at an angle of 90 degrees to that of the Fmin direction&lt;/li&gt;&lt;li&gt;&lt;b&gt;Fvol&lt;/b&gt; the diameter of a sphere having the same volume as the cylinder constructed by Fmin as the cylinder diameter and Fmax as its length&lt;/li&gt;&lt;/ul&gt;]]></help>

@@ -51,25 +51,25 @@ transmissionMode_Rc $OutputSection_Rc.transmissionMode_Rc
 outputType_TCc $OutputSection_TCc.outputType_TCc
 transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
   <inputs>
-    <param name="DTM" type="data" optional="false" label="Digital Terrain Model" help="DTM, digital terrain model [m] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="S" type="data" optional="false" label="Slope" help="S, slope [rad] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="CHANNEL" type="data" optional="false" label="Channel Network" help="Channel network, all other cells NoData The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="PI" type="data" optional="false" label="Permament Interception" help="PI, permanent interception expressed as the proportion [between 0-1] of rainfall The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="CC" type="data" optional="false" label="Canopy Cover" help="CC, canopy cover expressed as a portion [between 0-1] of the soil surface protected by vegetation or crop The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="PH" type="data" optional="false" label="Plant Height" help="PH, plant height [m], representing the effective height from which raindrops fall from the crop or vegetation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="EtEo" type="data" optional="false" label="Ratio Evapotranspiration" help="Et/Eo, ratio of actual to potential evapotranspiration The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="GC" type="data" optional="false" label="Ground cover" help="GC, Ground cover expressed as a portion [between 0-1] of the soil surface protected by vegetation or crop cover on the ground The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="D" type="data" optional="false" label="Diameter plant elements" help="D, Average diameter [m] of the individual plants elements (stem, leaves) at the ground surface The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="NV" type="data" optional="false" label="Number plant elements" help="NV, Number of plant elements per unit area [number/unit area] at the ground surface The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="MS" type="data" optional="false" label="Soil moisture (at FC)" help="MS, Soil moisture at field capacity [% w/w] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="BD" type="data" optional="false" label="Bulk density top layer" help="BD, Bulk density of the top layer [Mg/m3] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="EHD" type="data" optional="false" label="Effective hydrological depth" help="EHD, Effective hydrological depth of the soil [m] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="LP" type="data" optional="false" label="Sat. lateral permeability" help="LP, Saturated lateral permeability of the soil [m/day] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="PER_C" type="data" optional="false" label="Percentage clays" help="c, Percentage clays [%] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="PER_Z" type="data" optional="false" label="Percentage silt" help="z, Percentage silt [%] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="PER_S" type="data" optional="false" label="Percentage sand" help="s, Percentage sand [%] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="ST" type="data" optional="false" label="Percentage rock fragments" help="ST, Percentage rock fragments on the soil surface [%] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="RFR" type="data" optional="false" label="Surface roughness" help="RFR, Surface roughness [cm/m]. In case the surface roughness is not provided as input, v_flow_t is set to 1.0, i.e. natural soil surface roughness is not accounted for. The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="DTM" type="data" optional="false" label="Digital Terrain Model" help="DTM, digital terrain model [m] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="S" type="data" optional="false" label="Slope" help="S, slope [rad] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="CHANNEL" type="data" optional="false" label="Channel Network" help="Channel network, all other cells NoData The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="PI" type="data" optional="false" label="Permament Interception" help="PI, permanent interception expressed as the proportion [between 0-1] of rainfall The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="CC" type="data" optional="false" label="Canopy Cover" help="CC, canopy cover expressed as a portion [between 0-1] of the soil surface protected by vegetation or crop The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="PH" type="data" optional="false" label="Plant Height" help="PH, plant height [m], representing the effective height from which raindrops fall from the crop or vegetation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="EtEo" type="data" optional="false" label="Ratio Evapotranspiration" help="Et/Eo, ratio of actual to potential evapotranspiration The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="GC" type="data" optional="false" label="Ground cover" help="GC, Ground cover expressed as a portion [between 0-1] of the soil surface protected by vegetation or crop cover on the ground The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="D" type="data" optional="false" label="Diameter plant elements" help="D, Average diameter [m] of the individual plants elements (stem, leaves) at the ground surface The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="NV" type="data" optional="false" label="Number plant elements" help="NV, Number of plant elements per unit area [number/unit area] at the ground surface The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="MS" type="data" optional="false" label="Soil moisture (at FC)" help="MS, Soil moisture at field capacity [% w/w] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="BD" type="data" optional="false" label="Bulk density top layer" help="BD, Bulk density of the top layer [Mg/m3] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="EHD" type="data" optional="false" label="Effective hydrological depth" help="EHD, Effective hydrological depth of the soil [m] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="LP" type="data" optional="false" label="Sat. lateral permeability" help="LP, Saturated lateral permeability of the soil [m/day] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="PER_C" type="data" optional="false" label="Percentage clays" help="c, Percentage clays [%] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="PER_Z" type="data" optional="false" label="Percentage silt" help="z, Percentage silt [%] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="PER_S" type="data" optional="false" label="Percentage sand" help="s, Percentage sand [%] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ST" type="data" optional="false" label="Percentage rock fragments" help="ST, Percentage rock fragments on the soil surface [%] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="RFR" type="data" optional="false" label="Surface roughness" help="RFR, Surface roughness [cm/m]. In case the surface roughness is not provided as input, v_flow_t is set to 1.0, i.e. natural soil surface roughness is not accounted for. The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="TAB_METEO" type="data" optional="false" label="Meteorological data" help="Meteorological data for multiple timestep modelling [model step (day); temperature (Celsius); rainfall (mm), rainfall intensity (mm/h); rainfall duration (day); timespan (days)] The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OUT_PATH" type="data" optional="false" label="Output file path" help="Full path to the directory for the output grids of each model step The following data types are allowed in the txt file:  plain" format="txt"/>
     <param name="INTERFLOW" type="select" optional="true" label="Simulate Interflow" help="Simulate interflow">
@@ -188,7 +188,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_IF" format="tiff" hidden="false">
+    <data name="output_data_IF" format="tiff" label="output_data_IF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_IF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -196,7 +196,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
         <when input="outputType_IF" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_Q" format="tiff" hidden="false">
+    <data name="output_data_Q" format="tiff" label="output_data_Q" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Q" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -204,7 +204,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
         <when input="outputType_Q" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SL" format="tiff" hidden="false">
+    <data name="output_data_SL" format="tiff" label="output_data_SL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -212,7 +212,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
         <when input="outputType_SL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_Rf" format="tiff" hidden="false">
+    <data name="output_data_Rf" format="tiff" label="output_data_Rf" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Rf" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -220,7 +220,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
         <when input="outputType_Rf" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_KE" format="tiff" hidden="false">
+    <data name="output_data_KE" format="tiff" label="output_data_KE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_KE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -228,7 +228,7 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
         <when input="outputType_KE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_Rc" format="tiff" hidden="false">
+    <data name="output_data_Rc" format="tiff" label="output_data_Rc" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Rc" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -236,12 +236,18 @@ transmissionMode_TCc $OutputSection_TCc.transmissionMode_TCc]]></command>
         <when input="outputType_Rc" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TCc" format="tiff" hidden="false"/>
+    <data name="output_data_TCc" format="tiff" label="output_data_TCc" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_IF" ftype="txt" value="output_data_IF.txt"/>
+      <output name="output_data_Q" ftype="txt" value="output_data_Q.txt"/>
+      <output name="output_data_SL" ftype="txt" value="output_data_SL.txt"/>
+      <output name="output_data_Rf" ftype="txt" value="output_data_Rf.txt"/>
+      <output name="output_data_KE" ftype="txt" value="output_data_KE.txt"/>
+      <output name="output_data_Rc" ftype="txt" value="output_data_Rc.txt"/>
+      <output name="output_data_TCc" ftype="txt" value="output_data_TCc.txt"/>
     </test>
   </tests>
   <help><![CDATA[Soil erosion modelling with a modified MMF (Morgan-Morgan-Finney) model (Morgan & Duzant 2008).&lt;br/&gt;This tool is called MMF-SAGA because some things have been implemented differently compared to the original publication. The most important are:&lt;br/&gt;&lt;br/&gt;&lt;ul&gt;&lt;li&gt;the extension of the model to support spatially distributed modelling&lt;/li&gt;&lt;li&gt;the introduction of a "Channel Network" layer&lt;/li&gt;&lt;li&gt;the introduction of a "rainfall duration" (time span) parameter&lt;/li&gt;&lt;li&gt;the exposure of the flow depth parameter&lt;/li&gt;&lt;/ul&gt;&lt;br/&gt;&lt;br/&gt;A more detailed description of the model, its modifications, and model application is provided by Setiawan (2012), chapter 6.&lt;br/&gt;Currently, a number of additional grid datasets are outputted to facilitate model evaluation. This can be easily changed within the source code.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;&lt;b&gt;Morgan, R.P.C. (2001)&lt;/b&gt;: A simple approach to soil loss prediction: a revised Morgan-Morgan-Finney model. Catena 44: 305-322.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Morgan, R.P.C., Duzant, J.H. (2008)&lt;/b&gt;: Modified MMF (Morgan-Morgan-Finney) model for evaluating effects of crops and vegetation cover on soil erosion. Earth Surf. Process. Landforms 32: 90-106.&lt;br/&gt;&lt;br/&gt;&lt;a href="http://sourceforge.net/projects/saga-gis/files/SAGA%20-%20Documentation/Modules/MMF-SAGA_Setiawan.pdf"&gt;&lt;b&gt;Setiawan, M. A. (2012)&lt;/b&gt;: Integrated Soil Erosion Management in the upper Serayu Watershed, Wonosobo District, Central Java Province, Indonesia. Dissertation at the Faculty of Geo- and Atmospheric Sciences of the University of Innsbruck, Austria.&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;]]></help>

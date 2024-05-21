@@ -30,7 +30,7 @@ transmissionMode_MOIST $OutputSection_MOIST.transmissionMode_MOIST
 outputType_TABLE $OutputSection_TABLE.outputType_TABLE
 transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
   <inputs>
-    <param name="ATANB" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="ATANB" type="data" optional="false" label="Topographic Wetness Index" help="Topographic Wetness Index The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="WEATHER" type="data" optional="false" label="Weather Records" help="Weather Records The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RECORD_P" type="data" optional="false" label="Precipitation [m / dt]" help="Precipitation [m / dt] The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RECORD_ET" type="data" optional="false" label="Evapotranspiration [m / dt]" help="Evapotranspiration [m / dt] The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -84,7 +84,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MOIST" format="tiff" hidden="false">
+    <data name="output_data_MOIST" format="tiff" label="output_data_MOIST" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MOIST" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -92,12 +92,13 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
         <when input="outputType_MOIST" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TABLE" format="csv" hidden="false"/>
+    <data name="output_data_TABLE" format="csv" label="output_data_TABLE" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MOIST" ftype="txt" value="output_data_MOIST.txt"/>
+      <output name="output_data_TABLE" ftype="txt" value="output_data_TABLE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Simple Subcatchment Version of TOPMODEL&lt;br/&gt;&lt;br/&gt;Based on the 'TOPMODEL demonstration program v95.02' by Keith Beven (Centre for Research on Environmental Systems and Statistics, Institute of Environmental and Biological Sciences, Lancaster University, Lancaster LA1 4YQ, UK) and the C translation of the Fortran source codes implemented in GRASS.&lt;br/&gt;&lt;br/&gt;This program allows single or multiple subcatchment calculations but with single average rainfall and potential evapotranspiration inputs to the whole catchment.  Subcatchment discharges are routed to the catchment outlet using a linear routing algorithm with constant main channel velocity and internal subcatchment routing velocity.  The program requires ln(a/tanB) distributions for each subcatchment.  These may be calculated using the GRIDATB program which requires raster elevation data as input. It is recommended that those data should be 50 m resolution or better.&lt;br/&gt;&lt;br/&gt;NOTE that TOPMODEL is not intended to be a traditional model package but is more a collection of concepts that can be used **** where appropriate ****. It is up to the user to verify that the assumptions are appropriate (see discussion in Beven et al.(1994).   This version of the model  will be best suited to catchments with shallow soils and moderate topography which do not suffer from excessively long dry periods.  Ideally predicted contributing areas should be checked against what actually happens in the catchment.&lt;br/&gt;&lt;br/&gt;It includes infiltration excess calculations and parameters based on the exponential conductivity Green-Ampt model of Beven (HSJ, 1984) but if infiltration excess does occur it does so over whole area of a subcatchment.  Spatial variability in conductivities can however be handled by specifying Ko parameter values for different subcatchments, even if they have the same ln(a/tanB) and routing parameters, ie. to represent different parts of the area.&lt;br/&gt;&lt;br/&gt;Note that time step calculations are explicit ie. SBAR at start of time step is used to determine contributing area. Thus with long (daily) time steps contributing area depends on initial value together with any volume filling effect of daily inputs.  Also baseflow at start of time step is used to update SBAR at end of time step.&lt;br/&gt;&lt;br/&gt;References&lt;br/&gt;- Beven, K., Kirkby, M.J., Schofield, N., Tagg, A.F. (1984):   Testing a physically-based flood forecasting model (TOPMODEL) for threee U.K. catchments,   Journal of Hydrology, H.69, S.119-143.&lt;br/&gt;&lt;br/&gt;- Beven, K. (1997):   TOPMODEL - a critique,   Hydrological Processes, Vol.11, pp.1069-1085.&lt;br/&gt;]]></help>

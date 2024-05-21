@@ -14,7 +14,7 @@ response $response
 outputType_OUTPUT $OutputSection_OUTPUT.outputType_OUTPUT
 transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Replace Condition" help="Replace Condition">
       <option selected="true" value="identity">identity</option>
       <option value="range">range</option>
@@ -22,7 +22,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </param>
     <param name="IDENTITY" type="data" optional="false" label="Lookup Table" help="Lookup Table The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RANGE" type="data" optional="false" label="Lookup Table" help="Lookup Table The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="GRID" type="data" optional="false" label="Grid Classification" help="Synchronize with look-up table classification of another grid (gui only). The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid Classification" help="Synchronize with look-up table classification of another grid (gui only). The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -46,7 +46,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT" format="tiff" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -57,8 +57,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Changes values of a grid according to the rules of a user defined lookup table. Values or value ranges that are not listed in the lookup table remain unchanged. If the target is not set, the changes will be stored to the original grid. ]]></help>

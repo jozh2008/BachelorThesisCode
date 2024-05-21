@@ -31,8 +31,8 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
 outputType_REGRESCORR $OutputSection_REGRESCORR.outputType_REGRESCORR
 transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCORR]]></command>
   <inputs>
-    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ATTRIBUTE" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
@@ -143,17 +143,17 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_INFO_COEFF" format="csv" hidden="false"/>
-    <data name="output_data_INFO_MODEL" format="csv" hidden="false"/>
-    <data name="output_data_INFO_STEPS" format="csv" hidden="false"/>
-    <data name="output_data_RESIDUALS" format="xml" hidden="false">
+    <data name="output_data_INFO_COEFF" format="csv" label="output_data_INFO_COEFF" hidden="false"/>
+    <data name="output_data_INFO_MODEL" format="csv" label="output_data_INFO_MODEL" hidden="false"/>
+    <data name="output_data_INFO_STEPS" format="csv" label="output_data_INFO_STEPS" hidden="false"/>
+    <data name="output_data_RESIDUALS" format="xml" label="output_data_RESIDUALS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESIDUALS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_RESIDUALS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+    <data name="output_data_REGRESSION" format="tiff" label="output_data_REGRESSION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -161,7 +161,7 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
         <when input="outputType_REGRESSION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_REGRESCORR" format="tiff" hidden="false">
+    <data name="output_data_REGRESCORR" format="tiff" label="output_data_REGRESCORR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGRESCORR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -172,8 +172,13 @@ transmissionMode_REGRESCORR $OutputSection_REGRESCORR.transmissionMode_REGRESCOR
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_INFO_COEFF" ftype="txt" value="output_data_INFO_COEFF.txt"/>
+      <output name="output_data_INFO_MODEL" ftype="txt" value="output_data_INFO_MODEL.txt"/>
+      <output name="output_data_INFO_STEPS" ftype="txt" value="output_data_INFO_STEPS.txt"/>
+      <output name="output_data_RESIDUALS" ftype="txt" value="output_data_RESIDUALS.txt"/>
+      <output name="output_data_REGRESSION" ftype="txt" value="output_data_REGRESSION.txt"/>
+      <output name="output_data_REGRESCORR" ftype="txt" value="output_data_REGRESCORR.txt"/>
     </test>
   </tests>
   <help><![CDATA[Linear regression analysis of point attributes with multiple grids. Details of the regression/correlation analysis will be saved to a table. The regression function is used to create a new grid with regression based values. The multiple regression analysis uses a forward selection procedure.]]></help>

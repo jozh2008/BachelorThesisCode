@@ -57,7 +57,7 @@ transmissionMode_TRANSFORM $OutputSection_TRANSFORM.transmissionMode_TRANSFORM]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TRANSFORM" format="xml" hidden="false">
+    <data name="output_data_TRANSFORM" format="xml" label="output_data_TRANSFORM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TRANSFORM" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -67,8 +67,8 @@ transmissionMode_TRANSFORM $OutputSection_TRANSFORM.transmissionMode_TRANSFORM]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TRANSFORM" ftype="txt" value="output_data_TRANSFORM.txt"/>
     </test>
   </tests>
   <help><![CDATA[Use this tool to move, rotate and/or scale shapes.]]></help>

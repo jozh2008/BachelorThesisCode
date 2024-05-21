@@ -4,38 +4,38 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio.in False  isArrayoutputs.ortho False  isArrayelev.geoid False  output_data_io.out $output_data_io.out  name OTB.OrthoRectification io.in $io.in
-io.out $io.out
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio_in False  isArrayoutputs_ortho False  isArrayelev_geoid False  output_data_io_out $output_data_io_out  name OTB.OrthoRectification io_in $io_in
+io_out $io_out
 map $map
-map.utm.zone $map.utm.zone
-map.utm.northhem $map.utm.northhem
-map.epsg.code $map.epsg.code
-outputs.mode $outputs.mode
-outputs.ulx $outputs.ulx
-outputs.uly $outputs.uly
-outputs.sizex $outputs.sizex
-outputs.sizey $outputs.sizey
-outputs.spacingx $outputs.spacingx
-outputs.spacingy $outputs.spacingy
-outputs.lrx $outputs.lrx
-outputs.lry $outputs.lry
-outputs.ortho $outputs.ortho
-outputs.isotropic $outputs.isotropic
-outputs.default $outputs.default
-elev.dem '$elev.dem'
-elev.geoid $elev.geoid
-elev.default $elev.default
+map_utm_zone $map_utm_zone
+map_utm_northhem $map_utm_northhem
+map_epsg_code $map_epsg_code
+outputs_mode $outputs_mode
+outputs_ulx $outputs_ulx
+outputs_uly $outputs_uly
+outputs_sizex $outputs_sizex
+outputs_sizey $outputs_sizey
+outputs_spacingx $outputs_spacingx
+outputs_spacingy $outputs_spacingy
+outputs_lrx $outputs_lrx
+outputs_lry $outputs_lry
+outputs_ortho $outputs_ortho
+outputs_isotropic $outputs_isotropic
+outputs_default $outputs_default
+elev_dem '$elev_dem'
+elev_geoid $elev_geoid
+elev_default $elev_default
 interpolator $interpolator
-interpolator.bco.radius $interpolator.bco.radius
-opt.ram $opt.ram
-opt.gridspacing $opt.gridspacing
+interpolator_bco_radius $interpolator_bco_radius
+opt_ram $opt_ram
+opt_gridspacing $opt_gridspacing
 prefer $prefer
 response $response
-outputType_io.out $OutputSection_io.out.outputType_io.out
-transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
+outputType_io_out $OutputSection_io_out.outputType_io_out
+transmissionMode_io_out $OutputSection_io_out.transmissionMode_io_out]]></command>
   <inputs>
-    <param name="io.in" type="data" optional="false" label="The input image to ortho-rectify" help="The input image to ortho-rectify The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="io.out" type="select" optional="false" label="The ortho-rectified output image" help="The ortho-rectified output image">
+    <param name="io_in" type="data" optional="false" label="The input image to ortho-rectify" help="The input image to ortho-rectify The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="io_out" type="select" optional="false" label="The ortho-rectified output image" help="The ortho-rectified output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
       <option value="int16">int16</option>
@@ -50,44 +50,44 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option selected="true" value="utm">utm</option>
       <option value="wgs">wgs</option>
     </param>
-    <param name="map.utm.zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
-    <param name="map.utm.northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
+    <param name="map_utm_zone" type="integer" value="31" optional="false" label="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)" help="The zone number ranges from 1 to 60 and allows defining the transverse mercator projection (along with the hemisphere)"/>
+    <param name="map_utm_northhem" type="select" optional="false" label="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere." help="The transverse mercator projections are defined by their zone number as well as the hemisphere. Activate this parameter if your image is in the northern hemisphere.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="map.epsg.code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
-    <param name="outputs.mode" type="select" optional="false" label="outputs.mode" help="outputs.mode">
+    <param name="map_epsg_code" type="integer" value="4326" optional="false" label="See www.spatialreference.org to find which EPSG code is associated to your projection" help="See www.spatialreference.org to find which EPSG code is associated to your projection"/>
+    <param name="outputs_mode" type="select" optional="false" label="outputs.mode" help="outputs.mode">
       <option selected="true" value="auto">auto</option>
       <option value="autosize">autosize</option>
       <option value="autospacing">autospacing</option>
       <option value="orthofit">orthofit</option>
       <option value="outputroi">outputroi</option>
     </param>
-    <param name="outputs.ulx" type="float" optional="false" label="Cartographic X coordinate of upper-left corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic X coordinate of upper-left corner (meters for cartographic projections, degrees for geographic ones)"/>
-    <param name="outputs.uly" type="float" optional="false" label="Cartographic Y coordinate of the upper-left corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic Y coordinate of the upper-left corner (meters for cartographic projections, degrees for geographic ones)"/>
-    <param name="outputs.sizex" type="integer" optional="false" label="Size of projected image along X (in pixels)" help="Size of projected image along X (in pixels)"/>
-    <param name="outputs.sizey" type="integer" optional="false" label="Size of projected image along Y (in pixels)" help="Size of projected image along Y (in pixels)"/>
-    <param name="outputs.spacingx" type="float" optional="false" label="Size of each pixel along X axis (meters for cartographic projections, degrees for geographic ones)" help="Size of each pixel along X axis (meters for cartographic projections, degrees for geographic ones)"/>
-    <param name="outputs.spacingy" type="float" optional="false" label="Size of each pixel along Y axis (meters for cartographic projections, degrees for geographic ones)" help="Size of each pixel along Y axis (meters for cartographic projections, degrees for geographic ones)"/>
-    <param name="outputs.lrx" type="float" optional="true" label="Cartographic X coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic X coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)"/>
-    <param name="outputs.lry" type="float" optional="true" label="Cartographic Y coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic Y coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)"/>
-    <param name="outputs.ortho" type="data" optional="false" label="A model ortho-image that can be used to compute size, origin and spacing of the output" help="A model ortho-image that can be used to compute size, origin and spacing of the output The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="outputs.isotropic" type="select" optional="false" label="Default spacing (pixel size) values are estimated from the sensor modeling of the image. It can therefore result in a non-isotropic spacing. This option allows you to force default values to be isotropic (in this case, the minimum of spacing in both direction is applied. Values overridden by user are not affected by this option." help="Default spacing (pixel size) values are estimated from the sensor modeling of the image. It can therefore result in a non-isotropic spacing. This option allows you to force default values to be isotropic (in this case, the minimum of spacing in both direction is applied. Values overridden by user are not affected by this option.">
+    <param name="outputs_ulx" type="float" optional="false" label="Cartographic X coordinate of upper-left corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic X coordinate of upper-left corner (meters for cartographic projections, degrees for geographic ones)"/>
+    <param name="outputs_uly" type="float" optional="false" label="Cartographic Y coordinate of the upper-left corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic Y coordinate of the upper-left corner (meters for cartographic projections, degrees for geographic ones)"/>
+    <param name="outputs_sizex" type="integer" optional="false" label="Size of projected image along X (in pixels)" help="Size of projected image along X (in pixels)"/>
+    <param name="outputs_sizey" type="integer" optional="false" label="Size of projected image along Y (in pixels)" help="Size of projected image along Y (in pixels)"/>
+    <param name="outputs_spacingx" type="float" optional="false" label="Size of each pixel along X axis (meters for cartographic projections, degrees for geographic ones)" help="Size of each pixel along X axis (meters for cartographic projections, degrees for geographic ones)"/>
+    <param name="outputs_spacingy" type="float" optional="false" label="Size of each pixel along Y axis (meters for cartographic projections, degrees for geographic ones)" help="Size of each pixel along Y axis (meters for cartographic projections, degrees for geographic ones)"/>
+    <param name="outputs_lrx" type="float" optional="true" label="Cartographic X coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic X coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)"/>
+    <param name="outputs_lry" type="float" optional="true" label="Cartographic Y coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)" help="Cartographic Y coordinate of the lower-right corner (meters for cartographic projections, degrees for geographic ones)"/>
+    <param name="outputs_ortho" type="data" optional="false" label="A model ortho-image that can be used to compute size, origin and spacing of the output" help="A model ortho-image that can be used to compute size, origin and spacing of the output The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="outputs_isotropic" type="select" optional="false" label="Default spacing (pixel size) values are estimated from the sensor modeling of the image. It can therefore result in a non-isotropic spacing. This option allows you to force default values to be isotropic (in this case, the minimum of spacing in both direction is applied. Values overridden by user are not affected by this option." help="Default spacing (pixel size) values are estimated from the sensor modeling of the image. It can therefore result in a non-isotropic spacing. This option allows you to force default values to be isotropic (in this case, the minimum of spacing in both direction is applied. Values overridden by user are not affected by this option.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="outputs.default" type="float" value="0" optional="true" label="Default value to write when outside of input image." help="Default value to write when outside of input image."/>
-    <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
-    <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
-    <param name="elev.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
+    <param name="outputs_default" type="float" value="0" optional="true" label="Default value to write when outside of input image." help="Default value to write when outside of input image."/>
+    <param name="elev_dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
+    <param name="elev_geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
+    <param name="elev_default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
     <param name="interpolator" type="select" optional="false" label="This group of parameters allows one to define how the input image will be interpolated during resampling." help="This group of parameters allows one to define how the input image will be interpolated during resampling.">
       <option selected="true" value="bco">bco</option>
       <option value="linear">linear</option>
       <option value="nn">nn</option>
     </param>
-    <param name="interpolator.bco.radius" type="integer" value="10" optional="true" label="Enabling RPC modeling allows one to speed-up SPOT5 ortho-rectification. Value is the number of control points per axis for RPC estimation" help="Enabling RPC modeling allows one to speed-up SPOT5 ortho-rectification. Value is the number of control points per axis for RPC estimation"/>
-    <param name="opt.ram" type="integer" value="128" optional="true" label="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)" help="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)"/>
-    <param name="opt.gridspacing" type="float" value="4" optional="true" label="Resampling is done according to a coordinate mapping deformation grid, whose pixel size is set by this parameter, and expressed in the coordinate system of the output image The closer to the output spacing this parameter is, the more precise will be the ortho-rectified image,but increasing this parameter will reduce processing time." help="Resampling is done according to a coordinate mapping deformation grid, whose pixel size is set by this parameter, and expressed in the coordinate system of the output image The closer to the output spacing this parameter is, the more precise will be the ortho-rectified image,but increasing this parameter will reduce processing time."/>
+    <param name="interpolator_bco_radius" type="integer" value="10" optional="true" label="Enabling RPC modeling allows one to speed-up SPOT5 ortho-rectification. Value is the number of control points per axis for RPC estimation" help="Enabling RPC modeling allows one to speed-up SPOT5 ortho-rectification. Value is the number of control points per axis for RPC estimation"/>
+    <param name="opt_ram" type="integer" value="128" optional="true" label="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)" help="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)"/>
+    <param name="opt_gridspacing" type="float" value="4" optional="true" label="Resampling is done according to a coordinate mapping deformation grid, whose pixel size is set by this parameter, and expressed in the coordinate system of the output image The closer to the output spacing this parameter is, the more precise will be the ortho-rectified image,but increasing this parameter will reduce processing time." help="Resampling is done according to a coordinate mapping deformation grid, whose pixel size is set by this parameter, and expressed in the coordinate system of the output image The closer to the output spacing this parameter is, the more precise will be the ortho-rectified image,but increasing this parameter will reduce processing time."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -97,31 +97,31 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.out" type="select" label="Author did not provide help for this parameter... ">
+    <section name="OutputSection_io_out" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType_io_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
       </param>
-      <param name="transmissionMode_io.out" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode_io_out" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_io.out" format="tiff" hidden="false">
+    <data name="output_data_io_out" format="tiff" label="output_data_io_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
-        <when input="outputType_io.out" format="jpeg" value="image/jpeg"/>
-        <when input="outputType_io.out" format="png" value="image/png"/>
+        <when input="outputType_io_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_io_out" format="png" value="image/png"/>
       </change_format>
     </data>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_io_out" ftype="txt" value="output_data_io_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application uses inverse sensor modelling combined with a choice of interpolation functions to resample a sensor geometry image into a ground geometry regular grid. The ground geometry regular grid is defined with respect to a map projection (see map parameter). The application offers several modes to estimate the output grid parameters (origin and ground sampling distance), including automatic estimation of image size, ground sampling distance, or both, from image metadata, user-defined ROI corners, or another ortho-image.A digital Elevation Model along with a geoid file can be specified to account for terrain deformations.In case of SPOT5 images, the sensor model can be approximated by an RPC model in order to speed-up computation.]]></help>

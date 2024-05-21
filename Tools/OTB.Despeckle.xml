@@ -8,20 +8,20 @@
 out $out
 ram $ram
 filter $filter
-filter.lee.rad $filter.lee.rad
-filter.lee.nblooks $filter.lee.nblooks
-filter.frost.rad $filter.frost.rad
-filter.frost.deramp $filter.frost.deramp
-filter.gammamap.rad $filter.gammamap.rad
-filter.gammamap.nblooks $filter.gammamap.nblooks
-filter.kuan.rad $filter.kuan.rad
-filter.kuan.nblooks $filter.kuan.nblooks
+filter_lee_rad $filter_lee_rad
+filter_lee_nblooks $filter_lee_nblooks
+filter_frost_rad $filter_frost_rad
+filter_frost_deramp $filter_frost_deramp
+filter_gammamap_rad $filter_gammamap_rad
+filter_gammamap_nblooks $filter_gammamap_nblooks
+filter_kuan_rad $filter_kuan_rad
+filter_kuan_nblooks $filter_kuan_nblooks
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image." help="Input image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image." help="Input image. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image." help="Output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -37,14 +37,14 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="kuan">kuan</option>
       <option selected="true" value="lee">lee</option>
     </param>
-    <param name="filter.lee.rad" type="integer" value="1" optional="false" label="Radius in pixel" help="Radius in pixel"/>
-    <param name="filter.lee.nblooks" type="float" value="1" optional="false" label="Number of looks in the input image." help="Number of looks in the input image."/>
-    <param name="filter.frost.rad" type="integer" value="1" optional="false" label="Radius in pixel." help="Radius in pixel."/>
-    <param name="filter.frost.deramp" type="float" value="0.1" optional="false" label="factor use to control theexponential function used to weight effect of the distance between thecentral pixel and its neighborhood. Increasing the deramp parameter willlead to take more into account pixels farther from the center andtherefore increase the smoothing effects." help="factor use to control theexponential function used to weight effect of the distance between thecentral pixel and its neighborhood. Increasing the deramp parameter willlead to take more into account pixels farther from the center andtherefore increase the smoothing effects."/>
-    <param name="filter.gammamap.rad" type="integer" value="1" optional="false" label="Radius in pixel." help="Radius in pixel."/>
-    <param name="filter.gammamap.nblooks" type="float" value="1" optional="false" label="Number of looks in the input image." help="Number of looks in the input image."/>
-    <param name="filter.kuan.rad" type="integer" optional="false" label="Radius in pixel." help="Radius in pixel."/>
-    <param name="filter.kuan.nblooks" type="float" optional="false" label="Number of looks in the input image." help="Number of looks in the input image."/>
+    <param name="filter_lee_rad" type="integer" value="1" optional="false" label="Radius in pixel" help="Radius in pixel"/>
+    <param name="filter_lee_nblooks" type="float" value="1" optional="false" label="Number of looks in the input image." help="Number of looks in the input image."/>
+    <param name="filter_frost_rad" type="integer" value="1" optional="false" label="Radius in pixel." help="Radius in pixel."/>
+    <param name="filter_frost_deramp" type="float" value="0.1" optional="false" label="factor use to control theexponential function used to weight effect of the distance between thecentral pixel and its neighborhood. Increasing the deramp parameter willlead to take more into account pixels farther from the center andtherefore increase the smoothing effects." help="factor use to control theexponential function used to weight effect of the distance between thecentral pixel and its neighborhood. Increasing the deramp parameter willlead to take more into account pixels farther from the center andtherefore increase the smoothing effects."/>
+    <param name="filter_gammamap_rad" type="integer" value="1" optional="false" label="Radius in pixel." help="Radius in pixel."/>
+    <param name="filter_gammamap_nblooks" type="float" value="1" optional="false" label="Number of looks in the input image." help="Number of looks in the input image."/>
+    <param name="filter_kuan_rad" type="integer" optional="false" label="Radius in pixel." help="Radius in pixel."/>
+    <param name="filter_kuan_nblooks" type="float" optional="false" label="Number of looks in the input image." help="Number of looks in the input image."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -67,7 +67,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -77,8 +77,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[SAR images are affected by speckle noise that inherently exists in and which degrades the image quality. It is caused by the coherent nature of back-scattered waves from multiple distributed targets. It is locally strong and it increases the mean Grey level of a local area. Reducing the speckle noise enhances radiometric resolution but tend to decrease the spatial resolution.Several different methods are used to eliminate speckle noise, based upon different mathematical models of the phenomenon. The application includes four methods: Lee [1], Frost [2], GammaMAP [3] and Kuan [4]. We sum up below the basic principle of this four methods:  * Lee : Estimate the signal by mean square error minimization (MMSE) on a sliding window.  * Frost : Also derived from the MMSE criteria with a weighted sum of the values within the window. The weighting factors decrease with distance from the pixel of interest.  * GammaMAP  : Derived under the assumption of the image follows a Gamma distribution.  * Kuan : Also derived from the MMSE criteria under the assumption of non stationary mean and variance. It is quite similar to Lee filter in form.]]></help>

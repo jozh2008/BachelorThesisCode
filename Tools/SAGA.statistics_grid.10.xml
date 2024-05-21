@@ -11,7 +11,7 @@ response $response
 outputType_GRIDS $OutputSection_GRIDS.outputType_GRIDS
 transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   <inputs>
-    <param name="PCA" type="data" optional="false" label="Principal Components" help="Principal Components The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="PCA" type="data" optional="false" label="Principal Components" help="Principal Components The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="EIGEN" type="data" optional="false" label="Eigen Vectors" help="Eigen Vectors The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -36,7 +36,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRIDS" format="tiff" hidden="false">
+    <data name="output_data_GRIDS" format="tiff" label="output_data_GRIDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRIDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -47,8 +47,8 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRIDS" ftype="txt" value="output_data_GRIDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Inverse principal components rotation for grids.]]></help>

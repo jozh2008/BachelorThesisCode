@@ -6,25 +6,25 @@
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
   <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayvd False  isArrayin False  output_data_out $output_data_out  name OTB.VectorDataTransform vd $vd
 in $in
-transform.tx $transform.tx
-transform.ty $transform.ty
-transform.ro $transform.ro
-transform.centerx $transform.centerx
-transform.centery $transform.centery
-transform.scale $transform.scale
+transform_tx $transform_tx
+transform_ty $transform_ty
+transform_ro $transform_ro
+transform_centerx $transform_centerx
+transform_centery $transform_centery
+transform_scale $transform_scale
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="vd" type="data" optional="false" label="Input vector data file to transform" help="Input vector data file to transform The following data types are allowed in the txt file:  zip, json, vnd.google-earth.kml+xml, xml" format="txt"/>
-    <param name="in" type="data" optional="false" label="Image defining the reference coordinate system in which the transform is applied. Both projected and sensor images are supported." help="Image defining the reference coordinate system in which the transform is applied. Both projected and sensor images are supported. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
-    <param name="transform.tx" type="float" value="0" optional="false" label="Translation in the X direction (in pixels)" help="Translation in the X direction (in pixels)"/>
-    <param name="transform.ty" type="float" value="0" optional="false" label="Translation in the Y direction (in pixels)" help="Translation in the Y direction (in pixels)"/>
-    <param name="transform.ro" type="float" value="0" optional="false" label="Angle of the rotation (in degrees)" help="Angle of the rotation (in degrees)"/>
-    <param name="transform.centerx" type="float" value="0" optional="false" label="X coordinate of the rotation and scaling center (in physical units)" help="X coordinate of the rotation and scaling center (in physical units)"/>
-    <param name="transform.centery" type="float" value="0" optional="false" label="Y coordinate of the rotation and scaling center (in physical units)" help="Y coordinate of the rotation and scaling center (in physical units)"/>
-    <param name="transform.scale" type="float" value="1" optional="false" label="The scale coefficient to apply" help="The scale coefficient to apply"/>
+    <param name="vd" type="data" optional="false" label="Input vector data file to transform" help="Input vector data file to transform The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json, zip" format="txt"/>
+    <param name="in" type="data" optional="false" label="Image defining the reference coordinate system in which the transform is applied. Both projected and sensor images are supported." help="Image defining the reference coordinate system in which the transform is applied. Both projected and sensor images are supported. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="transform_tx" type="float" value="0" optional="false" label="Translation in the X direction (in pixels)" help="Translation in the X direction (in pixels)"/>
+    <param name="transform_ty" type="float" value="0" optional="false" label="Translation in the Y direction (in pixels)" help="Translation in the Y direction (in pixels)"/>
+    <param name="transform_ro" type="float" value="0" optional="false" label="Angle of the rotation (in degrees)" help="Angle of the rotation (in degrees)"/>
+    <param name="transform_centerx" type="float" value="0" optional="false" label="X coordinate of the rotation and scaling center (in physical units)" help="X coordinate of the rotation and scaling center (in physical units)"/>
+    <param name="transform_centery" type="float" value="0" optional="false" label="Y coordinate of the rotation and scaling center (in physical units)" help="Y coordinate of the rotation and scaling center (in physical units)"/>
+    <param name="transform_scale" type="float" value="1" optional="false" label="The scale coefficient to apply" help="The scale coefficient to apply"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -48,7 +48,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="xml" hidden="false">
+    <data name="output_data_out" format="xml" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -59,8 +59,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application iterates over each vertex in the input vector data file and performs a transformation on this vertex.It is the equivalent of [1] that transforms images. For instance, if you extract the envelope of an image with [2], and you transform this image with [1], you may want to use this application to operate the same transform on the envelope.The applied transformation is a 2D similarity. It manages translation, rotation, scaling, and can be centered or not. Note that the support image is used to define the reference coordinate system in which the transform is applied. For instance the input vector data can have WGS84 coordinates, the support image is in UTM, so a translation of 1 pixel along X corresponds to the X pixel size of the input image along the X axis of the UTM coordinates frame. This image can also be in sensor geometry.]]></help>

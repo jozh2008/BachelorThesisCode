@@ -23,7 +23,7 @@ transmissionMode_CATEGORIES $OutputSection_CATEGORIES.transmissionMode_CATEGORIE
 outputType_PROPABILITY $OutputSection_PROPABILITY.outputType_PROPABILITY
 transmissionMode_PROPABILITY $OutputSection_PROPABILITY.transmissionMode_PROPABILITY]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="TARGET_DEFINITION" type="select" optional="true" label="Target Grid System" help="Target Grid System">
       <option value="grid_or_grid_system">grid or grid system</option>
@@ -40,7 +40,7 @@ transmissionMode_PROPABILITY $OutputSection_PROPABILITY.transmissionMode_PROPABI
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -76,7 +76,7 @@ transmissionMode_PROPABILITY $OutputSection_PROPABILITY.transmissionMode_PROPABI
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CATEGORIES" format="tiff" hidden="false">
+    <data name="output_data_CATEGORIES" format="tiff" label="output_data_CATEGORIES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CATEGORIES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -84,7 +84,7 @@ transmissionMode_PROPABILITY $OutputSection_PROPABILITY.transmissionMode_PROPABI
         <when input="outputType_CATEGORIES" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PROPABILITY" format="tiff" hidden="false">
+    <data name="output_data_PROPABILITY" format="tiff" label="output_data_PROPABILITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PROPABILITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -95,8 +95,9 @@ transmissionMode_PROPABILITY $OutputSection_PROPABILITY.transmissionMode_PROPABI
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CATEGORIES" ftype="txt" value="output_data_CATEGORIES.txt"/>
+      <output name="output_data_PROPABILITY" ftype="txt" value="output_data_PROPABILITY.txt"/>
     </test>
   </tests>
   <help><![CDATA[The 'Multilevel B-Spline for Categories' tool is comparable to indicator Kriging except that uses the Multilevel B-spline algorithm for interpolation. ]]></help>

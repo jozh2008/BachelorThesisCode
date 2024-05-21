@@ -188,7 +188,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_COUNT" format="tiff" hidden="false">
+    <data name="output_data_COUNT" format="tiff" label="output_data_COUNT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -196,7 +196,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_COUNT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MIN" format="tiff" hidden="false">
+    <data name="output_data_MIN" format="tiff" label="output_data_MIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -204,7 +204,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_MIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAX" format="tiff" hidden="false">
+    <data name="output_data_MAX" format="tiff" label="output_data_MAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -212,7 +212,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_MAX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RANGE" format="tiff" hidden="false">
+    <data name="output_data_RANGE" format="tiff" label="output_data_RANGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RANGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -220,7 +220,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_RANGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM" format="tiff" hidden="false">
+    <data name="output_data_SUM" format="tiff" label="output_data_SUM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -228,7 +228,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_SUM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM2" format="tiff" hidden="false">
+    <data name="output_data_SUM2" format="tiff" label="output_data_SUM2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -236,7 +236,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_SUM2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MEAN" format="tiff" hidden="false">
+    <data name="output_data_MEAN" format="tiff" label="output_data_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -244,7 +244,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VAR" format="tiff" hidden="false">
+    <data name="output_data_VAR" format="tiff" label="output_data_VAR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VAR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -252,7 +252,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_VAR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEV" format="tiff" hidden="false">
+    <data name="output_data_STDDEV" format="tiff" label="output_data_STDDEV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -260,7 +260,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_STDDEV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_HISTOGRAM" format="tiff" hidden="false">
+    <data name="output_data_HISTOGRAM" format="tiff" label="output_data_HISTOGRAM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_HISTOGRAM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -268,7 +268,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_HISTOGRAM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_QUANTILES" format="tiff" hidden="false">
+    <data name="output_data_QUANTILES" format="tiff" label="output_data_QUANTILES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_QUANTILES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -279,8 +279,18 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_COUNT" ftype="txt" value="output_data_COUNT.txt"/>
+      <output name="output_data_MIN" ftype="txt" value="output_data_MIN.txt"/>
+      <output name="output_data_MAX" ftype="txt" value="output_data_MAX.txt"/>
+      <output name="output_data_RANGE" ftype="txt" value="output_data_RANGE.txt"/>
+      <output name="output_data_SUM" ftype="txt" value="output_data_SUM.txt"/>
+      <output name="output_data_SUM2" ftype="txt" value="output_data_SUM2.txt"/>
+      <output name="output_data_MEAN" ftype="txt" value="output_data_MEAN.txt"/>
+      <output name="output_data_VAR" ftype="txt" value="output_data_VAR.txt"/>
+      <output name="output_data_STDDEV" ftype="txt" value="output_data_STDDEV.txt"/>
+      <output name="output_data_HISTOGRAM" ftype="txt" value="output_data_HISTOGRAM.txt"/>
+      <output name="output_data_QUANTILES" ftype="txt" value="output_data_QUANTILES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates statistical properties (arithmetic mean, minimum, maximum, variance, standard deviation) for each cell position for the values of the selected grids. This tool works file based to allow the processing of a large number of grids. ]]></help>

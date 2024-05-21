@@ -33,8 +33,8 @@ transmissionMode_STDDEVHI $OutputSection_STDDEVHI.transmissionMode_STDDEVHI
 outputType_PCTL $OutputSection_PCTL.outputType_PCTL
 transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Values" help="Values The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
@@ -185,7 +185,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MEAN" format="tiff" hidden="false">
+    <data name="output_data_MEAN" format="tiff" label="output_data_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -193,7 +193,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MIN" format="tiff" hidden="false">
+    <data name="output_data_MIN" format="tiff" label="output_data_MIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -201,7 +201,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_MIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAX" format="tiff" hidden="false">
+    <data name="output_data_MAX" format="tiff" label="output_data_MAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -209,7 +209,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_MAX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RANGE" format="tiff" hidden="false">
+    <data name="output_data_RANGE" format="tiff" label="output_data_RANGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RANGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -217,7 +217,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_RANGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM" format="tiff" hidden="false">
+    <data name="output_data_SUM" format="tiff" label="output_data_SUM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -225,7 +225,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_SUM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM2" format="tiff" hidden="false">
+    <data name="output_data_SUM2" format="tiff" label="output_data_SUM2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -233,7 +233,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_SUM2" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VAR" format="tiff" hidden="false">
+    <data name="output_data_VAR" format="tiff" label="output_data_VAR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VAR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -241,7 +241,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_VAR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEV" format="tiff" hidden="false">
+    <data name="output_data_STDDEV" format="tiff" label="output_data_STDDEV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -249,7 +249,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_STDDEV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEVLO" format="tiff" hidden="false">
+    <data name="output_data_STDDEVLO" format="tiff" label="output_data_STDDEVLO" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEVLO" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -257,7 +257,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_STDDEVLO" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEVHI" format="tiff" hidden="false">
+    <data name="output_data_STDDEVHI" format="tiff" label="output_data_STDDEVHI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEVHI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -265,7 +265,7 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
         <when input="outputType_STDDEVHI" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PCTL" format="tiff" hidden="false">
+    <data name="output_data_PCTL" format="tiff" label="output_data_PCTL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PCTL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -276,8 +276,18 @@ transmissionMode_PCTL $OutputSection_PCTL.transmissionMode_PCTL]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MEAN" ftype="txt" value="output_data_MEAN.txt"/>
+      <output name="output_data_MIN" ftype="txt" value="output_data_MIN.txt"/>
+      <output name="output_data_MAX" ftype="txt" value="output_data_MAX.txt"/>
+      <output name="output_data_RANGE" ftype="txt" value="output_data_RANGE.txt"/>
+      <output name="output_data_SUM" ftype="txt" value="output_data_SUM.txt"/>
+      <output name="output_data_SUM2" ftype="txt" value="output_data_SUM2.txt"/>
+      <output name="output_data_VAR" ftype="txt" value="output_data_VAR.txt"/>
+      <output name="output_data_STDDEV" ftype="txt" value="output_data_STDDEV.txt"/>
+      <output name="output_data_STDDEVLO" ftype="txt" value="output_data_STDDEVLO.txt"/>
+      <output name="output_data_STDDEVHI" ftype="txt" value="output_data_STDDEVHI.txt"/>
+      <output name="output_data_PCTL" ftype="txt" value="output_data_PCTL.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates statistical properties (arithmetic mean, minimum, maximum, variance, standard deviation) for each cell position for the values of the selected grids.&lt;br/&gt;Optionally you can supply a list of grids with weights. If you want to use weights, the number of value and weight grids have to be the same Value and weight grids are associated by their order in the lists. Weight grids have not to share the grid system of the value grids. In case that no weight can be obtained from a weight grid for value, that value will be ignored. ]]></help>

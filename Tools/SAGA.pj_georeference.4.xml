@@ -27,8 +27,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT
 outputType_EXTENT $OutputSection_EXTENT.outputType_EXTENT
 transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Unreferenced Grids" help="Unreferenced Grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Unreferenced Grids" help="Unreferenced Grids The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
     <param name="ZREF" type="float" value="0" optional="true" label="Default Reference Height" help="Default Reference Height"/>
     <param name="X" type="float" value="0" optional="true" label="X" help="X"/>
     <param name="Y" type="float" value="0" optional="true" label="Y" help="Y"/>
@@ -98,7 +98,7 @@ transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="tiff" hidden="false">
+    <data name="output_data_OUTPUT" format="tiff" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -106,7 +106,7 @@ transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></comman
         <when input="outputType_OUTPUT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_EXTENT" format="xml" hidden="false">
+    <data name="output_data_EXTENT" format="xml" label="output_data_EXTENT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_EXTENT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -116,8 +116,9 @@ transmissionMode_EXTENT $OutputSection_EXTENT.transmissionMode_EXTENT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
+      <output name="output_data_EXTENT" ftype="txt" value="output_data_EXTENT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Direct georeferencing of aerial photographs uses extrinsic (position, attitude) and intrinsic (focal length, physical pixel size) camera parameters. Orthorectification routine supports additional data from a Digital Elevation Model (DEM).&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;Baumker, M. / Heimes, F.J. (2001): New Calibration and Computing Method for Direct Georeferencing of Image and Scanner Data Using the Position and Angular Data of an Hybrid Inertial Navigation System. OEEPE Workshop, Integrated Sensor Orientation, Hannover 2001. &lt;a target="_blank" href="http://www.hochschule-bochum.de/fileadmin/media/fb_v/veroeffentlichungen/baeumker/baheimesoeepe.pdf"&gt;online&lt;/a&gt;.&lt;br/&gt;]]></help>

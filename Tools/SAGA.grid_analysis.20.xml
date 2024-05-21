@@ -70,7 +70,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_POLYGONS" format="xml" hidden="false">
+    <data name="output_data_POLYGONS" format="xml" label="output_data_POLYGONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -80,8 +80,8 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_POLYGONS" ftype="txt" value="output_data_POLYGONS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Derive soil texture classes from sand, silt and clay contents. Currently supported schemes are USDA and German Kartieranleitung 5. ]]></help>

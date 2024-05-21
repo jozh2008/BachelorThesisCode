@@ -59,12 +59,12 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="txt" hidden="false"/>
+    <data name="output_data_Result" format="txt" label="output_data_Result" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
   </tests>
   <help><![CDATA[The gdalwarp utility is an image mosaicing, reprojection and warping utility. The program can reproject to any supported projection, and can also apply GCPs stored with the image if the image is "raw" with control information.]]></help>

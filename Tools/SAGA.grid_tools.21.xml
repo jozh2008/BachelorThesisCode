@@ -11,7 +11,7 @@ response $response
 outputType_INDEX $OutputSection_INDEX.outputType_INDEX
 transmissionMode_INDEX $OutputSection_INDEX.transmissionMode_INDEX]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="ORDER" type="select" optional="true" label="Sorting Order" help="Sorting Order">
       <option selected="true" value="ascending">ascending</option>
       <option value="descending">descending</option>
@@ -39,7 +39,7 @@ transmissionMode_INDEX $OutputSection_INDEX.transmissionMode_INDEX]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_INDEX" format="tiff" hidden="false">
+    <data name="output_data_INDEX" format="tiff" label="output_data_INDEX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_INDEX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -50,8 +50,8 @@ transmissionMode_INDEX $OutputSection_INDEX.transmissionMode_INDEX]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_INDEX" ftype="txt" value="output_data_INDEX.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates an index grid according to the cell values either in ascending or descending order.]]></help>

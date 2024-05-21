@@ -19,7 +19,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The image to read" help="The image to read The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The image to read" help="The image to read The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="The subsampled image" help="The subsampled image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -58,7 +58,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -68,8 +68,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Generates a subsampled version of an extract of an image defined by ROIStart and ROISize. This extract is subsampled using the ratio OR the output image Size.]]></help>

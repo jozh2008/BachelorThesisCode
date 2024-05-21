@@ -42,7 +42,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="REFRESH" type="select" optional="true" label="Refresh" help="Refresh">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -84,7 +84,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRID" format="tiff" hidden="false">
+    <data name="output_data_GRID" format="tiff" label="output_data_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -92,12 +92,13 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
         <when input="outputType_GRID" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TABLE" format="csv" hidden="false"/>
+    <data name="output_data_TABLE" format="csv" label="output_data_TABLE" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRID" ftype="txt" value="output_data_GRID.txt"/>
+      <output name="output_data_TABLE" ftype="txt" value="output_data_TABLE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Wa-Tor - an ecological simulation of predator-prey populations - is based upon A. K. Dewdney's 'Computer Recreations' article in the December 1984 issue of Scientific American.]]></help>

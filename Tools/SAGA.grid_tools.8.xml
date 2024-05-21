@@ -12,7 +12,7 @@ response $response
 outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
 transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Type" help="Type">
       <option value="cell's_value">cell's value</option>
       <option selected="true" value="fixed">fixed</option>
@@ -41,7 +41,7 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_BUFFER" format="tiff" hidden="false">
+    <data name="output_data_BUFFER" format="tiff" label="output_data_BUFFER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BUFFER" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -52,8 +52,8 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_BUFFER" ftype="txt" value="output_data_BUFFER.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool creates buffers around features in a grid. Features are defined by any value greater than zero. With the buffer distance method 'cell's value', the feature grid's cell values are used as buffer distance. In any case the buffer distance has to be specified using map units. The output buffer grid cell values refer to 1 := inside the buffer, 2 := feature location. ]]></help>

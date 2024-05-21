@@ -22,7 +22,7 @@ transmissionMode_NDC $OutputSection_NDC.transmissionMode_NDC
 outputType_CVN $OutputSection_CVN.outputType_CVN
 transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input Grid" help="Input Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input Grid" help="Input Grid The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="WINSIZE" type="select" optional="true" label="Size of Analysis Window" help="Size of Analysis Window">
       <option selected="true" value="3_X_3">3 X 3</option>
       <option value="5_X_5">5 X 5</option>
@@ -112,7 +112,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RELATIVE" format="tiff" hidden="false">
+    <data name="output_data_RELATIVE" format="tiff" label="output_data_RELATIVE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RELATIVE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -120,7 +120,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <when input="outputType_RELATIVE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIVERSITY" format="tiff" hidden="false">
+    <data name="output_data_DIVERSITY" format="tiff" label="output_data_DIVERSITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIVERSITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -128,7 +128,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <when input="outputType_DIVERSITY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DOMINANCE" format="tiff" hidden="false">
+    <data name="output_data_DOMINANCE" format="tiff" label="output_data_DOMINANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DOMINANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -136,7 +136,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <when input="outputType_DOMINANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FRAGMENTATION" format="tiff" hidden="false">
+    <data name="output_data_FRAGMENTATION" format="tiff" label="output_data_FRAGMENTATION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FRAGMENTATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -144,7 +144,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <when input="outputType_FRAGMENTATION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_NDC" format="tiff" hidden="false">
+    <data name="output_data_NDC" format="tiff" label="output_data_NDC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_NDC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -152,7 +152,7 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
         <when input="outputType_NDC" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CVN" format="tiff" hidden="false">
+    <data name="output_data_CVN" format="tiff" label="output_data_CVN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CVN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -163,8 +163,13 @@ transmissionMode_CVN $OutputSection_CVN.transmissionMode_CVN]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RELATIVE" ftype="txt" value="output_data_RELATIVE.txt"/>
+      <output name="output_data_DIVERSITY" ftype="txt" value="output_data_DIVERSITY.txt"/>
+      <output name="output_data_DOMINANCE" ftype="txt" value="output_data_DOMINANCE.txt"/>
+      <output name="output_data_FRAGMENTATION" ftype="txt" value="output_data_FRAGMENTATION.txt"/>
+      <output name="output_data_NDC" ftype="txt" value="output_data_NDC.txt"/>
+      <output name="output_data_CVN" ftype="txt" value="output_data_CVN.txt"/>
     </test>
   </tests>
   <help><![CDATA[(c) 2004 by Victor Olaya. Pattern Analysis]]></help>

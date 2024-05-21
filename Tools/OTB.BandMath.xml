@@ -13,7 +13,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -46,7 +46,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -61,7 +61,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <param name="out" value="float"/>
       <param name="exp" value="im1b1+im1b2"/>
       <param name="ram" value="256"/>
-      <output name="output_data_out" ftype="txt"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
     <test>
       <param name="response" value="raw"/>
@@ -69,7 +69,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <param name="out" value="float"/>
       <param name="exp" value="im1b3,im1b2,im1b1"/>
       <param name="ram" value="256"/>
-      <output name="output_data_out" ftype="jpeg"/>
+      <output name="output_data_out" ftype="jpeg" value="output_data_out.jpeg"/>
     </test>
   </tests>
   <help><![CDATA[This application performs a mathematical operation on several multi-band images and outputs the result into a monoband image. The given expression is computed at each pixel position. Evaluation of the mathematical formula is done by the muParser libraries.The formula can be written using:  * numerical values ( 2.3, -5, 3.1e4, ...)  * variables containing pixel values (e.g. : 'im2b3' is the pixel value in 2nd image, 3rd band)  * binary operators:    * '+' addition, '-' subtraction, '*' multiplication, '/' division    * '^' raise x to the power of y    * ']]></help>

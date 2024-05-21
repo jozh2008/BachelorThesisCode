@@ -4,26 +4,26 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio.in False  isArraygrid.in False  output_data_io.out $output_data_io.out  name OTB.GridBasedImageResampling io.in $io.in
-io.out $io.out
-grid.in $grid.in
-grid.type $grid.type
-out.ulx $out.ulx
-out.uly $out.uly
-out.sizex $out.sizex
-out.sizey $out.sizey
-out.spacingx $out.spacingx
-out.spacingy $out.spacingy
-out.default $out.default
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayio_in False  isArraygrid_in False  output_data_io_out $output_data_io_out  name OTB.GridBasedImageResampling io_in $io_in
+io_out $io_out
+grid_in $grid_in
+grid_type $grid_type
+out_ulx $out_ulx
+out_uly $out_uly
+out_sizex $out_sizex
+out_sizey $out_sizey
+out_spacingx $out_spacingx
+out_spacingy $out_spacingy
+out_default $out_default
 interpolator $interpolator
-interpolator.bco.radius $interpolator.bco.radius
+interpolator_bco_radius $interpolator_bco_radius
 prefer $prefer
 response $response
-outputType_io.out $OutputSection_io.out.outputType_io.out
-transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></command>
+outputType_io_out $OutputSection_io_out.outputType_io_out
+transmissionMode_io_out $OutputSection_io_out.transmissionMode_io_out]]></command>
   <inputs>
-    <param name="io.in" type="data" optional="false" label="The input image to resample" help="The input image to resample The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="io.out" type="select" optional="false" label="The resampled output image" help="The resampled output image">
+    <param name="io_in" type="data" optional="false" label="The input image to resample" help="The input image to resample The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="io_out" type="select" optional="false" label="The resampled output image" help="The resampled output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
       <option value="int16">int16</option>
@@ -31,24 +31,24 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="grid.in" type="data" optional="false" label="The resampling grid" help="The resampling grid The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="grid.type" type="select" optional="false" label="allows one to choose between two grid types" help="allows one to choose between two grid types">
+    <param name="grid_in" type="data" optional="false" label="The resampling grid" help="The resampling grid The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="grid_type" type="select" optional="false" label="allows one to choose between two grid types" help="allows one to choose between two grid types">
       <option selected="true" value="def">def</option>
       <option value="loc">loc</option>
     </param>
-    <param name="out.ulx" type="float" value="0" optional="false" label="X Coordinate of the upper-left pixel of the output resampled image" help="X Coordinate of the upper-left pixel of the output resampled image"/>
-    <param name="out.uly" type="float" value="0" optional="false" label="Y Coordinate of the upper-left pixel of the output resampled image" help="Y Coordinate of the upper-left pixel of the output resampled image"/>
-    <param name="out.sizex" type="integer" optional="false" label="Size of the output resampled image along X (in pixels)" help="Size of the output resampled image along X (in pixels)"/>
-    <param name="out.sizey" type="integer" optional="false" label="Size of the output resampled image along Y (in pixels)" help="Size of the output resampled image along Y (in pixels)"/>
-    <param name="out.spacingx" type="float" value="1" optional="false" label="Size of each pixel along X axis" help="Size of each pixel along X axis"/>
-    <param name="out.spacingy" type="float" value="1" optional="false" label="Size of each pixel along Y axis" help="Size of each pixel along Y axis"/>
-    <param name="out.default" type="float" value="0" optional="false" label="The default value to give to pixel that falls outside of the input image." help="The default value to give to pixel that falls outside of the input image."/>
+    <param name="out_ulx" type="float" value="0" optional="false" label="X Coordinate of the upper-left pixel of the output resampled image" help="X Coordinate of the upper-left pixel of the output resampled image"/>
+    <param name="out_uly" type="float" value="0" optional="false" label="Y Coordinate of the upper-left pixel of the output resampled image" help="Y Coordinate of the upper-left pixel of the output resampled image"/>
+    <param name="out_sizex" type="integer" optional="false" label="Size of the output resampled image along X (in pixels)" help="Size of the output resampled image along X (in pixels)"/>
+    <param name="out_sizey" type="integer" optional="false" label="Size of the output resampled image along Y (in pixels)" help="Size of the output resampled image along Y (in pixels)"/>
+    <param name="out_spacingx" type="float" value="1" optional="false" label="Size of each pixel along X axis" help="Size of each pixel along X axis"/>
+    <param name="out_spacingy" type="float" value="1" optional="false" label="Size of each pixel along Y axis" help="Size of each pixel along Y axis"/>
+    <param name="out_default" type="float" value="0" optional="false" label="The default value to give to pixel that falls outside of the input image." help="The default value to give to pixel that falls outside of the input image."/>
     <param name="interpolator" type="select" optional="false" label="This group of parameters allows one to define how the input image will be interpolated during resampling." help="This group of parameters allows one to define how the input image will be interpolated during resampling.">
       <option selected="true" value="bco">bco</option>
       <option value="linear">linear</option>
       <option value="nn">nn</option>
     </param>
-    <param name="interpolator.bco.radius" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
+    <param name="interpolator_bco_radius" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -58,31 +58,31 @@ transmissionMode_io.out $OutputSection_io.out.transmissionMode_io.out]]></comman
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_io.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_io.out" type="select" label="Author did not provide help for this parameter... ">
+    <section name="OutputSection_io_out" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType_io_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
       </param>
-      <param name="transmissionMode_io.out" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode_io_out" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_io.out" format="tiff" hidden="false">
+    <data name="output_data_io_out" format="tiff" label="output_data_io_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
-        <when input="outputType_io.out" format="jpeg" value="image/jpeg"/>
-        <when input="outputType_io.out" format="png" value="image/png"/>
+        <when input="outputType_io_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_io_out" format="png" value="image/png"/>
       </change_format>
     </data>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_io_out" ftype="txt" value="output_data_io_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application allows performing image resampling from an input resampling grid.]]></help>

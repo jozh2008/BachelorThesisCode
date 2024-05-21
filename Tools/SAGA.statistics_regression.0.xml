@@ -16,8 +16,8 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
 outputType_RESIDUAL $OutputSection_RESIDUAL.outputType_RESIDUAL
 transmissionMode_RESIDUAL $OutputSection_RESIDUAL.transmissionMode_RESIDUAL]]></command>
   <inputs>
-    <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  tiff, png, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="ATTRIBUTE" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
@@ -67,7 +67,7 @@ transmissionMode_RESIDUAL $OutputSection_RESIDUAL.transmissionMode_RESIDUAL]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_REGRESSION" format="tiff" hidden="false">
+    <data name="output_data_REGRESSION" format="tiff" label="output_data_REGRESSION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGRESSION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -75,7 +75,7 @@ transmissionMode_RESIDUAL $OutputSection_RESIDUAL.transmissionMode_RESIDUAL]]></
         <when input="outputType_REGRESSION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RESIDUAL" format="xml" hidden="false">
+    <data name="output_data_RESIDUAL" format="xml" label="output_data_RESIDUAL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESIDUAL" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -85,8 +85,9 @@ transmissionMode_RESIDUAL $OutputSection_RESIDUAL.transmissionMode_RESIDUAL]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_REGRESSION" ftype="txt" value="output_data_REGRESSION.txt"/>
+      <output name="output_data_RESIDUAL" ftype="txt" value="output_data_RESIDUAL.txt"/>
     </test>
   </tests>
   <help><![CDATA[Regression analysis of point attributes with a grid as predictor. The regression function is used to create a new grid with regression based values. &lt;br/&gt;&lt;br/&gt;Reference:&lt;br/&gt;- Bahrenberg, G., Giese, E., Nipper, J. (1990): 'Statistische Methoden in der Geographie 1 - Univariate und bivariate Statistik', Stuttgart, 233p.&lt;br/&gt;]]></help>

@@ -48,12 +48,12 @@ transmissionMode_TREND $OutputSection_TREND.transmissionMode_TREND]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TREND" format="csv" hidden="false"/>
+    <data name="output_data_TREND" format="csv" label="output_data_TREND" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TREND" ftype="txt" value="output_data_TREND.txt"/>
     </test>
   </tests>
   <help><![CDATA[Trend Analysis (Shapes)]]></help>

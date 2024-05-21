@@ -23,7 +23,7 @@ transmissionMode_BASINS $OutputSection_BASINS.transmissionMode_BASINS
 outputType_NODES $OutputSection_NODES.outputType_NODES
 transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="THRESHOLD" type="integer" value="5" optional="true" label="Threshold" help="Strahler order to begin a channel."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -117,7 +117,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DIRECTION" format="tiff" hidden="false">
+    <data name="output_data_DIRECTION" format="tiff" label="output_data_DIRECTION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIRECTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -125,7 +125,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
         <when input="outputType_DIRECTION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CONNECTION" format="tiff" hidden="false">
+    <data name="output_data_CONNECTION" format="tiff" label="output_data_CONNECTION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CONNECTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -133,7 +133,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
         <when input="outputType_CONNECTION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ORDER" format="tiff" hidden="false">
+    <data name="output_data_ORDER" format="tiff" label="output_data_ORDER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ORDER" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -141,7 +141,7 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
         <when input="outputType_ORDER" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_BASIN" format="tiff" hidden="false">
+    <data name="output_data_BASIN" format="tiff" label="output_data_BASIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BASIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -149,21 +149,21 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
         <when input="outputType_BASIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SEGMENTS" format="xml" hidden="false">
+    <data name="output_data_SEGMENTS" format="xml" label="output_data_SEGMENTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SEGMENTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_SEGMENTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_BASINS" format="xml" hidden="false">
+    <data name="output_data_BASINS" format="xml" label="output_data_BASINS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BASINS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_BASINS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_NODES" format="xml" hidden="false">
+    <data name="output_data_NODES" format="xml" label="output_data_NODES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_NODES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -173,8 +173,14 @@ transmissionMode_NODES $OutputSection_NODES.transmissionMode_NODES]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DIRECTION" ftype="txt" value="output_data_DIRECTION.txt"/>
+      <output name="output_data_CONNECTION" ftype="txt" value="output_data_CONNECTION.txt"/>
+      <output name="output_data_ORDER" ftype="txt" value="output_data_ORDER.txt"/>
+      <output name="output_data_BASIN" ftype="txt" value="output_data_BASIN.txt"/>
+      <output name="output_data_SEGMENTS" ftype="txt" value="output_data_SEGMENTS.txt"/>
+      <output name="output_data_BASINS" ftype="txt" value="output_data_BASINS.txt"/>
+      <output name="output_data_NODES" ftype="txt" value="output_data_NODES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Deterministic 8 based flow network analysis&lt;br/&gt;]]></help>

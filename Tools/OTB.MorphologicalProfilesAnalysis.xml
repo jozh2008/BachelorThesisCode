@@ -13,13 +13,13 @@ size $size
 radius $radius
 step $step
 profile $profile
-profile.classification.sigma $profile.classification.sigma
+profile_classification_sigma $profile_classification_sigma
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image." help="The input image. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image." help="The input image. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="The output image." help="The output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -46,7 +46,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="opening">opening</option>
       <option value="openingcharacteristics">openingcharacteristics</option>
     </param>
-    <param name="profile.classification.sigma" type="float" value="1" optional="false" label="Sigma value for leveling tolerance" help="Sigma value for leveling tolerance"/>
+    <param name="profile_classification_sigma" type="float" value="1" optional="false" label="Sigma value for leveling tolerance" help="Sigma value for leveling tolerance"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -69,7 +69,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -79,8 +79,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This algorithm is derived from the following publication:Martino Pesaresi and Jon Alti Benediktsson, Member, IEEE: A new approachfor the morphological segmentation of high resolution satellite imagery.IEEE Transactions on geoscience and remote sensing, vol. 39, NO. 2,February 2001, p. 309-320.Depending of the profile selection, the application provides::- The multi scale geodesic morphological opening or closing profile of the input image.- The multi scale derivative of the opening or closing profile.- The parameter (called characteristic) of the maximum derivative value of the multi scale closing or opening profile for which this maxima occurs.- The labeled classification of the input image.The behavior of the classification is :Given :math:`x_1` and :math:`x_2` two membership values,:math:`L_1, L_2` two labels associated, and :math:`\sigma` a tolerancevalue, the following decision rule is applied::math:`L = \begin]]></help>

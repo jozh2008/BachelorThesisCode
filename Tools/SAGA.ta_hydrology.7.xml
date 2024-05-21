@@ -10,7 +10,7 @@ response $response
 outputType_LENGTH $OutputSection_LENGTH.outputType_LENGTH
 transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -34,7 +34,7 @@ transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_LENGTH" format="tiff" hidden="false">
+    <data name="output_data_LENGTH" format="tiff" label="output_data_LENGTH" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LENGTH" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -45,8 +45,8 @@ transmissionMode_LENGTH $OutputSection_LENGTH.transmissionMode_LENGTH]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_LENGTH" ftype="txt" value="output_data_LENGTH.txt"/>
     </test>
   </tests>
   <help><![CDATA[Slope Length]]></help>

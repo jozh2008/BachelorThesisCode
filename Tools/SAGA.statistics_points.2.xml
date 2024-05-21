@@ -17,7 +17,7 @@ transmissionMode_VARIANCE $OutputSection_VARIANCE.transmissionMode_VARIANCE
 outputType_COVARIANCE $OutputSection_COVARIANCE.outputType_COVARIANCE
 transmissionMode_COVARIANCE $OutputSection_COVARIANCE.transmissionMode_COVARIANCE]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="DISTCOUNT" type="integer" value="10" optional="true" label="Number of Distance Classes" help="Number of Distance Classes"/>
     <param name="NSKIP" type="integer" value="1" optional="true" label="Skip Number" help="Skip Number"/>
@@ -68,7 +68,7 @@ transmissionMode_COVARIANCE $OutputSection_COVARIANCE.transmissionMode_COVARIANC
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_COUNT" format="tiff" hidden="false">
+    <data name="output_data_COUNT" format="tiff" label="output_data_COUNT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -76,7 +76,7 @@ transmissionMode_COVARIANCE $OutputSection_COVARIANCE.transmissionMode_COVARIANC
         <when input="outputType_COUNT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+    <data name="output_data_VARIANCE" format="tiff" label="output_data_VARIANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -84,7 +84,7 @@ transmissionMode_COVARIANCE $OutputSection_COVARIANCE.transmissionMode_COVARIANC
         <when input="outputType_VARIANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_COVARIANCE" format="tiff" hidden="false">
+    <data name="output_data_COVARIANCE" format="tiff" label="output_data_COVARIANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COVARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -95,8 +95,10 @@ transmissionMode_COVARIANCE $OutputSection_COVARIANCE.transmissionMode_COVARIANC
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_COUNT" ftype="txt" value="output_data_COUNT.txt"/>
+      <output name="output_data_VARIANCE" ftype="txt" value="output_data_VARIANCE.txt"/>
+      <output name="output_data_COVARIANCE" ftype="txt" value="output_data_COVARIANCE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Variogram Surface]]></help>

@@ -11,7 +11,7 @@ response $response
 outputType_outstats $OutputSection_outstats.outputType_outstats
 transmissionMode_outstats $OutputSection_outstats.transmissionMode_outstats]]></command>
   <inputs>
-    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  zip, json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  json, xml, zip, vnd.google-earth.kml+xml" format="txt"/>
     <param name="feat" type="text" optional="false" label="List of features to consider for statistics." help="List of features to consider for statistics."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -33,12 +33,12 @@ transmissionMode_outstats $OutputSection_outstats.transmissionMode_outstats]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_outstats" format="xml" hidden="false"/>
+    <data name="output_data_outstats" format="xml" label="output_data_outstats" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_outstats" ftype="txt" value="output_data_outstats.txt"/>
     </test>
   </tests>
   <help><![CDATA[Compute statistics (mean and standard deviation) of the features in a set of OGR Layers, and write them in an XML file. This XML file can then be used by the training application.]]></help>

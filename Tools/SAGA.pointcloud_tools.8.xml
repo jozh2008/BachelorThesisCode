@@ -55,12 +55,12 @@ transmissionMode_OUT $OutputSection_OUT.transmissionMode_OUT]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUT" format="x-ogc-lasf" hidden="false"/>
+    <data name="output_data_OUT" format="x-ogc-lasf" label="output_data_OUT" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUT" ftype="txt" value="output_data_OUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool can be used to shift, rotate and/or scale a Point Cloud.&lt;br/&gt;&lt;br/&gt;]]></help>

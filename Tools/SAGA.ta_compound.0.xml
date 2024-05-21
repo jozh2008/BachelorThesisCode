@@ -41,7 +41,7 @@ transmissionMode_VALL_DEPTH $OutputSection_VALL_DEPTH.transmissionMode_VALL_DEPT
 outputType_RSP $OutputSection_RSP.outputType_RSP
 transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-aaigrid, x-ogc-envi" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="THRESHOLD" type="integer" value="5" optional="true" label="Channel Density" help="Strahler order to begin a channel."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -244,7 +244,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SHADE" format="tiff" hidden="false">
+    <data name="output_data_SHADE" format="tiff" label="output_data_SHADE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHADE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -252,7 +252,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_SHADE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SLOPE" format="tiff" hidden="false">
+    <data name="output_data_SLOPE" format="tiff" label="output_data_SLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -260,7 +260,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_SLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ASPECT" format="tiff" hidden="false">
+    <data name="output_data_ASPECT" format="tiff" label="output_data_ASPECT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ASPECT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -268,7 +268,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_ASPECT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_HCURV" format="tiff" hidden="false">
+    <data name="output_data_HCURV" format="tiff" label="output_data_HCURV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_HCURV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -276,7 +276,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_HCURV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VCURV" format="tiff" hidden="false">
+    <data name="output_data_VCURV" format="tiff" label="output_data_VCURV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VCURV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -284,7 +284,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_VCURV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CONVERGENCE" format="tiff" hidden="false">
+    <data name="output_data_CONVERGENCE" format="tiff" label="output_data_CONVERGENCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CONVERGENCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -292,7 +292,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_CONVERGENCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SINKS" format="tiff" hidden="false">
+    <data name="output_data_SINKS" format="tiff" label="output_data_SINKS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SINKS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -300,7 +300,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_SINKS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_FLOW" format="tiff" hidden="false">
+    <data name="output_data_FLOW" format="tiff" label="output_data_FLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -308,7 +308,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_FLOW" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_WETNESS" format="tiff" hidden="false">
+    <data name="output_data_WETNESS" format="tiff" label="output_data_WETNESS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_WETNESS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -316,7 +316,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_WETNESS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_LSFACTOR" format="tiff" hidden="false">
+    <data name="output_data_LSFACTOR" format="tiff" label="output_data_LSFACTOR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LSFACTOR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -324,21 +324,21 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_LSFACTOR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CHANNELS" format="xml" hidden="false">
+    <data name="output_data_CHANNELS" format="xml" label="output_data_CHANNELS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CHANNELS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_CHANNELS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_BASINS" format="xml" hidden="false">
+    <data name="output_data_BASINS" format="xml" label="output_data_BASINS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BASINS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_BASINS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_CHNL_BASE" format="tiff" hidden="false">
+    <data name="output_data_CHNL_BASE" format="tiff" label="output_data_CHNL_BASE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CHNL_BASE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -346,7 +346,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_CHNL_BASE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CHNL_DIST" format="tiff" hidden="false">
+    <data name="output_data_CHNL_DIST" format="tiff" label="output_data_CHNL_DIST" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CHNL_DIST" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -354,7 +354,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_CHNL_DIST" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VALL_DEPTH" format="tiff" hidden="false">
+    <data name="output_data_VALL_DEPTH" format="tiff" label="output_data_VALL_DEPTH" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VALL_DEPTH" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -362,7 +362,7 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
         <when input="outputType_VALL_DEPTH" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RSP" format="tiff" hidden="false">
+    <data name="output_data_RSP" format="tiff" label="output_data_RSP" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RSP" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -373,8 +373,23 @@ transmissionMode_RSP $OutputSection_RSP.transmissionMode_RSP]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SHADE" ftype="txt" value="output_data_SHADE.txt"/>
+      <output name="output_data_SLOPE" ftype="txt" value="output_data_SLOPE.txt"/>
+      <output name="output_data_ASPECT" ftype="txt" value="output_data_ASPECT.txt"/>
+      <output name="output_data_HCURV" ftype="txt" value="output_data_HCURV.txt"/>
+      <output name="output_data_VCURV" ftype="txt" value="output_data_VCURV.txt"/>
+      <output name="output_data_CONVERGENCE" ftype="txt" value="output_data_CONVERGENCE.txt"/>
+      <output name="output_data_SINKS" ftype="txt" value="output_data_SINKS.txt"/>
+      <output name="output_data_FLOW" ftype="txt" value="output_data_FLOW.txt"/>
+      <output name="output_data_WETNESS" ftype="txt" value="output_data_WETNESS.txt"/>
+      <output name="output_data_LSFACTOR" ftype="txt" value="output_data_LSFACTOR.txt"/>
+      <output name="output_data_CHANNELS" ftype="txt" value="output_data_CHANNELS.txt"/>
+      <output name="output_data_BASINS" ftype="txt" value="output_data_BASINS.txt"/>
+      <output name="output_data_CHNL_BASE" ftype="txt" value="output_data_CHNL_BASE.txt"/>
+      <output name="output_data_CHNL_DIST" ftype="txt" value="output_data_CHNL_DIST.txt"/>
+      <output name="output_data_VALL_DEPTH" ftype="txt" value="output_data_VALL_DEPTH.txt"/>
+      <output name="output_data_RSP" ftype="txt" value="output_data_RSP.txt"/>
     </test>
   </tests>
   <help><![CDATA[A selection of basic parameters and objects to be derived from a Digital Terrain Model using standard settings.]]></help>

@@ -23,7 +23,7 @@ response $response
 outputType_REGRESSION $OutputSection_REGRESSION.outputType_REGRESSION
 transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSION]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PREDICTORS" type="data" optional="false" label="Predictors" help="Predictors The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
@@ -79,7 +79,7 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_REGRESSION" format="xml" hidden="false">
+    <data name="output_data_REGRESSION" format="xml" label="output_data_REGRESSION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_REGRESSION" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -89,8 +89,8 @@ transmissionMode_REGRESSION $OutputSection_REGRESSION.transmissionMode_REGRESSIO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_REGRESSION" ftype="txt" value="output_data_REGRESSION.txt"/>
     </test>
   </tests>
   <help><![CDATA[Geographically Weighted Regression for multiple predictors. Regression details are stored in a copy of input points. ]]></help>

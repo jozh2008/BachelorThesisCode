@@ -48,7 +48,7 @@ transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TWI" format="tiff" hidden="false">
+    <data name="output_data_TWI" format="tiff" label="output_data_TWI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TWI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -59,8 +59,8 @@ transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TWI" ftype="txt" value="output_data_TWI.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculation of the slope and specific catchment area (SCA) based Topographic Wetness Index (TWI).]]></help>

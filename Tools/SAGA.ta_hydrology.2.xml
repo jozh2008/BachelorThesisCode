@@ -28,12 +28,12 @@ transmissionMode_ACCU_LEFT $OutputSection_ACCU_LEFT.transmissionMode_ACCU_LEFT
 outputType_ACCU_RIGHT $OutputSection_ACCU_RIGHT.outputType_ACCU_RIGHT
 transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGHT]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="SINKROUTE" type="data" optional="false" label="Sink Routes" help="Sink Routes The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="VAL_INPUT" type="data" optional="false" label="Input for Mean over Catchment" help="Input for Mean over Catchment The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="ACCU_MATERIAL" type="data" optional="false" label="Material for Accumulation" help="Material for Accumulation The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="ACCU_TARGET" type="data" optional="false" label="Accumulation Target" help="Accumulation Target The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="SINKROUTE" type="data" optional="false" label="Sink Routes" help="Sink Routes The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="WEIGHTS" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="VAL_INPUT" type="data" optional="false" label="Input for Mean over Catchment" help="Input for Mean over Catchment The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ACCU_MATERIAL" type="data" optional="false" label="Material for Accumulation" help="Material for Accumulation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="ACCU_TARGET" type="data" optional="false" label="Accumulation Target" help="Accumulation Target The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="STEP" type="integer" value="1" optional="true" label="Step" help="For testing purposes. Only generate flow at cells with step distance (each step row/column)."/>
     <param name="FLOW_UNIT" type="select" optional="true" label="Flow Accumulation Unit" help="Flow Accumulation Unit">
       <option selected="true" value="cell_area">cell area</option>
@@ -120,7 +120,7 @@ transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGH
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FLOW" format="tiff" hidden="false">
+    <data name="output_data_FLOW" format="tiff" label="output_data_FLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -128,7 +128,7 @@ transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGH
         <when input="outputType_FLOW" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VAL_MEAN" format="tiff" hidden="false">
+    <data name="output_data_VAL_MEAN" format="tiff" label="output_data_VAL_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VAL_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -136,7 +136,7 @@ transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGH
         <when input="outputType_VAL_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ACCU_TOTAL" format="tiff" hidden="false">
+    <data name="output_data_ACCU_TOTAL" format="tiff" label="output_data_ACCU_TOTAL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ACCU_TOTAL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -144,7 +144,7 @@ transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGH
         <when input="outputType_ACCU_TOTAL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ACCU_LEFT" format="tiff" hidden="false">
+    <data name="output_data_ACCU_LEFT" format="tiff" label="output_data_ACCU_LEFT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ACCU_LEFT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -152,7 +152,7 @@ transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGH
         <when input="outputType_ACCU_LEFT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ACCU_RIGHT" format="tiff" hidden="false">
+    <data name="output_data_ACCU_RIGHT" format="tiff" label="output_data_ACCU_RIGHT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ACCU_RIGHT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -163,8 +163,12 @@ transmissionMode_ACCU_RIGHT $OutputSection_ACCU_RIGHT.transmissionMode_ACCU_RIGH
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FLOW" ftype="txt" value="output_data_FLOW.txt"/>
+      <output name="output_data_VAL_MEAN" ftype="txt" value="output_data_VAL_MEAN.txt"/>
+      <output name="output_data_ACCU_TOTAL" ftype="txt" value="output_data_ACCU_TOTAL.txt"/>
+      <output name="output_data_ACCU_LEFT" ftype="txt" value="output_data_ACCU_LEFT.txt"/>
+      <output name="output_data_ACCU_RIGHT" ftype="txt" value="output_data_ACCU_RIGHT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Flow tracing algorithms for calculations of flow accumulation and related parameters. These algorithms trace the flow of each cell in a DEM separately until it finally leaves the DEM or ends in a sink.&lt;br/&gt;The Rho 8 implementation (Fairfield & Leymarie 1991) adopts the original algorithm only for the flow routing and will give quite different results.]]></help>

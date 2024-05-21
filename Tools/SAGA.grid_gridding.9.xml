@@ -26,7 +26,7 @@ transmissionMode_GRID $OutputSection_GRID.transmissionMode_GRID
 outputType_COVERAGE $OutputSection_COVERAGE.outputType_COVERAGE
 transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></command>
   <inputs>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Attribute" help="Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="OUTPUT" type="select" optional="true" label="Output Values" help="Output Values">
       <option value="attribute">attribute</option>
@@ -64,7 +64,7 @@ transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -100,7 +100,7 @@ transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRID" format="tiff" hidden="false">
+    <data name="output_data_GRID" format="tiff" label="output_data_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -108,7 +108,7 @@ transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></
         <when input="outputType_GRID" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_COVERAGE" format="tiff" hidden="false">
+    <data name="output_data_COVERAGE" format="tiff" label="output_data_COVERAGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COVERAGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -119,8 +119,9 @@ transmissionMode_COVERAGE $OutputSection_COVERAGE.transmissionMode_COVERAGE]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRID" ftype="txt" value="output_data_GRID.txt"/>
+      <output name="output_data_COVERAGE" ftype="txt" value="output_data_COVERAGE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Gridding of polygons. If any polygons are selected, only these will be gridded.]]></help>

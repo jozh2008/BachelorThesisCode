@@ -19,8 +19,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application." help="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
-    <param name="inpos" type="data" optional="false" label="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application." help="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application." help="The filtered image, corresponding to the fout output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inpos" type="data" optional="false" label="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application." help="The filtered position image, corresponding to the foutpos output parameter of the MeanShiftSmoothing application. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="out" type="select" optional="false" label="This output contains the segmented image, where each pixel value is the unique integer label of the segment it belongs to. It is recommended to set the pixel type to uint32." help="This output contains the segmented image, where each pixel value is the unique integer label of the segment it belongs to. It is recommended to set the pixel type to uint32.">
       <option value="double">double</option>
       <option value="float">float</option>
@@ -61,7 +61,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -71,8 +71,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application will produce a labeled image where neighbor pixels whose range distance is below range radius (and optionally spatial distance below spatial radius) will be grouped together into the same cluster. For large images one can use the tilesizex and tilesizey parameters for tile-wise processing, with the guarantees of identical results.Filtered range image and spatial image should be created with the MeanShiftSmoothing application outputs (fout and foutpos) [2], with modesearch parameter disabled. If spatial image is not set, the application will only process the range image and spatial radius parameter will not be taken into account.Please note that this application will generate a lot of temporary files (as many as the number of tiles), and will therefore require twice the size of the final result in term of disk space. The cleanup option (activated by default) allows removing all temporary file as soon as they are not needed anymore (if cleanup is activated, tmpdir set and tmpdir does not exists before running the application, it will be removed as well during cleanup). The tmpdir option allows defining a directory where to write the temporary files.Please also note that the output image type should be set to uint32 to ensure that there are enough labels available.The output of this application can be passed to the LSMSSmallRegionMerging [3] or LSMSVectorization [4] applications to complete the LSMS workflow.]]></help>

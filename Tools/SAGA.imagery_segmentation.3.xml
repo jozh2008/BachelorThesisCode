@@ -23,8 +23,8 @@ transmissionMode_SIMILARITY $OutputSection_SIMILARITY.transmissionMode_SIMILARIT
 outputType_TABLE $OutputSection_TABLE.outputType_TABLE
 transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
   <inputs>
-    <param name="SEEDS" type="data" optional="false" label="Seeds" help="Seeds The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="SEEDS" type="data" optional="false" label="Seeds" help="Seeds The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
     <param name="NORMALIZE" type="select" optional="true" label="Normalize Features" help="Standardize the input features, i.e. rescale the input data (features) such that the mean equals 0 and the standard deviation equals 1. This is helpful when the input features have different scales, units or outliers.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -89,7 +89,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SEGMENTS" format="tiff" hidden="false">
+    <data name="output_data_SEGMENTS" format="tiff" label="output_data_SEGMENTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SEGMENTS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -97,7 +97,7 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
         <when input="outputType_SEGMENTS" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SIMILARITY" format="tiff" hidden="false">
+    <data name="output_data_SIMILARITY" format="tiff" label="output_data_SIMILARITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SIMILARITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -105,12 +105,14 @@ transmissionMode_TABLE $OutputSection_TABLE.transmissionMode_TABLE]]></command>
         <when input="outputType_SIMILARITY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TABLE" format="csv" hidden="false"/>
+    <data name="output_data_TABLE" format="csv" label="output_data_TABLE" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SEGMENTS" ftype="txt" value="output_data_SEGMENTS.txt"/>
+      <output name="output_data_SIMILARITY" ftype="txt" value="output_data_SIMILARITY.txt"/>
+      <output name="output_data_TABLE" ftype="txt" value="output_data_TABLE.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool allows one to apply a seeded region growing algorithm to a stack of input features and thus to segmentize the data for object extraction. The required seed points can be created with the 'Seed Generation' tool, for example. The derived segments can be used, for example, for object based classification.&lt;br/&gt;&lt;br/&gt;]]></help>

@@ -18,7 +18,7 @@ transmissionMode_MODEL $OutputSection_MODEL.transmissionMode_MODEL
 outputType_DIFF $OutputSection_DIFF.outputType_DIFF
 transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="UPDATE" type="select" optional="true" label="Update" help="Update">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -69,7 +69,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MODEL" format="tiff" hidden="false">
+    <data name="output_data_MODEL" format="tiff" label="output_data_MODEL" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MODEL" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -77,7 +77,7 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
         <when input="outputType_MODEL" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIFF" format="tiff" hidden="false">
+    <data name="output_data_DIFF" format="tiff" label="output_data_DIFF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIFF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -88,8 +88,9 @@ transmissionMode_DIFF $OutputSection_DIFF.transmissionMode_DIFF]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MODEL" ftype="txt" value="output_data_MODEL.txt"/>
+      <output name="output_data_DIFF" ftype="txt" value="output_data_DIFF.txt"/>
     </test>
   </tests>
   <help><![CDATA[Simulation of diffusive hillslope evolution using a Forward-Time-Centered-Space (FTCS) method.]]></help>

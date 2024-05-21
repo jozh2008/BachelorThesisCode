@@ -8,18 +8,18 @@
 inxs $inxs
 out $out
 method $method
-method.lmvm.radiusx $method.lmvm.radiusx
-method.lmvm.radiusy $method.lmvm.radiusy
-method.bayes.lambda $method.bayes.lambda
-method.bayes.s $method.bayes.s
+method_lmvm_radiusx $method_lmvm_radiusx
+method_lmvm_radiusy $method_lmvm_radiusy
+method_bayes_lambda $method_bayes_lambda
+method_bayes_s $method_bayes_s
 ram $ram
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="inp" type="data" optional="false" label="Input panchromatic image." help="Input panchromatic image. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
-    <param name="inxs" type="data" optional="false" label="Input XS image." help="Input XS image. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="inp" type="data" optional="false" label="Input panchromatic image." help="Input panchromatic image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="inxs" type="data" optional="false" label="Input XS image." help="Input XS image. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image." help="Output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -33,10 +33,10 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="lmvm">lmvm</option>
       <option selected="true" value="rcs">rcs</option>
     </param>
-    <param name="method.lmvm.radiusx" type="integer" value="3" optional="false" label="Set the x radius of the sliding window." help="Set the x radius of the sliding window."/>
-    <param name="method.lmvm.radiusy" type="integer" value="3" optional="false" label="Set the y radius of the sliding window." help="Set the y radius of the sliding window."/>
-    <param name="method.bayes.lambda" type="float" value="0.9999" optional="false" label="Set the weighting value." help="Set the weighting value."/>
-    <param name="method.bayes.s" type="float" value="1" optional="false" label="Set the S coefficient." help="Set the S coefficient."/>
+    <param name="method_lmvm_radiusx" type="integer" value="3" optional="false" label="Set the x radius of the sliding window." help="Set the x radius of the sliding window."/>
+    <param name="method_lmvm_radiusy" type="integer" value="3" optional="false" label="Set the y radius of the sliding window." help="Set the y radius of the sliding window."/>
+    <param name="method_bayes_lambda" type="float" value="0.9999" optional="false" label="Set the weighting value." help="Set the weighting value."/>
+    <param name="method_bayes_s" type="float" value="1" optional="false" label="Set the S coefficient." help="Set the S coefficient."/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -60,7 +60,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -70,8 +70,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application performs P+XS pansharpening. Pansharpening is a process of merging high-resolution panchromatic and lower resolution multispectral imagery to create a single high-resolution color image. Algorithms available in the applications are: RCS, bayesian fusion and Local Mean and Variance Matching(LMVM).]]></help>

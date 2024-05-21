@@ -23,7 +23,7 @@ transmissionMode_G_AREA $OutputSection_G_AREA.transmissionMode_G_AREA
 outputType_G_FLOW $OutputSection_G_FLOW.outputType_G_FLOW
 transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Flow Split Method" help="Flow Split Method">
       <option value="cell_area">cell area</option>
       <option selected="true" value="flow_width_(original)">flow width (original)</option>
@@ -115,7 +115,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_AREA" format="tiff" hidden="false">
+    <data name="output_data_AREA" format="tiff" label="output_data_AREA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -123,7 +123,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <when input="outputType_AREA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G_SLOPE" format="tiff" hidden="false">
+    <data name="output_data_G_SLOPE" format="tiff" label="output_data_G_SLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -131,7 +131,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <when input="outputType_G_SLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G_ASPECT" format="tiff" hidden="false">
+    <data name="output_data_G_ASPECT" format="tiff" label="output_data_G_ASPECT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G_ASPECT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -139,7 +139,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <when input="outputType_G_ASPECT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G_AREA" format="tiff" hidden="false">
+    <data name="output_data_G_AREA" format="tiff" label="output_data_G_AREA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -147,7 +147,7 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
         <when input="outputType_G_AREA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G_FLOW" format="tiff" hidden="false">
+    <data name="output_data_G_FLOW" format="tiff" label="output_data_G_FLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -158,8 +158,12 @@ transmissionMode_G_FLOW $OutputSection_G_FLOW.transmissionMode_G_FLOW]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_AREA" ftype="txt" value="output_data_AREA.txt"/>
+      <output name="output_data_G_SLOPE" ftype="txt" value="output_data_G_SLOPE.txt"/>
+      <output name="output_data_G_ASPECT" ftype="txt" value="output_data_G_ASPECT.txt"/>
+      <output name="output_data_G_AREA" ftype="txt" value="output_data_G_AREA.txt"/>
+      <output name="output_data_G_FLOW" ftype="txt" value="output_data_G_FLOW.txt"/>
     </test>
   </tests>
   <help><![CDATA[The Mass-Flux Method (MFM) for the DEM based calculation of flow accumulation as proposed by Gruber and Peckham (2008).&lt;br/&gt;&lt;br/&gt;!!!UNDER DEVELOPMENT!!! To be done: solving the streamline resolution problem]]></help>

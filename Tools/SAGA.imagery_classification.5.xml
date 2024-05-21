@@ -95,12 +95,12 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CLASSES" format="csv" hidden="false"/>
+    <data name="output_data_CLASSES" format="csv" label="output_data_CLASSES" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CLASSES" ftype="txt" value="output_data_CLASSES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Supervised classification for attribute data. To train the classifier choose an attribute that provides class identifiers for those records, for which the target class is known, and no data for all other records.]]></help>

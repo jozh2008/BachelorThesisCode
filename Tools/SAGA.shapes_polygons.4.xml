@@ -20,9 +20,9 @@ response $response
 outputType_STATISTICS $OutputSection_STATISTICS.outputType_STATISTICS
 transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTICS]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="FIELDS" type="data" optional="false" label="Attributes" help="Attributes The following data types are allowed in the txt file:  csv" format="txt"/>
-    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
+    <param name="POLYGONS" type="data" optional="false" label="Polygons" help="Polygons The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="SUM" type="select" optional="true" label="Sum" help="Sum">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -79,7 +79,7 @@ transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTIC
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_STATISTICS" format="xml" hidden="false">
+    <data name="output_data_STATISTICS" format="xml" label="output_data_STATISTICS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STATISTICS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -89,8 +89,8 @@ transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTIC
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_STATISTICS" ftype="txt" value="output_data_STATISTICS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates statistics over all points falling in a polygon.]]></help>

@@ -11,8 +11,8 @@ response $response
 outputType_MASKED $OutputSection_MASKED.outputType_MASKED
 transmissionMode_MASKED $OutputSection_MASKED.transmissionMode_MASKED]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -36,7 +36,7 @@ transmissionMode_MASKED $OutputSection_MASKED.transmissionMode_MASKED]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MASKED" format="tiff" hidden="false">
+    <data name="output_data_MASKED" format="tiff" label="output_data_MASKED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MASKED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -47,8 +47,8 @@ transmissionMode_MASKED $OutputSection_MASKED.transmissionMode_MASKED]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MASKED" ftype="txt" value="output_data_MASKED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Cells of the input grid will be set to no-data, if their cell center lies outside or within a no-data cell of the mask grid.]]></help>

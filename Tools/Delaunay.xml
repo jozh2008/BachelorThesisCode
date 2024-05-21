@@ -32,7 +32,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="json" hidden="false">
+    <data name="output_data_Result" format="json" label="output_data_Result" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Result" format="xml" value="text/xml"/>
@@ -41,8 +41,8 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
   </tests>
   <help><![CDATA[Computes the edges of a Delaunay triangulation for a set of data points.]]></help>

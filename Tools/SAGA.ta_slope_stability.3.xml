@@ -27,13 +27,13 @@ transmissionMode_F $OutputSection_F.transmissionMode_F
 outputType_G $OutputSection_G.outputType_G
 transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="A DEM The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="Cmin" type="data" optional="false" label="Min hydraulic conductivity grid (m/hr) " help="A grid representing minimum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="Cmax" type="data" optional="false" label="Max hydraulic conductivity grid (m/hr) " help="A grid representing maximum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="Dmin" type="data" optional="false" label="Min groundwater recharge grid (m/hr) " help="A grid representing minimum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="Dmax" type="data" optional="false" label="Max groundwater recharge grid (m/hr) " help="A grid representing maximum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="Emin" type="data" optional="false" label="Min material depth grid (m)" help="A grid representing minimum depth to potential shear plane (in m) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="Emax" type="data" optional="false" label="Max material depth grid (m)" help="A grid representing maximum depth to potential shear plane (in m) The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="A DEM The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="Cmin" type="data" optional="false" label="Min hydraulic conductivity grid (m/hr) " help="A grid representing minimum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="Cmax" type="data" optional="false" label="Max hydraulic conductivity grid (m/hr) " help="A grid representing maximum material hydraulic conductivity (in m/hr) The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="Dmin" type="data" optional="false" label="Min groundwater recharge grid (m/hr) " help="A grid representing minimum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="Dmax" type="data" optional="false" label="Max groundwater recharge grid (m/hr) " help="A grid representing maximum groundwater recharge (in m/hr) The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="Emin" type="data" optional="false" label="Min material depth grid (m)" help="A grid representing minimum depth to potential shear plane (in m) The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="Emax" type="data" optional="false" label="Max material depth grid (m)" help="A grid representing maximum depth to potential shear plane (in m) The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="fCmin" type="float" value="2.7" optional="true" label="Min global material conductivity (m/hr)" help="Constant value if no raster set"/>
     <param name="fCmax" type="float" value="2.7" optional="true" label="Max global material conductivity (m/hr)" help="Constant value if no raster set"/>
     <param name="fDmin" type="float" value="0.001" optional="true" label="Min global groundwater recharge (m/hr)" help="Constant value if no raster set"/>
@@ -88,7 +88,7 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_F" format="tiff" hidden="false">
+    <data name="output_data_F" format="tiff" label="output_data_F" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_F" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -96,7 +96,7 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
         <when input="outputType_F" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G" format="tiff" hidden="false">
+    <data name="output_data_G" format="tiff" label="output_data_G" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -107,8 +107,9 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_F" ftype="txt" value="output_data_F.txt"/>
+      <output name="output_data_G" ftype="txt" value="output_data_G.txt"/>
     </test>
   </tests>
   <help><![CDATA[&lt;br/&gt;This tool calculates a topographic wetness index (TWI) following Montgomery & Dietrich (1994) that can be used to estimate the degree of saturation of unconsolidated, permeable materials above (more or less) impermeable bedrock. In contrast to the common TOPMODEL (Beven & Kirkby, 1979) - based TWI, this index differs in such that it considers hydraulic conductivity to be constant in a soil mantle overlying relatively impermeable bedrock. Also, it uses the sine of the slope rather than its tangens, which is more correct and significantly matters for steeper slopes that give raise to landslides. For computation, a slope (in radians) and a catchment area (in m2) grid are required. Additionally, information on groundwater recharge (m/hr), material hydraulic conductivity (m/hr), and depth to potential shear plane (m) are required that can be specified either globally or through grids. The tool produces a continuous wetness index (-) where cells with WI values &gt; 1 (overland flow) set to 1, and optionally creates a classified WI grid rendering three saturation classes:.&lt;br/&gt;0): Low moisture (WI smaller 0.1)&lt;br/&gt;1): Partially wet (0.1 smaller WI smaller 1)&lt;br/&gt;2): Saturation zone (WI larger 1)&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;&lt;a href="http://www.tandfonline.com/doi/abs/10.1080/02626667909491834"&gt;Beven, K.J., Kirkby, M.J. (1979) A physically-based variable contributing area model of basin hydrology. Hydrology Science Bulletin, 24, 43-69.&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;&lt;a href="http://www.agu.org/pubs/crossref/1994/93WR02979.shtml"&gt;Montgomery D. R., Dietrich, W. E. (1994) A physically based model for the topographic control on shallow landsliding. Water Resources Research, 30, 1153-1171.&lt;/a&gt;.&lt;br/&gt;]]></help>

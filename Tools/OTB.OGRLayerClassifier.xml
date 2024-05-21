@@ -13,7 +13,7 @@ response $response
 outputType_insvm $OutputSection_insvm.outputType_insvm
 transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
   <inputs>
-    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  xml, zip, vnd.google-earth.kml+xml, json" format="txt"/>
+    <param name="inshp" type="data" optional="false" label="Name of the input shapefile" help="Name of the input shapefile The following data types are allowed in the txt file:  xml, json, zip, vnd.google-earth.kml+xml" format="txt"/>
     <param name="instats" type="data" optional="false" label="XML file containing mean and variance of each feature." help="XML file containing mean and variance of each feature. The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="feat" type="text" optional="false" label="Features to be calculated" help="Features to be calculated"/>
     <param name="cfield" type="text" value="predicted" optional="false" label="Field containing the predicted class" help="Field containing the predicted class"/>
@@ -38,7 +38,7 @@ transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_insvm" format="xml" hidden="false">
+    <data name="output_data_insvm" format="xml" label="output_data_insvm" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_insvm" format="plain" value="text/plain"/>
@@ -47,8 +47,8 @@ transmissionMode_insvm $OutputSection_insvm.transmissionMode_insvm]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_insvm" ftype="txt" value="output_data_insvm.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application will apply a trained machine learning model on the selected feature to get a classification of each geometry contained in an OGR layer. The list of feature must match the list used for training. The predicted label is written in the user defined field for each geometry.]]></help>

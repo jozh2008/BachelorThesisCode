@@ -12,7 +12,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="The list of images to concatenate, must have the same size." help="The list of images to concatenate, must have the same size. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="il" type="data" optional="false" label="The list of images to concatenate, must have the same size." help="The list of images to concatenate, must have the same size. The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
     <param name="out" type="select" optional="false" label="The concatenated output image." help="The concatenated output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -44,7 +44,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -54,8 +54,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application performs images channels concatenation. It reads the input image list (single or multi-channel) and generates a single multi-channel image. The channel order is the same as the list.]]></help>

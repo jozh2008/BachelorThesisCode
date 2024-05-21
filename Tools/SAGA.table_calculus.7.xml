@@ -39,12 +39,12 @@ transmissionMode_PCA $OutputSection_PCA.transmissionMode_PCA]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PCA" format="csv" hidden="false"/>
+    <data name="output_data_PCA" format="csv" label="output_data_PCA" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PCA" ftype="txt" value="output_data_PCA.txt"/>
     </test>
   </tests>
   <help><![CDATA[Principal Component Analysis (PCA) for tables. ]]></help>

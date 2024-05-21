@@ -19,7 +19,7 @@ response $response
 outputType_GRIDS $OutputSection_GRIDS.outputType_GRIDS
 transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   <inputs>
-    <param name="LIST" type="data" optional="false" label="Single Grids" help="Single Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="LIST" type="data" optional="false" label="Single Grids" help="Single Grids The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="NAME" type="text" optional="true" label="Name" help="Name"/>
     <param name="DELETE" type="select" optional="true" label="Delete" help="Delete">
       <option selected="true" value="false">false</option>
@@ -35,7 +35,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
     <param name="TABLE_Z" type="data" optional="false" label="Z Attribute" help="Z Attribute The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NFIELDS" type="integer" value="2" optional="true" label="Number of Attributes" help="Number of Attributes"/>
     <param name="ZFIELD" type="integer" value="1" optional="true" label="Z Attribute" help="Z Attribute"/>
-    <param name="COPY" type="data" optional="false" label="Copy from Grid Collection" help="Copy from Grid Collection The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="COPY" type="data" optional="false" label="Copy from Grid Collection" help="Copy from Grid Collection The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="COPY_SET" type="select" optional="true" label="Copy Settings" help="Copy Settings">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -63,7 +63,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRIDS" format="tiff" hidden="false">
+    <data name="output_data_GRIDS" format="tiff" label="output_data_GRIDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRIDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -74,8 +74,8 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRIDS" ftype="txt" value="output_data_GRIDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Create a new grid collection from existing grids.]]></help>

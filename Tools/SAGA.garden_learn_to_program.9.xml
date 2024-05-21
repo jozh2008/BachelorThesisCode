@@ -39,7 +39,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="tiff" hidden="false">
+    <data name="output_data_RESULT" format="tiff" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -50,8 +50,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Conway's game of life. A cellular automate.&lt;br/&gt;(c) 2003 by Olaf Conrad, Goettingen&lt;br/&gt;email: oconrad@gwdg.de]]></help>

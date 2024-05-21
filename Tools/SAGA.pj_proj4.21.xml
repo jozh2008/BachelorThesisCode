@@ -64,7 +64,7 @@ transmissionMode_DISTANCES $OutputSection_DISTANCES.transmissionMode_DISTANCES]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DISTANCES" format="xml" hidden="false">
+    <data name="output_data_DISTANCES" format="xml" label="output_data_DISTANCES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DISTANCES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -74,8 +74,8 @@ transmissionMode_DISTANCES $OutputSection_DISTANCES.transmissionMode_DISTANCES]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DISTANCES" ftype="txt" value="output_data_DISTANCES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates for all segments of the input lines the planar, great elliptic, and loxodrome distance and re-projects the latter two to the projection of the input lines. ]]></help>

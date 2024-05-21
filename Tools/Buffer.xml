@@ -34,7 +34,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="xml" hidden="false">
+    <data name="output_data_Result" format="xml" label="output_data_Result" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Result" format="json" value="application/json"/>
@@ -46,19 +46,19 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
       <param name="response" value=""/>
       <param name="InputPolygon"/>
       <param name="bufferDistance" value="0.001"/>
-      <output name="output_data_Result" ftype="txt"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
     <test>
       <param name="response" value=""/>
       <param name="InputPolygon"/>
       <param name="bufferDistance" value="0.001"/>
-      <output name="output_data_Result" ftype="txt"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
     <test>
       <param name="response" value=""/>
       <param name="InputPolygon"/>
       <param name="bufferDistance" value="0.001"/>
-      <output name="output_data_Result" ftype="txt"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
   </tests>
   <help><![CDATA[This service shall return a feature collection representing the buffer of geometry InputPolygon at distance BufferDistance. The buffer of a geometry at distance d is the Polygon or MultiPolygon which contains all points within a distance d of the geometry.]]></help>

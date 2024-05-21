@@ -71,13 +71,14 @@ transmissionMode_SUMMARY $OutputSection_SUMMARY.transmissionMode_SUMMARY]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PHENOLOGY" format="csv" hidden="false"/>
-    <data name="output_data_SUMMARY" format="csv" hidden="false"/>
+    <data name="output_data_PHENOLOGY" format="csv" label="output_data_PHENOLOGY" hidden="false"/>
+    <data name="output_data_SUMMARY" format="csv" label="output_data_SUMMARY" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PHENOLOGY" ftype="txt" value="output_data_PHENOLOGY.txt"/>
+      <output name="output_data_SUMMARY" ftype="txt" value="output_data_SUMMARY.txt"/>
     </test>
   </tests>
   <help><![CDATA[A comprehensive phenology model of Ips typographus (L.) (Col., Scolytinae) as a tool for hazard rating of bark beetle infestation.]]></help>

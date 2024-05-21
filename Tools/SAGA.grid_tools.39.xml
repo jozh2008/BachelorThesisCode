@@ -17,8 +17,8 @@ response $response
 outputType_GRID_OUT $OutputSection_GRID_OUT.outputType_GRID_OUT
 transmissionMode_GRID_OUT $OutputSection_GRID_OUT.transmissionMode_GRID_OUT]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="REPLACE" type="select" optional="true" label="Value to be replaced" help="Value to be replaced">
       <option value="fixed_value">fixed value</option>
       <option selected="true" value="value_at_mouse_position">value at mouse position</option>
@@ -57,7 +57,7 @@ transmissionMode_GRID_OUT $OutputSection_GRID_OUT.transmissionMode_GRID_OUT]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRID_OUT" format="tiff" hidden="false">
+    <data name="output_data_GRID_OUT" format="tiff" label="output_data_GRID_OUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRID_OUT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -68,8 +68,8 @@ transmissionMode_GRID_OUT $OutputSection_GRID_OUT.transmissionMode_GRID_OUT]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRID_OUT" ftype="txt" value="output_data_GRID_OUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[A flood fill algorithm will be used for replacement of grid cell values starting at the positions of the input points. If one or more points are selected, only these will be processed, otherwise all. If the target grid is not set, the changes will be applied to the original grid. ]]></help>

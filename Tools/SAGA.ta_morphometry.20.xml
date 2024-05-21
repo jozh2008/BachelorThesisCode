@@ -17,7 +17,7 @@ response $response
 outputType_TEXTURE $OutputSection_TEXTURE.outputType_TEXTURE
 transmissionMode_TEXTURE $OutputSection_TEXTURE.transmissionMode_TEXTURE]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="EPSILON" type="float" value="1" optional="true" label="Flat Area Threshold" help="maximum difference between original and median filtered elevation (3x3 moving window) that still is recognized flat"/>
     <param name="SCALE" type="integer" value="10" optional="true" label="Scale (Cells)" help="Scale (Cells)"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
@@ -59,7 +59,7 @@ transmissionMode_TEXTURE $OutputSection_TEXTURE.transmissionMode_TEXTURE]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TEXTURE" format="tiff" hidden="false">
+    <data name="output_data_TEXTURE" format="tiff" label="output_data_TEXTURE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TEXTURE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -70,8 +70,8 @@ transmissionMode_TEXTURE $OutputSection_TEXTURE.transmissionMode_TEXTURE]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TEXTURE" ftype="txt" value="output_data_TEXTURE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Terrain surface texture as proposed by Iwahashi & Pike (2007) for subsequent terrain classification.]]></help>

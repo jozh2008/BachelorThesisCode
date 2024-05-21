@@ -15,7 +15,7 @@ transmissionMode_A $OutputSection_A.transmissionMode_A
 outputType_B $OutputSection_B.outputType_B
 transmissionMode_B $OutputSection_B.transmissionMode_B]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="FIELD" type="data" optional="false" label="Categories" help="Categories The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PERCENT" type="float" value="25" optional="true" label="Relation B / A" help="Relation B / A"/>
     <param name="EXACT" type="select" optional="true" label="Exact" help="Exact">
@@ -55,14 +55,14 @@ transmissionMode_B $OutputSection_B.transmissionMode_B]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_A" format="xml" hidden="false">
+    <data name="output_data_A" format="xml" label="output_data_A" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_A" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_A" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_B" format="xml" hidden="false">
+    <data name="output_data_B" format="xml" label="output_data_B" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_B" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -72,8 +72,9 @@ transmissionMode_B $OutputSection_B.transmissionMode_B]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_A" ftype="txt" value="output_data_A.txt"/>
+      <output name="output_data_B" ftype="txt" value="output_data_B.txt"/>
     </test>
   </tests>
   <help><![CDATA[Randomly splits one layer into to two new layers. Useful to create a control group for model testing. Optionally this can be done category-wise if a category field is specified. ]]></help>

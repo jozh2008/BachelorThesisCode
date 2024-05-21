@@ -71,14 +71,14 @@ transmissionMode_GRATICULE_RECT $OutputSection_GRATICULE_RECT.transmissionMode_G
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRATICULE_LINE" format="xml" hidden="false">
+    <data name="output_data_GRATICULE_LINE" format="xml" label="output_data_GRATICULE_LINE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRATICULE_LINE" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_GRATICULE_LINE" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_GRATICULE_RECT" format="xml" hidden="false">
+    <data name="output_data_GRATICULE_RECT" format="xml" label="output_data_GRATICULE_RECT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRATICULE_RECT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -88,8 +88,9 @@ transmissionMode_GRATICULE_RECT $OutputSection_GRATICULE_RECT.transmissionMode_G
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRATICULE_LINE" ftype="txt" value="output_data_GRATICULE_LINE.txt"/>
+      <output name="output_data_GRATICULE_RECT" ftype="txt" value="output_data_GRATICULE_RECT.txt"/>
     </test>
   </tests>
   <help><![CDATA[(c) 2004 by Victor Olaya. ]]></help>

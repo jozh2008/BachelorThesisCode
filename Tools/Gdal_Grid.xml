@@ -31,12 +31,12 @@ transmissionMode_OutputedDataSourceName $OutputSection_OutputedDataSourceName.tr
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OutputedDataSourceName" format="txt" hidden="false"/>
+    <data name="output_data_OutputedDataSourceName" format="txt" label="output_data_OutputedDataSourceName" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OutputedDataSourceName" ftype="txt" value="output_data_OutputedDataSourceName.txt"/>
     </test>
   </tests>
   <help><![CDATA[http://www.gdal.org/gdal_grid.html]]></help>

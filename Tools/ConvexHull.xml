@@ -32,7 +32,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="xml" hidden="false">
+    <data name="output_data_Result" format="xml" label="output_data_Result" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_Result" format="json" value="application/json"/>
@@ -41,8 +41,8 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
   </tests>
   <help><![CDATA[This service shall return a feature collection that represents the convex hull of geometry InputPolygon. The convex hull is the smallest convex polygon that contains all points of the geometry. The convex Hull for a geometry of encoding data type Point is the point itself]]></help>

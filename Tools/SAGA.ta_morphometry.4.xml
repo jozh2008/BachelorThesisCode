@@ -11,7 +11,7 @@ response $response
 outputType_CLASS $OutputSection_CLASS.outputType_CLASS
 transmissionMode_CLASS $OutputSection_CLASS.transmissionMode_CLASS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="THRESHOLD" type="float" value="0.0005" optional="true" label="Threshold for plane" help="Threshold for plane"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -36,7 +36,7 @@ transmissionMode_CLASS $OutputSection_CLASS.transmissionMode_CLASS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CLASS" format="tiff" hidden="false">
+    <data name="output_data_CLASS" format="tiff" label="output_data_CLASS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CLASS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -47,8 +47,8 @@ transmissionMode_CLASS $OutputSection_CLASS.transmissionMode_CLASS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CLASS" ftype="txt" value="output_data_CLASS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Surface curvature based terrain classification.&lt;br/&gt;Reference:&lt;br/&gt;Dikau, R. (1988):&lt;br/&gt;'Entwurf einer geomorphographisch-analytischen Systematik von Reliefeinheiten',&lt;br/&gt;Heidelberger Geographische Bausteine, Heft 5&lt;br/&gt;&lt;br/&gt;0 - V  / V&lt;br/&gt;1 - GE / V&lt;br/&gt;2 - X  / V&lt;br/&gt;3 - V  / GR&lt;br/&gt;4 - GE / GR&lt;br/&gt;5 - X  / GR&lt;br/&gt;6 - V  / X&lt;br/&gt;7 - GE / X&lt;br/&gt;8 - X  / X&lt;br/&gt;]]></help>

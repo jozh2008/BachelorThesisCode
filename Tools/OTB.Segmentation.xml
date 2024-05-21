@@ -4,86 +4,86 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymode.vector.inmask False  output_data_mode.vector.out $output_data_mode.vector.out  output_data_mode.raster.out $output_data_mode.raster.out  name OTB.Segmentation in $in
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymode_vector_inmask False  output_data_mode_vector_out $output_data_mode_vector_out  output_data_mode_raster_out $output_data_mode_raster_out  name OTB.Segmentation in $in
 filter $filter
-filter.meanshift.spatialr $filter.meanshift.spatialr
-filter.meanshift.ranger $filter.meanshift.ranger
-filter.meanshift.thres $filter.meanshift.thres
-filter.meanshift.maxiter $filter.meanshift.maxiter
-filter.meanshift.minsize $filter.meanshift.minsize
-filter.cc.expr '$filter.cc.expr'
-filter.watershed.threshold $filter.watershed.threshold
-filter.watershed.level $filter.watershed.level
-filter.mprofiles.size $filter.mprofiles.size
-filter.mprofiles.start $filter.mprofiles.start
-filter.mprofiles.step $filter.mprofiles.step
-filter.mprofiles.sigma $filter.mprofiles.sigma
+filter_meanshift_spatialr $filter_meanshift_spatialr
+filter_meanshift_ranger $filter_meanshift_ranger
+filter_meanshift_thres $filter_meanshift_thres
+filter_meanshift_maxiter $filter_meanshift_maxiter
+filter_meanshift_minsize $filter_meanshift_minsize
+filter_cc_expr '$filter_cc_expr'
+filter_watershed_threshold $filter_watershed_threshold
+filter_watershed_level $filter_watershed_level
+filter_mprofiles_size $filter_mprofiles_size
+filter_mprofiles_start $filter_mprofiles_start
+filter_mprofiles_step $filter_mprofiles_step
+filter_mprofiles_sigma $filter_mprofiles_sigma
 mode $mode
-mode.vector.outmode $mode.vector.outmode
-mode.vector.inmask $mode.vector.inmask
-mode.vector.neighbor $mode.vector.neighbor
-mode.vector.stitch $mode.vector.stitch
-mode.vector.minsize $mode.vector.minsize
-mode.vector.simplify $mode.vector.simplify
-mode.vector.layername '$mode.vector.layername'
-mode.vector.fieldname '$mode.vector.fieldname'
-mode.vector.tilesize $mode.vector.tilesize
-mode.vector.startlabel $mode.vector.startlabel
-mode.vector.ogroptions '$mode.vector.ogroptions'
-mode.raster.out $mode.raster.out
+mode_vector_outmode $mode_vector_outmode
+mode_vector_inmask $mode_vector_inmask
+mode_vector_neighbor $mode_vector_neighbor
+mode_vector_stitch $mode_vector_stitch
+mode_vector_minsize $mode_vector_minsize
+mode_vector_simplify $mode_vector_simplify
+mode_vector_layername '$mode_vector_layername'
+mode_vector_fieldname '$mode_vector_fieldname'
+mode_vector_tilesize $mode_vector_tilesize
+mode_vector_startlabel $mode_vector_startlabel
+mode_vector_ogroptions '$mode_vector_ogroptions'
+mode_raster_out $mode_raster_out
 prefer $prefer
 response $response
-outputType_mode.vector.out $OutputSection_mode.vector.out.outputType_mode.vector.out
-transmissionMode_mode.vector.out $OutputSection_mode.vector.out.transmissionMode_mode.vector.out
-outputType_mode.raster.out $OutputSection_mode.raster.out.outputType_mode.raster.out
-transmissionMode_mode.raster.out $OutputSection_mode.raster.out.transmissionMode_mode.raster.out]]></command>
+outputType_mode_vector_out $OutputSection_mode_vector_out.outputType_mode_vector_out
+transmissionMode_mode_vector_out $OutputSection_mode_vector_out.transmissionMode_mode_vector_out
+outputType_mode_raster_out $OutputSection_mode_raster_out.outputType_mode_raster_out
+transmissionMode_mode_raster_out $OutputSection_mode_raster_out.transmissionMode_mode_raster_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to segment" help="The input image to segment The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to segment" help="The input image to segment The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="filter" type="select" optional="false" label="Choice of segmentation algorithm (mean-shift by default)" help="Choice of segmentation algorithm (mean-shift by default)">
       <option value="cc">cc</option>
       <option selected="true" value="meanshift">meanshift</option>
       <option value="mprofiles">mprofiles</option>
       <option value="watershed">watershed</option>
     </param>
-    <param name="filter.meanshift.spatialr" type="integer" value="5" optional="false" label="Spatial radius of the neighborhood." help="Spatial radius of the neighborhood."/>
-    <param name="filter.meanshift.ranger" type="float" value="15" optional="false" label="Range radius defining the radius (expressed in radiometry unit) in the multispectral space." help="Range radius defining the radius (expressed in radiometry unit) in the multispectral space."/>
-    <param name="filter.meanshift.thres" type="float" value="0.1" optional="false" label="Algorithm iterative scheme will stop if mean-shift vector is below this threshold or if iteration number reached maximum number of iterations." help="Algorithm iterative scheme will stop if mean-shift vector is below this threshold or if iteration number reached maximum number of iterations."/>
-    <param name="filter.meanshift.maxiter" type="integer" value="100" optional="false" label="Algorithm iterative scheme will stop if convergence hasn't been reached after the maximum number of iterations." help="Algorithm iterative scheme will stop if convergence hasn't been reached after the maximum number of iterations."/>
-    <param name="filter.meanshift.minsize" type="integer" value="100" optional="false" label="Minimum size of a region (in pixel unit) in segmentation. Smaller clusters will be merged to the neighboring cluster with the closest radiometry. If set to 0 no pruning is done." help="Minimum size of a region (in pixel unit) in segmentation. Smaller clusters will be merged to the neighboring cluster with the closest radiometry. If set to 0 no pruning is done."/>
-    <param name="filter.cc.expr" type="text" optional="false" label="User defined connection condition, written as a mathematical expression. Available variables are p(i)b(i), intensity_p(i) and distance (example of expression : distance &amp;lt; 10 )" help="User defined connection condition, written as a mathematical expression. Available variables are p(i)b(i), intensity_p(i) and distance (example of expression : distance &amp;lt; 10 )"/>
-    <param name="filter.watershed.threshold" type="float" value="0.01" optional="false" label="Depth threshold Units in percentage of the maximum depth in the image." help="Depth threshold Units in percentage of the maximum depth in the image."/>
-    <param name="filter.watershed.level" type="float" value="0.1" optional="false" label="flood level for generating the merge tree from the initial segmentation (between 0 and 1)" help="flood level for generating the merge tree from the initial segmentation (between 0 and 1)"/>
-    <param name="filter.mprofiles.size" type="integer" value="5" optional="false" label="Size of the profiles" help="Size of the profiles"/>
-    <param name="filter.mprofiles.start" type="integer" value="1" optional="false" label="Initial radius of the structuring element (in pixels)" help="Initial radius of the structuring element (in pixels)"/>
-    <param name="filter.mprofiles.step" type="integer" value="1" optional="false" label="Radius step along the profile (in pixels)" help="Radius step along the profile (in pixels)"/>
-    <param name="filter.mprofiles.sigma" type="float" value="1" optional="false" label="Profiles values under the threshold will be ignored." help="Profiles values under the threshold will be ignored."/>
+    <param name="filter_meanshift_spatialr" type="integer" value="5" optional="false" label="Spatial radius of the neighborhood." help="Spatial radius of the neighborhood."/>
+    <param name="filter_meanshift_ranger" type="float" value="15" optional="false" label="Range radius defining the radius (expressed in radiometry unit) in the multispectral space." help="Range radius defining the radius (expressed in radiometry unit) in the multispectral space."/>
+    <param name="filter_meanshift_thres" type="float" value="0.1" optional="false" label="Algorithm iterative scheme will stop if mean-shift vector is below this threshold or if iteration number reached maximum number of iterations." help="Algorithm iterative scheme will stop if mean-shift vector is below this threshold or if iteration number reached maximum number of iterations."/>
+    <param name="filter_meanshift_maxiter" type="integer" value="100" optional="false" label="Algorithm iterative scheme will stop if convergence hasn't been reached after the maximum number of iterations." help="Algorithm iterative scheme will stop if convergence hasn't been reached after the maximum number of iterations."/>
+    <param name="filter_meanshift_minsize" type="integer" value="100" optional="false" label="Minimum size of a region (in pixel unit) in segmentation. Smaller clusters will be merged to the neighboring cluster with the closest radiometry. If set to 0 no pruning is done." help="Minimum size of a region (in pixel unit) in segmentation. Smaller clusters will be merged to the neighboring cluster with the closest radiometry. If set to 0 no pruning is done."/>
+    <param name="filter_cc_expr" type="text" optional="false" label="User defined connection condition, written as a mathematical expression. Available variables are p(i)b(i), intensity_p(i) and distance (example of expression : distance &amp;lt; 10 )" help="User defined connection condition, written as a mathematical expression. Available variables are p(i)b(i), intensity_p(i) and distance (example of expression : distance &amp;lt; 10 )"/>
+    <param name="filter_watershed_threshold" type="float" value="0.01" optional="false" label="Depth threshold Units in percentage of the maximum depth in the image." help="Depth threshold Units in percentage of the maximum depth in the image."/>
+    <param name="filter_watershed_level" type="float" value="0.1" optional="false" label="flood level for generating the merge tree from the initial segmentation (between 0 and 1)" help="flood level for generating the merge tree from the initial segmentation (between 0 and 1)"/>
+    <param name="filter_mprofiles_size" type="integer" value="5" optional="false" label="Size of the profiles" help="Size of the profiles"/>
+    <param name="filter_mprofiles_start" type="integer" value="1" optional="false" label="Initial radius of the structuring element (in pixels)" help="Initial radius of the structuring element (in pixels)"/>
+    <param name="filter_mprofiles_step" type="integer" value="1" optional="false" label="Radius step along the profile (in pixels)" help="Radius step along the profile (in pixels)"/>
+    <param name="filter_mprofiles_sigma" type="float" value="1" optional="false" label="Profiles values under the threshold will be ignored." help="Profiles values under the threshold will be ignored."/>
     <param name="mode" type="select" optional="false" label="Choice of processing mode, either raster or large-scale." help="Choice of processing mode, either raster or large-scale.">
       <option value="raster">raster</option>
       <option selected="true" value="vector">vector</option>
     </param>
-    <param name="mode.vector.outmode" type="select" optional="false" label="This allows one to set the writing behaviour for the output vector file. Please note that the actual behaviour depends on the file format." help="This allows one to set the writing behaviour for the output vector file. Please note that the actual behaviour depends on the file format.">
+    <param name="mode_vector_outmode" type="select" optional="false" label="This allows one to set the writing behaviour for the output vector file. Please note that the actual behaviour depends on the file format." help="This allows one to set the writing behaviour for the output vector file. Please note that the actual behaviour depends on the file format.">
       <option value="ovw">ovw</option>
       <option selected="true" value="ulco">ulco</option>
       <option value="ulovw">ulovw</option>
       <option value="ulu">ulu</option>
     </param>
-    <param name="mode.vector.inmask" type="data" optional="false" label="Only pixels whose mask value is strictly positive will be segmented." help="Only pixels whose mask value is strictly positive will be segmented. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="mode.vector.neighbor" type="select" optional="false" label="Activate 8-Neighborhood connectivity (default is 4)." help="Activate 8-Neighborhood connectivity (default is 4).">
+    <param name="mode_vector_inmask" type="data" optional="false" label="Only pixels whose mask value is strictly positive will be segmented." help="Only pixels whose mask value is strictly positive will be segmented. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="mode_vector_neighbor" type="select" optional="false" label="Activate 8-Neighborhood connectivity (default is 4)." help="Activate 8-Neighborhood connectivity (default is 4).">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="mode.vector.stitch" type="select" optional="false" label="Scan polygons on each side of tiles and stitch polygons which connect by more than one pixel." help="Scan polygons on each side of tiles and stitch polygons which connect by more than one pixel.">
+    <param name="mode_vector_stitch" type="select" optional="false" label="Scan polygons on each side of tiles and stitch polygons which connect by more than one pixel." help="Scan polygons on each side of tiles and stitch polygons which connect by more than one pixel.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="mode.vector.minsize" type="integer" value="1" optional="true" label="Objects whose size is below the minimum object size (area in pixels) will be ignored during vectorization." help="Objects whose size is below the minimum object size (area in pixels) will be ignored during vectorization."/>
-    <param name="mode.vector.simplify" type="float" value="0.1" optional="true" label="Simplify polygons according to a given tolerance (in pixel). This option allows reducing the size of the output file or database." help="Simplify polygons according to a given tolerance (in pixel). This option allows reducing the size of the output file or database."/>
-    <param name="mode.vector.layername" type="text" value="layer" optional="false" label="Name of the layer in the vector file or database (default is Layer)." help="Name of the layer in the vector file or database (default is Layer)."/>
-    <param name="mode.vector.fieldname" type="text" value="DN" optional="false" label="Name of the field holding the geometry index in the output vector file or database." help="Name of the field holding the geometry index in the output vector file or database."/>
-    <param name="mode.vector.tilesize" type="integer" value="1024" optional="false" label="User defined tiles size for tile-based segmentation. Optimal tile size is selected according to available RAM if null." help="User defined tiles size for tile-based segmentation. Optimal tile size is selected according to available RAM if null."/>
-    <param name="mode.vector.startlabel" type="integer" value="1" optional="false" label="Starting value of the geometry index field" help="Starting value of the geometry index field"/>
-    <param name="mode.vector.ogroptions" type="text" optional="true" label="A list of layer creation options in the form KEY=VALUE that will be passed directly to OGR without any validity checking. Options may depend on the file format, and can be found in OGR documentation." help="A list of layer creation options in the form KEY=VALUE that will be passed directly to OGR without any validity checking. Options may depend on the file format, and can be found in OGR documentation."/>
-    <param name="mode.raster.out" type="select" optional="false" label="The output labeled image." help="The output labeled image.">
+    <param name="mode_vector_minsize" type="integer" value="1" optional="true" label="Objects whose size is below the minimum object size (area in pixels) will be ignored during vectorization." help="Objects whose size is below the minimum object size (area in pixels) will be ignored during vectorization."/>
+    <param name="mode_vector_simplify" type="float" value="0.1" optional="true" label="Simplify polygons according to a given tolerance (in pixel). This option allows reducing the size of the output file or database." help="Simplify polygons according to a given tolerance (in pixel). This option allows reducing the size of the output file or database."/>
+    <param name="mode_vector_layername" type="text" value="layer" optional="false" label="Name of the layer in the vector file or database (default is Layer)." help="Name of the layer in the vector file or database (default is Layer)."/>
+    <param name="mode_vector_fieldname" type="text" value="DN" optional="false" label="Name of the field holding the geometry index in the output vector file or database." help="Name of the field holding the geometry index in the output vector file or database."/>
+    <param name="mode_vector_tilesize" type="integer" value="1024" optional="false" label="User defined tiles size for tile-based segmentation. Optimal tile size is selected according to available RAM if null." help="User defined tiles size for tile-based segmentation. Optimal tile size is selected according to available RAM if null."/>
+    <param name="mode_vector_startlabel" type="integer" value="1" optional="false" label="Starting value of the geometry index field" help="Starting value of the geometry index field"/>
+    <param name="mode_vector_ogroptions" type="text" optional="true" label="A list of layer creation options in the form KEY=VALUE that will be passed directly to OGR without any validity checking. Options may depend on the file format, and can be found in OGR documentation." help="A list of layer creation options in the form KEY=VALUE that will be passed directly to OGR without any validity checking. Options may depend on the file format, and can be found in OGR documentation."/>
+    <param name="mode_raster_out" type="select" optional="false" label="The output labeled image." help="The output labeled image.">
       <option value="double">double</option>
       <option value="float">float</option>
       <option value="int16">int16</option>
@@ -100,51 +100,52 @@ transmissionMode_mode.raster.out $OutputSection_mode.raster.out.transmissionMode
       <option selected="true" value="document">document</option>
       <option value="raw">raw</option>
     </param>
-    <section name="OutputSection_mode.vector.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_mode.vector.out" type="select" label="Author did not provide help for this parameter... ">
+    <section name="OutputSection_mode_vector_out" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType_mode_vector_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="application/json">json</option>
         <option value="application/vnd.google-earth.kml+xml">vnd.google-earth.kml+xml</option>
         <option value="application/zip">zip</option>
         <option value="text/xml">xml</option>
       </param>
-      <param name="transmissionMode_mode.vector.out" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode_mode_vector_out" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_mode.raster.out" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="outputType_mode.raster.out" type="select" label="Author did not provide help for this parameter... ">
+    <section name="OutputSection_mode_raster_out" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="outputType_mode_raster_out" type="select" label="Author did not provide help for this parameter... ">
         <option value="image/jpeg">jpeg</option>
         <option value="image/png">png</option>
         <option value="image/tiff">tiff</option>
       </param>
-      <param name="transmissionMode_mode.raster.out" type="select" label="Choose the transmission mode">
+      <param name="transmissionMode_mode_raster_out" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_mode.vector.out" format="xml" hidden="false">
+    <data name="output_data_mode_vector_out" format="xml" label="output_data_mode_vector_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
-        <when input="outputType_mode.vector.out" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
-        <when input="outputType_mode.vector.out" format="json" value="application/json"/>
-        <when input="outputType_mode.vector.out" format="zip" value="application/zip"/>
+        <when input="outputType_mode_vector_out" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
+        <when input="outputType_mode_vector_out" format="json" value="application/json"/>
+        <when input="outputType_mode_vector_out" format="zip" value="application/zip"/>
       </change_format>
     </data>
-    <data name="output_data_mode.raster.out" format="tiff" hidden="false">
+    <data name="output_data_mode_raster_out" format="tiff" label="output_data_mode_raster_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
-        <when input="outputType_mode.raster.out" format="jpeg" value="image/jpeg"/>
-        <when input="outputType_mode.raster.out" format="png" value="image/png"/>
+        <when input="outputType_mode_raster_out" format="jpeg" value="image/jpeg"/>
+        <when input="outputType_mode_raster_out" format="png" value="image/png"/>
       </change_format>
     </data>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_mode_vector_out" ftype="txt" value="output_data_mode_vector_out.txt"/>
+      <output name="output_data_mode_raster_out" ftype="txt" value="output_data_mode_raster_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application allows one to perform various segmentation algorithms on a multispectral image.Available segmentation algorithms are two different versions of Mean-Shift segmentation algorithm (one being multi-threaded), simple pixel based connected components according to a user-defined criterion, and watershed from the gradient of the intensity (norm of spectral bands vector). The application has two different modes that affects the nature of its output.In raster mode, the output of the application is a classical image of unique labels identifying the segmented regions. The labeled output can be passed to the ColorMapping application to render regions with contrasted colours. Please note that this mode loads the whole input image into memory, and as such can not handle large images.  To segment large data, one can use the vector mode. In this case, the output of the application is a vector file or database. The input image is split into tiles (whose size can be set using the tilesize parameter), and each tile is loaded, segmented with the chosen algorithm, vectorized, and written into the output file or database. This piece-wise behavior ensure that memory will never get overloaded, and that images of any size can be processed. There are few more options in the vector mode. The simplify option allows simplifying the geometry (i.e. remove nodes in polygons) according to a user-defined tolerance. The stitch option tries to stitch together the polygons corresponding to segmented region that may have been split by the tiling scheme. ]]></help>

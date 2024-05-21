@@ -38,7 +38,7 @@ transmissionMode_MOC_1 $OutputSection_MOC_1.transmissionMode_MOC_1
 outputType_MOC_2 $OutputSection_MOC_2.outputType_MOC_2
 transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="DIRECTION" type="select" optional="true" label="Direction" help="Direction">
       <option value="E-W">E-W</option>
       <option value="N-S">N-S</option>
@@ -216,7 +216,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_ASM" format="tiff" hidden="false">
+    <data name="output_data_ASM" format="tiff" label="output_data_ASM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ASM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -224,7 +224,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_ASM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CONTRAST" format="tiff" hidden="false">
+    <data name="output_data_CONTRAST" format="tiff" label="output_data_CONTRAST" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CONTRAST" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -232,7 +232,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_CONTRAST" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_CORRELATION" format="tiff" hidden="false">
+    <data name="output_data_CORRELATION" format="tiff" label="output_data_CORRELATION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CORRELATION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -240,7 +240,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_CORRELATION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VARIANCE" format="tiff" hidden="false">
+    <data name="output_data_VARIANCE" format="tiff" label="output_data_VARIANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -248,7 +248,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_VARIANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_IDM" format="tiff" hidden="false">
+    <data name="output_data_IDM" format="tiff" label="output_data_IDM" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_IDM" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -256,7 +256,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_IDM" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM_AVERAGE" format="tiff" hidden="false">
+    <data name="output_data_SUM_AVERAGE" format="tiff" label="output_data_SUM_AVERAGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM_AVERAGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -264,7 +264,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_SUM_AVERAGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM_ENTROPY" format="tiff" hidden="false">
+    <data name="output_data_SUM_ENTROPY" format="tiff" label="output_data_SUM_ENTROPY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM_ENTROPY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -272,7 +272,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_SUM_ENTROPY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SUM_VARIANCE" format="tiff" hidden="false">
+    <data name="output_data_SUM_VARIANCE" format="tiff" label="output_data_SUM_VARIANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUM_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -280,7 +280,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_SUM_VARIANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ENTROPY" format="tiff" hidden="false">
+    <data name="output_data_ENTROPY" format="tiff" label="output_data_ENTROPY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ENTROPY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -288,7 +288,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_ENTROPY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIF_VARIANCE" format="tiff" hidden="false">
+    <data name="output_data_DIF_VARIANCE" format="tiff" label="output_data_DIF_VARIANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIF_VARIANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -296,7 +296,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_DIF_VARIANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIF_ENTROPY" format="tiff" hidden="false">
+    <data name="output_data_DIF_ENTROPY" format="tiff" label="output_data_DIF_ENTROPY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIF_ENTROPY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -304,7 +304,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_DIF_ENTROPY" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MOC_1" format="tiff" hidden="false">
+    <data name="output_data_MOC_1" format="tiff" label="output_data_MOC_1" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MOC_1" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -312,7 +312,7 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
         <when input="outputType_MOC_1" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MOC_2" format="tiff" hidden="false">
+    <data name="output_data_MOC_2" format="tiff" label="output_data_MOC_2" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MOC_2" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -323,8 +323,20 @@ transmissionMode_MOC_2 $OutputSection_MOC_2.transmissionMode_MOC_2]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_ASM" ftype="txt" value="output_data_ASM.txt"/>
+      <output name="output_data_CONTRAST" ftype="txt" value="output_data_CONTRAST.txt"/>
+      <output name="output_data_CORRELATION" ftype="txt" value="output_data_CORRELATION.txt"/>
+      <output name="output_data_VARIANCE" ftype="txt" value="output_data_VARIANCE.txt"/>
+      <output name="output_data_IDM" ftype="txt" value="output_data_IDM.txt"/>
+      <output name="output_data_SUM_AVERAGE" ftype="txt" value="output_data_SUM_AVERAGE.txt"/>
+      <output name="output_data_SUM_ENTROPY" ftype="txt" value="output_data_SUM_ENTROPY.txt"/>
+      <output name="output_data_SUM_VARIANCE" ftype="txt" value="output_data_SUM_VARIANCE.txt"/>
+      <output name="output_data_ENTROPY" ftype="txt" value="output_data_ENTROPY.txt"/>
+      <output name="output_data_DIF_VARIANCE" ftype="txt" value="output_data_DIF_VARIANCE.txt"/>
+      <output name="output_data_DIF_ENTROPY" ftype="txt" value="output_data_DIF_ENTROPY.txt"/>
+      <output name="output_data_MOC_1" ftype="txt" value="output_data_MOC_1.txt"/>
+      <output name="output_data_MOC_2" ftype="txt" value="output_data_MOC_2.txt"/>
     </test>
   </tests>
   <help><![CDATA[Textural Features]]></help>

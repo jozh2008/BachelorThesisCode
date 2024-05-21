@@ -47,7 +47,7 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUTPUT" format="xml" hidden="false">
+    <data name="output_data_OUTPUT" format="xml" label="output_data_OUTPUT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUTPUT" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -57,8 +57,8 @@ transmissionMode_OUTPUT $OutputSection_OUTPUT.transmissionMode_OUTPUT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUTPUT" ftype="txt" value="output_data_OUTPUT.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool allows one to generate point, line or polygon shapes from a table with the following attribute fields:&lt;br/&gt;&lt;br/&gt;- identifier&lt;br/&gt;- x coordinate&lt;br/&gt;- y coordinate&lt;br/&gt;- optional: z coordinate (this will create a 3D shapefile)&lt;br/&gt;&lt;br/&gt;The table must be sorted in vertex order.&lt;br/&gt;&lt;br/&gt;The identifier has different meanings:&lt;br/&gt;&lt;br/&gt;* Point Shapes: The identifier is arbitrary&lt;br/&gt;&lt;br/&gt;* Line Shapes: The identifier is unique for each line&lt;br/&gt;&lt;br/&gt;* Polygon Shapes: The identifier is unique for each polygon; the first polygon vertex may but must not be duplicated in order to close the polygon&lt;br/&gt;&lt;br/&gt;]]></help>

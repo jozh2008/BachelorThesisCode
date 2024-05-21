@@ -77,7 +77,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRID" format="tiff" hidden="false">
+    <data name="output_data_GRID" format="tiff" label="output_data_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -85,7 +85,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
         <when input="outputType_GRID" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_COUNT" format="tiff" hidden="false">
+    <data name="output_data_COUNT" format="tiff" label="output_data_COUNT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -93,7 +93,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
         <when input="outputType_COUNT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_GRIDS" format="tiff" hidden="false">
+    <data name="output_data_GRIDS" format="tiff" label="output_data_GRIDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRIDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -104,8 +104,10 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRID" ftype="txt" value="output_data_GRID.txt"/>
+      <output name="output_data_COUNT" ftype="txt" value="output_data_COUNT.txt"/>
+      <output name="output_data_GRIDS" ftype="txt" value="output_data_GRIDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Point Cloud to Grid]]></help>

@@ -33,7 +33,7 @@ transmissionMode_COPY $OutputSection_COPY.transmissionMode_COPY]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_COPY" format="xml" hidden="false">
+    <data name="output_data_COPY" format="xml" label="output_data_COPY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COPY" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -43,8 +43,8 @@ transmissionMode_COPY $OutputSection_COPY.transmissionMode_COPY]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_COPY" ftype="txt" value="output_data_COPY.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a copy of a shapes layer.]]></help>

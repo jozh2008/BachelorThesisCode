@@ -88,7 +88,7 @@ transmissionMode_TABLEparms $OutputSection_TABLEparms.transmissionMode_TABLEparm
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TABLEout" format="tiff" hidden="false">
+    <data name="output_data_TABLEout" format="tiff" label="output_data_TABLEout" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TABLEout" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -96,7 +96,7 @@ transmissionMode_TABLEparms $OutputSection_TABLEparms.transmissionMode_TABLEparm
         <when input="outputType_TABLEout" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TABLEparms" format="tiff" hidden="false">
+    <data name="output_data_TABLEparms" format="tiff" label="output_data_TABLEparms" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TABLEparms" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -107,8 +107,9 @@ transmissionMode_TABLEparms $OutputSection_TABLEparms.transmissionMode_TABLEparm
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TABLEout" ftype="txt" value="output_data_TABLEout.txt"/>
+      <output name="output_data_TABLEparms" ftype="txt" value="output_data_TABLEparms.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calibration Tool for the Model IHACRES &lt;br/&gt; &lt;br/&gt; &lt;br/&gt;Reference: &lt;br/&gt; &lt;br/&gt;Jakeman, A.J. / Hornberger, G.M. (1993). &lt;br/&gt;How Much Complexity Is Warranted in a Rainfall-Runoff Model? &lt;br/&gt;Water Resources Research, (29), NO. 8 (2637-2649) &lt;br/&gt; &lt;br/&gt;Croke, B. F. W., W. S. Merritt, et al. (2004).&lt;br/&gt;A dynamic model for predicting hydrologic response to land cover changes in gauged and ungauged catchments. &lt;br/&gt;Journal Of Hydrology 291(1-2): 115-131.]]></help>

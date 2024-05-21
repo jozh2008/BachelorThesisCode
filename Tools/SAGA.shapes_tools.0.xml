@@ -47,7 +47,7 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SHAPES" format="tiff" hidden="false">
+    <data name="output_data_SHAPES" format="tiff" label="output_data_SHAPES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHAPES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -58,8 +58,8 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SHAPES" ftype="txt" value="output_data_SHAPES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a new empty shapes layer of given type, which might be either point, multipoint, line or polygon.&lt;br/&gt;&lt;br/&gt;Possible field types for the attributes table are:&lt;br/&gt;- string&lt;br/&gt;- date&lt;br/&gt;- color&lt;br/&gt;- unsigned 1 byte integer&lt;br/&gt;- signed 1 byte integer&lt;br/&gt;- unsigned 2 byte integer&lt;br/&gt;- signed 2 byte integer&lt;br/&gt;- unsigned 4 byte integer&lt;br/&gt;- signed 4 byte integer&lt;br/&gt;- unsigned 8 byte integer&lt;br/&gt;- signed 8 byte integer&lt;br/&gt;- 4 byte floating point number&lt;br/&gt;- 8 byte floating point number&lt;br/&gt;- binary&lt;br/&gt;]]></help>

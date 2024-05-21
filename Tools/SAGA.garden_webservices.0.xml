@@ -64,7 +64,7 @@ transmissionMode_LEGENDS $OutputSection_LEGENDS.transmissionMode_LEGENDS]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MAP" format="tiff" hidden="false">
+    <data name="output_data_MAP" format="tiff" label="output_data_MAP" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAP" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -72,7 +72,7 @@ transmissionMode_LEGENDS $OutputSection_LEGENDS.transmissionMode_LEGENDS]]></com
         <when input="outputType_MAP" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_LEGENDS" format="tiff" hidden="false">
+    <data name="output_data_LEGENDS" format="tiff" label="output_data_LEGENDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LEGENDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -83,8 +83,9 @@ transmissionMode_LEGENDS $OutputSection_LEGENDS.transmissionMode_LEGENDS]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MAP" ftype="txt" value="output_data_MAP.txt"/>
+      <output name="output_data_LEGENDS" ftype="txt" value="output_data_LEGENDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool works as Web Map Service (WMS) client. More information on the WMS specifications can be obtained from the Open Geospatial Consortium (OGC). ]]></help>

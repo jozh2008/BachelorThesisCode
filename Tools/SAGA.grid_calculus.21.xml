@@ -14,8 +14,8 @@ response $response
 outputType_MATCHED $OutputSection_MATCHED.outputType_MATCHED
 transmissionMode_MATCHED $OutputSection_MATCHED.transmissionMode_MATCHED]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
-    <param name="REFERENCE" type="data" optional="false" label="Reference Grid" help="Reference Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="REFERENCE" type="data" optional="false" label="Reference Grid" help="Reference Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option selected="true" value="histogram">histogram</option>
       <option value="standard_deviation">standard deviation</option>
@@ -45,7 +45,7 @@ transmissionMode_MATCHED $OutputSection_MATCHED.transmissionMode_MATCHED]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MATCHED" format="tiff" hidden="false">
+    <data name="output_data_MATCHED" format="tiff" label="output_data_MATCHED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MATCHED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -56,8 +56,8 @@ transmissionMode_MATCHED $OutputSection_MATCHED.transmissionMode_MATCHED]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MATCHED" ftype="txt" value="output_data_MATCHED.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool alters the values of a grid so that its value distribution (its histogram), matches that of a reference grid. The first method simply uses arithmetic mean and standard deviation for adjustment, which usually is sufficient for normal distributed values. The second method performs a more precise adjustment based on the grids' histograms. ]]></help>

@@ -29,12 +29,12 @@ transmissionMode_Distance $OutputSection_Distance.transmissionMode_Distance]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Distance" format="txt" hidden="false"/>
+    <data name="output_data_Distance" format="txt" label="output_data_Distance" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_Distance" ftype="txt" value="output_data_Distance.txt"/>
     </test>
   </tests>
   <help><![CDATA[Compute the distance between two geometries]]></help>

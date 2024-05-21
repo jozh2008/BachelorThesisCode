@@ -21,7 +21,7 @@ transmissionMode_POLYGONS $OutputSection_POLYGONS.transmissionMode_POLYGONS
 outputType_SUPERPIXELS $OutputSection_SUPERPIXELS.outputType_SUPERPIXELS
 transmissionMode_SUPERPIXELS $OutputSection_SUPERPIXELS.transmissionMode_SUPERPIXELS]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="NORMALIZE" type="select" optional="true" label="Normalize" help="Normalize">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -77,14 +77,14 @@ transmissionMode_SUPERPIXELS $OutputSection_SUPERPIXELS.transmissionMode_SUPERPI
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_POLYGONS" format="xml" hidden="false">
+    <data name="output_data_POLYGONS" format="xml" label="output_data_POLYGONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_POLYGONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_POLYGONS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_SUPERPIXELS" format="tiff" hidden="false">
+    <data name="output_data_SUPERPIXELS" format="tiff" label="output_data_SUPERPIXELS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SUPERPIXELS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -95,8 +95,9 @@ transmissionMode_SUPERPIXELS $OutputSection_SUPERPIXELS.transmissionMode_SUPERPI
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_POLYGONS" ftype="txt" value="output_data_POLYGONS.txt"/>
+      <output name="output_data_SUPERPIXELS" ftype="txt" value="output_data_SUPERPIXELS.txt"/>
     </test>
   </tests>
   <help><![CDATA[The Superpixel Segmentation tool implements the 'Simple Linear Iterative Clustering' (SLIC) algorithm, an image segmentation method described in Achanta et al. (2010). &lt;br/&gt;&lt;br/&gt;SLIC is a simple and efficient method to decompose an image in visually homogeneous regions. It is based on a spatially localized version of k-means clustering. Similar to mean shift or quick shift, each pixel is associated to a feature vector. &lt;br/&gt;&lt;br/&gt;This tool is follows the SLIC implementation created by Vedaldi and Fulkerson as part of the VLFeat library. ]]></help>

@@ -53,7 +53,7 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_BUFFER" format="xml" hidden="false">
+    <data name="output_data_BUFFER" format="xml" label="output_data_BUFFER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BUFFER" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -63,8 +63,8 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_BUFFER" ftype="txt" value="output_data_BUFFER.txt"/>
     </test>
   </tests>
   <help><![CDATA[A vector based buffer construction partly based on the method supposed by Dong et al. (2003).]]></help>

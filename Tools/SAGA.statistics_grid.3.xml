@@ -13,7 +13,7 @@ response $response
 outputType_RESULT $OutputSection_RESULT.outputType_RESULT
 transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="STDDEV" type="float" value="1" optional="true" label="Standard Deviation" help="Standard Deviation"/>
     <param name="RADIUS" type="integer" value="20" optional="true" label="Maximum Search Radius (cells)" help="Maximum Search Radius (cells)"/>
     <param name="OUTPUT" type="select" optional="true" label="Type of Output" help="Type of Output">
@@ -43,7 +43,7 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="tiff" hidden="false">
+    <data name="output_data_RESULT" format="tiff" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -54,8 +54,8 @@ transmissionMode_RESULT $OutputSection_RESULT.transmissionMode_RESULT]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Find the radius within which the cell values exceed the given variance criterium. This tool is closely related to the representativeness calculation (variance within given search radius). For easier usage, the variance criterium is entered as standard deviation value. ]]></help>

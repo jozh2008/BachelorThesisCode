@@ -17,11 +17,11 @@ response $response
 outputType_DYN_W $OutputSection_DYN_W.outputType_DYN_W
 transmissionMode_DYN_W $OutputSection_DYN_W.transmissionMode_DYN_W]]></command>
   <inputs>
-    <param name="STA_FC" type="data" optional="false" label="Field Capacity [mm]" help="Field Capacity [mm] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="STA_FC" type="data" optional="false" label="Field Capacity [mm]" help="Field Capacity [mm] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="STA_FC_DEF" type="float" value="20" optional="true" label="Default" help="Default"/>
-    <param name="STA_PWP" type="data" optional="false" label="Permanent Wilting Point [mm]" help="Permanent Wilting Point [mm] The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="STA_PWP" type="data" optional="false" label="Permanent Wilting Point [mm]" help="Permanent Wilting Point [mm] The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="STA_PWP_DEF" type="float" value="2" optional="true" label="Default" help="Default"/>
-    <param name="LANDUSE" type="data" optional="false" label="Land Use" help="Land Use The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="LANDUSE" type="data" optional="false" label="Land Use" help="Land Use The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
     <param name="LANDUSE_DEF" type="integer" value="-1" optional="true" label="Default" help="Default"/>
     <param name="DYN_CLIMATE" type="data" optional="false" label="Climate Data" help="Climate Data The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="STA_KC" type="data" optional="false" label="Crop Coefficients" help="Crop Coefficients The following data types are allowed in the txt file:  csv" format="txt"/>
@@ -48,7 +48,7 @@ transmissionMode_DYN_W $OutputSection_DYN_W.transmissionMode_DYN_W]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DYN_W" format="tiff" hidden="false">
+    <data name="output_data_DYN_W" format="tiff" label="output_data_DYN_W" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DYN_W" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -59,8 +59,8 @@ transmissionMode_DYN_W $OutputSection_DYN_W.transmissionMode_DYN_W]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DYN_W" ftype="txt" value="output_data_DYN_W.txt"/>
     </test>
   </tests>
   <help><![CDATA[The WEELS (Wind Erosion on European Light Soils) soil moisture model dynamically calculates the soil moisture based on the rules proposed by the DVWK (1996) with input data about:&lt;br/&gt;- soil properties (grids: field capacity and permanent wilting point)&lt;br/&gt;- land use (grid: crop types)&lt;br/&gt;- climate (table: daily values of precipitation, temperature, air humidity)&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;- DVWK - Deutscher Verband fuer Wasserwirtschaft und Kulturbau e.V. (1996): 'Ermittlung der Verdunstung von Land- und Wasserflaechen', DVWK Merkblaetter 238/1996, Bonn, 135p.&lt;br/&gt;- Boehner, J., Schaefer, W., Conrad, O., Gross, J., Ringeler, A. (2001): 'The WEELS Model: methods, results and limits of wind erosion modelling', In: Catena, Special Issue&lt;br/&gt;]]></help>

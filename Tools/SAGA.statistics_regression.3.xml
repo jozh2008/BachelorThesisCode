@@ -39,7 +39,7 @@ transmissionMode_SLOPE $OutputSection_SLOPE.transmissionMode_SLOPE
 outputType_QUALITY $OutputSection_QUALITY.outputType_QUALITY
 transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></command>
   <inputs>
-    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, xml, json" format="txt"/>
+    <param name="POINTS" type="data" optional="false" label="Points" help="Points The following data types are allowed in the txt file:  vnd.google-earth.kml+xml, json, xml" format="txt"/>
     <param name="DEPENDENT" type="data" optional="false" label="Dependent Variable" help="Dependent Variable The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="PREDICTOR" type="data" optional="false" label="Predictor" help="Predictor The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="LOGISTIC" type="select" optional="true" label="Logistic Regression" help="Logistic Regression">
@@ -61,7 +61,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, x-ogc-envi, tiff" format="txt"/>
     <param name="DW_WEIGHTING" type="select" optional="true" label="Weighting Function" help="Weighting Function">
       <option value="exponential">exponential</option>
       <option selected="true" value="gaussian_weighting">gaussian weighting</option>
@@ -148,7 +148,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TARGET_OUT_GRID" format="tiff" hidden="false">
+    <data name="output_data_TARGET_OUT_GRID" format="tiff" label="output_data_TARGET_OUT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TARGET_OUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -156,7 +156,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
         <when input="outputType_TARGET_OUT_GRID" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_INTERCEPT" format="tiff" hidden="false">
+    <data name="output_data_INTERCEPT" format="tiff" label="output_data_INTERCEPT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_INTERCEPT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -164,7 +164,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
         <when input="outputType_INTERCEPT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SLOPE" format="tiff" hidden="false">
+    <data name="output_data_SLOPE" format="tiff" label="output_data_SLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -172,7 +172,7 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
         <when input="outputType_SLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_QUALITY" format="tiff" hidden="false">
+    <data name="output_data_QUALITY" format="tiff" label="output_data_QUALITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_QUALITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -183,8 +183,11 @@ transmissionMode_QUALITY $OutputSection_QUALITY.transmissionMode_QUALITY]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TARGET_OUT_GRID" ftype="txt" value="output_data_TARGET_OUT_GRID.txt"/>
+      <output name="output_data_INTERCEPT" ftype="txt" value="output_data_INTERCEPT.txt"/>
+      <output name="output_data_SLOPE" ftype="txt" value="output_data_SLOPE.txt"/>
+      <output name="output_data_QUALITY" ftype="txt" value="output_data_QUALITY.txt"/>
     </test>
   </tests>
   <help><![CDATA[This Geographically Weighted Regression tool for a single predictor creates gridded model output.]]></help>

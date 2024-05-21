@@ -17,8 +17,8 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR
 outputType_C $OutputSection_C.outputType_C
 transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="Initial State" help="Initial State The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
-    <param name="B" type="data" optional="false" label="Final State" help="Final State The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
+    <param name="A" type="data" optional="false" label="Initial State" help="Initial State The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="B" type="data" optional="false" label="Final State" help="Final State The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="ANGLE" type="select" optional="true" label="Angle Calculation" help="angle calculation is only available when exact two features are compared">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -74,7 +74,7 @@ transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DIST" format="tiff" hidden="false">
+    <data name="output_data_DIST" format="tiff" label="output_data_DIST" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIST" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -82,7 +82,7 @@ transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
         <when input="outputType_DIST" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIR" format="tiff" hidden="false">
+    <data name="output_data_DIR" format="tiff" label="output_data_DIR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -90,7 +90,7 @@ transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
         <when input="outputType_DIR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_C" format="tiff" hidden="false">
+    <data name="output_data_C" format="tiff" label="output_data_C" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_C" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -101,8 +101,10 @@ transmissionMode_C $OutputSection_C.transmissionMode_C]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DIST" ftype="txt" value="output_data_DIST.txt"/>
+      <output name="output_data_DIR" ftype="txt" value="output_data_DIR.txt"/>
+      <output name="output_data_C" ftype="txt" value="output_data_C.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool performs a change vector analysis (CVA) for the given input features. Input features are supplied as grid lists for initial and final state. In both lists features have to be given in the same order. Distance is measured as Euclidean distance in features space. When analyzing two features direction is calculated as angle (radians) by default. Otherwise direction is coded as the quadrant it points to in terms of feature space. ]]></help>

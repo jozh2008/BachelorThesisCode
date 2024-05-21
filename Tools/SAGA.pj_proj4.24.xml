@@ -52,7 +52,7 @@ transmissionMode_OUT_Y $OutputSection_OUT_Y.transmissionMode_OUT_Y]]></command>
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source" help="Source The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option selected="true" value="B-Spline_Interpolation">B-Spline Interpolation</option>
       <option value="Bicubic_Spline_Interpolation">Bicubic Spline Interpolation</option>
@@ -82,7 +82,7 @@ transmissionMode_OUT_Y $OutputSection_OUT_Y.transmissionMode_OUT_Y]]></command>
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
+    <param name="TARGET_TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="UTM_ZONE" type="integer" value="1" optional="true" label="Zone" help="Zone"/>
     <param name="UTM_SOUTH" type="select" optional="true" label="South" help="South">
       <option selected="true" value="false">false</option>
@@ -135,7 +135,7 @@ transmissionMode_OUT_Y $OutputSection_OUT_Y.transmissionMode_OUT_Y]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRID" format="tiff" hidden="false">
+    <data name="output_data_GRID" format="tiff" label="output_data_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -143,7 +143,7 @@ transmissionMode_OUT_Y $OutputSection_OUT_Y.transmissionMode_OUT_Y]]></command>
         <when input="outputType_GRID" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUT_X" format="tiff" hidden="false">
+    <data name="output_data_OUT_X" format="tiff" label="output_data_OUT_X" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUT_X" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -151,7 +151,7 @@ transmissionMode_OUT_Y $OutputSection_OUT_Y.transmissionMode_OUT_Y]]></command>
         <when input="outputType_OUT_X" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_OUT_Y" format="tiff" hidden="false">
+    <data name="output_data_OUT_Y" format="tiff" label="output_data_OUT_Y" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUT_Y" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -162,8 +162,10 @@ transmissionMode_OUT_Y $OutputSection_OUT_Y.transmissionMode_OUT_Y]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRID" ftype="txt" value="output_data_GRID.txt"/>
+      <output name="output_data_OUT_X" ftype="txt" value="output_data_OUT_X.txt"/>
+      <output name="output_data_OUT_Y" ftype="txt" value="output_data_OUT_Y.txt"/>
     </test>
   </tests>
   <help><![CDATA[Project grids into UTM coordinates.&lt;br/&gt;Projection routines make use of the Proj.4 Cartographic Projections library.&lt;br/&gt;Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).&lt;br/&gt;Proj.4 Version is Rel. 5.2.0, September 15th, 2018&lt;br/&gt;&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;]]></help>

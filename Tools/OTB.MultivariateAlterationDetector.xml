@@ -46,7 +46,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -56,8 +56,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application performs change detection between two multispectral images using the Multivariate Alteration Detector (MAD) [1] algorithm.The MAD algorithm produces a set of N change maps (where N is the maximum number of bands in first and second input images), with the following properties: - Change maps are differences of a pair of linear combinations of  bands from image 1 and bands from image 2 chosen to maximize the  correlation,  - Each change map is orthogonal to the others. This is a statistical method which can handle different modalities and even different bands and number of bands between images.  The application will output all change maps into a single multiband image. If numbers of bands in image 1 and 2 are equal, then change maps are sorted by increasing correlation. If number of bands is different, the change maps are sorted by decreasing correlation.  The application will also print the following information:- Mean1 and Mean2 which are the mean values of bands for both input images,- V1 and V2 which are the two linear transform that are applied to input image 1 and input image 2 to build the change map,- Rho, the vector of correlation associated to each change map. The OTB filter used in this application has been implemented from the Matlab code kindly made available by the authors here [2]. Both cases (same and different number of bands) have been validated by comparing the output image to the output produced by the Matlab  code, and the reference images for testing have been generated from  the Matlab code using Octave.]]></help>

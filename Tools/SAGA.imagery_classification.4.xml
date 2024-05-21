@@ -26,7 +26,7 @@ response $response
 outputType_CLASSES $OutputSection_CLASSES.outputType_CLASSES
 transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></command>
   <inputs>
-    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="SHAPES" type="data" optional="false" label="Shapes" help="Shapes The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
     <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  csv" format="txt"/>
     <param name="NORMALISE" type="select" optional="true" label="Normalise" help="Normalise">
       <option selected="true" value="false">false</option>
@@ -97,7 +97,7 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CLASSES" format="xml" hidden="false">
+    <data name="output_data_CLASSES" format="xml" label="output_data_CLASSES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CLASSES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -107,8 +107,8 @@ transmissionMode_CLASSES $OutputSection_CLASSES.transmissionMode_CLASSES]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CLASSES" ftype="txt" value="output_data_CLASSES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Supervised classification for attribute data. To train the classifier choose an attribute that provides class identifiers for those records, for which the target class is known, and no data for all other records.]]></help>

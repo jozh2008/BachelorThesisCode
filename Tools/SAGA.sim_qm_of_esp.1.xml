@@ -13,7 +13,7 @@ transmissionMode_FILLED $OutputSection_FILLED.transmissionMode_FILLED
 outputType_SINKS $OutputSection_SINKS.outputType_SINKS
 transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="DZFILL" type="float" value="0.01" optional="true" label="Fill Increment" help="Fill Increment"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -50,7 +50,7 @@ transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FILLED" format="tiff" hidden="false">
+    <data name="output_data_FILLED" format="tiff" label="output_data_FILLED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FILLED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -58,7 +58,7 @@ transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
         <when input="outputType_FILLED" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SINKS" format="tiff" hidden="false">
+    <data name="output_data_SINKS" format="tiff" label="output_data_SINKS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SINKS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -69,8 +69,9 @@ transmissionMode_SINKS $OutputSection_SINKS.transmissionMode_SINKS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FILLED" ftype="txt" value="output_data_FILLED.txt"/>
+      <output name="output_data_SINKS" ftype="txt" value="output_data_SINKS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Filling in pits and flats in a DEM.]]></help>

@@ -31,7 +31,7 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
       <option selected="true" value="Queen's_case">Queen's case</option>
       <option value="Rooke's_case">Rooke's case</option>
     </param>
-    <param name="FEATURE" type="data" optional="false" label="Feature" help="Feature The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="FEATURE" type="data" optional="false" label="Feature" help="Feature The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
     <param name="GRADIENTS_OUT" type="select" optional="true" label="Output of Gradients" help="Output of Gradients">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -81,21 +81,21 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_EDGE_POINTS" format="xml" hidden="false">
+    <data name="output_data_EDGE_POINTS" format="xml" label="output_data_EDGE_POINTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_EDGE_POINTS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_EDGE_POINTS" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_EDGE_LINES" format="xml" hidden="false">
+    <data name="output_data_EDGE_LINES" format="xml" label="output_data_EDGE_LINES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_EDGE_LINES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_EDGE_LINES" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_GRADIENTS" format="tiff" hidden="false">
+    <data name="output_data_GRADIENTS" format="tiff" label="output_data_GRADIENTS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRADIENTS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -106,8 +106,10 @@ transmissionMode_GRADIENTS $OutputSection_GRADIENTS.transmissionMode_GRADIENTS]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_EDGE_POINTS" ftype="txt" value="output_data_EDGE_POINTS.txt"/>
+      <output name="output_data_EDGE_LINES" ftype="txt" value="output_data_EDGE_LINES.txt"/>
+      <output name="output_data_GRADIENTS" ftype="txt" value="output_data_GRADIENTS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Continuous Wombling for edge detection. Uses magnitude of gradient to detect edges between adjacent cells. Edge segments connect such edges, when the difference of their gradient directions is below given threshold.]]></help>

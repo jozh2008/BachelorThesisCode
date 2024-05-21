@@ -15,7 +15,7 @@ transmissionMode_RESULT_LOD $OutputSection_RESULT_LOD.transmissionMode_RESULT_LO
 outputType_SEEDS $OutputSection_SEEDS.outputType_SEEDS
 transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input" help="Input for tool calculations. The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input" help="Input for tool calculations. The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="LOD" type="float" value="16" optional="true" label="Level of Generalisation" help="Level of Generalisation"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -64,7 +64,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="tiff" hidden="false">
+    <data name="output_data_RESULT" format="tiff" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -72,7 +72,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
         <when input="outputType_RESULT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RESULT_LOD" format="tiff" hidden="false">
+    <data name="output_data_RESULT_LOD" format="tiff" label="output_data_RESULT_LOD" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT_LOD" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -80,7 +80,7 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
         <when input="outputType_RESULT_LOD" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SEEDS" format="tiff" hidden="false">
+    <data name="output_data_SEEDS" format="tiff" label="output_data_SEEDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SEEDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -91,8 +91,10 @@ transmissionMode_SEEDS $OutputSection_SEEDS.transmissionMode_SEEDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
+      <output name="output_data_RESULT_LOD" ftype="txt" value="output_data_RESULT_LOD.txt"/>
+      <output name="output_data_SEEDS" ftype="txt" value="output_data_SEEDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Fast Representativeness]]></help>

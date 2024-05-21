@@ -41,7 +41,7 @@ transmissionMode_SPI $OutputSection_SPI.transmissionMode_SPI]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SPI" format="tiff" hidden="false">
+    <data name="output_data_SPI" format="tiff" label="output_data_SPI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SPI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -52,8 +52,8 @@ transmissionMode_SPI $OutputSection_SPI.transmissionMode_SPI]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SPI" ftype="txt" value="output_data_SPI.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculation of stream power index based on slope and specific catchment area (SCA).&lt;br/&gt;SPI = SCA * tan(Slope)]]></help>

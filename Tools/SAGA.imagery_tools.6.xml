@@ -12,8 +12,8 @@ response $response
 outputType_SHARPEN $OutputSection_SHARPEN.outputType_SHARPEN
 transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Original Channels" help="Original Channels The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
-    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Original Channels" help="Original Channels The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="RESAMPLING" type="select" optional="true" label="Resampling" help="Resampling">
       <option value="bilinear">bilinear</option>
       <option selected="true" value="cubic_convolution">cubic convolution</option>
@@ -42,7 +42,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SHARPEN" format="tiff" hidden="false">
+    <data name="output_data_SHARPEN" format="tiff" label="output_data_SHARPEN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHARPEN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -53,8 +53,8 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SHARPEN" ftype="txt" value="output_data_SHARPEN.txt"/>
     </test>
   </tests>
   <help><![CDATA[Colour normalized spectral sharpening.]]></help>

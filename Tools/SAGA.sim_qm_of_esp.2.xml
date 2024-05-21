@@ -12,7 +12,7 @@ response $response
 outputType_FLOW $OutputSection_FLOW.outputType_FLOW
 transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  x-ogc-envi, tiff, png, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="DEM" help="DEM The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="PREPROC" type="select" optional="true" label="Preprocessing" help="Preprocessing">
       <option value="fill_sinks_permanently">fill sinks permanently</option>
       <option selected="true" value="fill_sinks_temporarily">fill sinks temporarily</option>
@@ -42,7 +42,7 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_FLOW" format="tiff" hidden="false">
+    <data name="output_data_FLOW" format="tiff" label="output_data_FLOW" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_FLOW" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -53,8 +53,8 @@ transmissionMode_FLOW $OutputSection_FLOW.transmissionMode_FLOW]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_FLOW" ftype="txt" value="output_data_FLOW.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculation of flow accumulation, aka upslope contributing area, with the multiple flow direction method after Freeman (1991).]]></help>

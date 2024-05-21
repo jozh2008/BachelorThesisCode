@@ -17,8 +17,8 @@ transmissionMode_DX $OutputSection_DX.transmissionMode_DX
 outputType_DY $OutputSection_DY.outputType_DY
 transmissionMode_DY $OutputSection_DY.transmissionMode_DY]]></command>
   <inputs>
-    <param name="DIR" type="data" optional="false" label="Direction" help="Direction The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
-    <param name="LEN" type="data" optional="false" label="Length" help="Length The following data types are allowed in the txt file:  png, x-ogc-aaigrid, x-ogc-envi, tiff" format="txt"/>
+    <param name="DIR" type="data" optional="false" label="Direction" help="Direction The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="LEN" type="data" optional="false" label="Length" help="Length The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
     <param name="UNITS" type="select" optional="true" label="Polar Angle Units" help="Polar Angle Units">
       <option value="degree">degree</option>
       <option selected="true" value="radians">radians</option>
@@ -68,7 +68,7 @@ transmissionMode_DY $OutputSection_DY.transmissionMode_DY]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DX" format="tiff" hidden="false">
+    <data name="output_data_DX" format="tiff" label="output_data_DX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -76,7 +76,7 @@ transmissionMode_DY $OutputSection_DY.transmissionMode_DY]]></command>
         <when input="outputType_DX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DY" format="tiff" hidden="false">
+    <data name="output_data_DY" format="tiff" label="output_data_DY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -87,8 +87,9 @@ transmissionMode_DY $OutputSection_DY.transmissionMode_DY]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DX" ftype="txt" value="output_data_DX.txt"/>
+      <output name="output_data_DY" ftype="txt" value="output_data_DY.txt"/>
     </test>
   </tests>
   <help><![CDATA[Converts gradient vector from polar coordinates (direction or aspect angle and length or tangens of slope) to directional components (Cartesian).&lt;br/&gt;The tool supports three conventions on how the angle of direction can be supplied:&lt;br/&gt;(a) mathematical: direction angle is zero in East direction and the angle increases counterclockwise&lt;br/&gt;(b) geographical: direction angle is zero in North direction and the angle increases clockwise&lt;br/&gt;(c) zero direction and orientation are user defined&lt;br/&gt;]]></help>

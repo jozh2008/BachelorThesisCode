@@ -23,8 +23,8 @@ transmissionMode_AREA_MOD $OutputSection_AREA_MOD.transmissionMode_AREA_MOD
 outputType_TWI $OutputSection_TWI.outputType_TWI
 transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="WEIGHT" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
+    <param name="WEIGHT" type="data" optional="false" label="Weights" help="Weights The following data types are allowed in the txt file:  png, x-ogc-aaigrid, tiff, x-ogc-envi" format="txt"/>
     <param name="SUCTION" type="float" value="10" optional="true" label="Suction" help="the lower this value is the stronger is the suction effect"/>
     <param name="AREA_TYPE" type="select" optional="true" label="Type of Area" help="Type of Area">
       <option value="specific_catchment_area">specific catchment area</option>
@@ -97,7 +97,7 @@ transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_AREA" format="tiff" hidden="false">
+    <data name="output_data_AREA" format="tiff" label="output_data_AREA" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_AREA" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -105,7 +105,7 @@ transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
         <when input="outputType_AREA" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_SLOPE" format="tiff" hidden="false">
+    <data name="output_data_SLOPE" format="tiff" label="output_data_SLOPE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SLOPE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -113,7 +113,7 @@ transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
         <when input="outputType_SLOPE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_AREA_MOD" format="tiff" hidden="false">
+    <data name="output_data_AREA_MOD" format="tiff" label="output_data_AREA_MOD" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_AREA_MOD" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -121,7 +121,7 @@ transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
         <when input="outputType_AREA_MOD" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_TWI" format="tiff" hidden="false">
+    <data name="output_data_TWI" format="tiff" label="output_data_TWI" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TWI" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -132,8 +132,11 @@ transmissionMode_TWI $OutputSection_TWI.transmissionMode_TWI]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_AREA" ftype="txt" value="output_data_AREA.txt"/>
+      <output name="output_data_SLOPE" ftype="txt" value="output_data_SLOPE.txt"/>
+      <output name="output_data_AREA_MOD" ftype="txt" value="output_data_AREA_MOD.txt"/>
+      <output name="output_data_TWI" ftype="txt" value="output_data_TWI.txt"/>
     </test>
   </tests>
   <help><![CDATA[The 'SAGA Wetness Index' is, as the name says, similar to the 'Topographic Wetness Index' (TWI), but it is based on a modified catchment area calculation ('Modified Catchment Area'), which does not think of the flow as very thin film. As result it predicts for cells situated in valley floors with a small vertical distance to a channel a more realistic, higher potential soil moisture compared to the standard TWI calculation.]]></help>

@@ -7,25 +7,25 @@
   <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.SFSTextureExtraction in $in
 channel $channel
 ram $ram
-parameters.spethre $parameters.spethre
-parameters.spathre $parameters.spathre
-parameters.nbdir $parameters.nbdir
-parameters.alpha $parameters.alpha
-parameters.maxcons $parameters.maxcons
+parameters_spethre $parameters_spethre
+parameters_spathre $parameters_spathre
+parameters_nbdir $parameters_nbdir
+parameters_alpha $parameters_alpha
+parameters_maxcons $parameters_maxcons
 out $out
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to compute the features on." help="The input image to compute the features on. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to compute the features on." help="The input image to compute the features on. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="channel" type="integer" value="1" optional="false" label="The selected channel index" help="The selected channel index"/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
-    <param name="parameters.spethre" type="float" value="50" optional="false" label="Spectral Threshold" help="Spectral Threshold"/>
-    <param name="parameters.spathre" type="integer" value="100" optional="false" label="Spatial Threshold" help="Spatial Threshold"/>
-    <param name="parameters.nbdir" type="integer" value="20" optional="false" label="Number of Direction" help="Number of Direction"/>
-    <param name="parameters.alpha" type="float" value="1" optional="false" label="Alpha" help="Alpha"/>
-    <param name="parameters.maxcons" type="integer" value="5" optional="false" label="Ratio Maximum Consideration Number" help="Ratio Maximum Consideration Number"/>
+    <param name="parameters_spethre" type="float" value="50" optional="false" label="Spectral Threshold" help="Spectral Threshold"/>
+    <param name="parameters_spathre" type="integer" value="100" optional="false" label="Spatial Threshold" help="Spatial Threshold"/>
+    <param name="parameters_nbdir" type="integer" value="20" optional="false" label="Number of Direction" help="Number of Direction"/>
+    <param name="parameters_alpha" type="float" value="1" optional="false" label="Alpha" help="Alpha"/>
+    <param name="parameters_maxcons" type="integer" value="5" optional="false" label="Ratio Maximum Consideration Number" help="Ratio Maximum Consideration Number"/>
     <param name="out" type="select" optional="false" label="Output image containing the SFS texture features." help="Output image containing the SFS texture features.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -56,7 +56,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -66,8 +66,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Structural Feature Set [1] are based on the histograms of the pixels in multiple directions of the image. The SFSTextureExtraction application computes the  6 following features: SFS'Length, SFS'Width, SFS'PSI, SFS'W-Mean, SFS'Ratio and SFS'SD (Standard Deviation). The texture indices are computed from the neighborhood of each pixel. It is possible to change the length of the calculation line (spatial threshold), as well as the maximum difference between a pixel of the line and the pixel at the center of the neighborhood (spectral threshold) [2].]]></help>

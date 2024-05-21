@@ -17,7 +17,7 @@ transmissionMode_MAJ_COUNT $OutputSection_MAJ_COUNT.transmissionMode_MAJ_COUNT
 outputType_MAJ_VALUE $OutputSection_MAJ_VALUE.outputType_MAJ_VALUE
 transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, png, x-ogc-envi" format="txt"/>
     <param name="RADIUS" type="integer" value="0" optional="true" label="Radius [Cells]" help="Radius [Cells]"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -78,7 +78,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_CATEGORIES" format="tiff" hidden="false">
+    <data name="output_data_CATEGORIES" format="tiff" label="output_data_CATEGORIES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_CATEGORIES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -86,7 +86,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
         <when input="outputType_CATEGORIES" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_COINCIDENCE" format="tiff" hidden="false">
+    <data name="output_data_COINCIDENCE" format="tiff" label="output_data_COINCIDENCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COINCIDENCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -94,7 +94,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
         <when input="outputType_COINCIDENCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAJ_COUNT" format="tiff" hidden="false">
+    <data name="output_data_MAJ_COUNT" format="tiff" label="output_data_MAJ_COUNT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAJ_COUNT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -102,7 +102,7 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
         <when input="outputType_MAJ_COUNT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAJ_VALUE" format="tiff" hidden="false">
+    <data name="output_data_MAJ_VALUE" format="tiff" label="output_data_MAJ_VALUE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAJ_VALUE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -113,8 +113,11 @@ transmissionMode_MAJ_VALUE $OutputSection_MAJ_VALUE.transmissionMode_MAJ_VALUE]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_CATEGORIES" ftype="txt" value="output_data_CATEGORIES.txt"/>
+      <output name="output_data_COINCIDENCE" ftype="txt" value="output_data_COINCIDENCE.txt"/>
+      <output name="output_data_MAJ_COUNT" ftype="txt" value="output_data_MAJ_COUNT.txt"/>
+      <output name="output_data_MAJ_VALUE" ftype="txt" value="output_data_MAJ_VALUE.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates for each cell the categorical coincidence, which can be useful to compare different classifications.]]></help>

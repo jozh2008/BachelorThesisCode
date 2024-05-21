@@ -12,7 +12,7 @@ response $response
 outputType_TRANSPOSED $OutputSection_TRANSPOSED.outputType_TRANSPOSED
 transmissionMode_TRANSPOSED $OutputSection_TRANSPOSED.transmissionMode_TRANSPOSED]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, png, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="MIRROR_X" type="select" optional="true" label="Mirror Horizontally" help="Mirror Horizontally">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -44,7 +44,7 @@ transmissionMode_TRANSPOSED $OutputSection_TRANSPOSED.transmissionMode_TRANSPOSE
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TRANSPOSED" format="tiff" hidden="false">
+    <data name="output_data_TRANSPOSED" format="tiff" label="output_data_TRANSPOSED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_TRANSPOSED" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -55,8 +55,8 @@ transmissionMode_TRANSPOSED $OutputSection_TRANSPOSED.transmissionMode_TRANSPOSE
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TRANSPOSED" ftype="txt" value="output_data_TRANSPOSED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Transpose Grids]]></help>

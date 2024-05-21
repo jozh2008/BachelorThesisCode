@@ -13,7 +13,7 @@ transmissionMode_SURF $OutputSection_SURF.transmissionMode_SURF
 outputType_GRAD $OutputSection_GRAD.outputType_GRAD
 transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD]]></command>
   <inputs>
-    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, x-ogc-envi, png" format="txt"/>
+    <param name="MASK" type="data" optional="false" label="Mask" help="Mask The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
     <param name="SURF_E" type="float" value="0.001" optional="true" label="Surface Approximation Threshold" help="Surface Approximation Threshold"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -50,7 +50,7 @@ transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SURF" format="tiff" hidden="false">
+    <data name="output_data_SURF" format="tiff" label="output_data_SURF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SURF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -58,7 +58,7 @@ transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD]]></command>
         <when input="outputType_SURF" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_GRAD" format="tiff" hidden="false">
+    <data name="output_data_GRAD" format="tiff" label="output_data_GRAD" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRAD" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -69,8 +69,9 @@ transmissionMode_GRAD $OutputSection_GRAD.transmissionMode_GRAD]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SURF" ftype="txt" value="output_data_SURF.txt"/>
+      <output name="output_data_GRAD" ftype="txt" value="output_data_GRAD.txt"/>
     </test>
   </tests>
   <help><![CDATA[Cellular automata are simple computational operators, but despite their simplicity, they allow the simulation of highly complex processes. This tool has been created to apply the concept of cellular automata to simulate diffusion and flow processes in shallow water bodies with in- and outflow, where monitoring data show concentration growth or decrease between the inflow and the outflow points. Parameters are for example nutrients like nitrate, which is reduced by denitrification process inside the water body.&lt;br/&gt;Values of mask grid are expected to be 1 for water area, 2 for inlet, 3 for outlet and 0 for non water.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;&lt;ul&gt;&lt;li&gt;Heinrich, R. / Conrad, O. (2008): Diffusion, Flow and Concentration Gradient Simulation with SAGA GIS using Cellular Automata Methods. In: Boehner, J. / Blaschke, T. / Montanarella, L. [Eds.]: SAGA - Seconds Out. Hamburger Beitraege zur Physischen Geographie und Landschaftsoekologie, Vol.19, p59-70, &lt;a href="http://downloads.sourceforge.net/saga-gis/hbpl19_07.pdf"&gt;online&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;br/&gt;]]></help>

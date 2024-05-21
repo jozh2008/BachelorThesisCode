@@ -27,8 +27,8 @@ transmissionMode_PREDICTION $OutputSection_PREDICTION.transmissionMode_PREDICTIO
 outputType_PROBABILITY $OutputSection_PROBABILITY.outputType_PROBABILITY
 transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABILITY]]></command>
   <inputs>
-    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
-    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
+    <param name="FEATURES" type="data" optional="false" label="Features" help="Features The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="PRESENCE" type="data" optional="false" label="Presence Data" help="Presence Data The following data types are allowed in the txt file:  json, xml, vnd.google-earth.kml+xml" format="txt"/>
     <param name="BACKGROUND" type="float" value="1" optional="true" label="Background Sample Density [Percent]" help="Background Sample Density [Percent]"/>
     <param name="DO_MRMR" type="select" optional="true" label="Minimum Redundancy Feature Selection" help="Use only features selected by the minimum Redundancy Maximum Relevance (mRMR) algorithm">
       <option selected="true" value="false">false</option>
@@ -98,7 +98,7 @@ transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABI
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PREDICTION" format="tiff" hidden="false">
+    <data name="output_data_PREDICTION" format="tiff" label="output_data_PREDICTION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PREDICTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -106,7 +106,7 @@ transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABI
         <when input="outputType_PREDICTION" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PROBABILITY" format="tiff" hidden="false">
+    <data name="output_data_PROBABILITY" format="tiff" label="output_data_PROBABILITY" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PROBABILITY" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -117,8 +117,9 @@ transmissionMode_PROBABILITY $OutputSection_PROBABILITY.transmissionMode_PROBABI
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PREDICTION" ftype="txt" value="output_data_PREDICTION.txt"/>
+      <output name="output_data_PROBABILITY" ftype="txt" value="output_data_PROBABILITY.txt"/>
     </test>
   </tests>
   <help><![CDATA[Random Forest Presence Prediction (ViGrA)]]></help>

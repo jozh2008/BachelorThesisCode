@@ -6,18 +6,18 @@
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
   <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.RigidTransformResample in $in
 out $out
-transform.type $transform.type
-transform.type.id.scalex $transform.type.id.scalex
-transform.type.id.scaley $transform.type.id.scaley
-transform.type.translation.tx $transform.type.translation.tx
-transform.type.translation.ty $transform.type.translation.ty
-transform.type.translation.scalex $transform.type.translation.scalex
-transform.type.translation.scaley $transform.type.translation.scaley
-transform.type.rotation.angle $transform.type.rotation.angle
-transform.type.rotation.scalex $transform.type.rotation.scalex
-transform.type.rotation.scaley $transform.type.rotation.scaley
+transform_type $transform_type
+transform_type_id_scalex $transform_type_id_scalex
+transform_type_id_scaley $transform_type_id_scaley
+transform_type_translation_tx $transform_type_translation_tx
+transform_type_translation_ty $transform_type_translation_ty
+transform_type_translation_scalex $transform_type_translation_scalex
+transform_type_translation_scaley $transform_type_translation_scaley
+transform_type_rotation_angle $transform_type_rotation_angle
+transform_type_rotation_scalex $transform_type_rotation_scalex
+transform_type_rotation_scaley $transform_type_rotation_scaley
 interpolator $interpolator
-interpolator.bco.radius $interpolator.bco.radius
+interpolator_bco_radius $interpolator_bco_radius
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
@@ -32,26 +32,26 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="transform.type" type="select" optional="false" label="Type of transformation. Available transformations are spatial scaling, translation and rotation with scaling factor" help="Type of transformation. Available transformations are spatial scaling, translation and rotation with scaling factor">
+    <param name="transform_type" type="select" optional="false" label="Type of transformation. Available transformations are spatial scaling, translation and rotation with scaling factor" help="Type of transformation. Available transformations are spatial scaling, translation and rotation with scaling factor">
       <option selected="true" value="id">id</option>
       <option value="rotation">rotation</option>
       <option value="translation">translation</option>
     </param>
-    <param name="transform.type.id.scalex" type="float" value="1" optional="false" label="Scaling factor between the output X spacing and the input X spacing" help="Scaling factor between the output X spacing and the input X spacing"/>
-    <param name="transform.type.id.scaley" type="float" value="1" optional="false" label="Scaling factor between the output Y spacing and the input Y spacing" help="Scaling factor between the output Y spacing and the input Y spacing"/>
-    <param name="transform.type.translation.tx" type="float" value="0" optional="false" label="The translation value along X axis (in physical units)." help="The translation value along X axis (in physical units)."/>
-    <param name="transform.type.translation.ty" type="float" value="0" optional="false" label="The translation value along Y axis (in physical units)" help="The translation value along Y axis (in physical units)"/>
-    <param name="transform.type.translation.scalex" type="float" value="1" optional="false" label="Scaling factor between the output X spacing and the input X spacing" help="Scaling factor between the output X spacing and the input X spacing"/>
-    <param name="transform.type.translation.scaley" type="float" value="1" optional="false" label="Scaling factor between the output Y spacing and the input Y spacing" help="Scaling factor between the output Y spacing and the input Y spacing"/>
-    <param name="transform.type.rotation.angle" type="float" value="0" optional="false" label="The rotation angle in degree (values between -180 and 180)" help="The rotation angle in degree (values between -180 and 180)"/>
-    <param name="transform.type.rotation.scalex" type="float" value="1" optional="false" label="Scale factor between the X spacing of the rotated output image and the X spacing of the unrotated image" help="Scale factor between the X spacing of the rotated output image and the X spacing of the unrotated image"/>
-    <param name="transform.type.rotation.scaley" type="float" value="1" optional="false" label="Scale factor between the Y spacing of the rotated output image and the Y spacing of the unrotated image" help="Scale factor between the Y spacing of the rotated output image and the Y spacing of the unrotated image"/>
+    <param name="transform_type_id_scalex" type="float" value="1" optional="false" label="Scaling factor between the output X spacing and the input X spacing" help="Scaling factor between the output X spacing and the input X spacing"/>
+    <param name="transform_type_id_scaley" type="float" value="1" optional="false" label="Scaling factor between the output Y spacing and the input Y spacing" help="Scaling factor between the output Y spacing and the input Y spacing"/>
+    <param name="transform_type_translation_tx" type="float" value="0" optional="false" label="The translation value along X axis (in physical units)." help="The translation value along X axis (in physical units)."/>
+    <param name="transform_type_translation_ty" type="float" value="0" optional="false" label="The translation value along Y axis (in physical units)" help="The translation value along Y axis (in physical units)"/>
+    <param name="transform_type_translation_scalex" type="float" value="1" optional="false" label="Scaling factor between the output X spacing and the input X spacing" help="Scaling factor between the output X spacing and the input X spacing"/>
+    <param name="transform_type_translation_scaley" type="float" value="1" optional="false" label="Scaling factor between the output Y spacing and the input Y spacing" help="Scaling factor between the output Y spacing and the input Y spacing"/>
+    <param name="transform_type_rotation_angle" type="float" value="0" optional="false" label="The rotation angle in degree (values between -180 and 180)" help="The rotation angle in degree (values between -180 and 180)"/>
+    <param name="transform_type_rotation_scalex" type="float" value="1" optional="false" label="Scale factor between the X spacing of the rotated output image and the X spacing of the unrotated image" help="Scale factor between the X spacing of the rotated output image and the X spacing of the unrotated image"/>
+    <param name="transform_type_rotation_scaley" type="float" value="1" optional="false" label="Scale factor between the Y spacing of the rotated output image and the Y spacing of the unrotated image" help="Scale factor between the Y spacing of the rotated output image and the Y spacing of the unrotated image"/>
     <param name="interpolator" type="select" optional="false" label="This group of parameters allows one to define how the input image will be interpolated during resampling." help="This group of parameters allows one to define how the input image will be interpolated during resampling.">
       <option selected="true" value="bco">bco</option>
       <option value="linear">linear</option>
       <option value="nn">nn</option>
     </param>
-    <param name="interpolator.bco.radius" type="integer" value="128" optional="true" label="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)" help="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)"/>
+    <param name="interpolator_bco_radius" type="integer" value="128" optional="true" label="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)" help="This allows setting the maximum amount of RAM available for processing. As the writing task is time consuming, it is better to write large pieces of data, which can be achieved by increasing this parameter (pay attention to your system capabilities)"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -74,7 +74,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -84,8 +84,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application performs a parametric transform on the input image. Scaling, translation and rotation with scaling factor are handled. Parameters of the transform is expressed in physical units, thus particular attention must be paid on pixel size (value, and sign). Moreover transform is expressed from input space to output space (on the contrary ITK Transforms are expressed form output space to input space). ]]></help>

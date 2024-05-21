@@ -24,12 +24,12 @@ transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
 outputType_QUANTILES $OutputSection_QUANTILES.outputType_QUANTILES
 transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]></command>
   <inputs>
-    <param name="COUNT" type="data" optional="false" label="Number of Values" help="Number of Values The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="SUM" type="data" optional="false" label="Sum" help="Sum The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="SUM2" type="data" optional="false" label="Sum of Squares" help="Sum of Squares The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="MIN" type="data" optional="false" label="Minimum" help="Minimum The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="MAX" type="data" optional="false" label="Maximum" help="Maximum The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="HISTOGRAM" type="data" optional="false" label="Histogram" help="Histogram The following data types are allowed in the txt file:  png, x-ogc-envi, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="COUNT" type="data" optional="false" label="Number of Values" help="Number of Values The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="SUM" type="data" optional="false" label="Sum" help="Sum The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="SUM2" type="data" optional="false" label="Sum of Squares" help="Sum of Squares The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="MIN" type="data" optional="false" label="Minimum" help="Minimum The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="MAX" type="data" optional="false" label="Maximum" help="Maximum The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
+    <param name="HISTOGRAM" type="data" optional="false" label="Histogram" help="Histogram The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="QUANTVALS" type="text" value="5; 25; 50; 75; 95" optional="true" label="Percentiles" help="Separate the desired percentiles by semicolon"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -102,7 +102,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RANGE" format="tiff" hidden="false">
+    <data name="output_data_RANGE" format="tiff" label="output_data_RANGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RANGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -110,7 +110,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_RANGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MEAN" format="tiff" hidden="false">
+    <data name="output_data_MEAN" format="tiff" label="output_data_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -118,7 +118,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_VAR" format="tiff" hidden="false">
+    <data name="output_data_VAR" format="tiff" label="output_data_VAR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_VAR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -126,7 +126,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_VAR" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEV" format="tiff" hidden="false">
+    <data name="output_data_STDDEV" format="tiff" label="output_data_STDDEV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -134,7 +134,7 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
         <when input="outputType_STDDEV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_QUANTILES" format="tiff" hidden="false">
+    <data name="output_data_QUANTILES" format="tiff" label="output_data_QUANTILES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_QUANTILES" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -145,8 +145,12 @@ transmissionMode_QUANTILES $OutputSection_QUANTILES.transmissionMode_QUANTILES]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RANGE" ftype="txt" value="output_data_RANGE.txt"/>
+      <output name="output_data_MEAN" ftype="txt" value="output_data_MEAN.txt"/>
+      <output name="output_data_VAR" ftype="txt" value="output_data_VAR.txt"/>
+      <output name="output_data_STDDEV" ftype="txt" value="output_data_STDDEV.txt"/>
+      <output name="output_data_QUANTILES" ftype="txt" value="output_data_QUANTILES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates statistical properties (arithmetic mean, range, variance, standard deviation, percentiles) on a cell-wise base. This tool takes input about basic statistical information as it can be collected with the 'Build/Add Statistics for Grids' tools. These three tools (build, add, evaluate) have been designed to inspect a large number of grids that could otherwise not be evaluated simultaneously due to memory restrictions. ]]></help>

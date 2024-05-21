@@ -27,7 +27,7 @@ transmissionMode_DEVMEAN $OutputSection_DEVMEAN.transmissionMode_DEVMEAN
 outputType_PERCENT $OutputSection_PERCENT.outputType_PERCENT
 transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></command>
   <inputs>
-    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="GRID" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="MODE" type="select" optional="true" label="Search Mode" help="Search Mode">
       <option selected="true" value="Circle">Circle</option>
       <option value="Square">Square</option>
@@ -144,7 +144,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MEAN" format="tiff" hidden="false">
+    <data name="output_data_MEAN" format="tiff" label="output_data_MEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -152,7 +152,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
         <when input="outputType_MEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIFF" format="tiff" hidden="false">
+    <data name="output_data_DIFF" format="tiff" label="output_data_DIFF" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIFF" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -160,7 +160,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
         <when input="outputType_DIFF" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEV" format="tiff" hidden="false">
+    <data name="output_data_STDDEV" format="tiff" label="output_data_STDDEV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -168,7 +168,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
         <when input="outputType_STDDEV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RANGE" format="tiff" hidden="false">
+    <data name="output_data_RANGE" format="tiff" label="output_data_RANGE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RANGE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -176,7 +176,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
         <when input="outputType_RANGE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MIN" format="tiff" hidden="false">
+    <data name="output_data_MIN" format="tiff" label="output_data_MIN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MIN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -184,7 +184,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
         <when input="outputType_MIN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_MAX" format="tiff" hidden="false">
+    <data name="output_data_MAX" format="tiff" label="output_data_MAX" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MAX" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -192,7 +192,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
         <when input="outputType_MAX" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DEVMEAN" format="tiff" hidden="false">
+    <data name="output_data_DEVMEAN" format="tiff" label="output_data_DEVMEAN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DEVMEAN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -200,7 +200,7 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
         <when input="outputType_DEVMEAN" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_PERCENT" format="tiff" hidden="false">
+    <data name="output_data_PERCENT" format="tiff" label="output_data_PERCENT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PERCENT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -211,8 +211,15 @@ transmissionMode_PERCENT $OutputSection_PERCENT.transmissionMode_PERCENT]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MEAN" ftype="txt" value="output_data_MEAN.txt"/>
+      <output name="output_data_DIFF" ftype="txt" value="output_data_DIFF.txt"/>
+      <output name="output_data_STDDEV" ftype="txt" value="output_data_STDDEV.txt"/>
+      <output name="output_data_RANGE" ftype="txt" value="output_data_RANGE.txt"/>
+      <output name="output_data_MIN" ftype="txt" value="output_data_MIN.txt"/>
+      <output name="output_data_MAX" ftype="txt" value="output_data_MAX.txt"/>
+      <output name="output_data_DEVMEAN" ftype="txt" value="output_data_DEVMEAN.txt"/>
+      <output name="output_data_PERCENT" ftype="txt" value="output_data_PERCENT.txt"/>
     </test>
   </tests>
   <help><![CDATA[Relations of each grid cell to its neighborhood. Wilson & Gallant (2000) used this type of calculation in terrain analysis.]]></help>

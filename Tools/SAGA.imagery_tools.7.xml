@@ -15,8 +15,8 @@ response $response
 outputType_SHARPEN $OutputSection_SHARPEN.outputType_SHARPEN
 transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Original Channels" help="Original Channels The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
-    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  x-ogc-envi, png, x-ogc-aaigrid, tiff" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Original Channels" help="Original Channels The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="PAN" type="data" optional="false" label="Panchromatic Channel" help="Panchromatic Channel The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Method" help="Method">
       <option value="correlation_matrix">correlation matrix</option>
       <option value="sums-of-squares-and-cross-products_matrix">sums-of-squares-and-cross-products matrix</option>
@@ -58,7 +58,7 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SHARPEN" format="tiff" hidden="false">
+    <data name="output_data_SHARPEN" format="tiff" label="output_data_SHARPEN" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHARPEN" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -69,8 +69,8 @@ transmissionMode_SHARPEN $OutputSection_SHARPEN.transmissionMode_SHARPEN]]></com
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SHARPEN" ftype="txt" value="output_data_SHARPEN.txt"/>
     </test>
   </tests>
   <help><![CDATA[Principal component based image sharpening.]]></help>

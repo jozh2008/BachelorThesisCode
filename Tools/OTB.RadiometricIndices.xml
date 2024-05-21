@@ -7,18 +7,18 @@
   <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_out $output_data_out  name OTB.RadiometricIndices in $in
 out $out
 ram $ram
-channels.blue $channels.blue
-channels.green $channels.green
-channels.red $channels.red
-channels.nir $channels.nir
-channels.mir $channels.mir
+channels_blue $channels_blue
+channels_green $channels_green
+channels_red $channels_red
+channels_nir $channels_nir
+channels_mir $channels_mir
 list $list
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  jpeg, tiff, png" format="txt"/>
+    <param name="in" type="data" optional="false" label="Input image" help="Input image The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="out" type="select" optional="false" label="Radiometric indices output image" help="Radiometric indices output image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -28,11 +28,11 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="uint8">uint8</option>
     </param>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
-    <param name="channels.blue" type="integer" value="1" optional="false" label="Blue channel index" help="Blue channel index"/>
-    <param name="channels.green" type="integer" value="1" optional="false" label="Green channel index" help="Green channel index"/>
-    <param name="channels.red" type="integer" value="1" optional="false" label="Red channel index" help="Red channel index"/>
-    <param name="channels.nir" type="integer" value="1" optional="false" label="NIR channel index" help="NIR channel index"/>
-    <param name="channels.mir" type="integer" value="1" optional="false" label="Mir channel index" help="Mir channel index"/>
+    <param name="channels_blue" type="integer" value="1" optional="false" label="Blue channel index" help="Blue channel index"/>
+    <param name="channels_green" type="integer" value="1" optional="false" label="Green channel index" help="Green channel index"/>
+    <param name="channels_red" type="integer" value="1" optional="false" label="Red channel index" help="Red channel index"/>
+    <param name="channels_nir" type="integer" value="1" optional="false" label="NIR channel index" help="NIR channel index"/>
+    <param name="channels_mir" type="integer" value="1" optional="false" label="Mir channel index" help="Mir channel index"/>
     <param name="list" type="select" optional="false" label="List of available radiometric indices with their relevant channels in brackets:        Vegetation:NDVI - Normalized difference vegetation index (Red, NIR)        Vegetation:TNDVI - Transformed normalized difference vegetation index (Red, NIR)        Vegetation:RVI - Ratio vegetation index (Red, NIR)        Vegetation:SAVI - Soil adjusted vegetation index (Red, NIR)        Vegetation:TSAVI - Transformed soil adjusted vegetation index (Red, NIR)        Vegetation:MSAVI - Modified soil adjusted vegetation index (Red, NIR)        Vegetation:MSAVI2 - Modified soil adjusted vegetation index 2 (Red, NIR)        Vegetation:GEMI - Global environment monitoring index (Red, NIR)        Vegetation:IPVI - Infrared percentage vegetation index (Red, NIR)                Water:NDWI - Normalized difference water index (Gao 1996) (NIR, MIR)        Water:NDWI2 - Normalized difference water index (Mc Feeters 1996) (Green, NIR)        Water:MNDWI - Modified normalized difference water index (Xu 2006) (Green, MIR)        Water:NDPI - Normalized difference pond index (Lacaux et al.) (MIR, Green)        Water:NDTI - Normalized difference turbidity index (Lacaux et al.) (Red, Green)                Soil:RI - Redness index (Red, Green)        Soil:CI - Color index (Red, Green)        Soil:BI - Brightness index (Red, Green)        Soil:BI2 - Brightness index 2 (NIR, Red, Green)" help="List of available radiometric indices with their relevant channels in brackets:        Vegetation:NDVI - Normalized difference vegetation index (Red, NIR)        Vegetation:TNDVI - Transformed normalized difference vegetation index (Red, NIR)        Vegetation:RVI - Ratio vegetation index (Red, NIR)        Vegetation:SAVI - Soil adjusted vegetation index (Red, NIR)        Vegetation:TSAVI - Transformed soil adjusted vegetation index (Red, NIR)        Vegetation:MSAVI - Modified soil adjusted vegetation index (Red, NIR)        Vegetation:MSAVI2 - Modified soil adjusted vegetation index 2 (Red, NIR)        Vegetation:GEMI - Global environment monitoring index (Red, NIR)        Vegetation:IPVI - Infrared percentage vegetation index (Red, NIR)                Water:NDWI - Normalized difference water index (Gao 1996) (NIR, MIR)        Water:NDWI2 - Normalized difference water index (Mc Feeters 1996) (Green, NIR)        Water:MNDWI - Modified normalized difference water index (Xu 2006) (Green, MIR)        Water:NDPI - Normalized difference pond index (Lacaux et al.) (MIR, Green)        Water:NDTI - Normalized difference turbidity index (Lacaux et al.) (Red, Green)                Soil:RI - Redness index (Red, Green)        Soil:CI - Color index (Red, Green)        Soil:BI - Brightness index (Red, Green)        Soil:BI2 - Brightness index 2 (NIR, Red, Green)">
       <option value="bi">bi</option>
       <option value="bi2">bi2</option>
@@ -78,7 +78,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -88,8 +88,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application computes radiometric indices using the relevant channels of the input image. The output is a multi band image into which each channel is one of the selected indices.]]></help>

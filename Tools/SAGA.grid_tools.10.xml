@@ -16,7 +16,7 @@ transmissionMode_ALLOC $OutputSection_ALLOC.transmissionMode_ALLOC
 outputType_BUFFER $OutputSection_BUFFER.outputType_BUFFER
 transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></command>
   <inputs>
-    <param name="SOURCE" type="data" optional="false" label="Source Grid" help="Grid with features to be buffered [Category/NoData] The following data types are allowed in the txt file:  png, x-ogc-envi, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="SOURCE" type="data" optional="false" label="Source Grid" help="Grid with features to be buffered [Category/NoData] The following data types are allowed in the txt file:  tiff, x-ogc-envi, x-ogc-aaigrid, png" format="txt"/>
     <param name="DIST" type="float" value="500" optional="true" label="Buffer distance" help="Buffer distance (grid units)."/>
     <param name="IVAL" type="integer" value="100" optional="true" label="Equidistance" help="Reclassify buffer distance to intervals of euqidistance ..."/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -66,7 +66,7 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_DISTANCE" format="tiff" hidden="false">
+    <data name="output_data_DISTANCE" format="tiff" label="output_data_DISTANCE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DISTANCE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -74,7 +74,7 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
         <when input="outputType_DISTANCE" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_ALLOC" format="tiff" hidden="false">
+    <data name="output_data_ALLOC" format="tiff" label="output_data_ALLOC" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_ALLOC" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -82,7 +82,7 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
         <when input="outputType_ALLOC" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_BUFFER" format="tiff" hidden="false">
+    <data name="output_data_BUFFER" format="tiff" label="output_data_BUFFER" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_BUFFER" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -93,8 +93,10 @@ transmissionMode_BUFFER $OutputSection_BUFFER.transmissionMode_BUFFER]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_DISTANCE" ftype="txt" value="output_data_DISTANCE.txt"/>
+      <output name="output_data_ALLOC" ftype="txt" value="output_data_ALLOC.txt"/>
+      <output name="output_data_BUFFER" ftype="txt" value="output_data_BUFFER.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool calculates the euclidian distance within a buffer distance from all NoData cells to the nearest valid neighbour in a source grid. Additionally, the source cells define the zones that will be used in the euclidean allocation calculations. Cell values in the source grid are treated as IDs (integer) and used in the allocation grid to identify the grid value of the closest source cell. If a cell is at an equal distance to two or more sources, the cell is assigned to the source that is first encountered in the tools scanning process. The buffer grid is a reclassification of the distance grid using a user specified equidistance to create a set of discrete distance buffers from source features. The buffer zones are coded with the maximum distance value of the corresponding buffer interval. The output value type for the distance grid is floating-point. The output values for the allocation and buffer grid are of type integer. The duration of tool execution is dependent on the number of source cells and the buffer distance.]]></help>

@@ -4,22 +4,22 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymask False  isArrayvec False  isArrayinstats False  isArraystrategy.byclass.in False  isArrayelev.geoid False  output_data_out $output_data_out  output_data_outrates $output_data_outrates  name OTB.SampleSelection in $in
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  isArraymask False  isArrayvec False  isArrayinstats False  isArraystrategy_byclass_in False  isArrayelev_geoid False  output_data_out $output_data_out  output_data_outrates $output_data_outrates  name OTB.SampleSelection in $in
 mask $mask
 vec $vec
 instats $instats
 sampler $sampler
-sampler.periodic.jitter $sampler.periodic.jitter
+sampler_periodic_jitter $sampler_periodic_jitter
 strategy $strategy
-strategy.byclass.in $strategy.byclass.in
-strategy.constant.nb $strategy.constant.nb
-strategy.percent.p $strategy.percent.p
-strategy.total.v $strategy.total.v
+strategy_byclass_in $strategy_byclass_in
+strategy_constant_nb $strategy_constant_nb
+strategy_percent_p $strategy_percent_p
+strategy_total_v $strategy_total_v
 field '$field'
 layer $layer
-elev.dem '$elev.dem'
-elev.geoid $elev.geoid
-elev.default $elev.default
+elev_dem '$elev_dem'
+elev_geoid $elev_geoid
+elev_default $elev_default
 ram $ram
 rand $rand
 prefer $prefer
@@ -29,15 +29,15 @@ transmissionMode_out $OutputSection_out.transmissionMode_out
 outputType_outrates $OutputSection_outrates.outputType_outrates
 transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="Support image that will be classified" help="Support image that will be classified The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="mask" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics) The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="vec" type="data" optional="false" label="Input geometries to analyse" help="Input geometries to analyse The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="Support image that will be classified" help="Support image that will be classified The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="mask" type="data" optional="false" label="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics)" help="Validity mask (only pixels corresponding to a mask value greater than 0 will be used for statistics) The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="vec" type="data" optional="false" label="Input geometries to analyse" help="Input geometries to analyse The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="instats" type="data" optional="false" label="Input file storing statistics (XML format)" help="Input file storing statistics (XML format) The following data types are allowed in the txt file:  xml" format="txt"/>
     <param name="sampler" type="select" optional="false" label="Type of sampling (periodic, pattern based, random)" help="Type of sampling (periodic, pattern based, random)">
       <option selected="true" value="periodic">periodic</option>
       <option value="random">random</option>
     </param>
-    <param name="sampler.periodic.jitter" type="integer" value="0" optional="true" label="Jitter amplitude added during sample selection (0 = no jitter)" help="Jitter amplitude added during sample selection (0 = no jitter)"/>
+    <param name="sampler_periodic_jitter" type="integer" value="0" optional="true" label="Jitter amplitude added during sample selection (0 = no jitter)" help="Jitter amplitude added during sample selection (0 = no jitter)"/>
     <param name="strategy" type="select" optional="false" label="strategy" help="strategy">
       <option value="all">all</option>
       <option value="byclass">byclass</option>
@@ -46,15 +46,15 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
       <option selected="true" value="smallest">smallest</option>
       <option value="total">total</option>
     </param>
-    <param name="strategy.byclass.in" type="data" optional="false" label="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd." help="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
-    <param name="strategy.constant.nb" type="integer" optional="false" label="Number of samples for all classes" help="Number of samples for all classes"/>
-    <param name="strategy.percent.p" type="float" value="0.5" optional="false" label="The percentage to use" help="The percentage to use"/>
-    <param name="strategy.total.v" type="integer" value="1000" optional="false" label="The number of samples to generate" help="The number of samples to generate"/>
+    <param name="strategy_byclass_in" type="data" optional="false" label="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd." help="Number of samples by class (CSV format with class name in 1st column and required samples in the 2nd. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
+    <param name="strategy_constant_nb" type="integer" optional="false" label="Number of samples for all classes" help="Number of samples for all classes"/>
+    <param name="strategy_percent_p" type="float" value="0.5" optional="false" label="The percentage to use" help="The percentage to use"/>
+    <param name="strategy_total_v" type="integer" value="1000" optional="false" label="The number of samples to generate" help="The number of samples to generate"/>
     <param name="field" type="text" optional="false" label="Name of the field carrying the class name in the input vectors." help="Name of the field carrying the class name in the input vectors."/>
     <param name="layer" type="integer" value="0" optional="true" label="Layer index to read in the input vector file." help="Layer index to read in the input vector file."/>
-    <param name="elev.dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
-    <param name="elev.geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
-    <param name="elev.default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
+    <param name="elev_dem" type="text" optional="true" label="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory." help="This parameter allows selecting a directory containing Digital Elevation Model files. Note that this directory should contain only DEM files. Unexpected behaviour might occurs if other images are found in this directory."/>
+    <param name="elev_geoid" type="data" optional="false" label="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd)." help="Use a geoid grid to get the height above the ellipsoid in case there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles. A version of the geoid can be found on the OTB website(https://gitlab.orfeo-toolbox.org/orfeotoolbox/otb-data/blob/master/Input/DEM/egm96.grd). The following data types are allowed in the txt file:  octet-stream" format="txt"/>
+    <param name="elev_default" type="float" value="0" optional="false" label="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value." help="This parameter allows setting the default height above ellipsoid when there is no DEM available, no coverage for some points or pixels with no_data in the DEM tiles, and no geoid file has been set. This is also used by some application as an average elevation value."/>
     <param name="ram" type="integer" value="128" optional="true" label="Available memory for processing (in MB)" help="Available memory for processing (in MB)"/>
     <param name="rand" type="integer" optional="true" label="Set specific seed. with integer value." help="Set specific seed. with integer value."/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -87,18 +87,19 @@ transmissionMode_outrates $OutputSection_outrates.transmissionMode_outrates]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="xml" hidden="false">
+    <data name="output_data_out" format="xml" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="plain" value="text/plain"/>
       </change_format>
     </data>
-    <data name="output_data_outrates" format="csv" hidden="false"/>
+    <data name="output_data_outrates" format="csv" label="output_data_outrates" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
+      <output name="output_data_outrates" ftype="txt" value="output_data_outrates.txt"/>
     </test>
   </tests>
   <help><![CDATA[The application selects a set of samples from geometries intended for training (they should have a field giving the associated class). First of all, the geometries must be analyzed by the PolygonClassStatistics application to compute statistics about the geometries, which are summarized in an xml file. Then, this xml file must be given as input to this application (parameter instats).The input support image and the input training vectors shall be given in parameters 'in' and 'vec' respectively. Only the sampling grid (origin, size, spacing)will be read in the input image.There are several strategies to select samples (parameter strategy) :   - smallest (default) : select the same number of sample in each class so that the smallest one is fully sampled.  - constant : select the same number of samples N in each class (with N below or equal to the size of the smallest class).  - byclass : set the required number for each class manually, with an input CSV file (first column is class name, second one is the required samples number).  - percent: set a target global percentage of samples to use. Class proportions will be respected.   - total: set a target total number of samples to use. Class proportions will be respected. There is also a choice on the sampling type to performs :   - periodic : select samples uniformly distributed  - random : select samples randomly distributedOnce the strategy and type are selected, the application outputs samples positions(parameter out).The other parameters to look at are :   - layer : index specifying from which layer to pick geometries.  - field : set the field name containing the class.  - mask : an optional raster mask can be used to discard samples.  - outrates : allows outputting a CSV file that summarizes the sampling rates for each class.As with the PolygonClassStatistics application, different types  of geometry are supported : polygons, lines, points. The behavior of this application is different for each type of geometry :   - polygon: select points whose center is inside the polygon  - lines  : select points intersecting the line  - points : select closest point to the provided point]]></help>

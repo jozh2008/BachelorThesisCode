@@ -18,9 +18,9 @@ transmissionMode_F $OutputSection_F.transmissionMode_F
 outputType_G $OutputSection_G.outputType_G
 transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="A Digital Elvation Model (DEM) The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="C" type="data" optional="false" label="Dip grid (degrees) " help="A grid representing the dip of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
-    <param name="D" type="data" optional="false" label="Dip direction grid (degrees) " help="A grid representing the dip direction of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, tiff, x-ogc-aaigrid, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="A Digital Elvation Model (DEM) The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="C" type="data" optional="false" label="Dip grid (degrees) " help="A grid representing the dip of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="D" type="data" optional="false" label="Dip direction grid (degrees) " help="A grid representing the dip direction of the structure plane (in degrees) The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="fB" type="float" value="45" optional="true" label="Global structure dip (degrees)" help="Constant value if no raster set"/>
     <param name="fC" type="float" value="90" optional="true" label="Global structure dip direction (degrees)" help="Constant value if no raster set"/>
     <param name="prefer" type="select" label="Choose the Prefer">
@@ -70,7 +70,7 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_E" format="tiff" hidden="false">
+    <data name="output_data_E" format="tiff" label="output_data_E" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_E" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -78,7 +78,7 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
         <when input="outputType_E" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_F" format="tiff" hidden="false">
+    <data name="output_data_F" format="tiff" label="output_data_F" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_F" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -86,7 +86,7 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
         <when input="outputType_F" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_G" format="tiff" hidden="false">
+    <data name="output_data_G" format="tiff" label="output_data_G" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -97,8 +97,10 @@ transmissionMode_G $OutputSection_G.transmissionMode_G]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_E" ftype="txt" value="output_data_E.txt"/>
+      <output name="output_data_F" ftype="txt" value="output_data_F.txt"/>
+      <output name="output_data_G" ftype="txt" value="output_data_G.txt"/>
     </test>
   </tests>
   <help><![CDATA[&lt;br/&gt;This tool computes the acute angle raster between the topographic surface defined by slope and aspect rasters internally derived from input elevation raster, and a structural plane defined by diop direction- and dip grids. Optionally, the dip direction and dip of the cutting line linears between the two planes can be calculated&lt;br/&gt;Reference: &lt;a href="http://www.sciencedirect.com/science/article/pii/S0098300403000864"&gt;G&uuml;nther, A. (2003). SLOPEMAP: programs for automated mapping of geometrical and kinematical properties of hard rock hill slopes. Computers & Geosciences, 29, 865 - 875&lt;/a&gt;.&lt;br/&gt;]]></help>

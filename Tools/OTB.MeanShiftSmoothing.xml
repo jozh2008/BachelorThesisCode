@@ -21,7 +21,7 @@ transmissionMode_fout $OutputSection_fout.transmissionMode_fout
 outputType_foutpos $OutputSection_foutpos.outputType_foutpos
 transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance." help="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance." help="The input image can be any single or multiband image. Beware of pontential imbalance between bands ranges as it may alter euclidean distance. The following data types are allowed in the txt file:  tiff, jpeg, png" format="txt"/>
     <param name="fout" type="select" optional="false" label="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5]." help="This output image contains the final average spectral signatures of each pixel. The output type should be at least as wide as the input image type. Floating point encoding is advised. This output can be used as input image (in) of the LSMSSegmentation application [4,5].">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -81,14 +81,14 @@ transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></com
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_fout" format="tiff" hidden="false">
+    <data name="output_data_fout" format="tiff" label="output_data_fout" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_fout" format="jpeg" value="image/jpeg"/>
         <when input="outputType_fout" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_foutpos" format="tiff" hidden="false">
+    <data name="output_data_foutpos" format="tiff" label="output_data_foutpos" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_foutpos" format="jpeg" value="image/jpeg"/>
@@ -109,8 +109,8 @@ transmissionMode_foutpos $OutputSection_foutpos.transmissionMode_foutpos]]></com
       <param name="maxiter" value="100"/>
       <param name="rangeramp" value="0"/>
       <param name="modesearch" value="False"/>
-      <output name="output_data_fout" ftype="txt"/>
-      <output name="output_data_foutpos" ftype="txt"/>
+      <output name="output_data_fout" ftype="txt" value="output_data_fout.txt"/>
+      <output name="output_data_foutpos" ftype="txt" value="output_data_foutpos.txt"/>
     </test>
   </tests>
   <help><![CDATA[MeanShift [1,2,3] is an iterative edge-preserving image smoothing algorithm often used in image processing and as a first step for image segmentation. The MeanShift algorithm can be applied to multispectral images.At first iteration, for any given pixel of the input image, the filtered value correspond to the average spectral signature of neighborhood pixels that are both spatially closer than the spatial radius parameter (spatialr) and with spectral signature that have an euclidean distance to the input pixel lower than the range radius (ranger), that is, pixels that are both close in space and in spectral signatures. Subsequent iterations will repeat this process by considering that the pixel signature corresponds to the average spectral signature computed during previous iteration, and that the pixel position corresponds to the average position of pixels used to compute the average signature.The algorithm stops when the maximum number of iterations (maxiter) is reached, or when the position and spectral signature does not change much between iterations, according to the convergence threshold (thres). If the modesearch option is used then convergence will also stops if the spatial position reaches a pixel that has already converged. This will speed-up convergence, at the expense of stability of the result.The application outputs the image of the final averaged spectral signatures (fout), and can also optionally output the 2D displacement field between input pixel position and final pixel position after convergence (foutpos).Note that computing an euclidean distance between spectral signatures may be inaccurate and that techniques such as color space transform or image normalisation could be applied before using this application. Also note that most satellite images noise model is not gaussian, since noise variance linearly depends on radiance (the higher the radiance, the higher the noise variance). To account for such noise model, the application provides the range radius ramp option (rangeramp), which will vary the range radius linearly with the central pixel intensity. Default value is 1. (no ramp).This application is the first step of the large scale MeanShift method depicted in [4]. Both outputs (fout and foutpos) can be passed to the large scale MeanShift segmentation application [5]. If the application is used for large scale MeanShift, modesearch option should be off.]]></help>

@@ -52,12 +52,12 @@ transmissionMode_SELECTION $OutputSection_SELECTION.transmissionMode_SELECTION]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SELECTION" format="csv" hidden="false"/>
+    <data name="output_data_SELECTION" format="csv" label="output_data_SELECTION" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SELECTION" ftype="txt" value="output_data_SELECTION.txt"/>
     </test>
   </tests>
   <help><![CDATA[Identify the most relevant features for subsequent classification of tabular data.&lt;br/&gt;&lt;br/&gt;The minimum Redundancy Maximum Relevance (mRMR) feature selection algorithm has been developed by Hanchuan Peng &lt;hanchuan.peng@gmail.com&gt;.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;Feature selection based on mutual information: criteria of max-dependency, max-relevance, and min-redundancy. Hanchuan Peng, Fuhui Long, and Chris Ding, IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol. 27, No. 8, pp.1226-1238, 2005.&lt;br/&gt;&lt;br/&gt;Minimum redundancy feature selection from microarray gene expression data,&lt;br/&gt;Chris Ding, and Hanchuan Peng, Journal of Bioinformatics and Computational Biology, Vol. 3, No. 2, pp.185-205, 2005.&lt;br/&gt;&lt;br/&gt;Hanchuan Peng's mRMR Homepage at &lt;a target="_blank" href="http://penglab.janelia.org/proj/mRMR/"&gt;http://penglab.janelia.org/proj/mRMR/&lt;/a&gt;&lt;br/&gt;]]></help>

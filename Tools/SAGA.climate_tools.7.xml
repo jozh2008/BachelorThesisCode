@@ -39,12 +39,12 @@ transmissionMode_HOURS $OutputSection_HOURS.transmissionMode_HOURS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_HOURS" format="csv" hidden="false"/>
+    <data name="output_data_HOURS" format="csv" label="output_data_HOURS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_HOURS" ftype="txt" value="output_data_HOURS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Derive hourly from daily evapotranspiration using sinusoidal distribution. ]]></help>

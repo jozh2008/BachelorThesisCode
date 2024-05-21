@@ -14,8 +14,8 @@ transmissionMode_RESULTGRID $OutputSection_RESULTGRID.transmissionMode_RESULTGRI
 outputType_RESULTTABLE $OutputSection_RESULTTABLE.outputType_RESULTTABLE
 transmissionMode_RESULTTABLE $OutputSection_RESULTTABLE.transmissionMode_RESULTTABLE]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Input Grid 1" help="Input Grid 1 The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
-    <param name="INPUT2" type="data" optional="false" label="Input Grid 2" help="Input Grid 2 The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Input Grid 1" help="Input Grid 1 The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
+    <param name="INPUT2" type="data" optional="false" label="Input Grid 2" help="Input Grid 2 The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="MAXNUMCLASS" type="integer" value="10" optional="true" label="Max. Number of Classes" help="Maximum number of classes in the entire grid."/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -49,7 +49,7 @@ transmissionMode_RESULTTABLE $OutputSection_RESULTTABLE.transmissionMode_RESULTT
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULTGRID" format="tiff" hidden="false">
+    <data name="output_data_RESULTGRID" format="tiff" label="output_data_RESULTGRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULTGRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -57,12 +57,13 @@ transmissionMode_RESULTTABLE $OutputSection_RESULTTABLE.transmissionMode_RESULTT
         <when input="outputType_RESULTGRID" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_RESULTTABLE" format="csv" hidden="false"/>
+    <data name="output_data_RESULTTABLE" format="csv" label="output_data_RESULTTABLE" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULTGRID" ftype="txt" value="output_data_RESULTGRID.txt"/>
+      <output name="output_data_RESULTTABLE" ftype="txt" value="output_data_RESULTTABLE.txt"/>
     </test>
   </tests>
   <help><![CDATA[(c) 2004 by Victor Olaya. Cross-Classification and Tabulation]]></help>

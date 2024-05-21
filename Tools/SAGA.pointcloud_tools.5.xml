@@ -33,7 +33,7 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SHAPES" format="xml" hidden="false">
+    <data name="output_data_SHAPES" format="xml" label="output_data_SHAPES" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHAPES" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -43,8 +43,8 @@ transmissionMode_SHAPES $OutputSection_SHAPES.transmissionMode_SHAPES]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SHAPES" ftype="txt" value="output_data_SHAPES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Point Cloud to Shapes]]></help>

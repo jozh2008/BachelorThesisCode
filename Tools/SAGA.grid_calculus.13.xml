@@ -11,7 +11,7 @@ response $response
 outputType_OR $OutputSection_OR.outputType_OR
 transmissionMode_OR $OutputSection_OR.transmissionMode_OR]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  png, tiff, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="TYPE" type="select" optional="true" label="Operator Type" help="Operator Type">
       <option value="a_+_b_-_a_*_b">a + b - a * b</option>
       <option selected="true" value="max(a,_b)_(non-interactive)">max(a, b) (non-interactive)</option>
@@ -40,7 +40,7 @@ transmissionMode_OR $OutputSection_OR.transmissionMode_OR]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OR" format="tiff" hidden="false">
+    <data name="output_data_OR" format="tiff" label="output_data_OR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -51,8 +51,8 @@ transmissionMode_OR $OutputSection_OR.transmissionMode_OR]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OR" ftype="txt" value="output_data_OR.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates the union (max operator) for each grid cell of the selected grids.&lt;br/&gt; e-mail Gianluca Massei: g_massa@libero.it &lt;br/&gt;e-mail Antonio Boggia: boggia@unipg.it &lt;br/&gt;]]></help>

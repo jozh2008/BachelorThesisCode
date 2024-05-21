@@ -50,7 +50,7 @@ transmissionMode_OUT_GRID $OutputSection_OUT_GRID.transmissionMode_OUT_GRID]]></
       <option value="cells">cells</option>
       <option selected="true" value="nodes">nodes</option>
     </param>
-    <param name="TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  tiff, x-ogc-envi, png, x-ogc-aaigrid" format="txt"/>
+    <param name="TEMPLATE" type="data" optional="false" label="Target System" help="use this grid's system for output grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
       <option value="return=minimal">return=minimal</option>
@@ -74,7 +74,7 @@ transmissionMode_OUT_GRID $OutputSection_OUT_GRID.transmissionMode_OUT_GRID]]></
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_OUT_GRID" format="tiff" hidden="false">
+    <data name="output_data_OUT_GRID" format="tiff" label="output_data_OUT_GRID" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_OUT_GRID" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -85,8 +85,8 @@ transmissionMode_OUT_GRID $OutputSection_OUT_GRID.transmissionMode_OUT_GRID]]></
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_OUT_GRID" ftype="txt" value="output_data_OUT_GRID.txt"/>
     </test>
   </tests>
   <help><![CDATA[Constant grid creation.]]></help>

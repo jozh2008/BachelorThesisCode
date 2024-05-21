@@ -29,12 +29,12 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="txt" hidden="false"/>
+    <data name="output_data_Result" format="txt" label="output_data_Result" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
     </test>
   </tests>
   <help><![CDATA[This service shall return a true value if and only if the geometry InputEntity1 is spatially within geometry InputEntity2; that is if every point on InputEntity1 is also on InputEntity2.]]></help>

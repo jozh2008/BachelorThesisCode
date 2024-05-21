@@ -37,12 +37,12 @@ transmissionMode_TABLES $OutputSection_TABLES.transmissionMode_TABLES]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_TABLES" format="csv" hidden="false"/>
+    <data name="output_data_TABLES" format="csv" label="output_data_TABLES" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_TABLES" ftype="txt" value="output_data_TABLES.txt"/>
     </test>
   </tests>
   <help><![CDATA[Lists all tables of an ODBC data source.]]></help>

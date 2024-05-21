@@ -59,13 +59,14 @@ transmissionMode_STATISTICS $OutputSection_STATISTICS.transmissionMode_STATISTIC
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="csv" hidden="false"/>
-    <data name="output_data_STATISTICS" format="csv" hidden="false"/>
+    <data name="output_data_RESULT" format="csv" label="output_data_RESULT" hidden="false"/>
+    <data name="output_data_STATISTICS" format="csv" label="output_data_STATISTICS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
+      <output name="output_data_STATISTICS" ftype="txt" value="output_data_STATISTICS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Cluster Analysis for tables.&lt;br/&gt;&lt;br/&gt;References:&lt;br/&gt;&lt;br/&gt;Iterative Minimum Distance:&lt;br/&gt;- Forgy, E. (1965):&lt;br/&gt;  'Cluster Analysis of multivariate data: efficiency vs. interpretability of classifications',&lt;br/&gt;  Biometrics 21:768&lt;br/&gt;&lt;br/&gt;Hill-Climbing:- Rubin, J. (1967):&lt;br/&gt;  'Optimal Classification into Groups: An Approach for Solving the Taxonomy Problem',&lt;br/&gt;  J. Theoretical Biology, 15:103-144&lt;br/&gt;&lt;br/&gt;]]></help>

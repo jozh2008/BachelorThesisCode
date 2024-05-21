@@ -13,7 +13,7 @@ response $response
 outputType_MERGED $OutputSection_MERGED.outputType_MERGED
 transmissionMode_MERGED $OutputSection_MERGED.transmissionMode_MERGED]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Layers" help="Output will inherit shape type and table structure from the first layer in this list. The following data types are allowed in the txt file:  json, vnd.google-earth.kml+xml, xml" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Layers" help="Output will inherit shape type and table structure from the first layer in this list. The following data types are allowed in the txt file:  xml, json, vnd.google-earth.kml+xml" format="txt"/>
     <param name="SRCINFO" type="select" optional="true" label="Add Source Information" help="Adds a field with the name of the original input data set.">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -48,7 +48,7 @@ transmissionMode_MERGED $OutputSection_MERGED.transmissionMode_MERGED]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MERGED" format="xml" hidden="false">
+    <data name="output_data_MERGED" format="xml" label="output_data_MERGED" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_MERGED" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -58,8 +58,8 @@ transmissionMode_MERGED $OutputSection_MERGED.transmissionMode_MERGED]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MERGED" ftype="txt" value="output_data_MERGED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Merge vector layers.]]></help>

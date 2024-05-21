@@ -25,7 +25,7 @@ response $response
 outputType_STATS $OutputSection_STATS.outputType_STATS
 transmissionMode_STATS $OutputSection_STATS.transmissionMode_STATS]]></command>
   <inputs>
-    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="GRIDS" type="data" optional="false" label="Grids" help="Grids The following data types are allowed in the txt file:  x-ogc-aaigrid, png, tiff, x-ogc-envi" format="txt"/>
     <param name="DATA_CELLS" type="select" optional="true" label="Number of Data Cells" help="Number of Data Cells">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -103,12 +103,12 @@ transmissionMode_STATS $OutputSection_STATS.transmissionMode_STATS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_STATS" format="csv" hidden="false"/>
+    <data name="output_data_STATS" format="csv" label="output_data_STATS" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_STATS" ftype="txt" value="output_data_STATS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Calculates statistical properties (arithmetic mean, minimum, maximum, variance, standard deviation) for each of the given grids and saves it to a table.]]></help>

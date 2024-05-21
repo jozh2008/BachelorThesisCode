@@ -16,8 +16,8 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image, containing initial spectral signatures corresponding to the segmented image (inseg)." help="The input image, containing initial spectral signatures corresponding to the segmented image (inseg). The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
-    <param name="inseg" type="data" optional="false" label="Segmented image where each pixel value is the unique integer label of the segment it belongs to." help="Segmented image where each pixel value is the unique integer label of the segment it belongs to. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image, containing initial spectral signatures corresponding to the segmented image (inseg)." help="The input image, containing initial spectral signatures corresponding to the segmented image (inseg). The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="inseg" type="data" optional="false" label="Segmented image where each pixel value is the unique integer label of the segment it belongs to." help="Segmented image where each pixel value is the unique integer label of the segment it belongs to. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised." help="The output image. The output image is the segmented image where the minimal segments have been merged. An ecoding of uint32 is advised.">
       <option value="double">double</option>
       <option value="float">float</option>
@@ -52,7 +52,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -62,8 +62,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[Given a segmentation result (can be the out output parameter of the LSMSSegmentation application [2]) and the original image, it will merge segments whose size in pixels is lower than minsize parameter with the adjacent segments with the adjacent segment with closest radiometry and acceptable size.Small segments will be processed by increasing size: first all segments for which area is equal to 1 pixel will be merged with adjacent segments, then all segments of area equal to 2 pixels will be processed, until segments of area minsize. For large images one can use the tilesizex and tilesizey parameters for tile-wise processing, with the guarantees of identical results.The output of this application can be passed to the LSMSVectorization application [3] to complete the LSMS workflow.]]></help>

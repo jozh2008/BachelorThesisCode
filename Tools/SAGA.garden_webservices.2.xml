@@ -52,7 +52,7 @@ transmissionMode_LOCATIONS $OutputSection_LOCATIONS.transmissionMode_LOCATIONS]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_LOCATIONS" format="xml" hidden="false">
+    <data name="output_data_LOCATIONS" format="xml" label="output_data_LOCATIONS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LOCATIONS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -62,8 +62,8 @@ transmissionMode_LOCATIONS $OutputSection_LOCATIONS.transmissionMode_LOCATIONS]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_LOCATIONS" ftype="txt" value="output_data_LOCATIONS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Geocoding of addresses using geocoding services. ]]></help>

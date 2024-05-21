@@ -11,7 +11,7 @@ response $response
 outputType_PROTECTION $OutputSection_PROTECTION.outputType_PROTECTION
 transmissionMode_PROTECTION $OutputSection_PROTECTION.transmissionMode_PROTECTION]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, png, tiff" format="txt"/>
     <param name="RADIUS" type="float" value="2000" optional="true" label="Radius" help="The radius in map units"/>
     <param name="prefer" type="select" label="Choose the Prefer">
       <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
@@ -36,7 +36,7 @@ transmissionMode_PROTECTION $OutputSection_PROTECTION.transmissionMode_PROTECTIO
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_PROTECTION" format="tiff" hidden="false">
+    <data name="output_data_PROTECTION" format="tiff" label="output_data_PROTECTION" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_PROTECTION" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -47,8 +47,8 @@ transmissionMode_PROTECTION $OutputSection_PROTECTION.transmissionMode_PROTECTIO
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_PROTECTION" ftype="txt" value="output_data_PROTECTION.txt"/>
     </test>
   </tests>
   <help><![CDATA[This algorithm analyses the immediate surrounding of each cell up to an given distance and evaluates how the relief protects it.&lt;br/&gt;It is equivalent to the positive openness described in: Visualizing Topography by Openness: A New Application of Image Processing to Digital Elevation Models, Photogrammetric Engineering and Remote Sensing(68), No. 3, March 2002, pp. 257-266.]]></help>

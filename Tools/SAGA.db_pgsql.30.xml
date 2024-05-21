@@ -54,7 +54,7 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRIDS" format="tiff" hidden="false">
+    <data name="output_data_GRIDS" format="tiff" label="output_data_GRIDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRIDS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -65,8 +65,8 @@ transmissionMode_GRIDS $OutputSection_GRIDS.transmissionMode_GRIDS]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRIDS" ftype="txt" value="output_data_GRIDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Imports grids from a PostGIS database.]]></help>

@@ -34,8 +34,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out
 outputType_wo $OutputSection_wo.outputType_wo
 transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
   <inputs>
-    <param name="ref" type="data" optional="false" label="The reference image." help="The reference image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
-    <param name="sec" type="data" optional="false" label="The secondary image." help="The secondary image. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="ref" type="data" optional="false" label="The reference image." help="The reference image. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="sec" type="data" optional="false" label="The secondary image." help="The secondary image. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="The output image contains 3 bands, for X offset, Y offset and the metric value. It may contain a 4th one with the validity mask (if used)." help="The output image contains 3 bands, for X offset, Y offset and the metric value. It may contain a 4th one with the validity mask (if used).">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -48,7 +48,7 @@ transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
     <param name="ery" type="integer" optional="false" label="The exploration radius along y (in pixels)" help="The exploration radius along y (in pixels)"/>
     <param name="mrx" type="integer" optional="false" label="Radius along x (in pixels) of the metric computation window" help="Radius along x (in pixels) of the metric computation window"/>
     <param name="mry" type="integer" optional="false" label="Radius along y (in pixels) of the metric computation window" help="Radius along y (in pixels) of the metric computation window"/>
-    <param name="w" type="data" optional="false" label="The image to warp after disparity estimation is completed." help="The image to warp after disparity estimation is completed. The following data types are allowed in the txt file:  tiff, png, jpeg" format="txt"/>
+    <param name="w" type="data" optional="false" label="The image to warp after disparity estimation is completed." help="The image to warp after disparity estimation is completed. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="wo" type="select" optional="true" label="The output warped image" help="The output warped image">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -104,14 +104,14 @@ transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
         <when input="outputType_out" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_wo" format="tiff" hidden="false">
+    <data name="output_data_wo" format="tiff" label="output_data_wo" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_wo" format="jpeg" value="image/jpeg"/>
@@ -121,8 +121,9 @@ transmissionMode_wo $OutputSection_wo.transmissionMode_wo]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
+      <output name="output_data_wo" ftype="txt" value="output_data_wo.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application computes a disparity map between two images that correspond to the same scene. It is intended for case where small misregistration between images should be estimated and fixed. The search is performed in 2D.The algorithm uses an iterative approach to estimate a best match between local patches. The typical use case is registration betwween similar bands, or between two acquisitions. The output image contains X and Y offsets, as well as the metric value. A sub-pixel accuracy can be expected. The input images should have the same size and same physical space.]]></help>

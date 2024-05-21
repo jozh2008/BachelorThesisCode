@@ -22,14 +22,14 @@ response $response
 outputType_LANDFORMS $OutputSection_LANDFORMS.outputType_LANDFORMS
 transmissionMode_LANDFORMS $OutputSection_LANDFORMS.transmissionMode_LANDFORMS]]></command>
   <inputs>
-    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
-    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
-    <param name="CONVEXITY" type="data" optional="false" label="Convexity" help="Convexity The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="DEM" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="SLOPE" type="data" optional="false" label="Slope" help="Slope The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="CONVEXITY" type="data" optional="false" label="Convexity" help="Convexity The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="CONV_RECALC" type="select" optional="true" label="Recalculate" help="Recalculate">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
     </param>
-    <param name="TEXTURE" type="data" optional="false" label="Texture" help="Texture The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="TEXTURE" type="data" optional="false" label="Texture" help="Texture The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
     <param name="TEXT_RECALC" type="select" optional="true" label="Recalculate" help="Recalculate">
       <option selected="true" value="false">false</option>
       <option value="true">true</option>
@@ -75,7 +75,7 @@ transmissionMode_LANDFORMS $OutputSection_LANDFORMS.transmissionMode_LANDFORMS]]
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_LANDFORMS" format="tiff" hidden="false">
+    <data name="output_data_LANDFORMS" format="tiff" label="output_data_LANDFORMS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_LANDFORMS" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -86,8 +86,8 @@ transmissionMode_LANDFORMS $OutputSection_LANDFORMS.transmissionMode_LANDFORMS]]
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_LANDFORMS" ftype="txt" value="output_data_LANDFORMS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Terrain surface classification as proposed by Iwahashi & Pike (2007).]]></help>

@@ -86,14 +86,14 @@ transmissionMode_COORDS $OutputSection_COORDS.transmissionMode_COORDS]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_GRATICULE" format="xml" hidden="false">
+    <data name="output_data_GRATICULE" format="xml" label="output_data_GRATICULE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_GRATICULE" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
         <when input="outputType_GRATICULE" format="json" value="application/json"/>
       </change_format>
     </data>
-    <data name="output_data_COORDS" format="xml" hidden="false">
+    <data name="output_data_COORDS" format="xml" label="output_data_COORDS" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_COORDS" format="vnd.google-earth.kml+xml" value="application/vnd.google-earth.kml+xml"/>
@@ -103,8 +103,9 @@ transmissionMode_COORDS $OutputSection_COORDS.transmissionMode_COORDS]]></comman
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_GRATICULE" ftype="txt" value="output_data_GRATICULE.txt"/>
+      <output name="output_data_COORDS" ftype="txt" value="output_data_COORDS.txt"/>
     </test>
   </tests>
   <help><![CDATA[Creates a longitude/latitude graticule for the extent and projection of the input shapes layer. &lt;br/&gt;Projection routines make use of the Proj.4 Cartographic Projections library.&lt;br/&gt;Proj.4 was originally developed by Gerald Evenden and later continued by the United States Department of the Interior, Geological Survey (USGS).&lt;br/&gt;Proj.4 Version is Rel. 5.2.0, September 15th, 2018&lt;br/&gt;&lt;a target="_blank" href="http://trac.osgeo.org/proj/"&gt;Proj.4 Homepage&lt;/a&gt;]]></help>

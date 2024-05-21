@@ -21,7 +21,7 @@ response $response
 outputType_SHADE $OutputSection_SHADE.outputType_SHADE
 transmissionMode_SHADE $OutputSection_SHADE.transmissionMode_SHADE]]></command>
   <inputs>
-    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  x-ogc-aaigrid, x-ogc-envi, tiff, png" format="txt"/>
+    <param name="ELEVATION" type="data" optional="false" label="Elevation" help="Elevation The following data types are allowed in the txt file:  tiff, png, x-ogc-envi, x-ogc-aaigrid" format="txt"/>
     <param name="METHOD" type="select" optional="true" label="Shading Method" help="Shading Method">
       <option value="Ambient_Occlusion">Ambient Occlusion</option>
       <option value="Combined_Shading">Combined Shading</option>
@@ -72,7 +72,7 @@ transmissionMode_SHADE $OutputSection_SHADE.transmissionMode_SHADE]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_SHADE" format="tiff" hidden="false">
+    <data name="output_data_SHADE" format="tiff" label="output_data_SHADE" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_SHADE" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -83,8 +83,8 @@ transmissionMode_SHADE $OutputSection_SHADE.transmissionMode_SHADE]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_SHADE" ftype="txt" value="output_data_SHADE.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool performs an analytical hillshade computation for an elevation grid. The 'Standard' method simply calculates the angle at which light coming from the position of the light source would hit the surface. This method can produce angles greater than 90 degree. With the second method all values are kept within the range of 0-90 degree. It can be enhanced with shadowing effects, where shadowed cells will be marked with a value of exactly 90 degree. 'Shadows Only' creates a mask for the shadowed areas and sets all other cells to no-data. 'Combined Shading' takes the values of the standard method and multiplies these with the normalized slope. 'Ambient Occlusion' is based on the concepts of Tarini et al. (2006), but only the northern half-space is considered here. ]]></help>

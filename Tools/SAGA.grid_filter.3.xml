@@ -18,7 +18,7 @@ transmissionMode_STDDEV $OutputSection_STDDEV.transmissionMode_STDDEV
 outputType_DIR $OutputSection_DIR.outputType_DIR
 transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR]]></command>
   <inputs>
-    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  x-ogc-aaigrid, tiff, x-ogc-envi, png" format="txt"/>
+    <param name="INPUT" type="data" optional="false" label="Grid" help="Grid The following data types are allowed in the txt file:  tiff, x-ogc-aaigrid, png, x-ogc-envi" format="txt"/>
     <param name="NOISE_ABS" type="float" value="1" optional="true" label="Estimated Noise (absolute)" help="Estimated noise in units of input data"/>
     <param name="NOISE_REL" type="float" value="1" optional="true" label="Estimated Noise (relative)" help="Estimated noise relative to mean standard deviation"/>
     <param name="WEIGHTED" type="select" optional="true" label="Weighted" help="Weighted">
@@ -77,7 +77,7 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_RESULT" format="tiff" hidden="false">
+    <data name="output_data_RESULT" format="tiff" label="output_data_RESULT" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_RESULT" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -85,7 +85,7 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR]]></command>
         <when input="outputType_RESULT" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_STDDEV" format="tiff" hidden="false">
+    <data name="output_data_STDDEV" format="tiff" label="output_data_STDDEV" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_STDDEV" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -93,7 +93,7 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR]]></command>
         <when input="outputType_STDDEV" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_DIR" format="tiff" hidden="false">
+    <data name="output_data_DIR" format="tiff" label="output_data_DIR" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_DIR" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -104,8 +104,10 @@ transmissionMode_DIR $OutputSection_DIR.transmissionMode_DIR]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_RESULT" ftype="txt" value="output_data_RESULT.txt"/>
+      <output name="output_data_STDDEV" ftype="txt" value="output_data_STDDEV.txt"/>
+      <output name="output_data_DIR" ftype="txt" value="output_data_DIR.txt"/>
     </test>
   </tests>
   <help><![CDATA[The tool searches for the minimum variance within 16 directions and applies a Lee Filter in the direction of minimum variance. The filter is edge-preserving and can be used to remove speckle noise from SAR images or to smooth DTMs. Applied to DTMs, this filter will preserve slope breaks and narrow valleys.&lt;br/&gt;For more details, please refer to the references. ]]></help>

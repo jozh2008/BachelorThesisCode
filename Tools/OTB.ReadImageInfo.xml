@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_outkwl $output_data_outkwl  output_data_indexx $output_data_indexx  output_data_indexy $output_data_indexy  output_data_sizex $output_data_sizex  output_data_sizey $output_data_sizey  output_data_spacingx $output_data_spacingx  output_data_spacingy $output_data_spacingy  output_data_originx $output_data_originx  output_data_originy $output_data_originy  output_data_estimatedgroundspacingx $output_data_estimatedgroundspacingx  output_data_estimatedgroundspacingy $output_data_estimatedgroundspacingy  output_data_numberbands $output_data_numberbands  output_data_sensor $output_data_sensor  output_data_id $output_data_id  output_data_time $output_data_time  output_data_ullat $output_data_ullat  output_data_ullon $output_data_ullon  output_data_urlat $output_data_urlat  output_data_urlon $output_data_urlon  output_data_lrlat $output_data_lrlat  output_data_lrlon $output_data_lrlon  output_data_lllat $output_data_lllat  output_data_lllon $output_data_lllon  output_data_town $output_data_town  output_data_country $output_data_country  output_data_rgb.r $output_data_rgb.r  output_data_rgb.g $output_data_rgb.g  output_data_rgb.b $output_data_rgb.b  output_data_projectionref $output_data_projectionref  output_data_keyword $output_data_keyword  output_data_gcp.count $output_data_gcp.count  output_data_gcp.proj $output_data_gcp.proj  output_data_gcp.ids $output_data_gcp.ids  output_data_gcp.info $output_data_gcp.info  output_data_gcp.imcoord $output_data_gcp.imcoord  output_data_gcp.geocoord $output_data_gcp.geocoord  name OTB.ReadImageInfo in $in
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayin False  output_data_outkwl $output_data_outkwl  output_data_indexx $output_data_indexx  output_data_indexy $output_data_indexy  output_data_sizex $output_data_sizex  output_data_sizey $output_data_sizey  output_data_spacingx $output_data_spacingx  output_data_spacingy $output_data_spacingy  output_data_originx $output_data_originx  output_data_originy $output_data_originy  output_data_estimatedgroundspacingx $output_data_estimatedgroundspacingx  output_data_estimatedgroundspacingy $output_data_estimatedgroundspacingy  output_data_numberbands $output_data_numberbands  output_data_sensor $output_data_sensor  output_data_id $output_data_id  output_data_time $output_data_time  output_data_ullat $output_data_ullat  output_data_ullon $output_data_ullon  output_data_urlat $output_data_urlat  output_data_urlon $output_data_urlon  output_data_lrlat $output_data_lrlat  output_data_lrlon $output_data_lrlon  output_data_lllat $output_data_lllat  output_data_lllon $output_data_lllon  output_data_town $output_data_town  output_data_country $output_data_country  output_data_rgb_r $output_data_rgb_r  output_data_rgb_g $output_data_rgb_g  output_data_rgb_b $output_data_rgb_b  output_data_projectionref $output_data_projectionref  output_data_keyword $output_data_keyword  output_data_gcp_count $output_data_gcp_count  output_data_gcp_proj $output_data_gcp_proj  output_data_gcp_ids $output_data_gcp_ids  output_data_gcp_info $output_data_gcp_info  output_data_gcp_imcoord $output_data_gcp_imcoord  output_data_gcp_geocoord $output_data_gcp_geocoord  name OTB.ReadImageInfo in $in
 keywordlist $keywordlist
 prefer $prefer
 response $response
@@ -34,17 +34,17 @@ transmissionMode_lllat $OutputSection_lllat.transmissionMode_lllat
 transmissionMode_lllon $OutputSection_lllon.transmissionMode_lllon
 transmissionMode_town $OutputSection_town.transmissionMode_town
 transmissionMode_country $OutputSection_country.transmissionMode_country
-transmissionMode_rgb.r $OutputSection_rgb.r.transmissionMode_rgb.r
-transmissionMode_rgb.g $OutputSection_rgb.g.transmissionMode_rgb.g
-transmissionMode_rgb.b $OutputSection_rgb.b.transmissionMode_rgb.b
+transmissionMode_rgb_r $OutputSection_rgb_r.transmissionMode_rgb_r
+transmissionMode_rgb_g $OutputSection_rgb_g.transmissionMode_rgb_g
+transmissionMode_rgb_b $OutputSection_rgb_b.transmissionMode_rgb_b
 transmissionMode_projectionref $OutputSection_projectionref.transmissionMode_projectionref
 transmissionMode_keyword $OutputSection_keyword.transmissionMode_keyword
-transmissionMode_gcp.count $OutputSection_gcp.count.transmissionMode_gcp.count
-transmissionMode_gcp.proj $OutputSection_gcp.proj.transmissionMode_gcp.proj
-transmissionMode_gcp.ids $OutputSection_gcp.ids.transmissionMode_gcp.ids
-transmissionMode_gcp.info $OutputSection_gcp.info.transmissionMode_gcp.info
-transmissionMode_gcp.imcoord $OutputSection_gcp.imcoord.transmissionMode_gcp.imcoord
-transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.geocoord]]></command>
+transmissionMode_gcp_count $OutputSection_gcp_count.transmissionMode_gcp_count
+transmissionMode_gcp_proj $OutputSection_gcp_proj.transmissionMode_gcp_proj
+transmissionMode_gcp_ids $OutputSection_gcp_ids.transmissionMode_gcp_ids
+transmissionMode_gcp_info $OutputSection_gcp_info.transmissionMode_gcp_info
+transmissionMode_gcp_imcoord $OutputSection_gcp_imcoord.transmissionMode_gcp_imcoord
+transmissionMode_gcp_geocoord $OutputSection_gcp_geocoord.transmissionMode_gcp_geocoord]]></command>
   <inputs>
     <param name="in" type="data" optional="false" label="Input image to analyse" help="Input image to analyse The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
     <param name="keywordlist" type="select" optional="false" label="Output the OSSIM keyword list. It contains metadata information (sensor model, geometry ). Information is stored in keyword list (pairs of key/value)" help="Output the OSSIM keyword list. It contains metadata information (sensor model, geometry ). Information is stored in keyword list (pairs of key/value)">
@@ -214,20 +214,20 @@ transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.g
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_rgb.r" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_rgb.r" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_rgb_r" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_rgb_r" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_rgb.g" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_rgb.g" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_rgb_g" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_rgb_g" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_rgb.b" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_rgb.b" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_rgb_b" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_rgb_b" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
@@ -244,90 +244,125 @@ transmissionMode_gcp.geocoord $OutputSection_gcp.geocoord.transmissionMode_gcp.g
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.count" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_gcp.count" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_gcp_count" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_gcp_count" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.proj" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_gcp.proj" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_gcp_proj" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_gcp_proj" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.ids" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_gcp.ids" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_gcp_ids" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_gcp_ids" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.info" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_gcp.info" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_gcp_info" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_gcp_info" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.imcoord" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_gcp.imcoord" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_gcp_imcoord" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_gcp_imcoord" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
-    <section name="OutputSection_gcp.geocoord" title="Select the appropriate transmission mode for the output format" expanded="true">
-      <param name="transmissionMode_gcp.geocoord" type="select" label="Choose the transmission mode">
+    <section name="OutputSection_gcp_geocoord" title="Select the appropriate transmission mode for the output format" expanded="true">
+      <param name="transmissionMode_gcp_geocoord" type="select" label="Choose the transmission mode">
         <option selected="true" value="reference">reference</option>
         <option value="value">value</option>
       </param>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_outkwl" format="xml" hidden="false">
+    <data name="output_data_outkwl" format="xml" label="output_data_outkwl" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_outkwl" format="plain" value="text/plain"/>
       </change_format>
     </data>
-    <data name="output_data_indexx" format="txt" hidden="false"/>
-    <data name="output_data_indexy" format="txt" hidden="false"/>
-    <data name="output_data_sizex" format="txt" hidden="false"/>
-    <data name="output_data_sizey" format="txt" hidden="false"/>
-    <data name="output_data_spacingx" format="txt" hidden="false"/>
-    <data name="output_data_spacingy" format="txt" hidden="false"/>
-    <data name="output_data_originx" format="txt" hidden="false"/>
-    <data name="output_data_originy" format="txt" hidden="false"/>
-    <data name="output_data_estimatedgroundspacingx" format="txt" hidden="false"/>
-    <data name="output_data_estimatedgroundspacingy" format="txt" hidden="false"/>
-    <data name="output_data_numberbands" format="txt" hidden="false"/>
-    <data name="output_data_sensor" format="txt" hidden="false"/>
-    <data name="output_data_id" format="txt" hidden="false"/>
-    <data name="output_data_time" format="txt" hidden="false"/>
-    <data name="output_data_ullat" format="txt" hidden="false"/>
-    <data name="output_data_ullon" format="txt" hidden="false"/>
-    <data name="output_data_urlat" format="txt" hidden="false"/>
-    <data name="output_data_urlon" format="txt" hidden="false"/>
-    <data name="output_data_lrlat" format="txt" hidden="false"/>
-    <data name="output_data_lrlon" format="txt" hidden="false"/>
-    <data name="output_data_lllat" format="txt" hidden="false"/>
-    <data name="output_data_lllon" format="txt" hidden="false"/>
-    <data name="output_data_town" format="txt" hidden="false"/>
-    <data name="output_data_country" format="txt" hidden="false"/>
-    <data name="output_data_rgb.r" format="txt" hidden="false"/>
-    <data name="output_data_rgb.g" format="txt" hidden="false"/>
-    <data name="output_data_rgb.b" format="txt" hidden="false"/>
-    <data name="output_data_projectionref" format="txt" hidden="false"/>
-    <data name="output_data_keyword" format="txt" hidden="false"/>
-    <data name="output_data_gcp.count" format="txt" hidden="false"/>
-    <data name="output_data_gcp.proj" format="txt" hidden="false"/>
-    <data name="output_data_gcp.ids" format="txt" hidden="false"/>
-    <data name="output_data_gcp.info" format="txt" hidden="false"/>
-    <data name="output_data_gcp.imcoord" format="txt" hidden="false"/>
-    <data name="output_data_gcp.geocoord" format="txt" hidden="false"/>
+    <data name="output_data_indexx" format="txt" label="output_data_indexx" hidden="false"/>
+    <data name="output_data_indexy" format="txt" label="output_data_indexy" hidden="false"/>
+    <data name="output_data_sizex" format="txt" label="output_data_sizex" hidden="false"/>
+    <data name="output_data_sizey" format="txt" label="output_data_sizey" hidden="false"/>
+    <data name="output_data_spacingx" format="txt" label="output_data_spacingx" hidden="false"/>
+    <data name="output_data_spacingy" format="txt" label="output_data_spacingy" hidden="false"/>
+    <data name="output_data_originx" format="txt" label="output_data_originx" hidden="false"/>
+    <data name="output_data_originy" format="txt" label="output_data_originy" hidden="false"/>
+    <data name="output_data_estimatedgroundspacingx" format="txt" label="output_data_estimatedgroundspacingx" hidden="false"/>
+    <data name="output_data_estimatedgroundspacingy" format="txt" label="output_data_estimatedgroundspacingy" hidden="false"/>
+    <data name="output_data_numberbands" format="txt" label="output_data_numberbands" hidden="false"/>
+    <data name="output_data_sensor" format="txt" label="output_data_sensor" hidden="false"/>
+    <data name="output_data_id" format="txt" label="output_data_id" hidden="false"/>
+    <data name="output_data_time" format="txt" label="output_data_time" hidden="false"/>
+    <data name="output_data_ullat" format="txt" label="output_data_ullat" hidden="false"/>
+    <data name="output_data_ullon" format="txt" label="output_data_ullon" hidden="false"/>
+    <data name="output_data_urlat" format="txt" label="output_data_urlat" hidden="false"/>
+    <data name="output_data_urlon" format="txt" label="output_data_urlon" hidden="false"/>
+    <data name="output_data_lrlat" format="txt" label="output_data_lrlat" hidden="false"/>
+    <data name="output_data_lrlon" format="txt" label="output_data_lrlon" hidden="false"/>
+    <data name="output_data_lllat" format="txt" label="output_data_lllat" hidden="false"/>
+    <data name="output_data_lllon" format="txt" label="output_data_lllon" hidden="false"/>
+    <data name="output_data_town" format="txt" label="output_data_town" hidden="false"/>
+    <data name="output_data_country" format="txt" label="output_data_country" hidden="false"/>
+    <data name="output_data_rgb_r" format="txt" label="output_data_rgb_r" hidden="false"/>
+    <data name="output_data_rgb_g" format="txt" label="output_data_rgb_g" hidden="false"/>
+    <data name="output_data_rgb_b" format="txt" label="output_data_rgb_b" hidden="false"/>
+    <data name="output_data_projectionref" format="txt" label="output_data_projectionref" hidden="false"/>
+    <data name="output_data_keyword" format="txt" label="output_data_keyword" hidden="false"/>
+    <data name="output_data_gcp_count" format="txt" label="output_data_gcp_count" hidden="false"/>
+    <data name="output_data_gcp_proj" format="txt" label="output_data_gcp_proj" hidden="false"/>
+    <data name="output_data_gcp_ids" format="txt" label="output_data_gcp_ids" hidden="false"/>
+    <data name="output_data_gcp_info" format="txt" label="output_data_gcp_info" hidden="false"/>
+    <data name="output_data_gcp_imcoord" format="txt" label="output_data_gcp_imcoord" hidden="false"/>
+    <data name="output_data_gcp_geocoord" format="txt" label="output_data_gcp_geocoord" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_outkwl" ftype="txt" value="output_data_outkwl.txt"/>
+      <output name="output_data_indexx" ftype="txt" value="output_data_indexx.txt"/>
+      <output name="output_data_indexy" ftype="txt" value="output_data_indexy.txt"/>
+      <output name="output_data_sizex" ftype="txt" value="output_data_sizex.txt"/>
+      <output name="output_data_sizey" ftype="txt" value="output_data_sizey.txt"/>
+      <output name="output_data_spacingx" ftype="txt" value="output_data_spacingx.txt"/>
+      <output name="output_data_spacingy" ftype="txt" value="output_data_spacingy.txt"/>
+      <output name="output_data_originx" ftype="txt" value="output_data_originx.txt"/>
+      <output name="output_data_originy" ftype="txt" value="output_data_originy.txt"/>
+      <output name="output_data_estimatedgroundspacingx" ftype="txt" value="output_data_estimatedgroundspacingx.txt"/>
+      <output name="output_data_estimatedgroundspacingy" ftype="txt" value="output_data_estimatedgroundspacingy.txt"/>
+      <output name="output_data_numberbands" ftype="txt" value="output_data_numberbands.txt"/>
+      <output name="output_data_sensor" ftype="txt" value="output_data_sensor.txt"/>
+      <output name="output_data_id" ftype="txt" value="output_data_id.txt"/>
+      <output name="output_data_time" ftype="txt" value="output_data_time.txt"/>
+      <output name="output_data_ullat" ftype="txt" value="output_data_ullat.txt"/>
+      <output name="output_data_ullon" ftype="txt" value="output_data_ullon.txt"/>
+      <output name="output_data_urlat" ftype="txt" value="output_data_urlat.txt"/>
+      <output name="output_data_urlon" ftype="txt" value="output_data_urlon.txt"/>
+      <output name="output_data_lrlat" ftype="txt" value="output_data_lrlat.txt"/>
+      <output name="output_data_lrlon" ftype="txt" value="output_data_lrlon.txt"/>
+      <output name="output_data_lllat" ftype="txt" value="output_data_lllat.txt"/>
+      <output name="output_data_lllon" ftype="txt" value="output_data_lllon.txt"/>
+      <output name="output_data_town" ftype="txt" value="output_data_town.txt"/>
+      <output name="output_data_country" ftype="txt" value="output_data_country.txt"/>
+      <output name="output_data_rgb_r" ftype="txt" value="output_data_rgb_r.txt"/>
+      <output name="output_data_rgb_g" ftype="txt" value="output_data_rgb_g.txt"/>
+      <output name="output_data_rgb_b" ftype="txt" value="output_data_rgb_b.txt"/>
+      <output name="output_data_projectionref" ftype="txt" value="output_data_projectionref.txt"/>
+      <output name="output_data_keyword" ftype="txt" value="output_data_keyword.txt"/>
+      <output name="output_data_gcp_count" ftype="txt" value="output_data_gcp_count.txt"/>
+      <output name="output_data_gcp_proj" ftype="txt" value="output_data_gcp_proj.txt"/>
+      <output name="output_data_gcp_ids" ftype="txt" value="output_data_gcp_ids.txt"/>
+      <output name="output_data_gcp_info" ftype="txt" value="output_data_gcp_info.txt"/>
+      <output name="output_data_gcp_imcoord" ftype="txt" value="output_data_gcp_imcoord.txt"/>
+      <output name="output_data_gcp_geocoord" ftype="txt" value="output_data_gcp_geocoord.txt"/>
     </test>
   </tests>
   <help><![CDATA[Display information about the input image like: image size, origin, spacing, metadata, projections...]]></help>

@@ -46,12 +46,12 @@ transmissionMode_MERGED $OutputSection_MERGED.transmissionMode_MERGED]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_MERGED" format="csv" hidden="false"/>
+    <data name="output_data_MERGED" format="csv" label="output_data_MERGED" hidden="false"/>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_MERGED" ftype="txt" value="output_data_MERGED.txt"/>
     </test>
   </tests>
   <help><![CDATA[Merge tables.]]></help>

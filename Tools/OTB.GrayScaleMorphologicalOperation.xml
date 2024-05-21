@@ -9,15 +9,15 @@ out $out
 channel $channel
 ram $ram
 structype $structype
-structype.ball.xradius $structype.ball.xradius
-structype.ball.yradius $structype.ball.yradius
+structype_ball_xradius $structype_ball_xradius
+structype_ball_yradius $structype_ball_yradius
 filter $filter
 prefer $prefer
 response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The input image to be filtered." help="The input image to be filtered. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The input image to be filtered." help="The input image to be filtered. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image containing the filtered output image." help="Output image containing the filtered output image.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -32,8 +32,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option selected="true" value="ball">ball</option>
       <option value="cross">cross</option>
     </param>
-    <param name="structype.ball.xradius" type="integer" value="5" optional="false" label="The Structuring Element X Radius" help="The Structuring Element X Radius"/>
-    <param name="structype.ball.yradius" type="integer" value="5" optional="false" label="The Structuring Element Y Radius" help="The Structuring Element Y Radius"/>
+    <param name="structype_ball_xradius" type="integer" value="5" optional="false" label="The Structuring Element X Radius" help="The Structuring Element X Radius"/>
+    <param name="structype_ball_yradius" type="integer" value="5" optional="false" label="The Structuring Element Y Radius" help="The Structuring Element Y Radius"/>
     <param name="filter" type="select" optional="false" label="Choice of the morphological operation" help="Choice of the morphological operation">
       <option value="closing">closing</option>
       <option selected="true" value="dilate">dilate</option>
@@ -62,7 +62,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -72,8 +72,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[This application performs grayscale morphological operations on a mono band image]]></help>

@@ -33,17 +33,17 @@ transmissionMode_G $OutputSection_G.transmissionMode_G
 outputType_H $OutputSection_H.outputType_H
 transmissionMode_H $OutputSection_H.transmissionMode_H]]></command>
   <inputs>
-    <param name="A" type="data" optional="false" label="Slope grid (rad)" help="Slope grid (rad) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Bmin" type="data" optional="false" label="Min thickness grid (m) " help="A grid representing minimum cell layer thicknesses to potential shear plane (in meters) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Bmax" type="data" optional="false" label="Max thickness grid (m) " help="A grid representing maximum cell layer thicknesses to potential shear plane (in meters) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Cmin" type="data" optional="false" label="Min saturation grid (-) " help="A grid representing minimum cell relative water saturation of layer (dimensionless) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Cmax" type="data" optional="false" label="Max saturation grid (-) " help="A grid representing maximum cell relative water saturation of layer (dimensionless) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Dmin" type="data" optional="false" label="Min friction grid (degree) " help="A grid representing minimum cell frictional shear strength of layer (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Dmax" type="data" optional="false" label="Max friction grid (degree) " help="A grid representing maximum cell frictional shear strength of layer (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Emin" type="data" optional="false" label="Min density grid (g/cm3)" help="A grid representing minimum cell bulk density of layer (in grams per cubiccentimeters) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Emax" type="data" optional="false" label="Max density grid (g/cm3)" help="A grid representing maximum cell bulk density of layer (in grams per cubiccentimeters) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Fmin" type="data" optional="false" label="Min cohesion grid (MPa) " help="A grid representing minimum cell layer cohesion (in Megapascals) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
-    <param name="Fmax" type="data" optional="false" label="Max cohesion grid (MPa) " help="A grid representing maximum cell layer cohesion (in Megapascals) The following data types are allowed in the txt file:  x-ogc-envi, png, tiff, x-ogc-aaigrid" format="txt"/>
+    <param name="A" type="data" optional="false" label="Slope grid (rad)" help="Slope grid (rad) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Bmin" type="data" optional="false" label="Min thickness grid (m) " help="A grid representing minimum cell layer thicknesses to potential shear plane (in meters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Bmax" type="data" optional="false" label="Max thickness grid (m) " help="A grid representing maximum cell layer thicknesses to potential shear plane (in meters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Cmin" type="data" optional="false" label="Min saturation grid (-) " help="A grid representing minimum cell relative water saturation of layer (dimensionless) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Cmax" type="data" optional="false" label="Max saturation grid (-) " help="A grid representing maximum cell relative water saturation of layer (dimensionless) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Dmin" type="data" optional="false" label="Min friction grid (degree) " help="A grid representing minimum cell frictional shear strength of layer (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Dmax" type="data" optional="false" label="Max friction grid (degree) " help="A grid representing maximum cell frictional shear strength of layer (in degrees) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Emin" type="data" optional="false" label="Min density grid (g/cm3)" help="A grid representing minimum cell bulk density of layer (in grams per cubiccentimeters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Emax" type="data" optional="false" label="Max density grid (g/cm3)" help="A grid representing maximum cell bulk density of layer (in grams per cubiccentimeters) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Fmin" type="data" optional="false" label="Min cohesion grid (MPa) " help="A grid representing minimum cell layer cohesion (in Megapascals) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
+    <param name="Fmax" type="data" optional="false" label="Max cohesion grid (MPa) " help="A grid representing maximum cell layer cohesion (in Megapascals) The following data types are allowed in the txt file:  x-ogc-envi, x-ogc-aaigrid, tiff, png" format="txt"/>
     <param name="fBmin" type="float" value="1" optional="true" label="Min global thickness (m)" help="Constant value if no raster set"/>
     <param name="fBmax" type="float" value="1" optional="true" label="Max global thickness (m)" help="Constant value if no raster set"/>
     <param name="fCmin" type="float" value="0" optional="true" label="Min global saturation (-)" help="Constant value if no raster set"/>
@@ -90,7 +90,7 @@ transmissionMode_H $OutputSection_H.transmissionMode_H]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_G" format="tiff" hidden="false">
+    <data name="output_data_G" format="tiff" label="output_data_G" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_G" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -98,7 +98,7 @@ transmissionMode_H $OutputSection_H.transmissionMode_H]]></command>
         <when input="outputType_G" format="png" value="image/png"/>
       </change_format>
     </data>
-    <data name="output_data_H" format="tiff" hidden="false">
+    <data name="output_data_H" format="tiff" label="output_data_H" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_H" format="x-ogc-envi" value="application/x-ogc-envi"/>
@@ -109,8 +109,9 @@ transmissionMode_H $OutputSection_H.transmissionMode_H]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_G" ftype="txt" value="output_data_G.txt"/>
+      <output name="output_data_H" ftype="txt" value="output_data_H.txt"/>
     </test>
   </tests>
   <help><![CDATA[This tool computes a slope stability (expressed as a factor-of-safety) raster according to the traditional infinite slope model theory (see cf Selby, 1993) The resulting raster represents the ratio of resisting forces/driving forces (fs) on a potential shear plane with fs lesser 1 unstable, fs greater 1 stable. Except for a slope raster (in radians), all input variables can be specified either globally or distributed (through grids). The tool creates a continuous fs raster (values above 10 are truncated), and a binary stability grid with nodata = stable, 1 = unstable (optional).]]></help>

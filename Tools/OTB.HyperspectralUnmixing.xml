@@ -13,7 +13,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="in" type="data" optional="false" label="The hyperspectral data cube input" help="The hyperspectral data cube input The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="in" type="data" optional="false" label="The hyperspectral data cube input" help="The hyperspectral data cube input The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="out" type="select" optional="false" label="The output abundance map. The abundance fraction are stored in a multispectral image where band N corresponds to the fraction of endmembers N in each pixel." help="The output abundance map. The abundance fraction are stored in a multispectral image where band N corresponds to the fraction of endmembers N in each pixel.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>
@@ -22,7 +22,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
       <option value="uint16">uint16</option>
       <option value="uint8">uint8</option>
     </param>
-    <param name="ie" type="data" optional="false" label="The endmembers (estimated pure pixels) to use for unmixing. Must be stored as a multispectral image, where each pixel is interpreted as an endmember." help="The endmembers (estimated pure pixels) to use for unmixing. Must be stored as a multispectral image, where each pixel is interpreted as an endmember. The following data types are allowed in the txt file:  png, jpeg, tiff" format="txt"/>
+    <param name="ie" type="data" optional="false" label="The endmembers (estimated pure pixels) to use for unmixing. Must be stored as a multispectral image, where each pixel is interpreted as an endmember." help="The endmembers (estimated pure pixels) to use for unmixing. Must be stored as a multispectral image, where each pixel is interpreted as an endmember. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
     <param name="ua" type="select" optional="true" label="The algorithm to use for unmixing" help="The algorithm to use for unmixing">
       <option value="isra">isra</option>
       <option value="mdmdnmf">mdmdnmf</option>
@@ -51,7 +51,7 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_out" format="tiff" hidden="false">
+    <data name="output_data_out" format="tiff" label="output_data_out" hidden="false">
       <change_format>
         <when input="response" format="txt" value="document"/>
         <when input="outputType_out" format="jpeg" value="image/jpeg"/>
@@ -61,8 +61,8 @@ transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   </outputs>
   <tests>
     <test>
-      <output name="output_data" ftype="txt"/>
       <param name="response" value="document"/>
+      <output name="output_data_out" ftype="txt" value="output_data_out.txt"/>
     </test>
   </tests>
   <help><![CDATA[The application applies a linear unmixing algorithmto an hyperspectral data cube. This method supposes that the mixture betweenaterials in the scene is macroscopic and simulates a linear mixing model ofspectra.The Linear Mixing Model (LMM) acknowledges that reflectancespectrum associated with each pixel is a linear combination of purematerials in the recovery area, commonly known as endmembers. Endmembers canbe estimated using the VertexComponentAnalysis application.The application allows estimating the abundance maps with several algorithms :  * Unconstrained Least Square (ucls)  * Image Space Reconstruction Algorithm (isra)  * Non-negative constrained  * Least Square (ncls)  * Minimum Dispersion Constrained Non Negative Matrix Factorization (MDMDNMF).]]></help>
