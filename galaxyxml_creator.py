@@ -45,13 +45,16 @@ class Galaxyxmltool:
         """
         if param_schema is not None:
             default_value = param_schema.get("default")
-        return self.gxtp.TextParam(
+        param = self.gxtp.TextParam(
             name=param_name,
             label=title,
             help=description,
             value=default_value,
             optional=is_nullable,
         )
+        if not is_nullable:
+            param.append(self.gxtp.ValidatorParam(name="validator", type="empty_field"))
+        return param
 
     def create_select_param(
         self,
@@ -105,6 +108,47 @@ class Galaxyxmltool:
             optional=is_nullable,
         )
 
+    def create_number_param(
+        self,
+        param_name: str,
+        is_nullable: bool,
+        title: Union[str, None],
+        description: Union[str, None],
+        default_value: Union[float, int, None],
+        param_type: str,
+    ):
+        param_class = getattr(self.gxtp, param_type)
+        param = self.gxtp.Conditional(
+            name="cond",
+            label=f"Do you want to add optional parameter {param_name}",
+        )
+        options = {"yes": "yes", "no": "no"}
+        default_select = "yes" if default_value is not None else "no"
+        param.append(
+            self.gxtp.SelectParam(
+                name=f"select{param_name}",
+                label=f"Do you want to add optional parameter {param_name}",
+                help=description,
+                options=options,
+                default=default_select,
+            )
+        )
+        when_a = self.gxtp.When(value="yes")
+        when_a.append(
+            param_class(
+                name=param_name,
+                label=title,
+                help=description,
+                value=default_value,
+                optional=is_nullable,
+            )
+        )
+        param.append(when_a)
+        when_b = self.gxtp.When(value="no")
+        param.append(when_b)
+
+        return param
+
     def create_integer_param(
         self,
         param_name: str,
@@ -124,39 +168,17 @@ class Galaxyxmltool:
         Returns:
             IntegerParam: The created integer parameter.
         """
-
-        default_value = None
-        if param_schema is not None:
-            default_value = param_schema.get("default")
+        param_type = "IntegerParam"
+        default_value = param_schema.get("default") if param_schema else None
         if is_nullable:
-            param = self.gxtp.Conditional(
-                name="cond",
-                label=f"Do you want to add optional parameter {param_name}",
+            return self.create_number_param(
+                param_name=param_name,
+                is_nullable=is_nullable,
+                title=title,
+                description=description,
+                default_value=default_value,
+                param_type=param_type,
             )
-            options = {"yes": "yes", "no": "no"}
-            param.append(
-                self.gxtp.SelectParam(
-                    name=param_name,
-                    label=f"Do you want to add optional parameter {param_name}",
-                    help=description,
-                    options=options,
-                )
-            )
-            when_a = self.gxtp.When(value="yes")
-            when_a.append(
-                self.gxtp.IntegerParam(
-                    name=param_name,
-                    label=title,
-                    help=description,
-                    value=default_value,
-                    optional=is_nullable,
-                )
-            )
-            param.append(when_a)
-            when_b = self.gxtp.When(value="no")
-            param.append(when_b)
-
-            return param
 
         return self.gxtp.IntegerParam(
             name=param_name, label=title, help=description, value=default_value
@@ -181,15 +203,20 @@ class Galaxyxmltool:
         Returns:
             FloatParam: The created float parameter.
         """
-        default_value = None
-        if param_schema is not None:
-            default_value = param_schema.get("default")
+        param_type = "FloatParam"
+        default_value = param_schema.get("default") if param_schema else None
+        if is_nullable:
+            return self.create_number_param(
+                param_name=param_name,
+                is_nullable=is_nullable,
+                title=title,
+                description=description,
+                default_value=default_value,
+                param_type=param_type,
+            )
+
         return self.gxtp.FloatParam(
-            name=param_name,
-            label=title,
-            help=description,
-            value=default_value,
-            optional=is_nullable,
+            name=param_name, label=title, help=description, value=default_value
         )
 
     def create_data_param(
@@ -744,7 +771,6 @@ class Galaxyxmltool:
             str: The formatted command.
         """
         self.executable_dict["name"] = title
-        pprint(self.executable_dict)
         return self.executable + self.dict_to_string(self.executable_dict)
 
     # possible output options need to be discussed, which is better
