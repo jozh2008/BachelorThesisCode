@@ -20,7 +20,6 @@ class Galaxyxmltool:
         self.output_type = "outputType"
         self.output_name_list = []
         self.output_data = "output_data"
-        self.optional_numbers = []
 
     def get_tool(self):
         return self.gxt
@@ -129,15 +128,38 @@ class Galaxyxmltool:
         default_value = None
         if param_schema is not None:
             default_value = param_schema.get("default")
+        if is_nullable:
+            param = self.gxtp.Conditional(
+                name="cond",
+                label=f"Do you want to add optional parameter {param_name}",
+            )
+            options = {"yes": "yes", "no": "no"}
+            param.append(
+                self.gxtp.SelectParam(
+                    name=param_name,
+                    label=f"Do you want to add optional parameter {param_name}",
+                    help=description,
+                    options=options,
+                )
+            )
+            when_a = self.gxtp.When(value="yes")
+            when_a.append(
+                self.gxtp.IntegerParam(
+                    name=param_name,
+                    label=title,
+                    help=description,
+                    value=default_value,
+                    optional=is_nullable,
+                )
+            )
+            param.append(when_a)
+            when_b = self.gxtp.When(value="no")
+            param.append(when_b)
 
-        if is_nullable and default_value is None:
-            self.optional_numbers.append(param_name)
+            return param
+
         return self.gxtp.IntegerParam(
-            name=param_name,
-            label=title,
-            help=description,
-            value=default_value,
-            optional=is_nullable,
+            name=param_name, label=title, help=description, value=default_value
         )
 
     def create_float_param(
@@ -722,7 +744,6 @@ class Galaxyxmltool:
             str: The formatted command.
         """
         self.executable_dict["name"] = title
-        self.executable_dict["optional"] = self.optional_numbers
         pprint(self.executable_dict)
         return self.executable + self.dict_to_string(self.executable_dict)
 

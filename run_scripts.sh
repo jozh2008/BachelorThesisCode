@@ -3,7 +3,7 @@
 # Check if file path is provided as a command-line argument
 if [ $# -lt 1 ]; then
     echo "Error: File path not provided."
-    echo "Usage: $0 <file_path>"
+    echo "Usage: $0 <process ids file>"
     exit 1
 fi
 

@@ -120,7 +120,7 @@ def main(base_url, process):
 if __name__ == "__main__":
     # Check if the process is provided as a command-line argument
     if len(sys.argv) < 3 or sys.argv[1] != "--process":
-        print("Error: API key not provided. Use python3 main.py --process {process}")
+        print("Error: Process not provided. Use python3 main.py --process {process}")
         sys.exit(1)
     process = sys.argv[2]
     base_url = "https://ospd.geolabs.fr:8300/ogc-api/"
