@@ -46,16 +46,21 @@ class Initialize:
         name_id = self.rename_tool(tool_name=process_data["id"])
         name = process_data["id"]
         # Create a Galaxy XML tool object
-        gxt = Galaxyxmltool(name=name, id=name_id, version=process_data["version"], description=process_data["title"])
+        gxt = Galaxyxmltool(
+            name=name,
+            id=name_id,
+            version=process_data["version"],
+            description=process_data["title"],
+        )
 
         # Generate XML content
         tool = gxt.get_tool()
         tool.requirements = gxt.define_requirements()
-        tool.help = (process_data["description"])
+        tool.help = process_data["description"]
         tool.inputs = gxt.create_params(
             input_schema=process_data["inputs"],
             output_schema=process_data["outputs"],
-            transmission_schema=process_data["outputTransmission"]
+            transmission_schema=process_data["outputTransmission"],
         )
 
         # two options for tool.outpus need to be discussed
@@ -63,7 +68,9 @@ class Initialize:
         # tool.outputs = gxt.define_output_collections()
 
         tool.executable = gxt.define_command(process_data["id"])
-        tool.tests = gxt.define_tests(api_dict=api_data["paths"], process=process_data["id"])
+        tool.tests = gxt.define_tests(
+            api_dict=api_data["paths"], process=process_data["id"]
+        )
         tool.citations = gxt.create_citations()
 
         file_path = f"Tools/{name}.xml"
@@ -81,7 +88,7 @@ class Initialize:
             str: The cleaned tool name.
         """
         # Replace non-alphanumeric characters with underscores
-        cleaned_name = re.sub(r'[^a-zA-Z0-9_-]', '_', tool_name)
+        cleaned_name = re.sub(r"[^a-zA-Z0-9_-]", "_", tool_name)
         # Convert to lowercase
         cleaned_name = cleaned_name.lower()
         return cleaned_name
@@ -112,7 +119,7 @@ def main(base_url, process):
 
 if __name__ == "__main__":
     # Check if the process is provided as a command-line argument
-    if len(sys.argv) < 3 or sys.argv[1] != '--process':
+    if len(sys.argv) < 3 or sys.argv[1] != "--process":
         print("Error: API key not provided. Use python3 main.py --process {process}")
         sys.exit(1)
     process = sys.argv[2]

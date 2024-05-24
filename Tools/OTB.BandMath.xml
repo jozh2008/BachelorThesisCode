@@ -4,7 +4,7 @@
     <requirement version="3.9" type="package">python</requirement>
   </requirements>
   <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayil True  output_data_out $output_data_out  name OTB.BandMath il $il
+  <command><![CDATA[$__tool_directory__/Code/openapi.py isArrayil True  output_data_out $output_data_out  name OTB.BandMath  optional [] il $il
 out $out
 ram $ram
 exp '$exp'
@@ -13,7 +13,7 @@ response $response
 outputType_out $OutputSection_out.outputType_out
 transmissionMode_out $OutputSection_out.transmissionMode_out]]></command>
   <inputs>
-    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression. The following data types are allowed in the txt file:  jpeg, png, tiff" format="txt"/>
+    <param name="il" type="data" optional="false" label="Image-list of operands to the mathematical expression." help="Image-list of operands to the mathematical expression. The following data types are allowed in the txt file:  png, tiff, jpeg" format="txt"/>
     <param name="out" type="select" optional="false" label="Output image which is the result of the mathematical expressions on input image-list operands." help="Output image which is the result of the mathematical expressions on input image-list operands.">
       <option value="double">double</option>
       <option selected="true" value="float">float</option>

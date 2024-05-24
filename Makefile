@@ -1,16 +1,23 @@
 FLAKE8 := flake8
 FLAKE8_CONFIG := .github/linters/.flake8  # Change this to the path of your .flake8 configuration file
+BLACK :=black
 
-all: compile test checkstyle
+# Specify source files or directories
+SRC := *.py
+
+all: compile test format checkstyle 
 
 compile:
-	python3 -m py_compile *.py
+	python3 -m py_compile $(SRC)
+
+format:
+	$(BLACK) $(SRC)
 
 test:
-	python3 -m doctest *.py
+	python3 -m doctest $(SRC)
 
 checkstyle:
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) *.py
+	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
 
 clean:
 	rm -rf __pycache__

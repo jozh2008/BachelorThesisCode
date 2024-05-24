@@ -368,30 +368,31 @@ class ApiJson:
         The 'optional' argument is identified by its presence in the input list. Once found, the function checks if the
         next element in the list is a number, indicating the presence of the value for the optional argument. If not, 
         it removes the optional argument from the list.
-
         """
-        for i in range(len(args)):
-            if args[i] == "optional":
-                string = self.add_quotes_around_unquoted_words(args[i+1])
-
-                try:
-                    converted_list = ast.literal_eval(string)
-                    
-                except (ValueError, SyntaxError) as e:
-                    print(f"Error parsing string: {e}")
-                break
         
-        args2 = copy.deepcopy(args)
-        for optional in converted_list:
-            ind = args.index(optional)
-            value = args[ind+1]
-            if not self.is_number(value):
-                args2.pop(i)
+        # for i in range(len(args)):
+        #     if args[i] == "optional":
+        #         string = self.add_quotes_around_unquoted_words(args[i+1])
 
-        if len(args2) % 2 != 0:
+        #         try:
+        #             converted_list = ast.literal_eval(string)
+                    
+        #         except (ValueError, SyntaxError) as e:
+        #             print(f"Error parsing string: {e}")
+        #         break
+        
+        # args2 = copy.deepcopy(args)
+        # for optional in converted_list:
+        #     ind = args.index(optional)
+        #     value = args[ind+1]
+        #     if not self.is_number(value):
+        #         args2.pop(i)
+        
+
+        if len(args) % 2 != 0:
             raise ValueError("The number of arguments must be even.")
 
-        it = iter(args2)
+        it = iter(args)
         res_dict = dict(zip(it, it))
         return res_dict
     
