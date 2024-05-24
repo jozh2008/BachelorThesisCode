@@ -5,7 +5,36 @@ BLACK :=black
 # Specify source files or directories
 SRC := *.py
 
-all: compile test format checkstyle 
+VENV_DIR := .venv
+REQUIREMENTS := requirements.txt
+
+DEV_REQUIREMENTS := dev-requirements.txt
+
+all: install compile test format checkstyle 
+
+$(VENV_DIR)/bin/activate: $(REQUIREMENTS) $(DEV_REQUIREMENTS)
+	@if [ ! -d "$(VENV_DIR)" ]; then \
+		echo "Creating virtual environment..."; \
+		python3 -m venv $(VENV_DIR); \
+	fi
+	@if [ $(REQUIREMENTS) -nt $(VENV_DIR)/requirements.installed ]; then \
+		echo "Installing requirements..."; \
+		. $(VENV_DIR)/bin/activate && pip install -r $(REQUIREMENTS); \
+		touch $(VENV_DIR)/requirements.installed; \
+	else \
+		echo "Requirements have not changed, skipping installation."; \
+	fi
+	@if [ $(DEV_REQUIREMENTS) -nt $(VENV_DIR)/dev-requirements.installed ]; then \
+		echo "Installing dev-requirements..."; \
+		. $(VENV_DIR)/bin/activate && pip install -r $(DEV_REQUIREMENTS); \
+		touch $(VENV_DIR)/dev-requirements.installed; \
+	else \
+		echo "Dev-requirements have not changed, skipping installation."; \
+	fi
+	@echo "Dependencies are set up."
+
+install: $(VENV_DIR)/bin/activate
+
 
 compile:
 	python3 -m py_compile $(SRC)
