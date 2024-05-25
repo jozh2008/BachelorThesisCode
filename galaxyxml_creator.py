@@ -43,8 +43,7 @@ class Galaxyxmltool:
         Returns:
             TextParam: The created text parameter.
         """
-        if param_schema is not None:
-            default_value = param_schema.get("default")
+        default_value = param_schema.get("default") if param_schema else None
         param = self.gxtp.TextParam(
             name=param_name,
             label=title,
@@ -86,7 +85,7 @@ class Galaxyxmltool:
             options = {"true": "true", "false": "false"}
         else:
             # If enum values are not provided, handle this case gracefully
-            pprint(
+            print(
                 "Warning: Enum values are not provided for select parameter. Implementation needed."
             )
             options = {}  # Placeholder for options
@@ -99,6 +98,7 @@ class Galaxyxmltool:
 
         # Normalize default values, ensuring they are keys in the options dictionary
         default_value = self.normalize_name(name=default_value)
+        pprint(options)
         return self.gxtp.SelectParam(
             name=param_name,
             default=default_value,
@@ -362,6 +362,9 @@ class Galaxyxmltool:
         for param_name, param_dict in input_schema.items():
             param_name = self.replace_dot(param_name)
             param_schema = param_dict.get("schema")
+            pprint(param_name)
+            pprint(param_dict)
+            pprint(param_schema)
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)

@@ -161,8 +161,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+
+#Tools xml
 Tools/*.xml
 
-
+#Directory Addtional Materials
 Additional Materials/
-Tools/OTB.BandMath.xml
+
+# vscode
+.vscode
