@@ -29,7 +29,9 @@ class ApiJson:
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
 
-        input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response=response)
+        input_json = self.create_openapi_input_file(
+            inputs=inputs, outputs=outputs, response=response
+        )
         pprint(input_json)
         apirequest = APIRequest(
             execute=self.get_process_execution(attributes=attributes),
@@ -38,7 +40,7 @@ class ApiJson:
             output_format_dictionary=self.output_format_dictionary,
             working_directory=self.working_directory,
             transmission_mode=self.transmission_mode,
-            prefer=self.prefer
+            prefer=self.prefer,
         )
         apirequest.post_request()
 
@@ -117,19 +119,19 @@ class ApiJson:
         input_values_with_files = self.extract_data_files(all_input_values)
 
         # Process input files
-        processed_input_files = self.process_files(input_values_with_files, all_input_values)
+        processed_input_files = self.process_files(
+            input_values_with_files, all_input_values
+        )
 
         # Separate input values without data files
         input_values_without_files = self.extract_non_data_inputs(
-            data_inputs=input_values_with_files,
-            all_input_values=all_input_values
+            data_inputs=input_values_with_files, all_input_values=all_input_values
         )
         modified_non_data_inputs = self.modify_attributes(input_values_without_files)
 
         # Create input JSON
         input_json = self.create_input_json(
-            non_data_inputs=modified_non_data_inputs,
-            input_files=processed_input_files
+            non_data_inputs=modified_non_data_inputs, input_files=processed_input_files
         )
 
         return input_json
@@ -153,7 +155,7 @@ class ApiJson:
         for key, value in input_files.items():
             if "output_data" not in key:
                 # To do: check if correct for key
-                key = key.replace("_", ".") # change back because of Cheetah
+                key = key.replace("_", ".")  # change back because of Cheetah
                 file_contents = self.open_and_read_file(value)
                 exclueded = self.isArray + key
                 self.isexcluededList.append(exclueded)
@@ -161,22 +163,30 @@ class ApiJson:
                 # Determine if the input is an array based on the arguments from the command line,
                 # For every input_file there is an argument f"{isArray}nameofinput"
                 if input_schema.get(exclueded) == "False":
-                    input_file_json_list.append(self.generate_input_file_json(input_name=key, input_list=file_contents))
+                    input_file_json_list.append(
+                        self.generate_input_file_json(
+                            input_name=key, input_list=file_contents
+                        )
+                    )
                 else:
-                    input_file_json_list.append(self.generate_input_file_list_json(input_name=key, input_list=file_contents))
+                    input_file_json_list.append(
+                        self.generate_input_file_list_json(
+                            input_name=key, input_list=file_contents
+                        )
+                    )
             else:
                 helper_key = self.get_output_data_key(key)
                 key_2 = helper_key.replace("_", ".")
-                key = f"output_data_{key_2}" # check for improvement because of Cheetah
+                key = f"output_data_{key_2}"  # check for improvement because of Cheetah
                 self.isexcluededList.append(key)
                 self.working_directory[key] = value
 
         return input_file_json_list
-    
+
     # to do: check for improvements
     def get_output_data_key(self, key):
         index = re.match("output_data", key).end()
-        return key[index + 1:]
+        return key[index + 1 :]
 
     def extract_non_data_inputs(self, data_inputs, all_input_values):
         """
@@ -247,8 +257,12 @@ class ApiJson:
         Returns:
             dict: A dictionary containing only the key-value pairs representing data files.
         """
-        included_prefixes = {".dat", ".txt"}
-        return {key: values for key, values in dictionary.items() if any(prefix in values for prefix in included_prefixes)}
+        included_suffixes = {".dat", ".txt"}
+        return {
+            key: values
+            for key, values in dictionary.items()
+            if any(values.endswith(suffix) for suffix in included_suffixes)
+        }
 
     def extract_input_values(self, dictionary):
         """
@@ -261,10 +275,16 @@ class ApiJson:
             dict: A new dictionary containing only input values.
         """
 
-        excluded_prefixes = {"response", "outputType", "transmissionMode", "name", "prefer"}
+        excluded_prefixes = {
+            "response",
+            "outputType",
+            "transmissionMode",
+            "name",
+            "prefer",
+        }
         self.prefer = dictionary["prefer"]
         return {
-            key: value # check if correct
+            key: value  # check if correct
             for key, value in dictionary.items()
             if not any(key.startswith(prefix) for prefix in excluded_prefixes)
         }
@@ -284,7 +304,7 @@ class ApiJson:
         for key, value in dictionary.items():
             if keyword in key:
                 index = self.find_index_of_character(key, "_")
-                modified_key = key[index + 1:].replace("_", ".") # check if correct
+                modified_key = key[index + 1 :].replace("_", ".")  # check if correct
                 extracted_values[modified_key] = value
         return extracted_values
 
@@ -335,7 +355,7 @@ class ApiJson:
 
     def open_and_read_file(self, file_path):
         try:
-            with open(file_path, 'r') as file:
+            with open(file_path, "r") as file:
                 file_content = file.read().splitlines()
                 return file_content
         except FileNotFoundError:
@@ -361,33 +381,32 @@ class ApiJson:
         This function takes a list of arguments and converts them into a dictionary where every two consecutive elements
         in the input list represent a key-value pair in the resulting dictionary.
 
-        If an argument in the list is marked as 'optional', it's expected that it's followed by its corresponding value. 
+        If an argument in the list is marked as 'optional', it's expected that it's followed by its corresponding value.
         However, if no value follows an 'optional' argument, the function will remove that argument from the list to avoid
         an odd number of elements, which would cause a ValueError.
 
         The 'optional' argument is identified by its presence in the input list. Once found, the function checks if the
-        next element in the list is a number, indicating the presence of the value for the optional argument. If not, 
+        next element in the list is a number, indicating the presence of the value for the optional argument. If not,
         it removes the optional argument from the list.
         """
-        
+
         # for i in range(len(args)):
         #     if args[i] == "optional":
         #         string = self.add_quotes_around_unquoted_words(args[i+1])
 
         #         try:
         #             converted_list = ast.literal_eval(string)
-                    
+
         #         except (ValueError, SyntaxError) as e:
         #             print(f"Error parsing string: {e}")
         #         break
-        
+
         # args2 = copy.deepcopy(args)
         # for optional in converted_list:
         #     ind = args.index(optional)
         #     value = args[ind+1]
         #     if not self.is_number(value):
         #         args2.pop(i)
-        
 
         if len(args) % 2 != 0:
             raise ValueError("The number of arguments must be even.")
@@ -395,7 +414,6 @@ class ApiJson:
         it = iter(args)
         res_dict = dict(zip(it, it))
         return res_dict
-    
 
     def is_number(self, s):
         try:
@@ -403,7 +421,7 @@ class ApiJson:
             return True
         except ValueError:
             return False
-    
+
     def add_quotes_around_unquoted_words(self, s):
         # Regular expression to find unquoted words
         return re.sub(r"(\b[a-zA-Z_]\w*\b)", r'"\1"', s)
@@ -412,16 +430,10 @@ class ApiJson:
         """
         Create the actual output format for outputs
         """
-        output_format = {
-            outputName: {
-                "transmissionMode": transmissionMode
-            }
-        }
+        output_format = {outputName: {"transmissionMode": transmissionMode}}
 
         if mediaType is not None:
-            output_format[outputName]["format"] = {
-                "mediaType": mediaType
-            }
+            output_format[outputName]["format"] = {"mediaType": mediaType}
 
         return output_format
 
@@ -504,9 +516,7 @@ class ApiJson:
         return merged_dict
 
     def response_json_format(self, response):
-        output_format = {
-            "response": response
-        }
+        output_format = {"response": response}
         return output_format
 
 
