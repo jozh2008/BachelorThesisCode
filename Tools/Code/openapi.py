@@ -3,10 +3,8 @@
 # float ram 128 exp 'im1b3,im1b2,im1b1' response raw outputType1_out image/png transmissionMode_1 reference
 import sys
 import re
-import ast
-import copy
 from pprint import pprint
-from api_request import *
+from api_request import APIRequest
 
 
 class ApiJson:

@@ -1,6 +1,6 @@
 import requests
 import re
-from galaxyxml_creator import *
+from galaxyxml_creator import Galaxyxmltool
 from pprint import pprint
 import sys
 
