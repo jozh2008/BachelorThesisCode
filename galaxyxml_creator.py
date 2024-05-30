@@ -98,7 +98,7 @@ class Galaxyxmltool:
 
         # Normalize default values, ensuring they are keys in the options dictionary
         default_value = self.normalize_name(name=default_value)
-        pprint(options)
+        # pprint(options)
         return self.gxtp.SelectParam(
             name=param_name,
             default=default_value,
@@ -362,14 +362,20 @@ class Galaxyxmltool:
         for param_name, param_dict in input_schema.items():
             param_name = self.replace_dot(param_name)
             param_schema = param_dict.get("schema")
-            pprint(param_name)
-            pprint(param_dict)
-            pprint(param_schema)
+            # pprint(param_name)
+            # pprint(param_dict)
+            # pprint(param_schema)
             param_extended_schema = param_dict.get("extended-schema")
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
-            description = param_dict.get("description")
             title = param_dict.get("title")
+            description = param_dict.get("description")
+            description = (
+                param_dict.get("description")
+                if title == description
+                else f"{title} {description}"
+            )
+            title = param_name
 
             if param_type == "string":
                 if param_schema.get("enum"):
@@ -574,6 +580,12 @@ class Galaxyxmltool:
             output_param_name = f"{self.output_type}_{param_name}"
             title = param_schema.get("title")
             description = param_schema.get("description")
+            description = (
+                param_dict.get("description")
+                if title == description
+                else f"{title} {description}"
+            )
+            title = param_name
             enum_values = []
 
             param, enum_values = self.process_output_param(
@@ -777,16 +789,6 @@ class Galaxyxmltool:
         return self.executable + self.dict_to_string(self.executable_dict)
 
     # possible output options need to be discussed, which is better
-    def define_output_collections(self):
-        outputs = self.gxtp.Outputs()
-        name = self.output_data
-        collection = self.gxtp.OutputCollection(name=name, type="list")
-        discover = self.gxtp.DiscoverDatasets(pattern="__name_and_ext__")
-        collection.append(discover)
-        outputs.append(collection)
-        return outputs
-
-    # possible output options need to be discussed, which is better
     def define_output_options(self):
         """
         Define output options for each item in self.output_type_dictionray.
@@ -802,16 +804,17 @@ class Galaxyxmltool:
         outputs = self.gxtp.Outputs()
         for key, values in self.output_type_dictionary.items():
             index = self.find_index(string=key, pattern=f"{self.output_type}_")
-            name = f"{self.output_data}_{key[index:]}"
+            label_name = key[index:]
+            name = f"{self.output_data}_{label_name}"
             self.executable_dict[name] = f"${name}"
 
             if not values:
-                param = self.gxtp.OutputData(name=name, format="txt", label=name)
+                param = self.gxtp.OutputData(name=name, format="txt", label=label_name)
                 outputs.append(param)
                 continue
 
             form = values[0].split("/")[-1]
-            param = self.gxtp.OutputData(name=name, format=form, label=name)
+            param = self.gxtp.OutputData(name=name, format=form, label=label_name)
 
             change = self.gxtp.ChangeFormat()
             change_response = self.gxtp.ChangeFormatWhen(

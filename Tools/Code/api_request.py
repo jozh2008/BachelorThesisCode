@@ -154,19 +154,3 @@ class APIRequest:
             "results": f"{self.base_url}{self.jobs}{self.job_id}{self.results}",
         }
         return url_dictionary[keyword]
-
-    # an option for the output
-    def post_request2(self):
-        response = requests.post(self.url, headers=self.headers, json=self.payload)
-        if response.ok:
-            response_data = response.json()
-            for key, value in self.transmission_mode.items():
-                transmission_item = response_data.get(key)
-                output_file_path = key + ".txt"
-                if transmission_item is not None and value == "reference":
-
-                    pprint(transmission_item["href"])
-                    with open(output_file_path, "w") as f:
-                        f.write((transmission_item["href"]) + "\n")
-        else:
-            print("Error: ", response.status_code)
