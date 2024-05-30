@@ -85,7 +85,7 @@ class Galaxyxmltool:
             options = {"true": "true", "false": "false"}
         else:
             # If enum values are not provided, handle this case gracefully
-            pprint(
+            print(
                 "Warning: Enum values are not provided for select parameter. Implementation needed."
             )
             options = {}  # Placeholder for options
@@ -662,6 +662,7 @@ class Galaxyxmltool:
         self, param_name: str, param_extended_schema: Dict, title: str, description: str
     ):
         enum_values = []
+        pprint(1)
         self.extract_enum(param_extended_schema, enum_values)
         data_types_dict = {
             data_type: data_type.split("/")[-1] for data_type in enum_values
