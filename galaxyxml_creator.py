@@ -85,7 +85,7 @@ class Galaxyxmltool:
             options = {"true": "true", "false": "false"}
         else:
             # If enum values are not provided, handle this case gracefully
-            print(
+            pprint(
                 "Warning: Enum values are not provided for select parameter. Implementation needed."
             )
             options = {}  # Placeholder for options

@@ -148,8 +148,6 @@ class ApiJson:
             list: List of input file JSON representations.
         """
         input_file_json_list = []
-        pprint(input_files)
-        pprint(input_schema)
         for key, value in input_files.items():
             if "output_data" not in key:
                 # To do: check if correct for key
