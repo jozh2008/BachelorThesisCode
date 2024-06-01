@@ -3,7 +3,7 @@ import galaxyxml.tool.parameters as gtpx
 
 from macros_xml_generator import MacrosXMLGenerator
 
-# from pprint import pprint
+from pprint import pprint
 from typing import Dict, List, Union
 import re
 import copy
@@ -297,14 +297,16 @@ class Galaxyxmltool:
             self.extract_enum(param_extended_schema, enum_values)
             self.executable_dict[array_status_key] = False
 
+        pprint(enum_values)
         # Generate a string of allowed data types from enum values
-        data_types = ", ".join({value.split("/")[-1] for value in enum_values})
+        data_types = ", ".join(value.split("/")[-1] for value in enum_values)
+        print(data_types)
 
         # Create and return the data parameter
         return self.gxtp.DataParam(
             name=param_name,
             label=title,
-            help=f"{description} The following data types are allowed in the txt file:  {data_types}",
+            help=f"{description} The following data types are allowed in the txt file: {data_types}",
             format="txt",
             optional=is_nullable,
         )
@@ -341,8 +343,12 @@ class Galaxyxmltool:
             if field_type == "string":
                 enum_values = field_schema.get("enum")
                 options = {value: value for value in enum_values}
+                default_value = field_schema.get("default", None)
                 param = self.gxtp.SelectParam(
-                    name=field, optional=is_nullable, options=options
+                    name=field,
+                    optional=is_nullable,
+                    options=options,
+                    default=default_value,
                 )
             elif field_type == "array":
                 array_items = field_schema.get("items")
@@ -442,6 +448,17 @@ class Galaxyxmltool:
         return param
 
     def create_section(self, name: str, title: str, description=None):
+        """
+        Create a section with the specified name, title, and optional description.
+
+        Args:
+            name (str): The name of the section.
+            title (str): The title of the section.
+            description (str, optional): The description of the section. Defaults to None.
+
+        Returns:
+            Section: The section object with the specified attributes.
+        """
         return self.gxtp.Section(
             name=name, title=title, help=description, expanded=True
         )
@@ -472,6 +489,9 @@ class Galaxyxmltool:
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
             param_extended_schema = param_info.get("extended-schema")
+            pprint(param_name)
+            # print(param_schema)
+            pprint(param_info)
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
             title = param_info.get("title")
@@ -525,6 +545,7 @@ class Galaxyxmltool:
                 )
             elif param_extended_schema is not None:
                 is_array = param_extended_schema.get("type") == "array"
+                is_nullable = param_extended_schema.get("nullable", False)
                 param = self.create_data_param(
                     param_name=param_name,
                     param_extended_schema=param_extended_schema,
