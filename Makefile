@@ -4,6 +4,8 @@ BLACK :=black
 
 CODE := Tools/Code
 
+TEST := tests
+
 # Specify source files or directories
 SRC := *.py
 
@@ -44,13 +46,15 @@ compile:
 format:
 	$(BLACK) $(SRC)
 	$(BLACK) $(CODE) $(SRC)
+	$(BLACK) $(TEST) $(SRC)
 
 test:
-	python3 -m doctest $(SRC)
+	pytest $(TEST) $(SRC)
 
 checkstyle:
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE) $(SRC)
+	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST) $(SRC)
 
 clean:
 	rm -rf __pycache__

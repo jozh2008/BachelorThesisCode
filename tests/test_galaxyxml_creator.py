@@ -1,14 +1,14 @@
-import sys
 import os
+import sys
 import math
+import pytest
+from unittest.mock import MagicMock, patch
+
 
 # Add the parent directory of galaxyxml_creator to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from galaxyxml_creator import Galaxyxmltool
-
-import pytest
-from unittest.mock import MagicMock, patch
 
 
 @pytest.fixture

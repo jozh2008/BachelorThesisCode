@@ -4,4 +4,4 @@
 # Set the maximum line length to 130 characters
 max-line-length = 130 
 # Ignore 'F403,F405 and W503' warning
-Ignore = E203
+Ignore = E203, E402
