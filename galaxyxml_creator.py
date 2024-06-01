@@ -1,6 +1,8 @@
 from galaxyxml import tool
 import galaxyxml.tool.parameters as gtpx
 
+from macros_xml_generator import MacrosXMLGenerator
+
 # from pprint import pprint
 from typing import Dict, List, Union
 import re
@@ -11,9 +13,17 @@ import math
 class Galaxyxmltool:
     def __init__(self, name, id, version, description) -> None:
         self.executable = "$__tool_directory__/Code/openapi.py"
+        self.macros_file_name = f"macros_{name}.xml"
         self.gxt = tool.Tool(
-            name=name, id=id, version=version, description=description, executable=""
+            name=name,
+            id=id,
+            version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@",
+            description=description,
+            executable="",
+            macros=[self.macros_file_name],
         )
+        self.version = version
+        self.version_suffix = "0"
         self.gxtp = gtpx
         self.executable_dict = {}
         self.output_type_dictionary = {}
@@ -977,6 +987,14 @@ class Galaxyxmltool:
             self.gxtp.Requirement(type="package", version="3.9", value="python")
         )
         return requirements
+
+    def define_macro(self):
+        generator = MacrosXMLGenerator()
+        generator.add_token("@TOOL_VERSION@", self.version)
+        # starts with 0
+        generator.add_token("@VERSION_SUFFIX@", self.version_suffix)
+        file_path = f"Tools/{self.macros_file_name}"
+        generator.generate_xml(filename=file_path)
 
     # To do add tests
     def define_tests(self, api_dict, process):

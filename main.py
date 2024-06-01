@@ -72,7 +72,7 @@ class Initialize:
             api_dict=api_data["paths"], process=process_data["id"]
         )
         tool.citations = gxt.create_citations()
-
+        gxt.define_macro()
         file_path = f"Tools/{name}.xml"
         with open(file_path, "w") as file:
             file.write(tool.export())
