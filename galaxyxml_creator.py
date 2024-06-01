@@ -1,7 +1,7 @@
 from galaxyxml import tool
 import galaxyxml.tool.parameters as gtpx
 
-from pprint import pprint
+# from pprint import pprint
 from typing import Dict, List, Union
 import re
 import copy
@@ -22,6 +22,16 @@ class Galaxyxmltool:
         self.output_data = "output_data"
 
     def get_tool(self):
+        """
+        Retrieve the current tool instance from the Galaxy XML Tool (gxt) package.
+
+        This method provides access to the current tool instance being managed
+        by the `gxtp` attribute of the class. It is used to interface with the
+        tool's configuration and parameters within the Galaxy environment.
+
+        Returns:
+            Tool: The current tool instance from the Galaxy XML Tool package.
+        """
         return self.gxt
 
     def create_text_param(
@@ -117,37 +127,62 @@ class Galaxyxmltool:
         default_value: Union[float, int, None],
         param_type: str,
     ):
+        """
+        Create a number parameter with conditional inclusion based on user choice.
+
+        Args:
+            param_name (str): The name of the parameter.
+            is_nullable (bool): Indicates if the parameter is nullable.
+            title (Union[str, None]): The title of the parameter.
+            description (Union[str, None]): The description of the parameter.
+            default_value (Union[float, int, None]): The default value for the parameter.
+            param_type (str): The type of the parameter (e.g., 'FloatParam', 'IntegerParam').
+
+        Returns:
+            Conditional: The conditional parameter object.
+        """
+
+        # Create the conditional parameter to allow user to choose if they want to add the optional parameter
         param_class = getattr(self.gxtp, param_type)
-        param = self.gxtp.Conditional(
-            name="cond",
-            label=f"Do you want to add optional parameter {param_name}",
+
+        conditional_param = self.gxtp.Conditional(
+            name=f"cond_{param_name}",
+            label=f"Do you want to add optional parameter {param_name}?",
         )
+
+        # Define options for the conditional selection
         options = {"yes": "yes", "no": "no"}
         default_select = "yes" if default_value is not None else "no"
-        param.append(
-            self.gxtp.SelectParam(
-                name=f"select{param_name}",
-                label=f"Do you want to add optional parameter {param_name}",
-                help=description,
-                options=options,
-                default=default_select,
-            )
-        )
-        when_a = self.gxtp.When(value="yes")
-        when_a.append(
-            param_class(
-                name=param_name,
-                label=title,
-                help=description,
-                value=default_value,
-                optional=is_nullable,
-            )
-        )
-        param.append(when_a)
-        when_b = self.gxtp.When(value="no")
-        param.append(when_b)
 
-        return param
+        # Create and append the select parameter for the conditional choice
+        select_param = self.gxtp.SelectParam(
+            name=f"select_{param_name}",
+            label=f"Do you want to add optional parameter {param_name}?",
+            help=description,
+            options=options,
+            default=default_select,
+        )
+
+        # Create and append the parameter to be included when user selects 'yes'
+        conditional_param.append(select_param)
+        when_yes = self.gxtp.When(value="yes")
+        number_param = param_class(
+            name=param_name,
+            label=title,
+            help=description,
+            value=default_value,
+            optional=is_nullable,
+        )
+
+        when_yes.append(number_param)
+
+        conditional_param.append(when_yes)
+
+        # Create and append an empty 'when' block for 'no' option
+        when_no = self.gxtp.When(value="no")
+        conditional_param.append(when_no)
+
+        return conditional_param
 
     def create_integer_param(
         self,
@@ -224,21 +259,38 @@ class Galaxyxmltool:
         param_name: str,
         param_extended_schema: Dict,
         is_nullable: bool,
-        isArray: bool,
+        is_array: bool,
         title: str,
         description: str,
     ):
-        # change for return for not array
+        """
+        Create a data parameter based on the provided schema and other properties.
+
+        Args:
+            param_name (str): The name of the parameter.
+            param_extended_schema (Dict): The extended schema for the parameter.
+            is_nullable (bool): Indicates if the parameter is nullable.
+            is_array (bool): Indicates if the parameter is an array.
+            title (str): The title of the parameter.
+            description (str): The description of the parameter.
+
+        Returns:
+            DataParam: The created data parameter.
+        """
         enum_values = []
-        isArrayName = "isArray" + param_name
-        if isArray:
-            self.extract_enum(param_extended_schema["items"], enum_values)
-            self.executable_dict[isArrayName] = True
+        array_status_key = f"isArray{param_name}"
+        # Extract enum values based on whether the parameter is an array
+        if is_array:
+            self.extract_enum(param_extended_schema.get("items", {}), enum_values)
+            self.executable_dict[array_status_key] = True
         else:
             self.extract_enum(param_extended_schema, enum_values)
-            self.executable_dict[isArrayName] = False
+            self.executable_dict[array_status_key] = False
 
+        # Generate a string of allowed data types from enum values
         data_types = ", ".join({value.split("/")[-1] for value in enum_values})
+
+        # Create and return the data parameter
         return self.gxtp.DataParam(
             name=param_name,
             label=title,
@@ -247,7 +299,6 @@ class Galaxyxmltool:
             optional=is_nullable,
         )
 
-    # To do:
     def create_object_param(
         self,
         param_name: str,
@@ -256,79 +307,126 @@ class Galaxyxmltool:
         title: str,
         description: str,
     ):
-        required = param_schema.get("required", [])
+        """
+        Create an object parameter with the specified schema, title, and description.
+
+        Args:
+            param_name (str): The name of the parameter.
+            param_schema (Dict): The schema of the parameter which includes its properties and required fields.
+            is_nullable (bool): Indicates if the parameter is nullable.
+            title (str): The title of the parameter.
+            description (str): The description of the parameter.
+
+        Returns:
+            section: The section containing the created parameters.
+        """
+        required_fields = param_schema.get("required", [])
         enum_values = []
         section = self.create_section(
             name=param_name, title=title, description=description
         )
-        for req in required:
-            schema = param_schema["properties"][req]
-            schema_type = schema.get("type")
-            if schema_type == "string":
-                enum_values = schema.get("enum")
+        for field in required_fields:
+            field_schema = param_schema["properties"][field]
+            field_type = field_schema.get("type")
+            if field_type == "string":
+                enum_values = field_schema.get("enum")
                 options = {value: value for value in enum_values}
                 param = self.gxtp.SelectParam(
-                    name=req, optional=is_nullable, options=options
+                    name=field, optional=is_nullable, options=options
                 )
-            elif schema_type == "array":
-                # To do: Check best param for array with min and max Items
-                array_items = schema.get("items")
-                min_items, max_items = self.get_array_length(schema)
+            elif field_type == "array":
+                array_items = field_schema.get("items")
+                min_items, max_items = self.get_array_items(field_schema)
                 array_type = array_items.get("type")
-                param = self.create_array_param(req, array_type, min_items, max_items)
+                param = self.create_array_param(
+                    name=field,
+                    item_type=array_type,
+                    min_items=min_items,
+                    max_items=max_items,
+                    title=None,
+                    description=None,
+                    item_name=f"{array_type}Data",
+                )
 
             section.append(param)
 
         return section
 
-    def get_array_length(self, schema: Dict):
+    def get_array_items(self, schema: Dict):
         """
-        Get array length
+        Get the minimum and maximum number of items allowed in an array based on the schema.
+
+        Args:
+            schema (Dict): The schema defining the array and its constraints.
+
+        Returns:
+            tuple: A tuple containing the minimum and maximum number of items allowed in the array.
         """
-        array_length = schema.get("oneOf")
+        constraints = schema.get("oneOf", [])
         min_items = math.inf
         max_items = -math.inf
 
-        for dictionary in array_length:
-            max_items = max(max_items, dictionary.get("maxItems", -math.inf))
-            min_items = min(min_items, dictionary.get("minItems", math.inf))
+        for constraint in constraints:
+            max_items = max(max_items, constraint.get("maxItems", -math.inf))
+            min_items = min(min_items, constraint.get("minItems", math.inf))
 
         return min_items, max_items
 
     def create_array_param(
-        self, name: str, array_type: str, min_items: int, max_items: int
+        self,
+        name: str,
+        item_type: str,
+        min_items: int,
+        max_items: int,
+        title: str,
+        description: str,
+        item_name: str,
     ):
+        """
+        Create an array parameter with specified constraints and item type.
+
+        Args:
+            name (str): The name of the parameter.
+            array_type (str): The type of items in the array (e.g., 'number', 'integer', 'string').
+            min_items (int): The minimum number of items in the array.
+            max_items (int): The maximum number of items in the array.
+            title (str): The title of the array parameter.
+            description (str): The description of the array parameter.
+            item_name (str): The name of the items within the array.
+
+        Returns:
+            param: The parameter object representing the array with the specified constraints.
+        """
         param = self.gxtp.Repeat(
             name=name, title="Array item", min=min_items, max=max_items
         )
 
-        if array_type == "number":
+        if item_type == "number":
             data = self.create_float_param(
                 param_name="floatData",
                 param_schema=None,
                 is_nullable=False,
-                title=None,
-                description=None,
+                title=title,
+                description=description,
             )
-        elif array_type == "integer":
+        elif item_type == "integer":
             data = self.create_integer_param(
                 param_name="integerData",
                 param_schema=None,
                 is_nullable=False,
-                title=None,
-                description=None,
+                title=title,
+                description=description,
             )
-        elif array_type == "string":
+        elif item_type == "string":
             data = self.create_text_param(
-                param_name="textData",
+                param_name=item_name,
                 param_schema=None,
                 is_nullable=False,
-                title=None,
-                description=None,
+                title=title,
+                description=description,
             )
         else:
-            print("Array type not supported yet")
-            data = None
+            raise ValueError(f"Array item type '{item_type}' is not supported")
 
         param.append(data)
         return param
@@ -342,7 +440,8 @@ class Galaxyxmltool:
         self, input_schema: Dict, output_schema: Dict, transmission_schema: Dict
     ):
         """
-        Create parameters based on input, output, and transmission schemas. Everything will be in the input tab of the Galaxy XML.
+        Generate parameters based on the provided input, output, and transmission schemas.
+        All parameters will be placed in the input tab of the Galaxy XML.
 
         Example of XML representation:
         <inputs>
@@ -351,30 +450,24 @@ class Galaxyxmltool:
         </inputs>
 
         Args:
-            input_schema (Dict): The JSON schema for input parameters.
-            output_schema (Dict): The JSON schema for output parameters.
-            transmission_schema (Dict): The JSON schema for output transmission.
+        input_schema (Dict): JSON schema defining the input parameters.
+        output_schema (Dict): JSON schema defining the output parameters.
+        transmission_schema (Dict): JSON schema defining the transmission parameters.
 
         Returns:
-            List: A list of created parameters.
+        List: A list of generated parameters.
         """
         inputs = self.gxtp.Inputs()
-        for param_name, param_dict in input_schema.items():
-            param_name = self.replace_dot(param_name)
-            param_schema = param_dict.get("schema")
-            # pprint(param_name)
-            # pprint(param_dict)
-            # pprint(param_schema)
-            param_extended_schema = param_dict.get("extended-schema")
+        for param_name, param_info in input_schema.items():
+            param_name = self.replace_dot_with_underscore(param_name)
+            param_schema = param_info.get("schema")
+            param_extended_schema = param_info.get("extended-schema")
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
-            title = param_dict.get("title")
-            description = param_dict.get("description")
-            description = (
-                param_dict.get("description")
-                if title == description
-                else f"{title} {description}"
-            )
+            title = param_info.get("title")
+            description = param_info.get("description")
+            if title != description:
+                description = f"{title} {description}"
             title = param_name
 
             if param_type == "string":
@@ -426,7 +519,7 @@ class Galaxyxmltool:
                     param_name=param_name,
                     param_extended_schema=param_extended_schema,
                     is_nullable=is_nullable,
-                    isArray=is_array,
+                    is_array=is_array,
                     title=title,
                     description=description,
                 )
@@ -565,26 +658,24 @@ class Galaxyxmltool:
         Args:
             output_schema (Dict): JSON schema containing output parameters.
             inputs (List): List of input parameters to which output parameters will be appended.
-            All inputs parameters will be in Inputs of the galaxy xml
+                        All input parameters will be in Inputs of the Galaxy XML.
             transmission_schema (Dict): JSON schema containing output transmission information.
 
         Returns:
             None
         """
 
-        for param_name, param_dict in output_schema.items():
-            param_name = self.replace_dot(param_name)
-            param_schema = param_dict.get("schema")
-            param_extended_schema = param_dict.get("extended-schema")
+        for param_name, param_info in output_schema.items():
+            param_name = self.replace_dot_with_underscore(param_name)
+            param_schema = param_info.get("schema")
+            param_extended_schema = param_info.get("extended-schema")
             param_type = param_schema.get("type")
             output_param_name = f"{self.output_type}_{param_name}"
             title = param_schema.get("title")
             description = param_schema.get("description")
-            description = (
-                param_dict.get("description")
-                if title == description
-                else f"{title} {description}"
-            )
+            if title != description:
+                description = f"{title} {description}"
+
             title = param_name
             enum_values = []
 
@@ -605,8 +696,10 @@ class Galaxyxmltool:
             output_param_section = self.create_section(
                 name=output_param_section_name, title=title
             )
+
             if param is not None:
                 output_param_section.append(param)
+
             self.choose_transmission_mode(
                 output_param_section,
                 name=param_name,
@@ -624,7 +717,24 @@ class Galaxyxmltool:
         title: str,
         description: str,
     ):
-        # To Do: check string
+        """
+        Process an output parameter based on its type and schema information.
+
+        Args:
+            output_param_name (str): The name of the output parameter.
+            param_extended_schema (Dict): The extended schema for the parameter, if available.
+            param_schema (Dict): The schema for the parameter.
+            param_type (str): The type of the parameter (e.g., 'string', 'number').
+            enum_values (List): A list to store enumeration values if applicable.
+            title (str): The title of the parameter.
+            description (str): The description of the parameter.
+
+        Returns:
+            Tuple[Optional[Param], List]: The processed parameter and its enumeration values.
+        """
+
+        param = None
+
         if param_type == "string":
             if param_schema.get("enum"):
                 param = self.create_select_param(
@@ -635,10 +745,10 @@ class Galaxyxmltool:
                     title=title,
                     description=description,
                 )
-                enum_values = param_schema.get("enum")
+                enum_values = param_schema.get("enum", [])
 
             else:
-                # If no enum, then nothing to specify and so param is None
+                # No enum values, so no specific parameter is created
                 param = None
         elif param_extended_schema is not None:
             param = self.create_select_param_output(
@@ -646,7 +756,7 @@ class Galaxyxmltool:
             )
             self.extract_enum(param_extended_schema, enum_values=enum_values)
         elif param_type in ["number", "integer", "boolean", "object"]:
-            # if not a string then param is None
+            # Currently unsupported types for output parameters, set to None
             param = None
         else:
             # Handle unsupported parameter types gracefully
@@ -661,17 +771,32 @@ class Galaxyxmltool:
     def create_select_param_output(
         self, param_name: str, param_extended_schema: Dict, title: str, description: str
     ):
+        """
+        Create a select parameter for the output based on the extended schema.
+
+        Args:
+            param_name (str): The name of the parameter.
+            param_extended_schema (Dict): The extended schema containing enumeration values.
+            title (str): The title of the parameter.
+            description (str): The description of the parameter.
+
+        Returns:
+            SelectParam: The created select parameter.
+        """
+        # Extract enumeration values from the extended schema
         enum_values = []
-        pprint(1)
         self.extract_enum(param_extended_schema, enum_values)
+
+        # Create a dictionary for data types based on the enumeration values
         data_types_dict = {
             data_type: data_type.split("/")[-1] for data_type in enum_values
         }
+
+        # Return the created select parameter
         return self.gxtp.SelectParam(
             name=param_name, label=title, help=description, options=data_types_dict
         )
 
-    # To do: check for better solution
     def normalize_name(self, name: Union[str, None]):
         """
         Normalize a tool name by replacing spaces with underscores.
@@ -694,7 +819,19 @@ class Galaxyxmltool:
 
         return normalized_name
 
-    def replace_dot(self, name):
+    def replace_dot_with_underscore(self, name: str) -> str:
+        """
+        Replace all dots in the provided string with underscores.
+
+        This method is useful for sanitizing parameter names that may contain dots,
+        which are not always allowed or are problematic in certain contexts.
+
+        Args:
+            name (str): The string in which dots need to be replaced.
+
+        Returns:
+            str: The modified string with dots replaced by underscores.
+        """
         return name.replace(".", "_")
 
     def extract_enum(self, schema_item: Dict, enum_values: List):
@@ -926,7 +1063,7 @@ class Galaxyxmltool:
         """
         for pro in api_dict.keys():
             parts = pro.split("/")
-            if len(parts) > 2 and process.__eq__(parts[2]):
+            if len(parts) > 2 and process == parts[2]:
                 return api_dict[pro]
         return None
 
