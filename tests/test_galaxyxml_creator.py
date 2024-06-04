@@ -607,12 +607,14 @@ def test_create_object_param(setup_tool):
     # Assert SelectParam is called correctly for the string field
     tool.gxtp.SelectParam.assert_called_once_with(
         name="crs",
-        optional=is_nullable,
+        default="urn:ogc:def:crs:EPSG:6.6:4326",
         options={
             "urn:ogc:def:crs:EPSG:6.6:4326": "urn:ogc:def:crs:EPSG:6.6:4326",
             "urn:ogc:def:crs:EPSG:6.6:3785": "urn:ogc:def:crs:EPSG:6.6:3785",
         },
-        default="urn:ogc:def:crs:EPSG:6.6:4326",
+        label="crs",
+        help="",
+        optional=is_nullable,
     )
     # Assert create_array_param is called correctly for the array field
     tool.create_array_param.assert_called_once_with(

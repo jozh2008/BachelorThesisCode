@@ -3,7 +3,7 @@ import galaxyxml.tool.parameters as gtpx
 
 from macros_xml_generator import MacrosXMLGenerator
 
-from pprint import pprint
+# from pprint import pprint
 from typing import Dict, List, Union
 import re
 import copy
@@ -13,7 +13,7 @@ import math
 class Galaxyxmltool:
     def __init__(self, name, id, version, description) -> None:
         self.executable = "$__tool_directory__/Code/openapi.py"
-        self.macros_file_name = f"macros_{name}.xml"
+        self.macros_file_name = f"Macros/{name}_macros_.xml"
         self.gxt = tool.Tool(
             name=name,
             id=id,
@@ -111,14 +111,13 @@ class Galaxyxmltool:
             options = {}  # Placeholder for options
 
         default_value = param_schema.get("default")
-        # pprint(default_value)
 
         if default_value is not None and param_type_bool:
             default_value = self.create_default_value(default_value=default_value)
 
         # Normalize default values, ensuring they are keys in the options dictionary
         default_value = self.normalize_name(name=default_value)
-        # pprint(options)
+
         return self.gxtp.SelectParam(
             name=param_name,
             default=default_value,
@@ -297,10 +296,10 @@ class Galaxyxmltool:
             self.extract_enum(param_extended_schema, enum_values)
             self.executable_dict[array_status_key] = False
 
-        pprint(enum_values)
+        # pprint(enum_values)
         # Generate a string of allowed data types from enum values
         data_types = ", ".join(value.split("/")[-1] for value in enum_values)
-        print(data_types)
+        # print(data_types)
 
         # Create and return the data parameter
         return self.gxtp.DataParam(
@@ -333,22 +332,25 @@ class Galaxyxmltool:
             section: The section containing the created parameters.
         """
         required_fields = param_schema.get("required", [])
-        enum_values = []
+        # enum_values = []
         section = self.create_section(
             name=param_name, title=title, description=description
         )
         for field in required_fields:
+            print(field)
             field_schema = param_schema["properties"][field]
             field_type = field_schema.get("type")
             if field_type == "string":
-                enum_values = field_schema.get("enum")
-                options = {value: value for value in enum_values}
-                default_value = field_schema.get("default", None)
-                param = self.gxtp.SelectParam(
-                    name=field,
-                    optional=is_nullable,
-                    options=options,
-                    default=default_value,
+                # enum_values = field_schema.get("enum")
+                # options = {value: value for value in enum_values}
+                # default_value = field_schema.get("default", None)
+                param = self.create_select_param(
+                    param_name=field,
+                    param_schema=field_schema,
+                    is_nullable=is_nullable,
+                    param_type_bool=False,
+                    title=field,
+                    description="",
                 )
             elif field_type == "array":
                 array_items = field_schema.get("items")
@@ -363,7 +365,6 @@ class Galaxyxmltool:
                     description=None,
                     item_name=f"{array_type}Data",
                 )
-
             section.append(param)
 
         return section
@@ -489,9 +490,9 @@ class Galaxyxmltool:
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
             param_extended_schema = param_info.get("extended-schema")
-            pprint(param_name)
+            # pprint(param_name)
             # print(param_schema)
-            pprint(param_info)
+            # pprint(param_info)
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
             title = param_info.get("title")
@@ -597,10 +598,19 @@ class Galaxyxmltool:
         dictionary_options = {"raw": "raw", "document": "document"}
         default_value = "document"
 
+        description = (
+            "Choose 'raw' to get the raw data or 'document' for retrieving a URL. "
+            "The URL can be used for workflows, while the raw data is the download of the URL"
+        )
+
         # Set help description and label (if necessary)
         help_description = "Choose 'raw' for raw data or 'document' for document data."
         label = "Response Type"  # Label can be adjusted based on requirements
-
+        section = self.create_section(
+            name="Section_response",
+            title="Choose the response type",
+            description=description,
+        )
         # Create select parameter
         param = self.gxtp.SelectParam(
             name="response",
@@ -610,8 +620,9 @@ class Galaxyxmltool:
             help=help_description,
         )
 
+        section.append(param)
         # Add parameter to the list of inputs
-        inputs.append(param)
+        inputs.append(section)
 
         return inputs
 
@@ -622,7 +633,7 @@ class Galaxyxmltool:
         asynchronous executions, with asynchronous execution as the default value.
         """
 
-        label = "Choose the Prefer"
+        label = "Prefer"
         prefer_options = {
             "return=representation": "return=representation",
             "return=minimal": "return=minimal",
@@ -630,16 +641,25 @@ class Galaxyxmltool:
         }
 
         default_value = "respond-async;return=representation"
-
+        description = (
+            "Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'."
+            "The specification is for synchronous or asynchronous executions,"
+            "with asynchronous execution as the default value"
+        )
+        section = self.create_section(
+            name="Section_prefer", title="Choose the prefer", description=description
+        )
         param = self.gxtp.SelectParam(
             name="prefer",
             default=default_value,
             options=prefer_options,
             label=label,
+            help=None,
         )
+        section.append(param)
 
         # Add parameter to the list of inputs
-        inputs.append(param)
+        inputs.append(section)
 
         return inputs
 
@@ -723,7 +743,10 @@ class Galaxyxmltool:
             self.output_name_list.append(param_name)  # just name of output
 
             output_param_section_name = f"OutputSection_{param_name}"
-            title = "Select the appropriate transmission mode for the output format"
+            if param is None:
+                title = f"Select the appropriate transmission mode for {param_name}"
+            else:
+                title = f"Select the appropriate transmission mode for {param_name} and specify an output format"
             output_param_section = self.create_section(
                 name=output_param_section_name, title=title
             )
@@ -957,7 +980,6 @@ class Galaxyxmltool:
         self.executable_dict["name"] = title
         return self.executable + self.dict_to_string(self.executable_dict)
 
-    # possible output options need to be discussed, which is better
     def define_output_options(self):
         """
         Define output options for each item in self.output_type_dictionray.
@@ -1010,6 +1032,7 @@ class Galaxyxmltool:
         return requirements
 
     def define_macro(self):
+        """Generates the macro.xml"""
         generator = MacrosXMLGenerator()
         generator.add_token("@TOOL_VERSION@", self.version)
         # starts with 0

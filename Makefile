@@ -11,12 +11,13 @@ SRC := *.py
 
 VENV_DIR := .venv
 REQUIREMENTS := requirements.txt
+VENV_PYTHON := python3
 
 DEV_REQUIREMENTS := dev-requirements.txt
 
 all: install compile test format checkstyle 
 
-$(VENV_DIR)/bin/activate: $(REQUIREMENTS) $(DEV_REQUIREMENTS)
+. $(VENV_DIR)/bin/activate: $(REQUIREMENTS) $(DEV_REQUIREMENTS)
 	@if [ ! -d "$(VENV_DIR)" ]; then \
 		echo "Creating virtual environment..."; \
 		python3 -m venv $(VENV_DIR); \
@@ -39,19 +40,18 @@ $(VENV_DIR)/bin/activate: $(REQUIREMENTS) $(DEV_REQUIREMENTS)
 
 install: $(VENV_DIR)/bin/activate
 
-
-compile:
+compile: install
 	python3 -m py_compile $(SRC)
 
-format:
+format: install
 	$(BLACK) $(SRC)
 	$(BLACK) $(CODE) $(SRC)
 	$(BLACK) $(TEST) $(SRC)
 
-test:
+test: install
 	pytest $(TEST) $(SRC)
 
-checkstyle:
+checkstyle: install
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE) $(SRC)
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST) $(SRC)
