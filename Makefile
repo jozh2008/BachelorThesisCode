@@ -17,7 +17,7 @@ DEV_REQUIREMENTS := dev-requirements.txt
 
 all: install compile test format checkstyle 
 
-. $(VENV_DIR)/bin/activate: $(REQUIREMENTS) $(DEV_REQUIREMENTS)
+install:
 	@if [ ! -d "$(VENV_DIR)" ]; then \
 		echo "Creating virtual environment..."; \
 		python3 -m venv $(VENV_DIR); \
@@ -37,8 +37,7 @@ all: install compile test format checkstyle
 		echo "Dev-requirements have not changed, skipping installation."; \
 	fi
 	@echo "Dependencies are set up."
-
-install: $(VENV_DIR)/bin/activate
+	. $(VENV_DIR)/bin/activate
 
 compile: install
 	python3 -m py_compile $(SRC)
