@@ -3,7 +3,7 @@ import galaxyxml.tool.parameters as gtpx
 
 from macros_xml_generator import MacrosXMLGenerator
 
-# from pprint import pprint
+from pprint import pprint
 from typing import Dict, List, Union
 import re
 import copy
@@ -72,7 +72,7 @@ class Galaxyxmltool:
             optional=is_nullable,
         )
         if not is_nullable:
-            param.append(self.gxtp.ValidatorParam(name="validator", type="empty_field"))
+            param.append(self.gxtp.ValidatorParam(name=None, type="empty_field"))
         return param
 
     def create_select_param(
@@ -1031,6 +1031,46 @@ class Galaxyxmltool:
         )
         return requirements
 
+    import re
+
+    def correct_restructured_text(self, text):
+        # Correct inline math roles like :math:`...`
+        corrected_text = re.sub(r":math:`([^`]*)`", r":math:`\1`", text)
+
+        # Ensure LaTeX environments are properly closed
+        corrected_text = re.sub(
+            r":math:`([^`]*?)\\begin\{([^`]*?)\}`",
+            r":math:`\1\\begin{\2}\1\\end{\2}`",
+            corrected_text,
+        )
+
+        # Ensure every backtick is closed by another backtick
+        unclosed_backtick = re.search(r"`([^`]*)$", corrected_text)
+        if unclosed_backtick:
+            corrected_text += "`"
+
+        # Correct HTML tags within the help text
+        # Replace `&lt;` with `<` and `&gt;` with `>`
+        corrected_text = corrected_text.replace("&lt;", "<").replace("&gt;", ">")
+
+        # Ensure HTML tags are properly closed and formatted
+        corrected_text = re.sub(r"<br\s*/?>", "<br/>", corrected_text)
+        corrected_text = re.sub(r"<pre>", "\n<pre>", corrected_text)
+        corrected_text = re.sub(r"</pre>", "</pre>\n", corrected_text)
+
+        # Consolidate multiple line breaks
+        corrected_text = re.sub(r"(<br/>\s*){2,}", "<br/><br/>", corrected_text)
+
+        # Replace single | (pipe) characters that may be interpreted as tables in reST
+        corrected_text = re.sub(r"(?<!\|)\|(?!\|)", r"\|", corrected_text)
+
+        # Handle inline code/special character issues
+        corrected_text = re.sub(
+            r"`([^`]*)`", r"``\1``", corrected_text
+        )  # Convert single backticks to double for code
+
+        return corrected_text
+
     def define_macro(self):
         """Generates the macro.xml"""
         generator = MacrosXMLGenerator()
@@ -1045,7 +1085,8 @@ class Galaxyxmltool:
         test_dictionary = self.get_test_dictionary(api_dict=api_dict, process=process)
         if test_dictionary is not None:
             example_list = self.get_test_examples(data=test_dictionary)
-            return self.create_tests(examples=example_list)
+            if self.create_tests(examples=example_list) is not None:
+                return self.create_tests(examples=example_list)
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
         param = self.gxtp.TestParam(name="response", value="document")
@@ -1073,10 +1114,14 @@ class Galaxyxmltool:
 
             # Process input parameters
             for key, value in inputs.items():
+                print(key)
+                pprint(value)
                 if isinstance(value, list):
                     lst = [i.get("href") for i in value]
                     param = self.gxtp.TestParam(name=key, value=lst)
                 elif isinstance(value, dict):
+                    if value.get("href") is None:
+                        return None
                     param = self.gxtp.TestParam(name=key, value=value.get("href"))
                 else:
                     param = self.gxtp.TestParam(name=key, value=value)

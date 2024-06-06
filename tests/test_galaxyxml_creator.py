@@ -84,7 +84,7 @@ def test_create_text_param_nullable_false(setup_tool):
         value=None,
         optional=False,
     )
-    tool.gxtp.ValidatorParam.assert_called_with(name="validator", type="empty_field")
+    tool.gxtp.ValidatorParam.assert_called_with(name=None, type="empty_field")
     assert param.append.call_args_list == [((tool.gxtp.ValidatorParam.return_value,),)]
 
 
