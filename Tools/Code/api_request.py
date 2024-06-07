@@ -1,9 +1,12 @@
 import requests
-from PIL import Image
-from PIL import UnidentifiedImageError
-from io import BytesIO
+
+# from PIL import Image
+# from PIL import UnidentifiedImageError
+# from io import BytesIO
+from typing import Any
 from pprint import pprint
 import time
+import urllib.request
 
 
 class APIRequest:
@@ -56,52 +59,63 @@ class APIRequest:
         url = self.get_url(keyword="execute")
         response = requests.post(url, headers=self.headers, json=self.payload)
         response = self.check_job_id(response=response)
-        if response.ok:
-            for key, value in self.transmission_mode.items():
-                output_format_path = self.output_format_dictionary.get(key)
-                if output_format_path is not None:
-                    output_format = output_format_path.split("/")[-1]
-                else:
-                    output_format = "txt"
-                location = f"output_data_{key}"
-                output_file_path = self.working_directory[location]
-
-                if self.response_input == "raw":
-                    included = {"jpeg", "png"}
-                    if output_format in included:
-
-                        # Process image data
-                        try:
-                            # Open the image file
-                            image_data = BytesIO(response.content)
-                            img = Image.open(image_data)
-                            img = img.convert("RGB")
-                            img.save(output_file_path, format=output_format.upper())
-
-                        except UnidentifiedImageError:
-                            # Handle the exception
-                            error_message = "Error: Cannot identify image file"
-
-                            with open(output_file_path, "wb") as f:
-                                f.write(error_message.encode())
-                                f.write(b"\n")  # Add a new line
-                                f.write(response.content)
-                    else:
-                        # Save raw data to file
-                        with open(output_file_path, "wb") as f:
-                            f.write(response.content)
-
-                else:
-                    response_data = response.json()
-                    transmission_item = response_data.get(key)
-                    if transmission_item is not None:
-                        with open(output_file_path, "w") as f:
-                            if value == "reference":
-                                f.write(transmission_item.get("href", "") + "\n")
-                            else:
-                                pprint(transmission_item, stream=f)
-        else:
+        if not response.ok:
             print("Error:", response.status_code)
+            return
+
+        response_data = response.json()
+
+        for key, value in self.transmission_mode.items():
+
+            location = f"output_data_{key}"
+            output_file_path = self.working_directory[location]
+
+            transmission_item = response_data.get(key)
+            pprint(transmission_item)
+            if transmission_item is None:
+                # with open(output_file_path, "wb") as f:
+                #     f.write(response.content)
+                continue
+
+            if self.response_input == "raw":
+                if isinstance(transmission_item, dict):
+                    url_file = transmission_item.get("href")
+                    if url_file:
+                        urllib.request.urlretrieve(url_file, output_file_path)
+                else:
+                    # print(transmission_item, 1)
+                    self.write_transmission_item(
+                        output_file_path=output_file_path,
+                        transmission_item=transmission_item,
+                        mode=value,
+                    )
+            else:
+                # print(transmission_item, 2)
+                self.write_transmission_item(
+                    output_file_path=output_file_path,
+                    transmission_item=transmission_item,
+                    mode=value,
+                )
+
+    def write_transmission_item(
+        self, output_file_path: str, transmission_item: Any, mode: str
+    ):
+        """
+        Writes the transmission item to the specified file.
+
+        Parameters:
+            - output_file_path (str): The path to the output file.
+            - transmission_item (dict or any): The item to be written to the file.
+            - mode (str): The mode of transmission, either "reference" or "value".
+
+        If the mode is "reference", writes the "href" field from the transmission item.
+        Otherwise, pretty-prints the transmission item to the file.
+        """
+        with open(output_file_path, "w") as f:
+            if mode == "reference":
+                f.write(transmission_item.get("href", "") + "\n")
+            else:
+                pprint(transmission_item, stream=f)
 
     def check_job_id(self, response):
         """

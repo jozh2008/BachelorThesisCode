@@ -5,6 +5,7 @@ import sys
 import re
 from pprint import pprint
 from api_request import APIRequest
+from typing import Dict
 
 
 class ApiJson:
@@ -28,7 +29,7 @@ class ApiJson:
         response = self.process_response_values(attributes=attributes)
 
         input_json = self.create_openapi_input_file(
-            inputs=inputs, outputs=outputs, response=response
+            inputs=inputs, outputs=outputs, response="document"
         )
         pprint(input_json)
         apirequest = APIRequest(
@@ -97,7 +98,7 @@ class ApiJson:
         result_dictionary["response"] = response
         return result_dictionary
 
-    def process_input_values(self, attributes):
+    def process_input_values(self, attributes: Dict):
         """
         Process input attributes.
 
@@ -206,7 +207,7 @@ class ApiJson:
         }
         return extracted_values
 
-    def generate_output_list(self, attributes):
+    def generate_output_list(self, attributes: Dict):
         """
         Generate a list of output JSON representations.
 
@@ -234,16 +235,25 @@ class ApiJson:
         # Iterate through the outputs and create dictionaries
         for key, value in zip(keys_transmission_mode, values_transmission_mode):
             output_value = outputs.get(key)
+
+            # We want to return a image, when we have a raw data and value, but we cannot
+            # download an image with value, cause no url is given, Therefore we always set the value
+            # to reference
             if output_value is not None:
                 self.output_format_dictionary[key] = output_value
+                if "image" in output_value:
+                    value = "reference"
 
-            lst.append(self.output_json(key, output_value, value))
+            lst.append(
+                self.output_json(
+                    outputName=key, mediaType=output_value, transmissionMode=value
+                )
+            )
 
         # Return the list
-        # print(self.output_type)
         return lst
 
-    def extract_data_files(self, dictionary):
+    def extract_data_files(self, dictionary: Dict):
         """
         Extract data files from the provided dictionary.
 
@@ -260,7 +270,7 @@ class ApiJson:
             if any(values.endswith(suffix) for suffix in included_suffixes)
         }
 
-    def extract_input_values(self, dictionary):
+    def extract_input_values(self, dictionary: Dict):
         """
         Extract input values from a dictionary, excluding certain keys and specify prefer
 
@@ -285,7 +295,7 @@ class ApiJson:
             if not any(key.startswith(prefix) for prefix in excluded_prefixes)
         }
 
-    def extract_values_by_keyword(self, dictionary, keyword):
+    def extract_values_by_keyword(self, dictionary: Dict, keyword: str):
         """
         Extracts values from the input dictionary based on keys containing the given keyword.
 
@@ -304,7 +314,7 @@ class ApiJson:
                 extracted_values[modified_key] = value
         return extracted_values
 
-    def extract_output_values(self, dictionary):
+    def extract_output_values(self, dictionary: Dict):
         """
         Extracts values from the input dictionary based on keys containing 'outputType'.
 
@@ -316,7 +326,7 @@ class ApiJson:
         """
         return self.extract_values_by_keyword(dictionary, "outputType")
 
-    def extract_transmission_mode_values(self, dictionary):
+    def extract_transmission_mode_values(self, dictionary: Dict):
         """
         Extracts values from the input dictionary based on keys containing 'transmissionMode'.
 
@@ -328,14 +338,14 @@ class ApiJson:
         """
         return self.extract_values_by_keyword(dictionary, "transmissionMode")
 
-    def extract_response_value(self, dictionary):
+    def extract_response_value(self, dictionary: Dict):
         extracted_value = ""
         for key, value in dictionary.items():
             if "response" in key:
                 extracted_value = value
         return extracted_value
 
-    def find_index_of_character(self, string, character):
+    def find_index_of_character(self, string: str, character: str):
         """
         Finds the index of the first occurrence of the specified character in the given string.
 
@@ -349,7 +359,7 @@ class ApiJson:
         match = re.search(character, string)
         return match.start()
 
-    def open_and_read_file(self, file_path):
+    def open_and_read_file(self, file_path: str):
         try:
             with open(file_path, "r") as file:
                 file_content = file.read().splitlines()
@@ -376,33 +386,7 @@ class ApiJson:
         Explanation:
         This function takes a list of arguments and converts them into a dictionary where every two consecutive elements
         in the input list represent a key-value pair in the resulting dictionary.
-
-        If an argument in the list is marked as 'optional', it's expected that it's followed by its corresponding value.
-        However, if no value follows an 'optional' argument, the function will remove that argument from the list to avoid
-        an odd number of elements, which would cause a ValueError.
-
-        The 'optional' argument is identified by its presence in the input list. Once found, the function checks if the
-        next element in the list is a number, indicating the presence of the value for the optional argument. If not,
-        it removes the optional argument from the list.
         """
-
-        # for i in range(len(args)):
-        #     if args[i] == "optional":
-        #         string = self.add_quotes_around_unquoted_words(args[i+1])
-
-        #         try:
-        #             converted_list = ast.literal_eval(string)
-
-        #         except (ValueError, SyntaxError) as e:
-        #             print(f"Error parsing string: {e}")
-        #         break
-
-        # args2 = copy.deepcopy(args)
-        # for optional in converted_list:
-        #     ind = args.index(optional)
-        #     value = args[ind+1]
-        #     if not self.is_number(value):
-        #         args2.pop(i)
 
         if len(args) % 2 != 0:
             raise ValueError("The number of arguments must be even.")
@@ -411,18 +395,11 @@ class ApiJson:
         res_dict = dict(zip(it, it))
         return res_dict
 
-    def is_number(self, s):
-        try:
-            float(s)  # Try to convert to float
-            return True
-        except ValueError:
-            return False
-
     def add_quotes_around_unquoted_words(self, s):
         # Regular expression to find unquoted words
         return re.sub(r"(\b[a-zA-Z_]\w*\b)", r'"\1"', s)
 
-    def output_json(self, outputName, mediaType, transmissionMode):
+    def output_json(self, outputName: str, mediaType: str, transmissionMode: str):
         """
         Create the actual output format for outputs
         """

@@ -1,2 +1,5 @@
 galaxyxml
 pytest
+pillow
+bytesbufio
+requests
