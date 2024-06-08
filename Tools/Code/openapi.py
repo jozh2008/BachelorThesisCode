@@ -131,14 +131,15 @@ class ApiJson:
         """
         Process input attributes.
 
-        Extracts input values from the provided attributes dictionary and categorizes them into two types:
-        data inputs, such as text files, and non-data inputs.
+        This method processes the provided attributes dictionary by extracting and categorizing input values
+        into data inputs (such as text files) and non-data inputs. It then processes these inputs and generates
+        a JSON representation of the input files.
 
         Args:
-            attributes (dict): A dictionary containing input attributes.
+            attributes (Dict): A dictionary containing input attributes.
 
         Returns:
-            dict: A dictionary containing JSON representations of input files.
+            Dict: A dictionary containing JSON representations of input files.
         """
         # Extract all input values
         all_input_values = self.extract_input_values(attributes)
@@ -147,7 +148,7 @@ class ApiJson:
         input_values_with_files = self.extract_data_files(all_input_values)
 
         # Process input files
-        processed_input_files = self.process_files(
+        processed_input_files = self.process_and_generate_input_files(
             input_values_with_files, all_input_values
         )
 
@@ -161,32 +162,36 @@ class ApiJson:
         input_json = self.create_input_json(
             non_data_inputs=modified_non_data_inputs, input_files=processed_input_files
         )
-
         return input_json
 
-    def process_files(
+    def process_and_generate_input_files(
         self, input_files: Dict[str, str], input_schema: Dict[str, str]
     ) -> List[Dict]:
         """
-        Process input files by opening and reading them, and mark arrays for exclusion.
+        Process input files by opening and reading them, and mark arrays for exclusion. A file is an input file
+        if it doesn't have the prefix "output_data". If it has "output_data", we mark it for exclusion and
+        store its path in the working directory because it contains the file path for the galaxy history.
         Then generate JSON representations of the files.
 
         Args:
-            input_files (Dict[str, str]): Dictionary containing input file attributes.
-            input_schema (Dict[str, str]): Dictionary containing schema information for input files.
+            input_files (Dict[str, str]): Dictionary containing files with their paths.
+            input_schema (Dict[str, str]): Dictionary containing schema information for all input values.
 
         Returns:
             List[Dict]: List of input file JSON representations.
         """
         input_file_json_list = []
-
+        # pprint(input_files)
+        # pprint(input_schema)
         for key, file_path in input_files.items():
             if "output_data" not in key:
+                # Adjust key for Cheetah compatibility
                 adjusted_key = key.replace("_", ".")  # change back because of Cheetah
                 file_contents = self.open_and_read_file(file_path)
                 exclusion_key = self.isArray + adjusted_key
                 self.exclusion_list.append(exclusion_key)
 
+                # Determine if the input is an array based on the input schema
                 if input_schema.get(exclusion_key) == "False":
                     input_file_json_list.append(
                         self.generate_input_file_json(
@@ -204,7 +209,7 @@ class ApiJson:
                 final_key = f"output_data_{output_key}"
                 self.exclusion_list.append(final_key)
                 self.working_directory[final_key] = file_path
-
+        pprint(input_file_json_list)
         return input_file_json_list
 
     def extract_suffix_after_prefix(self, key: str, prefix: str = "output_data") -> str:
@@ -307,6 +312,7 @@ class ApiJson:
         Returns:
             dict: A dictionary containing only the key-value pairs representing data files.
         """
+        pprint(dictionary)
         included_suffixes = {".dat", ".txt"}
         return {
             key: values
@@ -316,7 +322,11 @@ class ApiJson:
 
     def extract_input_values(self, dictionary: Dict):
         """
-        Extract input values from a dictionary, excluding certain keys and specify prefer
+        Extract input values from a dictionary, excluding certain keys and setting 'prefer'.
+
+        This method filters out keys from the provided dictionary that start with any of the specified
+        excluded prefixes. Additionally, it sets the 'prefer' attribute of the object to the value
+        associated with the 'prefer' key in the dictionary.
 
         Args:
             dictionary (dict): The dictionary from which to extract values.
@@ -507,8 +517,8 @@ class ApiJson:
             dict: A dictionary representing the output format.
 
         Example:
-            >>> output_json("output1", "application/json", "stream")
-            {'output1': {'transmissionMode': 'stream', 'format': {'mediaType': 'application/json'}}}
+            >>> output_json("output1", "application/json", "reference")
+            {'output1': {'transmissionMode': 'reference', 'format': {'mediaType': 'application/json'}}}
         """
         output_format = {outputName: {"transmissionMode": transmissionMode}}
 
