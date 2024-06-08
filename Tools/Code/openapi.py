@@ -5,13 +5,13 @@ import sys
 import re
 from pprint import pprint
 from api_request import APIRequest
-from typing import Dict
+from typing import Dict, List
 
 
 class ApiJson:
     def __init__(self) -> None:
         self.isArray = "isArray"
-        self.isexcluededList = []
+        self.exclusion_list = []
         self.output_format_dictionary = {}
         self.working_directory = {}
         self.transmission_mode = {}
@@ -43,7 +43,7 @@ class ApiJson:
         )
         apirequest.post_request()
 
-    def modify_attributes(self, attributes):
+    def modify_attributes(self, attributes: Dict):
         """
         Modify attributes by normalizing tool names.
 
@@ -58,11 +58,24 @@ class ApiJson:
             for key, value in attributes.items()
         }
 
-    def get_process_execution(self, attributes):
+    def get_process_execution(self, attributes: Dict):
+        """
+        Constructs the endpoint URL for the execution of a specific process.
+
+        This method takes a dictionary of attributes, extracts the 'name' attribute,
+        and constructs a URL string for the execution of the specified process.
+
+        Args:
+            attributes (Dict): A dictionary containing the 'name' attribute
+                               which specifies the process endpoint.
+
+        Returns:
+            str: A string representing the URL for the process execution endpoint.
+        """
         endpoint = attributes["name"]
         return f"processes/{endpoint}/execution"
 
-    def process_output_values(self, attributes):
+    def process_output_values(self, attributes: Dict):
         dictionary_list = self.generate_output_list(attributes=attributes)
 
         res = self.combine_dicts(dict_list=dictionary_list)
@@ -73,24 +86,40 @@ class ApiJson:
 
         return response
 
-    def normalize_tool_name(self, tool_name: str):
-        # Replace non-alphanumeric characters with underscores
-        cleaned_name = tool_name.replace("_", " ")
-        # Convert to lowercase
-        return cleaned_name
-
-    def create_openapi_input_file(self, inputs, outputs, response):
+    def normalize_tool_name(self, tool_name: str) -> str:
         """
-        Create an OpenAPI input file.
+        Normalizes a tool name by replacing underscores with spaces and converting it to lowercase.
+
+        This method takes a tool name string, replaces all underscores with spaces,
+        and then converts the entire string to lowercase.
 
         Args:
-            inputs (dict): A dictionary containing input data.
-            outputs (dict): A dictionary containing output data.
-            response (str): The response type.
+            tool_name (str): The original tool name string.
 
         Returns:
-            dict: A dictionary containing inputs, outputs, and response.
+            str: The normalized tool name with spaces instead of underscores and in lowercase.
+        """
+        # Replace underscores with spaces
+        cleaned_name = tool_name.replace("_", " ")
+        # Convert to lowercase
+        return cleaned_name.lower()
 
+    def create_openapi_input_file(
+        self, inputs: Dict, outputs: Dict, response: Dict
+    ) -> Dict:
+        """
+        Creates a dictionary representing an OpenAPI input file.
+
+        This method takes dictionaries for inputs, outputs, and response, and combines them
+        into a single dictionary suitable for use as an OpenAPI input file.
+
+        Args:
+            inputs (Dict): A dictionary containing input data.
+            outputs (Dict): A dictionary containing output data.
+            response (Dict): A dictionary containing response data.
+
+        Returns:
+            Dict: A dictionary containing the combined inputs, outputs, and response.
         """
         result_dictionary = {}
         result_dictionary["inputs"] = inputs
@@ -135,57 +164,72 @@ class ApiJson:
 
         return input_json
 
-    def process_files(self, input_files, input_schema):
+    def process_files(
+        self, input_files: Dict[str, str], input_schema: Dict[str, str]
+    ) -> List[Dict]:
         """
-        Process input files by opening and reading them, and add is_array to the list of arrays.
-        This is done to later remove it from the input attributes for server compatibility.
+        Process input files by opening and reading them, and mark arrays for exclusion.
         Then generate JSON representations of the files.
 
         Args:
-            input_files (dict): Dictionary containing input file attributes.
-            input_schema (dict): Dictionary containing schema information for input files.
+            input_files (Dict[str, str]): Dictionary containing input file attributes.
+            input_schema (Dict[str, str]): Dictionary containing schema information for input files.
 
         Returns:
-            list: List of input file JSON representations.
+            List[Dict]: List of input file JSON representations.
         """
         input_file_json_list = []
-        for key, value in input_files.items():
-            if "output_data" not in key:
-                # To do: check if correct for key
-                key = key.replace("_", ".")  # change back because of Cheetah
-                file_contents = self.open_and_read_file(value)
-                exclueded = self.isArray + key
-                self.isexcluededList.append(exclueded)
 
-                # Determine if the input is an array based on the arguments from the command line,
-                # For every input_file there is an argument f"{isArray}nameofinput"
-                if input_schema.get(exclueded) == "False":
+        for key, file_path in input_files.items():
+            if "output_data" not in key:
+                adjusted_key = key.replace("_", ".")  # change back because of Cheetah
+                file_contents = self.open_and_read_file(file_path)
+                exclusion_key = self.isArray + adjusted_key
+                self.exclusion_list.append(exclusion_key)
+
+                if input_schema.get(exclusion_key) == "False":
                     input_file_json_list.append(
                         self.generate_input_file_json(
-                            input_name=key, input_list=file_contents
+                            input_name=adjusted_key, input_list=file_contents
                         )
                     )
                 else:
                     input_file_json_list.append(
                         self.generate_input_file_list_json(
-                            input_name=key, input_list=file_contents
+                            input_name=adjusted_key, input_list=file_contents
                         )
                     )
             else:
-                helper_key = self.get_output_data_key(key)
-                key_2 = helper_key.replace("_", ".")
-                key = f"output_data_{key_2}"  # check for improvement because of Cheetah
-                self.isexcluededList.append(key)
-                self.working_directory[key] = value
+                output_key = self.extract_suffix_after_prefix(key).replace("_", ".")
+                final_key = f"output_data_{output_key}"
+                self.exclusion_list.append(final_key)
+                self.working_directory[final_key] = file_path
 
         return input_file_json_list
 
-    # to do: check for improvements
-    def get_output_data_key(self, key):
-        index = re.match("output_data", key).end()
-        return key[index + 1 :]
+    def extract_suffix_after_prefix(self, key: str, prefix: str = "output_data") -> str:
+        """
+        Extracts the portion of the key following the specified prefix.
 
-    def extract_non_data_inputs(self, data_inputs, all_input_values):
+        This method takes a key string and a prefix, identifies the substring that starts after the
+        specified prefix, and returns this substring. If the prefix is not found, it returns an empty string.
+
+        Args:
+            key (str): The original key string that contains the prefix.
+            prefix (str): The prefix to search for in the key. Default is 'output_data'.
+
+        Returns:
+            str: The substring of the key that follows the prefix. Returns an empty string if the prefix is not found.
+        """
+        match = re.match(f"{prefix}", key)
+        if match:
+            index = match.end()
+            return key[index + 1 :]
+        return ""
+
+    def extract_non_data_inputs(
+        self, data_inputs: Dict, all_input_values: Dict
+    ) -> Dict:
         """
         Extract non-data input values from the provided input values.
 
@@ -199,7 +243,7 @@ class ApiJson:
         Returns:
             dict: A dictionary containing non-data input values.
         """
-        excluded_prefixes = set(data_inputs.keys()).union(set(self.isexcluededList))
+        excluded_prefixes = set(data_inputs.keys()).union(set(self.exclusion_list))
         extracted_values = {
             key: value
             for key, value in all_input_values.items()
@@ -339,6 +383,20 @@ class ApiJson:
         return self.extract_values_by_keyword(dictionary, "transmissionMode")
 
     def extract_response_value(self, dictionary: Dict):
+        """
+        Extracts the value associated with a key containing 'response' from a dictionary.
+
+        This method iterates through the provided dictionary, identifies a key that contains
+        the substring 'response', and returns the corresponding value. If multiple keys contain
+        'response', the value of the last such key is returned. If no such key is found, an
+        empty string is returned.
+
+        Args:
+            dictionary (Dict[str, str]): A dictionary from which to extract the response value.
+
+        Returns:
+            str: The value associated with the key containing 'response', or an empty string if no such key is found.
+        """
         extracted_value = ""
         for key, value in dictionary.items():
             if "response" in key:
@@ -359,17 +417,35 @@ class ApiJson:
         match = re.search(character, string)
         return match.start()
 
-    def open_and_read_file(self, file_path: str):
+    def open_and_read_file(self, file_path: str) -> List[str]:
+        """
+        Opens and reads the contents of a file.
+
+        This method attempts to open the specified file in read mode, reads its contents line by line,
+        and returns a list containing each line of the file as a string.
+
+        Args:
+            file_path (str): The path to the file to be opened and read.
+
+        Returns:
+            List[str]: A list containing each line of the file as a string.
+
+        Raises:
+            FileNotFoundError: If the specified file does not exist.
+            Exception: If an error occurs while opening or reading the file.
+        """
         try:
             with open(file_path, "r") as file:
                 file_content = file.read().splitlines()
                 return file_content
         except FileNotFoundError:
             print(f"File {file_path} not found.")
+            raise
         except Exception as e:
             print(f"An error occurred while opening the file: {e}")
+            raise
 
-    def convert(self, args):
+    def convert(self, args: List):
         """
         Convert a list of arguments into a dictionary.
 
@@ -395,13 +471,44 @@ class ApiJson:
         res_dict = dict(zip(it, it))
         return res_dict
 
-    def add_quotes_around_unquoted_words(self, s):
-        # Regular expression to find unquoted words
-        return re.sub(r"(\b[a-zA-Z_]\w*\b)", r'"\1"', s)
+    # def add_quotes_around_unquoted_words(self, s):
+    #     """
+    #     Adds double quotes around unquoted words in a string.
+
+    #     This method takes a string and identifies unquoted words (sequences of alphanumeric characters and underscores)
+    #     within the string. It then adds double quotes around each unquoted word.
+
+    #     Args:
+    #         s (str): The input string.
+
+    #     Returns:
+    #         str: The input string with double quotes added around unquoted words.
+
+    #     Example:
+    #         >>> add_quotes_around_unquoted_words("Hello world and Python_3.9")
+    #         '"Hello" "world" "and" "Python_3.9"'
+    #     """
+    #     # Regular expression to find unquoted words
+    #     return re.sub(r"(\b[a-zA-Z_]\w*\b)", r'"\1"', s)
 
     def output_json(self, outputName: str, mediaType: str, transmissionMode: str):
         """
-        Create the actual output format for outputs
+        Create the JSON representation of an output format.
+
+        This method constructs a dictionary representing the output format, including the output name,
+        transmission mode, and optional media type if provided.
+
+        Args:
+            outputName (str): The name of the output.
+            mediaType (str): The media type of the output format. Can be None.
+            transmissionMode (str): The transmission mode of the output.
+
+        Returns:
+            dict: A dictionary representing the output format.
+
+        Example:
+            >>> output_json("output1", "application/json", "stream")
+            {'output1': {'transmissionMode': 'stream', 'format': {'mediaType': 'application/json'}}}
         """
         output_format = {outputName: {"transmissionMode": transmissionMode}}
 
@@ -410,7 +517,7 @@ class ApiJson:
 
         return output_format
 
-    def generate_input_file_list_json(self, input_name, input_list):
+    def generate_input_file_list_json(self, input_name: str, input_list: List):
         """
         Generate JSON representation of a list of input files.
 
@@ -424,7 +531,7 @@ class ApiJson:
         input_format = {input_name: [{"href": link} for link in input_list]}
         return input_format
 
-    def generate_input_file_json(self, input_name, input_list):
+    def generate_input_file_json(self, input_name: str, input_list: List):
         """
         Generate JSON representation of a single input file.
 
@@ -438,7 +545,7 @@ class ApiJson:
         input_format = {input_name: {"href": link} for link in input_list}
         return input_format
 
-    def create_input_json(self, non_data_inputs, input_files):
+    def create_input_json(self, non_data_inputs: Dict, input_files: Dict):
         """
         Create JSON representation of input data.
 
@@ -462,35 +569,64 @@ class ApiJson:
         """
         Combine dictionaries in a list into a single dictionary.
 
+        This method takes a list of dictionaries and combines them into a single dictionary.
+        If there are duplicate keys, the values from later dictionaries in the list overwrite
+        the values from earlier dictionaries.
+
         Args:
-            dict_list (list of dict): List of dictionaries to combine.
+            dict_list (List[Dict]): List of dictionaries to combine.
 
         Returns:
-            dict: Combined dictionary.
+            Dict: Combined dictionary.
+
+        Example:
+            >>> combine_dicts([{'a': 1, 'b': 2}, {'b': 3, 'c': 4}])
+            {'a': 1, 'b': 3, 'c': 4}
         """
+
         combined_dict = {}
         for single_dict in dict_list:
             combined_dict.update(single_dict)
         return combined_dict
 
-    def merge_dicts(self, dict1, dict2):
+    def merge_dicts(self, base_dict: dict, overlay_dict: dict) -> dict:
         """
         Merge two dictionaries into a single dictionary.
 
+        This method takes two dictionaries and merges them into a single dictionary.
+        If there are duplicate keys, the values from the overlay dictionary (overlay_dict) overwrite
+        the values from the base dictionary (base_dict).
+
         Args:
-            dict1 (dict): First dictionary.
-            dict2 (dict): Second dictionary.
+            base_dict (dict): The base dictionary.
+            overlay_dict (dict): The dictionary whose values will overlay the base dictionary.
 
         Returns:
-            dict: Merged dictionary.
+            dict: The merged dictionary.
+
+        Example:
+            >>> merge_dicts({'a': 1, 'b': 2}, {'b': 3, 'c': 4})
+            {'a': 1, 'b': 3, 'c': 4}
         """
-        merged_dict = dict1.copy()
-        merged_dict.update(dict2)
+        merged_dict = base_dict.copy()
+        merged_dict.update(overlay_dict)
         return merged_dict
 
-    def response_json_format(self, response):
-        output_format = {"response": response}
-        return output_format
+    # def construct_response_json(self, response: str):
+    #     """
+    #     Create a JSON representation of a response.
+
+    #     This method constructs a dictionary representing the JSON format of a response,
+    #     with the response value provided as input.
+
+    #     Args:
+    #         response (str): The response value.
+
+    #     Returns:
+    #         dict: A dictionary representing the JSON format of the response.
+    #     """
+    #     output_format = {"response": response}
+    #     return output_format
 
 
 if __name__ == "__main__":
