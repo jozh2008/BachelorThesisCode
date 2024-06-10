@@ -2,6 +2,8 @@ import os
 import sys
 import math
 import pytest
+
+# from pprint import pprint
 from unittest.mock import MagicMock, patch
 
 
@@ -20,6 +22,9 @@ def setup_tool():
 
     tool = Galaxyxmltool(name=name, id=id, version=version, description=description)
     tool.gxtp = MagicMock()
+    tool.output_type_dictionary = {}
+    tool.output_name_list = []
+
     return tool
 
 
@@ -787,3 +792,529 @@ def test_create_section(setup_tool):
 
     # Assert the returned value is the mocked section
     assert result == section_mock
+
+
+def test_create_select_raw_param(setup_tool):
+    inputs = []
+    tool = setup_tool
+    section_mock = MagicMock()
+    tool.create_section = MagicMock(return_value=section_mock)
+    updated_inputs = tool.create_select_raw_param(inputs)
+
+    # Assert that the create_section method was called with the correct parameters
+    tool.create_section.assert_called_with(
+        name="Section_response",
+        title="Choose the response type",
+        description=(
+            "Choose 'raw' to get the raw data or 'document' for retrieving a URL. "
+            "The URL can be used for workflows, while the raw data is the download of the URL"
+        ),
+    )
+
+    # Assert that a SelectParam was created with the correct parameters
+    tool.gxtp.SelectParam.assert_called_with(
+        name="response",
+        default="document",
+        options={"raw": "raw", "document": "document"},
+        label="Response Type",
+        help="Choose 'raw' for raw data or 'document' for document data.",
+    )
+
+    # Assert the parameters are appended to the section
+    section_mock.append.assert_any_call(tool.gxtp.SelectParam.return_value)
+
+    # Assert that the section was added to the inputs
+    assert section_mock in updated_inputs
+
+    # Assert that the inputs list was modified correctly
+    assert updated_inputs == inputs
+
+
+def test_choose_prefer(setup_tool):
+    inputs = []
+    tool = setup_tool
+
+    section_mock = MagicMock()
+    tool.create_section = MagicMock(return_value=section_mock)
+    updated_inputs = tool.choose_prefer(inputs)
+
+    # Assert that the create_section method was called with the correct parameters
+    tool.create_section.assert_called_with(
+        name="Section_prefer",
+        title="Choose the prefer",
+        description=(
+            "Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'."
+            "The specification is for synchronous or asynchronous executions,"
+            "with asynchronous execution as the default value"
+        ),
+    )
+
+    # Assert that a SelectParam was created with the correct parameters
+    tool.gxtp.SelectParam.assert_called_with(
+        name="prefer",
+        default="respond-async;return=representation",
+        options={
+            "return=representation": "return=representation",
+            "return=minimal": "return=minimal",
+            "respond-async;return=representation": "respond-async;return=representation",
+        },
+        label="Prefer",
+        help=None,
+    )
+
+    # Assert the parameters are appended to the section
+    section_mock.append.assert_any_call(tool.gxtp.SelectParam.return_value)
+
+    # Assert that the section was added to the inputs
+    assert section_mock in updated_inputs
+
+    # Assert that the inputs list was modified correctly
+    assert updated_inputs == inputs
+
+
+def test_choose_transmission_mode(setup_tool):
+    name = "out"
+    available_transmissions = ["value", "reference"]
+    section = []
+    tool = setup_tool
+
+    section_mock = MagicMock()
+    tool.create_section = MagicMock(return_value=section_mock)
+
+    updated_section = tool.choose_transmission_mode(
+        section, name, available_transmissions
+    )
+
+    # Assert that a SelectParam was created with the correct parameters
+    tool.gxtp.SelectParam.assert_called_once_with(
+        name="transmissionMode_out",
+        default="reference",
+        options={"value": "value", "reference": "reference"},
+        label="Choose the transmission mode",
+    )
+
+    # Assert the parameters are appended to the section
+    assert len(section) == 1
+    assert section[0] == tool.gxtp.SelectParam.return_value
+
+    # Assert that the section was added to the inputs
+    assert updated_section == section
+
+
+def test_create_output_param(setup_tool):
+
+    tool = setup_tool
+
+    tool.replace_dot_with_underscore = MagicMock(
+        side_effect=lambda x: x.replace(".", "_")
+    )
+    mock_enum_values = ["image/tiff", "image/jpeg", "image/png"]
+    tool.process_output_param = MagicMock(return_value=(MagicMock(), mock_enum_values))
+    tool.create_section = MagicMock(return_value=MagicMock())
+    tool.choose_transmission_mode = MagicMock()
+
+    output_schema = {
+        "out": {
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image-list operands.",
+            "extended-schema": {
+                "oneOf": [
+                    {
+                        "allOf": [
+                            {"$ref": "http://zoo-project.org/dl/link.json"},
+                            {
+                                "properties": {
+                                    "type": {
+                                        "enum": [
+                                            "image/tiff",
+                                            "image/jpeg",
+                                            "image/png",
+                                        ]
+                                    }
+                                },
+                                "type": "object",
+                            },
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "value": {
+                                "oneOf": [
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/tiff",
+                                        "type": "string",
+                                    },
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/jpeg",
+                                        "type": "string",
+                                    },
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/png",
+                                        "type": "string",
+                                    },
+                                ]
+                            }
+                        },
+                        "required": ["value"],
+                        "type": "object",
+                    },
+                ]
+            },
+            "schema": {
+                "oneOf": [
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/tiff",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/jpeg",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/png",
+                        "type": "string",
+                    },
+                ]
+            },
+            "title": "Output image which is the result of the mathematical "
+            "expressions on input image-list operands.",
+        }
+    }
+    transmission_schema = ["value", "reference"]
+
+    inputs = []
+    tool.create_output_param(output_schema, inputs, transmission_schema)
+
+    # Verify that replace_dot_with_underscore was called
+    tool.replace_dot_with_underscore.assert_called_once_with("out")
+
+    # Verify that process_output_param was called with the correct arguments
+    tool.process_output_param.assert_called_once_with(
+        output_param_name="outputType_out",
+        param_extended_schema={
+            "oneOf": [
+                {
+                    "allOf": [
+                        {"$ref": "http://zoo-project.org/dl/link.json"},
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": ["image/tiff", "image/jpeg", "image/png"]
+                                }
+                            },
+                            "type": "object",
+                        },
+                    ]
+                },
+                {
+                    "properties": {
+                        "value": {
+                            "oneOf": [
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/tiff",
+                                    "type": "string",
+                                },
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/jpeg",
+                                    "type": "string",
+                                },
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/png",
+                                    "type": "string",
+                                },
+                            ]
+                        }
+                    },
+                    "required": ["value"],
+                    "type": "object",
+                },
+            ]
+        },
+        param_schema={
+            "oneOf": [
+                {
+                    "contentEncoding": "base64",
+                    "contentMediaType": "image/tiff",
+                    "type": "string",
+                },
+                {
+                    "contentEncoding": "base64",
+                    "contentMediaType": "image/jpeg",
+                    "type": "string",
+                },
+                {
+                    "contentEncoding": "base64",
+                    "contentMediaType": "image/png",
+                    "type": "string",
+                },
+            ]
+        },
+        param_type=None,
+        enum_values=[],
+        title="out",
+        description="Output image which is the result of the mathematical expressions on input image-list operands.",
+    )
+
+    # Verify that create_section was called with the correct arguments
+    tool.create_section.assert_called_once_with(
+        name="OutputSection_out",
+        title="Select the appropriate transmission mode for out and specify an output format",
+    )
+
+    # Verify that choose_transmission_mode was called with the correct arguments
+    tool.choose_transmission_mode.assert_called_once_with(
+        tool.create_section.return_value,
+        name="out",
+        available_transmissions=transmission_schema,
+    )
+
+    # Verify that the section was appended to inputs
+    assert tool.create_section.return_value in inputs
+    assert len(inputs) == 1
+
+    # Verify the updates to output_type_dictionary and output_name_list
+    assert tool.output_type_dictionary == {
+        "outputType_out": ["image/tiff", "image/jpeg", "image/png"]
+    }
+    assert tool.output_name_list == ["out"]
+
+
+def test_create_process_output_param(setup_tool):
+    tool = setup_tool
+
+    mock = MagicMock()
+    tool.create_select_param_output = MagicMock(return_value=mock)
+
+    output_schema = {
+        "out": {
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image-list operands.",
+            "extended-schema": {
+                "oneOf": [
+                    {
+                        "allOf": [
+                            {"$ref": "http://zoo-project.org/dl/link.json"},
+                            {
+                                "properties": {
+                                    "type": {
+                                        "enum": [
+                                            "image/tiff",
+                                            "image/jpeg",
+                                            "image/png",
+                                        ]
+                                    }
+                                },
+                                "type": "object",
+                            },
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "value": {
+                                "oneOf": [
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/tiff",
+                                        "type": "string",
+                                    },
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/jpeg",
+                                        "type": "string",
+                                    },
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/png",
+                                        "type": "string",
+                                    },
+                                ]
+                            }
+                        },
+                        "required": ["value"],
+                        "type": "object",
+                    },
+                ]
+            },
+            "schema": {
+                "oneOf": [
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/tiff",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/jpeg",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/png",
+                        "type": "string",
+                    },
+                ]
+            },
+            "title": "Output image which is the result of the mathematical "
+            "expressions on input image-list operands.",
+        }
+    }
+
+    param, enum_values = tool.process_output_param(
+        output_param_name="outputType_out",
+        param_extended_schema=output_schema["out"]["extended-schema"],
+        param_schema=output_schema["out"]["schema"],
+        param_type=None,
+        enum_values=[],
+        title="out",
+        description=output_schema["out"]["description"],
+    )
+
+    tool.create_select_param_output.assert_called_once_with(
+        param_name="outputType_out",
+        param_extended_schema={
+            "oneOf": [
+                {
+                    "allOf": [
+                        {"$ref": "http://zoo-project.org/dl/link.json"},
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": ["image/tiff", "image/jpeg", "image/png"]
+                                }
+                            },
+                            "type": "object",
+                        },
+                    ]
+                },
+                {
+                    "properties": {
+                        "value": {
+                            "oneOf": [
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/tiff",
+                                    "type": "string",
+                                },
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/jpeg",
+                                    "type": "string",
+                                },
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/png",
+                                    "type": "string",
+                                },
+                            ]
+                        }
+                    },
+                    "required": ["value"],
+                    "type": "object",
+                },
+            ]
+        },
+        title="out",
+        description=(
+            "Output image which is the result of the mathematical "
+            "expressions on input image-list operands."
+        ),
+    )
+    assert enum_values == ["image/tiff", "image/jpeg", "image/png"]
+    assert param == tool.create_select_param_output.return_value
+
+
+def test_create_select_param_output(setup_tool):
+
+    param_name = "outputType_out"
+    param_extended_schema = (
+        {
+            "oneOf": [
+                {
+                    "allOf": [
+                        {"$ref": "http://zoo-project.org/dl/link.json"},
+                        {
+                            "properties": {
+                                "type": {
+                                    "enum": ["image/tiff", "image/jpeg", "image/png"]
+                                }
+                            },
+                            "type": "object",
+                        },
+                    ]
+                },
+                {
+                    "properties": {
+                        "value": {
+                            "oneOf": [
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/tiff",
+                                    "type": "string",
+                                },
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/jpeg",
+                                    "type": "string",
+                                },
+                                {
+                                    "contentEncoding": "base64",
+                                    "contentMediaType": "image/png",
+                                    "type": "string",
+                                },
+                            ]
+                        }
+                    },
+                    "required": ["value"],
+                    "type": "object",
+                },
+            ]
+        },
+    )
+    title = "out"
+    description = (
+        "Output image which is the result of the mathematical "
+        "expressions on input image-list operands."
+    )
+
+    tool = setup_tool
+
+    # Mock the extract_enum method to return the enum values
+    tool.extract_enum = MagicMock()
+
+    # Define the behavior of the MagicMock object
+    def extract_enum_mock(schema_item=param_extended_schema, enum_values=[]):
+        enum_values.extend(["image/tiff", "image/jpeg", "image/png"])
+
+    # Assign the MagicMock object's side_effect to the defined behavior
+    tool.extract_enum.side_effect = extract_enum_mock
+    # enum_values = []
+
+    result = tool.create_select_param_output(
+        param_name=param_name,
+        param_extended_schema=param_extended_schema,
+        title=title,
+        description=description,
+    )
+    # print("Enum values in test:", tool.extract_enum.return_value)
+
+    # tool.extract_enum.assert_called_once()
+
+    tool.gxtp.SelectParam.assert_called_once_with(
+        name="outputType_out",
+        label="out",
+        help=(
+            "Output image which is the result of the mathematical "
+            "expressions on input image-list operands."
+        ),
+        options={"image/jpeg": "jpeg", "image/png": "png", "image/tiff": "tiff"},
+    )
+    assert result == tool.gxtp.SelectParam.return_value

@@ -337,7 +337,6 @@ class Galaxyxmltool:
             name=param_name, title=title, description=description
         )
         for field in required_fields:
-            print(field)
             field_schema = param_schema["properties"][field]
             field_type = field_schema.get("type")
             if field_type == "string":
@@ -664,15 +663,15 @@ class Galaxyxmltool:
         return inputs
 
     def choose_transmission_mode(
-        self, section: List, name: str, available_transmissions: Dict
+        self, section: List, name: str, available_transmissions: List
     ):
         """
         Adds a parameter to select transmission mode to a given section.
 
         Args:
             section (list): The section to which the parameter will be appended.
-            item_number (int): The number of the item.
             available_transmissions (list): List of available transmission modes.
+            name (str): Name of the output
 
         Returns:
             list: The updated section with the added parameter.
@@ -699,9 +698,9 @@ class Galaxyxmltool:
 
         return section
 
-    # To do: Implement solution for param_type object
+    # To do: Implement solution for param_type object and add better docstrings
     def create_output_param(
-        self, output_schema: Dict, inputs: List, transmission_schema: Dict
+        self, output_schema: Dict, inputs: List, transmission_schema: List
     ):
         """
         Create output parameters based on provided output schema and transmission schema.
@@ -710,24 +709,28 @@ class Galaxyxmltool:
             output_schema (Dict): JSON schema containing output parameters.
             inputs (List): List of input parameters to which output parameters will be appended.
                         All input parameters will be in Inputs of the Galaxy XML.
-            transmission_schema (Dict): JSON schema containing output transmission information.
+            transmission_schema (List): JSON schema containing output transmission information.
 
         Returns:
             None
         """
-
+        pprint(output_schema)
+        # pprint(transmission_schema)
         for param_name, param_info in output_schema.items():
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
             param_extended_schema = param_info.get("extended-schema")
+            pprint(param_extended_schema)
             param_type = param_schema.get("type")
             output_param_name = f"{self.output_type}_{param_name}"
-            title = param_schema.get("title")
-            description = param_schema.get("description")
+            title = param_info.get("title")
+            description = param_info.get("description")
             if title != description:
                 description = f"{title} {description}"
 
             title = param_name
+            print(description)
+
             enum_values = []
 
             param, enum_values = self.process_output_param(
@@ -739,7 +742,10 @@ class Galaxyxmltool:
                 title=title,
                 description=description,
             )
+
+            # pprint(enum_values)
             self.output_type_dictionary[output_param_name] = enum_values
+            pprint(self.output_type_dictionary)
             self.output_name_list.append(param_name)  # just name of output
 
             output_param_section_name = f"OutputSection_{param_name}"
@@ -788,7 +794,6 @@ class Galaxyxmltool:
         """
 
         param = None
-
         if param_type == "string":
             if param_schema.get("enum"):
                 param = self.create_select_param(
@@ -806,7 +811,10 @@ class Galaxyxmltool:
                 param = None
         elif param_extended_schema is not None:
             param = self.create_select_param_output(
-                output_param_name, param_extended_schema, title, description
+                param_name=output_param_name,
+                param_extended_schema=param_extended_schema,
+                title=title,
+                description=description,
             )
             self.extract_enum(param_extended_schema, enum_values=enum_values)
         elif param_type in ["number", "integer", "boolean", "object"]:
@@ -821,7 +829,6 @@ class Galaxyxmltool:
 
         return param, enum_values
 
-    # To do: Add docstring
     def create_select_param_output(
         self, param_name: str, param_extended_schema: Dict, title: str, description: str
     ):
@@ -839,12 +846,15 @@ class Galaxyxmltool:
         """
         # Extract enumeration values from the extended schema
         enum_values = []
-        self.extract_enum(param_extended_schema, enum_values)
-
+        pprint(param_extended_schema)
+        self.extract_enum(schema_item=param_extended_schema, enum_values=enum_values)
+        pprint(enum_values)
         # Create a dictionary for data types based on the enumeration values
         data_types_dict = {
             data_type: data_type.split("/")[-1] for data_type in enum_values
         }
+
+        pprint(data_types_dict)
 
         # Return the created select parameter
         return self.gxtp.SelectParam(
@@ -1114,8 +1124,8 @@ class Galaxyxmltool:
 
             # Process input parameters
             for key, value in inputs.items():
-                print(key)
-                pprint(value)
+                # (key)
+                # pprint(value)
                 if isinstance(value, list):
                     lst = [i.get("href") for i in value]
                     param = self.gxtp.TestParam(name=key, value=lst)
