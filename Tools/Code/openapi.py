@@ -24,6 +24,8 @@ class ApiJson:
         attributes = self.convert(args=args)
         pprint(attributes)
 
+        prefer = attributes["prefer"]
+
         inputs = self.process_input_values(attributes=attributes)
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
@@ -39,7 +41,7 @@ class ApiJson:
             output_format_dictionary=self.output_format_dictionary,
             working_directory=self.working_directory,
             transmission_mode=self.transmission_mode,
-            prefer=self.prefer,
+            prefer=prefer,
         )
         apirequest.post_request()
 
@@ -54,7 +56,7 @@ class ApiJson:
             dict: A modified dictionary with normalized tool names.
         """
         return {
-            key: self.normalize_tool_name(value) if key != "name" else value
+            key: self.format_tool_name(value) if key != "name" else value
             for key, value in attributes.items()
         }
 
@@ -76,17 +78,39 @@ class ApiJson:
         return f"processes/{endpoint}/execution"
 
     def process_output_values(self, attributes: Dict):
+        """
+        Processes the output values by generating a list of dictionaries based on the given attributes and then
+        combining these dictionaries into a single dictionary.
+
+        Parameters:
+        attributes (Dict): A dictionary of attributes used to generate the output list.
+
+        Returns:
+        Dict: A single combined dictionary resulting from the list of generated dictionaries.
+        """
         dictionary_list = self.generate_output_list(attributes=attributes)
 
         res = self.combine_dicts(dict_list=dictionary_list)
         return res
 
     def process_response_values(self, attributes):
+        """
+        Processes and extracts the response value from the provided attributes.
+
+        This method calls extract_response_value to retrieve the value associated
+        with a key containing 'response' from the attributes dictionary.
+
+        Args:
+            attributes (Dict[str, str]): A dictionary containing various attributes.
+
+        Returns:
+            str: The extracted response value, or an empty string if no such key is found.
+        """
         response = self.extract_response_value(dictionary=attributes)
 
         return response
 
-    def normalize_tool_name(self, tool_name: str) -> str:
+    def format_tool_name(self, tool_name: str) -> str:
         """
         Normalizes a tool name by replacing underscores with spaces and converting it to lowercase.
 
@@ -181,8 +205,6 @@ class ApiJson:
             List[Dict]: List of input file JSON representations.
         """
         input_file_json_list = []
-        # pprint(input_files)
-        # pprint(input_schema)
         for key, file_path in input_files.items():
             if "output_data" not in key:
                 # Adjust key for Cheetah compatibility
@@ -209,7 +231,7 @@ class ApiJson:
                 final_key = f"output_data_{output_key}"
                 self.exclusion_list.append(final_key)
                 self.working_directory[final_key] = file_path
-        pprint(input_file_json_list)
+        # pprint(input_file_json_list)
         return input_file_json_list
 
     def extract_suffix_after_prefix(self, key: str, prefix: str = "output_data") -> str:
@@ -271,18 +293,24 @@ class ApiJson:
         """
         # Extract output values and transmissionMode values
         outputs = self.extract_output_values(attributes)
+        # pprint(outputs)
         transmission_mode = self.extract_transmission_mode_values(attributes)
+        # pprint(transmission_mode)
         self.transmission_mode = transmission_mode
 
-        # Convert values to lists
-        keys_transmission_mode = list(transmission_mode.keys())
-        values_transmission_mode = list(transmission_mode.values())
+        # Convert values to lists, why?
+        # keys_transmission_mode = list(transmission_mode.keys())
+        # values_transmission_mode = list(transmission_mode.values())
+
+        # pprint(keys_transmission_mode)
+        # pprint(values_transmission_mode)
 
         # Initialize an empty list
         lst = []
 
         # Iterate through the outputs and create dictionaries
-        for key, value in zip(keys_transmission_mode, values_transmission_mode):
+        # for key, value in zip(keys_transmission_mode, values_transmission_mode):
+        for key, value in transmission_mode.items():
             output_value = outputs.get(key)
 
             # We want to return a image, when we have a raw data and value, but we cannot
@@ -300,6 +328,9 @@ class ApiJson:
             )
 
         # Return the list
+
+        # pprint(lst)
+
         return lst
 
     def extract_data_files(self, dictionary: Dict):
@@ -312,7 +343,6 @@ class ApiJson:
         Returns:
             dict: A dictionary containing only the key-value pairs representing data files.
         """
-        pprint(dictionary)
         included_suffixes = {".dat", ".txt"}
         return {
             key: values
@@ -342,7 +372,7 @@ class ApiJson:
             "name",
             "prefer",
         }
-        self.prefer = dictionary["prefer"]
+        # self.prefer = dictionary["prefer"]
         return {
             key: value  # check if correct
             for key, value in dictionary.items()

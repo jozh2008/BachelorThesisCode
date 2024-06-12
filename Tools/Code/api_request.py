@@ -57,6 +57,7 @@ class APIRequest:
             data accordingly.
         """
         url = self.get_url(keyword="execute")
+        pprint(url)
         response = requests.post(url, headers=self.headers, json=self.payload)
         response = self.check_job_id(response=response)
         if not response.ok:
@@ -71,10 +72,7 @@ class APIRequest:
             output_file_path = self.working_directory[location]
 
             transmission_item = response_data.get(key)
-            pprint(transmission_item)
             if transmission_item is None:
-                # with open(output_file_path, "wb") as f:
-                #     f.write(response.content)
                 continue
 
             if self.response_input == "raw":
@@ -83,14 +81,12 @@ class APIRequest:
                     if url_file:
                         urllib.request.urlretrieve(url_file, output_file_path)
                 else:
-                    # print(transmission_item, 1)
                     self.write_transmission_item(
                         output_file_path=output_file_path,
                         transmission_item=transmission_item,
                         mode=value,
                     )
             else:
-                # print(transmission_item, 2)
                 self.write_transmission_item(
                     output_file_path=output_file_path,
                     transmission_item=transmission_item,
