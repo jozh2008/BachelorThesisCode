@@ -3,7 +3,7 @@ import galaxyxml.tool.parameters as gtpx
 
 from macros_xml_generator import MacrosXMLGenerator
 
-from pprint import pprint
+# from pprint import pprint
 from typing import Dict, List, Union
 import re
 import copy
@@ -342,9 +342,6 @@ class Galaxyxmltool:
             field_schema = param_schema["properties"][field]
             field_type = field_schema.get("type")
             if field_type == "string":
-                # enum_values = field_schema.get("enum")
-                # options = {value: value for value in enum_values}
-                # default_value = field_schema.get("default", None)
                 param = self.create_select_param(
                     param_name=field,
                     param_schema=field_schema,
@@ -486,6 +483,9 @@ class Galaxyxmltool:
         Returns:
         List: A list of generated parameters.
         """
+        # pprint(input_schema)
+        # pprint(output_schema)
+        # pprint(transmission_schema)
         inputs = self.gxtp.Inputs()
         for param_name, param_info in input_schema.items():
             param_name = self.replace_dot_with_underscore(param_name)
@@ -716,13 +716,11 @@ class Galaxyxmltool:
         Returns:
             None
         """
-        pprint(output_schema)
         # pprint(transmission_schema)
         for param_name, param_info in output_schema.items():
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
             param_extended_schema = param_info.get("extended-schema")
-            pprint(param_extended_schema)
             param_type = param_schema.get("type")
             output_param_name = f"{self.output_type}_{param_name}"
             title = param_info.get("title")
@@ -731,7 +729,6 @@ class Galaxyxmltool:
                 description = f"{title} {description}"
 
             title = param_name
-            print(description)
 
             enum_values = []
 
@@ -747,7 +744,6 @@ class Galaxyxmltool:
 
             # pprint(enum_values)
             self.output_type_dictionary[output_param_name] = enum_values
-            pprint(self.output_type_dictionary)
             self.output_name_list.append(param_name)  # just name of output
 
             output_param_section_name = f"OutputSection_{param_name}"

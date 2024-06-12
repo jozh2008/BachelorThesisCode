@@ -25,6 +25,14 @@ def setup_tool():
     tool.output_type_dictionary = {}
     tool.output_name_list = []
 
+    tool.gxtp.Inputs = MagicMock()
+    tool.gxtp.Inputs.return_value.params = []
+
+    def mock_append(param):
+        tool.gxtp.Inputs.return_value.params.append(param)
+
+    tool.gxtp.Inputs.return_value.append.side_effect = mock_append
+
     return tool
 
 
@@ -1314,3 +1322,293 @@ def test_create_select_param_output(setup_tool):
         options={"image/jpeg": "jpeg", "image/png": "png", "image/tiff": "tiff"},
     )
     assert result == tool.gxtp.SelectParam.return_value
+
+
+def test_create_params(setup_tool):
+    tool = setup_tool
+
+    tool.create_select_param = MagicMock()
+    tool.create_text_param = MagicMock()
+    tool.create_integer_param = MagicMock()
+    tool.create_data_param = MagicMock()
+    tool.choose_prefer = MagicMock()
+    tool.create_select_raw_param = MagicMock()
+    tool.create_output_param = MagicMock()
+    # tool.replace_dot_with_underscore = MagicMock(
+    #     side_effect=lambda x: x.replace(".", "_")
+    # )
+
+    input_schema = {
+        "exp": {
+            "description": "The muParser mathematical expression to apply on "
+            "input images.",
+            "schema": {"type": "string"},
+            "title": "The muParser mathematical expression to apply on input "
+            "images.",
+        },
+        "il": {
+            "description": "Image list of operands to the mathematical expression.",
+            "extended-schema": {
+                "items": {
+                    "oneOf": [
+                        {
+                            "allOf": [
+                                {"$ref": "http://zoo-project.org/dl/link.json"},
+                                {
+                                    "properties": {
+                                        "type": {
+                                            "enum": [
+                                                "image/tiff",
+                                                "image/jpeg",
+                                                "image/png",
+                                            ]
+                                        }
+                                    },
+                                    "type": "object",
+                                },
+                            ]
+                        },
+                        {
+                            "properties": {
+                                "value": {
+                                    "oneOf": [
+                                        {
+                                            "contentEncoding": "base64",
+                                            "contentMediaType": "image/tiff",
+                                            "type": "string",
+                                        },
+                                        {
+                                            "contentEncoding": "base64",
+                                            "contentMediaType": "image/jpeg",
+                                            "type": "string",
+                                        },
+                                        {
+                                            "contentEncoding": "base64",
+                                            "contentMediaType": "image/png",
+                                            "type": "string",
+                                        },
+                                    ]
+                                }
+                            },
+                            "required": ["value"],
+                            "type": "object",
+                        },
+                    ]
+                },
+                "maxItems": 1024,
+                "minItems": 1,
+                "type": "array",
+            },
+            "maxOccurs": 1024,
+            "schema": {
+                "oneOf": [
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/tiff",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/jpeg",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/png",
+                        "type": "string",
+                    },
+                ]
+            },
+            "title": "Image list of operands to the mathematical expression.",
+        },
+        "out": {
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image list operands.",
+            "schema": {
+                "default": "float",
+                "enum": ["uint8", "uint16", "int16", "int32", "float", "double"],
+                "type": "string",
+            },
+            "title": "Output image which is the result of the mathematical "
+            "expressions on input image list operands.",
+        },
+        "ram": {
+            "description": "Available memory for processing (in MB).",
+            "schema": {"default": 256, "nullable": True, "type": "integer"},
+            "title": "Available memory for processing (in MB).",
+        },
+    }
+    output_schema = {
+        "out": {
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image list operands.",
+            "extended-schema": {
+                "oneOf": [
+                    {
+                        "allOf": [
+                            {"$ref": "http://zoo-project.org/dl/link.json"},
+                            {
+                                "properties": {
+                                    "type": {
+                                        "enum": [
+                                            "image/tiff",
+                                            "image/jpeg",
+                                            "image/png",
+                                        ]
+                                    }
+                                },
+                                "type": "object",
+                            },
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "value": {
+                                "oneOf": [
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/tiff",
+                                        "type": "string",
+                                    },
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/jpeg",
+                                        "type": "string",
+                                    },
+                                    {
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/png",
+                                        "type": "string",
+                                    },
+                                ]
+                            }
+                        },
+                        "required": ["value"],
+                        "type": "object",
+                    },
+                ]
+            },
+            "schema": {
+                "oneOf": [
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/tiff",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/jpeg",
+                        "type": "string",
+                    },
+                    {
+                        "contentEncoding": "base64",
+                        "contentMediaType": "image/png",
+                        "type": "string",
+                    },
+                ]
+            },
+            "title": "Output image which is the result of the mathematical "
+            "expressions on input image list operands.",
+        }
+    }
+
+    transmission_schema = ["value", "reference"]
+
+    results = tool.create_params(input_schema, output_schema, transmission_schema)
+
+    tool.create_text_param.assert_called_once_with(
+        param_name="exp",
+        param_schema={"type": "string"},
+        is_nullable=False,
+        title="exp",
+        description="The muParser mathematical expression to apply on input images.",
+    )
+    tool.create_integer_param.assert_called_once_with(
+        param_name="ram",
+        param_schema={"default": 256, "nullable": True, "type": "integer"},
+        is_nullable=True,
+        title="ram",
+        description="Available memory for processing (in MB).",
+    )
+
+    tool.create_select_param.assert_called_once_with(
+        param_name="out",
+        param_schema={
+            "default": "float",
+            "enum": ["uint8", "uint16", "int16", "int32", "float", "double"],
+            "type": "string",
+        },
+        is_nullable=False,
+        param_type_bool=False,
+        title="out",
+        description="Output image which is the result of the mathematical expressions on input image list operands.",
+    )
+
+    tool.create_data_param.assert_called_once_with(
+        param_name="il",
+        param_extended_schema={
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1024,
+            "items": {
+                "oneOf": [
+                    {
+                        "allOf": [
+                            {"$ref": "http://zoo-project.org/dl/link.json"},
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "enum": [
+                                            "image/tiff",
+                                            "image/jpeg",
+                                            "image/png",
+                                        ]
+                                    }
+                                },
+                            },
+                        ]
+                    },
+                    {
+                        "type": "object",
+                        "required": ["value"],
+                        "properties": {
+                            "value": {
+                                "oneOf": [
+                                    {
+                                        "type": "string",
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/tiff",
+                                    },
+                                    {
+                                        "type": "string",
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/jpeg",
+                                    },
+                                    {
+                                        "type": "string",
+                                        "contentEncoding": "base64",
+                                        "contentMediaType": "image/png",
+                                    },
+                                ]
+                            }
+                        },
+                    },
+                ]
+            },
+        },
+        is_nullable=False,
+        is_array=True,
+        title="il",
+        description="Image list of operands to the mathematical expression.",
+    )
+    tool.choose_prefer.assert_called_once_with(inputs=results)
+
+    tool.create_select_raw_param.assert_called_once_with(inputs=results)
+
+    # Verify that create_output_param was called with the correct arguments
+    tool.create_output_param.assert_called_once_with(
+        output_schema=output_schema,
+        inputs=results,
+        transmission_schema=transmission_schema,
+    )
