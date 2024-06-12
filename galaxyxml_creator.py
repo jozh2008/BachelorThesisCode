@@ -100,7 +100,9 @@ class Galaxyxmltool:
         if enum_values is not None:
             # Merge enum values if they are split for better readability
             enum_values = self.merge_strings(enum_values=enum_values)
-            options = {self.normalize_name(value): value for value in enum_values}
+            options = {
+                self.replace_underscore_with_dot(value): value for value in enum_values
+            }
         elif param_type_bool:
             options = {"true": "true", "false": "false"}
         else:
@@ -116,7 +118,7 @@ class Galaxyxmltool:
             default_value = self.create_default_value(default_value=default_value)
 
         # Normalize default values, ensuring they are keys in the options dictionary
-        default_value = self.normalize_name(name=default_value)
+        default_value = self.replace_underscore_with_dot(name=default_value)
 
         return self.gxtp.SelectParam(
             name=param_name,
@@ -846,22 +848,18 @@ class Galaxyxmltool:
         """
         # Extract enumeration values from the extended schema
         enum_values = []
-        pprint(param_extended_schema)
         self.extract_enum(schema_item=param_extended_schema, enum_values=enum_values)
-        pprint(enum_values)
         # Create a dictionary for data types based on the enumeration values
         data_types_dict = {
             data_type: data_type.split("/")[-1] for data_type in enum_values
         }
-
-        pprint(data_types_dict)
 
         # Return the created select parameter
         return self.gxtp.SelectParam(
             name=param_name, label=title, help=description, options=data_types_dict
         )
 
-    def normalize_name(self, name: Union[str, None]):
+    def replace_underscore_with_dot(self, name: Union[str, None]):
         """
         Normalize a tool name by replacing spaces with underscores.
 

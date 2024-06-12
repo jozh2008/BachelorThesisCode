@@ -1304,10 +1304,6 @@ def test_create_select_param_output(setup_tool):
         title=title,
         description=description,
     )
-    # print("Enum values in test:", tool.extract_enum.return_value)
-
-    # tool.extract_enum.assert_called_once()
-
     tool.gxtp.SelectParam.assert_called_once_with(
         name="outputType_out",
         label="out",
