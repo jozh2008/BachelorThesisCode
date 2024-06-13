@@ -1031,11 +1031,12 @@ class Galaxyxmltool:
     def define_requirements(self):
         requirements = self.gxtp.Requirements()
         requirements.append(
-            self.gxtp.Requirement(type="package", version="3.9", value="python")
+            self.gxtp.Requirement(type="package", version="3.10.12", value="python")
+        )
+        requirements.append(
+            self.gxtp.Requirement(type="package", version="2.31.0", value="requests")
         )
         return requirements
-
-    import re
 
     def correct_restructured_text(self, text):
         # Correct inline math roles like :math:`...`
@@ -1048,30 +1049,30 @@ class Galaxyxmltool:
             corrected_text,
         )
 
-        # Ensure every backtick is closed by another backtick
-        unclosed_backtick = re.search(r"`([^`]*)$", corrected_text)
-        if unclosed_backtick:
-            corrected_text += "`"
+        # # Ensure every backtick is closed by another backtick
+        # unclosed_backtick = re.search(r"`([^`]*)$", corrected_text)
+        # if unclosed_backtick:
+        #     corrected_text += "`"
 
-        # Correct HTML tags within the help text
-        # Replace `&lt;` with `<` and `&gt;` with `>`
-        corrected_text = corrected_text.replace("&lt;", "<").replace("&gt;", ">")
+        # # Correct HTML tags within the help text
+        # # Replace `&lt;` with `<` and `&gt;` with `>`
+        # corrected_text = corrected_text.replace("&lt;", "<").replace("&gt;", ">")
 
-        # Ensure HTML tags are properly closed and formatted
-        corrected_text = re.sub(r"<br\s*/?>", "<br/>", corrected_text)
-        corrected_text = re.sub(r"<pre>", "\n<pre>", corrected_text)
-        corrected_text = re.sub(r"</pre>", "</pre>\n", corrected_text)
+        # # Ensure HTML tags are properly closed and formatted
+        # corrected_text = re.sub(r"<br\s*/?>", "<br/>", corrected_text)
+        # corrected_text = re.sub(r"<pre>", "\n<pre>", corrected_text)
+        # corrected_text = re.sub(r"</pre>", "</pre>\n", corrected_text)
 
-        # Consolidate multiple line breaks
-        corrected_text = re.sub(r"(<br/>\s*){2,}", "<br/><br/>", corrected_text)
+        # # Consolidate multiple line breaks
+        # corrected_text = re.sub(r"(<br/>\s*){2,}", "<br/><br/>", corrected_text)
 
-        # Replace single | (pipe) characters that may be interpreted as tables in reST
-        corrected_text = re.sub(r"(?<!\|)\|(?!\|)", r"\|", corrected_text)
+        # # Replace single | (pipe) characters that may be interpreted as tables in reST
+        # corrected_text = re.sub(r"(?<!\|)\|(?!\|)", r"\|", corrected_text)
 
-        # Handle inline code/special character issues
-        corrected_text = re.sub(
-            r"`([^`]*)`", r"``\1``", corrected_text
-        )  # Convert single backticks to double for code
+        # # Handle inline code/special character issues
+        # corrected_text = re.sub(
+        #     r"`([^`]*)`", r"``\1``", corrected_text
+        # )  # Convert single backticks to double for code
 
         return corrected_text
 

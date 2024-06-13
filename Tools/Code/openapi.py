@@ -298,14 +298,6 @@ class ApiJson:
         # pprint(transmission_mode)
         self.transmission_mode = transmission_mode
 
-        # Convert values to lists, why?
-        # keys_transmission_mode = list(transmission_mode.keys())
-        # values_transmission_mode = list(transmission_mode.values())
-
-        # pprint(keys_transmission_mode)
-        # pprint(values_transmission_mode)
-
-        # Initialize an empty list
         lst = []
 
         # Iterate through the outputs and create dictionaries
@@ -372,7 +364,6 @@ class ApiJson:
             "name",
             "prefer",
         }
-        # self.prefer = dictionary["prefer"]
         return {
             key: value  # check if correct
             for key, value in dictionary.items()
@@ -510,26 +501,6 @@ class ApiJson:
         it = iter(args)
         res_dict = dict(zip(it, it))
         return res_dict
-
-    # def add_quotes_around_unquoted_words(self, s):
-    #     """
-    #     Adds double quotes around unquoted words in a string.
-
-    #     This method takes a string and identifies unquoted words (sequences of alphanumeric characters and underscores)
-    #     within the string. It then adds double quotes around each unquoted word.
-
-    #     Args:
-    #         s (str): The input string.
-
-    #     Returns:
-    #         str: The input string with double quotes added around unquoted words.
-
-    #     Example:
-    #         >>> add_quotes_around_unquoted_words("Hello world and Python_3.9")
-    #         '"Hello" "world" "and" "Python_3.9"'
-    #     """
-    #     # Regular expression to find unquoted words
-    #     return re.sub(r"(\b[a-zA-Z_]\w*\b)", r'"\1"', s)
 
     def output_json(self, outputName: str, mediaType: str, transmissionMode: str):
         """

@@ -56,7 +56,7 @@ class Initialize:
         # Generate XML content
         tool = gxt.get_tool()
         tool.requirements = gxt.define_requirements()
-        tool.help = gxt.correct_restructured_text(text=process_data["description"])
+        tool.help = process_data["description"]
         tool.inputs = gxt.create_params(
             input_schema=process_data["inputs"],
             output_schema=process_data["outputs"],
@@ -65,7 +65,6 @@ class Initialize:
 
         # two options for tool.outpus need to be discussed
         tool.outputs = gxt.define_output_options()
-        # tool.outputs = gxt.define_output_collections()
 
         tool.executable = gxt.define_command(process_data["id"])
         tool.tests = gxt.define_tests(

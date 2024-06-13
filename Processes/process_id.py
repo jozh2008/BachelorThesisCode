@@ -1,4 +1,5 @@
 import requests
+import sys
 
 
 def get_capabilities():
@@ -18,11 +19,11 @@ def get_capabilities():
         return None
 
 
-def get_ids():
+def get_ids(file: str):
     processes_data = get_capabilities()
     process_ids = [process["id"] for process in processes_data["processes"]]
     # Specify the file path for the IDs
-    ids_file_path = "process_ids_2.txt"
+    ids_file_path = file
 
     # Write the IDs to the file
     with open(ids_file_path, "a+") as file:
@@ -35,4 +36,10 @@ def get_ids():
 
 
 if __name__ == "__main__":
-    get_ids()
+    if len(sys.argv) < 3 or sys.argv[1] != "--filename":
+        print(
+            "Error: File not provided. Use python3 process_id.py --filename {filename}"
+        )
+        sys.exit(1)
+    file = sys.argv[2]
+    get_ids(file=file)
