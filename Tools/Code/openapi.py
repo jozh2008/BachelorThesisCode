@@ -13,7 +13,7 @@ class ApiJson:
         self.isArray = "isArray"
         self.exclusion_list = []
         self.output_format_dictionary = {}
-        self.working_directory = {}
+        self.file_directory = {}
         self.transmission_mode = {}
         self.prefer = ""
 
@@ -39,7 +39,7 @@ class ApiJson:
             payload=input_json,
             response_input=response,
             output_format_dictionary=self.output_format_dictionary,
-            working_directory=self.working_directory,
+            file_directory=self.file_directory,
             transmission_mode=self.transmission_mode,
             prefer=prefer,
         )
@@ -194,7 +194,7 @@ class ApiJson:
         """
         Process input files by opening and reading them, and mark arrays for exclusion. A file is an input file
         if it doesn't have the prefix "output_data". If it has "output_data", we mark it for exclusion and
-        store its path in the working directory because it contains the file path for the galaxy history.
+        store its path in the file directory because it contains the file path for the galaxy history.
         Then generate JSON representations of the files.
 
         Args:
@@ -230,7 +230,7 @@ class ApiJson:
                 output_key = self.extract_suffix_after_prefix(key).replace("_", ".")
                 final_key = f"output_data_{output_key}"
                 self.exclusion_list.append(final_key)
-                self.working_directory[final_key] = file_path
+                self.file_directory[final_key] = file_path
         # pprint(input_file_json_list)
         return input_file_json_list
 

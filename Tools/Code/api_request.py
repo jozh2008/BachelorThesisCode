@@ -1,8 +1,5 @@
 import requests
-
-# from PIL import Image
-# from PIL import UnidentifiedImageError
-# from io import BytesIO
+import sys
 from typing import Any
 from pprint import pprint
 import time
@@ -16,7 +13,7 @@ class APIRequest:
         payload,
         response_input,
         output_format_dictionary,
-        working_directory,
+        file_directory,
         transmission_mode,
         prefer,
     ):
@@ -30,7 +27,7 @@ class APIRequest:
         self.payload = payload
         self.response_input = response_input
         self.output_format_dictionary = output_format_dictionary
-        self.working_directory = working_directory
+        self.file_directory = file_directory
         self.transmission_mode = transmission_mode
         self.accept_header = {"accept": "application/json"}
         self.base_url = "https://ospd.geolabs.fr:8300/ogc-api/"
@@ -61,19 +58,26 @@ class APIRequest:
         response = requests.post(url, headers=self.headers, json=self.payload)
         response = self.check_job_id(response=response)
         if not response.ok:
-            print("Error:", response.status_code)
+            error_message = self.get_error_message(response.status_code)
+            if error_message:
+                print(error_message, file=sys.stderr)
+            else:
+                print(
+                    f"Error wit HTTP response status code: {response.status_code}",
+                    file=sys.stderr,
+                )
             return
 
         response_data = response.json()
 
         for key, value in self.transmission_mode.items():
 
-            location = f"output_data_{key}"
-            output_file_path = self.working_directory[location]
-
             transmission_item = response_data.get(key)
             if transmission_item is None:
                 continue
+
+            location = f"output_data_{key}"
+            output_file_path = self.file_directory[location]
 
             if self.response_input == "raw":
                 if isinstance(transmission_item, dict):
@@ -143,7 +147,8 @@ class APIRequest:
             if status == "failed":
                 print(
                     f"An error occurred. For further details, check OGC Job status through "
-                    f"https://ospd.geolabs.fr:8300/ogc-api/jobs/{self.job_id}"
+                    f"https://ospd.geolabs.fr:8300/ogc-api/jobs/{self.job_id}",
+                    file=sys.stderr,
                 )
 
         return response
@@ -164,3 +169,12 @@ class APIRequest:
             "results": f"{self.base_url}{self.jobs}{self.job_id}{self.results}",
         }
         return url_dictionary[keyword]
+
+    def get_error_message(self, keyword):
+        error_dictionary = {
+            500: "500 Internal Server Error",
+            405: "405 Method Not Allowed",
+            404: "404 Not Found",
+            400: "400 Bad Request",
+        }
+        return error_dictionary[keyword]

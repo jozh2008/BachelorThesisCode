@@ -22,7 +22,7 @@ def get_ids():
     processes_data = get_capabilities()
     process_ids = [process["id"] for process in processes_data["processes"]]
     # Specify the file path for the IDs
-    ids_file_path = "process_ids.txt"
+    ids_file_path = "process_ids_2.txt"
 
     # Write the IDs to the file
     with open(ids_file_path, "a+") as file:
