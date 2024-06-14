@@ -1,15 +1,16 @@
 name: Debug SonarQube Connectivity
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
 
 jobs:
   check-connectivity:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Check SonarQube Connectivity
-      run: |
-        curl -I http://localhost:9000
-    # Add a step to display the status code returned by curl
-    - name: Display curl status
-      run: echo "Curl status code: $?"
+      - name: Check SonarQube Connectivity
+        run: |
+          curl -I http://localhost:9000
+          echo "Curl status code: $?"
