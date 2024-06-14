@@ -898,7 +898,7 @@ class Galaxyxmltool:
 
         Args:
             schema_item (dict): The JSON schema item to extract enum values from.
-            enum_values (list): A list to store the extracted enum values.
+            enum_values (list): A list to store the extracted enum values .
 
         Returns:
             None
