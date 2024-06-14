@@ -12,5 +12,5 @@ jobs:
     steps:
       - name: Check SonarQube Connectivity
         run: |
-          curl -I http://localhost:9000
+          curl -I http://127.0.0.1:9000
           echo "Curl status code: $?"
