@@ -33,4 +33,3 @@ jobs:
 
       - name: Check response
         run: cat index.html
-``
