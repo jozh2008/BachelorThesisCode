@@ -59,9 +59,6 @@ checkstyle: install
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
 
-sonar: test
-	sonar-scanner
-
 
 clean:
 	rm -rf __pycache__
