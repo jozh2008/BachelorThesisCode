@@ -36,7 +36,7 @@ jobs:
         run: sleep 30
       
       - name: Test SonarQube connection
-        run: curl -I http://127.0.0.1:9000
+        run: curl -I ${{ secrets.SONAR_HOST_URL }}
 
       - name: Check SonarQube response
         run: |
