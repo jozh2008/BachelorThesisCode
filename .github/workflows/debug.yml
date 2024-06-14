@@ -1,0 +1,2 @@
+- name: Check SonarQube Connectivity
+  run: curl -I http://localhost:9000
