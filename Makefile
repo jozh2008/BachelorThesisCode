@@ -2,12 +2,14 @@ FLAKE8 := flake8
 FLAKE8_CONFIG := .github/linters/.flake8  # Change this to the path of your .flake8 configuration file
 BLACK :=black
 
-CODE := Tools/Code
+CODE := Tools/Code/
 
-TEST := tests
+TEST := tests/
 
 # Specify source files or directories
 SRC := *.py
+
+GENERATOR_XML :=GeneratorXML/
 
 VENV_DIR := .venv
 REQUIREMENTS := requirements.txt
@@ -40,20 +42,26 @@ install:
 	. $(VENV_DIR)/bin/activate
 
 compile: install
-	python3 -m py_compile $(SRC)
+	python3 -m py_compile $(GENERATOR_XML)$(SRC)
+	python3 -m py_compile $(CODE)$(SRC)
 
 format: install
-	$(BLACK) $(SRC)
-	$(BLACK) $(CODE) $(SRC)
-	$(BLACK) $(TEST) $(SRC)
+	$(BLACK) $(GENERATOR_XML)$(SRC)
+	$(BLACK) $(CODE)$(SRC)
+	$(BLACK) $(TEST)$(SRC)
 
 test: install
-	pytest $(TEST) $(SRC)
+	pytest $(TEST)$(SRC)
+	pytest --cov=$(GENERATOR_XML) --cov-report=xml
 
 checkstyle: install
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE) $(SRC)
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST) $(SRC)
+	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(GENERATOR_XML)$(SRC)
+	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
+	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
+
+sonar: test
+	sonar-scanner
+
 
 clean:
 	rm -rf __pycache__

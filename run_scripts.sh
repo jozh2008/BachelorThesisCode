@@ -18,5 +18,5 @@ fi
 # Loop through each line in the file and pass it to main.py using --process option
 while IFS= read -r line; do
     # Run the Python script with --process option and passing the current line as argument
-    python3 main.py --process "$line"
+    python3 GeneratorXML/main.py --process "$line"
 done < "$file_path"

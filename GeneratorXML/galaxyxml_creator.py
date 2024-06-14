@@ -1,7 +1,7 @@
 from galaxyxml import tool
 import galaxyxml.tool.parameters as gtpx
 
-from macros_xml_generator import MacrosXMLGenerator
+from GeneratorXML.macros_xml_generator import MacrosXMLGenerator
 
 # from pprint import pprint
 from typing import Dict, List, Union

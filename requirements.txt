@@ -1,5 +1,4 @@
 galaxyxml
 pytest
-pillow
-bytesbufio
+pytest-cov
 requests
