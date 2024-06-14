@@ -29,7 +29,7 @@ jobs:
         run: sleep 30
       
       - name: Test SonarQube connection
-        run: curl -I http://sonarqube:9000
+        run: curl -I http://127.0.0.1:9000:9000
 
       - name: Check response
         run: cat index.html
