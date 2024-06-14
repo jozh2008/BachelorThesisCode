@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Check SonarQube Connectivity
-      run: |
-        curl -I http://localhost:9000
-        echo "Curl status code: $?"
-
+      - name: Check SonarQube Connectivity
+        run: |
+          curl -I http://localhost:9000
+          echo "Curl status code: $?"
