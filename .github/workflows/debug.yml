@@ -31,5 +31,12 @@ jobs:
       - name: Test SonarQube connection
         run: curl -I http://127.0.0.1:9000
 
-      - name: Check response
-        run: cat index.html
+      - name: Check SonarQube response
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:9000)
+          if [ $response -eq 200 ]; then
+            echo "SonarQube is up and running."
+          else
+            echo "Failed to connect to SonarQube. HTTP status code: $response"
+            exit 1
+          fi
