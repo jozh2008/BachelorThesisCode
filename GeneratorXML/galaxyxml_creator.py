@@ -1085,8 +1085,6 @@ class Galaxyxmltool:
 
             # Process input parameters
             for key, value in inputs.items():
-                # (key)
-                # pprint(value)
                 if isinstance(value, list):
                     lst = [i.get("href") for i in value]
                     param = self.gxtp.TestParam(name=key, value=lst)

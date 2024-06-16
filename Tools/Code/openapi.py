@@ -129,7 +129,7 @@ class ApiJson:
         return cleaned_name.lower()
 
     def create_openapi_input_file(
-        self, inputs: Dict, outputs: Dict, response: Dict
+        self, inputs: Dict, outputs: Dict, response: str
     ) -> Dict:
         """
         Creates a dictionary representing an OpenAPI input file.
@@ -140,7 +140,7 @@ class ApiJson:
         Args:
             inputs (Dict): A dictionary containing input data.
             outputs (Dict): A dictionary containing output data.
-            response (Dict): A dictionary containing response data.
+            response (str): Containing the response type which is always "document".
 
         Returns:
             Dict: A dictionary containing the combined inputs, outputs, and response.
