@@ -34,7 +34,6 @@ def setup_tool():
     tool.gxtp.Inputs.return_value.append.side_effect = (
         lambda param: tool.gxtp.Inputs.return_value.params.append(param)
     )
-
     return tool
 
 
@@ -1756,3 +1755,24 @@ def test_define_command_with_title(setup_tool):
     tool.executable_dict["param2"] = "value2"
     expected_command = "test_executable name test_command  param1 value1  param2 value2"
     assert tool.define_command(title) == expected_command
+
+
+def test_define_macro(setup_tool):
+    tool = setup_tool
+
+    # Create a mock generator
+    mock_generator = MagicMock()
+    # Use patch to replace MacrosXMLGenerator with our mock
+    with patch(
+        "GeneratorXML.galaxyxml_creator.MacrosXMLGenerator", return_value=mock_generator
+    ):
+        # Call the method to test
+        tool.define_macro()
+
+    # Check if add_token was called with correct arguments
+    mock_generator.add_token.assert_any_call("@TOOL_VERSION@", "1.0.0")
+    mock_generator.add_token.assert_any_call("@VERSION_SUFFIX@", "0")
+
+    # Check if generate_xml was called with the correct filename
+    expected_file_path = f"Tools/{tool.macros_file_name}"
+    mock_generator.generate_xml.assert_called_once_with(filename=expected_file_path)

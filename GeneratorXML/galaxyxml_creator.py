@@ -1109,39 +1109,49 @@ class Galaxyxmltool:
             outputs = ex.get("outputs", {})
             response = ex.get("response", "")
 
-            # Add response parameter
-            test.append(self.gxtp.TestParam(name="response", value=response))
-
-            # Process input parameters
-            for key, value in inputs.items():
-                if isinstance(value, list):
-                    lst = [i.get("href") for i in value]
-                    param = self.gxtp.TestParam(name=key, value=lst)
-                elif isinstance(value, dict):
-                    if value.get("href") is None:
-                        return None
-                    param = self.gxtp.TestParam(name=key, value=value.get("href"))
-                else:
-                    param = self.gxtp.TestParam(name=key, value=value)
-                test.append(param)
-
-            # Process output parameters
-            for key, value in outputs.items():
-                name = f"{self.output_data}_{key}"
-                if response == "raw":
-                    media_type = value["format"]["mediaType"].split("/")[-1]
-                    param = self.gxtp.TestOutput(
-                        name=name, ftype=media_type, value=f"{name}.{media_type}"
-                    )
-                else:
-                    param = self.gxtp.TestOutput(
-                        name=name, ftype="txt", value=f"{name}.txt"
-                    )
-                test.append(param)
+            self.add_test_response_param(test, response)
+            self.process_test_input_params(test, inputs)
+            self.process_test_output_params(test, outputs, response)
 
             tests.append(test)
-
         return tests
+
+    def add_test_response_param(self, test, response):
+        test.append(self.gxtp.TestParam(name="response", value=response))
+
+    def process_test_input_params(self, test, inputs):
+        for key, value in inputs.items():
+            param = self.create_test_input_param(key, value)
+            if param is None:
+                return None
+            test.append(param)
+
+    def create_test_input_param(self, key, value):
+        if isinstance(value, list):
+            lst = [i.get("href") for i in value]
+            return self.gxtp.TestParam(name=key, value=lst)
+        elif isinstance(value, dict):
+            href = value.get("href")
+            if href is None:
+                return None
+            return self.gxtp.TestParam(name=key, value=href)
+        else:
+            return self.gxtp.TestParam(name=key, value=value)
+
+    def process_test_output_params(self, test, outputs, response):
+        for key, value in outputs.items():
+            param = self.create_test_output_param(key, value, response)
+            test.append(param)
+
+    def create_test_output_param(self, key, value, response):
+        name = f"{self.output_data}_{key}"
+        if response == "raw":
+            media_type = value["format"]["mediaType"].split("/")[-1]
+            return self.gxtp.TestOutput(
+                name=name, ftype=media_type, value=f"{name}.{media_type}"
+            )
+        else:
+            return self.gxtp.TestOutput(name=name, ftype="txt", value=f"{name}.txt")
 
     def get_test_examples(self, data):
         """
