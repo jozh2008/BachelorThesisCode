@@ -25,13 +25,15 @@ def setup_tool():
     tool.output_type_dictionary = {}
     tool.output_name_list = []
 
+    tool.executable = "test_executable"
+    tool.executable_dict = {}
+
     tool.gxtp.Inputs = MagicMock()
     tool.gxtp.Inputs.return_value.params = []
 
-    def mock_append(param):
-        tool.gxtp.Inputs.return_value.params.append(param)
-
-    tool.gxtp.Inputs.return_value.append.side_effect = mock_append
+    tool.gxtp.Inputs.return_value.append.side_effect = (
+        lambda param: tool.gxtp.Inputs.return_value.params.append(param)
+    )
 
     return tool
 
@@ -194,6 +196,50 @@ def test_create_float_param_with_default_value(setup_tool):
     assert param == tool.gxtp.FloatParam.return_value
 
 
+def test_create_float_param_with_default_value_nullable(setup_tool):
+    param_name = "wgt"
+    param_dict = {
+        "title": "Coefficient between 0 and 1 to promote undetection or false detections (default 0.5)",
+        "description": "Coefficient between 0 and 1 to promote undetection or false detections (default 0.5)",
+        "schema": {
+            "type": "number",
+            "default": 0.5,
+            "format": "double",
+            "nullable": True,
+        },
+    }
+    param_schema = param_dict.get("schema")
+    is_nullable = param_schema.get("nullable", False)
+    description = param_dict.get("description")
+    title = param_dict.get("title")
+
+    tool = setup_tool
+
+    param = tool.create_float_param(
+        param_name=param_name,
+        param_schema=param_schema,
+        is_nullable=is_nullable,
+        title=title,
+        description=description,
+    )
+    tool.gxtp.Conditional.assert_called_once()
+    tool.gxtp.SelectParam.assert_called_with(
+        name=f"select_{param_name}",
+        label=f"Do you want to add optional parameter {param_name}?",
+        help=description,
+        options={"yes": "yes", "no": "no"},
+        default="yes",
+    )
+    tool.gxtp.FloatParam.assert_called_with(
+        name=param_name,
+        label=title,
+        help=description,
+        value=0.5,
+        optional=True,
+    )
+    assert param == tool.gxtp.Conditional.return_value
+
+
 def test_create_select_param_with_default_value(setup_tool):
     param_name = "out"
     param_dict = {
@@ -214,6 +260,7 @@ def test_create_select_param_with_default_value(setup_tool):
     param_type_bool = False
 
     tool = setup_tool
+    tool.remove_duplicate = MagicMock(side_effect=lambda x: list(dict.fromkeys(x)))
 
     param = tool.create_select_param(
         param_name=param_name,
@@ -603,6 +650,7 @@ def test_create_object_param(setup_tool):
     section_mock = MagicMock()
     tool.create_section = MagicMock(return_value=section_mock)
     tool.get_array_items = MagicMock(return_value=(4, 6))
+    tool.remove_duplicate = MagicMock(side_effect=lambda x: list(dict.fromkeys(x)))
 
     result = tool.create_object_param(
         param_name=param_name,
@@ -1334,10 +1382,6 @@ def test_create_params(setup_tool):
     tool.choose_prefer = MagicMock()
     tool.create_select_raw_param = MagicMock()
     tool.create_output_param = MagicMock()
-    # tool.replace_dot_with_underscore = MagicMock(
-    #     side_effect=lambda x: x.replace(".", "_")
-    # )
-
     input_schema = {
         "exp": {
             "description": "The muParser mathematical expression to apply on "
@@ -1612,3 +1656,103 @@ def test_create_params(setup_tool):
         inputs=results,
         transmission_schema=transmission_schema,
     )
+
+
+def test_replace_dot_with_underscore(setup_tool):
+    tool = setup_tool
+    assert tool.replace_dot_with_underscore("example.test") == "example_test"
+    assert tool.replace_dot_with_underscore("another.test.case") == "another_test_case"
+    assert tool.replace_dot_with_underscore("no_dots_here") == "no_dots_here"
+    assert tool.replace_dot_with_underscore("") == ""
+    assert tool.replace_dot_with_underscore("only.one.dot.") == "only_one_dot_"
+
+
+def test_merge_strings_with_duplicate(setup_tool):
+    tool = setup_tool
+    tool.remove_duplicate = MagicMock(side_effect=lambda x: list(dict.fromkeys(x)))
+    enum_values = ["abc", "abc", " def", "ghi", " jkl", "mno"]
+    merged_result = tool.merge_strings(enum_values)
+    assert merged_result == ["abc", "abc, def", "ghi", "ghi, jkl", "mno"]
+
+
+def test_remove_duplicate(setup_tool):
+
+    tool = setup_tool
+
+    # Test case 1: List with duplicates
+    input_list_1 = ["a", "b", "a", "c", "b", "d", "a"]
+    expected_output_1 = ["a", "b", "c", "d"]
+    assert tool.remove_duplicate(input_list_1) == expected_output_1
+
+    # Test case 2: List with no duplicates
+    input_list_2 = ["x", "y", "z"]
+    expected_output_2 = ["x", "y", "z"]
+    assert tool.remove_duplicate(input_list_2) == expected_output_2
+
+    # Test case 3: Empty list
+    input_list_3 = []
+    expected_output_3 = []
+    assert tool.remove_duplicate(input_list_3) == expected_output_3
+
+    # Test case 4: List with all duplicates
+    input_list_4 = ["a", "a", "a", "a", "a"]
+    expected_output_4 = ["a"]
+    assert tool.remove_duplicate(input_list_4) == expected_output_4
+
+    # Test case 5: List with mixed types
+    input_list_5 = [1, "a", 2, "b", 1, "a"]
+    expected_output_5 = [1, "a", 2, "b"]
+    assert tool.remove_duplicate(input_list_5) == expected_output_5
+
+
+def test_find_index(setup_tool):
+    tool = setup_tool
+    # Test case 1: Pattern found in string
+    string_1 = "abcxyzabc"
+    pattern_1 = "xyz"
+    expected_output_1 = 6
+    assert tool.find_index(string_1, pattern_1) == expected_output_1
+
+    # Test case 2: Pattern not found in string
+    string_2 = "abcdef"
+    pattern_2 = "xyz"
+    expected_output_2 = -1
+    assert tool.find_index(string_2, pattern_2) == expected_output_2
+
+    # Test case 3: Pattern at the beginning of string
+    string_3 = "xyzabc"
+    pattern_3 = "xyz"
+    expected_output_3 = 3
+    assert tool.find_index(string_3, pattern_3) == expected_output_3
+
+
+def test_dict_to_string(setup_tool):
+    tool = setup_tool
+    # Test case 1: Dictionary with integer keys and values
+    dictionary_1 = {1: 10, 2: 20, 3: 30}
+    expected_output_1 = " 1 10  2 20  3 30"
+    assert tool.dict_to_string(dictionary_1) == expected_output_1
+
+    # Test case 2: Dictionary with string keys and values
+    dictionary_2 = {"key1": "value1", "key2": "value2", "key3": "value3"}
+    expected_output_2 = " key1 value1  key2 value2  key3 value3"
+    assert tool.dict_to_string(dictionary_2) == expected_output_2
+
+    # Test case 3: Empty dictionary
+    dictionary_3 = {}
+    expected_output_3 = ""
+    assert tool.dict_to_string(dictionary_3) == expected_output_3
+
+
+def test_define_command_with_title(setup_tool):
+    tool = setup_tool
+    # Test case 1: Basic command definition with title
+    title = "test_command"
+    expected_command = "test_executable name test_command"
+    assert tool.define_command(title) == expected_command
+
+    # Test case 2: Command definition with additional parameters
+    tool.executable_dict["param1"] = "value1"
+    tool.executable_dict["param2"] = "value2"
+    expected_command = "test_executable name test_command  param1 value1  param2 value2"
+    assert tool.define_command(title) == expected_command

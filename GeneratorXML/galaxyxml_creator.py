@@ -932,20 +932,35 @@ class Galaxyxmltool:
             list: A new list containing merged strings.
         """
         merged_list = copy.deepcopy(enum_values)
-        indices_not_to_merge = []
-        merged_strings = []
 
         for i in range(1, len(enum_values)):
             current_string = enum_values[i]
             if current_string.startswith(" "):
-                merged_list[i - 1] = f"{enum_values[i - 1]},{current_string}"
-                indices_not_to_merge.append(i)
+                merged_list[i] = f"{merged_list[i - 1]},{current_string}"
+        return self.remove_duplicate(merged_list)
 
-        for i in range(len(merged_list)):
-            if i not in indices_not_to_merge:
-                merged_strings.append(merged_list[i])
+    def remove_duplicate(self, original_list: List):
+        """
+        Remove duplicates from a list while preserving the original order.
 
-        return merged_strings
+        This function takes a list as input and returns a new list with duplicate elements removed,
+        preserving the original order of elements.
+
+        Args:
+        - original_list (list): The input list containing elements, including duplicates.
+
+        Returns:
+        - list: A new list with duplicate elements removed, preserving the original order.
+        """
+
+        unique_list = []
+
+        for item in original_list:
+            # Add item to the unique_list if it's not already present
+            if item not in unique_list:
+                unique_list.append(item)
+
+        return unique_list
 
     def create_default_value(self, default_value):
         """
@@ -970,8 +985,22 @@ class Galaxyxmltool:
         return " ".join([f" {key} {value}" for key, value in dictionary.items()])
 
     def find_index(self, string, pattern):
+        """
+        Find the index of the end of the first occurrence of a pattern in a string.
+
+        Args:
+            string (str): The input string to search.
+            pattern (str): The pattern to search for in the string.
+
+        Returns:
+            int: The index of the end of the first occurrence of the pattern,
+                 or -1 if the pattern is not found.
+        """
         match = re.search(pattern=pattern, string=string)
-        return match.end()
+        if match:
+            return match.end()
+        else:
+            return -1
 
     def define_command(self, title):
         """
