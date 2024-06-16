@@ -1038,44 +1038,6 @@ class Galaxyxmltool:
         )
         return requirements
 
-        # def correct_restructured_text(self, text):
-        #     # Correct inline math roles like :math:`...`
-        #     corrected_text = re.sub(r":math:`([^`]*)`", r":math:`\1`", text)
-
-        #     # Ensure LaTeX environments are properly closed
-        #     corrected_text = re.sub(
-        #         r":math:`([^`]*?)\\begin\{([^`]*?)\}`",
-        #         r":math:`\1\\begin{\2}\1\\end{\2}`",
-        #         corrected_text,
-        #     )
-
-        # # Ensure every backtick is closed by another backtick
-        # unclosed_backtick = re.search(r"`([^`]*)$", corrected_text)
-        # if unclosed_backtick:
-        #     corrected_text += "`"
-
-        # # Correct HTML tags within the help text
-        # # Replace `&lt;` with `<` and `&gt;` with `>`
-        # corrected_text = corrected_text.replace("&lt;", "<").replace("&gt;", ">")
-
-        # # Ensure HTML tags are properly closed and formatted
-        # corrected_text = re.sub(r"<br\s*/?>", "<br/>", corrected_text)
-        # corrected_text = re.sub(r"<pre>", "\n<pre>", corrected_text)
-        # corrected_text = re.sub(r"</pre>", "</pre>\n", corrected_text)
-
-        # # Consolidate multiple line breaks
-        # corrected_text = re.sub(r"(<br/>\s*){2,}", "<br/><br/>", corrected_text)
-
-        # # Replace single | (pipe) characters that may be interpreted as tables in reST
-        # corrected_text = re.sub(r"(?<!\|)\|(?!\|)", r"\|", corrected_text)
-
-        # # Handle inline code/special character issues
-        # corrected_text = re.sub(
-        #     r"`([^`]*)`", r"``\1``", corrected_text
-        # )  # Convert single backticks to double for code
-
-        # return corrected_text
-
     def define_macro(self):
         """Generates the macro.xml"""
         generator = MacrosXMLGenerator()
