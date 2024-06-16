@@ -54,7 +54,6 @@ format: install
 
 test: install
 	pytest $(TEST)$(SRC)
-	pytest --cov=. --cov-report=xml
 
 checkstyle: install
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
