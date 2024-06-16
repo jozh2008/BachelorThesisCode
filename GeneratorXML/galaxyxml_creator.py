@@ -393,8 +393,8 @@ class Galaxyxmltool:
         item_type: str,
         min_items: int,
         max_items: int,
-        title: str,
-        description: str,
+        title: Union[str, None],
+        description: Union[str, None],
         item_name: str,
     ):
         """
@@ -635,13 +635,16 @@ class Galaxyxmltool:
         """
 
         label = "Prefer"
+        async_execution = "respond-async;return=representation"
+        minimal_execution = "return=minimal"
+        sync_execution = "return=representation"
         prefer_options = {
-            "return=representation": "return=representation",
-            "return=minimal": "return=minimal",
-            "respond-async;return=representation": "respond-async;return=representation",
+            sync_execution: sync_execution,
+            minimal_execution: minimal_execution,
+            async_execution: async_execution,
         }
 
-        default_value = "respond-async;return=representation"
+        default_value = async_execution
         description = (
             "Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'."
             "The specification is for synchronous or asynchronous executions,"
@@ -973,7 +976,8 @@ class Galaxyxmltool:
     def define_command(self, title):
         """
         Define a command line of Galaxy Xml
-        Always add name and title to command line. Additional commands are add with the exectutable dict, command line is a string
+        Always add name and title to command line. Additional commands are add with the exectutable dict,
+        command line is a string
 
         Args:
             title (str): The title of the command.

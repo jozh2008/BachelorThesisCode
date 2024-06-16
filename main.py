@@ -93,7 +93,7 @@ class Initialize:
         return cleaned_name
 
 
-def main(base_url, process):
+def main(base_url: str, process_name: str):
     """
     Main function to process collections data from a base URL and convert it to GalaxyXML.
 
@@ -101,7 +101,7 @@ def main(base_url, process):
         base_url (str): The base URL.
         process (str): The process to be appended to the base URL.
     """
-    url = f"{base_url}processes/{process}"
+    url = f"{base_url}processes/{process_name}"
     pprint(url)
     url_api = f"{base_url}api"
     print(url_api)
@@ -121,6 +121,6 @@ if __name__ == "__main__":
     if len(sys.argv) < 3 or sys.argv[1] != "--process":
         print("Error: Process not provided. Use python3 main.py --process {process}")
         sys.exit(1)
-    process = sys.argv[2]
-    base_url = "https://ospd.geolabs.fr:8300/ogc-api/"
-    main(base_url, process)
+    process_name = sys.argv[2]
+    BASE_URL = "https://ospd.geolabs.fr:8300/ogc-api/"
+    main(BASE_URL, process_name)
