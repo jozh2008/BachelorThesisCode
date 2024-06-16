@@ -1,7 +1,7 @@
 from galaxyxml import tool
 import galaxyxml.tool.parameters as gtpx
 
-from GeneratorXML.macros_xml_generator import MacrosXMLGenerator
+from .macros_xml_generator import MacrosXMLGenerator
 
 # from pprint import pprint
 from typing import Dict, List, Union
@@ -1038,16 +1038,16 @@ class Galaxyxmltool:
         )
         return requirements
 
-    def correct_restructured_text(self, text):
-        # Correct inline math roles like :math:`...`
-        corrected_text = re.sub(r":math:`([^`]*)`", r":math:`\1`", text)
+        # def correct_restructured_text(self, text):
+        #     # Correct inline math roles like :math:`...`
+        #     corrected_text = re.sub(r":math:`([^`]*)`", r":math:`\1`", text)
 
-        # Ensure LaTeX environments are properly closed
-        corrected_text = re.sub(
-            r":math:`([^`]*?)\\begin\{([^`]*?)\}`",
-            r":math:`\1\\begin{\2}\1\\end{\2}`",
-            corrected_text,
-        )
+        #     # Ensure LaTeX environments are properly closed
+        #     corrected_text = re.sub(
+        #         r":math:`([^`]*?)\\begin\{([^`]*?)\}`",
+        #         r":math:`\1\\begin{\2}\1\\end{\2}`",
+        #         corrected_text,
+        #     )
 
         # # Ensure every backtick is closed by another backtick
         # unclosed_backtick = re.search(r"`([^`]*)$", corrected_text)
@@ -1074,7 +1074,7 @@ class Galaxyxmltool:
         #     r"`([^`]*)`", r"``\1``", corrected_text
         # )  # Convert single backticks to double for code
 
-        return corrected_text
+        # return corrected_text
 
     def define_macro(self):
         """Generates the macro.xml"""

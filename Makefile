@@ -42,19 +42,22 @@ install:
 	. $(VENV_DIR)/bin/activate
 
 compile: install
+	python3 -m py_compile $(SRC)
 	python3 -m py_compile $(GENERATOR_XML)$(SRC)
 	python3 -m py_compile $(CODE)$(SRC)
 
 format: install
+	$(BLACK) $(SRC)
 	$(BLACK) $(GENERATOR_XML)$(SRC)
 	$(BLACK) $(CODE)$(SRC)
 	$(BLACK) $(TEST)$(SRC)
 
 test: install
 	pytest $(TEST)$(SRC)
-	pytest --cov=$(GENERATOR_XML) --cov-report=xml
+	pytest --cov=. --cov-report=xml
 
 checkstyle: install
+	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(GENERATOR_XML)$(SRC)
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
 	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
@@ -63,6 +66,10 @@ checkstyle: install
 clean:
 	rm -rf __pycache__
 	rm -f *.pyc
-	rm -rf Tools/Code/__pycache__
-	rm -f Tools/Code/*.pyc
+	rm -rf $(CODE)__pycache__
+	rm -f $(CODE)*.pyc
+	rm -rf $(TEST)__pycache__
+	rm -f $(TEST)*.pyc
+	rm -rf $(GENERATOR_XML)__pycache__
+	rm -f $(GENERATOR_XML)*.pyc
 	
