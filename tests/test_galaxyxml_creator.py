@@ -22,8 +22,6 @@ def setup_tool():
 
     tool = Galaxyxmltool(name=name, id=id, version=version, description=description)
     tool.gxtp = MagicMock()
-    tool.output_type_dictionary = {}
-    tool.output_name_list = []
 
     tool.executable = "test_executable"
     tool.executable_dict = {}
@@ -2006,3 +2004,48 @@ def test_define_macro(setup_tool):
     # Check if generate_xml was called with the correct filename
     expected_file_path = f"Tools/{tool.macros_file_name}"
     mock_generator.generate_xml.assert_called_once_with(filename=expected_file_path)
+
+
+def test_define_tests_with_valid_examples(setup_tool):
+    tool = setup_tool
+    api_dict = {
+        "test_dictionary": {
+            "examples": [
+                {
+                    "response": "raw",
+                    "inputs": {},
+                    "outputs": {},
+                }
+            ]
+        }
+    }
+    process = "0TB.BandMath"
+
+    tests_mock = MagicMock()
+    test_a_mock = MagicMock()
+    tool.gxtp = MagicMock()
+    tool.gxtp.Tests = MagicMock(return_value=tests_mock)
+    tool.gxtp.Test = MagicMock(return_value=test_a_mock)
+    tool.gxtp.TestParam = MagicMock()
+    tool.gxtp.TestOutput = MagicMock()
+
+    tool.output_name_list = ["test"]
+
+    # Call the method under test
+    result = tool.define_tests(api_dict, process)
+
+    tool.gxtp.TestParam.assert_called_once_with(name="response", value="document")
+    tool.gxtp.TestOutput.assert_called_once_with(name="output_data_test", ftype="txt", value="output_data_test.txt")
+
+    # Assertions to verify the mocked behavior
+    param = tool.gxtp.TestParam.return_value
+    output = tool.gxtp.TestOutput.return_value
+
+    test_a_mock.append.assert_any_call(param)
+    test_a_mock.append.assert_any_call(output)
+
+    tests_mock.append.assert_called_once_with(test_a_mock)
+
+    test_instance = tool.gxtp.Tests.return_value
+
+    assert result == test_instance

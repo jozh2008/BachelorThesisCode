@@ -1037,7 +1037,7 @@ class Galaxyxmltool:
         generator.generate_xml(filename=file_path)
 
     # To do add tests
-    def define_tests(self, api_dict, process):
+    def define_tests(self, api_dict: Dict, process: str):
         test_dictionary = self.get_test_dictionary(api_dict=api_dict, process=process)
         if test_dictionary is not None:
             example_list = self.get_test_examples(data=test_dictionary)
