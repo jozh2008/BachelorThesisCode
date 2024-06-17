@@ -1591,6 +1591,7 @@ def test_create_params(setup_tool):
 def test_create_params_2(setup_tool):
     tool = setup_tool
 
+    tool.create_select_param = MagicMock()
     tool.create_text_param = MagicMock()
     tool.create_float_param = MagicMock()
     tool.create_data_param = MagicMock()
@@ -1688,6 +1689,11 @@ def test_create_params_2(setup_tool):
                 "type": "number",
             },
             "title": "Literal Input (double)",
+        },
+        "MATCH": {
+            "title": "Match Fields by Name",
+            "description": "Match Fields by Name",
+            "schema": {"type": "boolean", "default": False, "enum": ["true", "false"], "nullable": True},
         },
     }
 
@@ -1860,6 +1866,15 @@ def test_create_params_2(setup_tool):
             "Literal Input (double) An optional input which can be used to specify "
             "the number of seconds to pause the service before returning"
         ),
+    )
+
+    tool.create_select_param.assert_called_once_with(
+        param_name="MATCH",
+        param_schema={"type": "boolean", "default": False, "enum": ["true", "false"], "nullable": True},
+        is_nullable=True,
+        param_type_bool=True,
+        title="MATCH",
+        description="Match Fields by Name",
     )
 
     tool.choose_prefer.assert_called_once_with(inputs=results)
