@@ -101,7 +101,8 @@ class Galaxyxmltool:
             # Merge enum values if they are split for better readability
             enum_values = self.merge_strings(enum_values=enum_values)
             options = {
-                self.replace_underscore_with_dot(value): value for value in enum_values
+                self.replace_space_with_underscore(value): value
+                for value in enum_values
             }
         elif param_type_bool:
             options = {"true": "true", "false": "false"}
@@ -118,7 +119,7 @@ class Galaxyxmltool:
             default_value = self.create_default_value(default_value=default_value)
 
         # Normalize default values, ensuring they are keys in the options dictionary
-        default_value = self.replace_underscore_with_dot(name=default_value)
+        default_value = self.replace_space_with_underscore(name=default_value)
 
         return self.gxtp.SelectParam(
             name=param_name,
@@ -858,7 +859,7 @@ class Galaxyxmltool:
             name=param_name, label=title, help=description, options=data_types_dict
         )
 
-    def replace_underscore_with_dot(self, name: Union[str, None]):
+    def replace_space_with_underscore(self, name: Union[str, None]):
         """
         Normalize a tool name by replacing spaces with underscores.
 
