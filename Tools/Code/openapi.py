@@ -30,9 +30,7 @@ class ApiJson:
         outputs = self.process_output_values(attributes=attributes)
         response = self.process_response_values(attributes=attributes)
 
-        input_json = self.create_openapi_input_file(
-            inputs=inputs, outputs=outputs, response="document"
-        )
+        input_json = self.create_openapi_input_file(inputs=inputs, outputs=outputs, response="document")
         pprint(input_json)
         apirequest = APIRequest(
             execute=self.get_process_execution(attributes=attributes),
@@ -55,10 +53,7 @@ class ApiJson:
         Returns:
             dict: A modified dictionary with normalized tool names.
         """
-        return {
-            key: self.format_tool_name(value) if key != "name" else value
-            for key, value in attributes.items()
-        }
+        return {key: self.format_tool_name(value) if key != "name" else value for key, value in attributes.items()}
 
     def get_process_execution(self, attributes: Dict):
         """
@@ -128,9 +123,7 @@ class ApiJson:
         # Convert to lowercase
         return cleaned_name.lower()
 
-    def create_openapi_input_file(
-        self, inputs: Dict, outputs: Dict, response: str
-    ) -> Dict:
+    def create_openapi_input_file(self, inputs: Dict, outputs: Dict, response: str) -> Dict:
         """
         Creates a dictionary representing an OpenAPI input file.
 
@@ -172,9 +165,7 @@ class ApiJson:
         input_values_with_files = self.extract_data_files(all_input_values)
 
         # Process input files
-        processed_input_files = self.process_and_generate_input_files(
-            input_values_with_files, all_input_values
-        )
+        processed_input_files = self.process_and_generate_input_files(input_values_with_files, all_input_values)
 
         # Separate input values without data files
         input_values_without_files = self.extract_non_data_inputs(
@@ -183,14 +174,10 @@ class ApiJson:
         modified_non_data_inputs = self.modify_attributes(input_values_without_files)
 
         # Create input JSON
-        input_json = self.create_input_json(
-            non_data_inputs=modified_non_data_inputs, input_files=processed_input_files
-        )
+        input_json = self.create_input_json(non_data_inputs=modified_non_data_inputs, input_files=processed_input_files)
         return input_json
 
-    def process_and_generate_input_files(
-        self, input_files: Dict[str, str], input_schema: Dict[str, str]
-    ) -> List[Dict]:
+    def process_and_generate_input_files(self, input_files: Dict[str, str], input_schema: Dict[str, str]) -> List[Dict]:
         """
         Process input files by opening and reading them, and mark arrays for exclusion. A file is an input file
         if it doesn't have the prefix "output_data". If it has "output_data", we mark it for exclusion and
@@ -215,16 +202,10 @@ class ApiJson:
 
                 # Determine if the input is an array based on the input schema
                 if input_schema.get(exclusion_key) == "False":
-                    input_file_json_list.append(
-                        self.generate_input_file_json(
-                            input_name=adjusted_key, input_list=file_contents
-                        )
-                    )
+                    input_file_json_list.append(self.generate_input_file_json(input_name=adjusted_key, input_list=file_contents))
                 else:
                     input_file_json_list.append(
-                        self.generate_input_file_list_json(
-                            input_name=adjusted_key, input_list=file_contents
-                        )
+                        self.generate_input_file_list_json(input_name=adjusted_key, input_list=file_contents)
                     )
             else:
                 output_key = self.extract_suffix_after_prefix(key).replace("_", ".")
@@ -254,9 +235,7 @@ class ApiJson:
             return key[index + 1 :]
         return ""
 
-    def extract_non_data_inputs(
-        self, data_inputs: Dict, all_input_values: Dict
-    ) -> Dict:
+    def extract_non_data_inputs(self, data_inputs: Dict, all_input_values: Dict) -> Dict:
         """
         Extract non-data input values from the provided input values.
 
@@ -313,11 +292,7 @@ class ApiJson:
                 if "image" in output_value:
                     value = "reference"
 
-            lst.append(
-                self.output_json(
-                    outputName=key, mediaType=output_value, transmissionMode=value
-                )
-            )
+            lst.append(self.output_json(outputName=key, mediaType=output_value, transmissionMode=value))
 
         # Return the list
 
@@ -336,11 +311,7 @@ class ApiJson:
             dict: A dictionary containing only the key-value pairs representing data files.
         """
         included_suffixes = {".dat", ".txt"}
-        return {
-            key: values
-            for key, values in dictionary.items()
-            if any(values.endswith(suffix) for suffix in included_suffixes)
-        }
+        return {key: values for key, values in dictionary.items() if any(values.endswith(suffix) for suffix in included_suffixes)}
 
     def extract_input_values(self, dictionary: Dict):
         """

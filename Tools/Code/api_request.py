@@ -97,9 +97,7 @@ class APIRequest:
                     mode=value,
                 )
 
-    def write_transmission_item(
-        self, output_file_path: str, transmission_item: Any, mode: str
-    ):
+    def write_transmission_item(self, output_file_path: str, transmission_item: Any, mode: str):
         """
         Writes the transmission item to the specified file.
 

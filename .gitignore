@@ -173,3 +173,5 @@ Additional Materials/
 .vscode
 
 Processes/*.txt
+
+*.toml

@@ -3,7 +3,7 @@ import galaxyxml.tool.parameters as gtpx
 
 from .macros_xml_generator import MacrosXMLGenerator
 
-# from pprint import pprint
+from pprint import pprint
 from typing import Dict, List, Union
 import re
 import copy
@@ -100,17 +100,12 @@ class Galaxyxmltool:
         if enum_values is not None:
             # Merge enum values if they are split for better readability
             enum_values = self.merge_strings(enum_values=enum_values)
-            options = {
-                self.replace_space_with_underscore(value): value
-                for value in enum_values
-            }
+            options = {self.replace_space_with_underscore(value): value for value in enum_values}
         elif param_type_bool:
             options = {"true": "true", "false": "false"}
         else:
             # If enum values are not provided, handle this case gracefully
-            print(
-                "Warning: Enum values are not provided for select parameter. Implementation needed."
-            )
+            print("Warning: Enum values are not provided for select parameter. Implementation needed.")
             options = {}  # Placeholder for options
 
         default_value = param_schema.get("default")
@@ -227,9 +222,7 @@ class Galaxyxmltool:
                 param_type=param_type,
             )
 
-        return self.gxtp.IntegerParam(
-            name=param_name, label=title, help=description, value=default_value
-        )
+        return self.gxtp.IntegerParam(name=param_name, label=title, help=description, value=default_value)
 
     def create_float_param(
         self,
@@ -262,9 +255,7 @@ class Galaxyxmltool:
                 param_type=param_type,
             )
 
-        return self.gxtp.FloatParam(
-            name=param_name, label=title, help=description, value=default_value
-        )
+        return self.gxtp.FloatParam(name=param_name, label=title, help=description, value=default_value)
 
     def create_data_param(
         self,
@@ -336,9 +327,7 @@ class Galaxyxmltool:
         """
         required_fields = param_schema.get("required", [])
         # enum_values = []
-        section = self.create_section(
-            name=param_name, title=title, description=description
-        )
+        section = self.create_section(name=param_name, title=title, description=description)
         for field in required_fields:
             field_schema = param_schema["properties"][field]
             field_type = field_schema.get("type")
@@ -413,9 +402,7 @@ class Galaxyxmltool:
         Returns:
             param: The parameter object representing the array with the specified constraints.
         """
-        param = self.gxtp.Repeat(
-            name=name, title="Array item", min=min_items, max=max_items
-        )
+        param = self.gxtp.Repeat(name=name, title="Array item", min=min_items, max=max_items)
 
         if item_type == "number":
             data = self.create_float_param(
@@ -459,13 +446,9 @@ class Galaxyxmltool:
         Returns:
             Section: The section object with the specified attributes.
         """
-        return self.gxtp.Section(
-            name=name, title=title, help=description, expanded=True
-        )
+        return self.gxtp.Section(name=name, title=title, help=description, expanded=True)
 
-    def create_params(
-        self, input_schema: Dict, output_schema: Dict, transmission_schema: Dict
-    ):
+    def create_params(self, input_schema: Dict, output_schema: Dict, transmission_schema: Dict):
         """
         Generate parameters based on the provided input, output, and transmission schemas.
         All parameters will be placed in the input tab of the Galaxy XML.
@@ -492,9 +475,9 @@ class Galaxyxmltool:
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
             param_extended_schema = param_info.get("extended-schema")
-            # pprint(param_name)
+            pprint(param_name)
             # print(param_schema)
-            # pprint(param_info)
+            pprint(param_info)
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
             title = param_info.get("title")
@@ -568,9 +551,7 @@ class Galaxyxmltool:
 
             else:
                 # Handle unsupported parameter types gracefully
-                print(
-                    f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'"
-                )
+                print(f"Warning: Parameter '{param_name}' with unsupported type '{param_type}'")
                 continue
             inputs.append(param)
         self.choose_prefer(inputs=inputs)
@@ -651,9 +632,7 @@ class Galaxyxmltool:
             "The specification is for synchronous or asynchronous executions,"
             "with asynchronous execution as the default value"
         )
-        section = self.create_section(
-            name="Section_prefer", title="Choose the prefer", description=description
-        )
+        section = self.create_section(name="Section_prefer", title="Choose the prefer", description=description)
         param = self.gxtp.SelectParam(
             name="prefer",
             default=default_value,
@@ -668,9 +647,7 @@ class Galaxyxmltool:
 
         return inputs
 
-    def choose_transmission_mode(
-        self, section: List, name: str, available_transmissions: List
-    ):
+    def choose_transmission_mode(self, section: List, name: str, available_transmissions: List):
         """
         Adds a parameter to select transmission mode to a given section.
 
@@ -684,9 +661,7 @@ class Galaxyxmltool:
         """
         label = "Choose the transmission mode"
         # Create a dictionary of transmission options
-        transmission_options = {
-            transmission: transmission for transmission in available_transmissions
-        }
+        transmission_options = {transmission: transmission for transmission in available_transmissions}
 
         default_transmission = "reference"
         param_name = "transmissionMode_" + str(name)
@@ -705,9 +680,7 @@ class Galaxyxmltool:
         return section
 
     # To do: Implement solution for param_type object and add better docstrings
-    def create_output_param(
-        self, output_schema: Dict, inputs: List, transmission_schema: List
-    ):
+    def create_output_param(self, output_schema: Dict, inputs: List, transmission_schema: List):
         """
         Create output parameters based on provided output schema and transmission schema.
 
@@ -755,9 +728,7 @@ class Galaxyxmltool:
                 title = f"Select the appropriate transmission mode for {param_name}"
             else:
                 title = f"Select the appropriate transmission mode for {param_name} and specify an output format"
-            output_param_section = self.create_section(
-                name=output_param_section_name, title=title
-            )
+            output_param_section = self.create_section(name=output_param_section_name, title=title)
 
             if param is not None:
                 output_param_section.append(param)
@@ -824,16 +795,12 @@ class Galaxyxmltool:
             param = None
         else:
             # Handle unsupported parameter types gracefully
-            print(
-                f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'"
-            )
+            print(f"Warning: Parameter '{output_param_name}' with unsupported type '{param_type}'")
             param = None
 
         return param, enum_values
 
-    def create_select_param_output(
-        self, param_name: str, param_extended_schema: Dict, title: str, description: str
-    ):
+    def create_select_param_output(self, param_name: str, param_extended_schema: Dict, title: str, description: str):
         """
         Create a select parameter for the output based on the extended schema.
 
@@ -850,14 +817,10 @@ class Galaxyxmltool:
         enum_values = []
         self.extract_enum(schema_item=param_extended_schema, enum_values=enum_values)
         # Create a dictionary for data types based on the enumeration values
-        data_types_dict = {
-            data_type: data_type.split("/")[-1] for data_type in enum_values
-        }
+        data_types_dict = {data_type: data_type.split("/")[-1] for data_type in enum_values}
 
         # Return the created select parameter
-        return self.gxtp.SelectParam(
-            name=param_name, label=title, help=description, options=data_types_dict
-        )
+        return self.gxtp.SelectParam(name=param_name, label=title, help=description, options=data_types_dict)
 
     def replace_space_with_underscore(self, name: Union[str, None]):
         """
@@ -1046,15 +1009,11 @@ class Galaxyxmltool:
             param = self.gxtp.OutputData(name=name, format=form, label=label_name)
 
             change = self.gxtp.ChangeFormat()
-            change_response = self.gxtp.ChangeFormatWhen(
-                input="response", value="document", format="txt"
-            )
+            change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
             change.append(change_response)
             for value in values[1:]:
                 form = value.split("/")[-1]
-                change_i = self.gxtp.ChangeFormatWhen(
-                    input=key, value=value, format=form
-                )
+                change_i = self.gxtp.ChangeFormatWhen(input=key, value=value, format=form)
                 change.append(change_i)
                 param.append(change)
             outputs.append(param)
@@ -1064,12 +1023,8 @@ class Galaxyxmltool:
     # To do add requirements
     def define_requirements(self):
         requirements = self.gxtp.Requirements()
-        requirements.append(
-            self.gxtp.Requirement(type="package", version="3.10.12", value="python")
-        )
-        requirements.append(
-            self.gxtp.Requirement(type="package", version="2.31.0", value="requests")
-        )
+        requirements.append(self.gxtp.Requirement(type="package", version="3.10.12", value="python"))
+        requirements.append(self.gxtp.Requirement(type="package", version="2.31.0", value="requests"))
         return requirements
 
     def define_macro(self):
@@ -1148,9 +1103,7 @@ class Galaxyxmltool:
         name = f"{self.output_data}_{key}"
         if response == "raw":
             media_type = value["format"]["mediaType"].split("/")[-1]
-            return self.gxtp.TestOutput(
-                name=name, ftype=media_type, value=f"{name}.{media_type}"
-            )
+            return self.gxtp.TestOutput(name=name, ftype=media_type, value=f"{name}.{media_type}")
         else:
             return self.gxtp.TestOutput(name=name, ftype="txt", value=f"{name}.txt")
 

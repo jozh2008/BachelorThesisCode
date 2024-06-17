@@ -67,9 +67,7 @@ class Initialize:
         tool.outputs = gxt.define_output_options()
 
         tool.executable = gxt.define_command(process_data["id"])
-        tool.tests = gxt.define_tests(
-            api_dict=api_data["paths"], process=process_data["id"]
-        )
+        tool.tests = gxt.define_tests(api_dict=api_data["paths"], process=process_data["id"])
         tool.citations = gxt.create_citations()
         gxt.define_macro()
         file_path = f"Tools/{name}.xml"

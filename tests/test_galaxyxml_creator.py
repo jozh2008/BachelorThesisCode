@@ -31,17 +31,14 @@ def setup_tool():
     tool.gxtp.Inputs = MagicMock()
     tool.gxtp.Inputs.return_value.params = []
 
-    tool.gxtp.Inputs.return_value.append.side_effect = (
-        lambda param: tool.gxtp.Inputs.return_value.params.append(param)
-    )
+    tool.gxtp.Inputs.return_value.append.side_effect = lambda param: tool.gxtp.Inputs.return_value.params.append(param)
     return tool
 
 
 def test_create_text_param_nullable(setup_tool):
     param_name = "exp"
     param_dict = {
-        "description": "The muParser mathematical expression to apply on input "
-        "images.",
+        "description": "The muParser mathematical expression to apply on input " "images.",
         "schema": {"type": "string", "nullable": True, "default": "im1b1+im1b2"},
         "title": "The muParser mathematical expression to apply on input images.",
     }
@@ -72,8 +69,7 @@ def test_create_text_param_nullable(setup_tool):
 def test_create_text_param_nullable_false(setup_tool):
     param_name = "exp"
     param_dict = {
-        "description": "The muParser mathematical expression to apply on input "
-        "images.",
+        "description": "The muParser mathematical expression to apply on input " "images.",
         "schema": {"type": "string"},
         "title": "The muParser mathematical expression to apply on input images.",
     }
@@ -162,9 +158,7 @@ def test_create_integer_param_with_default_value(setup_tool):
         title=title,
         description=description,
     )
-    tool.gxtp.IntegerParam.assert_called_with(
-        name=param_name, label=title, help=description, value=128
-    )
+    tool.gxtp.IntegerParam.assert_called_with(name=param_name, label=title, help=description, value=128)
     assert param == tool.gxtp.IntegerParam.return_value
 
 
@@ -189,9 +183,7 @@ def test_create_float_param_with_default_value(setup_tool):
         title=title,
         description=description,
     )
-    tool.gxtp.FloatParam.assert_called_with(
-        name=param_name, label=title, help=description, value=0.5
-    )
+    tool.gxtp.FloatParam.assert_called_with(name=param_name, label=title, help=description, value=0.5)
     assert param == tool.gxtp.FloatParam.return_value
 
 
@@ -242,15 +234,13 @@ def test_create_float_param_with_default_value_nullable(setup_tool):
 def test_create_select_param_with_default_value(setup_tool):
     param_name = "out"
     param_dict = {
-        "description": "Output image which is the result of the mathematical "
-        "expressions on input image-list operands.",
+        "description": "Output image which is the result of the mathematical " "expressions on input image-list operands.",
         "schema": {
             "default": "float",
             "enum": ["uint8", "uint16", "int16", "int32", "float", "double"],
             "type": "string",
         },
-        "title": "Output image which is the result of the mathematical expressions on "
-        "input image-list operands.",
+        "title": "Output image which is the result of the mathematical expressions on " "input image-list operands.",
     }
     param_schema = param_dict.get("schema")
     is_nullable = param_schema.get("nullable", False)
@@ -290,11 +280,9 @@ def test_create_select_param_with_default_value(setup_tool):
 def test_create_select_param_boolean(setup_tool):
     param_name = "usenan"
     param_dict = {
-        "description": "If active, the application will consider NaN as no-data "
-        "values as well",
+        "description": "If active, the application will consider NaN as no-data " "values as well",
         "schema": {"default": False, "type": "boolean"},
-        "title": "If active, the application will consider NaN as no-data values as "
-        "well",
+        "title": "If active, the application will consider NaN as no-data values as " "well",
     }
     param_schema = param_dict.get("schema")
     is_nullable = param_schema.get("nullable", False)
@@ -347,9 +335,7 @@ def test_create_select_param_no_enum_values(mock_print, setup_tool):
         description=description,
     )
 
-    mock_print.assert_called_once_with(
-        "Warning: Enum values are not provided for select parameter. Implementation needed."
-    )
+    mock_print.assert_called_once_with("Warning: Enum values are not provided for select parameter. Implementation needed.")
     tool.gxtp.SelectParam.assert_called_with(
         name=param_name,
         default=None,
@@ -476,9 +462,7 @@ def test_create_data_param_nullable(setup_tool):
                         {"$ref": "http://zoo-project.org/dl/link.json"},
                         {
                             "type": "object",
-                            "properties": {
-                                "type": {"enum": ["text/xml", "application/json"]}
-                            },
+                            "properties": {"type": {"enum": ["text/xml", "application/json"]}},
                         },
                     ]
                 },
@@ -549,9 +533,7 @@ def test_create_data_param(setup_tool):
                         {"$ref": "http://zoo-project.org/dl/link.json"},
                         {
                             "type": "object",
-                            "properties": {
-                                "type": {"enum": ["text/xml", "application/json"]}
-                            },
+                            "properties": {"type": {"enum": ["text/xml", "application/json"]}},
                         },
                     ]
                 },
@@ -660,9 +642,7 @@ def test_create_object_param(setup_tool):
     )
 
     # Assert create_section is called with the correct arguments
-    tool.create_section.assert_called_once_with(
-        name=param_name, title=title, description=description
-    )
+    tool.create_section.assert_called_once_with(name=param_name, title=title, description=description)
 
     # Assert SelectParam is called correctly for the string field
     tool.gxtp.SelectParam.assert_called_once_with(
@@ -718,9 +698,7 @@ def test_get_array_items(setup_tool):
     assert tool.get_array_items(schema) == (math.inf, 7)
 
     # Test case 6: Constraints with minItems and one maxItems
-    schema = {
-        "oneOf": [{"minItems": 2}, {"minItems": 1, "maxItems": 3}, {"minItems": 4}]
-    }
+    schema = {"oneOf": [{"minItems": 2}, {"minItems": 1, "maxItems": 3}, {"minItems": 4}]}
     assert tool.get_array_items(schema) == (1, 3)
 
     # Test case 7: Constraints with maxItems and no minItems
@@ -741,9 +719,7 @@ def test_create_array_param_number(setup_tool):
         description=None,
         item_name="numberData",
     )
-    tool.gxtp.Repeat.assert_called_once_with(
-        name="bbox", title="Array item", min=4, max=6
-    )
+    tool.gxtp.Repeat.assert_called_once_with(name="bbox", title="Array item", min=4, max=6)
 
     # Assert create_float_param is called correctly
     tool.create_float_param.assert_called_once_with(
@@ -774,9 +750,7 @@ def test_create_array_param_integer(setup_tool):
         description=None,
         item_name="integerData",
     )
-    tool.gxtp.Repeat.assert_called_once_with(
-        name="bbox", title="Array item", min=4, max=6
-    )
+    tool.gxtp.Repeat.assert_called_once_with(name="bbox", title="Array item", min=4, max=6)
 
     # Assert create_integer_param is called correctly
     tool.create_integer_param.assert_called_once_with(
@@ -807,9 +781,7 @@ def test_create_array_param_string(setup_tool):
         description=None,
         item_name="stringData",
     )
-    tool.gxtp.Repeat.assert_called_once_with(
-        name="bbox", title="Array item", min=4, max=6
-    )
+    tool.gxtp.Repeat.assert_called_once_with(name="bbox", title="Array item", min=4, max=6)
 
     # Assert create_integer_param is called correctly
     tool.create_text_param.assert_called_once_with(
@@ -836,14 +808,10 @@ def test_create_section(setup_tool):
     section_mock = MagicMock()
     tool.gxtp.Section.return_value = section_mock
 
-    result = tool.create_section(
-        name=section_name, title=section_title, description=section_description
-    )
+    result = tool.create_section(name=section_name, title=section_title, description=section_description)
 
     # Assert Section is called with the correct arguments
-    tool.gxtp.Section.assert_called_once_with(
-        name=section_name, title=section_title, help=section_description, expanded=True
-    )
+    tool.gxtp.Section.assert_called_once_with(name=section_name, title=section_title, help=section_description, expanded=True)
 
     # Assert the returned value is the mocked section
     assert result == section_mock
@@ -936,9 +904,7 @@ def test_choose_transmission_mode(setup_tool):
     section_mock = MagicMock()
     tool.create_section = MagicMock(return_value=section_mock)
 
-    updated_section = tool.choose_transmission_mode(
-        section, name, available_transmissions
-    )
+    updated_section = tool.choose_transmission_mode(section, name, available_transmissions)
 
     # Assert that a SelectParam was created with the correct parameters
     tool.gxtp.SelectParam.assert_called_once_with(
@@ -960,9 +926,7 @@ def test_create_output_param(setup_tool):
 
     tool = setup_tool
 
-    tool.replace_dot_with_underscore = MagicMock(
-        side_effect=lambda x: x.replace(".", "_")
-    )
+    tool.replace_dot_with_underscore = MagicMock(side_effect=lambda x: x.replace(".", "_"))
     mock_enum_values = ["image/tiff", "image/jpeg", "image/png"]
     tool.process_output_param = MagicMock(return_value=(MagicMock(), mock_enum_values))
     tool.create_section = MagicMock(return_value=MagicMock())
@@ -970,8 +934,7 @@ def test_create_output_param(setup_tool):
 
     output_schema = {
         "out": {
-            "description": "Output image which is the result of the mathematical "
-            "expressions on input image-list operands.",
+            "description": "Output image which is the result of the mathematical " "expressions on input image-list operands.",
             "extended-schema": {
                 "oneOf": [
                     {
@@ -1037,8 +1000,7 @@ def test_create_output_param(setup_tool):
                     },
                 ]
             },
-            "title": "Output image which is the result of the mathematical "
-            "expressions on input image-list operands.",
+            "title": "Output image which is the result of the mathematical " "expressions on input image-list operands.",
         }
     }
     transmission_schema = ["value", "reference"]
@@ -1058,11 +1020,7 @@ def test_create_output_param(setup_tool):
                     "allOf": [
                         {"$ref": "http://zoo-project.org/dl/link.json"},
                         {
-                            "properties": {
-                                "type": {
-                                    "enum": ["image/tiff", "image/jpeg", "image/png"]
-                                }
-                            },
+                            "properties": {"type": {"enum": ["image/tiff", "image/jpeg", "image/png"]}},
                             "type": "object",
                         },
                     ]
@@ -1137,9 +1095,7 @@ def test_create_output_param(setup_tool):
     assert len(inputs) == 1
 
     # Verify the updates to output_type_dictionary and output_name_list
-    assert tool.output_type_dictionary == {
-        "outputType_out": ["image/tiff", "image/jpeg", "image/png"]
-    }
+    assert tool.output_type_dictionary == {"outputType_out": ["image/tiff", "image/jpeg", "image/png"]}
     assert tool.output_name_list == ["out"]
 
 
@@ -1151,8 +1107,7 @@ def test_create_process_output_param(setup_tool):
 
     output_schema = {
         "out": {
-            "description": "Output image which is the result of the mathematical "
-            "expressions on input image-list operands.",
+            "description": "Output image which is the result of the mathematical " "expressions on input image-list operands.",
             "extended-schema": {
                 "oneOf": [
                     {
@@ -1218,8 +1173,7 @@ def test_create_process_output_param(setup_tool):
                     },
                 ]
             },
-            "title": "Output image which is the result of the mathematical "
-            "expressions on input image-list operands.",
+            "title": "Output image which is the result of the mathematical " "expressions on input image-list operands.",
         }
     }
 
@@ -1241,11 +1195,7 @@ def test_create_process_output_param(setup_tool):
                     "allOf": [
                         {"$ref": "http://zoo-project.org/dl/link.json"},
                         {
-                            "properties": {
-                                "type": {
-                                    "enum": ["image/tiff", "image/jpeg", "image/png"]
-                                }
-                            },
+                            "properties": {"type": {"enum": ["image/tiff", "image/jpeg", "image/png"]}},
                             "type": "object",
                         },
                     ]
@@ -1278,10 +1228,7 @@ def test_create_process_output_param(setup_tool):
             ]
         },
         title="out",
-        description=(
-            "Output image which is the result of the mathematical "
-            "expressions on input image-list operands."
-        ),
+        description=("Output image which is the result of the mathematical " "expressions on input image-list operands."),
     )
     assert enum_values == ["image/tiff", "image/jpeg", "image/png"]
     assert param == tool.create_select_param_output.return_value
@@ -1297,11 +1244,7 @@ def test_create_select_param_output(setup_tool):
                     "allOf": [
                         {"$ref": "http://zoo-project.org/dl/link.json"},
                         {
-                            "properties": {
-                                "type": {
-                                    "enum": ["image/tiff", "image/jpeg", "image/png"]
-                                }
-                            },
+                            "properties": {"type": {"enum": ["image/tiff", "image/jpeg", "image/png"]}},
                             "type": "object",
                         },
                     ]
@@ -1335,10 +1278,7 @@ def test_create_select_param_output(setup_tool):
         },
     )
     title = "out"
-    description = (
-        "Output image which is the result of the mathematical "
-        "expressions on input image-list operands."
-    )
+    description = "Output image which is the result of the mathematical " "expressions on input image-list operands."
 
     tool = setup_tool
 
@@ -1362,10 +1302,7 @@ def test_create_select_param_output(setup_tool):
     tool.gxtp.SelectParam.assert_called_once_with(
         name="outputType_out",
         label="out",
-        help=(
-            "Output image which is the result of the mathematical "
-            "expressions on input image-list operands."
-        ),
+        help=("Output image which is the result of the mathematical " "expressions on input image-list operands."),
         options={"image/jpeg": "jpeg", "image/png": "png", "image/tiff": "tiff"},
     )
     assert result == tool.gxtp.SelectParam.return_value
@@ -1383,11 +1320,9 @@ def test_create_params(setup_tool):
     tool.create_output_param = MagicMock()
     input_schema = {
         "exp": {
-            "description": "The muParser mathematical expression to apply on "
-            "input images.",
+            "description": "The muParser mathematical expression to apply on " "input images.",
             "schema": {"type": "string"},
-            "title": "The muParser mathematical expression to apply on input "
-            "images.",
+            "title": "The muParser mathematical expression to apply on input " "images.",
         },
         "il": {
             "description": "Image list of operands to the mathematical expression.",
@@ -1465,15 +1400,13 @@ def test_create_params(setup_tool):
             "title": "Image list of operands to the mathematical expression.",
         },
         "out": {
-            "description": "Output image which is the result of the mathematical "
-            "expressions on input image list operands.",
+            "description": "Output image which is the result of the mathematical " "expressions on input image list operands.",
             "schema": {
                 "default": "float",
                 "enum": ["uint8", "uint16", "int16", "int32", "float", "double"],
                 "type": "string",
             },
-            "title": "Output image which is the result of the mathematical "
-            "expressions on input image list operands.",
+            "title": "Output image which is the result of the mathematical " "expressions on input image list operands.",
         },
         "ram": {
             "description": "Available memory for processing (in MB).",
@@ -1483,8 +1416,7 @@ def test_create_params(setup_tool):
     }
     output_schema = {
         "out": {
-            "description": "Output image which is the result of the mathematical "
-            "expressions on input image list operands.",
+            "description": "Output image which is the result of the mathematical " "expressions on input image list operands.",
             "extended-schema": {
                 "oneOf": [
                     {
@@ -1550,8 +1482,7 @@ def test_create_params(setup_tool):
                     },
                 ]
             },
-            "title": "Output image which is the result of the mathematical "
-            "expressions on input image list operands.",
+            "title": "Output image which is the result of the mathematical " "expressions on input image list operands.",
         }
     }
 
@@ -1645,6 +1576,292 @@ def test_create_params(setup_tool):
         title="il",
         description="Image list of operands to the mathematical expression.",
     )
+    tool.choose_prefer.assert_called_once_with(inputs=results)
+
+    tool.create_select_raw_param.assert_called_once_with(inputs=results)
+
+    # Verify that create_output_param was called with the correct arguments
+    tool.create_output_param.assert_called_once_with(
+        output_schema=output_schema,
+        inputs=results,
+        transmission_schema=transmission_schema,
+    )
+
+
+def test_create_params_2(setup_tool):
+    tool = setup_tool
+
+    tool.create_text_param = MagicMock()
+    tool.create_float_param = MagicMock()
+    tool.create_data_param = MagicMock()
+    tool.create_object_param = MagicMock()
+    tool.choose_prefer = MagicMock()
+    tool.create_select_raw_param = MagicMock()
+    tool.create_output_param = MagicMock()
+
+    input_schema = {
+        "a": {
+            "description": "An input string",
+            "schema": {"nullable": True, "type": "string"},
+            "title": "Literal Input (string)",
+        },
+        "b": {
+            "description": "A complex input ",
+            "extended-schema": {
+                "nullable": True,
+                "oneOf": [
+                    {
+                        "allOf": [
+                            {"$ref": "http://zoo-project.org/dl/link.json"},
+                            {
+                                "properties": {"type": {"enum": ["text/xml", "application/json"]}},
+                                "type": "object",
+                            },
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "value": {
+                                "oneOf": [
+                                    {
+                                        "contentEncoding": "utf-8",
+                                        "contentMediaType": "text/xml",
+                                        "type": "string",
+                                    },
+                                    {"type": "object"},
+                                ]
+                            }
+                        },
+                        "required": ["value"],
+                        "type": "object",
+                    },
+                ],
+            },
+            "schema": {
+                "oneOf": [
+                    {
+                        "contentEncoding": "utf-8",
+                        "contentMediaType": "text/xml",
+                        "type": "string",
+                    },
+                    {"type": "object"},
+                ]
+            },
+            "title": "Complex Input",
+        },
+        "c": {
+            "description": "A boundingbox input ",
+            "schema": {
+                "nullable": True,
+                "properties": {
+                    "bbox": {
+                        "items": {"format": "double", "type": "number"},
+                        "oneOf": [
+                            {"maxItems": 4, "minItems": 4},
+                            {"maxItems": 6, "minItems": 6},
+                        ],
+                        "type": "array",
+                    },
+                    "crs": {
+                        "default": "urn:ogc:def:crs:EPSG:6.6:4326",
+                        "enum": [
+                            "urn:ogc:def:crs:EPSG:6.6:4326",
+                            "urn:ogc:def:crs:EPSG:6.6:3785",
+                        ],
+                        "format": "uri",
+                        "type": "string",
+                    },
+                },
+                "required": ["bbox", "crs"],
+                "type": "object",
+            },
+            "title": "BoundingBox Input ",
+        },
+        "pause": {
+            "description": "An optional input which can be used to specify the "
+            "number of seconds to pause the service before "
+            "returning",
+            "schema": {
+                "default": 10.0,
+                "format": "double",
+                "nullable": True,
+                "type": "number",
+            },
+            "title": "Literal Input (double)",
+        },
+    }
+
+    output_schema = {
+        "a": {
+            "description": "The output a returned",
+            "schema": {"type": "string"},
+            "title": "The output a",
+        },
+        "b": {
+            "description": "The output b returned",
+            "extended-schema": {
+                "oneOf": [
+                    {
+                        "allOf": [
+                            {"$ref": "http://zoo-project.org/dl/link.json"},
+                            {
+                                "properties": {"type": {"enum": ["text/xml", "application/json"]}},
+                                "type": "object",
+                            },
+                        ]
+                    },
+                    {
+                        "properties": {
+                            "value": {
+                                "oneOf": [
+                                    {
+                                        "contentEncoding": "utf-8",
+                                        "contentMediaType": "text/xml",
+                                        "type": "string",
+                                    },
+                                    {"type": "object"},
+                                ]
+                            }
+                        },
+                        "required": ["value"],
+                        "type": "object",
+                    },
+                ]
+            },
+            "schema": {
+                "oneOf": [
+                    {
+                        "contentEncoding": "utf-8",
+                        "contentMediaType": "text/xml",
+                        "type": "string",
+                    },
+                    {"type": "object"},
+                ]
+            },
+            "title": "The output b",
+        },
+        "c": {
+            "description": "A boundingbox output ",
+            "schema": {
+                "properties": {
+                    "bbox": {
+                        "items": {"format": "double", "type": "number"},
+                        "oneOf": [
+                            {"maxItems": 4, "minItems": 4},
+                            {"maxItems": 6, "minItems": 6},
+                        ],
+                        "type": "array",
+                    },
+                    "crs": {
+                        "default": "urn:ogc:def:crs:EPSG:6.6:4326",
+                        "enum": [
+                            "urn:ogc:def:crs:EPSG:6.6:4326",
+                            "urn:ogc:def:crs:EPSG:6.6:3785",
+                        ],
+                        "format": "uri",
+                        "type": "string",
+                    },
+                },
+                "required": ["bbox", "crs"],
+                "type": "object",
+            },
+            "title": "BoundingBox output ",
+        },
+    }
+    transmission_schema = ["value", "reference"]
+    results = tool.create_params(input_schema, output_schema, transmission_schema)
+
+    tool.create_text_param.assert_called_once_with(
+        param_name="a",
+        param_schema={"nullable": True, "type": "string"},
+        is_nullable=True,
+        title="a",
+        description="Literal Input (string) An input string",
+    )
+
+    tool.create_data_param.assert_called_once_with(
+        param_name="b",
+        param_extended_schema={
+            "nullable": True,
+            "oneOf": [
+                {
+                    "allOf": [
+                        {"$ref": "http://zoo-project.org/dl/link.json"},
+                        {
+                            "properties": {"type": {"enum": ["text/xml", "application/json"]}},
+                            "type": "object",
+                        },
+                    ]
+                },
+                {
+                    "properties": {
+                        "value": {
+                            "oneOf": [
+                                {
+                                    "contentEncoding": "utf-8",
+                                    "contentMediaType": "text/xml",
+                                    "type": "string",
+                                },
+                                {"type": "object"},
+                            ]
+                        }
+                    },
+                    "required": ["value"],
+                    "type": "object",
+                },
+            ],
+        },
+        is_nullable=True,
+        is_array=False,
+        title="b",
+        description="Complex Input A complex input ",
+    )
+    tool.create_object_param.assert_called_once_with(
+        param_name="c",
+        param_schema={
+            "nullable": True,
+            "properties": {
+                "bbox": {
+                    "items": {"format": "double", "type": "number"},
+                    "oneOf": [
+                        {"maxItems": 4, "minItems": 4},
+                        {"maxItems": 6, "minItems": 6},
+                    ],
+                    "type": "array",
+                },
+                "crs": {
+                    "default": "urn:ogc:def:crs:EPSG:6.6:4326",
+                    "enum": [
+                        "urn:ogc:def:crs:EPSG:6.6:4326",
+                        "urn:ogc:def:crs:EPSG:6.6:3785",
+                    ],
+                    "format": "uri",
+                    "type": "string",
+                },
+            },
+            "required": ["bbox", "crs"],
+            "type": "object",
+        },
+        is_nullable=True,
+        title="c",
+        description="BoundingBox Input  A boundingbox input ",
+    )
+    tool.create_float_param.assert_called_once_with(
+        param_name="pause",
+        param_schema={
+            "default": 10.0,
+            "format": "double",
+            "nullable": True,
+            "type": "number",
+        },
+        is_nullable=True,
+        title="pause",
+        description=(
+            "Literal Input (double) An optional input which can be used to specify "
+            "the number of seconds to pause the service before returning"
+        ),
+    )
+
     tool.choose_prefer.assert_called_once_with(inputs=results)
 
     tool.create_select_raw_param.assert_called_once_with(inputs=results)
@@ -1763,9 +1980,7 @@ def test_define_macro(setup_tool):
     # Create a mock generator
     mock_generator = MagicMock()
     # Use patch to replace MacrosXMLGenerator with our mock
-    with patch(
-        "GeneratorXML.galaxyxml_creator.MacrosXMLGenerator", return_value=mock_generator
-    ):
+    with patch("GeneratorXML.galaxyxml_creator.MacrosXMLGenerator", return_value=mock_generator):
         # Call the method to test
         tool.define_macro()
 
