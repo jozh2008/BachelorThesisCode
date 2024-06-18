@@ -30,6 +30,7 @@ def setup_tool():
     tool.gxtp.Inputs.return_value.params = []
 
     tool.gxtp.Inputs.return_value.append.side_effect = lambda param: tool.gxtp.Inputs.return_value.params.append(param)
+
     return tool
 
 
@@ -2006,7 +2007,7 @@ def test_define_macro(setup_tool):
     mock_generator.generate_xml.assert_called_once_with(filename=expected_file_path)
 
 
-def test_define_tests_with_valid_examples(setup_tool):
+def test_define_tests_without_valid_examples(setup_tool):
     tool = setup_tool
     api_dict = {
         "test_dictionary": {
@@ -2049,3 +2050,192 @@ def test_define_tests_with_valid_examples(setup_tool):
     test_instance = tool.gxtp.Tests.return_value
 
     assert result == test_instance
+
+
+def test_add_test_response_param(setup_tool):
+    tool = setup_tool
+
+    # Create a real list to track params
+    params_list = []
+
+    # Create a mock Test object
+    test = MagicMock()
+    test.params = params_list  # Use the real list here
+
+    # Mock the TestParam creation
+    test_param = MagicMock()
+    test_param.name = "response"
+    test_param.value = "document"
+    tool.gxtp.TestParam.return_value = test_param
+
+    # Define the append behavior to add to the real list
+    def append_side_effect(param):
+        test.params.append(param)
+
+    test.append.side_effect = append_side_effect
+
+    # Call the method under test
+    tool.add_test_response_param(test, "document")
+
+    # Assertions to ensure the param was added to test.params
+    assert len(test.params) == 1
+    assert test.params[0].name == "response"
+    assert test.params[0].value == "document"
+
+
+def test_create_test_input_param(setup_tool):
+    tool = setup_tool
+
+    # Mock TestParam creation
+    test_param = MagicMock()
+    test_param.name = "key"
+    test_param.value = "value"
+    tool.gxtp.TestParam.return_value = test_param
+
+    param = tool.create_test_input_param("key", {"href": "value"})
+
+    # Assertions to check the correctness of the created TestParam
+    assert param.name == "key"
+    assert param.value == "value"
+
+
+def test_process_test_output_params(setup_tool):
+    tool = setup_tool
+
+    # Mock outputs dictionary
+    outputs = {
+        "output1": {"format": {"mediaType": "application/json"}},
+        "output2": {"format": {"mediaType": "image/png"}},
+    }
+
+    response = "raw"  # Mock response type
+
+    test = tool.gxtp.Test()
+
+    # Call the method under test
+    tool.process_test_output_params(test, outputs, response)
+
+    # Assertions to verify the behavior
+    assert tool.gxtp.Test.return_value.append.call_count == len(outputs)
+
+    # Verify each call argument (param) is of type TestOutput
+    for call_args in tool.gxtp.Test.return_value.append.call_args_list:
+        param = call_args[0][0]  # Extract the first argument passed to append
+        assert isinstance(param, MagicMock)  # Ensure it's a TestOutput mock object
+
+
+def test_create_tests(setup_tool):
+    tool = setup_tool
+
+    # Mock example data
+    examples = [
+        {
+            "inputs": {
+                "exp": "im1b1+im1b2",
+                "il": [{"href": "http://geolabs.fr/dl/Landsat8Extract1.tif"}],
+                "out": "float",
+                "ram": 256,
+            },
+            "outputs": {"out": {"format": {"mediaType": "image/tiff"}, "transmissionMode": "reference"}},
+            "response": "document",
+        },
+        {
+            "inputs": {
+                "exp": "im1b3,im1b2,im1b1",
+                "il": [{"href": "http://geolabs.fr/dl/Landsat8Extract1.tif"}],
+                "out": "float",
+                "ram": 256,
+            },
+            "outputs": {"out": {"format": {"mediaType": "image/jpeg"}, "transmissionMode": "reference"}},
+            "response": "raw",
+        },
+    ]
+
+    # Mock necessary methods and classes
+    tool.add_test_response_param = MagicMock()
+    tool.process_test_input_params = MagicMock()
+    tool.process_test_output_params = MagicMock()
+
+    tool.gxtp.Test = MagicMock()
+    tool.gxtp.Tests = MagicMock()
+
+    # Call the method under test
+    tests = tool.create_tests(examples)
+
+    # Assertions
+    assert isinstance(tests, MagicMock)  # Ensure tests object is created
+    assert tool.gxtp.Tests.call_count == 1  # Verify Tests() constructor call count
+
+    # Verify the number of tests appended to the tests object
+    assert tool.gxtp.Test.call_count == len(examples)
+
+    # Verify that add_test_response_param, process_test_input_params, and process_test_output_params were called for each example
+    assert tool.add_test_response_param.call_count == len(examples)
+    assert tool.process_test_input_params.call_count == len(examples)
+    assert tool.process_test_output_params.call_count == len(examples)
+
+
+def test_define_tests_with_valid_example(setup_tool):
+
+    tool = setup_tool
+    api_dict = {
+        "test_dictionary": {
+            "examples": [
+                {
+                    "inputs": {
+                        "exp": "im1b1+im1b2",
+                        "il": [{"href": "http://geolabs.fr/dl/Landsat8Extract1.tif"}],
+                        "out": "float",
+                        "ram": 256,
+                    },
+                    "outputs": {"out": {"format": {"mediaType": "image/tiff"}, "transmissionMode": "reference"}},
+                    "response": "document",
+                },
+                {
+                    "inputs": {
+                        "exp": "im1b3,im1b2,im1b1",
+                        "il": [{"href": "http://geolabs.fr/dl/Landsat8Extract1.tif"}],
+                        "out": "float",
+                        "ram": 256,
+                    },
+                    "outputs": {"out": {"format": {"mediaType": "image/jpeg"}, "transmissionMode": "reference"}},
+                    "response": "raw",
+                },
+            ]
+        }
+    }
+    process = "0TB.BandMath"
+
+    example_list = [
+        {
+            "inputs": {
+                "exp": "im1b1+im1b2",
+                "il": [{"href": "http://geolabs.fr/dl/Landsat8Extract1.tif"}],
+                "out": "float",
+                "ram": 256,
+            },
+            "outputs": {"out": {"format": {"mediaType": "image/tiff"}, "transmissionMode": "reference"}},
+            "response": "document",
+        },
+        {
+            "inputs": {
+                "exp": "im1b3,im1b2,im1b1",
+                "il": [{"href": "http://geolabs.fr/dl/Landsat8Extract1.tif"}],
+                "out": "float",
+                "ram": 256,
+            },
+            "outputs": {"out": {"format": {"mediaType": "image/jpeg"}, "transmissionMode": "reference"}},
+            "response": "raw",
+        },
+    ]
+    tool.get_test_dictionary = MagicMock()
+    tool.get_test_examples = MagicMock()
+    tool.create_tests = MagicMock()
+    tool.create_tests.return_value = MagicMock()
+    tool.get_test_examples.return_value = example_list
+    tool.get_test_dictionary.return_value = api_dict
+
+    tool.define_tests(api_dict, process)
+    tool.get_test_dictionary.assert_called_once_with(api_dict=api_dict, process=process)
+    tool.get_test_examples.assert_called_once_with(data=api_dict)
+    tool.create_tests.assert_called_with(examples=example_list)

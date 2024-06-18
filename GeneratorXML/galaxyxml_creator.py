@@ -475,9 +475,9 @@ class Galaxyxmltool:
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
             param_extended_schema = param_info.get("extended-schema")
-            pprint(param_name)
+            # pprint(param_name)
             # print(param_schema)
-            pprint(param_info)
+            # pprint(param_info)
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
             title = param_info.get("title")
@@ -1039,8 +1039,10 @@ class Galaxyxmltool:
     # To do add tests
     def define_tests(self, api_dict: Dict, process: str):
         test_dictionary = self.get_test_dictionary(api_dict=api_dict, process=process)
+        pprint(test_dictionary)
         if test_dictionary is not None:
             example_list = self.get_test_examples(data=test_dictionary)
+            pprint(example_list)
             if self.create_tests(examples=example_list) is not None:
                 return self.create_tests(examples=example_list)
         tests = self.gxtp.Tests()
@@ -1130,6 +1132,7 @@ class Galaxyxmltool:
         "https://ospd.geolabs.fr:8300/ogc-api/api",
         when the process has examples. This examples we want to use as test cases.
         """
+        # pprint(api_dict)
         for pro in api_dict.keys():
             parts = pro.split("/")
             if len(parts) > 2 and process == parts[2]:
