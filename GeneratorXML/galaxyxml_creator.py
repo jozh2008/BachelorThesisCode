@@ -561,7 +561,7 @@ class Galaxyxmltool:
             inputs=inputs,
             transmission_schema=transmission_schema,
         )
-
+        pprint(inputs)
         return inputs
 
     def create_select_raw_param(self, inputs):
@@ -1039,10 +1039,10 @@ class Galaxyxmltool:
     # To do add tests
     def define_tests(self, api_dict: Dict, process: str):
         test_dictionary = self.get_test_dictionary(api_dict=api_dict, process=process)
-        pprint(test_dictionary)
+        # pprint(test_dictionary)
         if test_dictionary is not None:
             example_list = self.get_test_examples(data=test_dictionary)
-            pprint(example_list)
+            # pprint(example_list)
             if self.create_tests(examples=example_list) is not None:
                 return self.create_tests(examples=example_list)
         tests = self.gxtp.Tests()

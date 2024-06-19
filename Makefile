@@ -47,19 +47,19 @@ compile: install
 	python3 -m py_compile $(CODE)$(SRC)
 
 format: install
-	$(BLACK) $(SRC)
-	$(BLACK) $(GENERATOR_XML)$(SRC)
-	$(BLACK) $(CODE)$(SRC)
-	$(BLACK) $(TEST)$(SRC)
+	. $(VENV_DIR)/bin/activate && $(BLACK) $(SRC)
+	. $(VENV_DIR)/bin/activate && $(BLACK) $(GENERATOR_XML)$(SRC)
+	. $(VENV_DIR)/bin/activate && $(BLACK) $(CODE)$(SRC)
+	. $(VENV_DIR)/bin/activate && $(BLACK) $(TEST)$(SRC)
 
 test: install
-	pytest $(TEST)$(SRC)
+	. $(VENV_DIR)/bin/activate && pytest $(TEST)$(SRC)
 
 checkstyle: install
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(GENERATOR_XML)$(SRC)
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
-	$(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
+	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
+	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(GENERATOR_XML)$(SRC)
+	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
+	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
 
 
 clean:
