@@ -13,7 +13,7 @@ The software requires Python 3.10. To check your Python version, run:
     Python 3.10.12
 
 Step 1:
-    $ python3 Processes/process_id.py --filename {filename}
+    `python3 Processes/process_id.py --filename {filename}`
 
 
     
