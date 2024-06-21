@@ -45,13 +45,6 @@ class Initialize:
         """
         name_id = self.rename_tool(tool_name=process_data["id"])
         name = process_data["id"]
-        pprint(process_data["id"])
-        pprint(process_data["version"])
-        pprint(process_data["title"])
-        pprint(process_data["description"])
-        pprint(process_data["inputs"])
-        pprint(process_data["outputs"])
-        pprint(process_data["outputTransmission"])
         # Create a Galaxy XML tool object
         gxt = Galaxyxmltool(
             name=name,
