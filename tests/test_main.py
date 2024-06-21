@@ -5,7 +5,7 @@ import requests_mock
 
 # import json
 # import os
-from unittest.mock import patch, mock_open, MagicMock
+from unittest.mock import patch, mock_open
 from main import Initialize
 
 
