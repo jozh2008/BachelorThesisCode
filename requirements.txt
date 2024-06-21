@@ -2,3 +2,4 @@ galaxyxml
 pytest
 pytest-cov
 requests
+requests_mock

@@ -37,9 +37,7 @@ def get_ids(file: str):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3 or sys.argv[1] != "--filename":
-        print(
-            "Error: File not provided. Use python3 process_id.py --filename {filename}"
-        )
+        print("Error: File not provided. Use python3 process_id.py --filename {filename}")
         sys.exit(1)
     file = sys.argv[2]
     get_ids(file=file)

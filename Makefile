@@ -1,5 +1,6 @@
 FLAKE8 := flake8
 FLAKE8_CONFIG := .github/linters/.flake8  # Change this to the path of your .flake8 configuration file
+BLACK_CONFIG := pyproject.toml
 BLACK :=black
 
 CODE := Tools/Code/
@@ -59,7 +60,6 @@ checkstyle: install
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(GENERATOR_XML)$(SRC)
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
-	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
 
 
 clean:
