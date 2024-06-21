@@ -1,5 +1,6 @@
 galaxyxml
 pytest
 pytest-cov
+pylint
 requests
 requests_mock
