@@ -693,7 +693,6 @@ class Galaxyxmltool:
         Returns:
             None
         """
-        # pprint(transmission_schema)
         for param_name, param_info in output_schema.items():
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
@@ -719,7 +718,6 @@ class Galaxyxmltool:
                 description=description,
             )
 
-            # pprint(enum_values)
             self.output_type_dictionary[output_param_name] = enum_values
             self.output_name_list.append(param_name)  # just name of output
 
@@ -1006,7 +1004,7 @@ class Galaxyxmltool:
                 continue
 
             form = values[0].split("/")[-1]
-            param = self.gxtp.OutputData(name=name, format=form, label=label_name)
+            param = self.gxtp.OutputData(name=name, format=form)
 
             change = self.gxtp.ChangeFormat()
             change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")

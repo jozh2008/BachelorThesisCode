@@ -58,44 +58,82 @@ class APIRequest:
         response = requests.post(url, headers=self.headers, json=self.payload)
         response = self.check_job_id(response=response)
         if not response.ok:
-            error_message = self.get_error_message(response.status_code)
-            if error_message:
-                print(error_message, file=sys.stderr)
-            else:
-                print(
-                    f"Error wit HTTP response status code: {response.status_code}",
-                    file=sys.stderr,
-                )
+            self.handle_response_error(response)
             return
 
         response_data = response.json()
+        self.process_response_data(response_data)
 
+        # for key, value in self.transmission_mode.items():
+
+        #     transmission_item = response_data.get(key)
+        #     if transmission_item is None:
+        #         continue
+
+        #     location = f"output_data_{key}"
+        #     output_file_path = self.file_directory[location]
+
+        #     if self.response_input == "raw":
+        #         if isinstance(transmission_item, dict):
+        #             url_file = transmission_item.get("href")
+        #             if url_file:
+        #                 urllib.request.urlretrieve(url_file, output_file_path)
+        #         else:
+        #             self.write_transmission_item(
+        #                 output_file_path=output_file_path,
+        #                 transmission_item=transmission_item,
+        #                 mode=value,
+        #             )
+        #     else:
+        #         self.write_transmission_item(
+        #             output_file_path=output_file_path,
+        #             transmission_item=transmission_item,
+        #             mode=value,
+        #         )
+
+    def handle_response_error(self, response):
+        error_message = self.get_error_message(response.status_code)
+        if error_message:
+            print(error_message, file=sys.stderr)
+        else:
+            print(
+                f"Error with HTTP response status code: {response.status_code}",
+                file=sys.stderr,
+            )
+
+    def process_response_data(self, response_data):
         for key, value in self.transmission_mode.items():
-
             transmission_item = response_data.get(key)
             if transmission_item is None:
                 continue
+            output_file_path = self.get_output_file_path(key)
+            self.write_transmission_item_based_on_mode(output_file_path, transmission_item, value)
 
-            location = f"output_data_{key}"
-            output_file_path = self.file_directory[location]
+    def get_output_file_path(self, key):
+        location = f"output_data_{key}"
+        return self.file_directory[location]
 
-            if self.response_input == "raw":
-                if isinstance(transmission_item, dict):
-                    url_file = transmission_item.get("href")
-                    if url_file:
-                        urllib.request.urlretrieve(url_file, output_file_path)
-                else:
-                    self.write_transmission_item(
-                        output_file_path=output_file_path,
-                        transmission_item=transmission_item,
-                        mode=value,
-                    )
-            else:
-                self.write_transmission_item(
-                    output_file_path=output_file_path,
-                    transmission_item=transmission_item,
-                    mode=value,
-                )
+    def write_transmission_item_based_on_mode(self, output_file_path, transmission_item, mode):
+        if self.response_input == "raw":
+            self.write_raw_transmission_item(output_file_path, transmission_item)
+        else:
+            self.write_transmission_item(
+                output_file_path=output_file_path,
+                transmission_item=transmission_item,
+                mode=mode,
+            )
+
+    def write_raw_transmission_item(self, output_file_path, transmission_item):
+        if isinstance(transmission_item, dict):
+            url_file = transmission_item.get("href")
+            if url_file:
+                urllib.request.urlretrieve(url_file, output_file_path)
+        else:
+            self.write_transmission_item(
+                output_file_path=output_file_path,
+                transmission_item=transmission_item,
+                mode="reference",
+            )
 
     def write_transmission_item(self, output_file_path: str, transmission_item: Any, mode: str):
         """
@@ -136,10 +174,12 @@ class APIRequest:
             self.job_id = response_data["jobID"]
             url = self.get_url(keyword="jobs")
             while status == "running":
+                print(status)
                 time.sleep(20)
                 response = requests.get(url=url, headers=self.accept_header)
                 response_data = response.json()
                 status = response_data["status"]
+            print(status)
             url = self.get_url(keyword="results")
             response = requests.get(url=url, headers=self.accept_header)
             if status == "failed":
