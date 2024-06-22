@@ -999,7 +999,7 @@ class Galaxyxmltool:
             self.executable_dict[name] = f"${name}"
 
             if not values:
-                param = self.gxtp.OutputData(name=name, format="txt", label=label_name)
+                param = self.gxtp.OutputData(name=name, format="txt")
                 outputs.append(param)
                 continue
 
