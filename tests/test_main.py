@@ -53,8 +53,16 @@ def mock_collections_data():
                                 "properties": {
                                     "value": {
                                         "oneOf": [
-                                            {"contentEncoding": "base64", "contentMediaType": "image/tiff", "type": "string"},
-                                            {"contentEncoding": "base64", "contentMediaType": "image/jpeg", "type": "string"},
+                                            {
+                                                "contentEncoding": "base64",
+                                                "contentMediaType": "image/tiff",
+                                                "type": "string",
+                                            },
+                                            {
+                                                "contentEncoding": "base64",
+                                                "contentMediaType": "image/jpeg",
+                                                "type": "string",
+                                            },
                                             {"contentEncoding": "base64", "contentMediaType": "image/png", "type": "string"},
                                         ]
                                     }
@@ -88,7 +96,10 @@ def mock_collections_data():
                         {
                             "allOf": [
                                 {"$ref": "http://zoo-project.org/dl/link.json"},
-                                {"properties": {"type": {"enum": ["image/tiff", "image/jpeg", "image/png"]}}, "type": "object"},
+                                {
+                                    "properties": {"type": {"enum": ["image/tiff", "image/jpeg", "image/png"]}},
+                                    "type": "object",
+                                },
                             ]
                         },
                         {
@@ -171,60 +182,68 @@ def test_get_collections_failure():
 def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
     init = Initialize()
 
-    expected_xml = """
-    <tool name="hellor" id="hellor" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@">
-  <description>HelloWorld Service in R</description>
-  <macros>
-    <import>Macros/hellor_macros_.xml</import>
-  </macros>
-  <requirements>
-    <requirement version="3.10.12" type="package">python</requirement>
-    <requirement version="2.31.0" type="package">requests</requirement>
-  </requirements>
-  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>
-  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name hellor S '$S'
-prefer $Section_prefer.prefer
-response $Section_response.response
-transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>
-  <inputs>
-    <param name="S" type="text" optional="false" label="S" help="Name The name to display in the hello message">
-      <validator type="empty_field"/>
-    </param>
-    <section name="Section_prefer" title="Choose the prefer" expanded="true" help="Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'.The specification is for synchronous or asynchronous executions,with asynchronous execution as the default value">
-      <param name="prefer" type="select" label="Prefer">
-        <option selected="true" value="respond-async;return=representation">respond-async;return=representation</option>
-        <option value="return=minimal">return=minimal</option>
-        <option value="return=representation">return=representation</option>
-      </param>
-    </section>
-    <section name="Section_response" title="Choose the response type" expanded="true" help="Choose 'raw' to get the raw data or 'document' for retrieving a URL. The URL can be used for workflows, while the raw data is the download of the URL">
-      <param name="response" type="select" label="Response Type" help="Choose 'raw' for raw data or 'document' for document data.">
-        <option selected="true" value="document">document</option>
-        <option value="raw">raw</option>
-      </param>
-    </section>
-    <section name="OutputSection_Result" title="Select the appropriate transmission mode for Result" expanded="true">
-      <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">
-        <option selected="true" value="reference">reference</option>
-        <option value="value">value</option>
-      </param>
-    </section>
-  </inputs>
-  <outputs>
-    <data name="output_data_Result" format="txt" hidden="false"/>
-  </outputs>
-  <tests>
-    <test>
-      <param name="response" value="document"/>
-      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>
-    </test>
-  </tests>
-  <help><![CDATA[Output and Hello Wolrd string]]></help>
-  <citations>
-    <citation type="bibtex">Josh</citation>
-  </citations>
-</tool>
-    """.strip()
+    expected_xml = (
+        '<tool name="hellor" id="hellor" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@">\n'
+        "  <description>HelloWorld Service in R</description>\n"
+        "  <macros>\n"
+        "    <import>Macros/hellor_macros_.xml</import>\n"
+        "  </macros>\n"
+        "  <requirements>\n"
+        '    <requirement version="3.10.12" type="package">python</requirement>\n'
+        '    <requirement version="2.31.0" type="package">requests</requirement>\n'
+        "  </requirements>\n"
+        "  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>\n"
+        "  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name hellor S "
+        "'$S'\n"
+        "prefer $Section_prefer.prefer\n"
+        "response $Section_response.response\n"
+        "transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></command>\n"
+        "  <inputs>\n"
+        '    <param name="S" type="text" optional="false" label="S" help="Name The name to display in the hello message">\n'
+        '      <validator type="empty_field"/>\n'
+        "    </param>\n"
+        '    <section name="Section_prefer" title="Choose the prefer" expanded="true" help="Choose between '
+        "'return=representation', 'return=minimal', and 'respond-async;return=representation'."
+        'The specification is for synchronous or asynchronous executions,with asynchronous execution as the default value">\n'
+        '      <param name="prefer" type="select" label="Prefer">\n'
+        '        <option selected="true" value="respond-async;return=representation">'
+        "respond-async;return=representation</option>\n"
+        '        <option value="return=minimal">return=minimal</option>\n'
+        '        <option value="return=representation">return=representation</option>\n'
+        "      </param>\n"
+        "    </section>\n"
+        '    <section name="Section_response" title="Choose the response type" expanded="true" help="Choose '
+        "'raw' to get the raw data or 'document' for retrieving a URL. "
+        "The URL can be used for workflows, while the raw data is the download of the URL"
+        '">\n'
+        '      <param name="response" type="select" label="Response Type" help="Choose '
+        "'raw' for raw data or 'document' for document data.\">\n"
+        '        <option selected="true" value="document">document</option>\n'
+        '        <option value="raw">raw</option>\n'
+        "      </param>\n"
+        "    </section>\n"
+        '    <section name="OutputSection_Result" title="Select the appropriate transmission mode for Result" expanded="true">\n'
+        '      <param name="transmissionMode_Result" type="select" label="Choose the transmission mode">\n'
+        '        <option selected="true" value="reference">reference</option>\n'
+        '        <option value="value">value</option>\n'
+        "      </param>\n"
+        "    </section>\n"
+        "  </inputs>\n"
+        "  <outputs>\n"
+        '    <data name="output_data_Result" format="txt" hidden="false"/>\n'
+        "  </outputs>\n"
+        "  <tests>\n"
+        "    <test>\n"
+        '      <param name="response" value="document"/>\n'
+        '      <output name="output_data_Result" ftype="txt" value="output_data_Result.txt"/>\n'
+        "    </test>\n"
+        "  </tests>\n"
+        "  <help><![CDATA[Output and Hello Wolrd string]]></help>\n"
+        "  <citations>\n"
+        '    <citation type="bibtex">Josh</citation>\n'
+        "  </citations>\n"
+        "</tool>"
+    ).strip()
 
     # Mock the open function and the file handle
     # Mock the open function and the file handle

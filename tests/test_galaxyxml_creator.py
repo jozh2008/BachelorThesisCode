@@ -804,7 +804,9 @@ def test_create_section(setup_tool):
     result = tool.create_section(name=section_name, title=section_title, description=section_description)
 
     # Assert Section is called with the correct arguments
-    tool.gxtp.Section.assert_called_once_with(name=section_name, title=section_title, help=section_description, expanded=True)
+    tool.gxtp.Section.assert_called_once_with(
+        name=section_name, title=section_title, help=section_description, expanded=True
+    )
 
     # Assert the returned value is the mocked section
     assert result == section_mock
@@ -927,7 +929,8 @@ def test_create_output_param(setup_tool):
 
     output_schema = {
         "out": {
-            "description": "Output image which is the result of the mathematical " "expressions on input image-list operands.",
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image-list operands.",
             "extended-schema": {
                 "oneOf": [
                     {
@@ -1100,7 +1103,8 @@ def test_create_process_output_param(setup_tool):
 
     output_schema = {
         "out": {
-            "description": "Output image which is the result of the mathematical " "expressions on input image-list operands.",
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image-list operands.",
             "extended-schema": {
                 "oneOf": [
                     {
@@ -1393,7 +1397,8 @@ def test_create_params(setup_tool):
             "title": "Image list of operands to the mathematical expression.",
         },
         "out": {
-            "description": "Output image which is the result of the mathematical " "expressions on input image list operands.",
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image list operands.",
             "schema": {
                 "default": "float",
                 "enum": ["uint8", "uint16", "int16", "int32", "float", "double"],
@@ -1409,7 +1414,8 @@ def test_create_params(setup_tool):
     }
     output_schema = {
         "out": {
-            "description": "Output image which is the result of the mathematical " "expressions on input image list operands.",
+            "description": "Output image which is the result of the mathematical "
+            "expressions on input image list operands.",
             "extended-schema": {
                 "oneOf": [
                     {

@@ -1,6 +1,6 @@
 import pytest
 
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import sys
 import os
@@ -59,24 +59,33 @@ def test_process_input_values(
         "name": "OTB.BandMath",
         "out": "float",
         "outputType_out": "image/jpeg",
-        "output_data_out": "/tmp/tmpv7_din2m/job_working_directory/000/7/outputs/dataset_e90b18c4-7615-464f-9399-6d0bbca093de.dat",
+        "output_data_out": (
+            "/tmp/tmpv7_din2m/job_working_directory/" "000/7/outputs/dataset_e90b18c4-7615-464f-9399-6d0bbca093de.dat"
+        ),
         "prefer": "return=representation",
         "ram": "256",
         "response": "raw",
         "transmissionMode_out": "reference",
     }
+
     mock_extract_input_values.return_value = {
         "exp": "im1b1+im1b2",
         "il": "/tmp/tmpv7_din2m/files/a/2/d/dataset_a2de679f-7d52-4c07-9fca-8f61ac768ff9.dat",
         "isArrayil": "True",
         "out": "float",
-        "output_data_out": "/tmp/tmpv7_din2m/job_working_directory/000/21/outputs/dataset_ac1be78d-bfbd-44ce-a32f-8c6777713b41.dat",
+        "output_data_out": (
+            "/tmp/tmpv7_din2m/job_working_directory/" "000/21/outputs/dataset_ac1be78d-bfbd-44ce-a32f-8c6777713b41.dat"
+        ),
         "ram": "256",
     }
+
     mock_extract_data_files.return_value = {
         "il": "/tmp/tmpv7_din2m/files/a/2/d/dataset_a2de679f-7d52-4c07-9fca-8f61ac768ff9.dat",
-        "output_data_out": "/tmp/tmpv7_din2m/job_working_directory/000/21/outputs/dataset_ac1be78d-bfbd-44ce-a32f-8c6777713b41.dat",
+        "output_data_out": (
+            "/tmp/tmpv7_din2m/job_working_directory/" "000/21/outputs/dataset_ac1be78d-bfbd-44ce-a32f-8c6777713b41.dat"
+        ),
     }
+
     mock_process_and_generate_input_files.return_value = [{"il": [{"href": "http://geolabs.fr/dl/Landsat8Extract1.tif"}]}]
     mock_extract_non_data_inputs.return_value = {"exp": "im1b1+im1b2", "out": "float", "ram": "256"}
     mock_modify_attributes.return_value = {"exp": "im1b1+im1b2", "out": "float", "ram": "256"}

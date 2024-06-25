@@ -7,5 +7,3 @@ python:
     - "**/*.py"
   rules:
     - flake8
-  ignore:
-    - tests/*.py

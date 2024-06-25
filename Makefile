@@ -60,6 +60,7 @@ checkstyle: install
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(SRC)
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(GENERATOR_XML)$(SRC)
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
+	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
 
 
 clean:
