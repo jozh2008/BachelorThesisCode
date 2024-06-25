@@ -185,7 +185,7 @@ class ApiJson:
             data_inputs=input_values_with_files, all_input_values=all_input_values
         )
 
-        # pprint(input_values_without_files)
+        pprint(input_values_without_files)
 
         modified_non_data_inputs = self.modify_attributes(input_values_without_files)
 
@@ -304,6 +304,7 @@ class ApiJson:
         # for key, value in zip(keys_transmission_mode, values_transmission_mode):
         for key, value in transmission_mode.items():
             output_value = outputs.get(key)
+            print(key)
 
             # We want to return a image, when we have a raw data and value, but we cannot
             # download an image with value, cause no url is given, Therefore we always set the value
@@ -317,7 +318,7 @@ class ApiJson:
 
         # Return the list
 
-        # pprint(lst)
+        pprint(lst)
 
         return lst
 
