@@ -211,7 +211,7 @@ transmissionMode_Result $OutputSection_Result.transmissionMode_Result]]></comman
     </section>
   </inputs>
   <outputs>
-    <data name="output_data_Result" format="txt" label="Result" hidden="false"/>
+    <data name="output_data_Result" format="txt" hidden="false"/>
   </outputs>
   <tests>
     <test>

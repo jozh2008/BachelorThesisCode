@@ -4,13 +4,20 @@
 import sys
 import re
 from pprint import pprint
-from api_request import APIRequest
+
+try:
+    # Attempt relative import for testing context
+    from .api_request import APIRequest
+except ImportError:
+    # Fallback to absolute import for direct execution
+    from api_request import APIRequest
+
 from typing import Dict, List
 
 
 class ApiJson:
     def __init__(self) -> None:
-        self.isArray = "isArray"
+        self.is_array = "isArray"
         self.exclusion_list = []
         self.output_format_dictionary = {}
         self.file_directory = {}
@@ -160,21 +167,33 @@ class ApiJson:
         """
         # Extract all input values
         all_input_values = self.extract_input_values(attributes)
+        # print("all_input_values")
+        # pprint(all_input_values)
 
         # Separate input values with data files
         input_values_with_files = self.extract_data_files(all_input_values)
 
+        # pprint(input_values_with_files)
+
         # Process input files
         processed_input_files = self.process_and_generate_input_files(input_values_with_files, all_input_values)
+
+        # pprint(processed_input_files)
 
         # Separate input values without data files
         input_values_without_files = self.extract_non_data_inputs(
             data_inputs=input_values_with_files, all_input_values=all_input_values
         )
+
+        # pprint(input_values_without_files)
+
         modified_non_data_inputs = self.modify_attributes(input_values_without_files)
+
+        # pprint(modified_non_data_inputs)
 
         # Create input JSON
         input_json = self.create_input_json(non_data_inputs=modified_non_data_inputs, input_files=processed_input_files)
+        # pprint(input_json)
         return input_json
 
     def process_and_generate_input_files(self, input_files: Dict[str, str], input_schema: Dict[str, str]) -> List[Dict]:
@@ -197,7 +216,7 @@ class ApiJson:
                 # Adjust key for Cheetah compatibility
                 adjusted_key = key.replace("_", ".")  # change back because of Cheetah
                 file_contents = self.open_and_read_file(file_path)
-                exclusion_key = self.isArray + adjusted_key
+                exclusion_key = self.is_array + adjusted_key
                 self.exclusion_list.append(exclusion_key)
 
                 # Determine if the input is an array based on the input schema
