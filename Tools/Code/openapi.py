@@ -618,22 +618,6 @@ class ApiJson:
         merged_dict.update(overlay_dict)
         return merged_dict
 
-    # def construct_response_json(self, response: str):
-    #     """
-    #     Create a JSON representation of a response.
-
-    #     This method constructs a dictionary representing the JSON format of a response,
-    #     with the response value provided as input.
-
-    #     Args:
-    #         response (str): The response value.
-
-    #     Returns:
-    #         dict: A dictionary representing the JSON format of the response.
-    #     """
-    #     output_format = {"response": response}
-    #     return output_format
-
 
 if __name__ == "__main__":
     api = ApiJson()

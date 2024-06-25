@@ -360,3 +360,33 @@ def test_generate_output_list(setup_JSON):
     assert (
         extractor.generate_output_list(input_attributes) == expected_output
     ), f"Expected:\n{input_attributes}\n\nActual:\n{expected_output}"
+
+
+def test_create_input_json(setup_JSON):
+    extractor = setup_JSON
+    non_data_inputs = {"param1": "value1", "param2": "value2"}
+    input_files = [{"file1": "path/to/file1"}, {"file2": "path/to/file2"}]
+    expected_output = {"param1": "value1", "param2": "value2", "file1": "path/to/file1", "file2": "path/to/file2"}
+    assert extractor.create_input_json(non_data_inputs, input_files) == expected_output
+
+
+def test_combine_dicts(setup_JSON):
+    extractor = setup_JSON
+    dict_list = [{"a": 1, "b": 2}, {"b": 3, "c": 4}]
+    expected_output = {"a": 1, "b": 3, "c": 4}
+    assert extractor.combine_dicts(dict_list) == expected_output
+
+
+def test_merge_dicts(setup_JSON):
+    extractor = setup_JSON
+    base_dict = {"a": 1, "b": 2}
+    overlay_dict = {"b": 3, "c": 4}
+    expected_output = {"a": 1, "b": 3, "c": 4}
+    assert extractor.merge_dicts(base_dict, overlay_dict) == expected_output
+
+
+def test_get_process_execution(setup_JSON):
+    extractor = setup_JSON
+    input_attributes = {"name": "exampleProcess"}
+    expected_output = "processes/exampleProcess/execution"
+    assert extractor.get_process_execution(input_attributes) == expected_output
