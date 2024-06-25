@@ -390,3 +390,64 @@ def test_get_process_execution(setup_JSON):
     input_attributes = {"name": "exampleProcess"}
     expected_output = "processes/exampleProcess/execution"
     assert extractor.get_process_execution(input_attributes) == expected_output
+
+
+def test_format_tool_name(setup_JSON):
+    extractor = setup_JSON
+
+    # Test cases
+    test_cases = [
+        ("My_Tool_Name", "my tool name"),
+        ("AnotherTool", "anothertool"),
+        ("TOOL_with_MIXED_Case_and_underscores", "tool with mixed case and underscores"),
+        ("no_underscores", "no underscores"),
+        ("ALLCAPS", "allcaps"),
+        ("", ""),
+    ]
+
+    for tool_name, expected in test_cases:
+        assert extractor.format_tool_name(tool_name) == expected
+
+
+def test_process_response_values(setup_JSON):
+    extractor = setup_JSON
+
+    # Test cases
+    input_attributes_with_response = {"response_key1": "value1", "some_other_key": "other_value", "response_key2": "value2"}
+    expected_output_with_response = "value2"
+    assert extractor.process_response_values(input_attributes_with_response) == expected_output_with_response
+
+    input_attributes_no_response = {"some_other_key": "other_value", "another_key": "another_value"}
+    expected_output_no_response = ""
+    assert extractor.process_response_values(input_attributes_no_response) == expected_output_no_response
+
+    input_attributes_empty = {}
+    expected_output_empty = ""
+    assert extractor.process_response_values(input_attributes_empty) == expected_output_empty
+
+
+def test_modify_attributes(setup_JSON):
+    extractor = setup_JSON
+
+    # Test case 1: Normal case with multiple attributes
+    input_attributes = {
+        "tool_name": "My_Tool_Name",
+        "another_tool": "TOOL_with_MIXED_Case_and_underscores",
+        "name": "SomeName",
+    }
+    expected_output = {
+        "tool_name": "my tool name",
+        "another_tool": "tool with mixed case and underscores",
+        "name": "SomeName",
+    }
+    assert extractor.modify_attributes(input_attributes) == expected_output
+
+    # Test case 2: Empty dictionary
+    input_empty = {}
+    expected_empty = {}
+    assert extractor.modify_attributes(input_empty) == expected_empty
+
+    # Test case 3: Dictionary with only 'name' key
+    input_only_name = {"name": "OnlyName"}
+    expected_only_name = {"name": "OnlyName"}
+    assert extractor.modify_attributes(input_only_name) == expected_only_name
