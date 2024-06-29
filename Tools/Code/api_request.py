@@ -80,6 +80,22 @@ class APIRequest:
         print(error_message, file=sys.stderr)
 
     def process_response_data(self, response_data):
+        """
+        Processes response data based on the transmission mode.
+
+        Parameters:
+            - response_data (dict): Dictionary containing response data.
+
+        This method iterates over the keys of `transmission_mode`, retrieves the corresponding
+        transmission item from `response_data`, determines the output file path, and writes the
+        transmission item to the file based on the specified mode.
+
+        Parameters:
+            - response_data (dict): Dictionary containing response data.
+
+        Returns:
+            None
+        """
         for key, value in self.transmission_mode.items():
             transmission_item = response_data.get(key)
             if transmission_item is None:
