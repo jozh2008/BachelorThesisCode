@@ -63,6 +63,7 @@ class APIRequest:
             return
 
         response_data = response.json()
+        pprint(response_data)
         self.process_response_data(response_data)
 
     def handle_response_error(self, response):
@@ -98,16 +99,38 @@ class APIRequest:
         """
         for key, value in self.transmission_mode.items():
             transmission_item = response_data.get(key)
+            pprint(transmission_item)
             if transmission_item is None:
                 continue
             output_file_path = self.get_output_file_path(key)
             self.write_transmission_item_based_on_mode(output_file_path, transmission_item, value)
 
     def get_output_file_path(self, key):
+        """
+        Retrieves the output file path based on the provided key.
+
+        Parameters:
+            - key (str): Key to identify the output file path.
+
+        Returns:
+            - str: Output file path corresponding to the key.
+        """
         location = f"output_data_{key}"
         return self.file_directory[location]
 
     def write_transmission_item_based_on_mode(self, output_file_path, transmission_item, mode):
+        """
+        Writes the transmission item to the specified output file path based on the mode.
+
+        Parameters:
+            - output_file_path (str): Path to the output file.
+            - transmission_item (dict or any): Item to be written to the file.
+            - mode (str): Mode of transmission, either "reference" or "value".
+
+        If the response_input attribute is set to "raw", calls write_raw_transmission_item with
+        the output_file_path and transmission_item. Otherwise, calls write_transmission_item
+        with the output_file_path, transmission_item, and mode.
+        """
         if self.response_input == "raw":
             self.write_raw_transmission_item(output_file_path, transmission_item)
         else:
@@ -118,6 +141,18 @@ class APIRequest:
             )
 
     def write_raw_transmission_item(self, output_file_path, transmission_item):
+        """
+        Writes the transmission item to the specified output file path in raw format.
+
+        Parameters:
+            - output_file_path (str): Path to the output file.
+            - transmission_item (dict or any): Item to be written to the file.
+
+        If transmission_item is a dictionary, retrieves the URL from the 'href' field and
+        downloads the file from that URL to the specified output_file_path using urllib.request.urlretrieve.
+        If transmission_item is not a dictionary, assumes it's a reference and calls write_transmission_item
+        with output_file_path, transmission_item, and mode="reference".
+        """
         if isinstance(transmission_item, dict):
             url_file = transmission_item.get("href")
             if url_file:

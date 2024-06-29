@@ -201,3 +201,89 @@ def test_check_job_id(mock_sleep, mock_get, setup_request_asyn):
     mock_get.assert_any_call(
         url="https://ospd.geolabs.fr:8300/ogc-api/jobs/12345/results", headers={"accept": "application/json"}
     )
+
+
+def test_process_response_data(setup_request_syn):
+    # Setup
+    request = setup_request_syn
+    response_data = {
+        "out": {
+            "format": {"mediaType": "image/tiff"},
+            "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
+        }
+    }
+
+    transmission_item = {
+        "format": {"mediaType": "image/tiff"},
+        "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
+    }
+
+    request.get_output_file_path = MagicMock(side_effect=lambda key: f"output_data_{key}")
+    request.write_transmission_item_based_on_mode = MagicMock()
+
+    # request.transmission_mode = {"out": "reference"}
+
+    request.process_response_data(response_data=response_data)
+    request.get_output_file_path.assert_called_once_with("out")
+    request.write_transmission_item_based_on_mode.assert_called_once_with("output_data_out", transmission_item, "reference")
+
+
+def test_get_output_file_path(setup_request_syn):
+    # Setup
+    request = setup_request_syn
+
+    key = "out"
+    result = request.get_output_file_path(key)
+
+    expected_output = "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+
+    # Assertion
+    assert result == expected_output
+
+
+def test_write_transmission_item_based_on_mode_raw(setup_request_raw):
+    # Setup
+    request = setup_request_raw
+    output_file_path = "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    transmission_item = transmission_item = {
+        "format": {"mediaType": "image/tiff"},
+        "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
+    }
+    mode = "reference"
+
+    # Mock the write_transmission_item and write_raw_transmission_item methods
+    request.write_transmission_item = MagicMock()
+    request.write_raw_transmission_item = MagicMock()
+
+    # Set response_input attribute for the instance
+    # instance.response_input = "raw"
+
+    # Test when response_input is "raw"
+    request.write_transmission_item_based_on_mode(output_file_path, transmission_item, mode)
+
+    # Assertion
+    request.write_raw_transmission_item.assert_called_once_with(output_file_path, transmission_item)
+    request.write_transmission_item.assert_not_called()
+
+
+def test_write_transmission_item_based_on_mode_document(setup_request_syn):
+    # Setup
+    request = setup_request_syn
+    output_file_path = "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    transmission_item = transmission_item = {
+        "format": {"mediaType": "image/tiff"},
+        "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
+    }
+    mode = "reference"
+
+    # Mock the write_transmission_item and write_raw_transmission_item methods
+    request.write_transmission_item = MagicMock()
+    request.write_raw_transmission_item = MagicMock()
+
+    request.write_transmission_item_based_on_mode(output_file_path, transmission_item, mode)
+
+    # Assertion
+    request.write_transmission_item.assert_called_once_with(
+        output_file_path=output_file_path, transmission_item=transmission_item, mode=mode
+    )
+    request.write_raw_transmission_item.assert_not_called()
