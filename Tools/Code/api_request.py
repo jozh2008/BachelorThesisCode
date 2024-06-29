@@ -53,6 +53,7 @@ class APIRequest:
             Otherwise, it determines whether the transmission mode is "reference" or "value" and writes the appropriate
             data accordingly.
         """
+
         url = self.get_url(keyword="execute")
         pprint(url)
         response = requests.post(url, headers=self.headers, json=self.payload)
@@ -64,42 +65,19 @@ class APIRequest:
         response_data = response.json()
         self.process_response_data(response_data)
 
-        # for key, value in self.transmission_mode.items():
-
-        #     transmission_item = response_data.get(key)
-        #     if transmission_item is None:
-        #         continue
-
-        #     location = f"output_data_{key}"
-        #     output_file_path = self.file_directory[location]
-
-        #     if self.response_input == "raw":
-        #         if isinstance(transmission_item, dict):
-        #             url_file = transmission_item.get("href")
-        #             if url_file:
-        #                 urllib.request.urlretrieve(url_file, output_file_path)
-        #         else:
-        #             self.write_transmission_item(
-        #                 output_file_path=output_file_path,
-        #                 transmission_item=transmission_item,
-        #                 mode=value,
-        #             )
-        #     else:
-        #         self.write_transmission_item(
-        #             output_file_path=output_file_path,
-        #             transmission_item=transmission_item,
-        #             mode=value,
-        #         )
-
     def handle_response_error(self, response):
+        """
+        Handles the error based on the HTTP response status code.
+
+        Parameters:
+        - response: The HTTP response object containing the status code.
+
+        This function prints an error message to stderr based on the status code.
+        It first attempts to get a specific error message using the get_error_message method.
+        If no specific error message is found, it prints a generic error message with the status code.
+        """
         error_message = self.get_error_message(response.status_code)
-        if error_message:
-            print(error_message, file=sys.stderr)
-        else:
-            print(
-                f"Error with HTTP response status code: {response.status_code}",
-                file=sys.stderr,
-            )
+        print(error_message, file=sys.stderr)
 
     def process_response_data(self, response_data):
         for key, value in self.transmission_mode.items():
@@ -173,6 +151,7 @@ class APIRequest:
             status = response_data["status"]
             self.job_id = response_data["jobID"]
             url = self.get_url(keyword="jobs")
+            print(url)
             while status == "running":
                 print(status)
                 time.sleep(20)
@@ -188,7 +167,6 @@ class APIRequest:
                     f"https://ospd.geolabs.fr:8300/ogc-api/jobs/{self.job_id}",
                     file=sys.stderr,
                 )
-
         return response
 
     def get_url(self, keyword):
@@ -209,10 +187,22 @@ class APIRequest:
         return url_dictionary[keyword]
 
     def get_error_message(self, keyword):
+        """
+        Retrieves an error message based on the provided HTTP status code.
+
+        Parameters:
+        - keyword (int): The HTTP status code for which to retrieve the error message.
+
+        Returns:
+        - str: The corresponding error message for the given status code. If the status code
+               is not found in the predefined dictionary, a default message is returned
+               indicating the unknown status code.
+        """
+
         error_dictionary = {
             500: "500 Internal Server Error",
             405: "405 Method Not Allowed",
             404: "404 Not Found",
             400: "400 Bad Request",
         }
-        return error_dictionary[keyword]
+        return error_dictionary.get(keyword, f"Error with HTTP response status code: {keyword}")
