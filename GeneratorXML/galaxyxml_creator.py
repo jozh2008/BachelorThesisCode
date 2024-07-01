@@ -290,10 +290,8 @@ class Galaxyxmltool:
             self.extract_enum(param_extended_schema, enum_values)
             self.executable_dict[array_status_key] = False
 
-        # pprint(enum_values)
         # Generate a string of allowed data types from enum values
         data_types = ", ".join(value.split("/")[-1] for value in enum_values)
-        # print(data_types)
 
         # Create and return the data parameter
         return self.gxtp.DataParam(
@@ -326,7 +324,6 @@ class Galaxyxmltool:
             section: The section containing the created parameters.
         """
         required_fields = param_schema.get("required", [])
-        # enum_values = []
         section = self.create_section(name=param_name, title=title, description=description)
         for field in required_fields:
             field_schema = param_schema["properties"][field]
@@ -467,17 +464,11 @@ class Galaxyxmltool:
         Returns:
         List: A list of generated parameters.
         """
-        # pprint(input_schema)
-        # pprint(output_schema)
-        # pprint(transmission_schema)
         inputs = self.gxtp.Inputs()
         for param_name, param_info in input_schema.items():
             param_name = self.replace_dot_with_underscore(param_name)
             param_schema = param_info.get("schema")
             param_extended_schema = param_info.get("extended-schema")
-            # pprint(param_name)
-            # print(param_schema)
-            # pprint(param_info)
             param_type = param_schema.get("type")
             is_nullable = param_schema.get("nullable", False)
             title = param_info.get("title")
