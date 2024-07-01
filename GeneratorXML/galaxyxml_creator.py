@@ -1011,6 +1011,9 @@ class Galaxyxmltool:
 
     # To do add requirements
     def define_requirements(self):
+        """
+        Add the requirments for generating the Galaxy XML file.
+        """
         requirements = self.gxtp.Requirements()
         requirements.append(self.gxtp.Requirement(type="package", version="3.10.12", value="python"))
         requirements.append(self.gxtp.Requirement(type="package", version="2.31.0", value="requests"))
@@ -1027,17 +1030,35 @@ class Galaxyxmltool:
 
     # To do add tests
     def define_tests(self, api_dict: Dict, process: str):
+        """
+        Define the tests for the given API dictionary and process.
+
+        This method initializes a test dictionary from the given API dictionary
+        and process. If the test dictionary is valid, it creates test examples and
+        uses them to create tests. If not, it creates a default test setup.
+
+        Args:
+            api_dict (Dict): The dictionary containing API information.
+            process (str): The specific process to define tests for.
+
+        Returns:
+            Tests: A Tests object populated with the defined tests.
+        """
+        # Get the test dictionary using the given API dictionary and process
         test_dictionary = self.get_test_dictionary(api_dict=api_dict, process=process)
-        # pprint(test_dictionary)
         if test_dictionary is not None:
+            # Get test examples from the test dictionary
             example_list = self.get_test_examples(data=test_dictionary)
-            # pprint(example_list)
+            # Create and return tests using the examples if any
             if self.create_tests(examples=example_list) is not None:
                 return self.create_tests(examples=example_list)
+        # Initialize a default Tests object if no examples are found
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
+        # Add a default test parameter
         param = self.gxtp.TestParam(name="response", value="document")
         test_a.append(param)
+        # Add default test outputs
         for output_name in self.output_name_list:
             name = f"{self.output_data}_{output_name}"
             output = self.gxtp.TestOutput(name=name, ftype="txt", value=f"{name}.txt")
@@ -1048,6 +1069,18 @@ class Galaxyxmltool:
 
     # To do refactor code after discussion
     def create_tests(self, examples):
+        """
+        Create tests from the given examples.
+
+        This method initializes a Tests object and populates it with tests
+        created from the provided examples.
+
+        Args:
+            examples (list): A list of example dictionaries used to create tests.
+
+        Returns:
+            Tests: A Tests object populated with the created tests.
+        """
         tests = self.gxtp.Tests()
 
         for ex in examples:
@@ -1064,9 +1097,23 @@ class Galaxyxmltool:
         return tests
 
     def add_test_response_param(self, test, response):
+        """
+        Add a response parameter to the test.
+
+        Args:
+            test (Test): The test object to which the parameter is added.
+            response (str): The response value for the parameter.
+        """
         test.append(self.gxtp.TestParam(name="response", value=response))
 
     def process_test_input_params(self, test, inputs):
+        """
+        Process and add input parameters to the test.
+
+        Args:
+            test (Test): The test object to which the input parameters are added.
+            inputs (dict): A dictionary of input parameters.
+        """
         for key, value in inputs.items():
             param = self.create_test_input_param(key, value)
             if param is None:
@@ -1074,6 +1121,16 @@ class Galaxyxmltool:
             test.append(param)
 
     def create_test_input_param(self, key, value):
+        """
+        Create an input parameter for the test.
+
+        Args:
+            key (str): The name of the input parameter.
+            value: The value of the input parameter, which can be a list, dictionary, or other type.
+
+        Returns:
+            TestParam: A TestParam object for the input parameter.
+        """
         if isinstance(value, list):
             lst = [i.get("href") for i in value]
             return self.gxtp.TestParam(name=key, value=lst)
@@ -1086,11 +1143,30 @@ class Galaxyxmltool:
             return self.gxtp.TestParam(name=key, value=value)
 
     def process_test_output_params(self, test, outputs, response):
+        """
+        Process and add output parameters to the test.
+
+        Args:
+            test (Test): The test object to which the output parameters are added.
+            outputs (dict): A dictionary of output parameters.
+            response (str): The response type to determine the format of the output parameter.
+        """
         for key, value in outputs.items():
             param = self.create_test_output_param(key, value, response)
             test.append(param)
 
     def create_test_output_param(self, key, value, response):
+        """
+        Create an output parameter for the test.
+
+        Args:
+            key (str): The name of the output parameter.
+            value: The value of the output parameter, which can include format information.
+            response (str): The response type to determine the format of the output parameter.
+
+        Returns:
+            TestOutput: A TestOutput object for the output parameter.
+        """
         name = f"{self.output_data}_{key}"
         if response == "raw":
             media_type = value["format"]["mediaType"].split("/")[-1]
@@ -1100,7 +1176,16 @@ class Galaxyxmltool:
 
     def get_test_examples(self, data):
         """
-        Get all example values of the nested dictionary
+        Extract example values from a nested dictionary.
+
+        This method retrieves all example values from a specific part of a nested
+        dictionary, which are used for creating tests.
+
+        Args:
+            data (dict): The nested dictionary containing example values.
+
+        Returns:
+            list: A list of example values.
         """
         examples = []
 
