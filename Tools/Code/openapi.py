@@ -167,33 +167,22 @@ class ApiJson:
         """
         # Extract all input values
         all_input_values = self.extract_input_values(attributes)
-        # print("all_input_values")
-        # pprint(all_input_values)
 
         # Separate input values with data files
         input_values_with_files = self.extract_data_files(all_input_values)
 
-        # pprint(input_values_with_files)
-
         # Process input files
         processed_input_files = self.process_and_generate_input_files(input_values_with_files, all_input_values)
-
-        # pprint(processed_input_files)
 
         # Separate input values without data files
         input_values_without_files = self.extract_non_data_inputs(
             data_inputs=input_values_with_files, all_input_values=all_input_values
         )
 
-        # pprint(input_values_without_files)
-
         modified_non_data_inputs = self.modify_attributes(input_values_without_files)
-
-        # pprint(modified_non_data_inputs)
 
         # Create input JSON
         input_json = self.create_input_json(non_data_inputs=modified_non_data_inputs, input_files=processed_input_files)
-        # pprint(input_json)
         return input_json
 
     def process_and_generate_input_files(self, input_files: Dict[str, str], input_schema: Dict[str, str]) -> List[Dict]:
@@ -233,7 +222,6 @@ class ApiJson:
                 final_key = f"output_data_{output_key}"
                 self.exclusion_list.append(final_key)
                 self.file_directory[final_key] = file_path
-        # pprint(input_file_json_list)
         return input_file_json_list
 
     def extract_suffix_after_prefix(self, key: str, prefix: str = "output_data") -> str:
@@ -293,9 +281,7 @@ class ApiJson:
         """
         # Extract output values and transmissionMode values
         outputs = self.extract_output_values(attributes)
-        # pprint(outputs)
         transmission_mode = self.extract_transmission_mode_values(attributes)
-        # pprint(transmission_mode)
         self.transmission_mode = transmission_mode
 
         lst = []
