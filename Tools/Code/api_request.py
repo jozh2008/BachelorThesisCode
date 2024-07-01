@@ -55,7 +55,6 @@ class APIRequest:
         """
 
         url = self.get_url(keyword="execute")
-        pprint(url)
         response = requests.post(url, headers=self.headers, json=self.payload)
         response = self.check_job_id(response=response)
         if not response.ok:
@@ -63,7 +62,6 @@ class APIRequest:
             return
 
         response_data = response.json()
-        pprint(response_data)
         self.process_response_data(response_data)
 
     def handle_response_error(self, response):
@@ -99,7 +97,6 @@ class APIRequest:
         """
         for key, value in self.transmission_mode.items():
             transmission_item = response_data.get(key)
-            pprint(transmission_item)
             if transmission_item is None:
                 continue
             output_file_path = self.get_output_file_path(key)
@@ -202,7 +199,6 @@ class APIRequest:
             status = response_data["status"]
             self.job_id = response_data["jobID"]
             url = self.get_url(keyword="jobs")
-            print(url)
             while status == "running":
                 print(status)
                 time.sleep(20)

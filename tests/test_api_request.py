@@ -1,7 +1,7 @@
 import pytest
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch, MagicMock, mock_open
 
-
+from pprint import pformat
 import sys
 import os
 
@@ -244,7 +244,9 @@ def test_get_output_file_path(setup_request_syn):
 def test_write_transmission_item_based_on_mode_raw(setup_request_raw):
     # Setup
     request = setup_request_raw
-    output_file_path = "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    output_file_path = (
+        "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    )
     transmission_item = transmission_item = {
         "format": {"mediaType": "image/tiff"},
         "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
@@ -269,7 +271,9 @@ def test_write_transmission_item_based_on_mode_raw(setup_request_raw):
 def test_write_transmission_item_based_on_mode_document(setup_request_syn):
     # Setup
     request = setup_request_syn
-    output_file_path = "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    output_file_path = (
+        "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    )
     transmission_item = transmission_item = {
         "format": {"mediaType": "image/tiff"},
         "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
@@ -287,3 +291,86 @@ def test_write_transmission_item_based_on_mode_document(setup_request_syn):
         output_file_path=output_file_path, transmission_item=transmission_item, mode=mode
     )
     request.write_raw_transmission_item.assert_not_called()
+
+
+@patch("urllib.request.urlretrieve")
+def test_write_raw_transmission_item_dict(mock_urlretrieve, setup_request_raw):
+    request = setup_request_raw
+    output_file_path = (
+        "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    )
+    transmission_item = transmission_item = {
+        "format": {"mediaType": "image/tiff"},
+        "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
+    }
+
+    request.write_raw_transmission_item(output_file_path, transmission_item)
+
+    mock_urlretrieve.assert_called_once_with(
+        "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff", output_file_path
+    )
+
+
+def test_write_raw_transmission_item_non_dict(setup_request_raw):
+    request = setup_request_raw
+    transmission_item = "some_reference"
+    output_file_path = "/path/to/output/file.txt"
+
+    # Mock write_transmission_item method
+    request.write_transmission_item = MagicMock()
+
+    request.write_raw_transmission_item(output_file_path, transmission_item)
+
+    request.write_transmission_item.assert_called_once_with(
+        output_file_path=output_file_path,
+        transmission_item=transmission_item,
+        mode="reference",
+    )
+
+
+@patch("builtins.open", new_callable=mock_open)
+def test_write_transmission_item_reference_mode(mock_open, setup_request_syn):
+    request = setup_request_syn
+    output_file_path = (
+        "/tmp/tmpyqrzc8n1/job_working_directory/000/3/outputs/dataset_f7a688b9-1bfc-4d55-a95c-82683dad7af9.dat"
+    )
+    transmission_item = transmission_item = {
+        "format": {"mediaType": "image/tiff"},
+        "href": "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff",
+    }
+    mode = "reference"
+
+    request.write_transmission_item(output_file_path, transmission_item, mode)
+
+    handle = mock_open()
+    handle.write.assert_called_once_with(
+        "https://ospd.geolabs.fr:8300/temp///BandMath_0_7abe2bba-360a-11ef-a61e-0242ac10ee0a.tiff\n"
+    )
+
+
+@patch("builtins.open", new_callable=mock_open)
+def test_write_transmission_item_value_mode(mock_open_func, setup_request_syn):
+    request = setup_request_syn
+    transmission_item = "0"
+    output_file_path = (
+        "/tmp/tmphzp9pgx7/job_working_directory/000/6/outputs/dataset_73acf940-7f9d-415d-bcdb-f37cb5440ae2.dat"
+    )
+    mode = "value"
+
+    request.write_transmission_item(output_file_path, transmission_item, mode)
+
+    # Get the mock handle from the mock_open
+    handle = mock_open_func()
+    print(handle.write.mock_calls)
+
+    # Construct the expected output
+    expected_output = pformat(transmission_item, width=80, compact=True)
+
+    # Assert that the write method was called with the expected output
+    handle.write.assert_any_call(expected_output)
+
+    # Assert that write was called with a newline character
+    handle.write.assert_any_call("\n")
+
+    # Assert that write was called exactly twice in total
+    assert handle.write.call_count == 2
