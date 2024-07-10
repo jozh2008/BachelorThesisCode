@@ -210,9 +210,7 @@ class ApiJson:
 
                 # Determine if the input is an array based on the input schema
                 if input_schema.get(exclusion_key) == "False":
-                    input_file_json_list.append(
-                        self.generate_input_file_json(input_name=adjusted_key, input_list=file_contents)
-                    )
+                    input_file_json_list.append(self.generate_input_file_json(input_name=adjusted_key, input_list=file_contents))
                 else:
                     input_file_json_list.append(
                         self.generate_input_file_list_json(input_name=adjusted_key, input_list=file_contents)
@@ -316,9 +314,7 @@ class ApiJson:
             dict: A dictionary containing only the key-value pairs representing data files.
         """
         included_suffixes = {".dat", ".txt"}
-        return {
-            key: values for key, values in dictionary.items() if any(values.endswith(suffix) for suffix in included_suffixes)
-        }
+        return {key: values for key, values in dictionary.items() if any(values.endswith(suffix) for suffix in included_suffixes)}
 
     def extract_input_values(self, dictionary: Dict):
         """
@@ -480,7 +476,7 @@ class ApiJson:
         res_dict = dict(zip(it, it))
         return res_dict
 
-    def output_json(self, outputName: str, mediaType: str, transmissionMode: str):
+    def output_json(self, output_name: str, media_type: str, transmission_mode: str):
         """
         Create the JSON representation of an output format.
 
@@ -488,9 +484,9 @@ class ApiJson:
         transmission mode, and optional media type if provided.
 
         Args:
-            outputName (str): The name of the output.
-            mediaType (str): The media type of the output format. Can be None.
-            transmissionMode (str): The transmission mode of the output.
+            output_name (str): The name of the output.
+            media_type (str): The media type of the output format. Can be None.
+            transmission_mode (str): The transmission mode of the output.
 
         Returns:
             dict: A dictionary representing the output format.
@@ -499,10 +495,10 @@ class ApiJson:
             >>> output_json("output1", "application/json", "reference")
             {'output1': {'transmissionMode': 'reference', 'format': {'mediaType': 'application/json'}}}
         """
-        output_format = {outputName: {"transmissionMode": transmissionMode}}
+        output_format = {output_name: {"transmissionMode": transmission_mode}}
 
-        if mediaType is not None:
-            output_format[outputName]["format"] = {"mediaType": mediaType}
+        if media_type is not None:
+            output_format[output_name]["format"] = {"mediaType": media_type}
 
         return output_format
 
