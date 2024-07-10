@@ -5,9 +5,9 @@ from pprint import pprint
 import sys
 
 
-class Initialize:
+class GalaxyToolConverter:
 
-    def get_collections(self, url):
+    def retrieve_collections(self, url):
         """
         Retrieve information about available collections from a specified URL.
 
@@ -104,11 +104,11 @@ def main(base_url: str, process_name: str):
     url_api = f"{base_url}api"
     print(url_api)
     # Get collections information
-    workflow = Initialize()
+    workflow = GalaxyToolConverter()
 
     # Get collections information
-    collections_data = workflow.get_collections(url)
-    api_data = workflow.get_collections(url=url_api)
+    collections_data = workflow.retrieve_collections(url)
+    api_data = workflow.retrieve_collections(url=url_api)
 
     # Convert JSON to GalaxyXML
     workflow.json_to_galaxyxml(process_data=collections_data, api_data=api_data)

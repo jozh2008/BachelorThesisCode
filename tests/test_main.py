@@ -6,7 +6,7 @@ import requests_mock
 # import json
 # import os
 from unittest.mock import patch, mock_open
-from main import Initialize
+from main import GalaxyToolConverter
 
 
 @pytest.fixture
@@ -162,7 +162,7 @@ def test_get_collections_success(mock_collections_data):
         url = "https://ospd.geolabs.fr:8300/ogc-api/processes/OTB.BandMath"
         m.get(url, json=mock_collections_data)
 
-        init = Initialize()
+        init = GalaxyToolConverter()
         result = init.get_collections(url)
 
         assert result == mock_collections_data
@@ -173,14 +173,14 @@ def test_get_collections_failure():
         url = "https://ospd.geolabs.fr:8300/ogc-api/processes/securityOut"
         m.get(url, status_code=500)
 
-        init = Initialize()
+        init = GalaxyToolConverter()
         result = init.get_collections(url)
 
         assert result is None
 
 
 def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
-    init = Initialize()
+    init = GalaxyToolConverter()
 
     expected_xml = (
         '<tool name="hellor" id="hellor" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@">\n'
