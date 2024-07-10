@@ -4,7 +4,7 @@ import galaxyxml.tool.parameters as gtpx
 from .macros_xml_generator import MacrosXMLGenerator
 
 from pprint import pprint
-from typing import Dict, List, Union
+from typing import Dict, List
 import re
 import copy
 import math
@@ -129,9 +129,9 @@ class Galaxyxmltool:
         self,
         param_name: str,
         is_nullable: bool,
-        title: Union[str, None],
-        description: Union[str, None],
-        default_value: Union[float, int, None],
+        title: str | None,
+        description: str | None,
+        default_value: float | int | None,
         param_type: str,
     ):
         """
@@ -194,10 +194,10 @@ class Galaxyxmltool:
     def create_integer_param(
         self,
         param_name: str,
-        param_schema: Union[Dict, None],
+        param_schema: Dict | None,
         is_nullable: bool,
-        title: Union[str, None],
-        description: Union[str, None],
+        title: str | None,
+        description: str | None,
     ):
         """
         Create an integer parameter.
@@ -227,10 +227,10 @@ class Galaxyxmltool:
     def create_float_param(
         self,
         param_name: str,
-        param_schema: Union[Dict, None],
+        param_schema: Dict | None,
         is_nullable: bool,
-        title: Union[str, None],
-        description: Union[str, None],
+        title: str | None,
+        description: str | None,
     ):
         """
         Create a float parameter.
@@ -380,8 +380,8 @@ class Galaxyxmltool:
         item_type: str,
         min_items: int,
         max_items: int,
-        title: Union[str, None],
-        description: Union[str, None],
+        title: str | None,
+        description: str | None,
         item_name: str,
     ):
         """
@@ -811,7 +811,7 @@ class Galaxyxmltool:
         # Return the created select parameter
         return self.gxtp.SelectParam(name=param_name, label=title, help=description, options=data_types_dict)
 
-    def replace_space_with_underscore(self, name: Union[str, None]):
+    def replace_space_with_underscore(self, name: str | None):
         """
         Normalize a tool name by replacing spaces with underscores.
 
