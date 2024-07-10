@@ -863,14 +863,14 @@ def test_choose_prefer(setup_tool):
         description=(
             "Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'."
             "The specification is for synchronous or asynchronous executions,"
-            "with asynchronous execution as the default value"
+            "with synchronous execution as the default value"
         ),
     )
 
     # Assert that a SelectParam was created with the correct parameters
     tool.gxtp.SelectParam.assert_called_with(
         name="prefer",
-        default="respond-async;return=representation",
+        default="return=representation",
         options={
             "return=representation": "return=representation",
             "return=minimal": "return=minimal",

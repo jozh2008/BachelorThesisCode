@@ -204,12 +204,12 @@ def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
         "    </param>\n"
         '    <section name="Section_prefer" title="Choose the prefer" expanded="true" help="Choose between '
         "'return=representation', 'return=minimal', and 'respond-async;return=representation'."
-        'The specification is for synchronous or asynchronous executions,with asynchronous execution as the default value">\n'
+        'The specification is for synchronous or asynchronous executions,with synchronous execution as the default value">\n'
         '      <param name="prefer" type="select" label="Prefer">\n'
-        '        <option selected="true" value="respond-async;return=representation">'
+        '        <option value="respond-async;return=representation">'
         "respond-async;return=representation</option>\n"
         '        <option value="return=minimal">return=minimal</option>\n'
-        '        <option value="return=representation">return=representation</option>\n'
+        '        <option selected="true" value="return=representation">return=representation</option>\n'
         "      </param>\n"
         "    </section>\n"
         '    <section name="Section_response" title="Choose the response type" expanded="true" help="Choose '

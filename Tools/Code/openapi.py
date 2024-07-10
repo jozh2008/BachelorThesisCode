@@ -210,7 +210,9 @@ class ApiJson:
 
                 # Determine if the input is an array based on the input schema
                 if input_schema.get(exclusion_key) == "False":
-                    input_file_json_list.append(self.generate_input_file_json(input_name=adjusted_key, input_list=file_contents))
+                    input_file_json_list.append(
+                        self.generate_input_file_json(input_name=adjusted_key, input_list=file_contents)
+                    )
                 else:
                     input_file_json_list.append(
                         self.generate_input_file_list_json(input_name=adjusted_key, input_list=file_contents)
@@ -297,7 +299,7 @@ class ApiJson:
                 if "image" in output_value:
                     value = "reference"
 
-            lst.append(self.output_json(outputName=key, mediaType=output_value, transmissionMode=value))
+            lst.append(self.output_json(output_name=key, media_type=output_value, transmission_mode=value))
 
         # Return the list
 
@@ -314,7 +316,9 @@ class ApiJson:
             dict: A dictionary containing only the key-value pairs representing data files.
         """
         included_suffixes = {".dat", ".txt"}
-        return {key: values for key, values in dictionary.items() if any(values.endswith(suffix) for suffix in included_suffixes)}
+        return {
+            key: values for key, values in dictionary.items() if any(values.endswith(suffix) for suffix in included_suffixes)
+        }
 
     def extract_input_values(self, dictionary: Dict):
         """
