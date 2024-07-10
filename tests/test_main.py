@@ -193,7 +193,7 @@ def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
         '    <requirement version="2.31.0" type="package">requests</requirement>\n'
         "  </requirements>\n"
         "  <version_command><![CDATA[interpreter filename.exe --version]]></version_command>\n"
-        "  <command><![CDATA[$__tool_directory__/Code/openapi.py output_data_Result $output_data_Result  name hellor S "
+        "  <command><![CDATA[$__tool_directory__/Code/create_api_json.py output_data_Result $output_data_Result  name hellor S "
         "'$S'\n"
         "prefer $Section_prefer.prefer\n"
         "response $Section_response.response\n"
