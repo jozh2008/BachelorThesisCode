@@ -47,10 +47,10 @@ class Galaxyxmltool:
     def create_text_param(
         self,
         param_name: str,
-        param_schema: Union[Dict, None],
+        param_schema: Dict | None,
         is_nullable: bool,
-        title: Union[str, None],
-        description: Union[str, None],
+        title: str | None,
+        description: str | None,
     ):
         """
         Create a text parameter for the Galaxy interface.
