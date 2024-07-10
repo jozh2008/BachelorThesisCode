@@ -12,7 +12,7 @@ import math
 
 class Galaxyxmltool:
     def __init__(self, name, id, version, description) -> None:
-        self.executable = "$__tool_directory__/Code/openapi.py"
+        self.executable = "$__tool_directory__/Code/create_api_json.py"
         self.macros_file_name = f"Macros/{name}_macros_.xml"
         self.gxt = tool.Tool(
             name=name,
