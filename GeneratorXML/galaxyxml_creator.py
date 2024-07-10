@@ -617,11 +617,11 @@ class Galaxyxmltool:
             async_execution: async_execution,
         }
 
-        default_value = async_execution
+        default_value = sync_execution
         description = (
             "Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'."
             "The specification is for synchronous or asynchronous executions,"
-            "with asynchronous execution as the default value"
+            "with synchronous execution as the default value"
         )
         section = self.create_section(name="Section_prefer", title="Choose the prefer", description=description)
         param = self.gxtp.SelectParam(

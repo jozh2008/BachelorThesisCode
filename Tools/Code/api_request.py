@@ -55,7 +55,11 @@ class APIRequest:
         """
 
         url = self.get_url(keyword="execute")
-        response = requests.post(url, headers=self.headers, json=self.payload)
+        response = requests.post(
+            url,
+            headers=self.headers,
+            json=self.payload,
+        )
         response = self.check_job_id(response=response)
         if not response.ok:
             self.handle_response_error(response)
