@@ -163,7 +163,7 @@ def test_get_collections_success(mock_collections_data):
         m.get(url, json=mock_collections_data)
 
         init = GalaxyToolConverter()
-        result = init.get_collections(url)
+        result = init.retrieve_collections(url)
 
         assert result == mock_collections_data
 
@@ -174,7 +174,7 @@ def test_get_collections_failure():
         m.get(url, status_code=500)
 
         init = GalaxyToolConverter()
-        result = init.get_collections(url)
+        result = init.retrieve_collections(url)
 
         assert result is None
 

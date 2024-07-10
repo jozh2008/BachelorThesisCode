@@ -993,7 +993,6 @@ class Galaxyxmltool:
                 param = self.gxtp.OutputData(name=name, format="txt")
                 outputs.append(param)
                 continue
-
             form = values[0].split("/")[-1]
             param = self.gxtp.OutputData(name=name, format=form)
 

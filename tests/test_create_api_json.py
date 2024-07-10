@@ -8,7 +8,7 @@ import os
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Tools", "Code")))
 
-from Tools.Code.openapi import ApiJson
+from Tools.Code.create_api_json import ApiJson
 
 
 @pytest.fixture
