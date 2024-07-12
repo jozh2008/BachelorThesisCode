@@ -620,7 +620,7 @@ class GalaxyXmlTool:
         default_value = sync_execution
         description = (
             "Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'."
-            "The specification is for synchronous or asynchronous executions,"
+            "The specification is for synchronous or asynchronous executions, "
             "with synchronous execution as the default value"
         )
         section = self.create_section(name="Section_prefer", title="Choose the prefer", description=description)
@@ -1215,5 +1215,5 @@ class GalaxyXmlTool:
     # To do: What should I citate
     def create_citations(self):
         citations = self.gxtp.Citations()
-        citations.append(self.gxtp.Citation(type="bibtex", value="Josh"))
+        citations.append(self.gxtp.Citation(type="bibtex", value=""))
         return citations

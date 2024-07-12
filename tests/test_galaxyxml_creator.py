@@ -862,7 +862,7 @@ def test_choose_prefer(setup_tool):
         title="Choose the prefer",
         description=(
             "Choose between 'return=representation', 'return=minimal', and 'respond-async;return=representation'."
-            "The specification is for synchronous or asynchronous executions,"
+            "The specification is for synchronous or asynchronous executions, "
             "with synchronous execution as the default value"
         ),
     )
