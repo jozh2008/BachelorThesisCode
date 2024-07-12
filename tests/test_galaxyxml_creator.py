@@ -4,7 +4,7 @@ import pytest
 # from pprint import pprint
 from unittest.mock import MagicMock, patch
 
-from GeneratorXML.galaxyxml_creator import Galaxyxmltool
+from GeneratorXML.galaxyxml_creator import GalaxyXmlTool
 
 
 @pytest.fixture
@@ -14,7 +14,7 @@ def setup_tool():
     version = "1.0.0"
     description = "Outputs a monoband image which is the result of a mathematical operation on several multi-band images"
 
-    tool = Galaxyxmltool(name=name, id=id, version=version, description=description)
+    tool = GalaxyXmlTool(name=name, id=id, version=version, description=description)
     tool.gxtp = MagicMock()
 
     tool.executable = "test_executable"

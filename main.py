@@ -1,6 +1,6 @@
 import requests
 import re
-from GeneratorXML.galaxyxml_creator import Galaxyxmltool
+from GeneratorXML.galaxyxml_creator import GalaxyXmlTool
 from pprint import pprint
 import sys
 
@@ -46,7 +46,7 @@ class GalaxyToolConverter:
         name_id = self.rename_tool(tool_name=process_data["id"])
         name = process_data["id"]
         # Create a Galaxy XML tool object
-        gxt = Galaxyxmltool(
+        gxt = GalaxyXmlTool(
             name=name,
             id=name_id,
             version=process_data["version"],

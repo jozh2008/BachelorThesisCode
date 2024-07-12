@@ -255,7 +255,7 @@ def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
 
     # Mock the open function and the file handle
     with patch("builtins.open", mock_open()) as mock_open_function, patch(
-        "GeneratorXML.galaxyxml_creator.Galaxyxmltool"
+        "GeneratorXML.galaxyxml_creator.GalaxyXmlTool"
     ) as mock_galaxyxmltool:
 
         mock_file_handle = mock_open_function.return_value
