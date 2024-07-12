@@ -1,12 +1,8 @@
 import pytest
-
-# import requests
 import requests_mock
 
-# import json
-# import os
-from unittest.mock import patch, mock_open
-from main import GalaxyToolConverter
+from unittest.mock import patch, mock_open, MagicMock
+from main import GalaxyToolConverter, main
 
 
 @pytest.fixture
@@ -157,6 +153,18 @@ def mock_api_data():
     return {"paths": {}}
 
 
+@pytest.fixture
+def mock_galaxy_tool_converter():
+    with patch("main.GalaxyToolConverter") as MockGalaxyToolConverter:
+        instance = MockGalaxyToolConverter.return_value
+        instance.retrieve_collections.side_effect = [
+            {"data": "collections_data"},  # Mock return for first call
+            {"data": "api_data"},  # Mock return for second call
+        ]
+        instance.json_to_galaxyxml = MagicMock()
+        yield instance
+
+
 def test_get_collections_success(mock_collections_data):
     with requests_mock.Mocker() as m:
         url = "https://ospd.geolabs.fr:8300/ogc-api/processes/OTB.BandMath"
@@ -246,7 +254,6 @@ def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
     ).strip()
 
     # Mock the open function and the file handle
-    # Mock the open function and the file handle
     with patch("builtins.open", mock_open()) as mock_open_function, patch(
         "GeneratorXML.galaxyxml_creator.Galaxyxmltool"
     ) as mock_galaxyxmltool:
@@ -262,3 +269,17 @@ def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
         mock_open_function.assert_called_with(f"Tools/{mock_collections_data_2['id']}.xml", "w")
         written_xml = mock_file_handle.write.call_args[0][0].strip()  # Get the written XML and strip whitespace
         assert written_xml == expected_xml, f"Expected:\n{expected_xml}\n\nActual:\n{written_xml}"
+
+
+def test_main(mock_galaxy_tool_converter):
+    base_url = "https://ospd.geolabs.fr:8300/ogc-api/"
+    process_name = "OTB.BandMath"
+
+    main(base_url, process_name)
+
+    # Assertions
+    mock_galaxy_tool_converter.retrieve_collections.assert_any_call(url=f"{base_url}processes/{process_name}")
+    mock_galaxy_tool_converter.retrieve_collections.assert_any_call(url=f"{base_url}api")
+    mock_galaxy_tool_converter.json_to_galaxyxml.assert_called_once_with(
+        process_data={"data": "collections_data"}, api_data={"data": "api_data"}
+    )

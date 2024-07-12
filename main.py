@@ -107,7 +107,7 @@ def main(base_url: str, process_name: str):
     workflow = GalaxyToolConverter()
 
     # Get collections information
-    collections_data = workflow.retrieve_collections(url)
+    collections_data = workflow.retrieve_collections(url=url)
     api_data = workflow.retrieve_collections(url=url_api)
 
     # Convert JSON to GalaxyXML
