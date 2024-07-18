@@ -19,7 +19,7 @@ Step 1:
     
 If the file specified by FILE_NAME does not exist, a new file will be created containing all processes from the ZOO-Project GetCapabilities(`https://ospd.geolabs.fr:8300/swagger-ui/oapip/#/GetCapabilities/get_processes`)
  endpoint.
-If the file exists, the script will add any new processes from the ZOO-Project GetCapabilities endpoint to the existing file.
+In the event that the file already exists, the script will append any new processes from the ZOO-Project GetCapabilities endpoint to the existing file. In the case that not all processes from GetCapabilities should be included, it is recommended that they be removed from the file, or alternatively, a new .txt file can be created, without running the command `sh get_processes.sh FILE_NAME` which includes only the desired processes.
 
 Step 2: `sh run_scripts.sh FILE_PATH`
 
