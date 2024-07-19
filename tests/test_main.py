@@ -157,7 +157,7 @@ def mock_api_data():
 def mock_galaxy_tool_converter():
     with patch("main.GalaxyToolConverter") as MockGalaxyToolConverter:
         instance = MockGalaxyToolConverter.return_value
-        instance.retrieve_collections.side_effect = [
+        instance.retrieve_json.side_effect = [
             {"data": "collections_data"},  # Mock return for first call
             {"data": "api_data"},  # Mock return for second call
         ]
@@ -171,7 +171,7 @@ def test_get_collections_success(mock_collections_data):
         m.get(url, json=mock_collections_data)
 
         init = GalaxyToolConverter()
-        result = init.retrieve_collections(url)
+        result = init.retrieve_json(url)
 
         assert result == mock_collections_data
 
@@ -182,7 +182,7 @@ def test_get_collections_failure():
         m.get(url, status_code=500)
 
         init = GalaxyToolConverter()
-        result = init.retrieve_collections(url)
+        result = init.retrieve_json(url)
 
         assert result is None
 
@@ -278,8 +278,8 @@ def test_main(mock_galaxy_tool_converter):
     main(base_url, process_name)
 
     # Assertions
-    mock_galaxy_tool_converter.retrieve_collections.assert_any_call(url=f"{base_url}processes/{process_name}")
-    mock_galaxy_tool_converter.retrieve_collections.assert_any_call(url=f"{base_url}api")
+    mock_galaxy_tool_converter.retrieve_json.assert_any_call(url=f"{base_url}processes/{process_name}")
+    mock_galaxy_tool_converter.retrieve_json.assert_any_call(url=f"{base_url}api")
     mock_galaxy_tool_converter.json_to_galaxyxml.assert_called_once_with(
         process_data={"data": "collections_data"}, api_data={"data": "api_data"}
     )
