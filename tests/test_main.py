@@ -248,7 +248,7 @@ def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
         "  </tests>\n"
         "  <help><![CDATA[Output and Hello Wolrd string]]></help>\n"
         "  <citations>\n"
-        '    <citation type="bibtex"></citation>\n'
+        '    <citation type="bibtex">.</citation>\n'
         "  </citations>\n"
         "</tool>"
     ).strip()

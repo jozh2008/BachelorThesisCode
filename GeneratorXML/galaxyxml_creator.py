@@ -3,7 +3,6 @@ import galaxyxml.tool.parameters as gtpx
 
 from .macros_xml_generator import MacrosXMLGenerator
 
-from pprint import pprint
 from typing import Dict, List
 import re
 import copy
@@ -99,7 +98,7 @@ class GalaxyXmlTool:
         enum_values = param_schema.get("enum")
         if enum_values is not None:
             # Merge enum values if they are split for better readability
-            enum_values = self.merge_strings(enum_values=enum_values)
+            # enum_values = self.merge_strings(enum_values=enum_values)
             options = {self.replace_space_with_underscore(value): value for value in enum_values}
         elif param_type_bool:
             options = {"true": "true", "false": "false"}
@@ -552,7 +551,6 @@ class GalaxyXmlTool:
             inputs=inputs,
             transmission_schema=transmission_schema,
         )
-        pprint(inputs)
         return inputs
 
     def create_select_raw_param(self, inputs):
@@ -670,7 +668,6 @@ class GalaxyXmlTool:
 
         return section
 
-    # To do: Implement solution for param_type object and add better docstrings
     def create_output_param(self, output_schema: Dict, inputs: List, transmission_schema: List):
         """
         Create output parameters based on provided output schema and transmission schema.
@@ -1205,7 +1202,6 @@ class GalaxyXmlTool:
         "https://ospd.geolabs.fr:8300/ogc-api/api",
         when the process has examples. This examples we want to use as test cases.
         """
-        # pprint(api_dict)
         for pro in api_dict.keys():
             parts = pro.split("/")
             if len(parts) > 2 and process == parts[2]:
@@ -1215,5 +1211,5 @@ class GalaxyXmlTool:
     # To do: What should I citate
     def create_citations(self):
         citations = self.gxtp.Citations()
-        citations.append(self.gxtp.Citation(type="bibtex", value=""))
+        citations.append(self.gxtp.Citation(type="bibtex", value="."))
         return citations

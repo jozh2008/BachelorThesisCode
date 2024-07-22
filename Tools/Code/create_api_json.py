@@ -1,6 +1,5 @@
-#!/home/josh/Documents/GitHub/BachelorThesisCode/.venv/bin/python3
-# Run with python3 openapi.py name OTB.BandMath il test_datasets.txt out
-# float ram 128 exp 'im1b3,im1b2,im1b1' response raw outputType1_out image/png transmissionMode_1 reference
+#!/usr/bin/env python3
+
 import sys
 import re
 from pprint import pprint
