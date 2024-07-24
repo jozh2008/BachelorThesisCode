@@ -988,11 +988,11 @@ class GalaxyXmlTool:
             self.executable_dict[name] = f"${name}"
 
             if not values:
-                param = self.gxtp.OutputData(name=name, format="txt", label=name)
+                param = self.gxtp.OutputData(name=name, format="txt")
                 outputs.append(param)
                 continue
             form = values[0].split("/")[-1]
-            param = self.gxtp.OutputData(name=name, format=form, label=name)
+            param = self.gxtp.OutputData(name=name, format=form)
 
             change = self.gxtp.ChangeFormat()
             change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
@@ -1239,8 +1239,6 @@ class GalaxyXmlTool:
 
         # Combine directory and file name to get the full path
         file_path = os.path.join(directory, file_name)
-
-        print(file_path)
 
         # Ensure the directory exists
         os.makedirs(os.path.dirname(file_path), exist_ok=True)

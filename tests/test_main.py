@@ -238,7 +238,7 @@ def test_json_to_galaxyxml(mock_collections_data_2, mock_api_data):
         "    </section>\n"
         "  </inputs>\n"
         "  <outputs>\n"
-        '    <data name="output_data_Result" format="txt" label="output_data_Result" hidden="false"/>\n'
+        '    <data name="output_data_Result" format="txt" hidden="false"/>\n'
         "  </outputs>\n"
         "  <tests>\n"
         "    <test>\n"

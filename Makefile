@@ -18,7 +18,7 @@ VENV_PYTHON := python3
 
 DEV_REQUIREMENTS := dev-requirements.txt
 
-all: install compile test format checkstyle 
+all: install compile test format checkstyle run
 
 install:
 	@if [ ! -d "$(VENV_DIR)" ]; then \
@@ -61,6 +61,10 @@ checkstyle: install
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(GENERATOR_XML)$(SRC)
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(CODE)$(SRC)
 	. $(VENV_DIR)/bin/activate && $(FLAKE8) --config=$(FLAKE8_CONFIG) $(TEST)$(SRC)
+
+# one example execution
+run:
+	. $(VENV_DIR)/bin/activate && $(VENV_PYTHON) main.py --process OTB.BandMath
 
 
 clean:
