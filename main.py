@@ -67,9 +67,10 @@ class GalaxyToolConverter:
         tool.outputs = gxt.define_output_options()
 
         tool.executable = gxt.define_command(process_data["id"])
+        gxt.define_macro()
         tool.tests = gxt.define_tests(api_dict=api_data["paths"], process=process_data["id"])
         tool.citations = gxt.create_citations()
-        gxt.define_macro()
+
         file_path = f"Tools/{name}.xml"
         with open(file_path, "w") as file:
             file.write(tool.export())

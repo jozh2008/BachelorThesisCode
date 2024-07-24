@@ -2112,8 +2112,10 @@ def test_process_test_output_params(setup_tool):
 
     test = tool.gxtp.Test()
 
+    index = 2
+
     # Call the method under test
-    tool.process_test_output_params(test, outputs, response)
+    tool.process_test_output_params(test, outputs, response, index)
 
     # Assertions to verify the behavior
     assert tool.gxtp.Test.return_value.append.call_count == len(outputs)

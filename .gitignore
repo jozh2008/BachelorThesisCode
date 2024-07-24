@@ -164,6 +164,8 @@ cython_debug/
 
 #Tools xml
 Tools/*.xml
+Tools/*.json
+Tools/*.html
 Tools/Macros/*.xml
 
 #Directory Addtional Materials

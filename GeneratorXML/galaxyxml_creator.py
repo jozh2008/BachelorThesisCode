@@ -7,6 +7,7 @@ from typing import Dict, List
 import re
 import copy
 import math
+import os
 
 
 class GalaxyXmlTool:
@@ -21,6 +22,7 @@ class GalaxyXmlTool:
             executable="",
             macros=[self.macros_file_name],
         )
+        self.tool_name = id
         self.version = version
         self.version_suffix = "0"
         self.gxtp = gtpx
@@ -987,11 +989,11 @@ class GalaxyXmlTool:
             self.executable_dict[name] = f"${name}"
 
             if not values:
-                param = self.gxtp.OutputData(name=name, format="txt")
+                param = self.gxtp.OutputData(name=name, format="txt", label=name)
                 outputs.append(param)
                 continue
             form = values[0].split("/")[-1]
-            param = self.gxtp.OutputData(name=name, format=form)
+            param = self.gxtp.OutputData(name=name, format=form, label=name)
 
             change = self.gxtp.ChangeFormat()
             change_response = self.gxtp.ChangeFormatWhen(input="response", value="document", format="txt")
@@ -1024,7 +1026,6 @@ class GalaxyXmlTool:
         file_path = f"Tools/{self.macros_file_name}"
         generator.generate_xml(filename=file_path)
 
-    # To do add tests
     def define_tests(self, api_dict: Dict, process: str):
         """
         Define the tests for the given API dictionary and process.
@@ -1046,8 +1047,9 @@ class GalaxyXmlTool:
             # Get test examples from the test dictionary
             example_list = self.get_test_examples(data=test_dictionary)
             # Create and return tests using the examples if any
-            if self.create_tests(examples=example_list) is not None:
-                return self.create_tests(examples=example_list)
+            tests_api = self.create_tests(examples=example_list)
+            if tests_api is not None:
+                return tests_api
         # Initialize a default Tests object if no examples are found
         tests = self.gxtp.Tests()
         test_a = self.gxtp.Test()
@@ -1078,8 +1080,7 @@ class GalaxyXmlTool:
             Tests: A Tests object populated with the created tests.
         """
         tests = self.gxtp.Tests()
-
-        for ex in examples:
+        for index, ex in enumerate(examples):
             test = self.gxtp.Test()
             inputs = ex.get("inputs", {})
             outputs = ex.get("outputs", {})
@@ -1087,7 +1088,7 @@ class GalaxyXmlTool:
 
             self.add_test_response_param(test, response)
             self.process_test_input_params(test, inputs)
-            self.process_test_output_params(test, outputs, response)
+            self.process_test_output_params(test, outputs, response, index)
 
             tests.append(test)
         return tests
@@ -1129,16 +1130,22 @@ class GalaxyXmlTool:
         """
         if isinstance(value, list):
             lst = [i.get("href") for i in value]
-            return self.gxtp.TestParam(name=key, value=lst)
+            file_name = f"{self.tool_name}_test_input.txt"
+            self.write_to_file_in_directory(directory="Tools/test-data", file_name=file_name, content=lst)
+            return self.gxtp.TestParam(name=key, value=file_name)
         elif isinstance(value, dict):
             href = value.get("href")
             if href is None:
                 return None
-            return self.gxtp.TestParam(name=key, value=href)
+            file_name = f"{self.tool_name}_test_input.txt"
+            print("Current Working Directory:", os.getcwd())
+
+            self.write_to_file_in_directory(directory="Tools/test-data", file_name=file_name, content=href)
+            return self.gxtp.TestParam(name=key, value=file_name)
         else:
             return self.gxtp.TestParam(name=key, value=value)
 
-    def process_test_output_params(self, test, outputs, response):
+    def process_test_output_params(self, test, outputs, response, index):
         """
         Process and add output parameters to the test.
 
@@ -1147,9 +1154,13 @@ class GalaxyXmlTool:
             outputs (dict): A dictionary of output parameters.
             response (str): The response type to determine the format of the output parameter.
         """
+        generator = MacrosXMLGenerator()
+        file_path = f"Tools/{self.macros_file_name}"
         for key, value in outputs.items():
-            param = self.create_test_output_param(key, value, response)
-            test.append(param)
+            name, ftype = self.create_test_output_param(key, value, response)
+            macro_name = f"file_inputs_{key}{index}"
+            generator.create_macro_file(filename=file_path, name=name, ftype=ftype, macro_name=macro_name)
+            test.append(self.gxtp.Expand(macro=macro_name))
 
     def create_test_output_param(self, key, value, response):
         """
@@ -1166,9 +1177,9 @@ class GalaxyXmlTool:
         name = f"{self.output_data}_{key}"
         if response == "raw":
             media_type = value["format"]["mediaType"].split("/")[-1]
-            return self.gxtp.TestOutput(name=name, ftype=media_type, value=f"{name}.{media_type}")
+            return (name, media_type)
         else:
-            return self.gxtp.TestOutput(name=name, ftype="txt", value=f"{name}.txt")
+            return (name, "txt")
 
     def get_test_examples(self, data):
         """
@@ -1213,3 +1224,28 @@ class GalaxyXmlTool:
         citations = self.gxtp.Citations()
         citations.append(self.gxtp.Citation(type="bibtex", value="."))
         return citations
+
+    def write_to_file_in_directory(self, directory, file_name, content):
+        """
+        Write content to a file in the specified directory.
+
+        Parameters:
+        - directory (str): Path to the directory where the file will be created.
+        - file_name (str): Name of the file to be created.
+        - content (str): Content to be written to the file.
+        """
+        # If content is a list, convert it to a string
+        if isinstance(content, list):
+            content = ", ".join(map(str, content))
+
+        # Combine directory and file name to get the full path
+        file_path = os.path.join(directory, file_name)
+
+        print(file_path)
+
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+        # Write to the file
+        with open(file_path, "w") as file:
+            file.write(content)

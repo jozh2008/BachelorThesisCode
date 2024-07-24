@@ -1,0 +1,25 @@
+{
+    "summary": {
+        "num_errors": 1,
+        "num_failures": 0,
+        "num_skips": 0,
+        "num_tests": 1
+    },
+    "tests": [
+        {
+            "data": {
+                "dynamic_param_error": false,
+                "execution_problem": "parameter 'il': specify a dataset of the required format / build for parameter",
+                "inputs": {},
+                "status": "error",
+                "test_index": 0,
+                "time_seconds": 0.019870758056640625,
+                "tool_id": "otb_bandmathx",
+                "tool_version": "1.0.0+galaxy0"
+            },
+            "has_data": true,
+            "id": "otb_bandmathx-0"
+        }
+    ],
+    "version": "0.1"
+}
