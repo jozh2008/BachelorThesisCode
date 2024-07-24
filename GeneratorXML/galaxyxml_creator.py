@@ -5,7 +5,6 @@ from .macros_xml_generator import MacrosXMLGenerator
 
 from typing import Dict, List
 import re
-import copy
 import math
 import os
 
@@ -872,47 +871,47 @@ class GalaxyXmlTool:
             for sub_item in schema_item["allOf"]:
                 self.extract_enum(sub_item, enum_values)
 
-    def merge_strings(self, enum_values):
-        """
-        Merges adjacent string elements in the list if the current element (odd index i, starting from 0)
-        begins with a space. The merged string is formed by combining it with the previous element (i-1).
+    # def merge_strings(self, enum_values):
+    #     """
+    #     Merges adjacent string elements in the list if the current element (odd index i, starting from 0)
+    #     begins with a space. The merged string is formed by combining it with the previous element (i-1).
 
-        Args:
-            enum_values (list): A list of string values.
+    #     Args:
+    #         enum_values (list): A list of string values.
 
-        Returns:
-            list: A new list containing merged strings.
-        """
-        merged_list = copy.deepcopy(enum_values)
+    #     Returns:
+    #         list: A new list containing merged strings.
+    #     """
+    #     merged_list = copy.deepcopy(enum_values)
 
-        for i in range(1, len(enum_values)):
-            current_string = enum_values[i]
-            if current_string.startswith(" "):
-                merged_list[i] = f"{merged_list[i - 1]},{current_string}"
-        return self.remove_duplicate(merged_list)
+    #     for i in range(1, len(enum_values)):
+    #         current_string = enum_values[i]
+    #         if current_string.startswith(" "):
+    #             merged_list[i] = f"{merged_list[i - 1]},{current_string}"
+    #     return self.remove_duplicate(merged_list)
 
-    def remove_duplicate(self, original_list: List):
-        """
-        Remove duplicates from a list while preserving the original order.
+    # def remove_duplicate(self, original_list: List):
+    #     """
+    #     Remove duplicates from a list while preserving the original order.
 
-        This function takes a list as input and returns a new list with duplicate elements removed,
-        preserving the original order of elements.
+    #     This function takes a list as input and returns a new list with duplicate elements removed,
+    #     preserving the original order of elements.
 
-        Args:
-        - original_list (list): The input list containing elements, including duplicates.
+    #     Args:
+    #     - original_list (list): The input list containing elements, including duplicates.
 
-        Returns:
-        - list: A new list with duplicate elements removed, preserving the original order.
-        """
+    #     Returns:
+    #     - list: A new list with duplicate elements removed, preserving the original order.
+    #     """
 
-        unique_list = []
+    #     unique_list = []
 
-        for item in original_list:
-            # Add item to the unique_list if it's not already present
-            if item not in unique_list:
-                unique_list.append(item)
+    #     for item in original_list:
+    #         # Add item to the unique_list if it's not already present
+    #         if item not in unique_list:
+    #             unique_list.append(item)
 
-        return unique_list
+    #     return unique_list
 
     def create_default_value(self, default_value):
         """

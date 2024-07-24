@@ -1897,42 +1897,42 @@ def test_replace_dot_with_underscore(setup_tool):
     assert tool.replace_dot_with_underscore("only.one.dot.") == "only_one_dot_"
 
 
-def test_merge_strings_with_duplicate(setup_tool):
-    tool = setup_tool
-    tool.remove_duplicate = MagicMock(side_effect=lambda x: list(dict.fromkeys(x)))
-    enum_values = ["abc", "abc", " def", "ghi", " jkl", "mno"]
-    merged_result = tool.merge_strings(enum_values)
-    assert merged_result == ["abc", "abc, def", "ghi", "ghi, jkl", "mno"]
+# def test_merge_strings_with_duplicate(setup_tool):
+#     tool = setup_tool
+#     tool.remove_duplicate = MagicMock(side_effect=lambda x: list(dict.fromkeys(x)))
+#     enum_values = ["abc", "abc", " def", "ghi", " jkl", "mno"]
+#     merged_result = tool.merge_strings(enum_values)
+#     assert merged_result == ["abc", "abc, def", "ghi", "ghi, jkl", "mno"]
 
 
-def test_remove_duplicate(setup_tool):
+# def test_remove_duplicate(setup_tool):
 
-    tool = setup_tool
+#     tool = setup_tool
 
-    # Test case 1: List with duplicates
-    input_list_1 = ["a", "b", "a", "c", "b", "d", "a"]
-    expected_output_1 = ["a", "b", "c", "d"]
-    assert tool.remove_duplicate(input_list_1) == expected_output_1
+#     # Test case 1: List with duplicates
+#     input_list_1 = ["a", "b", "a", "c", "b", "d", "a"]
+#     expected_output_1 = ["a", "b", "c", "d"]
+#     assert tool.remove_duplicate(input_list_1) == expected_output_1
 
-    # Test case 2: List with no duplicates
-    input_list_2 = ["x", "y", "z"]
-    expected_output_2 = ["x", "y", "z"]
-    assert tool.remove_duplicate(input_list_2) == expected_output_2
+#     # Test case 2: List with no duplicates
+#     input_list_2 = ["x", "y", "z"]
+#     expected_output_2 = ["x", "y", "z"]
+#     assert tool.remove_duplicate(input_list_2) == expected_output_2
 
-    # Test case 3: Empty list
-    input_list_3 = []
-    expected_output_3 = []
-    assert tool.remove_duplicate(input_list_3) == expected_output_3
+#     # Test case 3: Empty list
+#     input_list_3 = []
+#     expected_output_3 = []
+#     assert tool.remove_duplicate(input_list_3) == expected_output_3
 
-    # Test case 4: List with all duplicates
-    input_list_4 = ["a", "a", "a", "a", "a"]
-    expected_output_4 = ["a"]
-    assert tool.remove_duplicate(input_list_4) == expected_output_4
+#     # Test case 4: List with all duplicates
+#     input_list_4 = ["a", "a", "a", "a", "a"]
+#     expected_output_4 = ["a"]
+#     assert tool.remove_duplicate(input_list_4) == expected_output_4
 
-    # Test case 5: List with mixed types
-    input_list_5 = [1, "a", 2, "b", 1, "a"]
-    expected_output_5 = [1, "a", 2, "b"]
-    assert tool.remove_duplicate(input_list_5) == expected_output_5
+#     # Test case 5: List with mixed types
+#     input_list_5 = [1, "a", 2, "b", 1, "a"]
+#     expected_output_5 = [1, "a", 2, "b"]
+#     assert tool.remove_duplicate(input_list_5) == expected_output_5
 
 
 def test_find_index(setup_tool):
