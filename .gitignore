@@ -168,6 +168,9 @@ Tools/*.json
 Tools/*.html
 Tools/Macros/*.xml
 
+# Exception: don't ignore keep-this-file.xml
+!Tools/Macros/OTB.BandMath_macros_.xml
+
 #Directory Addtional Materials
 Additional Materials/
 # vscode
