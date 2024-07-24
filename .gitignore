@@ -164,8 +164,8 @@ cython_debug/
 
 #Tools xml
 Tools/*.xml
-Tools/*.json
-Tools/*.html
+Tools/tool_test_output.html
+Tools/tool_test_output.json
 Tools/Macros/*.xml
 
 # Exception: don't ignore keep-this-file.xml
