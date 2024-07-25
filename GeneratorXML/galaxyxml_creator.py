@@ -1051,7 +1051,7 @@ class GalaxyXmlTool:
                 return tests_api
         # Initialize a default Tests object if no examples are found
         tests = self.gxtp.Tests()
-        test_a = self.gxtp.Test()
+        test_a = self.gxtp.Test(expect_failure="true")
         # Add a default test parameter
         param = self.gxtp.TestParam(name="response", value="document")
         test_a.append(param)
