@@ -988,7 +988,6 @@ class GalaxyXmlTool:
 
         return outputs
 
-    # To do add requirements
     def define_requirements(self):
         """
         Add the requirments for generating the Galaxy XML file.
@@ -1046,7 +1045,6 @@ class GalaxyXmlTool:
         tests.append(test_a)
         return tests
 
-    # To do refactor code after discussion
     def create_tests(self, examples):
         """
         Create tests from the given examples.
