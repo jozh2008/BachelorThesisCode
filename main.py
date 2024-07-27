@@ -1,8 +1,9 @@
-import requests
-import re
-from GeneratorXML.galaxyxml_creator import GalaxyXmlTool
 from pprint import pprint
 import sys
+import re
+import requests
+
+from GeneratorXML.galaxyxml_creator import GalaxyXmlTool
 
 
 class GalaxyToolConverter:
@@ -24,7 +25,7 @@ class GalaxyToolConverter:
 
         try:
             # Make a GET request to retrieve information about available collections
-            response = requests.get(url)
+            response = requests.get(url, timeout=60)
             response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
 
             # Extract the JSON data from the response
@@ -63,13 +64,14 @@ class GalaxyToolConverter:
             transmission_schema=process_data["outputTransmission"],
         )
 
-        # two options for tool.outpus need to be discussed
         tool.outputs = gxt.define_output_options()
 
         tool.executable = gxt.define_command(process_data["id"])
         gxt.define_macro()
         tool.tests = gxt.define_tests(api_dict=api_data["paths"], process=process_data["id"])
-        tool.citations = gxt.create_citations()
+
+        # If necessary, change the citations text
+        tool.citations = gxt.create_citations(citations_text=".")
 
         file_path = f"Tools/{name}.xml"
         with open(file_path, "w") as file:
@@ -119,6 +121,6 @@ if __name__ == "__main__":
     if len(sys.argv) < 3 or sys.argv[1] != "--process":
         print("Error: Process not provided. Use python3 main.py --process {process}")
         sys.exit(1)
-    process_name = sys.argv[2]
+    process_id = sys.argv[2]
     BASE_URL = "https://ospd.geolabs.fr:8300/ogc-api/"
-    main(BASE_URL, process_name)
+    main(BASE_URL, process_id)

@@ -1,15 +1,39 @@
+import re
+import math
+import os
+from typing import Dict, List
+
 from galaxyxml import tool
 import galaxyxml.tool.parameters as gtpx
 
 from .macros_xml_generator import MacrosXMLGenerator
 
-from typing import Dict, List
-import re
-import math
-import os
-
 
 class GalaxyXmlTool:
+    """
+    Initialize a new instance of YourClass.
+
+    :param name: The name of the tool.
+    :param id: The unique identifier for the tool.
+    :param version: The version of the tool.
+    :param description: A brief description of the tool.
+
+    This initializer sets up the following attributes:
+
+    - **executable**: Path to the executable script for creating API JSON.
+    - **macros_file_name**: Path to the macros file associated with the tool.
+    - **gxt**: An instance of the `tool.Tool` class, initialized with the provided parameters and additional defaults.
+    - **tool_name**: The identifier of the tool.
+    - **version**: The version of the tool.
+    - **version_suffix**: A suffix for the tool version, defaulting to "0".
+    - **gxtp**: An external `gtpx` parameter (please provide its description if needed).
+    - **executable_dict**: A dictionary to store executable-related data.
+    - **output_type_dictionary**: A dictionary to store output type information.
+    - **output_type**: A string indicating the output type, defaulting to "outputType".
+    - **output_name_list**: A list to store output names.
+    - **output_data**: A string indicating the output data, defaulting to "output_data".
+    """
+
     def __init__(self, name, id, version, description) -> None:
         self.executable = "$__tool_directory__/Code/create_api_json.py"
         self.macros_file_name = f"Macros/{name}_macros_.xml"
@@ -149,7 +173,8 @@ class GalaxyXmlTool:
             Conditional: The conditional parameter object.
         """
 
-        # Create the conditional parameter to allow user to choose if they want to add the optional parameter
+        # Create the conditional parameter to allow user to choose if they want to
+        # add the optional parameter
         param_class = getattr(self.gxtp, param_type)
 
         conditional_param = self.gxtp.Conditional(
@@ -871,48 +896,6 @@ class GalaxyXmlTool:
             for sub_item in schema_item["allOf"]:
                 self.extract_enum(sub_item, enum_values)
 
-    # def merge_strings(self, enum_values):
-    #     """
-    #     Merges adjacent string elements in the list if the current element (odd index i, starting from 0)
-    #     begins with a space. The merged string is formed by combining it with the previous element (i-1).
-
-    #     Args:
-    #         enum_values (list): A list of string values.
-
-    #     Returns:
-    #         list: A new list containing merged strings.
-    #     """
-    #     merged_list = copy.deepcopy(enum_values)
-
-    #     for i in range(1, len(enum_values)):
-    #         current_string = enum_values[i]
-    #         if current_string.startswith(" "):
-    #             merged_list[i] = f"{merged_list[i - 1]},{current_string}"
-    #     return self.remove_duplicate(merged_list)
-
-    # def remove_duplicate(self, original_list: List):
-    #     """
-    #     Remove duplicates from a list while preserving the original order.
-
-    #     This function takes a list as input and returns a new list with duplicate elements removed,
-    #     preserving the original order of elements.
-
-    #     Args:
-    #     - original_list (list): The input list containing elements, including duplicates.
-
-    #     Returns:
-    #     - list: A new list with duplicate elements removed, preserving the original order.
-    #     """
-
-    #     unique_list = []
-
-    #     for item in original_list:
-    #         # Add item to the unique_list if it's not already present
-    #         if item not in unique_list:
-    #             unique_list.append(item)
-
-    #     return unique_list
-
     def create_default_value(self, default_value):
         """
         Default value should be "true" and "false" instead of True and False.
@@ -950,8 +933,7 @@ class GalaxyXmlTool:
         match = re.search(pattern=pattern, string=string)
         if match:
             return match.end()
-        else:
-            return -1
+        return -1
 
     def define_command(self, title):
         """
@@ -1177,8 +1159,8 @@ class GalaxyXmlTool:
         if response == "raw":
             media_type = value["format"]["mediaType"].split("/")[-1]
             return (name, media_type)
-        else:
-            return (name, "txt")
+
+        return (name, "txt")
 
     def get_test_examples(self, data):
         """
@@ -1218,10 +1200,16 @@ class GalaxyXmlTool:
                 return api_dict[pro]
         return None
 
-    # To do: What should I citate
-    def create_citations(self):
+    def create_citations(self, citations_text):
+        """
+
+        This method creates a `Citations` object using the `gxtp` attribute,
+        appends a single citation in BibTeX format with the provided text,
+        and returns the citations object.
+
+        """
         citations = self.gxtp.Citations()
-        citations.append(self.gxtp.Citation(type="bibtex", value="."))
+        citations.append(self.gxtp.Citation(type="bibtex", value=citations_text))
         return citations
 
     def write_to_file_in_directory(self, directory, file_name, content):

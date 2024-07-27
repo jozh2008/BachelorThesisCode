@@ -6,6 +6,9 @@ class MacrosXMLGenerator:
         self.root = ET.Element("macros")
 
     def add_token(self, name, value):
+        """
+        Add
+        """
         token = ET.Element("token", {"name": name})
         token.text = value
         self.root.append(token)
